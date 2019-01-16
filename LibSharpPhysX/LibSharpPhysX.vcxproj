@@ -44,9 +44,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>..\SharpPhysX\bin\$(Configuration)\</OutDir>
+    <IncludePath>C:\Projects\PhysX\physx\include;C:\Projects\PhysX\pxshared\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\SharpPhysX\bin\$(Configuration)\</OutDir>
+    <IncludePath>C:\Projects\PhysX\physx\include;C:\Projects\PhysX\pxshared\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
