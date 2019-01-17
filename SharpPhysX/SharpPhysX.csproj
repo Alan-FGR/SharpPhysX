@@ -18,4 +18,14 @@
     <OutputPath>bin/Release</OutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Generated\**" />
+    <EmbeddedResource Remove="Generated\**" />
+    <None Remove="Generated\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Generated\PxVec3.cs" />
+  </ItemGroup>
+
 </Project>

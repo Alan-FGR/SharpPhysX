@@ -7,8 +7,6 @@
 
 
 
-
-
 //callback tests
 
 typedef void (__stdcall *ErrorCallback)(const char* message, const char* file, int line);
@@ -23,15 +21,22 @@ ES void registerCallback(ErrorCallback callback)
 }
 
 
+//blittable tests
+#include "foundation/PxVec3.h"
+using namespace physx;
+
+ES float PxVec3__magnitude(physx::PxVec3 cls)
+{
+    return cls.magnitude();
+};
+
+ES PxVec3 PxVec3__OP_plus(PxVec3 a, PxVec3 b)
+{
+    return a.operator+(b);
+}
 
 
 
-//ES int add(int x, int y)
-//{
-//    return x + y;
-//}
-//
-//using namespace physx;
 //
 //PxDefaultAllocator allocator;
 //PxDefaultErrorCallback errorCallback;
