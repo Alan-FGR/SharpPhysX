@@ -1,11 +1,12 @@
 #include <cstdio>
-//#include "PxPhysicsAPI.h"
+#include "PxPhysicsAPI.h"
 
 #define ES extern "C" __declspec(dllexport) inline // Export Symbol
 
 //#include "Generated/PxFoundation.h"
 
-
+#include "Generated/PxVec3.h"
+#include "Generated/PxFoundation.h"
 
 //callback tests
 
@@ -22,11 +23,11 @@ ES void registerCallback(ErrorCallback callback)
 
 
 //blittable tests
-#include "foundation/PxVec3.h"
 using namespace physx;
 
-ES float PxVec3__magnitude(physx::PxVec3 cls)
+ES float PxVec3__magnitude(PxVec3 cls)
 {
+    PxReal
     return cls.magnitude();
 };
 

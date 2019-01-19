@@ -7,26 +7,27 @@ public static class PhysX {
     public const string Lib = "LibSharpPhysX";
 }
 
-//[StructLayout(LayoutKind.Sequential)]
-//public struct PxVec3
-//{
-//    float x;
-//    float y;
-//    float z;
+[StructLayout(LayoutKind.Sequential)]
+public struct PxVec3t
+{
+    public float x;
+    float y;
+    float z;
 
-//    public PxVec3(float x, float y, float z)
-//    {
-//        this.x = x;
-//        this.y = y;
-//        this.z = z;
-//    }
+    public PxVec3t(float x, float y, float z)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
 
-//    public static PxVec3 operator+(PxVec3 a, PxVec3 b)
-//    {
-//        return new PxVec3();
-//    }
-
-//}
+    public unsafe PxVec3t(PxVec3t toCopy) : this()
+    {
+        fixed (void* ptr = &this) {
+            Buffer.MemoryCopy(&toCopy, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        }
+    }
+}
 
 class Program
 {
@@ -40,8 +41,6 @@ class Program
     [DllImport("LibSharpPhysX", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void registerCallback(ErrorCallback callback);
 
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float PxVec3__magnitude(PxVec3 vec);
 
     static void Main(string[] args)
     {
@@ -58,9 +57,10 @@ class Program
 
         //test blittable
 
-        var v1 = new PxVec3(1,0,1);
+        var v1 = new PxVec3t(1337,0,float.MinValue);
+        var v2 = new PxVec3t(v1);
 
-        Console.WriteLine(PxVec3__magnitude(v1));
+        Console.WriteLine(v2.x);
 
 
 
