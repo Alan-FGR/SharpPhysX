@@ -2,65 +2,67 @@
 using System;
 using System.Runtime.InteropServices;
 
-public partial class PxTransform {
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform C_PxTransform_PxTransform();
-    public unsafe PxTransform(){
-        var _new = C_PxTransform_PxTransform();        fixed (void* ptr = &this)
-          Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
-    }
+public partial struct PxTransform {
+    public PxQuat q;
+    public PxVec3 p;
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform C_PxTransform_PxTransform(PxVec3 position);
     public unsafe PxTransform(PxVec3 position){
-        var _new = C_PxTransform_PxTransform(position);        fixed (void* ptr = &this)
+        var _new = C_PxTransform_PxTransform(position);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform C_PxTransform_PxTransform(PxIDENTITY r);
-    public unsafe PxTransform(PxIDENTITY r){
-        var _new = C_PxTransform_PxTransform(r);        fixed (void* ptr = &this)
+    static extern PxTransform C_PxTransform_PxTransform(physx r);
+    public unsafe PxTransform(physx r){
+        var _new = C_PxTransform_PxTransform(r);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform C_PxTransform_PxTransform(PxQuat orientation);
     public unsafe PxTransform(PxQuat orientation){
-        var _new = C_PxTransform_PxTransform(orientation);        fixed (void* ptr = &this)
+        var _new = C_PxTransform_PxTransform(orientation);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform C_PxTransform_PxTransform(float x,float y,float z,PxQuat aQ);
     public unsafe PxTransform(float x,float y,float z,PxQuat aQ){
-        var _new = C_PxTransform_PxTransform(x,y,z,aQ);        fixed (void* ptr = &this)
+        var _new = C_PxTransform_PxTransform(x,y,z,aQ);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform C_PxTransform_PxTransform(PxVec3 p0,PxQuat q0);
     public unsafe PxTransform(PxVec3 p0,PxQuat q0){
-        var _new = C_PxTransform_PxTransform(p0,q0);        fixed (void* ptr = &this)
+        var _new = C_PxTransform_PxTransform(p0,q0);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform C_PxTransform_PxTransform(PxMat44 m);
     public unsafe PxTransform(PxMat44 m){
-        var _new = C_PxTransform_PxTransform(m);        fixed (void* ptr = &this)
+        var _new = C_PxTransform_PxTransform(m);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool C_CONST_PxTransform_OP_EqualEqual(PxTransform cls,PxTransformPtr t);
-    public static bool EqualEqual(PxTransform cls,PxTransformPtr t){
+    static extern bool C_CONST_PxTransform_OP_EqualEqual(PxTransform cls,PxTransform t);
+    public static bool operator==(PxTransform cls,PxTransform t){
         return C_CONST_PxTransform_OP_EqualEqual(cls,t);    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform C_CONST_PxTransform_OP_Star(PxTransform cls,PxTransformPtr x);
-    public static PxTransform Star(PxTransform cls,PxTransformPtr x){
+    static extern PxTransform C_CONST_PxTransform_OP_Star(PxTransform cls,PxTransform x);
+    public static PxTransform operator*(PxTransform cls,PxTransform x){
         return C_CONST_PxTransform_OP_Star(cls,x);    
     }
 
@@ -95,8 +97,8 @@ public partial class PxTransform {
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform C_CONST_PxTransform_transform(PxTransform cls,PxTransformPtr src);
-    public PxTransform transform(PxTransformPtr src){
+    static extern PxTransform C_CONST_PxTransform_transform(PxTransform cls,PxTransform src);
+    public PxTransform transform(PxTransform src){
         return C_CONST_PxTransform_transform(this,src);    
     }
 
@@ -119,20 +121,20 @@ public partial class PxTransform {
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform C_CONST_PxTransform_transformInv(PxTransform cls,PxTransformPtr src);
-    public PxTransform transformInv(PxTransformPtr src){
+    static extern PxTransform C_CONST_PxTransform_transformInv(PxTransform cls,PxTransform src);
+    public PxTransform transformInv(PxTransform src){
         return C_CONST_PxTransform_transformInv(this,src);    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPlane C_CONST_PxTransform_transform(PxTransform cls,PxPlanePtr plane);
-    public PxPlane transform(PxPlanePtr plane){
+    static extern PxPlane C_CONST_PxTransform_transform(PxTransform cls,PxPlane plane);
+    public PxPlane transform(PxPlane plane){
         return C_CONST_PxTransform_transform(this,plane);    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPlane C_CONST_PxTransform_inverseTransform(PxTransform cls,PxPlanePtr plane);
-    public PxPlane inverseTransform(PxPlanePtr plane){
+    static extern PxPlane C_CONST_PxTransform_inverseTransform(PxTransform cls,PxPlane plane);
+    public PxPlane inverseTransform(PxPlane plane){
         return C_CONST_PxTransform_inverseTransform(this,plane);    
     }
 

@@ -2,45 +2,45 @@
 using System;
 using System.Runtime.InteropServices;
 
-public partial class PxPlane {
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPlane C_PxPlane_PxPlane();
-    public unsafe PxPlane(){
-        var _new = C_PxPlane_PxPlane();        fixed (void* ptr = &this)
-          Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
-    }
+public partial struct PxPlane {
+    public PxVec3 n;
+    public float d;
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxPlane C_PxPlane_PxPlane(float nx,float ny,float nz,float distance);
     public unsafe PxPlane(float nx,float ny,float nz,float distance){
-        var _new = C_PxPlane_PxPlane(nx,ny,nz,distance);        fixed (void* ptr = &this)
+        var _new = C_PxPlane_PxPlane(nx,ny,nz,distance);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxPlane C_PxPlane_PxPlane(PxVec3 normal,float distance);
     public unsafe PxPlane(PxVec3 normal,float distance){
-        var _new = C_PxPlane_PxPlane(normal,distance);        fixed (void* ptr = &this)
+        var _new = C_PxPlane_PxPlane(normal,distance);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxPlane C_PxPlane_PxPlane(PxVec3 point,PxVec3 normal);
     public unsafe PxPlane(PxVec3 point,PxVec3 normal){
-        var _new = C_PxPlane_PxPlane(point,normal);        fixed (void* ptr = &this)
+        var _new = C_PxPlane_PxPlane(point,normal);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxPlane C_PxPlane_PxPlane(PxVec3 p0,PxVec3 p1,PxVec3 p2);
     public unsafe PxPlane(PxVec3 p0,PxVec3 p1,PxVec3 p2){
-        var _new = C_PxPlane_PxPlane(p0,p1,p2);        fixed (void* ptr = &this)
+        var _new = C_PxPlane_PxPlane(p0,p1,p2);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool C_CONST_PxPlane_OP_EqualEqual(PxPlane cls,PxPlanePtr p);
-    public static bool EqualEqual(PxPlane cls,PxPlanePtr p){
+    static extern bool C_CONST_PxPlane_OP_EqualEqual(PxPlane cls,PxPlane p);
+    public static bool operator==(PxPlane cls,PxPlane p){
         return C_CONST_PxPlane_OP_EqualEqual(cls,p);    
     }
 

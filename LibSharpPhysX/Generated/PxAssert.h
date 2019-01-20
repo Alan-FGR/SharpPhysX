@@ -3,10 +3,5 @@
 ES physx::PxAssertHandler C_REF_PxGetAssertHandler(){ // L53
 
     return &physx::PxGetAssertHandler();
-}
-
-ES void C_PxSetAssertHandler(physx::PxAssertHandler handler){ // L54
-
-    return physx::PxSetAssertHandler(handler);
-}
+};
 

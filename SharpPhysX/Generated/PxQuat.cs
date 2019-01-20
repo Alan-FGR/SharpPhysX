@@ -9,44 +9,50 @@ public partial struct PxQuat {
     public float w;
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat C_PxQuat_PxQuat(PxIDENTITY r);
-    public unsafe PxQuat(PxIDENTITY r){
-        var _new = C_PxQuat_PxQuat(r);        fixed (void* ptr = &this)
+    static extern PxQuat C_PxQuat_PxQuat(physx r);
+    public unsafe PxQuat(physx r){
+        var _new = C_PxQuat_PxQuat(r);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQuat C_PxQuat_PxQuat(float r);
     public unsafe PxQuat(float r){
-        var _new = C_PxQuat_PxQuat(r);        fixed (void* ptr = &this)
+        var _new = C_PxQuat_PxQuat(r);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQuat C_PxQuat_PxQuat(float nx,float ny,float nz,float nw);
     public unsafe PxQuat(float nx,float ny,float nz,float nw){
-        var _new = C_PxQuat_PxQuat(nx,ny,nz,nw);        fixed (void* ptr = &this)
+        var _new = C_PxQuat_PxQuat(nx,ny,nz,nw);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQuat C_PxQuat_PxQuat(float angleRadians,PxVec3 unitAxis);
     public unsafe PxQuat(float angleRadians,PxVec3 unitAxis){
-        var _new = C_PxQuat_PxQuat(angleRadians,unitAxis);        fixed (void* ptr = &this)
+        var _new = C_PxQuat_PxQuat(angleRadians,unitAxis);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQuat C_PxQuat_PxQuat(PxQuat v);
     public unsafe PxQuat(PxQuat v){
-        var _new = C_PxQuat_PxQuat(v);        fixed (void* ptr = &this)
+        var _new = C_PxQuat_PxQuat(v);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat C_PxQuat_PxQuat(PxMat33Ptr m);
-    public unsafe PxQuat(PxMat33Ptr m){
-        var _new = C_PxQuat_PxQuat(m);        fixed (void* ptr = &this)
+    static extern PxQuat C_PxQuat_PxQuat(PxMat33 m);
+    public unsafe PxQuat(PxMat33 m){
+        var _new = C_PxQuat_PxQuat(m);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
@@ -78,12 +84,6 @@ public partial struct PxQuat {
     static extern bool C_CONST_PxQuat_OP_EqualEqual(PxQuat cls,PxQuat q);
     public static bool operator==(PxQuat cls,PxQuat q){
         return C_CONST_PxQuat_OP_EqualEqual(cls,q);    
-    }
-
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void C_CONST_PxQuat_toRadiansAndUnitAxis(PxQuat cls,float angle,PxVec3 axis);
-    public void toRadiansAndUnitAxis(float angle,PxVec3 axis){
-        return C_CONST_PxQuat_toRadiansAndUnitAxis(this,angle,axis);    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]

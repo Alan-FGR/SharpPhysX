@@ -27,7 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Generated\PxVec3.cs" />
+    <Compile Remove="Manual\PxQuat.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Generated\" />
+    <Folder Include="Manual\" />
   </ItemGroup>
 
 </Project>

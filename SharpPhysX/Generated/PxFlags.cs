@@ -2,18 +2,12 @@
 using System;
 using System.Runtime.InteropServices;
 
-public partial class PxFlags {
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxFlags C_PxFlags_PxFlags<enumtype, storagetype>();
-    public unsafe PxFlags(){
-        var _new = C_PxFlags_PxFlags<enumtype, storagetype>();        fixed (void* ptr = &this)
-          Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
-    }
-
+public partial struct PxFlags {
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxFlags C_PxFlags_PxFlags<enumtype, storagetype>(Ptr f);
     public unsafe PxFlags(Ptr f){
-        var _new = C_PxFlags_PxFlags<enumtype, storagetype>(f);        fixed (void* ptr = &this)
+        var _new = C_PxFlags_PxFlags<enumtype, storagetype>(f);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 

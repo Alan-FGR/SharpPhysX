@@ -102,36 +102,36 @@ public static partial class intrinsics{
 
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void C_memZero(void dest,uint32_t count);
-    public static void memZero(void dest,uint32_t count){
+    static extern void C_memZero(void dest,uint count);
+    public static void memZero(void dest,uint count){
         return C_memZero(dest,count);    
     }
 
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void C_memSet(void dest,int32_t c,uint32_t count);
-    public static void memSet(void dest,int32_t c,uint32_t count){
+    static extern void C_memSet(void dest,int c,uint count);
+    public static void memSet(void dest,int c,uint count){
         return C_memSet(dest,c,count);    
     }
 
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void C_memCopy(void dest,void src,uint32_t count);
-    public static void memCopy(void dest,void src,uint32_t count){
+    static extern void C_memCopy(void dest,void src,uint count);
+    public static void memCopy(void dest,void src,uint count){
         return C_memCopy(dest,src,count);    
     }
 
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void C_memMove(void dest,void src,uint32_t count);
-    public static void memMove(void dest,void src,uint32_t count){
+    static extern void C_memMove(void dest,void src,uint count);
+    public static void memMove(void dest,void src,uint count){
         return C_memMove(dest,src,count);    
     }
 
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void C_memZero128(void dest,uint32_t offset);
-    public static void memZero128(void dest,uint32_t offset){
+    static extern void C_memZero128(void dest,uint offset);
+    public static void memZero128(void dest,uint offset){
         return C_memZero128(dest,offset);    
     }
 

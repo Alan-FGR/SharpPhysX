@@ -39,8 +39,8 @@ public static partial class physx{
 
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern int32_t C_PxAbs(int32_t a);
-    public static int32_t PxAbs(int32_t a){
+    static extern int C_PxAbs(int a);
+    public static int PxAbs(int a){
         return C_PxAbs(a);    
     }
 

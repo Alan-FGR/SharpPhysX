@@ -3,10 +3,5 @@
 ES physx::PxGeometryType::Enum C_CONST_PxGeometry_getType(physx::PxGeometry cls){ // L82
 
     return cls.getType();
-}
-
-ES physx::PxGeometry C_PxGeometry_PxGeometry(physx::PxGeometryType::Enum type){ // L85
-
-    return physx::PxGeometry::PxGeometry(type);
-}
+};
 

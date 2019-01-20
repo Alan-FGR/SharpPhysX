@@ -29,6 +29,42 @@ public struct PxVec3t
     }
 }
 
+struct Geom : IDisposable
+{
+    public IntPtr nativePtr_;
+
+    public Geom(IntPtr nativePtr)
+    {
+        nativePtr_ = nativePtr;
+    }
+
+    public void Dispose()
+    {}
+}
+
+struct Box : IDisposable
+{
+    public IntPtr nativePtr_;
+
+    public Box(IntPtr nativePtr)
+    {
+        this.nativePtr_ = nativePtr;
+    }
+
+    public static unsafe implicit operator Geom(Box obj) // upcast
+    {
+        return *(Geom*)&obj;
+    }
+
+    public static unsafe explicit operator Box(Geom obj) // downcast
+    {
+        return *(Box*)&obj;
+    }
+
+    public void Dispose()
+    {}
+}
+
 class Program
 {
     public delegate void ErrorCallback(
@@ -42,7 +78,7 @@ class Program
     static extern void registerCallback(ErrorCallback callback);
 
 
-    static void Main(string[] args)
+    static unsafe void Main(string[] args)
     {
         
         //test callback
@@ -62,7 +98,18 @@ class Program
 
         Console.WriteLine(v2.x);
 
+        //test castings
 
+        Geom g = new Geom(new IntPtr(1337));
+        Box b = new Box(new IntPtr(42));
+
+        var up = (Geom) b;
+        var down = (Box) g;
+
+        var addrg = &g;
+        var addrb = &b;
+        var addrup = &up;
+        var addrdown = &down;
 
         Console.ReadKey();
 

@@ -18,23 +18,34 @@ public partial struct PxVec3 {
     public float z;
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxVec3 C_PxVec3_PxVec3(physx r);
+    public unsafe PxVec3(physx r){
+        var _new = C_PxVec3_PxVec3(r);        
+        fixed (void* ptr = &this)
+          Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
+    }
+
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 C_PxVec3_PxVec3(float a);
     public unsafe PxVec3(float a){
-        var _new = C_PxVec3_PxVec3(a);        fixed (void* ptr = &this)
+        var _new = C_PxVec3_PxVec3(a);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 C_PxVec3_PxVec3(float nx,float ny,float nz);
     public unsafe PxVec3(float nx,float ny,float nz){
-        var _new = C_PxVec3_PxVec3(nx,ny,nz);        fixed (void* ptr = &this)
+        var _new = C_PxVec3_PxVec3(nx,ny,nz);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 C_PxVec3_PxVec3(PxVec3 v);
     public unsafe PxVec3(PxVec3 v){
-        var _new = C_PxVec3_PxVec3(v);        fixed (void* ptr = &this)
+        var _new = C_PxVec3_PxVec3(v);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 

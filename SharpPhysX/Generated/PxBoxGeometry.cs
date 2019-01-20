@@ -2,25 +2,20 @@
 using System;
 using System.Runtime.InteropServices;
 
-public partial class PxBoxGeometry {
+public partial struct PxBoxGeometry {
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBoxGeometry C_PxBoxGeometry_PxBoxGeometry();
-    public unsafe PxBoxGeometry(){
-        var _new = C_PxBoxGeometry_PxBoxGeometry();        fixed (void* ptr = &this)
-          Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
-    }
-
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBoxGeometry C_PxBoxGeometry_PxBoxGeometry(PxReal hx,PxReal hy,PxReal hz);
-    public unsafe PxBoxGeometry(PxReal hx,PxReal hy,PxReal hz){
-        var _new = C_PxBoxGeometry_PxBoxGeometry(hx,hy,hz);        fixed (void* ptr = &this)
+    static extern PxBoxGeometry C_PxBoxGeometry_PxBoxGeometry(float hx,float hy,float hz);
+    public unsafe PxBoxGeometry(float hx,float hy,float hz){
+        var _new = C_PxBoxGeometry_PxBoxGeometry(hx,hy,hz);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBoxGeometry C_PxBoxGeometry_PxBoxGeometry(PxVec3 halfExtents_);
     public unsafe PxBoxGeometry(PxVec3 halfExtents_){
-        var _new = C_PxBoxGeometry_PxBoxGeometry(halfExtents_);        fixed (void* ptr = &this)
+        var _new = C_PxBoxGeometry_PxBoxGeometry(halfExtents_);        
+        fixed (void* ptr = &this)
           Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));    
     }
 

@@ -10,16 +10,5 @@ public static partial class physx{
     }
 
 
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void C_PxSetAssertHandler(PxAssertHandler handler);
-    public static void PxSetAssertHandler(PxAssertHandler handler){
-        return C_PxSetAssertHandler(handler);    
-    }
-
-
 }
 
-public partial struct PxAssertHandler {
-
-
-}
