@@ -1,4 +1,4 @@
 //Generated
-public static class PhysX {
+public static partial class PhysX {
  public const string Lib = "LibSharpPhysX";
 }

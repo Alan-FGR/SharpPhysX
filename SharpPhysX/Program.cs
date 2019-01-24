@@ -3,10 +3,6 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Security;
 
-public static class PhysX {
-    public const string Lib = "LibSharpPhysX";
-}
-
 [StructLayout(LayoutKind.Sequential)]
 public struct PxVec3t
 {
@@ -29,9 +25,19 @@ public struct PxVec3t
     }
 }
 
-struct Geom : IDisposable
+interface IGeom
 {
-    public IntPtr nativePtr_;
+    void test(Box b);
+}
+
+interface IConfl
+{
+    void test(Box b);
+}
+
+struct Geom : IGeom, IConfl, IDisposable
+{
+    private IntPtr nativePtr_;
 
     public Geom(IntPtr nativePtr)
     {
@@ -40,15 +46,21 @@ struct Geom : IDisposable
 
     public void Dispose()
     {}
+
+    public void test(Box b)
+    {
+    }
 }
 
 struct Box : IDisposable
 {
-    public IntPtr nativePtr_;
+    private IntPtr nativePtr_;
+    public int hikerData;
 
     public Box(IntPtr nativePtr)
     {
         this.nativePtr_ = nativePtr;
+        hikerData = 666;
     }
 
     public static unsafe implicit operator Geom(Box obj) // upcast
@@ -110,6 +122,12 @@ class Program
         var addrb = &b;
         var addrup = &up;
         var addrdown = &down;
+
+        //test auto blittable
+
+        var vec = new PxVec3(1,2,3);
+
+        var sum = vec + vec;
 
         Console.ReadKey();
 

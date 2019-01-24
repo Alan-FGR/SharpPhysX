@@ -3,9 +3,10 @@
 
 #define ES extern "C" __declspec(dllexport) inline // Export Symbol
 
-////#include "Generated/PxFoundation.h"
+#include "Generated/PxFoundation.h"
 //
 //#include "Generated/PxVec3.h"
+//#include "Generated/PxBase.h"
 //#include "Generated/PxBoxGeometry.h"
 //#include "Generated/PxGeometry.h"
 

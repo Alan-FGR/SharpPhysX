@@ -31,8 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Generated\" />
-    <Folder Include="Manual\" />
+    <Compile Include="Generated\PhysX.cs" />
+    <Compile Include="Generated\PxFoundation.cs" />
   </ItemGroup>
 
 </Project>
