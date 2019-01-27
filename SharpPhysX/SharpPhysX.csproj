@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <Compile Include="Generated\PhysX.cs" />
+    <Compile Include="Generated\PxErrors.cs" />
     <Compile Include="Generated\PxFoundation.cs" />
   </ItemGroup>
 

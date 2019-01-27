@@ -3,7 +3,6 @@ using System;
 using System.Runtime.InteropServices;
 using PxBaseFlags = System.UInt32;
 using PxActorFlags = System.UInt32;
-using PxFoundationPtr = PxFoundation;
 
 public static partial class PhysX{
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -27,8 +26,8 @@ public partial struct PxFoundation { // ptr holder
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxErrorCallback C_REF_PxFoundation_getErrorCallback(PxFoundation cls);
-    public PxErrorCallback getErrorCallback(){
+    static extern SharpPhysXError C_REF_PxFoundation_getErrorCallback(PxFoundation cls);
+    public SharpPhysXError getErrorCallback(){
         return C_REF_PxFoundation_getErrorCallback(this);    
     }
 

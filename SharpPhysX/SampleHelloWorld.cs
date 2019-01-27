@@ -1,5 +1,8 @@
 ﻿//using namespace physx;
 
+public class SampleHelloWorld
+{
+
 //PxDefaultAllocator		gAllocator;
 //PxDefaultErrorCallback	gErrorCallback;
 
@@ -40,6 +43,13 @@
 //	}
 //	shape->release();
 //}
+
+    private PxFoundation foundation_;
+
+    void initPhysics()
+    {
+        PhysX.
+    }
 
 //void initPhysics(bool interactive)
 //{
@@ -83,7 +93,7 @@
 //	gScene->simulate(1.0f/60.0f);
 //	gScene->fetchResults(true);
 //}
-	
+
 //void cleanupPhysics(bool interactive)
 //{
 //	PX_UNUSED(interactive);
@@ -93,9 +103,9 @@
 //	PxPvdTransport* transport = gPvd->getTransport();
 //	gPvd->release();
 //	transport->release();
-	
+
 //	gFoundation->release();
-	
+
 //	printf("SnippetHelloWorld done.\n");
 //}
 
@@ -123,3 +133,4 @@
 
 //	return 0;
 //}
+}
