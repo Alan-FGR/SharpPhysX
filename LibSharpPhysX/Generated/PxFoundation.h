@@ -5,11 +5,6 @@ ES void C_PxFoundation_release(physx::PxFoundation* cls){ // L62
     return cls->release();
 };
 
-ES physx::PxErrorCallback* C_REF_PxFoundation_getErrorCallback(physx::PxFoundation* cls){ // L67
-
-    return &cls->getErrorCallback();
-};
-
 ES void C_PxFoundation_setErrorLevel(physx::PxFoundation* cls,physx::PxErrorCode::Enum mask){ // L72
 
     return cls->setErrorLevel(mask);

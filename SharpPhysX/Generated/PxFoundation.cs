@@ -6,8 +6,8 @@ using PxActorFlags = System.UInt32;
 
 public static partial class PhysX{
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxFoundationPtr C_REF_PxGetFoundation();
-    public static PxFoundationPtr PxGetFoundation(){
+    static extern PxFoundation C_REF_PxGetFoundation();
+    public static PxFoundation PxGetFoundation(){
         return C_REF_PxGetFoundation();    
     }
 
@@ -23,12 +23,6 @@ public partial struct PxFoundation { // ptr holder
     static extern void C_PxFoundation_release(PxFoundation cls);
     public void release(){
          C_PxFoundation_release(this);    
-    }
-
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern SharpPhysXError C_REF_PxFoundation_getErrorCallback(PxFoundation cls);
-    public SharpPhysXError getErrorCallback(){
-        return C_REF_PxFoundation_getErrorCallback(this);    
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]

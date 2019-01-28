@@ -34,6 +34,7 @@
     <Compile Include="Generated\PhysX.cs" />
     <Compile Include="Generated\PxErrors.cs" />
     <Compile Include="Generated\PxFoundation.cs" />
+    <Compile Include="Generated\PxPhysics.cs" />
   </ItemGroup>
 
 </Project>

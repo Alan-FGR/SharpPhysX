@@ -1,5 +1,7 @@
 ﻿//using namespace physx;
 
+using System;
+
 public class SampleHelloWorld
 {
 
@@ -46,9 +48,16 @@ public class SampleHelloWorld
 
     private PxFoundation foundation_;
 
+    private SharpPhysXError errorCallback_ = (code, message, file, line) =>
+    {
+        Console.WriteLine($"ERROR: {code}, {message}\n{file}, L{line}");
+    };
+
     void initPhysics()
     {
-        PhysX.
+        foundation_ = PhysX.PxCreateFoundation(errorCallback_);
+        foundation_.setErrorLevel(PxErrorCode.eMASK_ALL);
+
     }
 
 //void initPhysics(bool interactive)
@@ -117,6 +126,11 @@ public class SampleHelloWorld
 //	case ' ':	createDynamic(camera, PxSphereGeometry(3.0f), camera.rotate(PxVec3(0,0,-1))*200);	break;
 //	}
 //}
+
+    public SampleHelloWorld()
+    {
+        initPhysics();
+    }
 
 //int snippetMain(int, const char*const*)
 //{

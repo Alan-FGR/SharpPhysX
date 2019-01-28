@@ -3,38 +3,32 @@
 #include "PxPhysicsAPI.h"
 
 #define ES extern "C" __declspec(dllexport) inline // Export Symbol
+#define NATIVE true
 
 //directly replace functions we want to rewrap since there's no overload
 
 //#include "Generated/PxFoundation.h"
-//
+//#include "Generated/PxPhysics.h"
+
+#if NATIVE
+auto x = 1;
+#else
+auto x = 1;
+#endif
+
 //#include "Generated/PxVec3.h"
 //#include "Generated/PxBase.h"
 //#include "Generated/PxBoxGeometry.h"
 //#include "Generated/PxGeometry.h"
 
 //Manual
+using namespace physx;
+
+#include "Error.h"
 
 static physx::PxDefaultAllocator allocator_;
 
-typedef void(__stdcall *SharpPhysXErrorCallback)
-(physx::PxErrorCode::Enum code, const char* message, const char* file, int line);
-
-class ShPxErrorCallbackWrapper : public physx::PxErrorCallback
-{
-    SharpPhysXErrorCallback managedErrorCallback_ {nullptr};
-public:
-    explicit ShPxErrorCallbackWrapper(SharpPhysXErrorCallback managedErrorCallback)
-        : managedErrorCallback_(managedErrorCallback)
-    {}
-
-    void reportError(physx::PxErrorCode::Enum code, const char* message, const char* file, int line) override
-    {
-        managedErrorCallback_(code, message, file, line);
-    }
-};
-
-ES physx::PxFoundation* PxCreateFoundation(SharpPhysXErrorCallback* managedErrorCallback)
+ES physx::PxFoundation* OVR_PxCreateFoundation(SharpPhysXError* managedErrorCallback)
 {
     return PxCreateFoundation(PX_PHYSICS_VERSION, allocator_, *new ShPxErrorCallbackWrapper(*managedErrorCallback));
 }
@@ -45,7 +39,6 @@ ES physx::PxFoundation* PxCreateFoundation(SharpPhysXErrorCallback* managedError
 
 
 //callback tests
-using namespace physx;
 
 typedef void (__stdcall *ErrorCallback)(const char* message, const char* file, int line);
 
