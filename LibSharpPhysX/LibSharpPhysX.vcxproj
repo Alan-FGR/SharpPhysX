@@ -44,11 +44,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>..\SharpPhysX\bin\$(Configuration)\</OutDir>
-    <IncludePath>C:\Projects\PhysX\physx\include;C:\Projects\PhysX\pxshared\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Projects\PhysX\physx\include;C:\Projects\PhysX\pxshared\include;C:\Projects\SharpPhysX\SharpPhysX\Generated;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\SharpPhysX\bin\$(Configuration)\</OutDir>
-    <IncludePath>C:\Projects\PhysX\physx\include;C:\Projects\PhysX\pxshared\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Projects\PhysX\physx\include;C:\Projects\PhysX\pxshared\include;C:\Projects\SharpPhysX\SharpPhysX\Generated;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -82,6 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Error.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\sharpphysx\generated\pxvec3.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

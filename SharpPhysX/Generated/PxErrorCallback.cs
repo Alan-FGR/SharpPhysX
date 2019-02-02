@@ -3,54 +3,52 @@ using System.Runtime.InteropServices;
 #endif
 
 #if !NATIVE
-public partial struct PxAssertHandler { // pointer
+public partial struct PxErrorCallback { // pointer
 #endif
 
     //================================================================================
-    //#       ~PxAssertHandler                                                       #
+    //#       ~PxErrorCallback                                                       #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxAssert.h L47~49
+    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxErrorCallback.h L54~56
     #if NATIVE
-    ES void ~PxAssertHandler(physx::PxAssertHandler* self){
-        self->~PxAssertHandler();
+    ES void ~PxErrorCallback(physx::PxErrorCallback* self){
+        self->~PxErrorCallback();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void ~PxAssertHandler(PxAssertHandler selfPtr);
+    static extern void ~PxErrorCallback(PxErrorCallback selfPtr);
     
-    public void ~PxAssertHandler(){
-        ~PxAssertHandler(this);
+    public void ~PxErrorCallback(){
+        ~PxErrorCallback(this);
     }
     #endif*/
     
     
     //================================================================================
-    //#       operator()                                                             #
+    //#       reportError                                                            #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Non const pointer/reference bool*
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxAssert.h L50~50
+    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxErrorCallback.h L65~65
     #if NATIVE
-    ES void operator()(physx::PxAssertHandler* self, char exp, char file, int line,  ignore){
-        char nat_in_exp = (exp);
+    ES void reportError(physx::PxErrorCallback* self, physx::PxErrorCode::Enum code, char message, char file, int line){
+        physx::PxErrorCode::Enum nat_in_code = (code);
+        char nat_in_message = (message);
         char nat_in_file = (file);
         int nat_in_line = (line);
-         nat_in_ignore = (ignore);
-        self->operator()(nat_in_exp, nat_in_file, nat_in_line, nat_in_ignore);
+        self->reportError(nat_in_code, nat_in_message, nat_in_file, nat_in_line);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void operator()(PxAssertHandler selfPtr, sbyte exp, sbyte file, int line,  ignore);
+    static extern void reportError(PxErrorCallback selfPtr, PxErrorCode code, sbyte message, sbyte file, int line);
     
-    public void operator()(sbyte exp, sbyte file, int line,  ignore){
-        sbyte pvk_in_exp = (exp);
+    public void reportError(PxErrorCode code, sbyte message, sbyte file, int line){
+        PxErrorCode pvk_in_code = (code);
+        sbyte pvk_in_message = (message);
         sbyte pvk_in_file = (file);
         int pvk_in_line = (line);
-         pvk_in_ignore = (ignore);
-        operator()(this, pvk_in_exp, pvk_in_file, pvk_in_line, pvk_in_ignore);
+        reportError(this, pvk_in_code, pvk_in_message, pvk_in_file, pvk_in_line);
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
@@ -60,16 +58,16 @@ public partial struct PxAssertHandler { // pointer
     unhandled return type
     Invalid parameter name
     fsdfasdf
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxAssert.h L44~44
+    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxErrorCallback.h L51~51
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxAssertHandler* self){
+    ES UNPARSED_TYPE operator=(physx::PxErrorCallback* self){
          nat_in_ = ();
         UNPARSED_TYPE retVal = self->operator=(nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxAssertHandler selfPtr);
+    static extern UNPARSED_TYPE operator=(PxErrorCallback selfPtr);
     
     public UNPARSED_TYPE operator=( ){
          pvk_in_ = ();
@@ -80,43 +78,43 @@ public partial struct PxAssertHandler { // pointer
     
     
     //================================================================================
-    //#       PxAssertHandler                                                        #
+    //#       PxErrorCallback                                                        #
     //================================================================================
     /* ERRORS OCCURED: Ctors TODO
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxAssert.h L44~44
+    Invalid parameter name
+    fsdfasdf
+    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxErrorCallback.h L51~51
     #if NATIVE
-    ES void PxAssertHandler(physx::PxAssertHandler* self){
-        self->PxAssertHandler();
+    ES void PxErrorCallback(physx::PxErrorCallback* self){
+         nat_in_ = ();
+        self->PxErrorCallback(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxAssertHandler(PxAssertHandler selfPtr);
+    static extern void PxErrorCallback(PxErrorCallback selfPtr);
     
-    public void PxAssertHandler(){
-        PxAssertHandler(this);
+    public void PxErrorCallback( ){
+         pvk_in_ = ();
+        PxErrorCallback(this, pvk_in_);
     }
     #endif*/
     
     
     //================================================================================
-    //#       PxAssertHandler                                                        #
+    //#       PxErrorCallback                                                        #
     //================================================================================
     /* ERRORS OCCURED: Ctors TODO
-    Invalid parameter name
-    fsdfasdf
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxAssert.h L44~44
+    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxErrorCallback.h L51~51
     #if NATIVE
-    ES void PxAssertHandler(physx::PxAssertHandler* self){
-         nat_in_ = ();
-        self->PxAssertHandler(nat_in_);
+    ES void PxErrorCallback(physx::PxErrorCallback* self){
+        self->PxErrorCallback();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxAssertHandler(PxAssertHandler selfPtr);
+    static extern void PxErrorCallback(PxErrorCallback selfPtr);
     
-    public void PxAssertHandler( ){
-         pvk_in_ = ();
-        PxAssertHandler(this, pvk_in_);
+    public void PxErrorCallback(){
+        PxErrorCallback(this);
     }
     #endif*/
     
