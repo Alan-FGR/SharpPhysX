@@ -33,12 +33,16 @@ template<typename...> struct TypeList {};
 #include "foundation/PxVec3.h"
 //#include "foundation/PxVec4.h"
 
+
 #include "PxFoundation.h"
 #include "PxPhysicsVersion.h"
-//#include "PxPhysics.h"
+#include "PxPhysics.h"
 
 
-//#include "pxvec3.c"
+// We only include the generated wrapper when actually building otherwise we have feedback loop when parsing
+#ifdef BUILD_LIB
+#include "../Generated/PxFoundation.cs"
+#endif
 
 
 using namespace physx;
@@ -65,6 +69,7 @@ static physx::PxDefaultAllocator allocator_;
 ES physx::PxFoundation* OVR_PxCreateFoundation(SharpPhysXError* managedErrorCallback)
 {
     return PxCreateFoundation(PX_PHYSICS_VERSION, allocator_, *new ShPxErrorCallbackWrapper(*managedErrorCallback));
+	PxCreatePhysics()
 }
 
 

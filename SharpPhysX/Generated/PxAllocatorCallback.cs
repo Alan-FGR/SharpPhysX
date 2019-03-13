@@ -1,9 +1,12 @@
 #if !NATIVE
+using System;
 using System.Runtime.InteropServices;
 #endif
 
+
 #if !NATIVE
-public partial struct PxAllocatorCallback { // pointer
+public unsafe partial struct PxAllocatorCallback { // pointer
+    private IntPtr nativePtr_;
 #endif
 
     //================================================================================
@@ -104,22 +107,24 @@ public partial struct PxAllocatorCallback { // pointer
     //================================================================================
     //#       PxAllocatorCallback                                                    #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
     Invalid parameter name
     fsdfasdf
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxAllocatorCallback.h L52~52
     #if NATIVE
-    ES void PxAllocatorCallback(physx::PxAllocatorCallback* self){
+    ES UNPARSED_TYPE PxAllocatorCallback_ctor( ){
          nat_in_ = ();
         self->PxAllocatorCallback(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxAllocatorCallback(PxAllocatorCallback selfPtr);
+    static extern UNPARSED_TYPE PxAllocatorCallback_ctor( );
     
-    public void PxAllocatorCallback( ){
+    public PxAllocatorCallback( ){
          pvk_in_ = ();
-        PxAllocatorCallback(this, pvk_in_);
+        var _new = PxAllocatorCallback_ctor(pvk_in_);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     
@@ -127,18 +132,21 @@ public partial struct PxAllocatorCallback { // pointer
     //================================================================================
     //#       PxAllocatorCallback                                                    #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
+    Parameterless constructor not allowed
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxAllocatorCallback.h L52~52
     #if NATIVE
-    ES void PxAllocatorCallback(physx::PxAllocatorCallback* self){
+    ES UNPARSED_TYPE PxAllocatorCallback_ctor(){
         self->PxAllocatorCallback();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxAllocatorCallback(PxAllocatorCallback selfPtr);
+    static extern UNPARSED_TYPE PxAllocatorCallback_ctor();
     
-    public void PxAllocatorCallback(){
-        PxAllocatorCallback(this);
+    public PxAllocatorCallback(){
+        var _new = PxAllocatorCallback_ctor();
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     

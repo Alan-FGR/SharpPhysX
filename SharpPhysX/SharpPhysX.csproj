@@ -31,6 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Generated\Px.cs" />
+    <Compile Include="Generated\PxErrors.cs" />
+    <Compile Include="Generated\PxFoundation.cs" />
     <Compile Include="Generated\PxVec3.cs" />
   </ItemGroup>
 

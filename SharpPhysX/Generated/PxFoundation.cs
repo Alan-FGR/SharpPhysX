@@ -1,9 +1,12 @@
 #if !NATIVE
+using System;
 using System.Runtime.InteropServices;
 #endif
 
+
 #if !NATIVE
-public partial struct PxFoundation { // pointer
+public unsafe partial struct PxFoundation { // pointer
+    private IntPtr nativePtr_;
 #endif
 
     //================================================================================
@@ -194,18 +197,21 @@ public partial struct PxFoundation { // pointer
     //================================================================================
     //#       PxFoundation                                                           #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
+    Parameterless constructor not allowed
     // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L50~50
     #if NATIVE
-    ES void PxFoundation(physx::PxFoundation* self){
+    ES UNPARSED_TYPE PxFoundation_ctor(){
         self->PxFoundation();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxFoundation(PxFoundation selfPtr);
+    static extern UNPARSED_TYPE PxFoundation_ctor();
     
-    public void PxFoundation(){
-        PxFoundation(this);
+    public PxFoundation(){
+        var _new = PxFoundation_ctor();
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     
@@ -213,22 +219,24 @@ public partial struct PxFoundation { // pointer
     //================================================================================
     //#       PxFoundation                                                           #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
     Invalid parameter name
     fsdfasdf
     // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L50~50
     #if NATIVE
-    ES void PxFoundation(physx::PxFoundation* self){
+    ES UNPARSED_TYPE PxFoundation_ctor( ){
          nat_in_ = ();
         self->PxFoundation(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxFoundation(PxFoundation selfPtr);
+    static extern UNPARSED_TYPE PxFoundation_ctor( );
     
-    public void PxFoundation( ){
+    public PxFoundation( ){
          pvk_in_ = ();
-        PxFoundation(this, pvk_in_);
+        var _new = PxFoundation_ctor(pvk_in_);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     

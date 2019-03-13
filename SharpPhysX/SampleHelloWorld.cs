@@ -47,6 +47,7 @@ public class SampleHelloWorld
 //}
 
     private PxFoundation foundation_;
+    private PxPhysics physics_;
 
     private SharpPhysXError errorCallback_ = (code, message, file, line) =>
     {

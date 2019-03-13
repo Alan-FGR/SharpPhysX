@@ -1,29 +1,34 @@
 #if !NATIVE
+using System;
 using System.Runtime.InteropServices;
 #endif
 
+
 #if !NATIVE
-public partial struct ShPxErrorCallbackWrapper { // pointer
+public unsafe partial struct ShPxErrorCallbackWrapper { // pointer
+    private IntPtr nativePtr_;
 #endif
 
     //================================================================================
     //#       ShPxErrorCallbackWrapper                                               #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
     Unresolved parameter type ShPxErrorCallbackWrapper::ShPxErrorCallbackWrapper::managedErrorCallback
     // SOURCE: C:\Projects\SharpPhysX\LibSharpPhysX\Error.h L11~13
     #if NATIVE
-    ES void ShPxErrorCallbackWrapper(ShPxErrorCallbackWrapper* self,  managedErrorCallback){
+    ES UNPARSED_TYPE ShPxErrorCallbackWrapper_ctor( managedErrorCallback){
          nat_in_managedErrorCallback = (managedErrorCallback);
         self->ShPxErrorCallbackWrapper(nat_in_managedErrorCallback);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void ShPxErrorCallbackWrapper(ShPxErrorCallbackWrapper selfPtr,  managedErrorCallback);
+    static extern UNPARSED_TYPE ShPxErrorCallbackWrapper_ctor( managedErrorCallback);
     
-    public void ShPxErrorCallbackWrapper( managedErrorCallback){
+    public ShPxErrorCallbackWrapper( managedErrorCallback){
          pvk_in_managedErrorCallback = (managedErrorCallback);
-        ShPxErrorCallbackWrapper(this, pvk_in_managedErrorCallback);
+        var _new = ShPxErrorCallbackWrapper_ctor(pvk_in_managedErrorCallback);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     
@@ -57,22 +62,24 @@ public partial struct ShPxErrorCallbackWrapper { // pointer
     //================================================================================
     //#       ShPxErrorCallbackWrapper                                               #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
     Invalid parameter name
     fsdfasdf
     // SOURCE: C:\Projects\SharpPhysX\LibSharpPhysX\Error.h L7~7
     #if NATIVE
-    ES void ShPxErrorCallbackWrapper(ShPxErrorCallbackWrapper* self){
+    ES UNPARSED_TYPE ShPxErrorCallbackWrapper_ctor( ){
          nat_in_ = ();
         self->ShPxErrorCallbackWrapper(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void ShPxErrorCallbackWrapper(ShPxErrorCallbackWrapper selfPtr);
+    static extern UNPARSED_TYPE ShPxErrorCallbackWrapper_ctor( );
     
-    public void ShPxErrorCallbackWrapper( ){
+    public ShPxErrorCallbackWrapper( ){
          pvk_in_ = ();
-        ShPxErrorCallbackWrapper(this, pvk_in_);
+        var _new = ShPxErrorCallbackWrapper_ctor(pvk_in_);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     
@@ -80,22 +87,24 @@ public partial struct ShPxErrorCallbackWrapper { // pointer
     //================================================================================
     //#       ShPxErrorCallbackWrapper                                               #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
     Invalid parameter name
     fsdfasdf
     // SOURCE: C:\Projects\SharpPhysX\LibSharpPhysX\Error.h L7~7
     #if NATIVE
-    ES void ShPxErrorCallbackWrapper(ShPxErrorCallbackWrapper* self){
+    ES UNPARSED_TYPE ShPxErrorCallbackWrapper_ctor( ){
          nat_in_ = ();
         self->ShPxErrorCallbackWrapper(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void ShPxErrorCallbackWrapper(ShPxErrorCallbackWrapper selfPtr);
+    static extern UNPARSED_TYPE ShPxErrorCallbackWrapper_ctor( );
     
-    public void ShPxErrorCallbackWrapper( ){
+    public ShPxErrorCallbackWrapper( ){
          pvk_in_ = ();
-        ShPxErrorCallbackWrapper(this, pvk_in_);
+        var _new = ShPxErrorCallbackWrapper_ctor(pvk_in_);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     

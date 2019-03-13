@@ -56,6 +56,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>BUILD_LIB;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Projects\PhysX\physx\bin\win.x86_64.vc141.mt\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -82,9 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Error.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\sharpphysx\generated\pxvec3.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

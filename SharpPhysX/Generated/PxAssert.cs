@@ -1,9 +1,12 @@
 #if !NATIVE
+using System;
 using System.Runtime.InteropServices;
 #endif
 
+
 #if !NATIVE
-public partial struct PxAssertHandler { // pointer
+public unsafe partial struct PxAssertHandler { // pointer
+    private IntPtr nativePtr_;
 #endif
 
     //================================================================================
@@ -82,18 +85,21 @@ public partial struct PxAssertHandler { // pointer
     //================================================================================
     //#       PxAssertHandler                                                        #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
+    Parameterless constructor not allowed
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxAssert.h L44~44
     #if NATIVE
-    ES void PxAssertHandler(physx::PxAssertHandler* self){
+    ES UNPARSED_TYPE PxAssertHandler_ctor(){
         self->PxAssertHandler();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxAssertHandler(PxAssertHandler selfPtr);
+    static extern UNPARSED_TYPE PxAssertHandler_ctor();
     
-    public void PxAssertHandler(){
-        PxAssertHandler(this);
+    public PxAssertHandler(){
+        var _new = PxAssertHandler_ctor();
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     
@@ -101,22 +107,24 @@ public partial struct PxAssertHandler { // pointer
     //================================================================================
     //#       PxAssertHandler                                                        #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
     Invalid parameter name
     fsdfasdf
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxAssert.h L44~44
     #if NATIVE
-    ES void PxAssertHandler(physx::PxAssertHandler* self){
+    ES UNPARSED_TYPE PxAssertHandler_ctor( ){
          nat_in_ = ();
         self->PxAssertHandler(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxAssertHandler(PxAssertHandler selfPtr);
+    static extern UNPARSED_TYPE PxAssertHandler_ctor( );
     
-    public void PxAssertHandler( ){
+    public PxAssertHandler( ){
          pvk_in_ = ();
-        PxAssertHandler(this, pvk_in_);
+        var _new = PxAssertHandler_ctor(pvk_in_);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     

@@ -1,26 +1,34 @@
 #if !NATIVE
+using System;
 using System.Runtime.InteropServices;
 #endif
 
+
 #if !NATIVE
-public partial struct PxVec3 { // blittable
+public unsafe partial struct PxVec3 { // blittable
+    public float x;
+    public float y;
+    public float z;
+
 #endif
 
     //================================================================================
     //#       PxVec3                                                                 #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: Parameterless constructor not allowed
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L55~57
     #if NATIVE
-    ES void PxVec3(physx::PxVec3 self){
+    ES physx::PxVec3 PxVec3_ctor(){
         self.PxVec3();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxVec3(PxVec3 selfBlt);
+    static extern PxVec3 PxVec3_ctor();
     
-    public void PxVec3(){
-        PxVec3(this);
+    public PxVec3(){
+        var _new = PxVec3_ctor();
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     
@@ -28,52 +36,53 @@ public partial struct PxVec3 { // blittable
     //================================================================================
     //#       PxVec3                                                                 #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L62~65
     #if NATIVE
-    ES void PxVec3(physx::PxVec3 self, physx::PxZERO r){
+    ES physx::PxVec3 PxVec3_ctor(physx::PxZERO r){
         physx::PxZERO nat_in_r = (r);
         self.PxVec3(nat_in_r);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxVec3(PxVec3 selfBlt, PxZERO r);
+    static extern PxVec3 PxVec3_ctor(PxZERO r);
     
-    public void PxVec3(PxZERO r){
+    public PxVec3(PxZERO r){
         PxZERO pvk_in_r = (r);
-        PxVec3(this, pvk_in_r);
+        var _new = PxVec3_ctor(pvk_in_r);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       PxVec3                                                                 #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L74~76
     #if NATIVE
-    ES void PxVec3(physx::PxVec3 self, float a){
+    ES physx::PxVec3 PxVec3_ctor(float a){
         float nat_in_a = (a);
         self.PxVec3(nat_in_a);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxVec3(PxVec3 selfBlt, float a);
+    static extern PxVec3 PxVec3_ctor(float a);
     
-    public void PxVec3(float a){
+    public PxVec3(float a){
         float pvk_in_a = (a);
-        PxVec3(this, pvk_in_a);
+        var _new = PxVec3_ctor(pvk_in_a);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       PxVec3                                                                 #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L85~87
     #if NATIVE
-    ES void PxVec3(physx::PxVec3 self, float nx, float ny, float nz){
+    ES physx::PxVec3 PxVec3_ctor(float nx, float ny, float nz){
         float nat_in_nx = (nx);
         float nat_in_ny = (ny);
         float nat_in_nz = (nz);
@@ -81,36 +90,39 @@ public partial struct PxVec3 { // blittable
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxVec3(PxVec3 selfBlt, float nx, float ny, float nz);
+    static extern PxVec3 PxVec3_ctor(float nx, float ny, float nz);
     
-    public void PxVec3(float nx, float ny, float nz){
+    public PxVec3(float nx, float ny, float nz){
         float pvk_in_nx = (nx);
         float pvk_in_ny = (ny);
         float pvk_in_nz = (nz);
-        PxVec3(this, pvk_in_nx, pvk_in_ny, pvk_in_nz);
+        var _new = PxVec3_ctor(pvk_in_nx, pvk_in_ny, pvk_in_nz);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       PxVec3                                                                 #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L92~94
     #if NATIVE
-    ES void PxVec3(physx::PxVec3 self, physx::PxVec3 v){
+    ES physx::PxVec3 PxVec3_ctor(physx::PxVec3 v){
         physx::PxVec3 nat_in_v = (v);
         self.PxVec3(nat_in_v);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxVec3(PxVec3 selfBlt, PxVec3 v);
+    static extern PxVec3 PxVec3_ctor(PxVec3 v);
     
-    public void PxVec3(PxVec3 v){
+    public PxVec3(PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        PxVec3(this, pvk_in_v);
+        var _new = PxVec3_ctor(pvk_in_v);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif*/
+    #endif
     
     
     //================================================================================

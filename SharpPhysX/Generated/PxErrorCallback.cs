@@ -1,9 +1,12 @@
 #if !NATIVE
+using System;
 using System.Runtime.InteropServices;
 #endif
 
+
 #if !NATIVE
-public partial struct PxErrorCallback { // pointer
+public unsafe partial struct PxErrorCallback { // pointer
+    private IntPtr nativePtr_;
 #endif
 
     //================================================================================
@@ -80,22 +83,24 @@ public partial struct PxErrorCallback { // pointer
     //================================================================================
     //#       PxErrorCallback                                                        #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
     Invalid parameter name
     fsdfasdf
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxErrorCallback.h L51~51
     #if NATIVE
-    ES void PxErrorCallback(physx::PxErrorCallback* self){
+    ES UNPARSED_TYPE PxErrorCallback_ctor( ){
          nat_in_ = ();
         self->PxErrorCallback(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxErrorCallback(PxErrorCallback selfPtr);
+    static extern UNPARSED_TYPE PxErrorCallback_ctor( );
     
-    public void PxErrorCallback( ){
+    public PxErrorCallback( ){
          pvk_in_ = ();
-        PxErrorCallback(this, pvk_in_);
+        var _new = PxErrorCallback_ctor(pvk_in_);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     
@@ -103,18 +108,21 @@ public partial struct PxErrorCallback { // pointer
     //================================================================================
     //#       PxErrorCallback                                                        #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
+    Parameterless constructor not allowed
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxErrorCallback.h L51~51
     #if NATIVE
-    ES void PxErrorCallback(physx::PxErrorCallback* self){
+    ES UNPARSED_TYPE PxErrorCallback_ctor(){
         self->PxErrorCallback();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxErrorCallback(PxErrorCallback selfPtr);
+    static extern UNPARSED_TYPE PxErrorCallback_ctor();
     
-    public void PxErrorCallback(){
-        PxErrorCallback(this);
+    public PxErrorCallback(){
+        var _new = PxErrorCallback_ctor();
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     

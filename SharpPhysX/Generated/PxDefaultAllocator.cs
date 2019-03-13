@@ -1,9 +1,12 @@
 #if !NATIVE
+using System;
 using System.Runtime.InteropServices;
 #endif
 
+
 #if !NATIVE
-public partial struct PxDefaultAllocator { // pointer
+public unsafe partial struct PxDefaultAllocator { // pointer
+    private IntPtr nativePtr_;
 #endif
 
     //================================================================================
@@ -62,22 +65,24 @@ public partial struct PxDefaultAllocator { // pointer
     //================================================================================
     //#       PxDefaultAllocator                                                     #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
     Invalid parameter name
     fsdfasdf
     // SOURCE: C:\Projects\PhysX\physx\include\extensions\PxDefaultAllocator.h L89~89
     #if NATIVE
-    ES void PxDefaultAllocator(physx::PxDefaultAllocator* self){
+    ES UNPARSED_TYPE PxDefaultAllocator_ctor( ){
          nat_in_ = ();
         self->PxDefaultAllocator(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxDefaultAllocator(PxDefaultAllocator selfPtr);
+    static extern UNPARSED_TYPE PxDefaultAllocator_ctor( );
     
-    public void PxDefaultAllocator( ){
+    public PxDefaultAllocator( ){
          pvk_in_ = ();
-        PxDefaultAllocator(this, pvk_in_);
+        var _new = PxDefaultAllocator_ctor(pvk_in_);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     
@@ -85,22 +90,24 @@ public partial struct PxDefaultAllocator { // pointer
     //================================================================================
     //#       PxDefaultAllocator                                                     #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
     Invalid parameter name
     fsdfasdf
     // SOURCE: C:\Projects\PhysX\physx\include\extensions\PxDefaultAllocator.h L89~89
     #if NATIVE
-    ES void PxDefaultAllocator(physx::PxDefaultAllocator* self){
+    ES UNPARSED_TYPE PxDefaultAllocator_ctor( ){
          nat_in_ = ();
         self->PxDefaultAllocator(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxDefaultAllocator(PxDefaultAllocator selfPtr);
+    static extern UNPARSED_TYPE PxDefaultAllocator_ctor( );
     
-    public void PxDefaultAllocator( ){
+    public PxDefaultAllocator( ){
          pvk_in_ = ();
-        PxDefaultAllocator(this, pvk_in_);
+        var _new = PxDefaultAllocator_ctor(pvk_in_);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     
@@ -179,18 +186,21 @@ public partial struct PxDefaultAllocator { // pointer
     //================================================================================
     //#       PxDefaultAllocator                                                     #
     //================================================================================
-    /* ERRORS OCCURED: Ctors TODO
+    /* ERRORS OCCURED: unhandled return type
+    Parameterless constructor not allowed
     // SOURCE: C:\Projects\PhysX\physx\include\extensions\PxDefaultAllocator.h L89~89
     #if NATIVE
-    ES void PxDefaultAllocator(physx::PxDefaultAllocator* self){
+    ES UNPARSED_TYPE PxDefaultAllocator_ctor(){
         self->PxDefaultAllocator();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void PxDefaultAllocator(PxDefaultAllocator selfPtr);
+    static extern UNPARSED_TYPE PxDefaultAllocator_ctor();
     
-    public void PxDefaultAllocator(){
-        PxDefaultAllocator(this);
+    public PxDefaultAllocator(){
+        var _new = PxDefaultAllocator_ctor();
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
     #endif*/
     
