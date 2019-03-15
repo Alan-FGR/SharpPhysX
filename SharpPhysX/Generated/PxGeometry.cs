@@ -17,6 +17,7 @@ public enum PxGeometryType : int {
 }
 #endif
 
+
 #if !NATIVE
 public unsafe partial struct PxGeometryType { // blittable
 
@@ -26,17 +27,18 @@ public unsafe partial struct PxGeometryType { // blittable
     //#       PxGeometryType                                                         #
     //================================================================================
     /* ERRORS OCCURED: Parameterless constructor not allowed
+    // NATIVE SIG: PxGeometryType
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L51~51
     #if NATIVE
-    ES physx::PxGeometryType PxGeometryType_ctor(){
+    ES physx::PxGeometryType W_PxGeometryType_ctor(){
         self.PxGeometryType();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxGeometryType PxGeometryType_ctor();
+    static extern PxGeometryType W_PxGeometryType_ctor();
     
     public PxGeometryType(){
-        var _new = PxGeometryType_ctor();
+        var _new = W_PxGeometryType_ctor();
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -46,20 +48,21 @@ public unsafe partial struct PxGeometryType { // blittable
     //================================================================================
     //#       PxGeometryType                                                         #
     //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name
+    /* ERRORS OCCURED: Invalid parameter name (empty)
+    // NATIVE SIG: PxGeometryType
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L51~51
     #if NATIVE
-    ES physx::PxGeometryType PxGeometryType_ctor(physx::PxGeometryType ){
-        physx::PxGeometryType nat_in_ = ();
+    ES physx::PxGeometryType W_PxGeometryType_ctor(physx::PxGeometryType ){
+        auto nat_in_ = ();
         self.PxGeometryType(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxGeometryType PxGeometryType_ctor(PxGeometryType );
+    static extern PxGeometryType W_PxGeometryType_ctor(PxGeometryType );
     
     public PxGeometryType(PxGeometryType ){
         PxGeometryType pvk_in_ = ();
-        var _new = PxGeometryType_ctor(pvk_in_);
+        var _new = W_PxGeometryType_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -70,22 +73,22 @@ public unsafe partial struct PxGeometryType { // blittable
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxGeometryType
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L51~51
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxGeometryType self, physx::PxGeometryType ){
-        physx::PxGeometryType nat_in_ = ();
-        UNPARSED_TYPE retVal = self.operator=(nat_in_);
+    ES physx::PxGeometryType* W_operator=(physx::PxGeometryType self, physx::PxGeometryType ){
+        auto nat_in_ = ();
+        auto retVal = &self.operator=(nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxGeometryType selfBlt, PxGeometryType );
+    static extern PxGeometryType W_operator=(PxGeometryType selfBlt, PxGeometryType );
     
-    public UNPARSED_TYPE operator=(PxGeometryType ){
+    public static PxGeometryType operator=(PxGeometryType lhs, PxGeometryType ){
         PxGeometryType pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+        PxGeometryType retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/
@@ -94,21 +97,22 @@ public unsafe partial struct PxGeometryType { // blittable
     //================================================================================
     //#       PxGeometryType                                                         #
     //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name
+    /* ERRORS OCCURED: Invalid parameter name (empty)
     Non const pointer/reference global::PhysX.physx.PxGeometryType
+    // NATIVE SIG: PxGeometryType
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L51~51
     #if NATIVE
-    ES physx::PxGeometryType PxGeometryType_ctor( ){
-         nat_in_ = ();
+    ES physx::PxGeometryType W_PxGeometryType_ctor( ){
+        auto nat_in_ = ();
         self.PxGeometryType(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxGeometryType PxGeometryType_ctor( );
+    static extern PxGeometryType W_PxGeometryType_ctor( );
     
     public PxGeometryType( ){
          pvk_in_ = ();
-        var _new = PxGeometryType_ctor(pvk_in_);
+        var _new = W_PxGeometryType_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -119,23 +123,23 @@ public unsafe partial struct PxGeometryType { // blittable
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
+    Invalid parameter name (empty)
     Non const pointer/reference global::PhysX.physx.PxGeometryType
+    // NATIVE SIG: PxGeometryType
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L51~51
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxGeometryType self){
-         nat_in_ = ();
-        UNPARSED_TYPE retVal = self.operator=(nat_in_);
+    ES physx::PxGeometryType* W_operator=(physx::PxGeometryType self){
+        auto nat_in_ = ();
+        auto retVal = &self.operator=(nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxGeometryType selfBlt);
+    static extern PxGeometryType W_operator=(PxGeometryType selfBlt);
     
-    public UNPARSED_TYPE operator=( ){
+    public static PxGeometryType operator=(PxGeometryType lhs,  ){
          pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+        PxGeometryType retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/
@@ -145,17 +149,18 @@ public unsafe partial struct PxGeometryType { // blittable
     //#       ~PxGeometryType                                                        #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
+    // NATIVE SIG: PxGeometryType
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L51~51
     #if NATIVE
-    ES void ~PxGeometryType(physx::PxGeometryType self){
+    ES void W_~PxGeometryType(physx::PxGeometryType self){
         self.~PxGeometryType();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void ~PxGeometryType(PxGeometryType selfBlt);
+    static extern void W_~PxGeometryType(PxGeometryType selfBlt);
     
     public void ~PxGeometryType(){
-        ~PxGeometryType(this);
+        W_~PxGeometryType(this);
     }
     #endif*/
     
@@ -175,16 +180,16 @@ public unsafe partial struct PxGeometry { // pointer
     //================================================================================
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L82~82
     #if NATIVE
-    ES physx::PxGeometryType::Enum getType(physx::PxGeometry* self){
-        physx::PxGeometryType::Enum retVal = self->getType();
+    ES physx::PxGeometryType::Enum W_getType(physx::PxGeometry* self){
+        auto retVal = self->getType();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxGeometryType getType(PxGeometry selfPtr);
+    static extern PxGeometryType W_getType(PxGeometry selfPtr);
     
     public PxGeometryType getType(){
-        PxGeometryType retVal = getType(this);
+        PxGeometryType retVal = W_getType(this);
         return retVal;
     }
     #endif
@@ -194,19 +199,20 @@ public unsafe partial struct PxGeometry { // pointer
     //#       PxGeometry                                                             #
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
+    // NATIVE SIG: PX_FORCE_INLINE PxGeometry(PxGeometryType::Enum type) : mType(type) {}
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L85~85
     #if NATIVE
-    ES UNPARSED_TYPE PxGeometry_ctor(physx::PxGeometryType::Enum type){
-        physx::PxGeometryType::Enum nat_in_type = (type);
+    ES UNPARSED_TYPE W_PxGeometry_ctor(physx::PxGeometryType::Enum type){
+        auto nat_in_type = (type);
         self->PxGeometry(nat_in_type);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxGeometry_ctor(PxGeometryType type);
+    static extern UNPARSED_TYPE W_PxGeometry_ctor(PxGeometryType type);
     
     public PxGeometry(PxGeometryType type){
         PxGeometryType pvk_in_type = (type);
-        var _new = PxGeometry_ctor(pvk_in_type);
+        var _new = W_PxGeometry_ctor(pvk_in_type);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -217,21 +223,21 @@ public unsafe partial struct PxGeometry { // pointer
     //#       PxGeometry                                                             #
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxGeometry
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L75~75
     #if NATIVE
-    ES UNPARSED_TYPE PxGeometry_ctor( ){
-         nat_in_ = ();
-        self->PxGeometry(nat_in_);
+    ES UNPARSED_TYPE W_PxGeometry_ctor(physx::PxGeometry* ){
+        auto nat_in_ = ();
+        self->PxGeometry(*nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxGeometry_ctor( );
+    static extern UNPARSED_TYPE W_PxGeometry_ctor(PxGeometry );
     
-    public PxGeometry( ){
-         pvk_in_ = ();
-        var _new = PxGeometry_ctor(pvk_in_);
+    public PxGeometry(PxGeometry ){
+        PxGeometry pvk_in_ = ();
+        var _new = W_PxGeometry_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -242,21 +248,21 @@ public unsafe partial struct PxGeometry { // pointer
     //#       PxGeometry                                                             #
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxGeometry
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L75~75
     #if NATIVE
-    ES UNPARSED_TYPE PxGeometry_ctor( ){
-         nat_in_ = ();
-        self->PxGeometry(nat_in_);
+    ES UNPARSED_TYPE W_PxGeometry_ctor(physx::PxGeometry* ){
+        auto nat_in_ = ();
+        self->PxGeometry(*nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxGeometry_ctor( );
+    static extern UNPARSED_TYPE W_PxGeometry_ctor(PxGeometry );
     
-    public PxGeometry( ){
-         pvk_in_ = ();
-        var _new = PxGeometry_ctor(pvk_in_);
+    public PxGeometry(PxGeometry ){
+        PxGeometry pvk_in_ = ();
+        var _new = W_PxGeometry_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -267,17 +273,18 @@ public unsafe partial struct PxGeometry { // pointer
     //#       ~PxGeometry                                                            #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
+    // NATIVE SIG: PxGeometry
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L75~75
     #if NATIVE
-    ES void ~PxGeometry(physx::PxGeometry* self){
+    ES void W_~PxGeometry(physx::PxGeometry* self){
         self->~PxGeometry();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void ~PxGeometry(PxGeometry selfPtr);
+    static extern void W_~PxGeometry(PxGeometry selfPtr);
     
     public void ~PxGeometry(){
-        ~PxGeometry(this);
+        W_~PxGeometry(this);
     }
     #endif*/
     
@@ -286,23 +293,22 @@ public unsafe partial struct PxGeometry { // pointer
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxGeometry
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L75~75
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxGeometry* self){
-         nat_in_ = ();
-        UNPARSED_TYPE retVal = self->operator=(nat_in_);
+    ES physx::PxGeometry* W_operator=(physx::PxGeometry* self, physx::PxGeometry* ){
+        auto nat_in_ = ();
+        auto retVal = &self->operator=(*nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxGeometry selfPtr);
+    static extern PxGeometry W_operator=(PxGeometry selfPtr, PxGeometry );
     
-    public UNPARSED_TYPE operator=( ){
-         pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+    public static PxGeometry operator=(PxGeometry lhs, PxGeometry ){
+        PxGeometry pvk_in_ = ();
+        PxGeometry retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/
@@ -312,23 +318,22 @@ public unsafe partial struct PxGeometry { // pointer
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxGeometry
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L75~75
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxGeometry* self){
-         nat_in_ = ();
-        UNPARSED_TYPE retVal = self->operator=(nat_in_);
+    ES physx::PxGeometry* W_operator=(physx::PxGeometry* self, physx::PxGeometry* ){
+        auto nat_in_ = ();
+        auto retVal = &self->operator=(*nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxGeometry selfPtr);
+    static extern PxGeometry W_operator=(PxGeometry selfPtr, PxGeometry );
     
-    public UNPARSED_TYPE operator=( ){
-         pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+    public static PxGeometry operator=(PxGeometry lhs, PxGeometry ){
+        PxGeometry pvk_in_ = ();
+        PxGeometry retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/

@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 #endif
 
 
+
 #if !NATIVE
 public unsafe partial struct PxConvexMesh { // pointer
     private IntPtr nativePtr_;
@@ -14,16 +15,16 @@ public unsafe partial struct PxConvexMesh { // pointer
     //================================================================================
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L93~93
     #if NATIVE
-    ES physx::PxU32 getNbVertices(physx::PxConvexMesh* self){
-        physx::PxU32 retVal = self->getNbVertices();
+    ES physx::PxU32 W_getNbVertices(physx::PxConvexMesh* self){
+        auto retVal = self->getNbVertices();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint getNbVertices(PxConvexMesh selfPtr);
+    static extern uint W_getNbVertices(PxConvexMesh selfPtr);
     
     public uint getNbVertices(){
-        uint retVal = getNbVertices(this);
+        uint retVal = W_getNbVertices(this);
         return retVal;
     }
     #endif
@@ -32,43 +33,41 @@ public unsafe partial struct PxConvexMesh { // pointer
     //================================================================================
     //#       getVertices                                                            #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L100~100
     #if NATIVE
-    ES UNPARSED_TYPE getVertices(physx::PxConvexMesh* self){
-        UNPARSED_TYPE retVal = self->getVertices();
+    ES physx::PxVec3* W_getVertices(physx::PxConvexMesh* self){
+        auto retVal = self->getVertices();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE getVertices(PxConvexMesh selfPtr);
+    static extern PxVec3 W_getVertices(PxConvexMesh selfPtr);
     
-    public UNPARSED_TYPE getVertices(){
-        UNPARSED_TYPE retVal = getVertices(this);
+    public PxVec3 getVertices(){
+        PxVec3 retVal = W_getVertices(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       getIndexBuffer                                                         #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L107~107
     #if NATIVE
-    ES UNPARSED_TYPE getIndexBuffer(physx::PxConvexMesh* self){
-        UNPARSED_TYPE retVal = self->getIndexBuffer();
+    ES byte* W_getIndexBuffer(physx::PxConvexMesh* self){
+        auto retVal = self->getIndexBuffer();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE getIndexBuffer(PxConvexMesh selfPtr);
+    static extern IntPtr W_getIndexBuffer(PxConvexMesh selfPtr);
     
-    public UNPARSED_TYPE getIndexBuffer(){
-        UNPARSED_TYPE retVal = getIndexBuffer(this);
+    public IntPtr getIndexBuffer(){
+        IntPtr retVal = W_getIndexBuffer(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
@@ -76,16 +75,16 @@ public unsafe partial struct PxConvexMesh { // pointer
     //================================================================================
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L114~114
     #if NATIVE
-    ES physx::PxU32 getNbPolygons(physx::PxConvexMesh* self){
-        physx::PxU32 retVal = self->getNbPolygons();
+    ES physx::PxU32 W_getNbPolygons(physx::PxConvexMesh* self){
+        auto retVal = self->getNbPolygons();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint getNbPolygons(PxConvexMesh selfPtr);
+    static extern uint W_getNbPolygons(PxConvexMesh selfPtr);
     
     public uint getNbPolygons(){
-        uint retVal = getNbPolygons(this);
+        uint retVal = W_getNbPolygons(this);
         return retVal;
     }
     #endif
@@ -95,22 +94,23 @@ public unsafe partial struct PxConvexMesh { // pointer
     //#       getPolygonData                                                         #
     //================================================================================
     /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxHullPolygon
+    // NATIVE SIG: bool				getPolygonData(PxU32 index, PxHullPolygon& data)	const	= 0
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L123~123
     #if NATIVE
-    ES bool getPolygonData(physx::PxConvexMesh* self, physx::PxU32 index,  data){
-        physx::PxU32 nat_in_index = (index);
-         nat_in_data = (data);
-        bool retVal = self->getPolygonData(nat_in_index, nat_in_data);
+    ES bool W_getPolygonData(physx::PxConvexMesh* self, physx::PxU32 index,  data){
+        auto nat_in_index = (index);
+        auto nat_in_data = (data);
+        auto retVal = self->getPolygonData(nat_in_index, nat_in_data);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool getPolygonData(PxConvexMesh selfPtr, uint index,  data);
+    static extern bool W_getPolygonData(PxConvexMesh selfPtr, uint index,  data);
     
     public bool getPolygonData(uint index,  data){
         uint pvk_in_index = (index);
          pvk_in_data = (data);
-        bool retVal = getPolygonData(this, pvk_in_index, pvk_in_data);
+        bool retVal = W_getPolygonData(this, pvk_in_index, pvk_in_data);
         return retVal;
     }
     #endif*/
@@ -121,15 +121,15 @@ public unsafe partial struct PxConvexMesh { // pointer
     //================================================================================
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L130~130
     #if NATIVE
-    ES void release(physx::PxConvexMesh* self){
+    ES void W_release(physx::PxConvexMesh* self){
         self->release();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void release(PxConvexMesh selfPtr);
+    static extern void W_release(PxConvexMesh selfPtr);
     
     public void release(){
-        release(this);
+        W_release(this);
     }
     #endif
     
@@ -139,16 +139,16 @@ public unsafe partial struct PxConvexMesh { // pointer
     //================================================================================
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L140~140
     #if NATIVE
-    ES physx::PxU32 getReferenceCount(physx::PxConvexMesh* self){
-        physx::PxU32 retVal = self->getReferenceCount();
+    ES physx::PxU32 W_getReferenceCount(physx::PxConvexMesh* self){
+        auto retVal = self->getReferenceCount();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint getReferenceCount(PxConvexMesh selfPtr);
+    static extern uint W_getReferenceCount(PxConvexMesh selfPtr);
     
     public uint getReferenceCount(){
-        uint retVal = getReferenceCount(this);
+        uint retVal = W_getReferenceCount(this);
         return retVal;
     }
     #endif
@@ -159,15 +159,15 @@ public unsafe partial struct PxConvexMesh { // pointer
     //================================================================================
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L147~147
     #if NATIVE
-    ES void acquireReference(physx::PxConvexMesh* self){
+    ES void W_acquireReference(physx::PxConvexMesh* self){
         self->acquireReference();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void acquireReference(PxConvexMesh selfPtr);
+    static extern void W_acquireReference(PxConvexMesh selfPtr);
     
     public void acquireReference(){
-        acquireReference(this);
+        W_acquireReference(this);
     }
     #endif
     
@@ -175,26 +175,26 @@ public unsafe partial struct PxConvexMesh { // pointer
     //================================================================================
     //#       getMassInformation                                                     #
     //================================================================================
-    /* ERRORS OCCURED: Non const pointer/reference float*
-    , Non const pointer/reference global::PhysX.physx.PxMat33
-    , Non const pointer/reference global::PhysX.physx.PxVec3
+    /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxMat33
+    Non const pointer/reference global::PhysX.physx.PxVec3
+    // NATIVE SIG: void				getMassInformation(PxReal& mass, PxMat33& localInertia, PxVec3& localCenterOfMass)		const	= 0
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L165~165
     #if NATIVE
-    ES void getMassInformation(physx::PxConvexMesh* self,  mass,  localInertia,  localCenterOfMass){
-         nat_in_mass = (mass);
-         nat_in_localInertia = (localInertia);
-         nat_in_localCenterOfMass = (localCenterOfMass);
+    ES void W_getMassInformation(physx::PxConvexMesh* self, physx::PxReal& mass,  localInertia,  localCenterOfMass){
+        auto nat_in_mass = (mass);
+        auto nat_in_localInertia = (localInertia);
+        auto nat_in_localCenterOfMass = (localCenterOfMass);
         self->getMassInformation(nat_in_mass, nat_in_localInertia, nat_in_localCenterOfMass);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void getMassInformation(PxConvexMesh selfPtr,  mass,  localInertia,  localCenterOfMass);
+    static extern void W_getMassInformation(PxConvexMesh selfPtr, float* mass,  localInertia,  localCenterOfMass);
     
-    public void getMassInformation( mass,  localInertia,  localCenterOfMass){
-         pvk_in_mass = (mass);
+    public void getMassInformation(float* mass,  localInertia,  localCenterOfMass){
+        float* pvk_in_mass = (mass);
          pvk_in_localInertia = (localInertia);
          pvk_in_localCenterOfMass = (localCenterOfMass);
-        getMassInformation(this, pvk_in_mass, pvk_in_localInertia, pvk_in_localCenterOfMass);
+        W_getMassInformation(this, pvk_in_mass, pvk_in_localInertia, pvk_in_localCenterOfMass);
     }
     #endif*/
     
@@ -203,18 +203,19 @@ public unsafe partial struct PxConvexMesh { // pointer
     //#       getLocalBounds                                                         #
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
+    // NATIVE SIG: PxBounds3			getLocalBounds()	const	= 0
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L172~172
     #if NATIVE
-    ES UNPARSED_TYPE getLocalBounds(physx::PxConvexMesh* self){
-        UNPARSED_TYPE retVal = self->getLocalBounds();
+    ES UNPARSED_TYPE W_getLocalBounds(physx::PxConvexMesh* self){
+        auto retVal = self->getLocalBounds();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE getLocalBounds(PxConvexMesh selfPtr);
+    static extern UNPARSED_TYPE W_getLocalBounds(PxConvexMesh selfPtr);
     
     public UNPARSED_TYPE getLocalBounds(){
-        UNPARSED_TYPE retVal = getLocalBounds(this);
+        UNPARSED_TYPE retVal = W_getLocalBounds(this);
         return retVal;
     }
     #endif*/
@@ -223,22 +224,21 @@ public unsafe partial struct PxConvexMesh { // pointer
     //================================================================================
     //#       getConcreteTypeName                                                    #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L174~174
     #if NATIVE
-    ES UNPARSED_TYPE getConcreteTypeName(physx::PxConvexMesh* self){
-        UNPARSED_TYPE retVal = self->getConcreteTypeName();
+    ES sbyte* W_getConcreteTypeName(physx::PxConvexMesh* self){
+        auto retVal = self->getConcreteTypeName();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE getConcreteTypeName(PxConvexMesh selfPtr);
+    static extern IntPtr W_getConcreteTypeName(PxConvexMesh selfPtr);
     
-    public UNPARSED_TYPE getConcreteTypeName(){
-        UNPARSED_TYPE retVal = getConcreteTypeName(this);
+    public IntPtr getConcreteTypeName(){
+        IntPtr retVal = W_getConcreteTypeName(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
@@ -246,16 +246,16 @@ public unsafe partial struct PxConvexMesh { // pointer
     //================================================================================
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L183~183
     #if NATIVE
-    ES bool isGpuCompatible(physx::PxConvexMesh* self){
-        bool retVal = self->isGpuCompatible();
+    ES bool W_isGpuCompatible(physx::PxConvexMesh* self){
+        auto retVal = self->isGpuCompatible();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool isGpuCompatible(PxConvexMesh selfPtr);
+    static extern bool W_isGpuCompatible(PxConvexMesh selfPtr);
     
     public bool isGpuCompatible(){
-        bool retVal = isGpuCompatible(this);
+        bool retVal = W_isGpuCompatible(this);
         return retVal;
     }
     #endif
@@ -266,21 +266,22 @@ public unsafe partial struct PxConvexMesh { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
     Unresolved parameter type physx::PxConvexMesh::PxConvexMesh::baseFlags
+    // NATIVE SIG: PX_INLINE					PxConvexMesh(PxType concreteType, PxBaseFlags baseFlags) : PxBase(concreteType, baseFlags) {}
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L186~186
     #if NATIVE
-    ES UNPARSED_TYPE PxConvexMesh_ctor(physx::PxType concreteType,  baseFlags){
-        physx::PxType nat_in_concreteType = (concreteType);
-         nat_in_baseFlags = (baseFlags);
+    ES UNPARSED_TYPE W_PxConvexMesh_ctor(physx::PxType concreteType,  baseFlags){
+        auto nat_in_concreteType = (concreteType);
+        auto nat_in_baseFlags = (baseFlags);
         self->PxConvexMesh(nat_in_concreteType, nat_in_baseFlags);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxConvexMesh_ctor(ushort concreteType,  baseFlags);
+    static extern UNPARSED_TYPE W_PxConvexMesh_ctor(ushort concreteType,  baseFlags);
     
     public PxConvexMesh(ushort concreteType,  baseFlags){
         ushort pvk_in_concreteType = (concreteType);
          pvk_in_baseFlags = (baseFlags);
-        var _new = PxConvexMesh_ctor(pvk_in_concreteType, pvk_in_baseFlags);
+        var _new = W_PxConvexMesh_ctor(pvk_in_concreteType, pvk_in_baseFlags);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -292,19 +293,20 @@ public unsafe partial struct PxConvexMesh { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
     Unresolved parameter type physx::PxConvexMesh::PxConvexMesh::baseFlags
+    // NATIVE SIG: PX_INLINE					PxConvexMesh(PxBaseFlags baseFlags) : PxBase(baseFlags) {}
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L187~187
     #if NATIVE
-    ES UNPARSED_TYPE PxConvexMesh_ctor( baseFlags){
-         nat_in_baseFlags = (baseFlags);
+    ES UNPARSED_TYPE W_PxConvexMesh_ctor( baseFlags){
+        auto nat_in_baseFlags = (baseFlags);
         self->PxConvexMesh(nat_in_baseFlags);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxConvexMesh_ctor( baseFlags);
+    static extern UNPARSED_TYPE W_PxConvexMesh_ctor( baseFlags);
     
     public PxConvexMesh( baseFlags){
          pvk_in_baseFlags = (baseFlags);
-        var _new = PxConvexMesh_ctor(pvk_in_baseFlags);
+        var _new = W_PxConvexMesh_ctor(pvk_in_baseFlags);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -315,17 +317,18 @@ public unsafe partial struct PxConvexMesh { // pointer
     //#       ~PxConvexMesh                                                          #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
+    // NATIVE SIG: PX_PHYSX_COMMON_API virtual						~PxConvexMesh() {}
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L188~188
     #if NATIVE
-    ES void ~PxConvexMesh(physx::PxConvexMesh* self){
+    ES void W_~PxConvexMesh(physx::PxConvexMesh* self){
         self->~PxConvexMesh();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void ~PxConvexMesh(PxConvexMesh selfPtr);
+    static extern void W_~PxConvexMesh(PxConvexMesh selfPtr);
     
     public void ~PxConvexMesh(){
-        ~PxConvexMesh(this);
+        W_~PxConvexMesh(this);
     }
     #endif*/
     
@@ -335,18 +338,18 @@ public unsafe partial struct PxConvexMesh { // pointer
     //================================================================================
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L189~189
     #if NATIVE
-    ES bool isKindOf(physx::PxConvexMesh* self, char name){
-        char nat_in_name = (name);
-        bool retVal = self->isKindOf(nat_in_name);
+    ES bool W_isKindOf(physx::PxConvexMesh* self, const char* name){
+        auto nat_in_name = (name);
+        auto retVal = self->isKindOf(nat_in_name);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool isKindOf(PxConvexMesh selfPtr, sbyte name);
+    static extern bool W_isKindOf(PxConvexMesh selfPtr, string name);
     
-    public bool isKindOf(sbyte name){
-        sbyte pvk_in_name = (name);
-        bool retVal = isKindOf(this, pvk_in_name);
+    public bool isKindOf(string name){
+        string pvk_in_name = (name);
+        bool retVal = W_isKindOf(this, pvk_in_name);
         return retVal;
     }
     #endif
@@ -356,21 +359,21 @@ public unsafe partial struct PxConvexMesh { // pointer
     //#       PxConvexMesh                                                           #
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxConvexMesh
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L84~84
     #if NATIVE
-    ES UNPARSED_TYPE PxConvexMesh_ctor( ){
-         nat_in_ = ();
-        self->PxConvexMesh(nat_in_);
+    ES UNPARSED_TYPE W_PxConvexMesh_ctor(physx::PxConvexMesh* ){
+        auto nat_in_ = ();
+        self->PxConvexMesh(*nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxConvexMesh_ctor( );
+    static extern UNPARSED_TYPE W_PxConvexMesh_ctor(PxConvexMesh );
     
-    public PxConvexMesh( ){
-         pvk_in_ = ();
-        var _new = PxConvexMesh_ctor(pvk_in_);
+    public PxConvexMesh(PxConvexMesh ){
+        PxConvexMesh pvk_in_ = ();
+        var _new = W_PxConvexMesh_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -381,23 +384,22 @@ public unsafe partial struct PxConvexMesh { // pointer
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxConvexMesh
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L84~84
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxConvexMesh* self){
-         nat_in_ = ();
-        UNPARSED_TYPE retVal = self->operator=(nat_in_);
+    ES physx::PxConvexMesh* W_operator=(physx::PxConvexMesh* self, physx::PxConvexMesh* ){
+        auto nat_in_ = ();
+        auto retVal = &self->operator=(*nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxConvexMesh selfPtr);
+    static extern PxConvexMesh W_operator=(PxConvexMesh selfPtr, PxConvexMesh );
     
-    public UNPARSED_TYPE operator=( ){
-         pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+    public static PxConvexMesh operator=(PxConvexMesh lhs, PxConvexMesh ){
+        PxConvexMesh pvk_in_ = ();
+        PxConvexMesh retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/
@@ -420,17 +422,18 @@ public unsafe partial struct PxHullPolygon { // blittable
     //#       PxHullPolygon                                                          #
     //================================================================================
     /* ERRORS OCCURED: Parameterless constructor not allowed
+    // NATIVE SIG: PxHullPolygon
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L51~51
     #if NATIVE
-    ES physx::PxHullPolygon PxHullPolygon_ctor(){
+    ES physx::PxHullPolygon W_PxHullPolygon_ctor(){
         self.PxHullPolygon();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxHullPolygon PxHullPolygon_ctor();
+    static extern PxHullPolygon W_PxHullPolygon_ctor();
     
     public PxHullPolygon(){
-        var _new = PxHullPolygon_ctor();
+        var _new = W_PxHullPolygon_ctor();
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -440,20 +443,21 @@ public unsafe partial struct PxHullPolygon { // blittable
     //================================================================================
     //#       PxHullPolygon                                                          #
     //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name
+    /* ERRORS OCCURED: Invalid parameter name (empty)
+    // NATIVE SIG: PxHullPolygon
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L51~51
     #if NATIVE
-    ES physx::PxHullPolygon PxHullPolygon_ctor(physx::PxHullPolygon ){
-        physx::PxHullPolygon nat_in_ = ();
+    ES physx::PxHullPolygon W_PxHullPolygon_ctor(physx::PxHullPolygon ){
+        auto nat_in_ = ();
         self.PxHullPolygon(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxHullPolygon PxHullPolygon_ctor(PxHullPolygon );
+    static extern PxHullPolygon W_PxHullPolygon_ctor(PxHullPolygon );
     
     public PxHullPolygon(PxHullPolygon ){
         PxHullPolygon pvk_in_ = ();
-        var _new = PxHullPolygon_ctor(pvk_in_);
+        var _new = W_PxHullPolygon_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -464,22 +468,22 @@ public unsafe partial struct PxHullPolygon { // blittable
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxHullPolygon
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L51~51
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxHullPolygon self, physx::PxHullPolygon ){
-        physx::PxHullPolygon nat_in_ = ();
-        UNPARSED_TYPE retVal = self.operator=(nat_in_);
+    ES physx::PxHullPolygon* W_operator=(physx::PxHullPolygon self, physx::PxHullPolygon ){
+        auto nat_in_ = ();
+        auto retVal = &self.operator=(nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxHullPolygon selfBlt, PxHullPolygon );
+    static extern PxHullPolygon W_operator=(PxHullPolygon selfBlt, PxHullPolygon );
     
-    public UNPARSED_TYPE operator=(PxHullPolygon ){
+    public static PxHullPolygon operator=(PxHullPolygon lhs, PxHullPolygon ){
         PxHullPolygon pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+        PxHullPolygon retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/
@@ -488,21 +492,22 @@ public unsafe partial struct PxHullPolygon { // blittable
     //================================================================================
     //#       PxHullPolygon                                                          #
     //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name
+    /* ERRORS OCCURED: Invalid parameter name (empty)
     Non const pointer/reference global::PhysX.physx.PxHullPolygon
+    // NATIVE SIG: PxHullPolygon
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L51~51
     #if NATIVE
-    ES physx::PxHullPolygon PxHullPolygon_ctor( ){
-         nat_in_ = ();
+    ES physx::PxHullPolygon W_PxHullPolygon_ctor( ){
+        auto nat_in_ = ();
         self.PxHullPolygon(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxHullPolygon PxHullPolygon_ctor( );
+    static extern PxHullPolygon W_PxHullPolygon_ctor( );
     
     public PxHullPolygon( ){
          pvk_in_ = ();
-        var _new = PxHullPolygon_ctor(pvk_in_);
+        var _new = W_PxHullPolygon_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -513,23 +518,23 @@ public unsafe partial struct PxHullPolygon { // blittable
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
+    Invalid parameter name (empty)
     Non const pointer/reference global::PhysX.physx.PxHullPolygon
+    // NATIVE SIG: PxHullPolygon
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L51~51
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxHullPolygon self){
-         nat_in_ = ();
-        UNPARSED_TYPE retVal = self.operator=(nat_in_);
+    ES physx::PxHullPolygon* W_operator=(physx::PxHullPolygon self){
+        auto nat_in_ = ();
+        auto retVal = &self.operator=(nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxHullPolygon selfBlt);
+    static extern PxHullPolygon W_operator=(PxHullPolygon selfBlt);
     
-    public UNPARSED_TYPE operator=( ){
+    public static PxHullPolygon operator=(PxHullPolygon lhs,  ){
          pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+        PxHullPolygon retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/
@@ -539,17 +544,18 @@ public unsafe partial struct PxHullPolygon { // blittable
     //#       ~PxHullPolygon                                                         #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
+    // NATIVE SIG: PxHullPolygon
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxConvexMesh.h L51~51
     #if NATIVE
-    ES void ~PxHullPolygon(physx::PxHullPolygon self){
+    ES void W_~PxHullPolygon(physx::PxHullPolygon self){
         self.~PxHullPolygon();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void ~PxHullPolygon(PxHullPolygon selfBlt);
+    static extern void W_~PxHullPolygon(PxHullPolygon selfBlt);
     
     public void ~PxHullPolygon(){
-        ~PxHullPolygon(this);
+        W_~PxHullPolygon(this);
     }
     #endif*/
     

@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 
 
 
+
 #if !NATIVE
 public unsafe partial struct PxHeightFieldGeometry { // pointer
     private IntPtr nativePtr_;
@@ -15,17 +16,25 @@ public unsafe partial struct PxHeightFieldGeometry { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
     Parameterless constructor not allowed
+    // NATIVE SIG: PX_INLINE PxHeightFieldGeometry() :		
+    		PxGeometry		(PxGeometryType::eHEIGHTFIELD),
+    		heightField		(NULL),
+    		heightScale		(1.0f), 
+    		rowScale		(1.0f), 
+    		columnScale		(1.0f), 
+    		heightFieldFlags(0)
+    	{}
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxHeightFieldGeometry.h L59~66
     #if NATIVE
-    ES UNPARSED_TYPE PxHeightFieldGeometry_ctor(){
+    ES UNPARSED_TYPE W_PxHeightFieldGeometry_ctor(){
         self->PxHeightFieldGeometry();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxHeightFieldGeometry_ctor();
+    static extern UNPARSED_TYPE W_PxHeightFieldGeometry_ctor();
     
     public PxHeightFieldGeometry(){
-        var _new = PxHeightFieldGeometry_ctor();
+        var _new = W_PxHeightFieldGeometry_ctor();
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -36,29 +45,41 @@ public unsafe partial struct PxHeightFieldGeometry { // pointer
     //#       PxHeightFieldGeometry                                                  #
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
-    fsdfasdf
-    , Unresolved parameter type physx::PxHeightFieldGeometry::PxHeightFieldGeometry::flags
+    Unresolved parameter type physx::PxHeightFieldGeometry::PxHeightFieldGeometry::flags
+    // NATIVE SIG: PX_INLINE PxHeightFieldGeometry(PxHeightField* hf,
+    									PxMeshGeometryFlags flags, 
+    									PxReal heightScale_,
+    									PxReal rowScale_, 
+    									PxReal columnScale_) :
+    		PxGeometry			(PxGeometryType::eHEIGHTFIELD), 
+    		heightField			(hf) ,
+    		heightScale			(heightScale_), 
+    		rowScale			(rowScale_), 
+    		columnScale			(columnScale_), 
+    		heightFieldFlags	(flags)
+    		{
+    		}
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxHeightFieldGeometry.h L68~80
     #if NATIVE
-    ES UNPARSED_TYPE PxHeightFieldGeometry_ctor( hf,  flags, physx::PxReal heightScale_, physx::PxReal rowScale_, physx::PxReal columnScale_){
-         nat_in_hf = (hf);
-         nat_in_flags = (flags);
-        physx::PxReal nat_in_heightScale_ = (heightScale_);
-        physx::PxReal nat_in_rowScale_ = (rowScale_);
-        physx::PxReal nat_in_columnScale_ = (columnScale_);
+    ES UNPARSED_TYPE W_PxHeightFieldGeometry_ctor(physx::PxHeightField* hf,  flags, physx::PxReal heightScale_, physx::PxReal rowScale_, physx::PxReal columnScale_){
+        auto nat_in_hf = (hf);
+        auto nat_in_flags = (flags);
+        auto nat_in_heightScale_ = (heightScale_);
+        auto nat_in_rowScale_ = (rowScale_);
+        auto nat_in_columnScale_ = (columnScale_);
         self->PxHeightFieldGeometry(nat_in_hf, nat_in_flags, nat_in_heightScale_, nat_in_rowScale_, nat_in_columnScale_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxHeightFieldGeometry_ctor( hf,  flags, float heightScale_, float rowScale_, float columnScale_);
+    static extern UNPARSED_TYPE W_PxHeightFieldGeometry_ctor(PxHeightField hf,  flags, float heightScale_, float rowScale_, float columnScale_);
     
-    public PxHeightFieldGeometry( hf,  flags, float heightScale_, float rowScale_, float columnScale_){
-         pvk_in_hf = (hf);
+    public PxHeightFieldGeometry(PxHeightField hf,  flags, float heightScale_, float rowScale_, float columnScale_){
+        PxHeightField pvk_in_hf = (hf);
          pvk_in_flags = (flags);
         float pvk_in_heightScale_ = (heightScale_);
         float pvk_in_rowScale_ = (rowScale_);
         float pvk_in_columnScale_ = (columnScale_);
-        var _new = PxHeightFieldGeometry_ctor(pvk_in_hf, pvk_in_flags, pvk_in_heightScale_, pvk_in_rowScale_, pvk_in_columnScale_);
+        var _new = W_PxHeightFieldGeometry_ctor(pvk_in_hf, pvk_in_flags, pvk_in_heightScale_, pvk_in_rowScale_, pvk_in_columnScale_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -70,16 +91,16 @@ public unsafe partial struct PxHeightFieldGeometry { // pointer
     //================================================================================
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxHeightFieldGeometry.h L92~92
     #if NATIVE
-    ES bool isValid(physx::PxHeightFieldGeometry* self){
-        bool retVal = self->isValid();
+    ES bool W_isValid(physx::PxHeightFieldGeometry* self){
+        auto retVal = self->isValid();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool isValid(PxHeightFieldGeometry selfPtr);
+    static extern bool W_isValid(PxHeightFieldGeometry selfPtr);
     
     public bool isValid(){
-        bool retVal = isValid(this);
+        bool retVal = W_isValid(this);
         return retVal;
     }
     #endif
@@ -89,21 +110,21 @@ public unsafe partial struct PxHeightFieldGeometry { // pointer
     //#       PxHeightFieldGeometry                                                  #
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxHeightFieldGeometry
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxHeightFieldGeometry.h L56~56
     #if NATIVE
-    ES UNPARSED_TYPE PxHeightFieldGeometry_ctor( ){
-         nat_in_ = ();
-        self->PxHeightFieldGeometry(nat_in_);
+    ES UNPARSED_TYPE W_PxHeightFieldGeometry_ctor(physx::PxHeightFieldGeometry* ){
+        auto nat_in_ = ();
+        self->PxHeightFieldGeometry(*nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxHeightFieldGeometry_ctor( );
+    static extern UNPARSED_TYPE W_PxHeightFieldGeometry_ctor(PxHeightFieldGeometry );
     
-    public PxHeightFieldGeometry( ){
-         pvk_in_ = ();
-        var _new = PxHeightFieldGeometry_ctor(pvk_in_);
+    public PxHeightFieldGeometry(PxHeightFieldGeometry ){
+        PxHeightFieldGeometry pvk_in_ = ();
+        var _new = W_PxHeightFieldGeometry_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -114,21 +135,21 @@ public unsafe partial struct PxHeightFieldGeometry { // pointer
     //#       PxHeightFieldGeometry                                                  #
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxHeightFieldGeometry
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxHeightFieldGeometry.h L56~56
     #if NATIVE
-    ES UNPARSED_TYPE PxHeightFieldGeometry_ctor( ){
-         nat_in_ = ();
-        self->PxHeightFieldGeometry(nat_in_);
+    ES UNPARSED_TYPE W_PxHeightFieldGeometry_ctor(physx::PxHeightFieldGeometry* ){
+        auto nat_in_ = ();
+        self->PxHeightFieldGeometry(*nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxHeightFieldGeometry_ctor( );
+    static extern UNPARSED_TYPE W_PxHeightFieldGeometry_ctor(PxHeightFieldGeometry );
     
-    public PxHeightFieldGeometry( ){
-         pvk_in_ = ();
-        var _new = PxHeightFieldGeometry_ctor(pvk_in_);
+    public PxHeightFieldGeometry(PxHeightFieldGeometry ){
+        PxHeightFieldGeometry pvk_in_ = ();
+        var _new = W_PxHeightFieldGeometry_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -139,23 +160,22 @@ public unsafe partial struct PxHeightFieldGeometry { // pointer
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxHeightFieldGeometry
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxHeightFieldGeometry.h L56~56
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxHeightFieldGeometry* self){
-         nat_in_ = ();
-        UNPARSED_TYPE retVal = self->operator=(nat_in_);
+    ES physx::PxHeightFieldGeometry* W_operator=(physx::PxHeightFieldGeometry* self, physx::PxHeightFieldGeometry* ){
+        auto nat_in_ = ();
+        auto retVal = &self->operator=(*nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxHeightFieldGeometry selfPtr);
+    static extern PxHeightFieldGeometry W_operator=(PxHeightFieldGeometry selfPtr, PxHeightFieldGeometry );
     
-    public UNPARSED_TYPE operator=( ){
-         pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+    public static PxHeightFieldGeometry operator=(PxHeightFieldGeometry lhs, PxHeightFieldGeometry ){
+        PxHeightFieldGeometry pvk_in_ = ();
+        PxHeightFieldGeometry retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/
@@ -165,23 +185,22 @@ public unsafe partial struct PxHeightFieldGeometry { // pointer
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxHeightFieldGeometry
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxHeightFieldGeometry.h L56~56
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxHeightFieldGeometry* self){
-         nat_in_ = ();
-        UNPARSED_TYPE retVal = self->operator=(nat_in_);
+    ES physx::PxHeightFieldGeometry* W_operator=(physx::PxHeightFieldGeometry* self, physx::PxHeightFieldGeometry* ){
+        auto nat_in_ = ();
+        auto retVal = &self->operator=(*nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxHeightFieldGeometry selfPtr);
+    static extern PxHeightFieldGeometry W_operator=(PxHeightFieldGeometry selfPtr, PxHeightFieldGeometry );
     
-    public UNPARSED_TYPE operator=( ){
-         pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+    public static PxHeightFieldGeometry operator=(PxHeightFieldGeometry lhs, PxHeightFieldGeometry ){
+        PxHeightFieldGeometry pvk_in_ = ();
+        PxHeightFieldGeometry retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/
@@ -191,17 +210,18 @@ public unsafe partial struct PxHeightFieldGeometry { // pointer
     //#       ~PxHeightFieldGeometry                                                 #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
+    // NATIVE SIG: PxHeightFieldGeometry
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxHeightFieldGeometry.h L56~56
     #if NATIVE
-    ES void ~PxHeightFieldGeometry(physx::PxHeightFieldGeometry* self){
+    ES void W_~PxHeightFieldGeometry(physx::PxHeightFieldGeometry* self){
         self->~PxHeightFieldGeometry();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void ~PxHeightFieldGeometry(PxHeightFieldGeometry selfPtr);
+    static extern void W_~PxHeightFieldGeometry(PxHeightFieldGeometry selfPtr);
     
     public void ~PxHeightFieldGeometry(){
-        ~PxHeightFieldGeometry(this);
+        W_~PxHeightFieldGeometry(this);
     }
     #endif*/
     

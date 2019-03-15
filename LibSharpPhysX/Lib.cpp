@@ -69,42 +69,41 @@ static physx::PxDefaultAllocator allocator_;
 ES physx::PxFoundation* OVR_PxCreateFoundation(SharpPhysXError* managedErrorCallback)
 {
     return PxCreateFoundation(PX_PHYSICS_VERSION, allocator_, *new ShPxErrorCallbackWrapper(*managedErrorCallback));
-	PxCreatePhysics()
+	//PxCreatePhysics()
 }
 
-
-//callback tests
-
-typedef void (__stdcall *ErrorCallback)(const char* message, const char* file, int line);
-
-ES void registerCallback(ErrorCallback callback)
-{
-    //printf("calling callback from native...\n");
-
-    callback("MESSAGE!", "FILE!", 1337);
-
-    //printf("finished calling\n");
-}
-
-
-//blittable tests
-
-ES float PxVec3__magnitude(PxVec3 cls)
-{
-    return cls.magnitude();
-};
-
-ES PxVec3 PxVec3__cross(PxVec3 cls, PxVec3 otr)
-{
-    PxVec3 par1 = otr;
-    PxVec3 retVal = cls.cross(par1);
-    return retVal;
-};
-
-ES PxVec3 PxVec3__OP_plus(PxVec3 a, PxVec3 b)
-{
-    return a.operator+(b);
-}
+// //callback tests
+//
+// typedef void (__stdcall *ErrorCallback)(const char* message, const char* file, int line);
+//
+// ES void registerCallback(ErrorCallback callback)
+// {
+//     //printf("calling callback from native...\n");
+//
+//     callback("MESSAGE!", "FILE!", 1337);
+//
+//     //printf("finished calling\n");
+// }
+//
+//
+// //blittable tests
+//
+// ES float PxVec3__magnitude(PxVec3 cls)
+// {
+//     return cls.magnitude();
+// };
+//
+// ES PxVec3 PxVec3__cross(PxVec3 cls, PxVec3 otr)
+// {
+//     PxVec3 par1 = otr;
+//     PxVec3 retVal = cls.cross(par1);
+//     return retVal;
+// };
+//
+// ES PxVec3 PxVec3__OP_plus(PxVec3 a, PxVec3 b)
+// {
+//     return a.operator+(b);
+// }
 
 
 

@@ -41,6 +41,7 @@ public enum PxConcreteType : int {
 
 
 
+
 #if !NATIVE
 public unsafe partial struct PxConcreteType { // blittable
 
@@ -50,17 +51,18 @@ public unsafe partial struct PxConcreteType { // blittable
     //#       PxConcreteType                                                         #
     //================================================================================
     /* ERRORS OCCURED: Parameterless constructor not allowed
+    // NATIVE SIG: PxConcreteType
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxTypeInfo.h L53~53
     #if NATIVE
-    ES physx::PxConcreteType PxConcreteType_ctor(){
+    ES physx::PxConcreteType W_PxConcreteType_ctor(){
         self.PxConcreteType();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxConcreteType PxConcreteType_ctor();
+    static extern PxConcreteType W_PxConcreteType_ctor();
     
     public PxConcreteType(){
-        var _new = PxConcreteType_ctor();
+        var _new = W_PxConcreteType_ctor();
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -70,20 +72,21 @@ public unsafe partial struct PxConcreteType { // blittable
     //================================================================================
     //#       PxConcreteType                                                         #
     //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name
+    /* ERRORS OCCURED: Invalid parameter name (empty)
+    // NATIVE SIG: PxConcreteType
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxTypeInfo.h L53~53
     #if NATIVE
-    ES physx::PxConcreteType PxConcreteType_ctor(physx::PxConcreteType ){
-        physx::PxConcreteType nat_in_ = ();
+    ES physx::PxConcreteType W_PxConcreteType_ctor(physx::PxConcreteType ){
+        auto nat_in_ = ();
         self.PxConcreteType(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxConcreteType PxConcreteType_ctor(PxConcreteType );
+    static extern PxConcreteType W_PxConcreteType_ctor(PxConcreteType );
     
     public PxConcreteType(PxConcreteType ){
         PxConcreteType pvk_in_ = ();
-        var _new = PxConcreteType_ctor(pvk_in_);
+        var _new = W_PxConcreteType_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -94,22 +97,22 @@ public unsafe partial struct PxConcreteType { // blittable
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxConcreteType
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxTypeInfo.h L53~53
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxConcreteType self, physx::PxConcreteType ){
-        physx::PxConcreteType nat_in_ = ();
-        UNPARSED_TYPE retVal = self.operator=(nat_in_);
+    ES physx::PxConcreteType* W_operator=(physx::PxConcreteType self, physx::PxConcreteType ){
+        auto nat_in_ = ();
+        auto retVal = &self.operator=(nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxConcreteType selfBlt, PxConcreteType );
+    static extern PxConcreteType W_operator=(PxConcreteType selfBlt, PxConcreteType );
     
-    public UNPARSED_TYPE operator=(PxConcreteType ){
+    public static PxConcreteType operator=(PxConcreteType lhs, PxConcreteType ){
         PxConcreteType pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+        PxConcreteType retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/
@@ -118,21 +121,22 @@ public unsafe partial struct PxConcreteType { // blittable
     //================================================================================
     //#       PxConcreteType                                                         #
     //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name
+    /* ERRORS OCCURED: Invalid parameter name (empty)
     Non const pointer/reference global::PhysX.physx.PxConcreteType
+    // NATIVE SIG: PxConcreteType
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxTypeInfo.h L53~53
     #if NATIVE
-    ES physx::PxConcreteType PxConcreteType_ctor( ){
-         nat_in_ = ();
+    ES physx::PxConcreteType W_PxConcreteType_ctor( ){
+        auto nat_in_ = ();
         self.PxConcreteType(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxConcreteType PxConcreteType_ctor( );
+    static extern PxConcreteType W_PxConcreteType_ctor( );
     
     public PxConcreteType( ){
          pvk_in_ = ();
-        var _new = PxConcreteType_ctor(pvk_in_);
+        var _new = W_PxConcreteType_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -143,23 +147,23 @@ public unsafe partial struct PxConcreteType { // blittable
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
+    Invalid parameter name (empty)
     Non const pointer/reference global::PhysX.physx.PxConcreteType
+    // NATIVE SIG: PxConcreteType
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxTypeInfo.h L53~53
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxConcreteType self){
-         nat_in_ = ();
-        UNPARSED_TYPE retVal = self.operator=(nat_in_);
+    ES physx::PxConcreteType* W_operator=(physx::PxConcreteType self){
+        auto nat_in_ = ();
+        auto retVal = &self.operator=(nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxConcreteType selfBlt);
+    static extern PxConcreteType W_operator=(PxConcreteType selfBlt);
     
-    public UNPARSED_TYPE operator=( ){
+    public static PxConcreteType operator=(PxConcreteType lhs,  ){
          pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+        PxConcreteType retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/
@@ -169,17 +173,18 @@ public unsafe partial struct PxConcreteType { // blittable
     //#       ~PxConcreteType                                                        #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
+    // NATIVE SIG: PxConcreteType
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxTypeInfo.h L53~53
     #if NATIVE
-    ES void ~PxConcreteType(physx::PxConcreteType self){
+    ES void W_~PxConcreteType(physx::PxConcreteType self){
         self.~PxConcreteType();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void ~PxConcreteType(PxConcreteType selfBlt);
+    static extern void W_~PxConcreteType(PxConcreteType selfBlt);
     
     public void ~PxConcreteType(){
-        ~PxConcreteType(this);
+        W_~PxConcreteType(this);
     }
     #endif*/
     

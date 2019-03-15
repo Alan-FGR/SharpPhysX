@@ -32,9 +32,16 @@
 
   <ItemGroup>
     <Compile Include="Generated\Px.cs" />
+    <Compile Include="Generated\PxBase.cs" />
     <Compile Include="Generated\PxErrors.cs" />
     <Compile Include="Generated\PxFoundation.cs" />
+    <Compile Include="Generated\PxMat33.cs" />
+    <Compile Include="Generated\PxPhysics.cs" />
+    <Compile Include="Generated\PxPlane.cs" />
+    <Compile Include="Generated\PxQuat.cs" />
+    <Compile Include="Generated\PxTransform.cs" />
     <Compile Include="Generated\PxVec3.cs" />
+    <Compile Include="Generated\PxWindowsIntrinsics.cs" />
   </ItemGroup>
 
 </Project>

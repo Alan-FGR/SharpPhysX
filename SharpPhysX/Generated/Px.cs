@@ -24,6 +24,7 @@ public enum PxEMPTY : int {
 
 
 
+// Class physx::PxOutputStream Manually Ignored
 
 
 

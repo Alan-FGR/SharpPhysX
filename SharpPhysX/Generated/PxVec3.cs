@@ -4,6 +4,34 @@ using System.Runtime.InteropServices;
 #endif
 
 
+public partial struct PxVec3 {
+
+//================================================================================
+//#       operator*                                                              #
+//================================================================================
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L384~387
+#if NATIVE
+ES physx::PxVec3 W_OP_Star(float f, physx::PxVec3 v){
+    auto nat_in_f = (f);
+    auto nat_in_v = (v);
+    auto retVal = physx::operator*(nat_in_f, nat_in_v);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern PxVec3 W_OP_Star(float f, PxVec3 v);
+
+public static PxVec3 operator*(float f, PxVec3 v){
+    float pvk_in_f = (f);
+    PxVec3 pvk_in_v = (v);
+    PxVec3 retVal = W_OP_Star(pvk_in_f, pvk_in_v);
+    return retVal;
+}
+#endif
+
+} // End PxVec3
+
+
 #if !NATIVE
 public unsafe partial struct PxVec3 { // blittable
     public float x;
@@ -16,17 +44,20 @@ public unsafe partial struct PxVec3 { // blittable
     //#       PxVec3                                                                 #
     //================================================================================
     /* ERRORS OCCURED: Parameterless constructor not allowed
+    // NATIVE SIG: PX_FORCE_INLINE PxVec3()
+    	{
+    	}
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L55~57
     #if NATIVE
-    ES physx::PxVec3 PxVec3_ctor(){
+    ES physx::PxVec3 W_PxVec3_ctor(){
         self.PxVec3();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 PxVec3_ctor();
+    static extern PxVec3 W_PxVec3_ctor();
     
     public PxVec3(){
-        var _new = PxVec3_ctor();
+        var _new = W_PxVec3_ctor();
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -38,17 +69,17 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L62~65
     #if NATIVE
-    ES physx::PxVec3 PxVec3_ctor(physx::PxZERO r){
-        physx::PxZERO nat_in_r = (r);
+    ES physx::PxVec3 W_PxVec3_ctor(physx::PxZERO r){
+        auto nat_in_r = (r);
         self.PxVec3(nat_in_r);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 PxVec3_ctor(PxZERO r);
+    static extern PxVec3 W_PxVec3_ctor(PxZERO r);
     
     public PxVec3(PxZERO r){
         PxZERO pvk_in_r = (r);
-        var _new = PxVec3_ctor(pvk_in_r);
+        var _new = W_PxVec3_ctor(pvk_in_r);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -60,17 +91,17 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L74~76
     #if NATIVE
-    ES physx::PxVec3 PxVec3_ctor(float a){
-        float nat_in_a = (a);
+    ES physx::PxVec3 W_PxVec3_ctor(float a){
+        auto nat_in_a = (a);
         self.PxVec3(nat_in_a);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 PxVec3_ctor(float a);
+    static extern PxVec3 W_PxVec3_ctor(float a);
     
     public PxVec3(float a){
         float pvk_in_a = (a);
-        var _new = PxVec3_ctor(pvk_in_a);
+        var _new = W_PxVec3_ctor(pvk_in_a);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -82,21 +113,21 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L85~87
     #if NATIVE
-    ES physx::PxVec3 PxVec3_ctor(float nx, float ny, float nz){
-        float nat_in_nx = (nx);
-        float nat_in_ny = (ny);
-        float nat_in_nz = (nz);
+    ES physx::PxVec3 W_PxVec3_ctor(float nx, float ny, float nz){
+        auto nat_in_nx = (nx);
+        auto nat_in_ny = (ny);
+        auto nat_in_nz = (nz);
         self.PxVec3(nat_in_nx, nat_in_ny, nat_in_nz);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 PxVec3_ctor(float nx, float ny, float nz);
+    static extern PxVec3 W_PxVec3_ctor(float nx, float ny, float nz);
     
     public PxVec3(float nx, float ny, float nz){
         float pvk_in_nx = (nx);
         float pvk_in_ny = (ny);
         float pvk_in_nz = (nz);
-        var _new = PxVec3_ctor(pvk_in_nx, pvk_in_ny, pvk_in_nz);
+        var _new = W_PxVec3_ctor(pvk_in_nx, pvk_in_ny, pvk_in_nz);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -108,17 +139,17 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L92~94
     #if NATIVE
-    ES physx::PxVec3 PxVec3_ctor(physx::PxVec3 v){
-        physx::PxVec3 nat_in_v = (v);
+    ES physx::PxVec3 W_PxVec3_ctor(physx::PxVec3 v){
+        auto nat_in_v = (v);
         self.PxVec3(nat_in_v);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 PxVec3_ctor(PxVec3 v);
+    static extern PxVec3 W_PxVec3_ctor(PxVec3 v);
     
     public PxVec3(PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        var _new = PxVec3_ctor(pvk_in_v);
+        var _new = W_PxVec3_ctor(pvk_in_v);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -129,21 +160,27 @@ public unsafe partial struct PxVec3 { // blittable
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
+    // NATIVE SIG: PxVec3& operator=(const PxVec3& p)
+    	{
+    		x = p.x;
+    		y = p.y;
+    		z = p.z;
+    		return *this;
+    	}
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L101~107
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxVec3 self, physx::PxVec3 p){
-        physx::PxVec3 nat_in_p = (p);
-        UNPARSED_TYPE retVal = self.operator=(nat_in_p);
+    ES physx::PxVec3* W_operator=(physx::PxVec3 self, physx::PxVec3 p){
+        auto nat_in_p = (p);
+        auto retVal = &self.operator=(nat_in_p);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxVec3 selfBlt, PxVec3 p);
+    static extern PxVec3 W_operator=(PxVec3 selfBlt, PxVec3 p);
     
-    public UNPARSED_TYPE operator=(PxVec3 p){
+    public static PxVec3 operator=(PxVec3 lhs, PxVec3 p){
         PxVec3 pvk_in_p = (p);
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_p);
+        PxVec3 retVal = W_operator=(lhs, pvk_in_p);
         return retVal;
     }
     #endif*/
@@ -153,21 +190,26 @@ public unsafe partial struct PxVec3 { // blittable
     //#       operator[]                                                             #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
+    // NATIVE SIG: float& operator[](unsigned int index)
+    	{
+    		PX_ASSERT(index <= 2);
+    
+    		return reinterpret_cast<float*>(this)[index];
+    	}
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L112~117
     #if NATIVE
-    ES UNPARSED_TYPE operator[](physx::PxVec3 self, unsigned int index){
-        unsigned int nat_in_index = (index);
-        UNPARSED_TYPE retVal = self.operator[](nat_in_index);
+    ES float* W_operator[](physx::PxVec3 self, unsigned int index){
+        auto nat_in_index = (index);
+        auto retVal = self.operator[](nat_in_index);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator[](PxVec3 selfBlt, uint index);
+    static extern IntPtr W_operator[](PxVec3 selfBlt, uint index);
     
-    public UNPARSED_TYPE operator[](uint index){
+    public static IntPtr operator[](PxVec3 lhs, uint index){
         uint pvk_in_index = (index);
-        UNPARSED_TYPE retVal = operator[](this, pvk_in_index);
+        IntPtr retVal = W_operator[](lhs, pvk_in_index);
         return retVal;
     }
     #endif*/
@@ -177,21 +219,26 @@ public unsafe partial struct PxVec3 { // blittable
     //#       operator[]                                                             #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
+    // NATIVE SIG: float& operator[](unsigned int index) const
+    	{
+    		PX_ASSERT(index <= 2);
+    
+    		return reinterpret_cast<const float*>(this)[index];
+    	}
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L122~127
     #if NATIVE
-    ES UNPARSED_TYPE operator[](physx::PxVec3 self, unsigned int index){
-        unsigned int nat_in_index = (index);
-        UNPARSED_TYPE retVal = self.operator[](nat_in_index);
+    ES float* W_operator[](physx::PxVec3 self, unsigned int index){
+        auto nat_in_index = (index);
+        auto retVal = self.operator[](nat_in_index);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator[](PxVec3 selfBlt, uint index);
+    static extern IntPtr W_operator[](PxVec3 selfBlt, uint index);
     
-    public UNPARSED_TYPE operator[](uint index){
+    public static IntPtr operator[](PxVec3 lhs, uint index){
         uint pvk_in_index = (index);
-        UNPARSED_TYPE retVal = operator[](this, pvk_in_index);
+        IntPtr retVal = W_operator[](lhs, pvk_in_index);
         return retVal;
     }
     #endif*/
@@ -200,47 +247,45 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L132~135
     #if NATIVE
-    ES bool operator==(physx::PxVec3 self, physx::PxVec3 v){
-        physx::PxVec3 nat_in_v = (v);
-        bool retVal = self.operator==(nat_in_v);
+    ES bool W_OP_EqualEqual(physx::PxVec3 self, physx::PxVec3 v){
+        auto nat_in_v = (v);
+        auto retVal = self.operator==(nat_in_v);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool operator==(PxVec3 selfBlt, PxVec3 v);
+    static extern bool W_OP_EqualEqual(PxVec3 selfBlt, PxVec3 v);
     
-    public bool operator==(PxVec3 v){
+    public static bool operator==(PxVec3 lhs, PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        bool retVal = operator==(this, pvk_in_v);
+        bool retVal = W_OP_EqualEqual(lhs, pvk_in_v);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       operator!=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L140~143
     #if NATIVE
-    ES bool operator!=(physx::PxVec3 self, physx::PxVec3 v){
-        physx::PxVec3 nat_in_v = (v);
-        bool retVal = self.operator!=(nat_in_v);
+    ES bool W_OP_ExclaimEqual(physx::PxVec3 self, physx::PxVec3 v){
+        auto nat_in_v = (v);
+        auto retVal = self.operator!=(nat_in_v);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool operator!=(PxVec3 selfBlt, PxVec3 v);
+    static extern bool W_OP_ExclaimEqual(PxVec3 selfBlt, PxVec3 v);
     
-    public bool operator!=(PxVec3 v){
+    public static bool operator!=(PxVec3 lhs, PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        bool retVal = operator!=(this, pvk_in_v);
+        bool retVal = W_OP_ExclaimEqual(lhs, pvk_in_v);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
@@ -248,16 +293,16 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L148~151
     #if NATIVE
-    ES bool isZero(physx::PxVec3 self){
-        bool retVal = self.isZero();
+    ES bool W_isZero(physx::PxVec3 self){
+        auto retVal = self.isZero();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool isZero(PxVec3 selfBlt);
+    static extern bool W_isZero(PxVec3 selfBlt);
     
     public bool isZero(){
-        bool retVal = isZero(this);
+        bool retVal = W_isZero(this);
         return retVal;
     }
     #endif
@@ -268,16 +313,16 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L156~159
     #if NATIVE
-    ES bool isFinite(physx::PxVec3 self){
-        bool retVal = self.isFinite();
+    ES bool W_isFinite(physx::PxVec3 self){
+        auto retVal = self.isFinite();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool isFinite(PxVec3 selfBlt);
+    static extern bool W_isFinite(PxVec3 selfBlt);
     
     public bool isFinite(){
-        bool retVal = isFinite(this);
+        bool retVal = W_isFinite(this);
         return retVal;
     }
     #endif
@@ -288,16 +333,16 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L164~168
     #if NATIVE
-    ES bool isNormalized(physx::PxVec3 self){
-        bool retVal = self.isNormalized();
+    ES bool W_isNormalized(physx::PxVec3 self){
+        auto retVal = self.isNormalized();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool isNormalized(PxVec3 selfBlt);
+    static extern bool W_isNormalized(PxVec3 selfBlt);
     
     public bool isNormalized(){
-        bool retVal = isNormalized(this);
+        bool retVal = W_isNormalized(this);
         return retVal;
     }
     #endif
@@ -308,16 +353,16 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L175~178
     #if NATIVE
-    ES float magnitudeSquared(physx::PxVec3 self){
-        float retVal = self.magnitudeSquared();
+    ES float W_magnitudeSquared(physx::PxVec3 self){
+        auto retVal = self.magnitudeSquared();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float magnitudeSquared(PxVec3 selfBlt);
+    static extern float W_magnitudeSquared(PxVec3 selfBlt);
     
     public float magnitudeSquared(){
-        float retVal = magnitudeSquared(this);
+        float retVal = W_magnitudeSquared(this);
         return retVal;
     }
     #endif
@@ -328,16 +373,16 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L183~186
     #if NATIVE
-    ES float magnitude(physx::PxVec3 self){
-        float retVal = self.magnitude();
+    ES float W_magnitude(physx::PxVec3 self){
+        auto retVal = self.magnitude();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float magnitude(PxVec3 selfBlt);
+    static extern float W_magnitude(PxVec3 selfBlt);
     
     public float magnitude(){
-        float retVal = magnitude(this);
+        float retVal = W_magnitude(this);
         return retVal;
     }
     #endif
@@ -346,135 +391,136 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L191~194
     #if NATIVE
-    ES physx::PxVec3 operator-(physx::PxVec3 self){
-        physx::PxVec3 retVal = self.operator-();
+    ES physx::PxVec3 W_OP_Minus(physx::PxVec3 self){
+        auto retVal = self.operator-();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 operator-(PxVec3 selfBlt);
+    static extern PxVec3 W_OP_Minus(PxVec3 selfBlt);
     
-    public PxVec3 operator-(){
-        PxVec3 retVal = operator-(this);
+    public static PxVec3 operator-(PxVec3 lhs){
+        PxVec3 retVal = W_OP_Minus(lhs);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       operator+                                                              #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L199~202
     #if NATIVE
-    ES physx::PxVec3 operator+(physx::PxVec3 self, physx::PxVec3 v){
-        physx::PxVec3 nat_in_v = (v);
-        physx::PxVec3 retVal = self.operator+(nat_in_v);
+    ES physx::PxVec3 W_OP_Plus(physx::PxVec3 self, physx::PxVec3 v){
+        auto nat_in_v = (v);
+        auto retVal = self.operator+(nat_in_v);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 operator+(PxVec3 selfBlt, PxVec3 v);
+    static extern PxVec3 W_OP_Plus(PxVec3 selfBlt, PxVec3 v);
     
-    public PxVec3 operator+(PxVec3 v){
+    public static PxVec3 operator+(PxVec3 lhs, PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = operator+(this, pvk_in_v);
+        PxVec3 retVal = W_OP_Plus(lhs, pvk_in_v);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L207~210
     #if NATIVE
-    ES physx::PxVec3 operator-(physx::PxVec3 self, physx::PxVec3 v){
-        physx::PxVec3 nat_in_v = (v);
-        physx::PxVec3 retVal = self.operator-(nat_in_v);
+    ES physx::PxVec3 W_OP_Minus(physx::PxVec3 self, physx::PxVec3 v){
+        auto nat_in_v = (v);
+        auto retVal = self.operator-(nat_in_v);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 operator-(PxVec3 selfBlt, PxVec3 v);
+    static extern PxVec3 W_OP_Minus(PxVec3 selfBlt, PxVec3 v);
     
-    public PxVec3 operator-(PxVec3 v){
+    public static PxVec3 operator-(PxVec3 lhs, PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = operator-(this, pvk_in_v);
+        PxVec3 retVal = W_OP_Minus(lhs, pvk_in_v);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L215~218
     #if NATIVE
-    ES physx::PxVec3 operator*(physx::PxVec3 self, float f){
-        float nat_in_f = (f);
-        physx::PxVec3 retVal = self.operator*(nat_in_f);
+    ES physx::PxVec3 W_OP_Star(physx::PxVec3 self, float f){
+        auto nat_in_f = (f);
+        auto retVal = self.operator*(nat_in_f);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 operator*(PxVec3 selfBlt, float f);
+    static extern PxVec3 W_OP_Star(PxVec3 selfBlt, float f);
     
-    public PxVec3 operator*(float f){
+    public static PxVec3 operator*(PxVec3 lhs, float f){
         float pvk_in_f = (f);
-        PxVec3 retVal = operator*(this, pvk_in_f);
+        PxVec3 retVal = W_OP_Star(lhs, pvk_in_f);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       operator/                                                              #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L223~227
     #if NATIVE
-    ES physx::PxVec3 operator/(physx::PxVec3 self, float f){
-        float nat_in_f = (f);
-        physx::PxVec3 retVal = self.operator/(nat_in_f);
+    ES physx::PxVec3 W_OP_Slash(physx::PxVec3 self, float f){
+        auto nat_in_f = (f);
+        auto retVal = self.operator/(nat_in_f);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 operator/(PxVec3 selfBlt, float f);
+    static extern PxVec3 W_OP_Slash(PxVec3 selfBlt, float f);
     
-    public PxVec3 operator/(float f){
+    public static PxVec3 operator/(PxVec3 lhs, float f){
         float pvk_in_f = (f);
-        PxVec3 retVal = operator/(this, pvk_in_f);
+        PxVec3 retVal = W_OP_Slash(lhs, pvk_in_f);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       operator+=                                                             #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
+    // NATIVE SIG: PxVec3& operator+=(const PxVec3& v)
+    	{
+    		x += v.x;
+    		y += v.y;
+    		z += v.z;
+    		return *this;
+    	}
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L232~238
     #if NATIVE
-    ES UNPARSED_TYPE operator+=(physx::PxVec3 self, physx::PxVec3 v){
-        physx::PxVec3 nat_in_v = (v);
-        UNPARSED_TYPE retVal = self.operator+=(nat_in_v);
+    ES physx::PxVec3* W_operator+=(physx::PxVec3 self, physx::PxVec3 v){
+        auto nat_in_v = (v);
+        auto retVal = &self.operator+=(nat_in_v);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator+=(PxVec3 selfBlt, PxVec3 v);
+    static extern PxVec3 W_operator+=(PxVec3 selfBlt, PxVec3 v);
     
-    public UNPARSED_TYPE operator+=(PxVec3 v){
+    public static PxVec3 operator+=(PxVec3 lhs, PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        UNPARSED_TYPE retVal = operator+=(this, pvk_in_v);
+        PxVec3 retVal = W_operator+=(lhs, pvk_in_v);
         return retVal;
     }
     #endif*/
@@ -484,21 +530,27 @@ public unsafe partial struct PxVec3 { // blittable
     //#       operator-=                                                             #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
+    // NATIVE SIG: PxVec3& operator-=(const PxVec3& v)
+    	{
+    		x -= v.x;
+    		y -= v.y;
+    		z -= v.z;
+    		return *this;
+    	}
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L243~249
     #if NATIVE
-    ES UNPARSED_TYPE operator-=(physx::PxVec3 self, physx::PxVec3 v){
-        physx::PxVec3 nat_in_v = (v);
-        UNPARSED_TYPE retVal = self.operator-=(nat_in_v);
+    ES physx::PxVec3* W_operator-=(physx::PxVec3 self, physx::PxVec3 v){
+        auto nat_in_v = (v);
+        auto retVal = &self.operator-=(nat_in_v);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator-=(PxVec3 selfBlt, PxVec3 v);
+    static extern PxVec3 W_operator-=(PxVec3 selfBlt, PxVec3 v);
     
-    public UNPARSED_TYPE operator-=(PxVec3 v){
+    public static PxVec3 operator-=(PxVec3 lhs, PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        UNPARSED_TYPE retVal = operator-=(this, pvk_in_v);
+        PxVec3 retVal = W_operator-=(lhs, pvk_in_v);
         return retVal;
     }
     #endif*/
@@ -508,21 +560,27 @@ public unsafe partial struct PxVec3 { // blittable
     //#       operator*=                                                             #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
+    // NATIVE SIG: PxVec3& operator*=(float f)
+    	{
+    		x *= f;
+    		y *= f;
+    		z *= f;
+    		return *this;
+    	}
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L254~260
     #if NATIVE
-    ES UNPARSED_TYPE operator*=(physx::PxVec3 self, float f){
-        float nat_in_f = (f);
-        UNPARSED_TYPE retVal = self.operator*=(nat_in_f);
+    ES physx::PxVec3* W_operator*=(physx::PxVec3 self, float f){
+        auto nat_in_f = (f);
+        auto retVal = &self.operator*=(nat_in_f);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator*=(PxVec3 selfBlt, float f);
+    static extern PxVec3 W_operator*=(PxVec3 selfBlt, float f);
     
-    public UNPARSED_TYPE operator*=(float f){
+    public static PxVec3 operator*=(PxVec3 lhs, float f){
         float pvk_in_f = (f);
-        UNPARSED_TYPE retVal = operator*=(this, pvk_in_f);
+        PxVec3 retVal = W_operator*=(lhs, pvk_in_f);
         return retVal;
     }
     #endif*/
@@ -532,21 +590,28 @@ public unsafe partial struct PxVec3 { // blittable
     //#       operator/=                                                             #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
+    // NATIVE SIG: PxVec3& operator/=(float f)
+    	{
+    		f = 1.0f / f;
+    		x *= f;
+    		y *= f;
+    		z *= f;
+    		return *this;
+    	}
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L264~271
     #if NATIVE
-    ES UNPARSED_TYPE operator/=(physx::PxVec3 self, float f){
-        float nat_in_f = (f);
-        UNPARSED_TYPE retVal = self.operator/=(nat_in_f);
+    ES physx::PxVec3* W_operator/=(physx::PxVec3 self, float f){
+        auto nat_in_f = (f);
+        auto retVal = &self.operator/=(nat_in_f);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator/=(PxVec3 selfBlt, float f);
+    static extern PxVec3 W_operator/=(PxVec3 selfBlt, float f);
     
-    public UNPARSED_TYPE operator/=(float f){
+    public static PxVec3 operator/=(PxVec3 lhs, float f){
         float pvk_in_f = (f);
-        UNPARSED_TYPE retVal = operator/=(this, pvk_in_f);
+        PxVec3 retVal = W_operator/=(lhs, pvk_in_f);
         return retVal;
     }
     #endif*/
@@ -557,18 +622,18 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L276~279
     #if NATIVE
-    ES float dot(physx::PxVec3 self, physx::PxVec3 v){
-        physx::PxVec3 nat_in_v = (v);
-        float retVal = self.dot(nat_in_v);
+    ES float W_dot(physx::PxVec3 self, physx::PxVec3 v){
+        auto nat_in_v = (v);
+        auto retVal = self.dot(nat_in_v);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float dot(PxVec3 selfBlt, PxVec3 v);
+    static extern float W_dot(PxVec3 selfBlt, PxVec3 v);
     
     public float dot(PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        float retVal = dot(this, pvk_in_v);
+        float retVal = W_dot(this, pvk_in_v);
         return retVal;
     }
     #endif
@@ -579,18 +644,18 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L284~287
     #if NATIVE
-    ES physx::PxVec3 cross(physx::PxVec3 self, physx::PxVec3 v){
-        physx::PxVec3 nat_in_v = (v);
-        physx::PxVec3 retVal = self.cross(nat_in_v);
+    ES physx::PxVec3 W_cross(physx::PxVec3 self, physx::PxVec3 v){
+        auto nat_in_v = (v);
+        auto retVal = self.cross(nat_in_v);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 cross(PxVec3 selfBlt, PxVec3 v);
+    static extern PxVec3 W_cross(PxVec3 selfBlt, PxVec3 v);
     
     public PxVec3 cross(PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = cross(this, pvk_in_v);
+        PxVec3 retVal = W_cross(this, pvk_in_v);
         return retVal;
     }
     #endif
@@ -601,16 +666,16 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L291~295
     #if NATIVE
-    ES physx::PxVec3 getNormalized(physx::PxVec3 self){
-        physx::PxVec3 retVal = self.getNormalized();
+    ES physx::PxVec3 W_getNormalized(physx::PxVec3 self){
+        auto retVal = self.getNormalized();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 getNormalized(PxVec3 selfBlt);
+    static extern PxVec3 W_getNormalized(PxVec3 selfBlt);
     
     public PxVec3 getNormalized(){
-        PxVec3 retVal = getNormalized(this);
+        PxVec3 retVal = W_getNormalized(this);
         return retVal;
     }
     #endif
@@ -621,16 +686,16 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L300~306
     #if NATIVE
-    ES float normalize(physx::PxVec3 self){
-        float retVal = self.normalize();
+    ES float W_normalize(physx::PxVec3 self){
+        auto retVal = self.normalize();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float normalize(PxVec3 selfBlt);
+    static extern float W_normalize(PxVec3 selfBlt);
     
     public float normalize(){
-        float retVal = normalize(this);
+        float retVal = W_normalize(this);
         return retVal;
     }
     #endif
@@ -641,16 +706,16 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L312~319
     #if NATIVE
-    ES float normalizeSafe(physx::PxVec3 self){
-        float retVal = self.normalizeSafe();
+    ES float W_normalizeSafe(physx::PxVec3 self){
+        auto retVal = self.normalizeSafe();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float normalizeSafe(PxVec3 selfBlt);
+    static extern float W_normalizeSafe(PxVec3 selfBlt);
     
     public float normalizeSafe(){
-        float retVal = normalizeSafe(this);
+        float retVal = W_normalizeSafe(this);
         return retVal;
     }
     #endif
@@ -661,16 +726,16 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L325~331
     #if NATIVE
-    ES float normalizeFast(physx::PxVec3 self){
-        float retVal = self.normalizeFast();
+    ES float W_normalizeFast(physx::PxVec3 self){
+        auto retVal = self.normalizeFast();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float normalizeFast(PxVec3 selfBlt);
+    static extern float W_normalizeFast(PxVec3 selfBlt);
     
     public float normalizeFast(){
-        float retVal = normalizeFast(this);
+        float retVal = W_normalizeFast(this);
         return retVal;
     }
     #endif
@@ -681,18 +746,18 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L336~339
     #if NATIVE
-    ES physx::PxVec3 multiply(physx::PxVec3 self, physx::PxVec3 a){
-        physx::PxVec3 nat_in_a = (a);
-        physx::PxVec3 retVal = self.multiply(nat_in_a);
+    ES physx::PxVec3 W_multiply(physx::PxVec3 self, physx::PxVec3 a){
+        auto nat_in_a = (a);
+        auto retVal = self.multiply(nat_in_a);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 multiply(PxVec3 selfBlt, PxVec3 a);
+    static extern PxVec3 W_multiply(PxVec3 selfBlt, PxVec3 a);
     
     public PxVec3 multiply(PxVec3 a){
         PxVec3 pvk_in_a = (a);
-        PxVec3 retVal = multiply(this, pvk_in_a);
+        PxVec3 retVal = W_multiply(this, pvk_in_a);
         return retVal;
     }
     #endif
@@ -703,18 +768,18 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L344~347
     #if NATIVE
-    ES physx::PxVec3 minimum(physx::PxVec3 self, physx::PxVec3 v){
-        physx::PxVec3 nat_in_v = (v);
-        physx::PxVec3 retVal = self.minimum(nat_in_v);
+    ES physx::PxVec3 W_minimum(physx::PxVec3 self, physx::PxVec3 v){
+        auto nat_in_v = (v);
+        auto retVal = self.minimum(nat_in_v);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 minimum(PxVec3 selfBlt, PxVec3 v);
+    static extern PxVec3 W_minimum(PxVec3 selfBlt, PxVec3 v);
     
     public PxVec3 minimum(PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = minimum(this, pvk_in_v);
+        PxVec3 retVal = W_minimum(this, pvk_in_v);
         return retVal;
     }
     #endif
@@ -725,16 +790,16 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L352~355
     #if NATIVE
-    ES float minElement(physx::PxVec3 self){
-        float retVal = self.minElement();
+    ES float W_minElement(physx::PxVec3 self){
+        auto retVal = self.minElement();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float minElement(PxVec3 selfBlt);
+    static extern float W_minElement(PxVec3 selfBlt);
     
     public float minElement(){
-        float retVal = minElement(this);
+        float retVal = W_minElement(this);
         return retVal;
     }
     #endif
@@ -745,18 +810,18 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L360~363
     #if NATIVE
-    ES physx::PxVec3 maximum(physx::PxVec3 self, physx::PxVec3 v){
-        physx::PxVec3 nat_in_v = (v);
-        physx::PxVec3 retVal = self.maximum(nat_in_v);
+    ES physx::PxVec3 W_maximum(physx::PxVec3 self, physx::PxVec3 v){
+        auto nat_in_v = (v);
+        auto retVal = self.maximum(nat_in_v);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 maximum(PxVec3 selfBlt, PxVec3 v);
+    static extern PxVec3 W_maximum(PxVec3 selfBlt, PxVec3 v);
     
     public PxVec3 maximum(PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = maximum(this, pvk_in_v);
+        PxVec3 retVal = W_maximum(this, pvk_in_v);
         return retVal;
     }
     #endif
@@ -767,16 +832,16 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L368~371
     #if NATIVE
-    ES float maxElement(physx::PxVec3 self){
-        float retVal = self.maxElement();
+    ES float W_maxElement(physx::PxVec3 self){
+        auto retVal = self.maxElement();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float maxElement(PxVec3 selfBlt);
+    static extern float W_maxElement(PxVec3 selfBlt);
     
     public float maxElement(){
-        float retVal = maxElement(this);
+        float retVal = W_maxElement(this);
         return retVal;
     }
     #endif
@@ -787,16 +852,16 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L376~379
     #if NATIVE
-    ES physx::PxVec3 abs(physx::PxVec3 self){
-        physx::PxVec3 retVal = self.abs();
+    ES physx::PxVec3 W_abs(physx::PxVec3 self){
+        auto retVal = self.abs();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 abs(PxVec3 selfBlt);
+    static extern PxVec3 W_abs(PxVec3 selfBlt);
     
     public PxVec3 abs(){
-        PxVec3 retVal = abs(this);
+        PxVec3 retVal = W_abs(this);
         return retVal;
     }
     #endif
@@ -806,17 +871,18 @@ public unsafe partial struct PxVec3 { // blittable
     //#       ~PxVec3                                                                #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
+    // NATIVE SIG: PxVec3
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L49~49
     #if NATIVE
-    ES void ~PxVec3(physx::PxVec3 self){
+    ES void W_~PxVec3(physx::PxVec3 self){
         self.~PxVec3();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void ~PxVec3(PxVec3 selfBlt);
+    static extern void W_~PxVec3(PxVec3 selfBlt);
     
     public void ~PxVec3(){
-        ~PxVec3(this);
+        W_~PxVec3(this);
     }
     #endif*/
     

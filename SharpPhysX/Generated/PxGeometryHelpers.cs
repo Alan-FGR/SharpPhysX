@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 #endif
 
 
+
 #if !NATIVE
 public unsafe partial struct PxGeometryHolder { // pointer
     private IntPtr nativePtr_;
@@ -14,16 +15,16 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L67~70
     #if NATIVE
-    ES physx::PxGeometryType::Enum getType(physx::PxGeometryHolder* self){
-        physx::PxGeometryType::Enum retVal = self->getType();
+    ES physx::PxGeometryType::Enum W_getType(physx::PxGeometryHolder* self){
+        auto retVal = self->getType();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxGeometryType getType(PxGeometryHolder selfPtr);
+    static extern PxGeometryType W_getType(PxGeometryHolder selfPtr);
     
     public PxGeometryType getType(){
-        PxGeometryType retVal = getType(this);
+        PxGeometryType retVal = W_getType(this);
         return retVal;
     }
     #endif
@@ -32,358 +33,341 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       any                                                                    #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L72~75
     #if NATIVE
-    ES UNPARSED_TYPE any(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->any();
+    ES physx::PxGeometry* W_any(physx::PxGeometryHolder* self){
+        auto retVal = &self->any();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE any(PxGeometryHolder selfPtr);
+    static extern PxGeometry W_any(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE any(){
-        UNPARSED_TYPE retVal = any(this);
+    public PxGeometry any(){
+        PxGeometry retVal = W_any(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       any                                                                    #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L77~80
     #if NATIVE
-    ES UNPARSED_TYPE any(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->any();
+    ES physx::PxGeometry* W_any(physx::PxGeometryHolder* self){
+        auto retVal = &self->any();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE any(PxGeometryHolder selfPtr);
+    static extern PxGeometry W_any(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE any(){
-        UNPARSED_TYPE retVal = any(this);
+    public PxGeometry any(){
+        PxGeometry retVal = W_any(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       sphere                                                                 #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L82~85
     #if NATIVE
-    ES UNPARSED_TYPE sphere(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->sphere();
+    ES physx::PxSphereGeometry* W_sphere(physx::PxGeometryHolder* self){
+        auto retVal = &self->sphere();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE sphere(PxGeometryHolder selfPtr);
+    static extern PxSphereGeometry W_sphere(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE sphere(){
-        UNPARSED_TYPE retVal = sphere(this);
+    public PxSphereGeometry sphere(){
+        PxSphereGeometry retVal = W_sphere(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       sphere                                                                 #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L87~90
     #if NATIVE
-    ES UNPARSED_TYPE sphere(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->sphere();
+    ES physx::PxSphereGeometry* W_sphere(physx::PxGeometryHolder* self){
+        auto retVal = &self->sphere();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE sphere(PxGeometryHolder selfPtr);
+    static extern PxSphereGeometry W_sphere(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE sphere(){
-        UNPARSED_TYPE retVal = sphere(this);
+    public PxSphereGeometry sphere(){
+        PxSphereGeometry retVal = W_sphere(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       plane                                                                  #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L92~95
     #if NATIVE
-    ES UNPARSED_TYPE plane(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->plane();
+    ES physx::PxPlaneGeometry* W_plane(physx::PxGeometryHolder* self){
+        auto retVal = &self->plane();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE plane(PxGeometryHolder selfPtr);
+    static extern PxPlaneGeometry W_plane(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE plane(){
-        UNPARSED_TYPE retVal = plane(this);
+    public PxPlaneGeometry plane(){
+        PxPlaneGeometry retVal = W_plane(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       plane                                                                  #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L97~100
     #if NATIVE
-    ES UNPARSED_TYPE plane(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->plane();
+    ES physx::PxPlaneGeometry* W_plane(physx::PxGeometryHolder* self){
+        auto retVal = &self->plane();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE plane(PxGeometryHolder selfPtr);
+    static extern PxPlaneGeometry W_plane(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE plane(){
-        UNPARSED_TYPE retVal = plane(this);
+    public PxPlaneGeometry plane(){
+        PxPlaneGeometry retVal = W_plane(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       capsule                                                                #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L102~105
     #if NATIVE
-    ES UNPARSED_TYPE capsule(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->capsule();
+    ES physx::PxCapsuleGeometry* W_capsule(physx::PxGeometryHolder* self){
+        auto retVal = &self->capsule();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE capsule(PxGeometryHolder selfPtr);
+    static extern PxCapsuleGeometry W_capsule(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE capsule(){
-        UNPARSED_TYPE retVal = capsule(this);
+    public PxCapsuleGeometry capsule(){
+        PxCapsuleGeometry retVal = W_capsule(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       capsule                                                                #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L107~110
     #if NATIVE
-    ES UNPARSED_TYPE capsule(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->capsule();
+    ES physx::PxCapsuleGeometry* W_capsule(physx::PxGeometryHolder* self){
+        auto retVal = &self->capsule();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE capsule(PxGeometryHolder selfPtr);
+    static extern PxCapsuleGeometry W_capsule(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE capsule(){
-        UNPARSED_TYPE retVal = capsule(this);
+    public PxCapsuleGeometry capsule(){
+        PxCapsuleGeometry retVal = W_capsule(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       box                                                                    #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L112~115
     #if NATIVE
-    ES UNPARSED_TYPE box(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->box();
+    ES physx::PxBoxGeometry* W_box(physx::PxGeometryHolder* self){
+        auto retVal = &self->box();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE box(PxGeometryHolder selfPtr);
+    static extern PxBoxGeometry W_box(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE box(){
-        UNPARSED_TYPE retVal = box(this);
+    public PxBoxGeometry box(){
+        PxBoxGeometry retVal = W_box(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       box                                                                    #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L117~120
     #if NATIVE
-    ES UNPARSED_TYPE box(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->box();
+    ES physx::PxBoxGeometry* W_box(physx::PxGeometryHolder* self){
+        auto retVal = &self->box();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE box(PxGeometryHolder selfPtr);
+    static extern PxBoxGeometry W_box(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE box(){
-        UNPARSED_TYPE retVal = box(this);
+    public PxBoxGeometry box(){
+        PxBoxGeometry retVal = W_box(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       convexMesh                                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L122~125
     #if NATIVE
-    ES UNPARSED_TYPE convexMesh(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->convexMesh();
+    ES physx::PxConvexMeshGeometry* W_convexMesh(physx::PxGeometryHolder* self){
+        auto retVal = &self->convexMesh();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE convexMesh(PxGeometryHolder selfPtr);
+    static extern PxConvexMeshGeometry W_convexMesh(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE convexMesh(){
-        UNPARSED_TYPE retVal = convexMesh(this);
+    public PxConvexMeshGeometry convexMesh(){
+        PxConvexMeshGeometry retVal = W_convexMesh(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       convexMesh                                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L127~130
     #if NATIVE
-    ES UNPARSED_TYPE convexMesh(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->convexMesh();
+    ES physx::PxConvexMeshGeometry* W_convexMesh(physx::PxGeometryHolder* self){
+        auto retVal = &self->convexMesh();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE convexMesh(PxGeometryHolder selfPtr);
+    static extern PxConvexMeshGeometry W_convexMesh(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE convexMesh(){
-        UNPARSED_TYPE retVal = convexMesh(this);
+    public PxConvexMeshGeometry convexMesh(){
+        PxConvexMeshGeometry retVal = W_convexMesh(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       triangleMesh                                                           #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L132~135
     #if NATIVE
-    ES UNPARSED_TYPE triangleMesh(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->triangleMesh();
+    ES physx::PxTriangleMeshGeometry* W_triangleMesh(physx::PxGeometryHolder* self){
+        auto retVal = &self->triangleMesh();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE triangleMesh(PxGeometryHolder selfPtr);
+    static extern PxTriangleMeshGeometry W_triangleMesh(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE triangleMesh(){
-        UNPARSED_TYPE retVal = triangleMesh(this);
+    public PxTriangleMeshGeometry triangleMesh(){
+        PxTriangleMeshGeometry retVal = W_triangleMesh(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       triangleMesh                                                           #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L137~140
     #if NATIVE
-    ES UNPARSED_TYPE triangleMesh(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->triangleMesh();
+    ES physx::PxTriangleMeshGeometry* W_triangleMesh(physx::PxGeometryHolder* self){
+        auto retVal = &self->triangleMesh();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE triangleMesh(PxGeometryHolder selfPtr);
+    static extern PxTriangleMeshGeometry W_triangleMesh(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE triangleMesh(){
-        UNPARSED_TYPE retVal = triangleMesh(this);
+    public PxTriangleMeshGeometry triangleMesh(){
+        PxTriangleMeshGeometry retVal = W_triangleMesh(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       heightField                                                            #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L142~145
     #if NATIVE
-    ES UNPARSED_TYPE heightField(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->heightField();
+    ES physx::PxHeightFieldGeometry* W_heightField(physx::PxGeometryHolder* self){
+        auto retVal = &self->heightField();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE heightField(PxGeometryHolder selfPtr);
+    static extern PxHeightFieldGeometry W_heightField(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE heightField(){
-        UNPARSED_TYPE retVal = heightField(this);
+    public PxHeightFieldGeometry heightField(){
+        PxHeightFieldGeometry retVal = W_heightField(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       heightField                                                            #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L147~150
     #if NATIVE
-    ES UNPARSED_TYPE heightField(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->heightField();
+    ES physx::PxHeightFieldGeometry* W_heightField(physx::PxGeometryHolder* self){
+        auto retVal = &self->heightField();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE heightField(PxGeometryHolder selfPtr);
+    static extern PxHeightFieldGeometry W_heightField(PxGeometryHolder selfPtr);
     
-    public UNPARSED_TYPE heightField(){
-        UNPARSED_TYPE retVal = heightField(this);
+    public PxHeightFieldGeometry heightField(){
+        PxHeightFieldGeometry retVal = W_heightField(this);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       storeAny                                                               #
     //================================================================================
-    /* ERRORS OCCURED: fsdfasdf
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L152~170
     #if NATIVE
-    ES void storeAny(physx::PxGeometryHolder* self,  geometry){
-         nat_in_geometry = (geometry);
-        self->storeAny(nat_in_geometry);
+    ES void W_storeAny(physx::PxGeometryHolder* self, physx::PxGeometry* geometry){
+        auto nat_in_geometry = (geometry);
+        self->storeAny(*nat_in_geometry);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void storeAny(PxGeometryHolder selfPtr,  geometry);
+    static extern void W_storeAny(PxGeometryHolder selfPtr, PxGeometry geometry);
     
-    public void storeAny( geometry){
-         pvk_in_geometry = (geometry);
-        storeAny(this, pvk_in_geometry);
+    public void storeAny(PxGeometry geometry){
+        PxGeometry pvk_in_geometry = (geometry);
+        W_storeAny(this, pvk_in_geometry);
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
@@ -391,17 +375,18 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
     Parameterless constructor not allowed
+    // NATIVE SIG: PX_FORCE_INLINE	PxGeometryHolder()							{}
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L172~172
     #if NATIVE
-    ES UNPARSED_TYPE PxGeometryHolder_ctor(){
+    ES UNPARSED_TYPE W_PxGeometryHolder_ctor(){
         self->PxGeometryHolder();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxGeometryHolder_ctor();
+    static extern UNPARSED_TYPE W_PxGeometryHolder_ctor();
     
     public PxGeometryHolder(){
-        var _new = PxGeometryHolder_ctor();
+        var _new = W_PxGeometryHolder_ctor();
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -412,20 +397,20 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //#       PxGeometryHolder                                                       #
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
-    fsdfasdf
+    // NATIVE SIG: PX_FORCE_INLINE	PxGeometryHolder(const PxGeometry& geometry){ storeAny(geometry);	}
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L173~173
     #if NATIVE
-    ES UNPARSED_TYPE PxGeometryHolder_ctor( geometry){
-         nat_in_geometry = (geometry);
-        self->PxGeometryHolder(nat_in_geometry);
+    ES UNPARSED_TYPE W_PxGeometryHolder_ctor(physx::PxGeometry* geometry){
+        auto nat_in_geometry = (geometry);
+        self->PxGeometryHolder(*nat_in_geometry);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxGeometryHolder_ctor( geometry);
+    static extern UNPARSED_TYPE W_PxGeometryHolder_ctor(PxGeometry geometry);
     
-    public PxGeometryHolder( geometry){
-         pvk_in_geometry = (geometry);
-        var _new = PxGeometryHolder_ctor(pvk_in_geometry);
+    public PxGeometryHolder(PxGeometry geometry){
+        PxGeometry pvk_in_geometry = (geometry);
+        var _new = W_PxGeometryHolder_ctor(pvk_in_geometry);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -435,40 +420,44 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       put                                                                    #
     //================================================================================
-    /* ERRORS OCCURED: fsdfasdf
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L176~179
     #if NATIVE
-    ES void put(physx::PxGeometryHolder* self,  geometry){
-         nat_in_geometry = (geometry);
-        self->put(nat_in_geometry);
+    ES void W_put(physx::PxGeometryHolder* self, physx::PxGeometry* geometry){
+        auto nat_in_geometry = (geometry);
+        self->put(*nat_in_geometry);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void put(PxGeometryHolder selfPtr,  geometry);
+    static extern void W_put(PxGeometryHolder selfPtr, PxGeometry geometry);
     
-    public void put( geometry){
-         pvk_in_geometry = (geometry);
-        put(this, pvk_in_geometry);
+    public void put(PxGeometry geometry){
+        PxGeometry pvk_in_geometry = (geometry);
+        W_put(this, pvk_in_geometry);
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       get                                                                    #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return reference type
+    // NATIVE SIG: T& get()
+    		{
+    			PX_ASSERT(getType() == type);
+    			return static_cast<T&>(any());
+    		}
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L181~185
     #if NATIVE
-    ES UNPARSED_TYPE get(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->get();
+    ES UNPARSED_TYPE W_get(physx::PxGeometryHolder* self){
+        auto retVal = self->get();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE get(PxGeometryHolder selfPtr);
+    static extern UNPARSED_TYPE W_get(PxGeometryHolder selfPtr);
     
     public UNPARSED_TYPE get(){
-        UNPARSED_TYPE retVal = get(this);
+        UNPARSED_TYPE retVal = W_get(this);
         return retVal;
     }
     #endif*/
@@ -477,19 +466,24 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       get                                                                    #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return reference type
+    // NATIVE SIG: T& get() const
+    		{
+    			PX_ASSERT(getType() == type);
+    			return static_cast<T&>(any());
+    		}
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L187~191
     #if NATIVE
-    ES UNPARSED_TYPE get(physx::PxGeometryHolder* self){
-        UNPARSED_TYPE retVal = self->get();
+    ES UNPARSED_TYPE W_get(physx::PxGeometryHolder* self){
+        auto retVal = self->get();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE get(PxGeometryHolder selfPtr);
+    static extern UNPARSED_TYPE W_get(PxGeometryHolder selfPtr);
     
     public UNPARSED_TYPE get(){
-        UNPARSED_TYPE retVal = get(this);
+        UNPARSED_TYPE retVal = W_get(this);
         return retVal;
     }
     #endif*/
@@ -499,21 +493,21 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //#       PxGeometryHolder                                                       #
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxGeometryHolder
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L64~64
     #if NATIVE
-    ES UNPARSED_TYPE PxGeometryHolder_ctor( ){
-         nat_in_ = ();
-        self->PxGeometryHolder(nat_in_);
+    ES UNPARSED_TYPE W_PxGeometryHolder_ctor(physx::PxGeometryHolder* ){
+        auto nat_in_ = ();
+        self->PxGeometryHolder(*nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxGeometryHolder_ctor( );
+    static extern UNPARSED_TYPE W_PxGeometryHolder_ctor(PxGeometryHolder );
     
-    public PxGeometryHolder( ){
-         pvk_in_ = ();
-        var _new = PxGeometryHolder_ctor(pvk_in_);
+    public PxGeometryHolder(PxGeometryHolder ){
+        PxGeometryHolder pvk_in_ = ();
+        var _new = W_PxGeometryHolder_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -524,23 +518,22 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxGeometryHolder
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L64~64
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxGeometryHolder* self){
-         nat_in_ = ();
-        UNPARSED_TYPE retVal = self->operator=(nat_in_);
+    ES physx::PxGeometryHolder* W_operator=(physx::PxGeometryHolder* self, physx::PxGeometryHolder* ){
+        auto nat_in_ = ();
+        auto retVal = &self->operator=(*nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxGeometryHolder selfPtr);
+    static extern PxGeometryHolder W_operator=(PxGeometryHolder selfPtr, PxGeometryHolder );
     
-    public UNPARSED_TYPE operator=( ){
-         pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+    public static PxGeometryHolder operator=(PxGeometryHolder lhs, PxGeometryHolder ){
+        PxGeometryHolder pvk_in_ = ();
+        PxGeometryHolder retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/
@@ -550,21 +543,21 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //#       PxGeometryHolder                                                       #
     //================================================================================
     /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxGeometryHolder
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L64~64
     #if NATIVE
-    ES UNPARSED_TYPE PxGeometryHolder_ctor( ){
-         nat_in_ = ();
-        self->PxGeometryHolder(nat_in_);
+    ES UNPARSED_TYPE W_PxGeometryHolder_ctor(physx::PxGeometryHolder* ){
+        auto nat_in_ = ();
+        self->PxGeometryHolder(*nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE PxGeometryHolder_ctor( );
+    static extern UNPARSED_TYPE W_PxGeometryHolder_ctor(PxGeometryHolder );
     
-    public PxGeometryHolder( ){
-         pvk_in_ = ();
-        var _new = PxGeometryHolder_ctor(pvk_in_);
+    public PxGeometryHolder(PxGeometryHolder ){
+        PxGeometryHolder pvk_in_ = ();
+        var _new = W_PxGeometryHolder_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -575,23 +568,22 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
-    fsdfasdf
+    Invalid parameter name (empty)
+    // NATIVE SIG: PxGeometryHolder
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L64~64
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxGeometryHolder* self){
-         nat_in_ = ();
-        UNPARSED_TYPE retVal = self->operator=(nat_in_);
+    ES physx::PxGeometryHolder* W_operator=(physx::PxGeometryHolder* self, physx::PxGeometryHolder* ){
+        auto nat_in_ = ();
+        auto retVal = &self->operator=(*nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=(PxGeometryHolder selfPtr);
+    static extern PxGeometryHolder W_operator=(PxGeometryHolder selfPtr, PxGeometryHolder );
     
-    public UNPARSED_TYPE operator=( ){
-         pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+    public static PxGeometryHolder operator=(PxGeometryHolder lhs, PxGeometryHolder ){
+        PxGeometryHolder pvk_in_ = ();
+        PxGeometryHolder retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/
@@ -601,17 +593,18 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //#       ~PxGeometryHolder                                                      #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
+    // NATIVE SIG: PxGeometryHolder
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L64~64
     #if NATIVE
-    ES void ~PxGeometryHolder(physx::PxGeometryHolder* self){
+    ES void W_~PxGeometryHolder(physx::PxGeometryHolder* self){
         self->~PxGeometryHolder();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void ~PxGeometryHolder(PxGeometryHolder selfPtr);
+    static extern void W_~PxGeometryHolder(PxGeometryHolder selfPtr);
     
     public void ~PxGeometryHolder(){
-        ~PxGeometryHolder(this);
+        W_~PxGeometryHolder(this);
     }
     #endif*/
     
@@ -640,17 +633,18 @@ public unsafe partial struct  { // blittable
     //#                                                                              #
     //================================================================================
     /* ERRORS OCCURED: Parameterless constructor not allowed
+    // NATIVE SIG: union
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L193~193
     #if NATIVE
-    ES physx::PxGeometryHolder:: _ctor(){
+    ES physx::PxGeometryHolder:: W__ctor(){
         self.();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern  _ctor();
+    static extern  W__ctor();
     
     public (){
-        var _new = _ctor();
+        var _new = W__ctor();
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -660,20 +654,21 @@ public unsafe partial struct  { // blittable
     //================================================================================
     //#                                                                              #
     //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name
+    /* ERRORS OCCURED: Invalid parameter name (empty)
+    // NATIVE SIG: union
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L193~193
     #if NATIVE
-    ES physx::PxGeometryHolder:: _ctor(physx::PxGeometryHolder:: ){
-        physx::PxGeometryHolder:: nat_in_ = ();
+    ES physx::PxGeometryHolder:: W__ctor(physx::PxGeometryHolder:: ){
+        auto nat_in_ = ();
         self.(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern  _ctor( );
+    static extern  W__ctor( );
     
     public ( ){
          pvk_in_ = ();
-        var _new = _ctor(pvk_in_);
+        var _new = W__ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -683,21 +678,22 @@ public unsafe partial struct  { // blittable
     //================================================================================
     //#                                                                              #
     //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name
+    /* ERRORS OCCURED: Invalid parameter name (empty)
     Non const pointer/reference global::PhysX.physx.PxGeometryHolder.
+    // NATIVE SIG: union
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L193~193
     #if NATIVE
-    ES physx::PxGeometryHolder:: _ctor( ){
-         nat_in_ = ();
+    ES physx::PxGeometryHolder:: W__ctor( ){
+        auto nat_in_ = ();
         self.(nat_in_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern  _ctor( );
+    static extern  W__ctor( );
     
     public ( ){
          pvk_in_ = ();
-        var _new = _ctor(pvk_in_);
+        var _new = W__ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -708,17 +704,18 @@ public unsafe partial struct  { // blittable
     //#       ~                                                                      #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
+    // NATIVE SIG: union
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L193~193
     #if NATIVE
-    ES void ~(physx::PxGeometryHolder self){
+    ES void W_~(physx::PxGeometryHolder self){
         self.~();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void ~( selfBlt);
+    static extern void W_~( selfBlt);
     
     public void ~(){
-        ~(this);
+        W_~(this);
     }
     #endif*/
     
@@ -727,22 +724,22 @@ public unsafe partial struct  { // blittable
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
+    Invalid parameter name (empty)
+    // NATIVE SIG: union
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L193~193
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxGeometryHolder self, physx::PxGeometryHolder:: ){
-        physx::PxGeometryHolder:: nat_in_ = ();
-        UNPARSED_TYPE retVal = self.operator=(nat_in_);
+    ES physx::PxGeometryHolder::* W_operator=(physx::PxGeometryHolder self, physx::PxGeometryHolder:: ){
+        auto nat_in_ = ();
+        auto retVal = &self.operator=(nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=( selfBlt);
+    static extern  W_operator=( selfBlt);
     
-    public UNPARSED_TYPE operator=( ){
+    public static  operator=( lhs,  ){
          pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+         retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/
@@ -752,23 +749,23 @@ public unsafe partial struct  { // blittable
     //#       operator=                                                              #
     //================================================================================
     /* ERRORS OCCURED: Ops TODO
-    unhandled return type
-    Invalid parameter name
+    Invalid parameter name (empty)
     Non const pointer/reference global::PhysX.physx.PxGeometryHolder.
+    // NATIVE SIG: union
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L193~193
     #if NATIVE
-    ES UNPARSED_TYPE operator=(physx::PxGeometryHolder self){
-         nat_in_ = ();
-        UNPARSED_TYPE retVal = self.operator=(nat_in_);
+    ES physx::PxGeometryHolder::* W_operator=(physx::PxGeometryHolder self){
+        auto nat_in_ = ();
+        auto retVal = &self.operator=(nat_in_);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE operator=( selfBlt);
+    static extern  W_operator=( selfBlt);
     
-    public UNPARSED_TYPE operator=( ){
+    public static  operator=( lhs,  ){
          pvk_in_ = ();
-        UNPARSED_TYPE retVal = operator=(this, pvk_in_);
+         retVal = W_operator=(lhs, pvk_in_);
         return retVal;
     }
     #endif*/

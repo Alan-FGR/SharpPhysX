@@ -25,3 +25,17 @@ public partial struct PxFoundation
 {
     
 }
+
+public partial struct PxTransform
+{
+    public static bool operator!=(PxTransform lhs, PxTransform t){
+        return !(lhs==t);
+    }
+}
+
+public partial struct PxPlane
+{
+    public static bool operator!=(PxPlane lhs, PxPlane p){
+        return !(lhs==p);
+    }
+}
