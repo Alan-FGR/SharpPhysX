@@ -1,7 +1,10 @@
 # SharpPhysX
 ## Status
+### Current state: **PhysX initializes properly**
 Track progress **[here](https://github.com/Alan-FGR/SharpPhysX/projects/1)**.
 Items in the Review column are implemented and generally safe to use.
+## Description
+Nvidia PhysX 4 bindings partially generated using my general-purpose C++ binder *minBND*.
 ## API FAQ
 #### Why are there SomeType**Ptr** using directives in auto generated code that seem mostly redundant/useless?
 Pointer holder structs are effectively pointers. These exist to catch pointers to pointers in generated code and don't affect user code.
