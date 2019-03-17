@@ -1,5 +1,8 @@
 # SharpPhysX
+## Description
+Nvidia PhysX 4 bindings partially generated using my general-purpose C++ binder *minBND*.
 ## Status
+### Current state: PhysX initializes properly.
 Track progress **[here](https://github.com/Alan-FGR/SharpPhysX/projects/1)**.
 Items in the Review column are implemented and generally safe to use.
 ## API FAQ
