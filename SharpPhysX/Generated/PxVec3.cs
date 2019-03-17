@@ -4,7 +4,9 @@ using System.Runtime.InteropServices;
 #endif
 
 
+#if !NATIVE
 public partial struct PxVec3 {
+#endif
 
 //================================================================================
 //#       operator*                                                              #
@@ -29,7 +31,9 @@ public static PxVec3 operator*(float f, PxVec3 v){
 }
 #endif
 
+#if !NATIVE
 } // End PxVec3
+#endif
 
 
 #if !NATIVE
@@ -43,25 +47,9 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     //#       PxVec3                                                                 #
     //================================================================================
-    /* ERRORS OCCURED: Parameterless constructor not allowed
-    // NATIVE SIG: PX_FORCE_INLINE PxVec3()
-    	{
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L55~57
-    #if NATIVE
-    ES physx::PxVec3 W_PxVec3_ctor(){
-        self.PxVec3();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_PxVec3_ctor();
-    
-    public PxVec3(){
-        var _new = W_PxVec3_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped invalid managed declaration:
+    /*Parameterless constructor not allowed
+    */
     
     
     //================================================================================
@@ -159,89 +147,22 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     //#       operator=                                                              #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxVec3& operator=(const PxVec3& p)
-    	{
-    		x = p.x;
-    		y = p.y;
-    		z = p.z;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L101~107
-    #if NATIVE
-    ES physx::PxVec3* W_operator=(physx::PxVec3 self, physx::PxVec3 p){
-        auto nat_in_p = (p);
-        auto retVal = &self.operator=(nat_in_p);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_operator=(PxVec3 selfBlt, PxVec3 p);
-    
-    public static PxVec3 operator=(PxVec3 lhs, PxVec3 p){
-        PxVec3 pvk_in_p = (p);
-        PxVec3 retVal = W_operator=(lhs, pvk_in_p);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Equal.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator[]                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: float& operator[](unsigned int index)
-    	{
-    		PX_ASSERT(index <= 2);
-    
-    		return reinterpret_cast<float*>(this)[index];
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L112~117
-    #if NATIVE
-    ES float* W_operator[](physx::PxVec3 self, unsigned int index){
-        auto nat_in_index = (index);
-        auto retVal = self.operator[](nat_in_index);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_operator[](PxVec3 selfBlt, uint index);
-    
-    public static IntPtr operator[](PxVec3 lhs, uint index){
-        uint pvk_in_index = (index);
-        IntPtr retVal = W_operator[](lhs, pvk_in_index);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Subscript.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator[]                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: float& operator[](unsigned int index) const
-    	{
-    		PX_ASSERT(index <= 2);
-    
-    		return reinterpret_cast<const float*>(this)[index];
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L122~127
-    #if NATIVE
-    ES float* W_operator[](physx::PxVec3 self, unsigned int index){
-        auto nat_in_index = (index);
-        auto retVal = self.operator[](nat_in_index);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_operator[](PxVec3 selfBlt, uint index);
-    
-    public static IntPtr operator[](PxVec3 lhs, uint index){
-        uint pvk_in_index = (index);
-        IntPtr retVal = W_operator[](lhs, pvk_in_index);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Subscript.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
@@ -499,122 +420,29 @@ public unsafe partial struct PxVec3 { // blittable
     //================================================================================
     //#       operator+=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxVec3& operator+=(const PxVec3& v)
-    	{
-    		x += v.x;
-    		y += v.y;
-    		z += v.z;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L232~238
-    #if NATIVE
-    ES physx::PxVec3* W_operator+=(physx::PxVec3 self, physx::PxVec3 v){
-        auto nat_in_v = (v);
-        auto retVal = &self.operator+=(nat_in_v);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_operator+=(PxVec3 selfBlt, PxVec3 v);
-    
-    public static PxVec3 operator+=(PxVec3 lhs, PxVec3 v){
-        PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = W_operator+=(lhs, pvk_in_v);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator PlusEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator-=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxVec3& operator-=(const PxVec3& v)
-    	{
-    		x -= v.x;
-    		y -= v.y;
-    		z -= v.z;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L243~249
-    #if NATIVE
-    ES physx::PxVec3* W_operator-=(physx::PxVec3 self, physx::PxVec3 v){
-        auto nat_in_v = (v);
-        auto retVal = &self.operator-=(nat_in_v);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_operator-=(PxVec3 selfBlt, PxVec3 v);
-    
-    public static PxVec3 operator-=(PxVec3 lhs, PxVec3 v){
-        PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = W_operator-=(lhs, pvk_in_v);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator MinusEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator*=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxVec3& operator*=(float f)
-    	{
-    		x *= f;
-    		y *= f;
-    		z *= f;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L254~260
-    #if NATIVE
-    ES physx::PxVec3* W_operator*=(physx::PxVec3 self, float f){
-        auto nat_in_f = (f);
-        auto retVal = &self.operator*=(nat_in_f);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_operator*=(PxVec3 selfBlt, float f);
-    
-    public static PxVec3 operator*=(PxVec3 lhs, float f){
-        float pvk_in_f = (f);
-        PxVec3 retVal = W_operator*=(lhs, pvk_in_f);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator StarEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator/=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxVec3& operator/=(float f)
-    	{
-    		f = 1.0f / f;
-    		x *= f;
-    		y *= f;
-    		z *= f;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L264~271
-    #if NATIVE
-    ES physx::PxVec3* W_operator/=(physx::PxVec3 self, float f){
-        auto nat_in_f = (f);
-        auto retVal = &self.operator/=(nat_in_f);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_operator/=(PxVec3 selfBlt, float f);
-    
-    public static PxVec3 operator/=(PxVec3 lhs, float f){
-        float pvk_in_f = (f);
-        PxVec3 retVal = W_operator/=(lhs, pvk_in_f);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator SlashEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
@@ -867,25 +695,7 @@ public unsafe partial struct PxVec3 { // blittable
     #endif
     
     
-    //================================================================================
-    //#       ~PxVec3                                                                #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: PxVec3
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec3.h L49~49
-    #if NATIVE
-    ES void W_~PxVec3(physx::PxVec3 self){
-        self.~PxVec3();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxVec3(PxVec3 selfBlt);
-    
-    public void ~PxVec3(){
-        W_~PxVec3(this);
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: ~PxVec3
     
 
 #if !NATIVE

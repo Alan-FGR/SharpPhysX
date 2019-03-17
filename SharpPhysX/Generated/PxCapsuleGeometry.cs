@@ -4,7 +4,9 @@ using System.Runtime.InteropServices;
 #endif
 
 
+#if !NATIVE
 public partial struct PxCapsuleGeometry {
+#endif
 
 //================================================================================
 //#       PxTransformFromSegment                                                 #
@@ -31,52 +33,41 @@ public static PxTransform PxTransformFromSegment(PxVec3 p0, PxVec3 p1, float* ha
 }
 #endif
 
+#if !NATIVE
 } // End PxCapsuleGeometry
+#endif
 
 
 #if !NATIVE
-public unsafe partial struct PxCapsuleGeometry { // pointer
-    private IntPtr nativePtr_;
+public unsafe partial struct PxCapsuleGeometry { // blittable
+    // TODO extract fields from base classes reliably (if possible at all)
+    // FIELDS COULDN'T BE RESOLVED AUTOMATICALLY. YOU MAY HANDLE THAT MANUALLY AS GETTERS BELOW:
+    private object CHECK_radius => radius; // physx::PxReal
+    private object CHECK_halfHeight => halfHeight; // physx::PxReal
+
 #endif
 
     //================================================================================
     //#       PxCapsuleGeometry                                                      #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Parameterless constructor not allowed
-    // NATIVE SIG: PX_INLINE PxCapsuleGeometry() :						PxGeometry(PxGeometryType::eCAPSULE), radius(0), halfHeight(0)		{}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxCapsuleGeometry.h L60~60
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxCapsuleGeometry_ctor(){
-        self->PxCapsuleGeometry();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxCapsuleGeometry_ctor();
-    
-    public PxCapsuleGeometry(){
-        var _new = W_PxCapsuleGeometry_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped invalid managed declaration:
+    /*Parameterless constructor not allowed
+    */
     
     
     //================================================================================
     //#       PxCapsuleGeometry                                                      #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    // NATIVE SIG: PX_INLINE PxCapsuleGeometry(PxReal radius_, PxReal halfHeight_) :	PxGeometry(PxGeometryType::eCAPSULE), radius(radius_), halfHeight(halfHeight_)	{}
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxCapsuleGeometry.h L65~65
     #if NATIVE
-    ES UNPARSED_TYPE W_PxCapsuleGeometry_ctor(physx::PxReal radius_, physx::PxReal halfHeight_){
+    ES physx::PxCapsuleGeometry W_PxCapsuleGeometry_ctor(physx::PxReal radius_, physx::PxReal halfHeight_){
         auto nat_in_radius_ = (radius_);
         auto nat_in_halfHeight_ = (halfHeight_);
-        self->PxCapsuleGeometry(nat_in_radius_, nat_in_halfHeight_);
+        self.PxCapsuleGeometry(nat_in_radius_, nat_in_halfHeight_);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxCapsuleGeometry_ctor(float radius_, float halfHeight_);
+    static extern PxCapsuleGeometry W_PxCapsuleGeometry_ctor(float radius_, float halfHeight_);
     
     public PxCapsuleGeometry(float radius_, float halfHeight_){
         float pvk_in_radius_ = (radius_);
@@ -85,7 +76,7 @@ public unsafe partial struct PxCapsuleGeometry { // pointer
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
@@ -93,13 +84,13 @@ public unsafe partial struct PxCapsuleGeometry { // pointer
     //================================================================================
     // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxCapsuleGeometry.h L77~77
     #if NATIVE
-    ES bool W_isValid(physx::PxCapsuleGeometry* self){
-        auto retVal = self->isValid();
+    ES bool W_isValid(physx::PxCapsuleGeometry self){
+        auto retVal = self.isValid();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isValid(PxCapsuleGeometry selfPtr);
+    static extern bool W_isValid(PxCapsuleGeometry selfBlt);
     
     public bool isValid(){
         bool retVal = W_isValid(this);
@@ -108,125 +99,15 @@ public unsafe partial struct PxCapsuleGeometry { // pointer
     #endif
     
     
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxCapsuleGeometry
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxCapsuleGeometry.h L54~54
-    #if NATIVE
-    ES physx::PxCapsuleGeometry* W_operator=(physx::PxCapsuleGeometry* self, physx::PxCapsuleGeometry* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxCapsuleGeometry W_operator=(PxCapsuleGeometry selfPtr, PxCapsuleGeometry );
+    //Skipped generated implicit entry: operator=
     
-    public static PxCapsuleGeometry operator=(PxCapsuleGeometry lhs, PxCapsuleGeometry ){
-        PxCapsuleGeometry pvk_in_ = ();
-        PxCapsuleGeometry retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
+    //Skipped generated implicit entry: operator=
     
+    //Skipped generated implicit entry: PxCapsuleGeometry
     
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxCapsuleGeometry
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxCapsuleGeometry.h L54~54
-    #if NATIVE
-    ES physx::PxCapsuleGeometry* W_operator=(physx::PxCapsuleGeometry* self, physx::PxCapsuleGeometry* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxCapsuleGeometry W_operator=(PxCapsuleGeometry selfPtr, PxCapsuleGeometry );
+    //Skipped generated implicit entry: PxCapsuleGeometry
     
-    public static PxCapsuleGeometry operator=(PxCapsuleGeometry lhs, PxCapsuleGeometry ){
-        PxCapsuleGeometry pvk_in_ = ();
-        PxCapsuleGeometry retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       PxCapsuleGeometry                                                      #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxCapsuleGeometry
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxCapsuleGeometry.h L54~54
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxCapsuleGeometry_ctor(physx::PxCapsuleGeometry* ){
-        auto nat_in_ = ();
-        self->PxCapsuleGeometry(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxCapsuleGeometry_ctor(PxCapsuleGeometry );
-    
-    public PxCapsuleGeometry(PxCapsuleGeometry ){
-        PxCapsuleGeometry pvk_in_ = ();
-        var _new = W_PxCapsuleGeometry_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       PxCapsuleGeometry                                                      #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxCapsuleGeometry
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxCapsuleGeometry.h L54~54
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxCapsuleGeometry_ctor(physx::PxCapsuleGeometry* ){
-        auto nat_in_ = ();
-        self->PxCapsuleGeometry(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxCapsuleGeometry_ctor(PxCapsuleGeometry );
-    
-    public PxCapsuleGeometry(PxCapsuleGeometry ){
-        PxCapsuleGeometry pvk_in_ = ();
-        var _new = W_PxCapsuleGeometry_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       ~PxCapsuleGeometry                                                     #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: PxCapsuleGeometry
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxCapsuleGeometry.h L54~54
-    #if NATIVE
-    ES void W_~PxCapsuleGeometry(physx::PxCapsuleGeometry* self){
-        self->~PxCapsuleGeometry();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxCapsuleGeometry(PxCapsuleGeometry selfPtr);
-    
-    public void ~PxCapsuleGeometry(){
-        W_~PxCapsuleGeometry(this);
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: ~PxCapsuleGeometry
     
 
 #if !NATIVE

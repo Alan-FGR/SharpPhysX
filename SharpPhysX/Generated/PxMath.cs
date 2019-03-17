@@ -4,14 +4,16 @@ using System.Runtime.InteropServices;
 #endif
 
 
+#if !NATIVE
 public partial struct PxMath {
+#endif
 
 //================================================================================
 //#       PxMax                                                                  #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
-Unresolved parameter type physx::PxMax::a
-Unresolved parameter type physx::PxMax::b
+/* ERRORS OCCURED: unhandled return type: T
+Unresolved parameter type T
+Unresolved parameter type T
 // NATIVE SIG: T PxMax(T a, T b)
 {
 	return a < b ? b : a;
@@ -64,9 +66,9 @@ public static float PxMax(float a, float b){
 //================================================================================
 //#       PxMin                                                                  #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
-Unresolved parameter type physx::PxMin::a
-Unresolved parameter type physx::PxMin::b
+/* ERRORS OCCURED: unhandled return type: T
+Unresolved parameter type T
+Unresolved parameter type T
 // NATIVE SIG: T PxMin(T a, T b)
 {
 	return a < b ? a : b;
@@ -211,10 +213,10 @@ public static int PxAbs(int a){
 //================================================================================
 //#       PxClamp                                                                #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
-Unresolved parameter type physx::PxClamp::v
-Unresolved parameter type physx::PxClamp::lo
-Unresolved parameter type physx::PxClamp::hi
+/* ERRORS OCCURED: unhandled return type: T
+Unresolved parameter type T
+Unresolved parameter type T
+Unresolved parameter type T
 // NATIVE SIG: T PxClamp(T v, T lo, T hi)
 {
 	PX_ASSERT(lo <= hi);
@@ -820,6 +822,8 @@ public static float PxLog(float x){
 }
 #endif
 
+#if !NATIVE
 } // End PxMath
+#endif
 
 

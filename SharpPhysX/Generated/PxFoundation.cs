@@ -4,7 +4,9 @@ using System.Runtime.InteropServices;
 #endif
 
 
+#if !NATIVE
 public partial struct PxFoundation {
+#endif
 
 //================================================================================
 //#       PxCreateFoundation                                                     #
@@ -59,6 +61,8 @@ public static PxFoundation PxGetFoundation(){
 //================================================================================
 //#       PxGetProfilerCallback                                                  #
 //================================================================================
+/* ERRORS OCCURED: Forbidden return type
+// NATIVE SIG: physx::PxProfilerCallback* PX_CALL_CONV PxGetProfilerCallback()
 // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L150~150
 #if NATIVE
 ES physx::PxProfilerCallback* W_PxGetProfilerCallback(){
@@ -73,12 +77,14 @@ public static PxProfilerCallback PxGetProfilerCallback(){
     PxProfilerCallback retVal = W_PxGetProfilerCallback();
     return retVal;
 }
-#endif
+#endif*/
 
 
 //================================================================================
 //#       PxSetProfilerCallback                                                  #
 //================================================================================
+/* ERRORS OCCURED: Forbidden parameter type: PxProfilerCallback
+// NATIVE SIG: void PX_CALL_CONV PxSetProfilerCallback(physx::PxProfilerCallback* profiler)
 // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L155~155
 #if NATIVE
 ES void W_PxSetProfilerCallback(physx::PxProfilerCallback* profiler){
@@ -93,9 +99,11 @@ public static void PxSetProfilerCallback(PxProfilerCallback profiler){
     PxProfilerCallback pvk_in_profiler = (profiler);
     W_PxSetProfilerCallback(pvk_in_profiler);
 }
-#endif
+#endif*/
 
+#if !NATIVE
 } // End PxFoundation
+#endif
 
 
 #if !NATIVE
@@ -267,81 +275,15 @@ public unsafe partial struct PxFoundation { // pointer
     #endif*/
     
     
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxFoundation
-    // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L50~50
-    #if NATIVE
-    ES physx::PxFoundation* W_operator=(physx::PxFoundation* self, physx::PxFoundation* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxFoundation W_operator=(PxFoundation selfPtr, PxFoundation );
+    //Skipped generated implicit entry: operator=
     
-    public static PxFoundation operator=(PxFoundation lhs, PxFoundation ){
-        PxFoundation pvk_in_ = ();
-        PxFoundation retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
+    //Skipped generated implicit entry: PxFoundation
     
-    
-    //================================================================================
-    //#       PxFoundation                                                           #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Parameterless constructor not allowed
-    // NATIVE SIG: PxFoundation
-    // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L50~50
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxFoundation_ctor(){
-        self->PxFoundation();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFoundation_ctor();
-    
-    public PxFoundation(){
-        var _new = W_PxFoundation_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       PxFoundation                                                           #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxFoundation
-    // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L50~50
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxFoundation_ctor(physx::PxFoundation* ){
-        auto nat_in_ = ();
-        self->PxFoundation(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFoundation_ctor(PxFoundation );
-    
-    public PxFoundation(PxFoundation ){
-        PxFoundation pvk_in_ = ();
-        var _new = W_PxFoundation_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: PxFoundation
     
 
 #if !NATIVE
 }
 #endif
 
+// Class physx::PxProfilerCallback Manually Ignored

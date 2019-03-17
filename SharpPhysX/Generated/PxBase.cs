@@ -5,12 +5,14 @@ using System.Runtime.InteropServices;
 
 #if !NATIVE
 public enum PxBaseFlag : int {
-     eOWNS_MEMORY			= (1<<0),
-     eIS_RELEASABLE			= (1<<1),
+    eOWNS_MEMORY = 1,   // eOWNS_MEMORY = (1<<0)
+    eIS_RELEASABLE = 2, // eIS_RELEASABLE = (1<<1)
 }
 #endif
 
+#if !NATIVE
 public partial struct PxBase {
+#endif
 
 //================================================================================
 //#       getBinaryMetaData_PxBase                                               #
@@ -37,7 +39,7 @@ public static void getBinaryMetaData_PxBase(PxOutputStream stream){
 //================================================================================
 //#       operator|                                                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short>
 // NATIVE SIG: 
 // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L64~64
 #if NATIVE
@@ -63,7 +65,7 @@ public static UNPARSED_TYPE operator|(PxBaseFlag a, PxBaseFlag b){
 //================================================================================
 //#       operator&                                                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short>
 // NATIVE SIG: 
 // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L64~64
 #if NATIVE
@@ -89,7 +91,7 @@ public static UNPARSED_TYPE operator&(PxBaseFlag a, PxBaseFlag b){
 //================================================================================
 //#       operator~                                                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short>
 // NATIVE SIG: 
 // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L64~64
 #if NATIVE
@@ -109,7 +111,9 @@ public static UNPARSED_TYPE operator~(PxBaseFlag a){
 }
 #endif*/
 
+#if !NATIVE
 } // End PxBase
+#endif
 
 
 #if !NATIVE
@@ -158,7 +162,7 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     //#       is                                                                     #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
+    /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*					is()
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L101~101
     #if NATIVE
@@ -180,7 +184,7 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     //#       is                                                                     #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
+    /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*				is() const
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L111~111
     #if NATIVE
@@ -244,7 +248,7 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     //#       setBaseFlags                                                           #
     //================================================================================
-    /* ERRORS OCCURED: Unresolved parameter type physx::PxBase::setBaseFlags::inFlags
+    /* ERRORS OCCURED: Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: void					setBaseFlags(PxBaseFlags inFlags)				{ mBaseFlags = inFlags; }
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L136~136
     #if NATIVE
@@ -266,7 +270,7 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     //#       getBaseFlags                                                           #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxBaseFlags
     // NATIVE SIG: PxBaseFlags				getBaseFlags() const							{ return mBaseFlags; }
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L145~145
     #if NATIVE
@@ -308,8 +312,8 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     //#       PxBase                                                                 #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Unresolved parameter type physx::PxBase::PxBase::baseFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxBase
+    Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE								PxBase(PxType concreteType, PxBaseFlags baseFlags)
     												: mConcreteType(concreteType), mBaseFlags(baseFlags) {}
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L162~163
@@ -336,8 +340,8 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     //#       PxBase                                                                 #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Unresolved parameter type physx::PxBase::PxBase::baseFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxBase
+    Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE								PxBase(PxBaseFlags baseFlags) : mBaseFlags(baseFlags) {}
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L168~168
     #if NATIVE
@@ -420,59 +424,13 @@ public unsafe partial struct PxBase { // pointer
     #endif
     
     
-    //================================================================================
-    //#       PxBase                                                                 #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxBase
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L73~73
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxBase_ctor(physx::PxBase* ){
-        auto nat_in_ = ();
-        self->PxBase(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxBase_ctor(PxBase );
+    //Skipped generated implicit entry: PxBase
     
-    public PxBase(PxBase ){
-        PxBase pvk_in_ = ();
-        var _new = W_PxBase_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxBase
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L73~73
-    #if NATIVE
-    ES physx::PxBase* W_operator=(physx::PxBase* self, physx::PxBase* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBase W_operator=(PxBase selfPtr, PxBase );
-    
-    public static PxBase operator=(PxBase lhs, PxBase ){
-        PxBase pvk_in_ = ();
-        PxBase retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: operator=
     
 
 #if !NATIVE
 }
 #endif
 
-// Class physx::PxBaseFlag Manually Ignored
+// Class physx::PxBaseFlag is enum namespace

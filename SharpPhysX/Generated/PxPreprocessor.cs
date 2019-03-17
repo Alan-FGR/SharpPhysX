@@ -4,7 +4,9 @@ using System.Runtime.InteropServices;
 #endif
 
 
+#if !NATIVE
 public partial struct PxPreprocessor {
+#endif
 
 //================================================================================
 //#       PX_UNUSED                                                              #
@@ -30,7 +32,9 @@ public static void PX_UNUSED( ){
 }
 #endif*/
 
+#if !NATIVE
 } // End PxPreprocessor
+#endif
 
 
 #if !NATIVE
@@ -40,147 +44,17 @@ public unsafe partial struct PxPackValidation { // blittable
 
 #endif
 
-    //================================================================================
-    //#       PxPackValidation                                                       #
-    //================================================================================
-    /* ERRORS OCCURED: Parameterless constructor not allowed
-    // NATIVE SIG: PxPackValidation
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPreprocessor.h L501~501
-    #if NATIVE
-    ES PxPackValidation W_PxPackValidation_ctor(){
-        self.PxPackValidation();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPackValidation W_PxPackValidation_ctor();
+    //Skipped generated implicit entry: PxPackValidation
     
-    public PxPackValidation(){
-        var _new = W_PxPackValidation_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped generated implicit entry: PxPackValidation
     
+    //Skipped generated implicit entry: operator=
     
-    //================================================================================
-    //#       PxPackValidation                                                       #
-    //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name (empty)
-    // NATIVE SIG: PxPackValidation
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPreprocessor.h L501~501
-    #if NATIVE
-    ES PxPackValidation W_PxPackValidation_ctor(PxPackValidation ){
-        auto nat_in_ = ();
-        self.PxPackValidation(nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPackValidation W_PxPackValidation_ctor(PxPackValidation );
+    //Skipped generated implicit entry: PxPackValidation
     
-    public PxPackValidation(PxPackValidation ){
-        PxPackValidation pvk_in_ = ();
-        var _new = W_PxPackValidation_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped generated implicit entry: operator=
     
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxPackValidation
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPreprocessor.h L501~501
-    #if NATIVE
-    ES PxPackValidation* W_operator=(PxPackValidation self, PxPackValidation ){
-        auto nat_in_ = ();
-        auto retVal = &self.operator=(nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPackValidation W_operator=(PxPackValidation selfBlt, PxPackValidation );
-    
-    public static PxPackValidation operator=(PxPackValidation lhs, PxPackValidation ){
-        PxPackValidation pvk_in_ = ();
-        PxPackValidation retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       PxPackValidation                                                       #
-    //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name (empty)
-    Non const pointer/reference global::PhysX.PxPackValidation
-    // NATIVE SIG: PxPackValidation
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPreprocessor.h L501~501
-    #if NATIVE
-    ES PxPackValidation W_PxPackValidation_ctor( ){
-        auto nat_in_ = ();
-        self.PxPackValidation(nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPackValidation W_PxPackValidation_ctor( );
-    
-    public PxPackValidation( ){
-         pvk_in_ = ();
-        var _new = W_PxPackValidation_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    Non const pointer/reference global::PhysX.PxPackValidation
-    // NATIVE SIG: PxPackValidation
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPreprocessor.h L501~501
-    #if NATIVE
-    ES PxPackValidation* W_operator=(PxPackValidation self){
-        auto nat_in_ = ();
-        auto retVal = &self.operator=(nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPackValidation W_operator=(PxPackValidation selfBlt);
-    
-    public static PxPackValidation operator=(PxPackValidation lhs,  ){
-         pvk_in_ = ();
-        PxPackValidation retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       ~PxPackValidation                                                      #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: PxPackValidation
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPreprocessor.h L501~501
-    #if NATIVE
-    ES void W_~PxPackValidation(PxPackValidation self){
-        self.~PxPackValidation();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxPackValidation(PxPackValidation selfBlt);
-    
-    public void ~PxPackValidation(){
-        W_~PxPackValidation(this);
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: ~PxPackValidation
     
 
 #if !NATIVE

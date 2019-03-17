@@ -4,7 +4,9 @@ using System.Runtime.InteropServices;
 #endif
 
 
+#if !NATIVE
 public partial struct PxWindowsIntrinsics {
+#endif
 
 //================================================================================
 //#       abs                                                                    #
@@ -445,6 +447,8 @@ public static void memZero128(global::System.IntPtr dest, uint offset){
 }
 #endif
 
+#if !NATIVE
 } // End PxWindowsIntrinsics
+#endif
 
 

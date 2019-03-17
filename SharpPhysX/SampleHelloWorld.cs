@@ -59,7 +59,9 @@ public class SampleHelloWorld
         foundation_ = PhysX.PxCreateFoundation(errorCallback_);
         foundation_.setErrorLevel(PxErrorCode.eMASK_ALL);
 
-        physics_ = PhysX.
+        physics_ = PhysX.PxCreatePhysics(foundation_);
+
+
     }
 
 //void initPhysics(bool interactive)

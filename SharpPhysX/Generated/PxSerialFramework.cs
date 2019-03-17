@@ -37,6 +37,8 @@ public unsafe partial struct PxSerializationContext { // pointer
     //================================================================================
     //#       getCollection                                                          #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden return type
+    // NATIVE SIG: PxCollection&	getCollection()	const												= 0
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L129~129
     #if NATIVE
     ES physx::PxCollection* W_getCollection(physx::PxSerializationContext* self){
@@ -51,7 +53,7 @@ public unsafe partial struct PxSerializationContext { // pointer
         PxCollection retVal = W_getCollection(this);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
@@ -119,24 +121,10 @@ public unsafe partial struct PxSerializationContext { // pointer
     //================================================================================
     //#       PxSerializationContext                                                 #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    //Skipped invalid managed declaration:
+    /*unhandled return type: physx::PxSerializationContext
     Parameterless constructor not allowed
-    // NATIVE SIG: PxSerializationContext() {}
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L160~160
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxSerializationContext_ctor(){
-        self->PxSerializationContext();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxSerializationContext_ctor();
-    
-    public PxSerializationContext(){
-        var _new = W_PxSerializationContext_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    */
     
     
     //================================================================================
@@ -159,55 +147,9 @@ public unsafe partial struct PxSerializationContext { // pointer
     #endif*/
     
     
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxSerializationContext
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L99~99
-    #if NATIVE
-    ES physx::PxSerializationContext* W_operator=(physx::PxSerializationContext* self, physx::PxSerializationContext* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxSerializationContext W_operator=(PxSerializationContext selfPtr, PxSerializationContext );
+    //Skipped generated implicit entry: operator=
     
-    public static PxSerializationContext operator=(PxSerializationContext lhs, PxSerializationContext ){
-        PxSerializationContext pvk_in_ = ();
-        PxSerializationContext retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       PxSerializationContext                                                 #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxSerializationContext
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L99~99
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxSerializationContext_ctor(physx::PxSerializationContext* ){
-        auto nat_in_ = ();
-        self->PxSerializationContext(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxSerializationContext_ctor(PxSerializationContext );
-    
-    public PxSerializationContext(PxSerializationContext ){
-        PxSerializationContext pvk_in_ = ();
-        var _new = W_PxSerializationContext_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: PxSerializationContext
     
 
 #if !NATIVE
@@ -263,78 +205,11 @@ public unsafe partial struct PxProcessPxBaseCallback { // pointer
     #endif*/
     
     
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxProcessPxBaseCallback
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L81~81
-    #if NATIVE
-    ES physx::PxProcessPxBaseCallback* W_operator=(physx::PxProcessPxBaseCallback* self, physx::PxProcessPxBaseCallback* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxProcessPxBaseCallback W_operator=(PxProcessPxBaseCallback selfPtr, PxProcessPxBaseCallback );
+    //Skipped generated implicit entry: operator=
     
-    public static PxProcessPxBaseCallback operator=(PxProcessPxBaseCallback lhs, PxProcessPxBaseCallback ){
-        PxProcessPxBaseCallback pvk_in_ = ();
-        PxProcessPxBaseCallback retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
+    //Skipped generated implicit entry: PxProcessPxBaseCallback
     
-    
-    //================================================================================
-    //#       PxProcessPxBaseCallback                                                #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Parameterless constructor not allowed
-    // NATIVE SIG: PxProcessPxBaseCallback
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L81~81
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxProcessPxBaseCallback_ctor(){
-        self->PxProcessPxBaseCallback();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxProcessPxBaseCallback_ctor();
-    
-    public PxProcessPxBaseCallback(){
-        var _new = W_PxProcessPxBaseCallback_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       PxProcessPxBaseCallback                                                #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxProcessPxBaseCallback
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L81~81
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxProcessPxBaseCallback_ctor(physx::PxProcessPxBaseCallback* ){
-        auto nat_in_ = ();
-        self->PxProcessPxBaseCallback(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxProcessPxBaseCallback_ctor(PxProcessPxBaseCallback );
-    
-    public PxProcessPxBaseCallback(PxProcessPxBaseCallback ){
-        PxProcessPxBaseCallback pvk_in_ = ();
-        var _new = W_PxProcessPxBaseCallback_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: PxProcessPxBaseCallback
     
 
 #if !NATIVE
@@ -423,7 +298,7 @@ public unsafe partial struct PxDeserializationContext { // pointer
     //================================================================================
     //#       readExtraData                                                          #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
+    /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*				readExtraData(PxU32 count=1)
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L229~229
     #if NATIVE
@@ -447,7 +322,7 @@ public unsafe partial struct PxDeserializationContext { // pointer
     //================================================================================
     //#       readExtraData                                                          #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
+    /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*				readExtraData(PxU32 count=1)
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L244~244
     #if NATIVE
@@ -511,24 +386,10 @@ public unsafe partial struct PxDeserializationContext { // pointer
     //================================================================================
     //#       PxDeserializationContext                                               #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    //Skipped invalid managed declaration:
+    /*unhandled return type: physx::PxDeserializationContext
     Parameterless constructor not allowed
-    // NATIVE SIG: PxDeserializationContext() {}
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L273~273
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxDeserializationContext_ctor(){
-        self->PxDeserializationContext();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxDeserializationContext_ctor();
-    
-    public PxDeserializationContext(){
-        var _new = W_PxDeserializationContext_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    */
     
     
     //================================================================================
@@ -551,55 +412,9 @@ public unsafe partial struct PxDeserializationContext { // pointer
     #endif*/
     
     
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxDeserializationContext
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L174~174
-    #if NATIVE
-    ES physx::PxDeserializationContext* W_operator=(physx::PxDeserializationContext* self, physx::PxDeserializationContext* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxDeserializationContext W_operator=(PxDeserializationContext selfPtr, PxDeserializationContext );
+    //Skipped generated implicit entry: operator=
     
-    public static PxDeserializationContext operator=(PxDeserializationContext lhs, PxDeserializationContext ){
-        PxDeserializationContext pvk_in_ = ();
-        PxDeserializationContext retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       PxDeserializationContext                                               #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxDeserializationContext
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L174~174
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxDeserializationContext_ctor(physx::PxDeserializationContext* ){
-        auto nat_in_ = ();
-        self->PxDeserializationContext(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxDeserializationContext_ctor(PxDeserializationContext );
-    
-    public PxDeserializationContext(PxDeserializationContext ){
-        PxDeserializationContext pvk_in_ = ();
-        var _new = W_PxDeserializationContext_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: PxDeserializationContext
     
 
 #if !NATIVE
@@ -658,7 +473,7 @@ public unsafe partial struct PxSerializationRegistry { // pointer
     //================================================================================
     //#       registerBinaryMetaDataCallback                                         #
     //================================================================================
-    /* ERRORS OCCURED: Unresolved parameter type physx::PxSerializationRegistry::registerBinaryMetaDataCallback::callback
+    /* ERRORS OCCURED: Unresolved parameter type physx::PxBinaryMetaDataCallback
     // NATIVE SIG: void						registerBinaryMetaDataCallback(PxBinaryMetaDataCallback callback) = 0
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L335~335
     #if NATIVE
@@ -803,78 +618,11 @@ public unsafe partial struct PxSerializationRegistry { // pointer
     #endif*/
     
     
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxSerializationRegistry
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L297~297
-    #if NATIVE
-    ES physx::PxSerializationRegistry* W_operator=(physx::PxSerializationRegistry* self, physx::PxSerializationRegistry* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxSerializationRegistry W_operator=(PxSerializationRegistry selfPtr, PxSerializationRegistry );
+    //Skipped generated implicit entry: operator=
     
-    public static PxSerializationRegistry operator=(PxSerializationRegistry lhs, PxSerializationRegistry ){
-        PxSerializationRegistry pvk_in_ = ();
-        PxSerializationRegistry retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
+    //Skipped generated implicit entry: PxSerializationRegistry
     
-    
-    //================================================================================
-    //#       PxSerializationRegistry                                                #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Parameterless constructor not allowed
-    // NATIVE SIG: PxSerializationRegistry
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L297~297
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxSerializationRegistry_ctor(){
-        self->PxSerializationRegistry();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxSerializationRegistry_ctor();
-    
-    public PxSerializationRegistry(){
-        var _new = W_PxSerializationRegistry_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       PxSerializationRegistry                                                #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxSerializationRegistry
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxSerialFramework.h L297~297
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxSerializationRegistry_ctor(physx::PxSerializationRegistry* ){
-        auto nat_in_ = ();
-        self->PxSerializationRegistry(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxSerializationRegistry_ctor(PxSerializationRegistry );
-    
-    public PxSerializationRegistry(PxSerializationRegistry ){
-        PxSerializationRegistry pvk_in_ = ();
-        var _new = W_PxSerializationRegistry_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: PxSerializationRegistry
     
 
 #if !NATIVE

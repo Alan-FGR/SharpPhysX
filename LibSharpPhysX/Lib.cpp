@@ -13,13 +13,13 @@ template<typename...> struct TypeList {};
 //#include "foundation/PxAssert.h"
 //#include "foundation/PxBitAndData.h"
 //#include "foundation/PxBounds3.h"
-#include "foundation/PxErrorCallback.h"
+//#include "foundation/PxErrorCallback.h"
 //#include "foundation/PxErrors.h"
 //#include "foundation/PxFlags.h"
 //#include "foundation/PxIntrinsics.h"
 //#include "foundation/PxIO.h"
 //#include "foundation/PxMat33.h"
-//#include "foundation/PxMat44.h"
+#include "foundation/PxMat44.h"
 //#include "foundation/PxMath.h"
 //#include "foundation/PxMathUtils.h"
 //#include "foundation/PxPlane.h"
@@ -30,14 +30,26 @@ template<typename...> struct TypeList {};
 //#include "foundation/PxTransform.h"
 //#include "foundation/PxUnionCast.h"
 //#include "foundation/PxVec2.h"
-#include "foundation/PxVec3.h"
+//#include "foundation/PxVec3.h"
 //#include "foundation/PxVec4.h"
 
 
 #include "PxFoundation.h"
 #include "PxPhysicsVersion.h"
 #include "PxPhysics.h"
+#include "PxScene.h"
 
+#include "PxRigidActor.h"
+#include "PxRigidStatic.h"
+#include "PxRigidDynamic.h"
+#include "PxRigidBody.h"
+#include "PxMaterial.h"
+#include "PxArticulation.h"
+#include "PxConstraint.h"
+#include "geometry/PxTriangleMesh.h"
+#include "PxFiltering.h"
+
+//#include "PxAggregate.h"
 
 // We only include the generated wrapper when actually building otherwise we have feedback loop when parsing
 #ifdef BUILD_LIB
@@ -54,7 +66,14 @@ TypeList<
     PxQuat,
     PxMat33,
     PxMat44,
-    PxTransform
+    PxTransform,
+	PxPlane,
+	PxBounds3,
+	Px1DConstraint,
+	PxBoxGeometry,
+	PxPlaneGeometry,
+	PxCapsuleGeometry,
+	PxSphereGeometry
 >
 BlittableTypes;
 
@@ -64,12 +83,16 @@ BlittableTypes;
 
 #include "Error.h"
 
-static physx::PxDefaultAllocator allocator_;
+static PxDefaultAllocator allocator_;
 
-ES physx::PxFoundation* OVR_PxCreateFoundation(SharpPhysXError* managedErrorCallback)
+ES PxFoundation* MAN_PxCreateFoundation(SharpPhysXError* managedErrorCallback)
 {
     return PxCreateFoundation(PX_PHYSICS_VERSION, allocator_, *new ShPxErrorCallbackWrapper(*managedErrorCallback));
-	//PxCreatePhysics()
+}
+
+ES PxPhysics* MAN_PxCreatePhysics(PxFoundation* foundation)
+{
+	return PxCreatePhysics(PX_PHYSICS_VERSION, *foundation, PxTolerancesScale(), false);
 }
 
 // //callback tests

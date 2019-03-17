@@ -4,7 +4,9 @@ using System.Runtime.InteropServices;
 #endif
 
 
+#if !NATIVE
 public partial struct Lib {
+#endif
 
 //================================================================================
 //#       OVR_PxCreateFoundation                                                 #
@@ -15,7 +17,7 @@ public partial struct Lib {
     return PxCreateFoundation(PX_PHYSICS_VERSION, allocator_, *new ShPxErrorCallbackWrapper(*managedErrorCallback));
 	//PxCreatePhysics()
 }
-// SOURCE: C:\Projects\SharpPhysX\LibSharpPhysX\Lib.cpp L69~73
+// SOURCE: C:\Projects\SharpPhysX\LibSharpPhysX\Lib.cpp L88~92
 #if NATIVE
 ES physx::PxFoundation* W_OVR_PxCreateFoundation( managedErrorCallback){
     auto nat_in_managedErrorCallback = (managedErrorCallback);
@@ -33,6 +35,8 @@ public static PxFoundation OVR_PxCreateFoundation( managedErrorCallback){
 }
 #endif*/
 
+#if !NATIVE
 } // End Lib
+#endif
 
 

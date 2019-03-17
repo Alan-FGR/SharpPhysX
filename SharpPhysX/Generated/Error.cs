@@ -13,8 +13,8 @@ public unsafe partial struct ShPxErrorCallbackWrapper { // pointer
     //================================================================================
     //#       ShPxErrorCallbackWrapper                                               #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Unresolved parameter type ShPxErrorCallbackWrapper::ShPxErrorCallbackWrapper::managedErrorCallback
+    /* ERRORS OCCURED: unhandled return type: ShPxErrorCallbackWrapper
+    Unresolved parameter type ::SharpPhysXError
     // NATIVE SIG: explicit ShPxErrorCallbackWrapper(SharpPhysXError managedErrorCallback)
             : managedErrorCallback_(managedErrorCallback)
         {}
@@ -63,125 +63,15 @@ public unsafe partial struct ShPxErrorCallbackWrapper { // pointer
     #endif
     
     
-    //================================================================================
-    //#       ShPxErrorCallbackWrapper                                               #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: ShPxErrorCallbackWrapper
-    // SOURCE: C:\Projects\SharpPhysX\LibSharpPhysX\Error.h L7~7
-    #if NATIVE
-    ES UNPARSED_TYPE W_ShPxErrorCallbackWrapper_ctor(ShPxErrorCallbackWrapper* ){
-        auto nat_in_ = ();
-        self->ShPxErrorCallbackWrapper(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_ShPxErrorCallbackWrapper_ctor(ShPxErrorCallbackWrapper );
+    //Skipped generated implicit entry: ShPxErrorCallbackWrapper
     
-    public ShPxErrorCallbackWrapper(ShPxErrorCallbackWrapper ){
-        ShPxErrorCallbackWrapper pvk_in_ = ();
-        var _new = W_ShPxErrorCallbackWrapper_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped generated implicit entry: ShPxErrorCallbackWrapper
     
+    //Skipped generated implicit entry: operator=
     
-    //================================================================================
-    //#       ShPxErrorCallbackWrapper                                               #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: ShPxErrorCallbackWrapper
-    // SOURCE: C:\Projects\SharpPhysX\LibSharpPhysX\Error.h L7~7
-    #if NATIVE
-    ES UNPARSED_TYPE W_ShPxErrorCallbackWrapper_ctor(ShPxErrorCallbackWrapper* ){
-        auto nat_in_ = ();
-        self->ShPxErrorCallbackWrapper(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_ShPxErrorCallbackWrapper_ctor(ShPxErrorCallbackWrapper );
+    //Skipped generated implicit entry: operator=
     
-    public ShPxErrorCallbackWrapper(ShPxErrorCallbackWrapper ){
-        ShPxErrorCallbackWrapper pvk_in_ = ();
-        var _new = W_ShPxErrorCallbackWrapper_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: ShPxErrorCallbackWrapper
-    // SOURCE: C:\Projects\SharpPhysX\LibSharpPhysX\Error.h L7~7
-    #if NATIVE
-    ES ShPxErrorCallbackWrapper* W_operator=(ShPxErrorCallbackWrapper* self, ShPxErrorCallbackWrapper* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern ShPxErrorCallbackWrapper W_operator=(ShPxErrorCallbackWrapper selfPtr, ShPxErrorCallbackWrapper );
-    
-    public static ShPxErrorCallbackWrapper operator=(ShPxErrorCallbackWrapper lhs, ShPxErrorCallbackWrapper ){
-        ShPxErrorCallbackWrapper pvk_in_ = ();
-        ShPxErrorCallbackWrapper retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: ShPxErrorCallbackWrapper
-    // SOURCE: C:\Projects\SharpPhysX\LibSharpPhysX\Error.h L7~7
-    #if NATIVE
-    ES ShPxErrorCallbackWrapper* W_operator=(ShPxErrorCallbackWrapper* self, ShPxErrorCallbackWrapper* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern ShPxErrorCallbackWrapper W_operator=(ShPxErrorCallbackWrapper selfPtr, ShPxErrorCallbackWrapper );
-    
-    public static ShPxErrorCallbackWrapper operator=(ShPxErrorCallbackWrapper lhs, ShPxErrorCallbackWrapper ){
-        ShPxErrorCallbackWrapper pvk_in_ = ();
-        ShPxErrorCallbackWrapper retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       ~ShPxErrorCallbackWrapper                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: ShPxErrorCallbackWrapper
-    // SOURCE: C:\Projects\SharpPhysX\LibSharpPhysX\Error.h L7~7
-    #if NATIVE
-    ES void W_~ShPxErrorCallbackWrapper(ShPxErrorCallbackWrapper* self){
-        self->~ShPxErrorCallbackWrapper();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~ShPxErrorCallbackWrapper(ShPxErrorCallbackWrapper selfPtr);
-    
-    public void ~ShPxErrorCallbackWrapper(){
-        W_~ShPxErrorCallbackWrapper(this);
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: ~ShPxErrorCallbackWrapper
     
 
 #if !NATIVE

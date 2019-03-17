@@ -4,7 +4,9 @@ using System.Runtime.InteropServices;
 #endif
 
 
+#if !NATIVE
 public partial struct PxMemory {
+#endif
 
 //================================================================================
 //#       PxMemZero                                                              #
@@ -107,6 +109,8 @@ public static IntPtr PxMemMove(global::System.IntPtr dest, global::System.IntPtr
 }
 #endif
 
+#if !NATIVE
 } // End PxMemory
+#endif
 
 

@@ -5,19 +5,21 @@ using System.Runtime.InteropServices;
 
 #if !NATIVE
 public enum PxShapeFlag : int {
-     eSIMULATION_SHAPE				= (1<<0),
-     eSCENE_QUERY_SHAPE				= (1<<1),
-     eTRIGGER_SHAPE					= (1<<2),
-     eVISUALIZATION					= (1<<3),
+    eSIMULATION_SHAPE = 1,  // eSIMULATION_SHAPE = (1<<0)
+    eSCENE_QUERY_SHAPE = 2, // eSCENE_QUERY_SHAPE = (1<<1)
+    eTRIGGER_SHAPE = 4,     // eTRIGGER_SHAPE = (1<<2)
+    eVISUALIZATION = 8,     // eVISUALIZATION = (1<<3)
 }
 #endif
 
+#if !NATIVE
 public partial struct PxShape {
+#endif
 
 //================================================================================
 //#       operator|                                                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxShapeFlag::Enum, unsigned char>
 // NATIVE SIG: 
 // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L123~123
 #if NATIVE
@@ -43,7 +45,7 @@ public static UNPARSED_TYPE operator|(PxShapeFlag a, PxShapeFlag b){
 //================================================================================
 //#       operator&                                                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxShapeFlag::Enum, unsigned char>
 // NATIVE SIG: 
 // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L123~123
 #if NATIVE
@@ -69,7 +71,7 @@ public static UNPARSED_TYPE operator&(PxShapeFlag a, PxShapeFlag b){
 //================================================================================
 //#       operator~                                                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxShapeFlag::Enum, unsigned char>
 // NATIVE SIG: 
 // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L123~123
 #if NATIVE
@@ -89,8 +91,9 @@ public static UNPARSED_TYPE operator~(PxShapeFlag a){
 }
 #endif*/
 
+#if !NATIVE
 } // End PxShape
-
+#endif
 
 
 #if !NATIVE
@@ -197,7 +200,7 @@ public unsafe partial struct PxShape { // pointer
     //================================================================================
     //#       getGeometry                                                            #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxGeometryHolder
     // NATIVE SIG: PxGeometryHolder		getGeometry() const = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L206~206
     #if NATIVE
@@ -219,94 +222,104 @@ public unsafe partial struct PxShape { // pointer
     //================================================================================
     //#       getBoxGeometry                                                         #
     //================================================================================
+    /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxBoxGeometry
+    // NATIVE SIG: bool					getBoxGeometry(PxBoxGeometry& geometry) const = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L220~220
     #if NATIVE
-    ES bool W_getBoxGeometry(physx::PxShape* self, physx::PxBoxGeometry* geometry){
+    ES bool W_getBoxGeometry(physx::PxShape* self,  geometry){
         auto nat_in_geometry = (geometry);
-        auto retVal = self->getBoxGeometry(*nat_in_geometry);
+        auto retVal = self->getBoxGeometry(nat_in_geometry);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_getBoxGeometry(PxShape selfPtr, PxBoxGeometry geometry);
+    static extern bool W_getBoxGeometry(PxShape selfPtr,  geometry);
     
-    public bool getBoxGeometry(PxBoxGeometry geometry){
-        PxBoxGeometry pvk_in_geometry = (geometry);
+    public bool getBoxGeometry( geometry){
+         pvk_in_geometry = (geometry);
         bool retVal = W_getBoxGeometry(this, pvk_in_geometry);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
     //#       getSphereGeometry                                                      #
     //================================================================================
+    /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxSphereGeometry
+    // NATIVE SIG: bool					getSphereGeometry(PxSphereGeometry& geometry) const = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L233~233
     #if NATIVE
-    ES bool W_getSphereGeometry(physx::PxShape* self, physx::PxSphereGeometry* geometry){
+    ES bool W_getSphereGeometry(physx::PxShape* self,  geometry){
         auto nat_in_geometry = (geometry);
-        auto retVal = self->getSphereGeometry(*nat_in_geometry);
+        auto retVal = self->getSphereGeometry(nat_in_geometry);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_getSphereGeometry(PxShape selfPtr, PxSphereGeometry geometry);
+    static extern bool W_getSphereGeometry(PxShape selfPtr,  geometry);
     
-    public bool getSphereGeometry(PxSphereGeometry geometry){
-        PxSphereGeometry pvk_in_geometry = (geometry);
+    public bool getSphereGeometry( geometry){
+         pvk_in_geometry = (geometry);
         bool retVal = W_getSphereGeometry(this, pvk_in_geometry);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
     //#       getCapsuleGeometry                                                     #
     //================================================================================
+    /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxCapsuleGeometry
+    // NATIVE SIG: bool					getCapsuleGeometry(PxCapsuleGeometry& geometry) const = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L246~246
     #if NATIVE
-    ES bool W_getCapsuleGeometry(physx::PxShape* self, physx::PxCapsuleGeometry* geometry){
+    ES bool W_getCapsuleGeometry(physx::PxShape* self,  geometry){
         auto nat_in_geometry = (geometry);
-        auto retVal = self->getCapsuleGeometry(*nat_in_geometry);
+        auto retVal = self->getCapsuleGeometry(nat_in_geometry);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_getCapsuleGeometry(PxShape selfPtr, PxCapsuleGeometry geometry);
+    static extern bool W_getCapsuleGeometry(PxShape selfPtr,  geometry);
     
-    public bool getCapsuleGeometry(PxCapsuleGeometry geometry){
-        PxCapsuleGeometry pvk_in_geometry = (geometry);
+    public bool getCapsuleGeometry( geometry){
+         pvk_in_geometry = (geometry);
         bool retVal = W_getCapsuleGeometry(this, pvk_in_geometry);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
     //#       getPlaneGeometry                                                       #
     //================================================================================
+    /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxPlaneGeometry
+    // NATIVE SIG: bool					getPlaneGeometry(PxPlaneGeometry& geometry) const = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L259~259
     #if NATIVE
-    ES bool W_getPlaneGeometry(physx::PxShape* self, physx::PxPlaneGeometry* geometry){
+    ES bool W_getPlaneGeometry(physx::PxShape* self,  geometry){
         auto nat_in_geometry = (geometry);
-        auto retVal = self->getPlaneGeometry(*nat_in_geometry);
+        auto retVal = self->getPlaneGeometry(nat_in_geometry);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_getPlaneGeometry(PxShape selfPtr, PxPlaneGeometry geometry);
+    static extern bool W_getPlaneGeometry(PxShape selfPtr,  geometry);
     
-    public bool getPlaneGeometry(PxPlaneGeometry geometry){
-        PxPlaneGeometry pvk_in_geometry = (geometry);
+    public bool getPlaneGeometry( geometry){
+         pvk_in_geometry = (geometry);
         bool retVal = W_getPlaneGeometry(this, pvk_in_geometry);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
     //#       getConvexMeshGeometry                                                  #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden parameter type: PxConvexMeshGeometry
+    // NATIVE SIG: bool					getConvexMeshGeometry(PxConvexMeshGeometry& geometry) const = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L272~272
     #if NATIVE
     ES bool W_getConvexMeshGeometry(physx::PxShape* self, physx::PxConvexMeshGeometry* geometry){
@@ -323,12 +336,14 @@ public unsafe partial struct PxShape { // pointer
         bool retVal = W_getConvexMeshGeometry(this, pvk_in_geometry);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
     //#       getTriangleMeshGeometry                                                #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden parameter type: PxTriangleMeshGeometry
+    // NATIVE SIG: bool					getTriangleMeshGeometry(PxTriangleMeshGeometry& geometry) const = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L285~285
     #if NATIVE
     ES bool W_getTriangleMeshGeometry(physx::PxShape* self, physx::PxTriangleMeshGeometry* geometry){
@@ -345,12 +360,14 @@ public unsafe partial struct PxShape { // pointer
         bool retVal = W_getTriangleMeshGeometry(this, pvk_in_geometry);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
     //#       getHeightFieldGeometry                                                 #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden parameter type: PxHeightFieldGeometry
+    // NATIVE SIG: bool					getHeightFieldGeometry(PxHeightFieldGeometry& geometry) const = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L299~299
     #if NATIVE
     ES bool W_getHeightFieldGeometry(physx::PxShape* self, physx::PxHeightFieldGeometry* geometry){
@@ -367,7 +384,7 @@ public unsafe partial struct PxShape { // pointer
         bool retVal = W_getHeightFieldGeometry(this, pvk_in_geometry);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
@@ -453,7 +470,7 @@ public unsafe partial struct PxShape { // pointer
     //================================================================================
     //#       getSimulationFilterData                                                #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxFilterData
     // NATIVE SIG: PxFilterData			getSimulationFilterData()					const	= 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L372~372
     #if NATIVE
@@ -495,7 +512,7 @@ public unsafe partial struct PxShape { // pointer
     //================================================================================
     //#       getQueryFilterData                                                     #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxFilterData
     // NATIVE SIG: PxFilterData			getQueryFilterData()					const	= 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L388~388
     #if NATIVE
@@ -793,7 +810,7 @@ public unsafe partial struct PxShape { // pointer
     //================================================================================
     //#       setFlags                                                               #
     //================================================================================
-    /* ERRORS OCCURED: Unresolved parameter type physx::PxShape::setFlags::inFlags
+    /* ERRORS OCCURED: Unresolved parameter type physx::PxShapeFlags
     // NATIVE SIG: void					setFlags(PxShapeFlags inFlags) = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L578~578
     #if NATIVE
@@ -815,7 +832,7 @@ public unsafe partial struct PxShape { // pointer
     //================================================================================
     //#       getFlags                                                               #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxShapeFlags
     // NATIVE SIG: PxShapeFlags			getFlags() const = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L587~587
     #if NATIVE
@@ -917,8 +934,8 @@ public unsafe partial struct PxShape { // pointer
     //================================================================================
     //#       PxShape                                                                #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Unresolved parameter type physx::PxShape::PxShape::baseFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxShape
+    Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE							PxShape(PxBaseFlags baseFlags) : PxBase(baseFlags) {}
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L627~627
     #if NATIVE
@@ -942,8 +959,8 @@ public unsafe partial struct PxShape { // pointer
     //================================================================================
     //#       PxShape                                                                #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Unresolved parameter type physx::PxShape::PxShape::baseFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxShape
+    Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE							PxShape(PxType concreteType, PxBaseFlags baseFlags) : PxBase(concreteType, baseFlags), userData(NULL) {}
     // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L628~628
     #if NATIVE
@@ -1008,212 +1025,13 @@ public unsafe partial struct PxShape { // pointer
     #endif
     
     
-    //================================================================================
-    //#       PxShape                                                                #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxShape
-    // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L142~142
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxShape_ctor(physx::PxShape* ){
-        auto nat_in_ = ();
-        self->PxShape(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxShape_ctor(PxShape );
+    //Skipped generated implicit entry: PxShape
     
-    public PxShape(PxShape ){
-        PxShape pvk_in_ = ();
-        var _new = W_PxShape_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxShape
-    // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L142~142
-    #if NATIVE
-    ES physx::PxShape* W_operator=(physx::PxShape* self, physx::PxShape* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxShape W_operator=(PxShape selfPtr, PxShape );
-    
-    public static PxShape operator=(PxShape lhs, PxShape ){
-        PxShape pvk_in_ = ();
-        PxShape retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: operator=
     
 
 #if !NATIVE
 }
 #endif
 
-
-#if !NATIVE
-public unsafe partial struct PxShapeFlag { // blittable
-
-#endif
-
-    //================================================================================
-    //#       PxShapeFlag                                                            #
-    //================================================================================
-    /* ERRORS OCCURED: Parameterless constructor not allowed
-    // NATIVE SIG: PxShapeFlag
-    // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L63~63
-    #if NATIVE
-    ES physx::PxShapeFlag W_PxShapeFlag_ctor(){
-        self.PxShapeFlag();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxShapeFlag W_PxShapeFlag_ctor();
-    
-    public PxShapeFlag(){
-        var _new = W_PxShapeFlag_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       PxShapeFlag                                                            #
-    //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name (empty)
-    // NATIVE SIG: PxShapeFlag
-    // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L63~63
-    #if NATIVE
-    ES physx::PxShapeFlag W_PxShapeFlag_ctor(physx::PxShapeFlag ){
-        auto nat_in_ = ();
-        self.PxShapeFlag(nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxShapeFlag W_PxShapeFlag_ctor(PxShapeFlag );
-    
-    public PxShapeFlag(PxShapeFlag ){
-        PxShapeFlag pvk_in_ = ();
-        var _new = W_PxShapeFlag_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxShapeFlag
-    // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L63~63
-    #if NATIVE
-    ES physx::PxShapeFlag* W_operator=(physx::PxShapeFlag self, physx::PxShapeFlag ){
-        auto nat_in_ = ();
-        auto retVal = &self.operator=(nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxShapeFlag W_operator=(PxShapeFlag selfBlt, PxShapeFlag );
-    
-    public static PxShapeFlag operator=(PxShapeFlag lhs, PxShapeFlag ){
-        PxShapeFlag pvk_in_ = ();
-        PxShapeFlag retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       PxShapeFlag                                                            #
-    //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name (empty)
-    Non const pointer/reference global::PhysX.physx.PxShapeFlag
-    // NATIVE SIG: PxShapeFlag
-    // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L63~63
-    #if NATIVE
-    ES physx::PxShapeFlag W_PxShapeFlag_ctor( ){
-        auto nat_in_ = ();
-        self.PxShapeFlag(nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxShapeFlag W_PxShapeFlag_ctor( );
-    
-    public PxShapeFlag( ){
-         pvk_in_ = ();
-        var _new = W_PxShapeFlag_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    Non const pointer/reference global::PhysX.physx.PxShapeFlag
-    // NATIVE SIG: PxShapeFlag
-    // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L63~63
-    #if NATIVE
-    ES physx::PxShapeFlag* W_operator=(physx::PxShapeFlag self){
-        auto nat_in_ = ();
-        auto retVal = &self.operator=(nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxShapeFlag W_operator=(PxShapeFlag selfBlt);
-    
-    public static PxShapeFlag operator=(PxShapeFlag lhs,  ){
-         pvk_in_ = ();
-        PxShapeFlag retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       ~PxShapeFlag                                                           #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: PxShapeFlag
-    // SOURCE: C:\Projects\PhysX\physx\include\PxShape.h L63~63
-    #if NATIVE
-    ES void W_~PxShapeFlag(physx::PxShapeFlag self){
-        self.~PxShapeFlag();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxShapeFlag(PxShapeFlag selfBlt);
-    
-    public void ~PxShapeFlag(){
-        W_~PxShapeFlag(this);
-    }
-    #endif*/
-    
-    
-
-#if !NATIVE
-}
-#endif
-
-
+// Class physx::PxShapeFlag is enum namespace

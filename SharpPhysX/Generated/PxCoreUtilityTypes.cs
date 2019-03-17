@@ -13,28 +13,10 @@ public unsafe partial struct PxPadding { // pointer
     //================================================================================
     //#       PxPadding<TNumBytes>                                                   #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    //Skipped invalid managed declaration:
+    /*unhandled return type: physx::PxPadding
     Parameterless constructor not allowed
-    // NATIVE SIG: PxPadding()
-    	{
-    		for ( PxU8 idx =0; idx < TNumBytes; ++idx )
-    			mPadding[idx] = 0;
-    	}
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L93~97
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxPadding<TNumBytes>_ctor(){
-        self->PxPadding<TNumBytes>();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxPadding<TNumBytes>_ctor();
-    
-    public PxPadding<TNumBytes>(){
-        var _new = W_PxPadding<TNumBytes>_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    */
     
     
 
@@ -50,30 +32,16 @@ public unsafe partial struct PxStridedData { // pointer
     //================================================================================
     //#       PxStridedData                                                          #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    //Skipped invalid managed declaration:
+    /*unhandled return type: physx::PxStridedData
     Parameterless constructor not allowed
-    // NATIVE SIG: PxStridedData() : stride( 0 ), data( NULL ) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L56~56
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxStridedData_ctor(){
-        self->PxStridedData();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxStridedData_ctor();
-    
-    public PxStridedData(){
-        var _new = W_PxStridedData_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    */
     
     
     //================================================================================
     //#       at                                                                     #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
+    /* ERRORS OCCURED: unhandled return reference type: TDataType
     // NATIVE SIG: TDataType& at( PxU32 idx ) const
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L59~59
     #if NATIVE
@@ -94,125 +62,15 @@ public unsafe partial struct PxStridedData { // pointer
     #endif*/
     
     
-    //================================================================================
-    //#       PxStridedData                                                          #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxStridedData
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L46~46
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxStridedData_ctor(physx::PxStridedData* ){
-        auto nat_in_ = ();
-        self->PxStridedData(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxStridedData_ctor(PxStridedData );
+    //Skipped generated implicit entry: PxStridedData
     
-    public PxStridedData(PxStridedData ){
-        PxStridedData pvk_in_ = ();
-        var _new = W_PxStridedData_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped generated implicit entry: PxStridedData
     
+    //Skipped generated implicit entry: operator=
     
-    //================================================================================
-    //#       PxStridedData                                                          #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxStridedData
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L46~46
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxStridedData_ctor(physx::PxStridedData* ){
-        auto nat_in_ = ();
-        self->PxStridedData(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxStridedData_ctor(PxStridedData );
+    //Skipped generated implicit entry: operator=
     
-    public PxStridedData(PxStridedData ){
-        PxStridedData pvk_in_ = ();
-        var _new = W_PxStridedData_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxStridedData
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L46~46
-    #if NATIVE
-    ES physx::PxStridedData* W_operator=(physx::PxStridedData* self, physx::PxStridedData* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxStridedData W_operator=(PxStridedData selfPtr, PxStridedData );
-    
-    public static PxStridedData operator=(PxStridedData lhs, PxStridedData ){
-        PxStridedData pvk_in_ = ();
-        PxStridedData retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxStridedData
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L46~46
-    #if NATIVE
-    ES physx::PxStridedData* W_operator=(physx::PxStridedData* self, physx::PxStridedData* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxStridedData W_operator=(PxStridedData selfPtr, PxStridedData );
-    
-    public static PxStridedData operator=(PxStridedData lhs, PxStridedData ){
-        PxStridedData pvk_in_ = ();
-        PxStridedData retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       ~PxStridedData                                                         #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: PxStridedData
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L46~46
-    #if NATIVE
-    ES void W_~PxStridedData(physx::PxStridedData* self){
-        self->~PxStridedData();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxStridedData(PxStridedData selfPtr);
-    
-    public void ~PxStridedData(){
-        W_~PxStridedData(this);
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: ~PxStridedData
     
 
 #if !NATIVE
@@ -227,24 +85,10 @@ public unsafe partial struct PxTypedStridedData { // pointer
     //================================================================================
     //#       PxTypedStridedData<TDataType>                                          #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    //Skipped invalid managed declaration:
+    /*unhandled return type: physx::PxTypedStridedData
     Parameterless constructor not allowed
-    // NATIVE SIG: PxTypedStridedData()
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L75~75
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxTypedStridedData<TDataType>_ctor(){
-        self->PxTypedStridedData<TDataType>();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxTypedStridedData<TDataType>_ctor();
-    
-    public PxTypedStridedData<TDataType>(){
-        var _new = W_PxTypedStridedData<TDataType>_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    */
     
     
 
@@ -260,145 +104,21 @@ public unsafe partial struct PxBoundedData { // pointer
     //================================================================================
     //#       PxBoundedData                                                          #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    //Skipped invalid managed declaration:
+    /*unhandled return type: physx::PxBoundedData
     Parameterless constructor not allowed
-    // NATIVE SIG: PxBoundedData() : count( 0 ) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L86~86
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxBoundedData_ctor(){
-        self->PxBoundedData();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxBoundedData_ctor();
-    
-    public PxBoundedData(){
-        var _new = W_PxBoundedData_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    */
     
     
-    //================================================================================
-    //#       PxBoundedData                                                          #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxBoundedData
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L83~83
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxBoundedData_ctor(physx::PxBoundedData* ){
-        auto nat_in_ = ();
-        self->PxBoundedData(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxBoundedData_ctor(PxBoundedData );
+    //Skipped generated implicit entry: PxBoundedData
     
-    public PxBoundedData(PxBoundedData ){
-        PxBoundedData pvk_in_ = ();
-        var _new = W_PxBoundedData_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped generated implicit entry: operator=
     
+    //Skipped generated implicit entry: PxBoundedData
     
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxBoundedData
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L83~83
-    #if NATIVE
-    ES physx::PxBoundedData* W_operator=(physx::PxBoundedData* self, physx::PxBoundedData* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBoundedData W_operator=(PxBoundedData selfPtr, PxBoundedData );
+    //Skipped generated implicit entry: operator=
     
-    public static PxBoundedData operator=(PxBoundedData lhs, PxBoundedData ){
-        PxBoundedData pvk_in_ = ();
-        PxBoundedData retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       PxBoundedData                                                          #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxBoundedData
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L83~83
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxBoundedData_ctor(physx::PxBoundedData* ){
-        auto nat_in_ = ();
-        self->PxBoundedData(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxBoundedData_ctor(PxBoundedData );
-    
-    public PxBoundedData(PxBoundedData ){
-        PxBoundedData pvk_in_ = ();
-        var _new = W_PxBoundedData_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxBoundedData
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L83~83
-    #if NATIVE
-    ES physx::PxBoundedData* W_operator=(physx::PxBoundedData* self, physx::PxBoundedData* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBoundedData W_operator=(PxBoundedData selfPtr, PxBoundedData );
-    
-    public static PxBoundedData operator=(PxBoundedData lhs, PxBoundedData ){
-        PxBoundedData pvk_in_ = ();
-        PxBoundedData retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       ~PxBoundedData                                                         #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: PxBoundedData
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L83~83
-    #if NATIVE
-    ES void W_~PxBoundedData(physx::PxBoundedData* self){
-        self->~PxBoundedData();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxBoundedData(PxBoundedData selfPtr);
-    
-    public void ~PxBoundedData(){
-        W_~PxBoundedData(this);
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: ~PxBoundedData
     
 
 #if !NATIVE
@@ -413,30 +133,16 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     //================================================================================
     //#       PxFixedSizeLookupTable<NB_ELEMENTS>                                    #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    //Skipped invalid managed declaration:
+    /*unhandled return type: physx::PxFixedSizeLookupTable
     Parameterless constructor not allowed
-    // NATIVE SIG: PxFixedSizeLookupTable()
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L110~110
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_ctor(){
-        self->PxFixedSizeLookupTable<NB_ELEMENTS>();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_ctor();
-    
-    public PxFixedSizeLookupTable<NB_ELEMENTS>(){
-        var _new = W_PxFixedSizeLookupTable<NB_ELEMENTS>_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    */
     
     
     //================================================================================
     //#       PxFixedSizeLookupTable<NB_ELEMENTS>                                    #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxFixedSizeLookupTable
     Invalid parameter name (empty)
     // NATIVE SIG: PxFixedSizeLookupTable(const PxEMPTY)
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L115~115
@@ -461,7 +167,7 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     //================================================================================
     //#       PxFixedSizeLookupTable<NB_ELEMENTS>                                    #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxFixedSizeLookupTable
     // NATIVE SIG: PxFixedSizeLookupTable(const PxReal* dataPairs, const PxU32 numDataPairs)
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L117~117
     #if NATIVE
@@ -487,7 +193,7 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     //================================================================================
     //#       PxFixedSizeLookupTable<NB_ELEMENTS>                                    #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxFixedSizeLookupTable
     fsdfasdf
     // NATIVE SIG: PxFixedSizeLookupTable(const PxFixedSizeLookupTable& src)
     // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L123~123
@@ -532,27 +238,8 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     //================================================================================
     //#       operator=                                                              #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
-    Ops TODO
-    fsdfasdf
-    // NATIVE SIG: PxFixedSizeLookupTable& operator=(const PxFixedSizeLookupTable& src)
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L133~133
-    #if NATIVE
-    ES UNPARSED_TYPE W_operator=(physx::PxFixedSizeLookupTable* self,  src){
-        auto nat_in_src = (src);
-        auto retVal = self->operator=(nat_in_src);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_operator=(PxFixedSizeLookupTable selfPtr,  src);
-    
-    public static UNPARSED_TYPE operator=(PxFixedSizeLookupTable lhs,  src){
-         pvk_in_src = (src);
-        UNPARSED_TYPE retVal = W_operator=(lhs, pvk_in_src);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Equal.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================

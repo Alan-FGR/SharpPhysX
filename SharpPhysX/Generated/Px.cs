@@ -5,26 +5,23 @@ using System.Runtime.InteropServices;
 
 #if !NATIVE
 public enum PxZERO : int {
-     PxZero,
+    PxZero = 0, // PxZero
 }
 #endif
 
 #if !NATIVE
 public enum PxIDENTITY : int {
-     PxIdentity,
+    PxIdentity = 0, // PxIdentity
 }
 #endif
 
 #if !NATIVE
 public enum PxEMPTY : int {
-     PxEmpty,
+    PxEmpty = 0, // PxEmpty
 }
 #endif
 
 
-
+// Class physx::PxInputStream Manually Ignored
 
 // Class physx::PxOutputStream Manually Ignored
-
-
-

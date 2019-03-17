@@ -15,25 +15,9 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
-    /* ERRORS OCCURED: Parameterless constructor not allowed
-    // NATIVE SIG: PX_FORCE_INLINE PxTransform()
-    	{
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L54~56
-    #if NATIVE
-    ES physx::PxTransform W_PxTransform_ctor(){
-        self.PxTransform();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_PxTransform_ctor();
-    
-    public PxTransform(){
-        var _new = W_PxTransform_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped invalid managed declaration:
+    /*Parameterless constructor not allowed
+    */
     
     
     //================================================================================
@@ -223,30 +207,8 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       operator*=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Non const pointer/reference global::PhysX.physx.PxTransform
-    // NATIVE SIG: PxTransform& operator*=(PxTransform& other)
-    	{
-    		*this = *this * other;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L99~103
-    #if NATIVE
-    ES physx::PxTransform* W_operator*=(physx::PxTransform self,  other){
-        auto nat_in_other = (other);
-        auto retVal = &self.operator*=(nat_in_other);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_operator*=(PxTransform selfBlt,  other);
-    
-    public static PxTransform operator*=(PxTransform lhs,  other){
-         pvk_in_other = (other);
-        PxTransform retVal = W_operator*=(lhs, pvk_in_other);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator StarEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
@@ -464,57 +426,45 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       transform                                                              #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    // NATIVE SIG: PxPlane transform(const PxPlane& plane) const
-    	{
-    		PxVec3 transformedNormal = rotate(plane.n);
-    		return PxPlane(transformedNormal, plane.d - p.dot(transformedNormal));
-    	}
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L185~189
     #if NATIVE
-    ES UNPARSED_TYPE W_transform(physx::PxTransform self, physx::PxPlane* plane){
+    ES physx::PxPlane W_transform(physx::PxTransform self, physx::PxPlane plane){
         auto nat_in_plane = (plane);
-        auto retVal = self.transform(*nat_in_plane);
+        auto retVal = self.transform(nat_in_plane);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_transform(PxTransform selfBlt, PxPlane plane);
+    static extern PxPlane W_transform(PxTransform selfBlt, PxPlane plane);
     
-    public UNPARSED_TYPE transform(PxPlane plane){
+    public PxPlane transform(PxPlane plane){
         PxPlane pvk_in_plane = (plane);
-        UNPARSED_TYPE retVal = W_transform(this, pvk_in_plane);
+        PxPlane retVal = W_transform(this, pvk_in_plane);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
     //#       inverseTransform                                                       #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    // NATIVE SIG: PxPlane inverseTransform(const PxPlane& plane) const
-    	{
-    		PxVec3 transformedNormal = rotateInv(plane.n);
-    		return PxPlane(transformedNormal, plane.d + p.dot(plane.n));
-    	}
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L195~199
     #if NATIVE
-    ES UNPARSED_TYPE W_inverseTransform(physx::PxTransform self, physx::PxPlane* plane){
+    ES physx::PxPlane W_inverseTransform(physx::PxTransform self, physx::PxPlane plane){
         auto nat_in_plane = (plane);
-        auto retVal = self.inverseTransform(*nat_in_plane);
+        auto retVal = self.inverseTransform(nat_in_plane);
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_inverseTransform(PxTransform selfBlt, PxPlane plane);
+    static extern PxPlane W_inverseTransform(PxTransform selfBlt, PxPlane plane);
     
-    public UNPARSED_TYPE inverseTransform(PxPlane plane){
+    public PxPlane inverseTransform(PxPlane plane){
         PxPlane pvk_in_plane = (plane);
-        UNPARSED_TYPE retVal = W_inverseTransform(this, pvk_in_plane);
+        PxPlane retVal = W_inverseTransform(this, pvk_in_plane);
         return retVal;
     }
-    #endif*/
+    #endif
     
     
     //================================================================================
@@ -537,125 +487,15 @@ public unsafe partial struct PxTransform { // blittable
     #endif
     
     
-    //================================================================================
-    //#       PxTransform                                                            #
-    //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name (empty)
-    // NATIVE SIG: PxTransform
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L48~48
-    #if NATIVE
-    ES physx::PxTransform W_PxTransform_ctor(physx::PxTransform ){
-        auto nat_in_ = ();
-        self.PxTransform(nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_PxTransform_ctor(PxTransform );
+    //Skipped generated implicit entry: PxTransform
     
-    public PxTransform(PxTransform ){
-        PxTransform pvk_in_ = ();
-        var _new = W_PxTransform_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped generated implicit entry: PxTransform
     
+    //Skipped generated implicit entry: operator=
     
-    //================================================================================
-    //#       PxTransform                                                            #
-    //================================================================================
-    /* ERRORS OCCURED: Invalid parameter name (empty)
-    Non const pointer/reference global::PhysX.physx.PxTransform
-    // NATIVE SIG: PxTransform
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L48~48
-    #if NATIVE
-    ES physx::PxTransform W_PxTransform_ctor( ){
-        auto nat_in_ = ();
-        self.PxTransform(nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_PxTransform_ctor( );
+    //Skipped generated implicit entry: ~PxTransform
     
-    public PxTransform( ){
-         pvk_in_ = ();
-        var _new = W_PxTransform_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    Non const pointer/reference global::PhysX.physx.PxTransform
-    // NATIVE SIG: PxTransform
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L48~48
-    #if NATIVE
-    ES physx::PxTransform* W_operator=(physx::PxTransform self){
-        auto nat_in_ = ();
-        auto retVal = &self.operator=(nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_operator=(PxTransform selfBlt);
-    
-    public static PxTransform operator=(PxTransform lhs,  ){
-         pvk_in_ = ();
-        PxTransform retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       ~PxTransform                                                           #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: PxTransform
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L48~48
-    #if NATIVE
-    ES void W_~PxTransform(physx::PxTransform self){
-        self.~PxTransform();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxTransform(PxTransform selfBlt);
-    
-    public void ~PxTransform(){
-        W_~PxTransform(this);
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxTransform
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L48~48
-    #if NATIVE
-    ES physx::PxTransform* W_operator=(physx::PxTransform self, physx::PxTransform ){
-        auto nat_in_ = ();
-        auto retVal = &self.operator=(nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_operator=(PxTransform selfBlt, PxTransform );
-    
-    public static PxTransform operator=(PxTransform lhs, PxTransform ){
-        PxTransform pvk_in_ = ();
-        PxTransform retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: operator=
     
 
 #if !NATIVE

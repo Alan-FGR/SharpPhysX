@@ -4,13 +4,15 @@ using System.Runtime.InteropServices;
 #endif
 
 
+#if !NATIVE
 public partial struct PxFlags {
+#endif
 
 //================================================================================
 //#       operator&                                                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
-Unresolved parameter type physx::operator&::a
+/* ERRORS OCCURED: unhandled return type: 
+Unresolved parameter type enumtype
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
@@ -37,7 +39,7 @@ public static UNPARSED_TYPE operator&( a,  b){
 //================================================================================
 //#       operator&                                                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
@@ -64,7 +66,115 @@ public static UNPARSED_TYPE operator&(PxBaseFlag a,  b){
 //================================================================================
 //#       operator&                                                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxTriangleMeshFlag::Enum, unsigned char>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::PxTriangleMeshFlag::Enum a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(PxTriangleMeshFlag a,  b);
+
+public static UNPARSED_TYPE operator&(PxTriangleMeshFlag a,  b){
+    PxTriangleMeshFlag pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxSceneFlag::Enum, unsigned int>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::PxSceneFlag::Enum a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(PxSceneFlag a,  b);
+
+public static UNPARSED_TYPE operator&(PxSceneFlag a,  b){
+    PxSceneFlag pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorFlag::Enum, unsigned char>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::PxActorFlag::Enum a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(PxActorFlag a,  b);
+
+public static UNPARSED_TYPE operator&(PxActorFlag a,  b){
+    PxActorFlag pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorTypeFlag::Enum, unsigned short>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::PxActorTypeFlag::Enum a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(PxActorTypeFlag a,  b);
+
+public static UNPARSED_TYPE operator&(PxActorTypeFlag a,  b){
+    PxActorTypeFlag pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConvexMeshGeometryFlag::Enum, unsigned char>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
@@ -91,7 +201,7 @@ public static UNPARSED_TYPE operator&(PxConvexMeshGeometryFlag a,  b){
 //================================================================================
 //#       operator&                                                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMeshGeometryFlag::Enum, unsigned char>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
@@ -118,7 +228,34 @@ public static UNPARSED_TYPE operator&(PxMeshGeometryFlag a,  b){
 //================================================================================
 //#       operator&                                                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMaterialFlag::Enum, unsigned short>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::PxMaterialFlag::Enum a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(PxMaterialFlag a,  b);
+
+public static UNPARSED_TYPE operator&(PxMaterialFlag a,  b){
+    PxMaterialFlag pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxShapeFlag::Enum, unsigned char>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
@@ -145,7 +282,223 @@ public static UNPARSED_TYPE operator&(PxShapeFlag a,  b){
 //================================================================================
 //#       operator&                                                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConstraintFlag::Enum, unsigned short>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::PxConstraintFlag::Enum a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(PxConstraintFlag a,  b);
+
+public static UNPARSED_TYPE operator&(PxConstraintFlag a,  b){
+    PxConstraintFlag pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxFilterFlag::Enum, unsigned short>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::PxFilterFlag::Enum a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(PxFilterFlag a,  b);
+
+public static UNPARSED_TYPE operator&(PxFilterFlag a,  b){
+    PxFilterFlag pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPairFlag::Enum, unsigned short>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::PxPairFlag::Enum a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(PxPairFlag a,  b);
+
+public static UNPARSED_TYPE operator&(PxPairFlag a,  b){
+    PxPairFlag pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxHitFlag::Enum, unsigned short>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::PxHitFlag::Enum a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(PxHitFlag a,  b);
+
+public static UNPARSED_TYPE operator&(PxHitFlag a,  b){
+    PxHitFlag pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxQueryFlag::Enum, unsigned short>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::PxQueryFlag::Enum a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(PxQueryFlag a,  b);
+
+public static UNPARSED_TYPE operator&(PxQueryFlag a,  b){
+    PxQueryFlag pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPvdSceneFlag::Enum, unsigned char>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::PxPvdSceneFlag::Enum a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(PxPvdSceneFlag a,  b);
+
+public static UNPARSED_TYPE operator&(PxPvdSceneFlag a,  b){
+    PxPvdSceneFlag pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidBodyFlag::Enum, unsigned char>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::PxRigidBodyFlag::Enum a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(PxRigidBodyFlag a,  b);
+
+public static UNPARSED_TYPE operator&(PxRigidBodyFlag a,  b){
+    PxRigidBodyFlag pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::PxRigidDynamicLockFlag::Enum a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(PxRigidDynamicLockFlag a,  b);
+
+public static UNPARSED_TYPE operator&(PxRigidDynamicLockFlag a,  b){
+    PxRigidDynamicLockFlag pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxDeletionEventFlag::Enum, unsigned char>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
@@ -168,7 +521,36 @@ public static UNPARSED_TYPE operator&(PxDeletionEventFlag a,  b){
 }
 #endif*/
 
+
+//================================================================================
+//#       operator&                                                              #
+//================================================================================
+/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::Px1DConstraintFlag::Type, unsigned short>
+fsdfasdf
+// NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
+// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L122~122
+#if NATIVE
+ES UNPARSED_TYPE W_OP_Amp(physx::Px1DConstraintFlag::Type a,  b){
+    auto nat_in_a = (a);
+    auto nat_in_b = (b);
+    auto retVal = physx::operator&(nat_in_a, nat_in_b);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern UNPARSED_TYPE W_OP_Amp(Type a,  b);
+
+public static UNPARSED_TYPE operator&(Type a,  b){
+    Type pvk_in_a = (a);
+     pvk_in_b = (b);
+    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    return retVal;
+}
+#endif*/
+
+#if !NATIVE
 } // End PxFlags
+#endif
 
 
 #if !NATIVE
@@ -179,7 +561,7 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       PxFlags<enumtype, storagetype>                                         #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxFlags
     Invalid parameter name (empty)
     // NATIVE SIG: PX_INLINE explicit PxFlags(const PxEMPTY)
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L78~78
@@ -204,31 +586,17 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       PxFlags<enumtype, storagetype>                                         #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    //Skipped invalid managed declaration:
+    /*unhandled return type: physx::PxFlags
     Parameterless constructor not allowed
-    // NATIVE SIG: PX_INLINE PxFlags(void)
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L81~81
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor(){
-        self->PxFlags<enumtype, storagetype>();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor();
-    
-    public PxFlags<enumtype, storagetype>(){
-        var _new = W_PxFlags<enumtype, storagetype>_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    */
     
     
     //================================================================================
     //#       PxFlags<enumtype, storagetype>                                         #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Unresolved parameter type physx::PxFlags::PxFlags<enumtype, storagetype>::e
+    /* ERRORS OCCURED: unhandled return type: physx::PxFlags
+    Unresolved parameter type enumtype
     // NATIVE SIG: PX_INLINE PxFlags(enumtype e)
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L82~82
     #if NATIVE
@@ -252,7 +620,7 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       PxFlags<enumtype, storagetype>                                         #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxFlags
     fsdfasdf
     // NATIVE SIG: PX_INLINE PxFlags(const PxFlags<enumtype, storagetype>& f)
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L83~83
@@ -277,8 +645,8 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       PxFlags<enumtype, storagetype>                                         #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Unresolved parameter type physx::PxFlags::PxFlags<enumtype, storagetype>::b
+    /* ERRORS OCCURED: unhandled return type: physx::PxFlags
+    Unresolved parameter type storagetype
     // NATIVE SIG: PX_INLINE explicit PxFlags(storagetype b)
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L84~84
     #if NATIVE
@@ -302,7 +670,7 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       isSet                                                                  #
     //================================================================================
-    /* ERRORS OCCURED: Unresolved parameter type physx::PxFlags::isSet::e
+    /* ERRORS OCCURED: Unresolved parameter type enumtype
     // NATIVE SIG: bool isSet(enumtype e) const
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L86~86
     #if NATIVE
@@ -326,8 +694,8 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       set                                                                    #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
-    Unresolved parameter type physx::PxFlags::set::e
+    /* ERRORS OCCURED: unhandled return reference type: 
+    Unresolved parameter type enumtype
     // NATIVE SIG: PxFlags<enumtype, storagetype>& set(enumtype e)
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L87~87
     #if NATIVE
@@ -351,7 +719,7 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Unresolved parameter type physx::PxFlags::operator==::e
+    /* ERRORS OCCURED: Unresolved parameter type enumtype
     // NATIVE SIG: bool operator==(enumtype e) const
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L88~88
     #if NATIVE
@@ -421,7 +789,7 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       operator!=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Unresolved parameter type physx::PxFlags::operator!=::e
+    /* ERRORS OCCURED: Unresolved parameter type enumtype
     // NATIVE SIG: bool operator!=(enumtype e) const
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L91~91
     #if NATIVE
@@ -469,112 +837,36 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       operator=                                                              #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
-    Ops TODO
-    fsdfasdf
-    // NATIVE SIG: PxFlags<enumtype, storagetype>& operator=(const PxFlags<enumtype, storagetype>& f)
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L94~94
-    #if NATIVE
-    ES UNPARSED_TYPE W_operator=(physx::PxFlags* self,  f){
-        auto nat_in_f = (f);
-        auto retVal = self->operator=(nat_in_f);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_operator=(PxFlags selfPtr,  f);
-    
-    public static UNPARSED_TYPE operator=(PxFlags lhs,  f){
-         pvk_in_f = (f);
-        UNPARSED_TYPE retVal = W_operator=(lhs, pvk_in_f);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Equal.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator=                                                              #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
-    Ops TODO
-    Unresolved parameter type physx::PxFlags::operator=::e
-    // NATIVE SIG: PxFlags<enumtype, storagetype>& operator=(enumtype e)
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L95~95
-    #if NATIVE
-    ES UNPARSED_TYPE W_operator=(physx::PxFlags* self,  e){
-        auto nat_in_e = (e);
-        auto retVal = self->operator=(nat_in_e);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_operator=(PxFlags selfPtr,  e);
-    
-    public static UNPARSED_TYPE operator=(PxFlags lhs,  e){
-         pvk_in_e = (e);
-        UNPARSED_TYPE retVal = W_operator=(lhs, pvk_in_e);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Equal.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator|=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
-    Ops TODO
-    Unresolved parameter type physx::PxFlags::operator|=::e
-    // NATIVE SIG: PxFlags<enumtype, storagetype>& operator|=(enumtype e)
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L97~97
-    #if NATIVE
-    ES UNPARSED_TYPE W_operator|=(physx::PxFlags* self,  e){
-        auto nat_in_e = (e);
-        auto retVal = self->operator|=(nat_in_e);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_operator|=(PxFlags selfPtr,  e);
-    
-    public static UNPARSED_TYPE operator|=(PxFlags lhs,  e){
-         pvk_in_e = (e);
-        UNPARSED_TYPE retVal = W_operator|=(lhs, pvk_in_e);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator PipeEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator|=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
-    Ops TODO
-    fsdfasdf
-    // NATIVE SIG: PxFlags<enumtype, storagetype>& operator|=(const PxFlags<enumtype, storagetype>& f)
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L98~98
-    #if NATIVE
-    ES UNPARSED_TYPE W_operator|=(physx::PxFlags* self,  f){
-        auto nat_in_f = (f);
-        auto retVal = self->operator|=(nat_in_f);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_operator|=(PxFlags selfPtr,  f);
-    
-    public static UNPARSED_TYPE operator|=(PxFlags lhs,  f){
-         pvk_in_f = (f);
-        UNPARSED_TYPE retVal = W_operator|=(lhs, pvk_in_f);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator PipeEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator|                                                              #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Unresolved parameter type physx::PxFlags::operator|::e
+    /* ERRORS OCCURED: unhandled return type: 
+    Unresolved parameter type enumtype
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator|(enumtype e) const
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L99~99
     #if NATIVE
@@ -598,7 +890,7 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       operator|                                                              #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: 
     fsdfasdf
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator|(const PxFlags<enumtype, storagetype>& f) const
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L100~100
@@ -623,60 +915,22 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       operator&=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
-    Ops TODO
-    Unresolved parameter type physx::PxFlags::operator&=::e
-    // NATIVE SIG: PxFlags<enumtype, storagetype>& operator&=(enumtype e)
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L102~102
-    #if NATIVE
-    ES UNPARSED_TYPE W_operator&=(physx::PxFlags* self,  e){
-        auto nat_in_e = (e);
-        auto retVal = self->operator&=(nat_in_e);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_operator&=(PxFlags selfPtr,  e);
-    
-    public static UNPARSED_TYPE operator&=(PxFlags lhs,  e){
-         pvk_in_e = (e);
-        UNPARSED_TYPE retVal = W_operator&=(lhs, pvk_in_e);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator AmpEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator&=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
-    Ops TODO
-    fsdfasdf
-    // NATIVE SIG: PxFlags<enumtype, storagetype>& operator&=(const PxFlags<enumtype, storagetype>& f)
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L103~103
-    #if NATIVE
-    ES UNPARSED_TYPE W_operator&=(physx::PxFlags* self,  f){
-        auto nat_in_f = (f);
-        auto retVal = self->operator&=(nat_in_f);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_operator&=(PxFlags selfPtr,  f);
-    
-    public static UNPARSED_TYPE operator&=(PxFlags lhs,  f){
-         pvk_in_f = (f);
-        UNPARSED_TYPE retVal = W_operator&=(lhs, pvk_in_f);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator AmpEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator&                                                              #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Unresolved parameter type physx::PxFlags::operator&::e
+    /* ERRORS OCCURED: unhandled return type: 
+    Unresolved parameter type enumtype
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype e) const
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L104~104
     #if NATIVE
@@ -700,7 +954,7 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       operator&                                                              #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: 
     fsdfasdf
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(const PxFlags<enumtype, storagetype>& f) const
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L105~105
@@ -725,60 +979,22 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       operator^=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
-    Ops TODO
-    Unresolved parameter type physx::PxFlags::operator^=::e
-    // NATIVE SIG: PxFlags<enumtype, storagetype>& operator^=(enumtype e)
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L107~107
-    #if NATIVE
-    ES UNPARSED_TYPE W_operator^=(physx::PxFlags* self,  e){
-        auto nat_in_e = (e);
-        auto retVal = self->operator^=(nat_in_e);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_operator^=(PxFlags selfPtr,  e);
-    
-    public static UNPARSED_TYPE operator^=(PxFlags lhs,  e){
-         pvk_in_e = (e);
-        UNPARSED_TYPE retVal = W_operator^=(lhs, pvk_in_e);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator CaretEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator^=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return reference type
-    Ops TODO
-    fsdfasdf
-    // NATIVE SIG: PxFlags<enumtype, storagetype>& operator^=(const PxFlags<enumtype, storagetype>& f)
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L108~108
-    #if NATIVE
-    ES UNPARSED_TYPE W_operator^=(physx::PxFlags* self,  f){
-        auto nat_in_f = (f);
-        auto retVal = self->operator^=(nat_in_f);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_operator^=(PxFlags selfPtr,  f);
-    
-    public static UNPARSED_TYPE operator^=(PxFlags lhs,  f){
-         pvk_in_f = (f);
-        UNPARSED_TYPE retVal = W_operator^=(lhs, pvk_in_f);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator CaretEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator^                                                              #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Unresolved parameter type physx::PxFlags::operator^::e
+    /* ERRORS OCCURED: unhandled return type: 
+    Unresolved parameter type enumtype
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator^(enumtype e) const
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L109~109
     #if NATIVE
@@ -802,7 +1018,7 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       operator^                                                              #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: 
     fsdfasdf
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator^(const PxFlags<enumtype, storagetype>& f) const
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L110~110
@@ -827,7 +1043,7 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       operator~                                                              #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: 
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator~(void) const
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L112~112
     #if NATIVE
@@ -849,95 +1065,35 @@ public unsafe partial struct PxFlags { // pointer
     //================================================================================
     //#       operator bool                                                          #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: bool(void) const
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L114~114
-    #if NATIVE
-    ES bool W_operator bool(physx::PxFlags* self){
-        auto retVal = self->operator bool();
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_operator bool(PxFlags selfPtr);
-    
-    public static bool operator bool(PxFlags lhs){
-        bool retVal = W_operator bool(lhs);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Conversion.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator unsigned char                                                 #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: uint8_t(void) const
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L115~115
-    #if NATIVE
-    ES ::uint8_t W_operator unsigned char(physx::PxFlags* self){
-        auto retVal = self->operator unsigned char();
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern byte W_operator unsigned char(PxFlags selfPtr);
-    
-    public static byte operator unsigned char(PxFlags lhs){
-        byte retVal = W_operator unsigned char(lhs);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Conversion.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator unsigned short                                                #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: uint16_t(void) const
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L116~116
-    #if NATIVE
-    ES ::uint16_t W_operator unsigned short(physx::PxFlags* self){
-        auto retVal = self->operator unsigned short();
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern ushort W_operator unsigned short(PxFlags selfPtr);
-    
-    public static ushort operator unsigned short(PxFlags lhs){
-        ushort retVal = W_operator unsigned short(lhs);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Conversion.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator unsigned int                                                  #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: uint32_t(void) const
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L117~117
-    #if NATIVE
-    ES ::uint32_t W_operator unsigned int(physx::PxFlags* self){
-        auto retVal = self->operator unsigned int();
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_operator unsigned int(PxFlags selfPtr);
-    
-    public static uint operator unsigned int(PxFlags lhs){
-        uint retVal = W_operator unsigned int(lhs);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Conversion.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       clear                                                                  #
     //================================================================================
-    /* ERRORS OCCURED: Unresolved parameter type physx::PxFlags::clear::e
+    /* ERRORS OCCURED: Unresolved parameter type enumtype
     // NATIVE SIG: void clear(enumtype e)
     // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxFlags.h L119~119
     #if NATIVE

@@ -4,7 +4,9 @@ using System.Runtime.InteropServices;
 #endif
 
 
+#if !NATIVE
 public partial struct PxDefaultAllocator {
+#endif
 
 //================================================================================
 //#       platformAlignedAlloc                                                   #
@@ -47,7 +49,9 @@ public static void platformAlignedFree(global::System.IntPtr ptr){
 }
 #endif
 
+#if !NATIVE
 } // End PxDefaultAllocator
+#endif
 
 
 #if !NATIVE
@@ -112,148 +116,17 @@ public unsafe partial struct PxDefaultAllocator { // pointer
     #endif
     
     
-    //================================================================================
-    //#       PxDefaultAllocator                                                     #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxDefaultAllocator
-    // SOURCE: C:\Projects\PhysX\physx\include\extensions\PxDefaultAllocator.h L89~89
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxDefaultAllocator_ctor(physx::PxDefaultAllocator* ){
-        auto nat_in_ = ();
-        self->PxDefaultAllocator(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxDefaultAllocator_ctor(PxDefaultAllocator );
+    //Skipped generated implicit entry: PxDefaultAllocator
     
-    public PxDefaultAllocator(PxDefaultAllocator ){
-        PxDefaultAllocator pvk_in_ = ();
-        var _new = W_PxDefaultAllocator_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped generated implicit entry: PxDefaultAllocator
     
+    //Skipped generated implicit entry: operator=
     
-    //================================================================================
-    //#       PxDefaultAllocator                                                     #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxDefaultAllocator
-    // SOURCE: C:\Projects\PhysX\physx\include\extensions\PxDefaultAllocator.h L89~89
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxDefaultAllocator_ctor(physx::PxDefaultAllocator* ){
-        auto nat_in_ = ();
-        self->PxDefaultAllocator(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxDefaultAllocator_ctor(PxDefaultAllocator );
+    //Skipped generated implicit entry: operator=
     
-    public PxDefaultAllocator(PxDefaultAllocator ){
-        PxDefaultAllocator pvk_in_ = ();
-        var _new = W_PxDefaultAllocator_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped generated implicit entry: ~PxDefaultAllocator
     
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxDefaultAllocator
-    // SOURCE: C:\Projects\PhysX\physx\include\extensions\PxDefaultAllocator.h L89~89
-    #if NATIVE
-    ES physx::PxDefaultAllocator* W_operator=(physx::PxDefaultAllocator* self, physx::PxDefaultAllocator* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxDefaultAllocator W_operator=(PxDefaultAllocator selfPtr, PxDefaultAllocator );
-    
-    public static PxDefaultAllocator operator=(PxDefaultAllocator lhs, PxDefaultAllocator ){
-        PxDefaultAllocator pvk_in_ = ();
-        PxDefaultAllocator retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxDefaultAllocator
-    // SOURCE: C:\Projects\PhysX\physx\include\extensions\PxDefaultAllocator.h L89~89
-    #if NATIVE
-    ES physx::PxDefaultAllocator* W_operator=(physx::PxDefaultAllocator* self, physx::PxDefaultAllocator* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxDefaultAllocator W_operator=(PxDefaultAllocator selfPtr, PxDefaultAllocator );
-    
-    public static PxDefaultAllocator operator=(PxDefaultAllocator lhs, PxDefaultAllocator ){
-        PxDefaultAllocator pvk_in_ = ();
-        PxDefaultAllocator retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       ~PxDefaultAllocator                                                    #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: PxDefaultAllocator
-    // SOURCE: C:\Projects\PhysX\physx\include\extensions\PxDefaultAllocator.h L89~89
-    #if NATIVE
-    ES void W_~PxDefaultAllocator(physx::PxDefaultAllocator* self){
-        self->~PxDefaultAllocator();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxDefaultAllocator(PxDefaultAllocator selfPtr);
-    
-    public void ~PxDefaultAllocator(){
-        W_~PxDefaultAllocator(this);
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       PxDefaultAllocator                                                     #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Parameterless constructor not allowed
-    // NATIVE SIG: PxDefaultAllocator
-    // SOURCE: C:\Projects\PhysX\physx\include\extensions\PxDefaultAllocator.h L89~89
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxDefaultAllocator_ctor(){
-        self->PxDefaultAllocator();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxDefaultAllocator_ctor();
-    
-    public PxDefaultAllocator(){
-        var _new = W_PxDefaultAllocator_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: PxDefaultAllocator
     
 
 #if !NATIVE

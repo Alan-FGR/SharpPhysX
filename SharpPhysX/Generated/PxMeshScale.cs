@@ -13,32 +13,16 @@ public unsafe partial struct PxMeshScale { // pointer
     //================================================================================
     //#       PxMeshScale                                                            #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    //Skipped invalid managed declaration:
+    /*unhandled return type: physx::PxMeshScale
     Parameterless constructor not allowed
-    // NATIVE SIG: PX_FORCE_INLINE PxMeshScale(): scale(1.0f), rotation(PxIdentity) 
-    	{
-    	}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L80~82
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxMeshScale_ctor(){
-        self->PxMeshScale();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxMeshScale_ctor();
-    
-    public PxMeshScale(){
-        var _new = W_PxMeshScale_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    */
     
     
     //================================================================================
     //#       PxMeshScale                                                            #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxMeshScale
     // NATIVE SIG: explicit PX_CUDA_CALLABLE PX_FORCE_INLINE PxMeshScale(PxReal r): scale(r), rotation(PxIdentity) 
     	{
     	}
@@ -64,7 +48,7 @@ public unsafe partial struct PxMeshScale { // pointer
     //================================================================================
     //#       PxMeshScale                                                            #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxMeshScale
     // NATIVE SIG: PX_FORCE_INLINE PxMeshScale(const PxVec3& s)
     	{
     		scale = s;
@@ -92,7 +76,7 @@ public unsafe partial struct PxMeshScale { // pointer
     //================================================================================
     //#       PxMeshScale                                                            #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxMeshScale
     // NATIVE SIG: PX_FORCE_INLINE PxMeshScale(const PxVec3& s, const PxQuat& r)
     	{
     		PX_ASSERT(r.isUnit());
@@ -143,7 +127,7 @@ public unsafe partial struct PxMeshScale { // pointer
     //================================================================================
     //#       getInverse                                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type
+    /* ERRORS OCCURED: unhandled return type: physx::PxMeshScale
     // NATIVE SIG: PxMeshScale getInverse() const 
     	{
     		return PxMeshScale(PxVec3(1.0f/scale.x, 1.0f/scale.y, 1.0f/scale.z), rotation);
@@ -267,125 +251,15 @@ public unsafe partial struct PxMeshScale { // pointer
     #endif
     
     
-    //================================================================================
-    //#       PxMeshScale                                                            #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxMeshScale
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L68~68
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxMeshScale_ctor(physx::PxMeshScale* ){
-        auto nat_in_ = ();
-        self->PxMeshScale(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxMeshScale_ctor(PxMeshScale );
+    //Skipped generated implicit entry: PxMeshScale
     
-    public PxMeshScale(PxMeshScale ){
-        PxMeshScale pvk_in_ = ();
-        var _new = W_PxMeshScale_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped generated implicit entry: PxMeshScale
     
+    //Skipped generated implicit entry: operator=
     
-    //================================================================================
-    //#       PxMeshScale                                                            #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxMeshScale
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L68~68
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxMeshScale_ctor(physx::PxMeshScale* ){
-        auto nat_in_ = ();
-        self->PxMeshScale(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxMeshScale_ctor(PxMeshScale );
+    //Skipped generated implicit entry: ~PxMeshScale
     
-    public PxMeshScale(PxMeshScale ){
-        PxMeshScale pvk_in_ = ();
-        var _new = W_PxMeshScale_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxMeshScale
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L68~68
-    #if NATIVE
-    ES physx::PxMeshScale* W_operator=(physx::PxMeshScale* self, physx::PxMeshScale* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMeshScale W_operator=(PxMeshScale selfPtr, PxMeshScale );
-    
-    public static PxMeshScale operator=(PxMeshScale lhs, PxMeshScale ){
-        PxMeshScale pvk_in_ = ();
-        PxMeshScale retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       ~PxMeshScale                                                           #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: PxMeshScale
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L68~68
-    #if NATIVE
-    ES void W_~PxMeshScale(physx::PxMeshScale* self){
-        self->~PxMeshScale();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxMeshScale(PxMeshScale selfPtr);
-    
-    public void ~PxMeshScale(){
-        W_~PxMeshScale(this);
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxMeshScale
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L68~68
-    #if NATIVE
-    ES physx::PxMeshScale* W_operator=(physx::PxMeshScale* self, physx::PxMeshScale* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMeshScale W_operator=(PxMeshScale selfPtr, PxMeshScale );
-    
-    public static PxMeshScale operator=(PxMeshScale lhs, PxMeshScale ){
-        PxMeshScale pvk_in_ = ();
-        PxMeshScale retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: operator=
     
 
 #if !NATIVE

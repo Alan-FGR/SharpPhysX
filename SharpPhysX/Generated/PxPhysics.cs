@@ -4,7 +4,9 @@ using System.Runtime.InteropServices;
 #endif
 
 
+#if !NATIVE
 public partial struct PxPhysics {
+#endif
 
 //================================================================================
 //#       PxRegisterArticulations                                                #
@@ -69,6 +71,12 @@ public static void PxRegisterHeightFields(PxPhysics physics){
 //================================================================================
 //#       PxCreateBasePhysics                                                    #
 //================================================================================
+/* ERRORS OCCURED: Forbidden parameter type: PxTolerancesScale
+// NATIVE SIG: physx::PxPhysics* PX_CALL_CONV PxCreateBasePhysics(physx::PxU32 version,
+																			     physx::PxFoundation& foundation,
+																			     const physx::PxTolerancesScale& scale,																				 
+																			     bool trackOutstandingAllocations = false,
+																				 physx::PxPvd* pvd = NULL)
 // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L661~665
 #if NATIVE
 ES physx::PxPhysics* W_PxCreateBasePhysics(physx::PxU32 version, physx::PxFoundation* foundation, physx::PxTolerancesScale* scale, bool trackOutstandingAllocations, physx::PxPvd* pvd){
@@ -93,12 +101,29 @@ public static PxPhysics PxCreateBasePhysics(uint version, PxFoundation foundatio
     PxPhysics retVal = W_PxCreateBasePhysics(pvk_in_version, pvk_in_foundation, pvk_in_scale, pvk_in_trackOutstandingAllocations, pvk_in_pvd);
     return retVal;
 }
-#endif
+#endif*/
 
 
 //================================================================================
 //#       PxCreatePhysics                                                        #
 //================================================================================
+/* ERRORS OCCURED: Forbidden parameter type: PxTolerancesScale
+// NATIVE SIG: physx::PxPhysics* PxCreatePhysics(physx::PxU32 version,
+											physx::PxFoundation& foundation,
+											const physx::PxTolerancesScale& scale,											
+											bool trackOutstandingAllocations = false,
+											physx::PxPvd* pvd = NULL )
+{
+	physx::PxPhysics* physics = PxCreateBasePhysics(version, foundation, scale, trackOutstandingAllocations, pvd);
+	if(!physics)
+		return NULL;
+
+	PxRegisterArticulations(*physics);
+	PxRegisterArticulationsReducedCoordinate(*physics);
+	PxRegisterHeightFields(*physics);
+
+	return physics;
+}
 // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L692~707
 #if NATIVE
 ES physx::PxPhysics* W_PxCreatePhysics(physx::PxU32 version, physx::PxFoundation* foundation, physx::PxTolerancesScale* scale, bool trackOutstandingAllocations, physx::PxPvd* pvd){
@@ -123,7 +148,7 @@ public static PxPhysics PxCreatePhysics(uint version, PxFoundation foundation, P
     PxPhysics retVal = W_PxCreatePhysics(pvk_in_version, pvk_in_foundation, pvk_in_scale, pvk_in_trackOutstandingAllocations, pvk_in_pvd);
     return retVal;
 }
-#endif
+#endif*/
 
 
 //================================================================================
@@ -145,7 +170,9 @@ public static PxPhysics PxGetPhysics(){
 }
 #endif
 
+#if !NATIVE
 } // End PxPhysics
+#endif
 
 
 #if !NATIVE
@@ -214,6 +241,8 @@ public unsafe partial struct PxPhysics { // pointer
     //================================================================================
     //#       createAggregate                                                        #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden return type
+    // NATIVE SIG: PxAggregate*		createAggregate(PxU32 maxSize, bool enableSelfCollision)	= 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L116~116
     #if NATIVE
     ES physx::PxAggregate* W_createAggregate(physx::PxPhysics* self, physx::PxU32 maxSize, bool enableSelfCollision){
@@ -232,12 +261,14 @@ public unsafe partial struct PxPhysics { // pointer
         PxAggregate retVal = W_createAggregate(this, pvk_in_maxSize, pvk_in_enableSelfCollision);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
     //#       getTolerancesScale                                                     #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden return type
+    // NATIVE SIG: PxTolerancesScale&		getTolerancesScale() const = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L122~122
     #if NATIVE
     ES physx::PxTolerancesScale* W_getTolerancesScale(physx::PxPhysics* self){
@@ -252,12 +283,14 @@ public unsafe partial struct PxPhysics { // pointer
         PxTolerancesScale retVal = W_getTolerancesScale(this);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
     //#       createTriangleMesh                                                     #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden parameter type: PxInputStream
+    // NATIVE SIG: PxTriangleMesh*    createTriangleMesh(PxInputStream& stream) = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L139~139
     #if NATIVE
     ES physx::PxTriangleMesh* W_createTriangleMesh(physx::PxPhysics* self, physx::PxInputStream* stream){
@@ -274,7 +307,7 @@ public unsafe partial struct PxPhysics { // pointer
         PxTriangleMesh retVal = W_createTriangleMesh(this, pvk_in_stream);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
@@ -328,6 +361,9 @@ public unsafe partial struct PxPhysics { // pointer
     //================================================================================
     //#       createHeightField                                                      #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden return type
+    Forbidden parameter type: PxInputStream
+    // NATIVE SIG: PxHeightField*		createHeightField(PxInputStream& stream) = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L176~176
     #if NATIVE
     ES physx::PxHeightField* W_createHeightField(physx::PxPhysics* self, physx::PxInputStream* stream){
@@ -344,7 +380,7 @@ public unsafe partial struct PxPhysics { // pointer
         PxHeightField retVal = W_createHeightField(this, pvk_in_stream);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
@@ -398,6 +434,9 @@ public unsafe partial struct PxPhysics { // pointer
     //================================================================================
     //#       createConvexMesh                                                       #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden return type
+    Forbidden parameter type: PxInputStream
+    // NATIVE SIG: PxConvexMesh*		createConvexMesh(PxInputStream &stream)					= 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L213~213
     #if NATIVE
     ES physx::PxConvexMesh* W_createConvexMesh(physx::PxPhysics* self, physx::PxInputStream* stream){
@@ -414,7 +453,7 @@ public unsafe partial struct PxPhysics { // pointer
         PxConvexMesh retVal = W_createConvexMesh(this, pvk_in_stream);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
@@ -468,6 +507,9 @@ public unsafe partial struct PxPhysics { // pointer
     //================================================================================
     //#       createBVHStructure                                                     #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden return type
+    Forbidden parameter type: PxInputStream
+    // NATIVE SIG: PxBVHStructure*		createBVHStructure(PxInputStream &stream)					= 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L248~248
     #if NATIVE
     ES physx::PxBVHStructure* W_createBVHStructure(physx::PxPhysics* self, physx::PxInputStream* stream){
@@ -484,7 +526,7 @@ public unsafe partial struct PxPhysics { // pointer
         PxBVHStructure retVal = W_createBVHStructure(this, pvk_in_stream);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
@@ -652,7 +694,8 @@ public unsafe partial struct PxPhysics { // pointer
     //================================================================================
     //#       createPruningStructure                                                 #
     //================================================================================
-    /* ERRORS OCCURED: Unresolved parameter pointee physx::PxRigidActor*
+    /* ERRORS OCCURED: Forbidden return type
+    Unresolved parameter pointee physx::PxRigidActor*
     // NATIVE SIG: PxPruningStructure*	createPruningStructure(PxRigidActor*const* actors, PxU32 nbActors)	= 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L356~356
     #if NATIVE
@@ -678,7 +721,7 @@ public unsafe partial struct PxPhysics { // pointer
     //================================================================================
     //#       createShape                                                            #
     //================================================================================
-    /* ERRORS OCCURED: Unresolved parameter type physx::PxPhysics::createShape::shapeFlags
+    /* ERRORS OCCURED: Unresolved parameter type physx::PxShapeFlags
     // NATIVE SIG: PxShape*	createShape(	const PxGeometry& geometry, 
     												const PxMaterial& material, 
     												bool isExclusive = false, 
@@ -716,7 +759,7 @@ public unsafe partial struct PxPhysics { // pointer
     //#       createShape                                                            #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxMaterial*
-    Unresolved parameter type physx::PxPhysics::createShape::shapeFlags
+    Unresolved parameter type physx::PxShapeFlags
     // NATIVE SIG: PxShape*			createShape(const PxGeometry& geometry, 
     											PxMaterial*const * materials, 
     											PxU16 materialCount, 
@@ -800,15 +843,17 @@ public unsafe partial struct PxPhysics { // pointer
     //================================================================================
     //#       createConstraint                                                       #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden parameter type: PxConstraintShaderTable
+    // NATIVE SIG: PxConstraint*      createConstraint(PxRigidActor* actor0, PxRigidActor* actor1, PxConstraintConnector& connector, const PxConstraintShaderTable& shaders, PxU32 dataSize)		= 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L453~453
     #if NATIVE
-    ES physx::PxConstraint* W_createConstraint(physx::PxPhysics* self, physx::PxRigidActor* actor0, physx::PxRigidActor* actor1, physx::PxConstraintConnector* connector, physx::PxConstraintShaderTable* shaders, physx::PxU32 dataSize){
+    ES physx::PxConstraint* W_createConstraint(physx::PxPhysics* self, physx::PxRigidActor* actor0, physx::PxRigidActor* actor1, physx::PxConstraintConnector* connector, physx::PxConstraintShaderTable shaders, physx::PxU32 dataSize){
         auto nat_in_actor0 = (actor0);
         auto nat_in_actor1 = (actor1);
         auto nat_in_connector = (connector);
         auto nat_in_shaders = (shaders);
         auto nat_in_dataSize = (dataSize);
-        auto retVal = self->createConstraint(nat_in_actor0, nat_in_actor1, *nat_in_connector, *nat_in_shaders, nat_in_dataSize);
+        auto retVal = self->createConstraint(nat_in_actor0, nat_in_actor1, *nat_in_connector, nat_in_shaders, nat_in_dataSize);
         return retVal;
     }
     #else
@@ -824,12 +869,14 @@ public unsafe partial struct PxPhysics { // pointer
         PxConstraint retVal = W_createConstraint(this, pvk_in_actor0, pvk_in_actor1, pvk_in_connector, pvk_in_shaders, pvk_in_dataSize);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
     //#       createArticulation                                                     #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden return type
+    // NATIVE SIG: PxArticulation*						createArticulation() = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L462~462
     #if NATIVE
     ES physx::PxArticulation* W_createArticulation(physx::PxPhysics* self){
@@ -844,12 +891,14 @@ public unsafe partial struct PxPhysics { // pointer
         PxArticulation retVal = W_createArticulation(this);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
     //#       createArticulationReducedCoordinate                                    #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden return type
+    // NATIVE SIG: PxArticulationReducedCoordinate*	createArticulationReducedCoordinate() = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L471~471
     #if NATIVE
     ES physx::PxArticulationReducedCoordinate* W_createArticulationReducedCoordinate(physx::PxPhysics* self){
@@ -864,7 +913,7 @@ public unsafe partial struct PxPhysics { // pointer
         PxArticulationReducedCoordinate retVal = W_createArticulationReducedCoordinate(this);
         return retVal;
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
@@ -944,7 +993,8 @@ public unsafe partial struct PxPhysics { // pointer
     //================================================================================
     //#       registerDeletionListener                                               #
     //================================================================================
-    /* ERRORS OCCURED: fsdfasdf
+    /* ERRORS OCCURED: Forbidden parameter type: PxDeletionListener
+    fsdfasdf
     // NATIVE SIG: void registerDeletionListener(PxDeletionListener& observer, const PxDeletionEventFlags& deletionEvents, bool restrictedObjectSet = false) = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L538~538
     #if NATIVE
@@ -970,6 +1020,8 @@ public unsafe partial struct PxPhysics { // pointer
     //================================================================================
     //#       unregisterDeletionListener                                             #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden parameter type: PxDeletionListener
+    // NATIVE SIG: void unregisterDeletionListener(PxDeletionListener& observer) = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L549~549
     #if NATIVE
     ES void W_unregisterDeletionListener(physx::PxPhysics* self, physx::PxDeletionListener* observer){
@@ -984,13 +1036,14 @@ public unsafe partial struct PxPhysics { // pointer
         PxDeletionListener pvk_in_observer = (observer);
         W_unregisterDeletionListener(this, pvk_in_observer);
     }
-    #endif
+    #endif*/
     
     
     //================================================================================
     //#       registerDeletionListenerObjects                                        #
     //================================================================================
-    /* ERRORS OCCURED: Unresolved parameter pointee const physx::PxBase*
+    /* ERRORS OCCURED: Forbidden parameter type: PxDeletionListener
+    Unresolved parameter pointee const physx::PxBase*
     // NATIVE SIG: void registerDeletionListenerObjects(PxDeletionListener& observer, const PxBase* const* observables, PxU32 observableCount) = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L566~566
     #if NATIVE
@@ -1016,7 +1069,8 @@ public unsafe partial struct PxPhysics { // pointer
     //================================================================================
     //#       unregisterDeletionListenerObjects                                      #
     //================================================================================
-    /* ERRORS OCCURED: Unresolved parameter pointee const physx::PxBase*
+    /* ERRORS OCCURED: Forbidden parameter type: PxDeletionListener
+    Unresolved parameter pointee const physx::PxBase*
     // NATIVE SIG: void unregisterDeletionListenerObjects(PxDeletionListener& observer, const PxBase* const* observables, PxU32 observableCount) = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L583~583
     #if NATIVE
@@ -1042,6 +1096,8 @@ public unsafe partial struct PxPhysics { // pointer
     //================================================================================
     //#       getPhysicsInsertionCallback                                            #
     //================================================================================
+    /* ERRORS OCCURED: Forbidden return type
+    // NATIVE SIG: PxPhysicsInsertionCallback& getPhysicsInsertionCallback() = 0
     // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L593~593
     #if NATIVE
     ES physx::PxPhysicsInsertionCallback* W_getPhysicsInsertionCallback(physx::PxPhysics* self){
@@ -1056,90 +1112,20 @@ public unsafe partial struct PxPhysics { // pointer
         PxPhysicsInsertionCallback retVal = W_getPhysicsInsertionCallback(this);
         return retVal;
     }
-    #endif
-    
-    
-    //================================================================================
-    //#       operator=                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxPhysics
-    // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L71~71
-    #if NATIVE
-    ES physx::PxPhysics* W_operator=(physx::PxPhysics* self, physx::PxPhysics* ){
-        auto nat_in_ = ();
-        auto retVal = &self->operator=(*nat_in_);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPhysics W_operator=(PxPhysics selfPtr, PxPhysics );
-    
-    public static PxPhysics operator=(PxPhysics lhs, PxPhysics ){
-        PxPhysics pvk_in_ = ();
-        PxPhysics retVal = W_operator=(lhs, pvk_in_);
-        return retVal;
-    }
     #endif*/
     
     
-    //================================================================================
-    //#       PxPhysics                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Parameterless constructor not allowed
-    // NATIVE SIG: PxPhysics
-    // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L71~71
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxPhysics_ctor(){
-        self->PxPhysics();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxPhysics_ctor();
+    //Skipped generated implicit entry: operator=
     
-    public PxPhysics(){
-        var _new = W_PxPhysics_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped generated implicit entry: PxPhysics
     
-    
-    //================================================================================
-    //#       PxPhysics                                                              #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxPhysics
-    // SOURCE: C:\Projects\PhysX\physx\include\PxPhysics.h L71~71
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxPhysics_ctor(physx::PxPhysics* ){
-        auto nat_in_ = ();
-        self->PxPhysics(*nat_in_);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxPhysics_ctor(PxPhysics );
-    
-    public PxPhysics(PxPhysics ){
-        PxPhysics pvk_in_ = ();
-        var _new = W_PxPhysics_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: PxPhysics
     
 
 #if !NATIVE
 }
 #endif
 
-
-
-
-
-
-
+// Class physx::PxBVHStructure Manually Ignored
+// Class physx::PxPruningStructure Manually Ignored
+// Class physx::PxPhysicsInsertionCallback Manually Ignored

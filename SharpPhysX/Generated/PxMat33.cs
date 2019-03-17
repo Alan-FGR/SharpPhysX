@@ -4,7 +4,9 @@ using System.Runtime.InteropServices;
 #endif
 
 
+#if !NATIVE
 public partial struct PxMat33 {
+#endif
 
 //================================================================================
 //#       operator*                                                              #
@@ -32,7 +34,9 @@ public static PxMat33 operator*(float , PxMat33 ){
 }
 #endif*/
 
+#if !NATIVE
 } // End PxMat33
+#endif
 
 
 #if !NATIVE
@@ -46,25 +50,9 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    /* ERRORS OCCURED: Parameterless constructor not allowed
-    // NATIVE SIG: PX_FORCE_INLINE PxMat33()
-    	{
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L94~96
-    #if NATIVE
-    ES physx::PxMat33 W_PxMat33_ctor(){
-        self.PxMat33();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_PxMat33_ctor();
-    
-    public PxMat33(){
-        var _new = W_PxMat33_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped invalid managed declaration:
+    /*Parameterless constructor not allowed
+    */
     
     
     //================================================================================
@@ -162,7 +150,7 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    /* ERRORS OCCURED: Unresolved parameter type physx::PxMat33::PxMat33::values
+    /* ERRORS OCCURED: Unresolved parameter type float[]
     // NATIVE SIG: explicit PX_CUDA_CALLABLE PX_INLINE PxMat33(float values[])
     	: column0(values[0], values[1], values[2])
     	, column1(values[3], values[4], values[5])
@@ -235,31 +223,8 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       operator=                                                              #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxMat33& operator=(const PxMat33& other)
-    	{
-    		column0 = other.column0;
-    		column1 = other.column1;
-    		column2 = other.column2;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L167~173
-    #if NATIVE
-    ES physx::PxMat33* W_operator=(physx::PxMat33 self, physx::PxMat33 other){
-        auto nat_in_other = (other);
-        auto retVal = &self.operator=(nat_in_other);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_operator=(PxMat33 selfBlt, PxMat33 other);
-    
-    public static PxMat33 operator=(PxMat33 lhs, PxMat33 other){
-        PxMat33 pvk_in_other = (other);
-        PxMat33 retVal = W_operator=(lhs, pvk_in_other);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Equal.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
@@ -499,177 +464,43 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       operator+=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxMat33& operator+=(const PxMat33& other)
-    	{
-    		column0 += other.column0;
-    		column1 += other.column1;
-    		column2 += other.column2;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L278~284
-    #if NATIVE
-    ES physx::PxMat33* W_operator+=(physx::PxMat33 self, physx::PxMat33 other){
-        auto nat_in_other = (other);
-        auto retVal = &self.operator+=(nat_in_other);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_operator+=(PxMat33 selfBlt, PxMat33 other);
-    
-    public static PxMat33 operator+=(PxMat33 lhs, PxMat33 other){
-        PxMat33 pvk_in_other = (other);
-        PxMat33 retVal = W_operator+=(lhs, pvk_in_other);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator PlusEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator-=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxMat33& operator-=(const PxMat33& other)
-    	{
-    		column0 -= other.column0;
-    		column1 -= other.column1;
-    		column2 -= other.column2;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L287~293
-    #if NATIVE
-    ES physx::PxMat33* W_operator-=(physx::PxMat33 self, physx::PxMat33 other){
-        auto nat_in_other = (other);
-        auto retVal = &self.operator-=(nat_in_other);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_operator-=(PxMat33 selfBlt, PxMat33 other);
-    
-    public static PxMat33 operator-=(PxMat33 lhs, PxMat33 other){
-        PxMat33 pvk_in_other = (other);
-        PxMat33 retVal = W_operator-=(lhs, pvk_in_other);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator MinusEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator*=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxMat33& operator*=(float scalar)
-    	{
-    		column0 *= scalar;
-    		column1 *= scalar;
-    		column2 *= scalar;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L296~302
-    #if NATIVE
-    ES physx::PxMat33* W_operator*=(physx::PxMat33 self, float scalar){
-        auto nat_in_scalar = (scalar);
-        auto retVal = &self.operator*=(nat_in_scalar);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_operator*=(PxMat33 selfBlt, float scalar);
-    
-    public static PxMat33 operator*=(PxMat33 lhs, float scalar){
-        float pvk_in_scalar = (scalar);
-        PxMat33 retVal = W_operator*=(lhs, pvk_in_scalar);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator StarEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator*=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxMat33& operator*=(const PxMat33& other)
-    	{
-    		*this = *this * other;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L305~309
-    #if NATIVE
-    ES physx::PxMat33* W_operator*=(physx::PxMat33 self, physx::PxMat33 other){
-        auto nat_in_other = (other);
-        auto retVal = &self.operator*=(nat_in_other);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_operator*=(PxMat33 selfBlt, PxMat33 other);
-    
-    public static PxMat33 operator*=(PxMat33 lhs, PxMat33 other){
-        PxMat33 pvk_in_other = (other);
-        PxMat33 retVal = W_operator*=(lhs, pvk_in_other);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator StarEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator()                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: float operator()(unsigned int row, unsigned int col) const
-    	{
-    		return (*this)[col][row];
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L312~315
-    #if NATIVE
-    ES float W_operator()(physx::PxMat33 self, unsigned int row, unsigned int col){
-        auto nat_in_row = (row);
-        auto nat_in_col = (col);
-        auto retVal = self.operator()(nat_in_row, nat_in_col);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_operator()(PxMat33 selfBlt, uint row, uint col);
-    
-    public static float operator()(PxMat33 lhs, uint row, uint col){
-        uint pvk_in_row = (row);
-        uint pvk_in_col = (col);
-        float retVal = W_operator()(lhs, pvk_in_row, pvk_in_col);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Call.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator()                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: float& operator()(unsigned int row, unsigned int col)
-    	{
-    		return (*this)[col][row];
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L318~321
-    #if NATIVE
-    ES float* W_operator()(physx::PxMat33 self, unsigned int row, unsigned int col){
-        auto nat_in_row = (row);
-        auto nat_in_col = (col);
-        auto retVal = self.operator()(nat_in_row, nat_in_col);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_operator()(PxMat33 selfBlt, uint row, uint col);
-    
-    public static IntPtr operator()(PxMat33 lhs, uint row, uint col){
-        uint pvk_in_row = (row);
-        uint pvk_in_col = (col);
-        IntPtr retVal = W_operator()(lhs, pvk_in_row, pvk_in_col);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Call.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
@@ -739,76 +570,18 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       operator[]                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxVec3& operator[](unsigned int num)
-    	{
-    		return (&column0)[num];
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L342~345
-    #if NATIVE
-    ES physx::PxVec3* W_operator[](physx::PxMat33 self, unsigned int num){
-        auto nat_in_num = (num);
-        auto retVal = &self.operator[](nat_in_num);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_operator[](PxMat33 selfBlt, uint num);
-    
-    public static PxVec3 operator[](PxMat33 lhs, uint num){
-        uint pvk_in_num = (num);
-        PxVec3 retVal = W_operator[](lhs, pvk_in_num);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Subscript.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator[]                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxVec3& operator[](unsigned int num) const
-    	{
-    		return (&column0)[num];
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L346~349
-    #if NATIVE
-    ES physx::PxVec3* W_operator[](physx::PxMat33 self, unsigned int num){
-        auto nat_in_num = (num);
-        auto retVal = &self.operator[](nat_in_num);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_operator[](PxMat33 selfBlt, uint num);
-    
-    public static PxVec3 operator[](PxMat33 lhs, uint num){
-        uint pvk_in_num = (num);
-        PxVec3 retVal = W_operator[](lhs, pvk_in_num);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Subscript.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
-    //================================================================================
-    //#       ~PxMat33                                                               #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: PxMat33
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L90~90
-    #if NATIVE
-    ES void W_~PxMat33(physx::PxMat33 self){
-        self.~PxMat33();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxMat33(PxMat33 selfBlt);
-    
-    public void ~PxMat33(){
-        W_~PxMat33(this);
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: ~PxMat33
     
 
 #if !NATIVE

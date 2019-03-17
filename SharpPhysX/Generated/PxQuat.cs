@@ -17,25 +17,9 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
-    /* ERRORS OCCURED: Parameterless constructor not allowed
-    // NATIVE SIG: PX_FORCE_INLINE PxQuat()
-    	{
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L55~57
-    #if NATIVE
-    ES physx::PxQuat W_PxQuat_ctor(){
-        self.PxQuat();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_PxQuat_ctor();
-    
-    public PxQuat(){
-        var _new = W_PxQuat_ctor();
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped invalid managed declaration:
+    /*Parameterless constructor not allowed
+    */
     
     
     //================================================================================
@@ -610,161 +594,36 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       operator=                                                              #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxQuat& operator=(const PxQuat& p)
-    	{
-    		x = p.x;
-    		y = p.y;
-    		z = p.z;
-    		w = p.w;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L315~322
-    #if NATIVE
-    ES physx::PxQuat* W_operator=(physx::PxQuat self, physx::PxQuat p){
-        auto nat_in_p = (p);
-        auto retVal = &self.operator=(nat_in_p);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_operator=(PxQuat selfBlt, PxQuat p);
-    
-    public static PxQuat operator=(PxQuat lhs, PxQuat p){
-        PxQuat pvk_in_p = (p);
-        PxQuat retVal = W_operator=(lhs, pvk_in_p);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator Equal.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator*=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxQuat& operator*=(const PxQuat& q)
-    	{
-    		const float tx = w * q.x + q.w * x + y * q.z - q.y * z;
-    		const float ty = w * q.y + q.w * y + z * q.x - q.z * x;
-    		const float tz = w * q.z + q.w * z + x * q.y - q.x * y;
-    
-    		w = w * q.w - q.x * x - y * q.y - q.z * z;
-    		x = tx;
-    		y = ty;
-    		z = tz;
-    
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L324~336
-    #if NATIVE
-    ES physx::PxQuat* W_operator*=(physx::PxQuat self, physx::PxQuat q){
-        auto nat_in_q = (q);
-        auto retVal = &self.operator*=(nat_in_q);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_operator*=(PxQuat selfBlt, PxQuat q);
-    
-    public static PxQuat operator*=(PxQuat lhs, PxQuat q){
-        PxQuat pvk_in_q = (q);
-        PxQuat retVal = W_operator*=(lhs, pvk_in_q);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator StarEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator+=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxQuat& operator+=(const PxQuat& q)
-    	{
-    		x += q.x;
-    		y += q.y;
-    		z += q.z;
-    		w += q.w;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L338~345
-    #if NATIVE
-    ES physx::PxQuat* W_operator+=(physx::PxQuat self, physx::PxQuat q){
-        auto nat_in_q = (q);
-        auto retVal = &self.operator+=(nat_in_q);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_operator+=(PxQuat selfBlt, PxQuat q);
-    
-    public static PxQuat operator+=(PxQuat lhs, PxQuat q){
-        PxQuat pvk_in_q = (q);
-        PxQuat retVal = W_operator+=(lhs, pvk_in_q);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator PlusEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator-=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxQuat& operator-=(const PxQuat& q)
-    	{
-    		x -= q.x;
-    		y -= q.y;
-    		z -= q.z;
-    		w -= q.w;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L347~354
-    #if NATIVE
-    ES physx::PxQuat* W_operator-=(physx::PxQuat self, physx::PxQuat q){
-        auto nat_in_q = (q);
-        auto retVal = &self.operator-=(nat_in_q);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_operator-=(PxQuat selfBlt, PxQuat q);
-    
-    public static PxQuat operator-=(PxQuat lhs, PxQuat q){
-        PxQuat pvk_in_q = (q);
-        PxQuat retVal = W_operator-=(lhs, pvk_in_q);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator MinusEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
     //#       operator*=                                                             #
     //================================================================================
-    /* ERRORS OCCURED: Ops TODO
-    // NATIVE SIG: PxQuat& operator*=(const float s)
-    	{
-    		x *= s;
-    		y *= s;
-    		z *= s;
-    		w *= s;
-    		return *this;
-    	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L356~363
-    #if NATIVE
-    ES physx::PxQuat* W_operator*=(physx::PxQuat self, float s){
-        auto nat_in_s = (s);
-        auto retVal = &self.operator*=(nat_in_s);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_operator*=(PxQuat selfBlt, float s);
-    
-    public static PxQuat operator*=(PxQuat lhs, float s){
-        float pvk_in_s = (s);
-        PxQuat retVal = W_operator*=(lhs, pvk_in_s);
-        return retVal;
-    }
-    #endif*/
+    //Skipped unsupported operator StarEqual.
+    //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
@@ -875,25 +734,7 @@ public unsafe partial struct PxQuat { // blittable
     #endif
     
     
-    //================================================================================
-    //#       ~PxQuat                                                                #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: PxQuat
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L49~49
-    #if NATIVE
-    ES void W_~PxQuat(physx::PxQuat self){
-        self.~PxQuat();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxQuat(PxQuat selfBlt);
-    
-    public void ~PxQuat(){
-        W_~PxQuat(this);
-    }
-    #endif*/
-    
+    //Skipped generated implicit entry: ~PxQuat
     
 
 #if !NATIVE
