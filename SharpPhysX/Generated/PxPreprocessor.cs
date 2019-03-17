@@ -16,7 +16,6 @@ Unresolved parameter pointee T
 // NATIVE SIG: void PX_UNUSED(T const&)
 {
 }
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPreprocessor.h L479~481
 #if NATIVE
 ES void W_PX_UNUSED( ){
     auto nat_in_ = ();

@@ -46,8 +46,8 @@ public class SampleHelloWorld
 //	shape->release();
 //}
 
-    private PxFoundation foundation_;
-    private PxPhysics physics_;
+    private PxFoundationPtr foundation_;
+    private PxPhysicsPtr physics_;
 
     private SharpPhysXError errorCallback_ = (code, message, file, line) =>
     {

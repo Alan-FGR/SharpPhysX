@@ -17,9 +17,8 @@ public partial struct PxBase {
 //================================================================================
 //#       getBinaryMetaData_PxBase                                               #
 //================================================================================
-/* ERRORS OCCURED: Forbidden parameter type: PxOutputStream
+/* ERRORS OCCURED: Forbidden parameter type: PxOutputStreamPtr
 // NATIVE SIG: void				getBinaryMetaData_PxBase(PxOutputStream& stream)
-// SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L188~188
 #if NATIVE
 ES void W_getBinaryMetaData_PxBase(physx::PxOutputStream* stream){
     auto nat_in_stream = (stream);
@@ -27,10 +26,10 @@ ES void W_getBinaryMetaData_PxBase(physx::PxOutputStream* stream){
 }
 #else
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern void W_getBinaryMetaData_PxBase(PxOutputStream stream);
+static extern void W_getBinaryMetaData_PxBase(PxOutputStreamPtr stream);
 
-public static void getBinaryMetaData_PxBase(PxOutputStream stream){
-    PxOutputStream pvk_in_stream = (stream);
+public static void getBinaryMetaData_PxBase(PxOutputStreamPtr stream){
+    PxOutputStreamPtr pvk_in_stream = (stream);
     W_getBinaryMetaData_PxBase(pvk_in_stream);
 }
 #endif*/
@@ -41,7 +40,6 @@ public static void getBinaryMetaData_PxBase(PxOutputStream stream){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L64~64
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Pipe(physx::PxBaseFlag::Enum a, physx::PxBaseFlag::Enum b){
     auto nat_in_a = (a);
@@ -67,7 +65,6 @@ public static UNPARSED_TYPE operator|(PxBaseFlag a, PxBaseFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L64~64
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Amp(physx::PxBaseFlag::Enum a, physx::PxBaseFlag::Enum b){
     auto nat_in_a = (a);
@@ -93,7 +90,6 @@ public static UNPARSED_TYPE operator&(PxBaseFlag a, PxBaseFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L64~64
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Tilde(physx::PxBaseFlag::Enum a){
     auto nat_in_a = (a);
@@ -117,21 +113,20 @@ public static UNPARSED_TYPE operator~(PxBaseFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxBase { // pointer
+public unsafe partial struct PxBasePtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
     //================================================================================
     //#       release                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L85~85
     #if NATIVE
     ES void W_release(physx::PxBase* self){
         self->release();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_release(PxBase selfPtr);
+    static extern void W_release(PxBasePtr selfPtr);
     
     public void release(){
         W_release(this);
@@ -142,7 +137,6 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     //#       getConcreteTypeName                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L91~91
     #if NATIVE
     ES sbyte* W_getConcreteTypeName(physx::PxBase* self){
         auto retVal = self->getConcreteTypeName();
@@ -150,7 +144,7 @@ public unsafe partial struct PxBase { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_getConcreteTypeName(PxBase selfPtr);
+    static extern IntPtr W_getConcreteTypeName(PxBasePtr selfPtr);
     
     public IntPtr getConcreteTypeName(){
         IntPtr retVal = W_getConcreteTypeName(this);
@@ -164,7 +158,6 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*					is()
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L101~101
     #if NATIVE
     ES UNPARSED_TYPE W_is(physx::PxBase* self){
         auto retVal = self->is();
@@ -172,7 +165,7 @@ public unsafe partial struct PxBase { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_is(PxBase selfPtr);
+    static extern UNPARSED_TYPE W_is(PxBasePtr selfPtr);
     
     public UNPARSED_TYPE is(){
         UNPARSED_TYPE retVal = W_is(this);
@@ -186,7 +179,6 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*				is() const
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L111~111
     #if NATIVE
     ES UNPARSED_TYPE W_is(physx::PxBase* self){
         auto retVal = self->is();
@@ -194,7 +186,7 @@ public unsafe partial struct PxBase { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_is(PxBase selfPtr);
+    static extern UNPARSED_TYPE W_is(PxBasePtr selfPtr);
     
     public UNPARSED_TYPE is(){
         UNPARSED_TYPE retVal = W_is(this);
@@ -206,7 +198,6 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     //#       getConcreteType                                                        #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L119~119
     #if NATIVE
     ES physx::PxType W_getConcreteType(physx::PxBase* self){
         auto retVal = self->getConcreteType();
@@ -214,7 +205,7 @@ public unsafe partial struct PxBase { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern ushort W_getConcreteType(PxBase selfPtr);
+    static extern ushort W_getConcreteType(PxBasePtr selfPtr);
     
     public ushort getConcreteType(){
         ushort retVal = W_getConcreteType(this);
@@ -226,7 +217,6 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     //#       setBaseFlag                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L127~127
     #if NATIVE
     ES void W_setBaseFlag(physx::PxBase* self, physx::PxBaseFlag::Enum flag, bool value){
         auto nat_in_flag = (flag);
@@ -235,7 +225,7 @@ public unsafe partial struct PxBase { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setBaseFlag(PxBase selfPtr, PxBaseFlag flag, bool value);
+    static extern void W_setBaseFlag(PxBasePtr selfPtr, PxBaseFlag flag, bool value);
     
     public void setBaseFlag(PxBaseFlag flag, bool value){
         PxBaseFlag pvk_in_flag = (flag);
@@ -250,7 +240,6 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: void					setBaseFlags(PxBaseFlags inFlags)				{ mBaseFlags = inFlags; }
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L136~136
     #if NATIVE
     ES void W_setBaseFlags(physx::PxBase* self,  inFlags){
         auto nat_in_inFlags = (inFlags);
@@ -258,7 +247,7 @@ public unsafe partial struct PxBase { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setBaseFlags(PxBase selfPtr,  inFlags);
+    static extern void W_setBaseFlags(PxBasePtr selfPtr,  inFlags);
     
     public void setBaseFlags( inFlags){
          pvk_in_inFlags = (inFlags);
@@ -272,7 +261,6 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxBaseFlags
     // NATIVE SIG: PxBaseFlags				getBaseFlags() const							{ return mBaseFlags; }
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L145~145
     #if NATIVE
     ES UNPARSED_TYPE W_getBaseFlags(physx::PxBase* self){
         auto retVal = self->getBaseFlags();
@@ -280,7 +268,7 @@ public unsafe partial struct PxBase { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getBaseFlags(PxBase selfPtr);
+    static extern UNPARSED_TYPE W_getBaseFlags(PxBasePtr selfPtr);
     
     public UNPARSED_TYPE getBaseFlags(){
         UNPARSED_TYPE retVal = W_getBaseFlags(this);
@@ -292,7 +280,6 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     //#       isReleasable                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L156~156
     #if NATIVE
     ES bool W_isReleasable(physx::PxBase* self){
         auto retVal = self->isReleasable();
@@ -300,7 +287,7 @@ public unsafe partial struct PxBase { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isReleasable(PxBase selfPtr);
+    static extern bool W_isReleasable(PxBasePtr selfPtr);
     
     public bool isReleasable(){
         bool retVal = W_isReleasable(this);
@@ -316,7 +303,6 @@ public unsafe partial struct PxBase { // pointer
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE								PxBase(PxType concreteType, PxBaseFlags baseFlags)
     												: mConcreteType(concreteType), mBaseFlags(baseFlags) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L162~163
     #if NATIVE
     ES UNPARSED_TYPE W_PxBase_ctor(physx::PxType concreteType,  baseFlags){
         auto nat_in_concreteType = (concreteType);
@@ -343,7 +329,6 @@ public unsafe partial struct PxBase { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxBase
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE								PxBase(PxBaseFlags baseFlags) : mBaseFlags(baseFlags) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L168~168
     #if NATIVE
     ES UNPARSED_TYPE W_PxBase_ctor( baseFlags){
         auto nat_in_baseFlags = (baseFlags);
@@ -367,14 +352,13 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual									~PxBase()										{}
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L173~173
     #if NATIVE
     ES void W_~PxBase(physx::PxBase* self){
         self->~PxBase();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxBase(PxBase selfPtr);
+    static extern void W_~PxBase(PxBasePtr selfPtr);
     
     public void ~PxBase(){
         W_~PxBase(this);
@@ -385,7 +369,6 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     //#       isKindOf                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L178~178
     #if NATIVE
     ES bool W_isKindOf(physx::PxBase* self, const char* superClass){
         auto nat_in_superClass = (superClass);
@@ -394,7 +377,7 @@ public unsafe partial struct PxBase { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isKindOf(PxBase selfPtr, string superClass);
+    static extern bool W_isKindOf(PxBasePtr selfPtr, string superClass);
     
     public bool isKindOf(string superClass){
         string pvk_in_superClass = (superClass);
@@ -407,7 +390,6 @@ public unsafe partial struct PxBase { // pointer
     //================================================================================
     //#       typeMatch                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxBase.h L180~180
     #if NATIVE
     ES bool W_typeMatch(physx::PxBase* self){
         auto retVal = self->typeMatch();
@@ -415,7 +397,7 @@ public unsafe partial struct PxBase { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_typeMatch(PxBase selfPtr);
+    static extern bool W_typeMatch(PxBasePtr selfPtr);
     
     public bool typeMatch(){
         bool retVal = W_typeMatch(this);

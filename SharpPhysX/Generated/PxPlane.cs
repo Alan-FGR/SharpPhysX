@@ -23,7 +23,6 @@ public unsafe partial struct PxPlane { // blittable
     //================================================================================
     //#       PxPlane                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPlane.h L63~65
     #if NATIVE
     ES physx::PxPlane W_PxPlane_ctor(float nx, float ny, float nz, float distance){
         auto nat_in_nx = (nx);
@@ -51,7 +50,6 @@ public unsafe partial struct PxPlane { // blittable
     //================================================================================
     //#       PxPlane                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPlane.h L70~72
     #if NATIVE
     ES physx::PxPlane W_PxPlane_ctor(physx::PxVec3 normal, float distance){
         auto nat_in_normal = (normal);
@@ -75,7 +73,6 @@ public unsafe partial struct PxPlane { // blittable
     //================================================================================
     //#       PxPlane                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPlane.h L77~80
     #if NATIVE
     ES physx::PxPlane W_PxPlane_ctor(physx::PxVec3 point, physx::PxVec3 normal){
         auto nat_in_point = (point);
@@ -99,7 +96,6 @@ public unsafe partial struct PxPlane { // blittable
     //================================================================================
     //#       PxPlane                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPlane.h L85~89
     #if NATIVE
     ES physx::PxPlane W_PxPlane_ctor(physx::PxVec3 p0, physx::PxVec3 p1, physx::PxVec3 p2){
         auto nat_in_p0 = (p0);
@@ -125,7 +121,6 @@ public unsafe partial struct PxPlane { // blittable
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPlane.h L94~97
     #if NATIVE
     ES bool W_OP_EqualEqual(physx::PxPlane self, physx::PxPlane p){
         auto nat_in_p = (p);
@@ -147,7 +142,6 @@ public unsafe partial struct PxPlane { // blittable
     //================================================================================
     //#       distance                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPlane.h L99~102
     #if NATIVE
     ES float W_distance(physx::PxPlane self, physx::PxVec3 p){
         auto nat_in_p = (p);
@@ -169,7 +163,6 @@ public unsafe partial struct PxPlane { // blittable
     //================================================================================
     //#       contains                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPlane.h L104~107
     #if NATIVE
     ES bool W_contains(physx::PxPlane self, physx::PxVec3 p){
         auto nat_in_p = (p);
@@ -191,7 +184,6 @@ public unsafe partial struct PxPlane { // blittable
     //================================================================================
     //#       project                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPlane.h L112~115
     #if NATIVE
     ES physx::PxVec3 W_project(physx::PxPlane self, physx::PxVec3 p){
         auto nat_in_p = (p);
@@ -213,7 +205,6 @@ public unsafe partial struct PxPlane { // blittable
     //================================================================================
     //#       pointInPlane                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPlane.h L120~123
     #if NATIVE
     ES physx::PxVec3 W_pointInPlane(physx::PxPlane self){
         auto retVal = self.pointInPlane();
@@ -233,7 +224,6 @@ public unsafe partial struct PxPlane { // blittable
     //================================================================================
     //#       normalize                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxPlane.h L129~134
     #if NATIVE
     ES void W_normalize(physx::PxPlane self){
         self.normalize();

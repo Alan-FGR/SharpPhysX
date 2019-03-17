@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 
 #if !NATIVE
-public unsafe partial struct ShPxErrorCallbackWrapper { // pointer
+public unsafe partial struct ShPxErrorCallbackWrapperPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -18,7 +18,6 @@ public unsafe partial struct ShPxErrorCallbackWrapper { // pointer
     // NATIVE SIG: explicit ShPxErrorCallbackWrapper(SharpPhysXError managedErrorCallback)
             : managedErrorCallback_(managedErrorCallback)
         {}
-    // SOURCE: C:\Projects\SharpPhysX\LibSharpPhysX\Error.h L11~13
     #if NATIVE
     ES UNPARSED_TYPE W_ShPxErrorCallbackWrapper_ctor( managedErrorCallback){
         auto nat_in_managedErrorCallback = (managedErrorCallback);
@@ -40,7 +39,6 @@ public unsafe partial struct ShPxErrorCallbackWrapper { // pointer
     //================================================================================
     //#       reportError                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\SharpPhysX\LibSharpPhysX\Error.h L15~18
     #if NATIVE
     ES void W_reportError(ShPxErrorCallbackWrapper* self, physx::PxErrorCode::Enum code, const char* message, const char* file, int line){
         auto nat_in_code = (code);
@@ -51,7 +49,7 @@ public unsafe partial struct ShPxErrorCallbackWrapper { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_reportError(ShPxErrorCallbackWrapper selfPtr, PxErrorCode code, string message, string file, int line);
+    static extern void W_reportError(ShPxErrorCallbackWrapperPtr selfPtr, PxErrorCode code, string message, string file, int line);
     
     public void reportError(PxErrorCode code, string message, string file, int line){
         PxErrorCode pvk_in_code = (code);

@@ -20,7 +20,6 @@ public partial struct PxPvdSceneClient {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPvdSceneFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\pvd\PxPvdSceneClient.h L75~75
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Pipe(physx::PxPvdSceneFlag::Enum a, physx::PxPvdSceneFlag::Enum b){
     auto nat_in_a = (a);
@@ -46,7 +45,6 @@ public static UNPARSED_TYPE operator|(PxPvdSceneFlag a, PxPvdSceneFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPvdSceneFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\pvd\PxPvdSceneClient.h L75~75
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Amp(physx::PxPvdSceneFlag::Enum a, physx::PxPvdSceneFlag::Enum b){
     auto nat_in_a = (a);
@@ -72,7 +70,6 @@ public static UNPARSED_TYPE operator&(PxPvdSceneFlag a, PxPvdSceneFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPvdSceneFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\pvd\PxPvdSceneClient.h L75~75
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Tilde(physx::PxPvdSceneFlag::Enum a){
     auto nat_in_a = (a);

@@ -14,7 +14,6 @@ public partial struct PxMat44 {
 /* ERRORS OCCURED: Invalid parameter name (empty)
 Invalid parameter name (empty)
 // NATIVE SIG: PxMat44 operator*(float, const PxMat44&)
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L216~216
 #if NATIVE
 ES physx::PxMat44 W_OP_Star(float , physx::PxMat44 ){
     auto nat_in_ = ();
@@ -59,7 +58,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       PxMat44                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L63~70
     #if NATIVE
     ES physx::PxMat44 W_PxMat44_ctor(physx::PxIDENTITY r){
         auto nat_in_r = (r);
@@ -81,7 +79,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       PxMat44                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L73~76
     #if NATIVE
     ES physx::PxMat44 W_PxMat44_ctor(physx::PxZERO r){
         auto nat_in_r = (r);
@@ -103,7 +100,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       PxMat44                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L79~82
     #if NATIVE
     ES physx::PxMat44 W_PxMat44_ctor(physx::PxVec4 col0, physx::PxVec4 col1, physx::PxVec4 col2, physx::PxVec4 col3){
         auto nat_in_col0 = (col0);
@@ -131,7 +127,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       PxMat44                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L85~91
     #if NATIVE
     ES physx::PxMat44 W_PxMat44_ctor(float r){
         auto nat_in_r = (r);
@@ -153,7 +148,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       PxMat44                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L94~97
     #if NATIVE
     ES physx::PxMat44 W_PxMat44_ctor(physx::PxVec3 col0, physx::PxVec3 col1, physx::PxVec3 col2, physx::PxVec3 col3){
         auto nat_in_col0 = (col0);
@@ -189,7 +183,6 @@ public unsafe partial struct PxMat44 { // blittable
     	, column3(values[12], values[13], values[14], values[15])
     	{
     	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L100~106
     #if NATIVE
     ES physx::PxMat44 W_PxMat44_ctor( values){
         auto nat_in_values = (values);
@@ -211,7 +204,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       PxMat44                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L109~136
     #if NATIVE
     ES physx::PxMat44 W_PxMat44_ctor(physx::PxQuat q){
         auto nat_in_q = (q);
@@ -233,7 +225,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       PxMat44                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L139~145
     #if NATIVE
     ES physx::PxMat44 W_PxMat44_ctor(physx::PxVec4 diagonal){
         auto nat_in_diagonal = (diagonal);
@@ -255,7 +246,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       PxMat44                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L148~151
     #if NATIVE
     ES physx::PxMat44 W_PxMat44_ctor(physx::PxMat33 axes, physx::PxVec3 position){
         auto nat_in_axes = (axes);
@@ -279,7 +269,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       PxMat44                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L153~156
     #if NATIVE
     ES physx::PxMat44 W_PxMat44_ctor(physx::PxTransform t){
         auto nat_in_t = (t);
@@ -301,7 +290,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L161~164
     #if NATIVE
     ES bool W_OP_EqualEqual(physx::PxMat44 self, physx::PxMat44 m){
         auto nat_in_m = (m);
@@ -323,7 +311,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       PxMat44                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L167~170
     #if NATIVE
     ES physx::PxMat44 W_PxMat44_ctor(physx::PxMat44 other){
         auto nat_in_other = (other);
@@ -352,7 +339,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       getTranspose                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L183~188
     #if NATIVE
     ES physx::PxMat44 W_getTranspose(physx::PxMat44 self){
         auto retVal = self.getTranspose();
@@ -372,7 +358,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L191~194
     #if NATIVE
     ES physx::PxMat44 W_OP_Minus(physx::PxMat44 self){
         auto retVal = self.operator-();
@@ -392,7 +377,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       operator+                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L197~201
     #if NATIVE
     ES physx::PxMat44 W_OP_Plus(physx::PxMat44 self, physx::PxMat44 other){
         auto nat_in_other = (other);
@@ -414,7 +398,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L204~208
     #if NATIVE
     ES physx::PxMat44 W_OP_Minus(physx::PxMat44 self, physx::PxMat44 other){
         auto nat_in_other = (other);
@@ -436,7 +419,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L211~214
     #if NATIVE
     ES physx::PxMat44 W_OP_Star(physx::PxMat44 self, float scalar){
         auto nat_in_scalar = (scalar);
@@ -458,7 +440,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L219~225
     #if NATIVE
     ES physx::PxMat44 W_OP_Star(physx::PxMat44 self, physx::PxMat44 other){
         auto nat_in_other = (other);
@@ -522,7 +503,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       transform                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L279~282
     #if NATIVE
     ES physx::PxVec4 W_transform(physx::PxMat44 self, physx::PxVec4 other){
         auto nat_in_other = (other);
@@ -544,7 +524,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       transform                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L285~288
     #if NATIVE
     ES physx::PxVec3 W_transform(physx::PxMat44 self, physx::PxVec3 other){
         auto nat_in_other = (other);
@@ -566,7 +545,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       rotate                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L291~294
     #if NATIVE
     ES physx::PxVec4 W_rotate(physx::PxMat44 self, physx::PxVec4 other){
         auto nat_in_other = (other);
@@ -588,7 +566,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       rotate                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L297~300
     #if NATIVE
     ES physx::PxVec3 W_rotate(physx::PxMat44 self, physx::PxVec3 other){
         auto nat_in_other = (other);
@@ -610,7 +587,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       getBasis                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L302~306
     #if NATIVE
     ES physx::PxVec3 W_getBasis(physx::PxMat44 self, int num){
         auto nat_in_num = (num);
@@ -632,7 +608,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       getPosition                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L308~311
     #if NATIVE
     ES physx::PxVec3 W_getPosition(physx::PxMat44 self){
         auto retVal = self.getPosition();
@@ -652,7 +627,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       setPosition                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L313~318
     #if NATIVE
     ES void W_setPosition(physx::PxMat44 self, physx::PxVec3 position){
         auto nat_in_position = (position);
@@ -672,7 +646,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       front                                                                  #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L320~323
     #if NATIVE
     ES float* W_front(physx::PxMat44 self){
         auto retVal = self.front();
@@ -706,7 +679,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       scale                                                                  #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L334~340
     #if NATIVE
     ES void W_scale(physx::PxMat44 self, physx::PxVec4 p){
         auto nat_in_p = (p);
@@ -726,7 +698,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       inverseRT                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L342~348
     #if NATIVE
     ES physx::PxMat44 W_inverseRT(physx::PxMat44 self){
         auto retVal = self.inverseRT();
@@ -746,7 +717,6 @@ public unsafe partial struct PxMat44 { // blittable
     //================================================================================
     //#       isFinite                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat44.h L350~353
     #if NATIVE
     ES bool W_isFinite(physx::PxMat44 self){
         auto retVal = self.isFinite();

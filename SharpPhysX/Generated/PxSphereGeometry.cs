@@ -24,7 +24,6 @@ public unsafe partial struct PxSphereGeometry { // blittable
     //================================================================================
     //#       PxSphereGeometry                                                       #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxSphereGeometry.h L53~53
     #if NATIVE
     ES physx::PxSphereGeometry W_PxSphereGeometry_ctor(physx::PxReal ir){
         auto nat_in_ir = (ir);
@@ -46,7 +45,6 @@ public unsafe partial struct PxSphereGeometry { // blittable
     //================================================================================
     //#       isValid                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxSphereGeometry.h L65~65
     #if NATIVE
     ES bool W_isValid(physx::PxSphereGeometry self){
         auto retVal = self.isValid();

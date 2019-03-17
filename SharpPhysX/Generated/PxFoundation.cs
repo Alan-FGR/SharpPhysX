@@ -11,11 +11,10 @@ public partial struct PxFoundation {
 //================================================================================
 //#       PxCreateFoundation                                                     #
 //================================================================================
-/* ERRORS OCCURED: Forbidden parameter type: PxAllocatorCallback
-Forbidden parameter type: PxErrorCallback
+/* ERRORS OCCURED: Forbidden parameter type: PxAllocatorCallbackPtr
+Forbidden parameter type: PxErrorCallbackPtr
 // NATIVE SIG: physx::PxFoundation* PX_CALL_CONV
 PxCreateFoundation(physx::PxU32 version, physx::PxAllocatorCallback& allocator, physx::PxErrorCallback& errorCallback)
-// SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L120~121
 #if NATIVE
 ES physx::PxFoundation* W_PxCreateFoundation(physx::PxU32 version, physx::PxAllocatorCallback* allocator, physx::PxErrorCallback* errorCallback){
     auto nat_in_version = (version);
@@ -26,13 +25,13 @@ ES physx::PxFoundation* W_PxCreateFoundation(physx::PxU32 version, physx::PxAllo
 }
 #else
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern PxFoundation W_PxCreateFoundation(uint version, PxAllocatorCallback allocator, PxErrorCallback errorCallback);
+static extern PxFoundationPtr W_PxCreateFoundation(uint version, PxAllocatorCallbackPtr allocator, PxErrorCallbackPtr errorCallback);
 
-public static PxFoundation PxCreateFoundation(uint version, PxAllocatorCallback allocator, PxErrorCallback errorCallback){
+public static PxFoundationPtr PxCreateFoundation(uint version, PxAllocatorCallbackPtr allocator, PxErrorCallbackPtr errorCallback){
     uint pvk_in_version = (version);
-    PxAllocatorCallback pvk_in_allocator = (allocator);
-    PxErrorCallback pvk_in_errorCallback = (errorCallback);
-    PxFoundation retVal = W_PxCreateFoundation(pvk_in_version, pvk_in_allocator, pvk_in_errorCallback);
+    PxAllocatorCallbackPtr pvk_in_allocator = (allocator);
+    PxErrorCallbackPtr pvk_in_errorCallback = (errorCallback);
+    PxFoundationPtr retVal = W_PxCreateFoundation(pvk_in_version, pvk_in_allocator, pvk_in_errorCallback);
     return retVal;
 }
 #endif*/
@@ -41,7 +40,6 @@ public static PxFoundation PxCreateFoundation(uint version, PxAllocatorCallback 
 //================================================================================
 //#       PxGetFoundation                                                        #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L135~135
 #if NATIVE
 ES physx::PxFoundation* W_PxGetFoundation(){
     auto retVal = &PxGetFoundation();
@@ -49,10 +47,10 @@ ES physx::PxFoundation* W_PxGetFoundation(){
 }
 #else
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern PxFoundation W_PxGetFoundation();
+static extern PxFoundationPtr W_PxGetFoundation();
 
-public static PxFoundation PxGetFoundation(){
-    PxFoundation retVal = W_PxGetFoundation();
+public static PxFoundationPtr PxGetFoundation(){
+    PxFoundationPtr retVal = W_PxGetFoundation();
     return retVal;
 }
 #endif
@@ -63,7 +61,6 @@ public static PxFoundation PxGetFoundation(){
 //================================================================================
 /* ERRORS OCCURED: Forbidden return type
 // NATIVE SIG: physx::PxProfilerCallback* PX_CALL_CONV PxGetProfilerCallback()
-// SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L150~150
 #if NATIVE
 ES physx::PxProfilerCallback* W_PxGetProfilerCallback(){
     auto retVal = PxGetProfilerCallback();
@@ -71,10 +68,10 @@ ES physx::PxProfilerCallback* W_PxGetProfilerCallback(){
 }
 #else
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern PxProfilerCallback W_PxGetProfilerCallback();
+static extern PxProfilerCallbackPtr W_PxGetProfilerCallback();
 
-public static PxProfilerCallback PxGetProfilerCallback(){
-    PxProfilerCallback retVal = W_PxGetProfilerCallback();
+public static PxProfilerCallbackPtr PxGetProfilerCallback(){
+    PxProfilerCallbackPtr retVal = W_PxGetProfilerCallback();
     return retVal;
 }
 #endif*/
@@ -83,9 +80,8 @@ public static PxProfilerCallback PxGetProfilerCallback(){
 //================================================================================
 //#       PxSetProfilerCallback                                                  #
 //================================================================================
-/* ERRORS OCCURED: Forbidden parameter type: PxProfilerCallback
+/* ERRORS OCCURED: Forbidden parameter type: PxProfilerCallbackPtr
 // NATIVE SIG: void PX_CALL_CONV PxSetProfilerCallback(physx::PxProfilerCallback* profiler)
-// SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L155~155
 #if NATIVE
 ES void W_PxSetProfilerCallback(physx::PxProfilerCallback* profiler){
     auto nat_in_profiler = (profiler);
@@ -93,10 +89,10 @@ ES void W_PxSetProfilerCallback(physx::PxProfilerCallback* profiler){
 }
 #else
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern void W_PxSetProfilerCallback(PxProfilerCallback profiler);
+static extern void W_PxSetProfilerCallback(PxProfilerCallbackPtr profiler);
 
-public static void PxSetProfilerCallback(PxProfilerCallback profiler){
-    PxProfilerCallback pvk_in_profiler = (profiler);
+public static void PxSetProfilerCallback(PxProfilerCallbackPtr profiler){
+    PxProfilerCallbackPtr pvk_in_profiler = (profiler);
     W_PxSetProfilerCallback(pvk_in_profiler);
 }
 #endif*/
@@ -107,21 +103,20 @@ public static void PxSetProfilerCallback(PxProfilerCallback profiler){
 
 
 #if !NATIVE
-public unsafe partial struct PxFoundation { // pointer
+public unsafe partial struct PxFoundationPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
     //================================================================================
     //#       release                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L62~62
     #if NATIVE
     ES void W_release(physx::PxFoundation* self){
         self->release();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_release(PxFoundation selfPtr);
+    static extern void W_release(PxFoundationPtr selfPtr);
     
     public void release(){
         W_release(this);
@@ -134,7 +129,6 @@ public unsafe partial struct PxFoundation { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxErrorCallback& getErrorCallback() = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L67~67
     #if NATIVE
     ES physx::PxErrorCallback* W_getErrorCallback(physx::PxFoundation* self){
         auto retVal = &self->getErrorCallback();
@@ -142,10 +136,10 @@ public unsafe partial struct PxFoundation { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxErrorCallback W_getErrorCallback(PxFoundation selfPtr);
+    static extern PxErrorCallbackPtr W_getErrorCallback(PxFoundationPtr selfPtr);
     
-    public PxErrorCallback getErrorCallback(){
-        PxErrorCallback retVal = W_getErrorCallback(this);
+    public PxErrorCallbackPtr getErrorCallback(){
+        PxErrorCallbackPtr retVal = W_getErrorCallback(this);
         return retVal;
     }
     #endif*/
@@ -154,7 +148,6 @@ public unsafe partial struct PxFoundation { // pointer
     //================================================================================
     //#       setErrorLevel                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L72~72
     #if NATIVE
     ES void W_setErrorLevel(physx::PxFoundation* self, physx::PxErrorCode::Enum mask){
         auto nat_in_mask = (mask);
@@ -162,7 +155,7 @@ public unsafe partial struct PxFoundation { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setErrorLevel(PxFoundation selfPtr, PxErrorCode mask);
+    static extern void W_setErrorLevel(PxFoundationPtr selfPtr, PxErrorCode mask);
     
     public void setErrorLevel(PxErrorCode mask){
         PxErrorCode pvk_in_mask = (mask);
@@ -171,10 +164,25 @@ public unsafe partial struct PxFoundation { // pointer
     #endif
     
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_setErrorLevel_OL1(physx::PxFoundation* self){
+        self->setErrorLevel();
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_setErrorLevel_OL1(PxFoundationPtr selfPtr);
+    
+    public void setErrorLevel(){
+        W_setErrorLevel_OL1(this);
+    }
+    #endif
+    
+    
+    
     //================================================================================
     //#       getErrorLevel                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L77~77
     #if NATIVE
     ES physx::PxErrorCode::Enum W_getErrorLevel(physx::PxFoundation* self){
         auto retVal = self->getErrorLevel();
@@ -182,7 +190,7 @@ public unsafe partial struct PxFoundation { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxErrorCode W_getErrorLevel(PxFoundation selfPtr);
+    static extern PxErrorCode W_getErrorLevel(PxFoundationPtr selfPtr);
     
     public PxErrorCode getErrorLevel(){
         PxErrorCode retVal = W_getErrorLevel(this);
@@ -196,7 +204,6 @@ public unsafe partial struct PxFoundation { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxAllocatorCallback& getAllocatorCallback() = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L82~82
     #if NATIVE
     ES physx::PxAllocatorCallback* W_getAllocatorCallback(physx::PxFoundation* self){
         auto retVal = &self->getAllocatorCallback();
@@ -204,10 +211,10 @@ public unsafe partial struct PxFoundation { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxAllocatorCallback W_getAllocatorCallback(PxFoundation selfPtr);
+    static extern PxAllocatorCallbackPtr W_getAllocatorCallback(PxFoundationPtr selfPtr);
     
-    public PxAllocatorCallback getAllocatorCallback(){
-        PxAllocatorCallback retVal = W_getAllocatorCallback(this);
+    public PxAllocatorCallbackPtr getAllocatorCallback(){
+        PxAllocatorCallbackPtr retVal = W_getAllocatorCallback(this);
         return retVal;
     }
     #endif*/
@@ -216,7 +223,6 @@ public unsafe partial struct PxFoundation { // pointer
     //================================================================================
     //#       getReportAllocationNames                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L87~87
     #if NATIVE
     ES bool W_getReportAllocationNames(physx::PxFoundation* self){
         auto retVal = self->getReportAllocationNames();
@@ -224,7 +230,7 @@ public unsafe partial struct PxFoundation { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_getReportAllocationNames(PxFoundation selfPtr);
+    static extern bool W_getReportAllocationNames(PxFoundationPtr selfPtr);
     
     public bool getReportAllocationNames(){
         bool retVal = W_getReportAllocationNames(this);
@@ -236,7 +242,6 @@ public unsafe partial struct PxFoundation { // pointer
     //================================================================================
     //#       setReportAllocationNames                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L93~93
     #if NATIVE
     ES void W_setReportAllocationNames(physx::PxFoundation* self, bool value){
         auto nat_in_value = (value);
@@ -244,7 +249,7 @@ public unsafe partial struct PxFoundation { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setReportAllocationNames(PxFoundation selfPtr, bool value);
+    static extern void W_setReportAllocationNames(PxFoundationPtr selfPtr, bool value);
     
     public void setReportAllocationNames(bool value){
         bool pvk_in_value = (value);
@@ -260,14 +265,13 @@ public unsafe partial struct PxFoundation { // pointer
     // NATIVE SIG: virtual ~PxFoundation()
     	{
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxFoundation.h L96~98
     #if NATIVE
     ES void W_~PxFoundation(physx::PxFoundation* self){
         self->~PxFoundation();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxFoundation(PxFoundation selfPtr);
+    static extern void W_~PxFoundation(PxFoundationPtr selfPtr);
     
     public void ~PxFoundation(){
         W_~PxFoundation(this);

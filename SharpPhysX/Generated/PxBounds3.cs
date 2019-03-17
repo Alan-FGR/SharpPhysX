@@ -23,7 +23,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       PxBounds3                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L72~72
     #if NATIVE
     ES physx::PxBounds3 W_PxBounds3_ctor(physx::PxVec3 minimum, physx::PxVec3 maximum){
         auto nat_in_minimum = (minimum);
@@ -47,7 +46,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       empty                                                                  #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L77~77
     #if NATIVE
     ES physx::PxBounds3 W_empty(physx::PxBounds3 self){
         auto retVal = self.empty();
@@ -67,7 +65,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       boundsOfPoints                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L84~84
     #if NATIVE
     ES physx::PxBounds3 W_boundsOfPoints(physx::PxBounds3 self, physx::PxVec3 v0, physx::PxVec3 v1){
         auto nat_in_v0 = (v0);
@@ -91,7 +88,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       centerExtents                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L91~91
     #if NATIVE
     ES physx::PxBounds3 W_centerExtents(physx::PxBounds3 self, physx::PxVec3 center, physx::PxVec3 extent){
         auto nat_in_center = (center);
@@ -115,7 +111,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       basisExtent                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L96~97
     #if NATIVE
     ES physx::PxBounds3 W_basisExtent(physx::PxBounds3 self, physx::PxVec3 center, physx::PxMat33 basis, physx::PxVec3 extent){
         auto nat_in_center = (center);
@@ -141,7 +136,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       poseExtent                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L102~102
     #if NATIVE
     ES physx::PxBounds3 W_poseExtent(physx::PxBounds3 self, physx::PxTransform pose, physx::PxVec3 extent){
         auto nat_in_pose = (pose);
@@ -165,7 +159,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       transformSafe                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L112~112
     #if NATIVE
     ES physx::PxBounds3 W_transformSafe(physx::PxBounds3 self, physx::PxMat33 matrix, physx::PxBounds3 bounds){
         auto nat_in_matrix = (matrix);
@@ -189,7 +182,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       transformFast                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L122~122
     #if NATIVE
     ES physx::PxBounds3 W_transformFast(physx::PxBounds3 self, physx::PxMat33 matrix, physx::PxBounds3 bounds){
         auto nat_in_matrix = (matrix);
@@ -213,7 +205,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       transformSafe                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L132~132
     #if NATIVE
     ES physx::PxBounds3 W_transformSafe(physx::PxBounds3 self, physx::PxTransform transform, physx::PxBounds3 bounds){
         auto nat_in_transform = (transform);
@@ -237,7 +228,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       transformFast                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L142~142
     #if NATIVE
     ES physx::PxBounds3 W_transformFast(physx::PxBounds3 self, physx::PxTransform transform, physx::PxBounds3 bounds){
         auto nat_in_transform = (transform);
@@ -261,7 +251,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       setEmpty                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L147~147
     #if NATIVE
     ES void W_setEmpty(physx::PxBounds3 self){
         self.setEmpty();
@@ -279,7 +268,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       setMaximal                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L152~152
     #if NATIVE
     ES void W_setMaximal(physx::PxBounds3 self){
         self.setMaximal();
@@ -297,7 +285,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       include                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L158~158
     #if NATIVE
     ES void W_include(physx::PxBounds3 self, physx::PxVec3 v){
         auto nat_in_v = (v);
@@ -317,7 +304,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       include                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L164~164
     #if NATIVE
     ES void W_include(physx::PxBounds3 self, physx::PxBounds3 b){
         auto nat_in_b = (b);
@@ -337,7 +323,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       isEmpty                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L166~166
     #if NATIVE
     ES bool W_isEmpty(physx::PxBounds3 self){
         auto retVal = self.isEmpty();
@@ -357,7 +342,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       intersects                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L172~172
     #if NATIVE
     ES bool W_intersects(physx::PxBounds3 self, physx::PxBounds3 b){
         auto nat_in_b = (b);
@@ -379,7 +363,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       intersects1D                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L179~179
     #if NATIVE
     ES bool W_intersects1D(physx::PxBounds3 self, physx::PxBounds3 a, ::uint32_t axis){
         auto nat_in_a = (a);
@@ -403,7 +386,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       contains                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L185~185
     #if NATIVE
     ES bool W_contains(physx::PxBounds3 self, physx::PxVec3 v){
         auto nat_in_v = (v);
@@ -425,7 +407,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       isInside                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L191~191
     #if NATIVE
     ES bool W_isInside(physx::PxBounds3 self, physx::PxBounds3 box){
         auto nat_in_box = (box);
@@ -447,7 +428,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       getCenter                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L196~196
     #if NATIVE
     ES physx::PxVec3 W_getCenter(physx::PxBounds3 self){
         auto retVal = self.getCenter();
@@ -467,7 +447,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       getCenter                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L201~201
     #if NATIVE
     ES float W_getCenter(physx::PxBounds3 self, ::uint32_t axis){
         auto nat_in_axis = (axis);
@@ -489,7 +468,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       getExtents                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L206~206
     #if NATIVE
     ES float W_getExtents(physx::PxBounds3 self, ::uint32_t axis){
         auto nat_in_axis = (axis);
@@ -511,7 +489,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       getDimensions                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L211~211
     #if NATIVE
     ES physx::PxVec3 W_getDimensions(physx::PxBounds3 self){
         auto retVal = self.getDimensions();
@@ -531,7 +508,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       getExtents                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L216~216
     #if NATIVE
     ES physx::PxVec3 W_getExtents(physx::PxBounds3 self){
         auto retVal = self.getExtents();
@@ -551,7 +527,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       scaleSafe                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L225~225
     #if NATIVE
     ES void W_scaleSafe(physx::PxBounds3 self, float scale){
         auto nat_in_scale = (scale);
@@ -571,7 +546,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       scaleFast                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L234~234
     #if NATIVE
     ES void W_scaleFast(physx::PxBounds3 self, float scale){
         auto nat_in_scale = (scale);
@@ -591,7 +565,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       fattenSafe                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L241~241
     #if NATIVE
     ES void W_fattenSafe(physx::PxBounds3 self, float distance){
         auto nat_in_distance = (distance);
@@ -611,7 +584,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       fattenFast                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L248~248
     #if NATIVE
     ES void W_fattenFast(physx::PxBounds3 self, float distance){
         auto nat_in_distance = (distance);
@@ -631,7 +603,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       isFinite                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L253~253
     #if NATIVE
     ES bool W_isFinite(physx::PxBounds3 self){
         auto retVal = self.isFinite();
@@ -651,7 +622,6 @@ public unsafe partial struct PxBounds3 { // blittable
     //================================================================================
     //#       isValid                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxBounds3.h L258~258
     #if NATIVE
     ES bool W_isValid(physx::PxBounds3 self){
         auto retVal = self.isValid();

@@ -31,7 +31,6 @@ public partial struct PxActor {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L113~113
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Pipe(physx::PxActorFlag::Enum a, physx::PxActorFlag::Enum b){
     auto nat_in_a = (a);
@@ -57,7 +56,6 @@ public static UNPARSED_TYPE operator|(PxActorFlag a, PxActorFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L113~113
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Amp(physx::PxActorFlag::Enum a, physx::PxActorFlag::Enum b){
     auto nat_in_a = (a);
@@ -83,7 +81,6 @@ public static UNPARSED_TYPE operator&(PxActorFlag a, PxActorFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L113~113
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Tilde(physx::PxActorFlag::Enum a){
     auto nat_in_a = (a);
@@ -108,21 +105,20 @@ public static UNPARSED_TYPE operator~(PxActorFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxActor { // pointer
+public unsafe partial struct PxActorPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
     //================================================================================
     //#       release                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L166~166
     #if NATIVE
     ES void W_release(physx::PxActor* self){
         self->release();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_release(PxActor selfPtr);
+    static extern void W_release(PxActorPtr selfPtr);
     
     public void release(){
         W_release(this);
@@ -133,7 +129,6 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     //#       getType                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L175~175
     #if NATIVE
     ES physx::PxActorType::Enum W_getType(physx::PxActor* self){
         auto retVal = self->getType();
@@ -141,7 +136,7 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxActorType W_getType(PxActor selfPtr);
+    static extern PxActorType W_getType(PxActorPtr selfPtr);
     
     public PxActorType getType(){
         PxActorType retVal = W_getType(this);
@@ -153,7 +148,6 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     //#       getScene                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L184~184
     #if NATIVE
     ES physx::PxScene* W_getScene(physx::PxActor* self){
         auto retVal = self->getScene();
@@ -161,10 +155,10 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxScene W_getScene(PxActor selfPtr);
+    static extern PxScenePtr W_getScene(PxActorPtr selfPtr);
     
-    public PxScene getScene(){
-        PxScene retVal = W_getScene(this);
+    public PxScenePtr getScene(){
+        PxScenePtr retVal = W_getScene(this);
         return retVal;
     }
     #endif
@@ -173,7 +167,6 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     //#       setName                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L200~200
     #if NATIVE
     ES void W_setName(physx::PxActor* self, const char* name){
         auto nat_in_name = (name);
@@ -181,7 +174,7 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setName(PxActor selfPtr, string name);
+    static extern void W_setName(PxActorPtr selfPtr, string name);
     
     public void setName(string name){
         string pvk_in_name = (name);
@@ -193,7 +186,6 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     //#       getName                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L209~209
     #if NATIVE
     ES sbyte* W_getName(physx::PxActor* self){
         auto retVal = self->getName();
@@ -201,7 +193,7 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_getName(PxActor selfPtr);
+    static extern IntPtr W_getName(PxActorPtr selfPtr);
     
     public IntPtr getName(){
         IntPtr retVal = W_getName(this);
@@ -213,7 +205,6 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     //#       getWorldBounds                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L220~220
     #if NATIVE
     ES physx::PxBounds3 W_getWorldBounds(physx::PxActor* self, float inflation){
         auto nat_in_inflation = (inflation);
@@ -222,7 +213,7 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBounds3 W_getWorldBounds(PxActor selfPtr, float inflation);
+    static extern PxBounds3 W_getWorldBounds(PxActorPtr selfPtr, float inflation);
     
     public PxBounds3 getWorldBounds(float inflation){
         float pvk_in_inflation = (inflation);
@@ -232,10 +223,27 @@ public unsafe partial struct PxActor { // pointer
     #endif
     
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES physx::PxBounds3 W_getWorldBounds_OL1(physx::PxActor* self){
+        auto retVal = self->getWorldBounds();
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxBounds3 W_getWorldBounds_OL1(PxActorPtr selfPtr);
+    
+    public PxBounds3 getWorldBounds(){
+        PxBounds3 retVal = W_getWorldBounds_OL1(this);
+        return retVal;
+    }
+    #endif
+    
+    
+    
     //================================================================================
     //#       setActorFlag                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L236~236
     #if NATIVE
     ES void W_setActorFlag(physx::PxActor* self, physx::PxActorFlag::Enum flag, bool value){
         auto nat_in_flag = (flag);
@@ -244,7 +252,7 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setActorFlag(PxActor selfPtr, PxActorFlag flag, bool value);
+    static extern void W_setActorFlag(PxActorPtr selfPtr, PxActorFlag flag, bool value);
     
     public void setActorFlag(PxActorFlag flag, bool value){
         PxActorFlag pvk_in_flag = (flag);
@@ -259,7 +267,6 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxActorFlags
     // NATIVE SIG: void			setActorFlags( PxActorFlags inFlags ) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L243~243
     #if NATIVE
     ES void W_setActorFlags(physx::PxActor* self,  inFlags){
         auto nat_in_inFlags = (inFlags);
@@ -267,7 +274,7 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setActorFlags(PxActor selfPtr,  inFlags);
+    static extern void W_setActorFlags(PxActorPtr selfPtr,  inFlags);
     
     public void setActorFlags( inFlags){
          pvk_in_inFlags = (inFlags);
@@ -281,7 +288,6 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxActorFlags
     // NATIVE SIG: PxActorFlags	getActorFlags()	const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L254~254
     #if NATIVE
     ES UNPARSED_TYPE W_getActorFlags(physx::PxActor* self){
         auto retVal = self->getActorFlags();
@@ -289,7 +295,7 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getActorFlags(PxActor selfPtr);
+    static extern UNPARSED_TYPE W_getActorFlags(PxActorPtr selfPtr);
     
     public UNPARSED_TYPE getActorFlags(){
         UNPARSED_TYPE retVal = W_getActorFlags(this);
@@ -301,7 +307,6 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     //#       setDominanceGroup                                                      #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L272~272
     #if NATIVE
     ES void W_setDominanceGroup(physx::PxActor* self, physx::PxDominanceGroup dominanceGroup){
         auto nat_in_dominanceGroup = (dominanceGroup);
@@ -309,7 +314,7 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setDominanceGroup(PxActor selfPtr, byte dominanceGroup);
+    static extern void W_setDominanceGroup(PxActorPtr selfPtr, byte dominanceGroup);
     
     public void setDominanceGroup(byte dominanceGroup){
         byte pvk_in_dominanceGroup = (dominanceGroup);
@@ -321,7 +326,6 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     //#       getDominanceGroup                                                      #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L281~281
     #if NATIVE
     ES physx::PxDominanceGroup W_getDominanceGroup(physx::PxActor* self){
         auto retVal = self->getDominanceGroup();
@@ -329,7 +333,7 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern byte W_getDominanceGroup(PxActor selfPtr);
+    static extern byte W_getDominanceGroup(PxActorPtr selfPtr);
     
     public byte getDominanceGroup(){
         byte retVal = W_getDominanceGroup(this);
@@ -341,7 +345,6 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     //#       setOwnerClient                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L293~293
     #if NATIVE
     ES void W_setOwnerClient(physx::PxActor* self, physx::PxClientID inClient){
         auto nat_in_inClient = (inClient);
@@ -349,7 +352,7 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setOwnerClient(PxActor selfPtr, byte inClient);
+    static extern void W_setOwnerClient(PxActorPtr selfPtr, byte inClient);
     
     public void setOwnerClient(byte inClient){
         byte pvk_in_inClient = (inClient);
@@ -361,7 +364,6 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     //#       getOwnerClient                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L302~302
     #if NATIVE
     ES physx::PxClientID W_getOwnerClient(physx::PxActor* self){
         auto retVal = self->getOwnerClient();
@@ -369,7 +371,7 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern byte W_getOwnerClient(PxActor selfPtr);
+    static extern byte W_getOwnerClient(PxActorPtr selfPtr);
     
     public byte getOwnerClient(){
         byte retVal = W_getOwnerClient(this);
@@ -383,7 +385,6 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxAggregate*	getAggregate()	const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L311~311
     #if NATIVE
     ES physx::PxAggregate* W_getAggregate(physx::PxActor* self){
         auto retVal = self->getAggregate();
@@ -391,10 +392,10 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxAggregate W_getAggregate(PxActor selfPtr);
+    static extern PxAggregatePtr W_getAggregate(PxActorPtr selfPtr);
     
-    public PxAggregate getAggregate(){
-        PxAggregate retVal = W_getAggregate(this);
+    public PxAggregatePtr getAggregate(){
+        PxAggregatePtr retVal = W_getAggregate(this);
         return retVal;
     }
     #endif*/
@@ -406,7 +407,6 @@ public unsafe partial struct PxActor { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxActor
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE					PxActor(PxType concreteType, PxBaseFlags baseFlags) : PxBase(concreteType, baseFlags), userData(NULL) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L317~317
     #if NATIVE
     ES UNPARSED_TYPE W_PxActor_ctor(physx::PxType concreteType,  baseFlags){
         auto nat_in_concreteType = (concreteType);
@@ -433,7 +433,6 @@ public unsafe partial struct PxActor { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxActor
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE					PxActor(PxBaseFlags baseFlags) : PxBase(baseFlags) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L318~318
     #if NATIVE
     ES UNPARSED_TYPE W_PxActor_ctor( baseFlags){
         auto nat_in_baseFlags = (baseFlags);
@@ -457,14 +456,13 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual						~PxActor()	{}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L319~319
     #if NATIVE
     ES void W_~PxActor(physx::PxActor* self){
         self->~PxActor();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxActor(PxActor selfPtr);
+    static extern void W_~PxActor(PxActorPtr selfPtr);
     
     public void ~PxActor(){
         W_~PxActor(this);
@@ -475,7 +473,6 @@ public unsafe partial struct PxActor { // pointer
     //================================================================================
     //#       isKindOf                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxActor.h L320~320
     #if NATIVE
     ES bool W_isKindOf(physx::PxActor* self, const char* name){
         auto nat_in_name = (name);
@@ -484,7 +481,7 @@ public unsafe partial struct PxActor { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isKindOf(PxActor selfPtr, string name);
+    static extern bool W_isKindOf(PxActorPtr selfPtr, string name);
     
     public bool isKindOf(string name){
         string pvk_in_name = (name);

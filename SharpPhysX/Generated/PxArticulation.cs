@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 
 // Class physx::PxArticulation Manually Ignored
 #if !NATIVE
-public unsafe partial struct PxArticulationDriveCache { // pointer
+public unsafe partial struct PxArticulationDriveCachePtr { // pointer
     private IntPtr nativePtr_;
 #endif
 

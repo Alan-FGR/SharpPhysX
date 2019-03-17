@@ -25,7 +25,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L60~63
     #if NATIVE
     ES physx::PxQuat W_PxQuat_ctor(physx::PxIDENTITY r){
         auto nat_in_r = (r);
@@ -47,7 +46,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L68~70
     #if NATIVE
     ES physx::PxQuat W_PxQuat_ctor(float r){
         auto nat_in_r = (r);
@@ -69,7 +67,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L75~77
     #if NATIVE
     ES physx::PxQuat W_PxQuat_ctor(float nx, float ny, float nz, float nw){
         auto nat_in_nx = (nx);
@@ -97,7 +94,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L88~97
     #if NATIVE
     ES physx::PxQuat W_PxQuat_ctor(float angleRadians, physx::PxVec3 unitAxis){
         auto nat_in_angleRadians = (angleRadians);
@@ -121,7 +117,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L102~104
     #if NATIVE
     ES physx::PxQuat W_PxQuat_ctor(physx::PxQuat v){
         auto nat_in_v = (v);
@@ -143,7 +138,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L111~111
     #if NATIVE
     ES physx::PxQuat W_PxQuat_ctor(physx::PxMat33 m){
         auto nat_in_m = (m);
@@ -165,7 +159,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       isIdentity                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L116~119
     #if NATIVE
     ES bool W_isIdentity(physx::PxQuat self){
         auto retVal = self.isIdentity();
@@ -185,7 +178,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       isFinite                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L124~127
     #if NATIVE
     ES bool W_isFinite(physx::PxQuat self){
         auto retVal = self.isFinite();
@@ -205,7 +197,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       isUnit                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L132~136
     #if NATIVE
     ES bool W_isUnit(physx::PxQuat self){
         auto retVal = self.isUnit();
@@ -225,7 +216,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       isSane                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L142~146
     #if NATIVE
     ES bool W_isSane(physx::PxQuat self){
         auto retVal = self.isSane();
@@ -245,7 +235,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L151~154
     #if NATIVE
     ES bool W_OP_EqualEqual(physx::PxQuat self, physx::PxQuat q){
         auto nat_in_q = (q);
@@ -284,7 +273,6 @@ public unsafe partial struct PxQuat { // blittable
     			angle = PxAbs(w) < quatEpsilon ? PxPi : PxAtan2(s2 * s, w) * 2.0f;
     		}
     	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L159~174
     #if NATIVE
     ES void W_toRadiansAndUnitAxis(physx::PxQuat self, float& angle,  axis){
         auto nat_in_angle = (angle);
@@ -306,7 +294,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       getAngle                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L181~184
     #if NATIVE
     ES float W_getAngle(physx::PxQuat self){
         auto retVal = self.getAngle();
@@ -326,7 +313,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       getAngle                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L191~194
     #if NATIVE
     ES float W_getAngle(physx::PxQuat self, physx::PxQuat q){
         auto nat_in_q = (q);
@@ -348,7 +334,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       magnitudeSquared                                                       #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L199~202
     #if NATIVE
     ES float W_magnitudeSquared(physx::PxQuat self){
         auto retVal = self.magnitudeSquared();
@@ -368,7 +353,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       dot                                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L207~210
     #if NATIVE
     ES float W_dot(physx::PxQuat self, physx::PxQuat v){
         auto nat_in_v = (v);
@@ -390,7 +374,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       getNormalized                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L212~216
     #if NATIVE
     ES physx::PxQuat W_getNormalized(physx::PxQuat self){
         auto retVal = self.getNormalized();
@@ -410,7 +393,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       magnitude                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L218~221
     #if NATIVE
     ES float W_magnitude(physx::PxQuat self){
         auto retVal = self.magnitude();
@@ -430,7 +412,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       normalize                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L227~240
     #if NATIVE
     ES float W_normalize(physx::PxQuat self){
         auto retVal = self.normalize();
@@ -450,7 +431,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       getConjugate                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L247~250
     #if NATIVE
     ES physx::PxQuat W_getConjugate(physx::PxQuat self){
         auto retVal = self.getConjugate();
@@ -470,7 +450,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       getImaginaryPart                                                       #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L255~258
     #if NATIVE
     ES physx::PxVec3 W_getImaginaryPart(physx::PxQuat self){
         auto retVal = self.getImaginaryPart();
@@ -490,7 +469,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       getBasisVector0                                                        #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L261~266
     #if NATIVE
     ES physx::PxVec3 W_getBasisVector0(physx::PxQuat self){
         auto retVal = self.getBasisVector0();
@@ -510,7 +488,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       getBasisVector1                                                        #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L269~274
     #if NATIVE
     ES physx::PxVec3 W_getBasisVector1(physx::PxQuat self){
         auto retVal = self.getBasisVector1();
@@ -530,7 +507,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       getBasisVector2                                                        #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L277~282
     #if NATIVE
     ES physx::PxVec3 W_getBasisVector2(physx::PxQuat self){
         auto retVal = self.getBasisVector2();
@@ -550,7 +526,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       rotate                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L287~296
     #if NATIVE
     ES physx::PxVec3 W_rotate(physx::PxQuat self, physx::PxVec3 v){
         auto nat_in_v = (v);
@@ -572,7 +547,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       rotateInv                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L301~310
     #if NATIVE
     ES physx::PxVec3 W_rotateInv(physx::PxQuat self, physx::PxVec3 v){
         auto nat_in_v = (v);
@@ -629,7 +603,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L366~370
     #if NATIVE
     ES physx::PxQuat W_OP_Star(physx::PxQuat self, physx::PxQuat q){
         auto nat_in_q = (q);
@@ -651,7 +624,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       operator+                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L373~376
     #if NATIVE
     ES physx::PxQuat W_OP_Plus(physx::PxQuat self, physx::PxQuat q){
         auto nat_in_q = (q);
@@ -673,7 +645,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L379~382
     #if NATIVE
     ES physx::PxQuat W_OP_Minus(physx::PxQuat self){
         auto retVal = self.operator-();
@@ -693,7 +664,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L384~387
     #if NATIVE
     ES physx::PxQuat W_OP_Minus(physx::PxQuat self, physx::PxQuat q){
         auto nat_in_q = (q);
@@ -715,7 +685,6 @@ public unsafe partial struct PxQuat { // blittable
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxQuat.h L389~392
     #if NATIVE
     ES physx::PxQuat W_OP_Star(physx::PxQuat self, float r){
         auto nat_in_r = (r);

@@ -30,7 +30,6 @@ public partial struct PxMaterial {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMaterialFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L90~90
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Pipe(physx::PxMaterialFlag::Enum a, physx::PxMaterialFlag::Enum b){
     auto nat_in_a = (a);
@@ -56,7 +55,6 @@ public static UNPARSED_TYPE operator|(PxMaterialFlag a, PxMaterialFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMaterialFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L90~90
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Amp(physx::PxMaterialFlag::Enum a, physx::PxMaterialFlag::Enum b){
     auto nat_in_a = (a);
@@ -82,7 +80,6 @@ public static UNPARSED_TYPE operator&(PxMaterialFlag a, PxMaterialFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMaterialFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L90~90
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Tilde(physx::PxMaterialFlag::Enum a){
     auto nat_in_a = (a);
@@ -106,21 +103,20 @@ public static UNPARSED_TYPE operator~(PxMaterialFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxMaterial { // pointer
+public unsafe partial struct PxMaterialPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
     //================================================================================
     //#       release                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L139~139
     #if NATIVE
     ES void W_release(physx::PxMaterial* self){
         self->release();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_release(PxMaterial selfPtr);
+    static extern void W_release(PxMaterialPtr selfPtr);
     
     public void release(){
         W_release(this);
@@ -131,7 +127,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       getReferenceCount                                                      #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L149~149
     #if NATIVE
     ES physx::PxU32 W_getReferenceCount(physx::PxMaterial* self){
         auto retVal = self->getReferenceCount();
@@ -139,7 +134,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getReferenceCount(PxMaterial selfPtr);
+    static extern uint W_getReferenceCount(PxMaterialPtr selfPtr);
     
     public uint getReferenceCount(){
         uint retVal = W_getReferenceCount(this);
@@ -151,14 +146,13 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       acquireReference                                                       #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L156~156
     #if NATIVE
     ES void W_acquireReference(physx::PxMaterial* self){
         self->acquireReference();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_acquireReference(PxMaterial selfPtr);
+    static extern void W_acquireReference(PxMaterialPtr selfPtr);
     
     public void acquireReference(){
         W_acquireReference(this);
@@ -169,7 +163,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       setDynamicFriction                                                     #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L169~169
     #if NATIVE
     ES void W_setDynamicFriction(physx::PxMaterial* self, physx::PxReal coef){
         auto nat_in_coef = (coef);
@@ -177,7 +170,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setDynamicFriction(PxMaterial selfPtr, float coef);
+    static extern void W_setDynamicFriction(PxMaterialPtr selfPtr, float coef);
     
     public void setDynamicFriction(float coef){
         float pvk_in_coef = (coef);
@@ -189,7 +182,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       getDynamicFriction                                                     #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L178~178
     #if NATIVE
     ES physx::PxReal W_getDynamicFriction(physx::PxMaterial* self){
         auto retVal = self->getDynamicFriction();
@@ -197,7 +189,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getDynamicFriction(PxMaterial selfPtr);
+    static extern float W_getDynamicFriction(PxMaterialPtr selfPtr);
     
     public float getDynamicFriction(){
         float retVal = W_getDynamicFriction(this);
@@ -209,7 +201,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       setStaticFriction                                                      #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L191~191
     #if NATIVE
     ES void W_setStaticFriction(physx::PxMaterial* self, physx::PxReal coef){
         auto nat_in_coef = (coef);
@@ -217,7 +208,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setStaticFriction(PxMaterial selfPtr, float coef);
+    static extern void W_setStaticFriction(PxMaterialPtr selfPtr, float coef);
     
     public void setStaticFriction(float coef){
         float pvk_in_coef = (coef);
@@ -229,7 +220,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       getStaticFriction                                                      #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L199~199
     #if NATIVE
     ES physx::PxReal W_getStaticFriction(physx::PxMaterial* self){
         auto retVal = self->getStaticFriction();
@@ -237,7 +227,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getStaticFriction(PxMaterial selfPtr);
+    static extern float W_getStaticFriction(PxMaterialPtr selfPtr);
     
     public float getStaticFriction(){
         float retVal = W_getStaticFriction(this);
@@ -249,7 +239,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       setRestitution                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L212~212
     #if NATIVE
     ES void W_setRestitution(physx::PxMaterial* self, physx::PxReal rest){
         auto nat_in_rest = (rest);
@@ -257,7 +246,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setRestitution(PxMaterial selfPtr, float rest);
+    static extern void W_setRestitution(PxMaterialPtr selfPtr, float rest);
     
     public void setRestitution(float rest){
         float pvk_in_rest = (rest);
@@ -269,7 +258,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       getRestitution                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L223~223
     #if NATIVE
     ES physx::PxReal W_getRestitution(physx::PxMaterial* self){
         auto retVal = self->getRestitution();
@@ -277,7 +265,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getRestitution(PxMaterial selfPtr);
+    static extern float W_getRestitution(PxMaterialPtr selfPtr);
     
     public float getRestitution(){
         float retVal = W_getRestitution(this);
@@ -291,7 +279,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     /* ERRORS OCCURED: Invalid parameter name (empty)
     // NATIVE SIG: void			setFlag(PxMaterialFlag::Enum flag, bool) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L236~236
     #if NATIVE
     ES void W_setFlag(physx::PxMaterial* self, physx::PxMaterialFlag::Enum flag, bool ){
         auto nat_in_flag = (flag);
@@ -300,7 +287,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setFlag(PxMaterial selfPtr, PxMaterialFlag flag, bool );
+    static extern void W_setFlag(PxMaterialPtr selfPtr, PxMaterialFlag flag, bool );
     
     public void setFlag(PxMaterialFlag flag, bool ){
         PxMaterialFlag pvk_in_flag = (flag);
@@ -315,7 +302,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxMaterialFlags
     // NATIVE SIG: void 			setFlags( PxMaterialFlags inFlags ) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L247~247
     #if NATIVE
     ES void W_setFlags(physx::PxMaterial* self,  inFlags){
         auto nat_in_inFlags = (inFlags);
@@ -323,7 +309,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setFlags(PxMaterial selfPtr,  inFlags);
+    static extern void W_setFlags(PxMaterialPtr selfPtr,  inFlags);
     
     public void setFlags( inFlags){
          pvk_in_inFlags = (inFlags);
@@ -337,7 +323,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxMaterialFlags
     // NATIVE SIG: PxMaterialFlags	getFlags() const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L256~256
     #if NATIVE
     ES UNPARSED_TYPE W_getFlags(physx::PxMaterial* self){
         auto retVal = self->getFlags();
@@ -345,7 +330,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getFlags(PxMaterial selfPtr);
+    static extern UNPARSED_TYPE W_getFlags(PxMaterialPtr selfPtr);
     
     public UNPARSED_TYPE getFlags(){
         UNPARSED_TYPE retVal = W_getFlags(this);
@@ -357,7 +342,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       setFrictionCombineMode                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L269~269
     #if NATIVE
     ES void W_setFrictionCombineMode(physx::PxMaterial* self, physx::PxCombineMode::Enum combMode){
         auto nat_in_combMode = (combMode);
@@ -365,7 +349,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setFrictionCombineMode(PxMaterial selfPtr, PxCombineMode combMode);
+    static extern void W_setFrictionCombineMode(PxMaterialPtr selfPtr, PxCombineMode combMode);
     
     public void setFrictionCombineMode(PxCombineMode combMode){
         PxCombineMode pvk_in_combMode = (combMode);
@@ -377,7 +361,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       getFrictionCombineMode                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L280~280
     #if NATIVE
     ES physx::PxCombineMode::Enum W_getFrictionCombineMode(physx::PxMaterial* self){
         auto retVal = self->getFrictionCombineMode();
@@ -385,7 +368,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxCombineMode W_getFrictionCombineMode(PxMaterial selfPtr);
+    static extern PxCombineMode W_getFrictionCombineMode(PxMaterialPtr selfPtr);
     
     public PxCombineMode getFrictionCombineMode(){
         PxCombineMode retVal = W_getFrictionCombineMode(this);
@@ -397,7 +380,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       setRestitutionCombineMode                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L293~293
     #if NATIVE
     ES void W_setRestitutionCombineMode(physx::PxMaterial* self, physx::PxCombineMode::Enum combMode){
         auto nat_in_combMode = (combMode);
@@ -405,7 +387,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setRestitutionCombineMode(PxMaterial selfPtr, PxCombineMode combMode);
+    static extern void W_setRestitutionCombineMode(PxMaterialPtr selfPtr, PxCombineMode combMode);
     
     public void setRestitutionCombineMode(PxCombineMode combMode){
         PxCombineMode pvk_in_combMode = (combMode);
@@ -417,7 +399,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       getRestitutionCombineMode                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L304~304
     #if NATIVE
     ES physx::PxCombineMode::Enum W_getRestitutionCombineMode(physx::PxMaterial* self){
         auto retVal = self->getRestitutionCombineMode();
@@ -425,7 +406,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxCombineMode W_getRestitutionCombineMode(PxMaterial selfPtr);
+    static extern PxCombineMode W_getRestitutionCombineMode(PxMaterialPtr selfPtr);
     
     public PxCombineMode getRestitutionCombineMode(){
         PxCombineMode retVal = W_getRestitutionCombineMode(this);
@@ -437,7 +418,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       getConcreteTypeName                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L309~309
     #if NATIVE
     ES sbyte* W_getConcreteTypeName(physx::PxMaterial* self){
         auto retVal = self->getConcreteTypeName();
@@ -445,7 +425,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_getConcreteTypeName(PxMaterial selfPtr);
+    static extern IntPtr W_getConcreteTypeName(PxMaterialPtr selfPtr);
     
     public IntPtr getConcreteTypeName(){
         IntPtr retVal = W_getConcreteTypeName(this);
@@ -460,7 +440,6 @@ public unsafe partial struct PxMaterial { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxMaterial
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE					PxMaterial(PxType concreteType, PxBaseFlags baseFlags) : PxBase(concreteType, baseFlags), userData(NULL) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L312~312
     #if NATIVE
     ES UNPARSED_TYPE W_PxMaterial_ctor(physx::PxType concreteType,  baseFlags){
         auto nat_in_concreteType = (concreteType);
@@ -487,7 +466,6 @@ public unsafe partial struct PxMaterial { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxMaterial
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE					PxMaterial(PxBaseFlags baseFlags) : PxBase(baseFlags) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L313~313
     #if NATIVE
     ES UNPARSED_TYPE W_PxMaterial_ctor( baseFlags){
         auto nat_in_baseFlags = (baseFlags);
@@ -511,14 +489,13 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual						~PxMaterial() {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L314~314
     #if NATIVE
     ES void W_~PxMaterial(physx::PxMaterial* self){
         self->~PxMaterial();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxMaterial(PxMaterial selfPtr);
+    static extern void W_~PxMaterial(PxMaterialPtr selfPtr);
     
     public void ~PxMaterial(){
         W_~PxMaterial(this);
@@ -529,7 +506,6 @@ public unsafe partial struct PxMaterial { // pointer
     //================================================================================
     //#       isKindOf                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxMaterial.h L315~315
     #if NATIVE
     ES bool W_isKindOf(physx::PxMaterial* self, const char* name){
         auto nat_in_name = (name);
@@ -538,7 +514,7 @@ public unsafe partial struct PxMaterial { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isKindOf(PxMaterial selfPtr, string name);
+    static extern bool W_isKindOf(PxMaterialPtr selfPtr, string name);
     
     public bool isKindOf(string name){
         string pvk_in_name = (name);

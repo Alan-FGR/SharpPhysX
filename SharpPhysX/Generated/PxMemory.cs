@@ -11,7 +11,6 @@ public partial struct PxMemory {
 //================================================================================
 //#       PxMemZero                                                              #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMemory.h L54~57
 #if NATIVE
 ES void* W_PxMemZero(void* dest, physx::PxU32 count){
     auto nat_in_dest = (dest);
@@ -35,7 +34,6 @@ public static IntPtr PxMemZero(global::System.IntPtr dest, uint count){
 //================================================================================
 //#       PxMemSet                                                               #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMemory.h L68~71
 #if NATIVE
 ES void* W_PxMemSet(void* dest, physx::PxI32 c, physx::PxU32 count){
     auto nat_in_dest = (dest);
@@ -61,7 +59,6 @@ public static IntPtr PxMemSet(global::System.IntPtr dest, int c, uint count){
 //================================================================================
 //#       PxMemCopy                                                              #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMemory.h L84~87
 #if NATIVE
 ES void* W_PxMemCopy(void* dest, const void* src, physx::PxU32 count){
     auto nat_in_dest = (dest);
@@ -87,7 +84,6 @@ public static IntPtr PxMemCopy(global::System.IntPtr dest, global::System.IntPtr
 //================================================================================
 //#       PxMemMove                                                              #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMemory.h L100~103
 #if NATIVE
 ES void* W_PxMemMove(void* dest, const void* src, physx::PxU32 count){
     auto nat_in_dest = (dest);

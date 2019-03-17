@@ -67,7 +67,6 @@ public partial struct PxSceneDesc {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxSceneFlag::Enum, unsigned int>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxSceneDesc.h L385~385
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Pipe(physx::PxSceneFlag::Enum a, physx::PxSceneFlag::Enum b){
     auto nat_in_a = (a);
@@ -93,7 +92,6 @@ public static UNPARSED_TYPE operator|(PxSceneFlag a, PxSceneFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxSceneFlag::Enum, unsigned int>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxSceneDesc.h L385~385
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Amp(physx::PxSceneFlag::Enum a, physx::PxSceneFlag::Enum b){
     auto nat_in_a = (a);
@@ -119,7 +117,6 @@ public static UNPARSED_TYPE operator&(PxSceneFlag a, PxSceneFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxSceneFlag::Enum, unsigned int>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxSceneDesc.h L385~385
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Tilde(physx::PxSceneFlag::Enum a){
     auto nat_in_a = (a);
@@ -144,7 +141,7 @@ public static UNPARSED_TYPE operator~(PxSceneFlag a){
 
 // Class physx::PxSceneFlag is enum namespace
 #if !NATIVE
-public unsafe partial struct PxSceneLimits { // pointer
+public unsafe partial struct PxSceneLimitsPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -160,14 +157,13 @@ public unsafe partial struct PxSceneLimits { // pointer
     //================================================================================
     //#       setToDefault                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxSceneDesc.h L421~421
     #if NATIVE
     ES void W_setToDefault(physx::PxSceneLimits* self){
         self->setToDefault();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setToDefault(PxSceneLimits selfPtr);
+    static extern void W_setToDefault(PxSceneLimitsPtr selfPtr);
     
     public void setToDefault(){
         W_setToDefault(this);
@@ -178,7 +174,6 @@ public unsafe partial struct PxSceneLimits { // pointer
     //================================================================================
     //#       isValid                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxSceneDesc.h L427~427
     #if NATIVE
     ES bool W_isValid(physx::PxSceneLimits* self){
         auto retVal = self->isValid();
@@ -186,7 +181,7 @@ public unsafe partial struct PxSceneLimits { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isValid(PxSceneLimits selfPtr);
+    static extern bool W_isValid(PxSceneLimitsPtr selfPtr);
     
     public bool isValid(){
         bool retVal = W_isValid(this);
@@ -217,7 +212,7 @@ public unsafe partial struct PxSceneLimits { // pointer
 // Class physx::PxPruningStructureType is enum namespace
 // Class physx::PxSceneQueryUpdateMode is enum namespace
 #if !NATIVE
-public unsafe partial struct PxSceneDesc { // pointer
+public unsafe partial struct PxSceneDescPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -225,9 +220,8 @@ public unsafe partial struct PxSceneDesc { // pointer
     //#       PxSceneDesc                                                            #
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxSceneDesc
-    Forbidden parameter type: PxTolerancesScale
+    Forbidden parameter type: PxTolerancesScalePtr
     // NATIVE SIG: PX_INLINE PxSceneDesc(const PxTolerancesScale& scale)
-    // SOURCE: C:\Projects\PhysX\physx\include\PxSceneDesc.h L912~912
     #if NATIVE
     ES UNPARSED_TYPE W_PxSceneDesc_ctor(physx::PxTolerancesScale* scale){
         auto nat_in_scale = (scale);
@@ -235,10 +229,10 @@ public unsafe partial struct PxSceneDesc { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxSceneDesc_ctor(PxTolerancesScale scale);
+    static extern UNPARSED_TYPE W_PxSceneDesc_ctor(PxTolerancesScalePtr scale);
     
-    public PxSceneDesc(PxTolerancesScale scale){
-        PxTolerancesScale pvk_in_scale = (scale);
+    public PxSceneDesc(PxTolerancesScalePtr scale){
+        PxTolerancesScalePtr pvk_in_scale = (scale);
         var _new = W_PxSceneDesc_ctor(pvk_in_scale);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
@@ -249,9 +243,8 @@ public unsafe partial struct PxSceneDesc { // pointer
     //================================================================================
     //#       setToDefault                                                           #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxTolerancesScale
+    /* ERRORS OCCURED: Forbidden parameter type: PxTolerancesScalePtr
     // NATIVE SIG: void setToDefault(const PxTolerancesScale& scale)
-    // SOURCE: C:\Projects\PhysX\physx\include\PxSceneDesc.h L922~922
     #if NATIVE
     ES void W_setToDefault(physx::PxSceneDesc* self, physx::PxTolerancesScale* scale){
         auto nat_in_scale = (scale);
@@ -259,10 +252,10 @@ public unsafe partial struct PxSceneDesc { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setToDefault(PxSceneDesc selfPtr, PxTolerancesScale scale);
+    static extern void W_setToDefault(PxSceneDescPtr selfPtr, PxTolerancesScalePtr scale);
     
-    public void setToDefault(PxTolerancesScale scale){
-        PxTolerancesScale pvk_in_scale = (scale);
+    public void setToDefault(PxTolerancesScalePtr scale){
+        PxTolerancesScalePtr pvk_in_scale = (scale);
         W_setToDefault(this, pvk_in_scale);
     }
     #endif*/
@@ -271,7 +264,6 @@ public unsafe partial struct PxSceneDesc { // pointer
     //================================================================================
     //#       isValid                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxSceneDesc.h L928~928
     #if NATIVE
     ES bool W_isValid(physx::PxSceneDesc* self){
         auto retVal = self->isValid();
@@ -279,7 +271,7 @@ public unsafe partial struct PxSceneDesc { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isValid(PxSceneDesc selfPtr);
+    static extern bool W_isValid(PxSceneDescPtr selfPtr);
     
     public bool isValid(){
         bool retVal = W_isValid(this);
@@ -293,7 +285,6 @@ public unsafe partial struct PxSceneDesc { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxTolerancesScale& getTolerancesScale() const { return tolerancesScale; }
-    // SOURCE: C:\Projects\PhysX\physx\include\PxSceneDesc.h L934~934
     #if NATIVE
     ES physx::PxTolerancesScale* W_getTolerancesScale(physx::PxSceneDesc* self){
         auto retVal = &self->getTolerancesScale();
@@ -301,10 +292,10 @@ public unsafe partial struct PxSceneDesc { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTolerancesScale W_getTolerancesScale(PxSceneDesc selfPtr);
+    static extern PxTolerancesScalePtr W_getTolerancesScale(PxSceneDescPtr selfPtr);
     
-    public PxTolerancesScale getTolerancesScale(){
-        PxTolerancesScale retVal = W_getTolerancesScale(this);
+    public PxTolerancesScalePtr getTolerancesScale(){
+        PxTolerancesScalePtr retVal = W_getTolerancesScale(this);
         return retVal;
     }
     #endif*/
@@ -327,7 +318,7 @@ public unsafe partial struct PxSceneDesc { // pointer
 
 // Class physx::PxSolverType is enum namespace
 #if !NATIVE
-public unsafe partial struct PxgDynamicsMemoryConfig { // pointer
+public unsafe partial struct PxgDynamicsMemoryConfigPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 

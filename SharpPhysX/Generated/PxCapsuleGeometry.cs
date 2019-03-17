@@ -11,7 +11,6 @@ public partial struct PxCapsuleGeometry {
 //================================================================================
 //#       PxTransformFromSegment                                                 #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\physx\include\geometry\PxCapsuleGeometry.h L113~113
 #if NATIVE
 ES physx::PxTransform W_PxTransformFromSegment(physx::PxVec3 p0, physx::PxVec3 p1, physx::PxReal* halfHeight){
     auto nat_in_p0 = (p0);
@@ -32,6 +31,28 @@ public static PxTransform PxTransformFromSegment(PxVec3 p0, PxVec3 p1, float* ha
     return retVal;
 }
 #endif
+
+
+// ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+#if NATIVE
+ES physx::PxTransform W_PxTransformFromSegment_OL1(physx::PxVec3 p0, physx::PxVec3 p1){
+    auto nat_in_p0 = (p0);
+    auto nat_in_p1 = (p1);
+    auto retVal = physx::PxTransformFromSegment(nat_in_p0, nat_in_p1);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern PxTransform W_PxTransformFromSegment_OL1(PxVec3 p0, PxVec3 p1);
+
+public static PxTransform PxTransformFromSegment(PxVec3 p0, PxVec3 p1){
+    PxVec3 pvk_in_p0 = (p0);
+    PxVec3 pvk_in_p1 = (p1);
+    PxTransform retVal = W_PxTransformFromSegment_OL1(pvk_in_p0, pvk_in_p1);
+    return retVal;
+}
+#endif
+
 
 #if !NATIVE
 } // End PxCapsuleGeometry
@@ -58,7 +79,6 @@ public unsafe partial struct PxCapsuleGeometry { // blittable
     //================================================================================
     //#       PxCapsuleGeometry                                                      #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxCapsuleGeometry.h L65~65
     #if NATIVE
     ES physx::PxCapsuleGeometry W_PxCapsuleGeometry_ctor(physx::PxReal radius_, physx::PxReal halfHeight_){
         auto nat_in_radius_ = (radius_);
@@ -82,7 +102,6 @@ public unsafe partial struct PxCapsuleGeometry { // blittable
     //================================================================================
     //#       isValid                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxCapsuleGeometry.h L77~77
     #if NATIVE
     ES bool W_isValid(physx::PxCapsuleGeometry self){
         auto retVal = self.isValid();

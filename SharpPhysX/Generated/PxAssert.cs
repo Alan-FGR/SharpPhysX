@@ -11,7 +11,6 @@ public partial struct PxAssert {
 //================================================================================
 //#       PxGetAssertHandler                                                     #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxAssert.h L53~53
 #if NATIVE
 ES physx::PxAssertHandler* W_PxGetAssertHandler(){
     auto retVal = &physx::PxGetAssertHandler();
@@ -19,10 +18,10 @@ ES physx::PxAssertHandler* W_PxGetAssertHandler(){
 }
 #else
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern PxAssertHandler W_PxGetAssertHandler();
+static extern PxAssertHandlerPtr W_PxGetAssertHandler();
 
-public static PxAssertHandler PxGetAssertHandler(){
-    PxAssertHandler retVal = W_PxGetAssertHandler();
+public static PxAssertHandlerPtr PxGetAssertHandler(){
+    PxAssertHandlerPtr retVal = W_PxGetAssertHandler();
     return retVal;
 }
 #endif
@@ -31,7 +30,6 @@ public static PxAssertHandler PxGetAssertHandler(){
 //================================================================================
 //#       PxSetAssertHandler                                                     #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxAssert.h L54~54
 #if NATIVE
 ES void W_PxSetAssertHandler(physx::PxAssertHandler* handler){
     auto nat_in_handler = (handler);
@@ -39,10 +37,10 @@ ES void W_PxSetAssertHandler(physx::PxAssertHandler* handler){
 }
 #else
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern void W_PxSetAssertHandler(PxAssertHandler handler);
+static extern void W_PxSetAssertHandler(PxAssertHandlerPtr handler);
 
-public static void PxSetAssertHandler(PxAssertHandler handler){
-    PxAssertHandler pvk_in_handler = (handler);
+public static void PxSetAssertHandler(PxAssertHandlerPtr handler){
+    PxAssertHandlerPtr pvk_in_handler = (handler);
     W_PxSetAssertHandler(pvk_in_handler);
 }
 #endif
@@ -53,7 +51,7 @@ public static void PxSetAssertHandler(PxAssertHandler handler){
 
 
 #if !NATIVE
-public unsafe partial struct PxAssertHandler { // pointer
+public unsafe partial struct PxAssertHandlerPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -64,14 +62,13 @@ public unsafe partial struct PxAssertHandler { // pointer
     // NATIVE SIG: virtual ~PxAssertHandler()
     	{
     	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxAssert.h L47~49
     #if NATIVE
     ES void W_~PxAssertHandler(physx::PxAssertHandler* self){
         self->~PxAssertHandler();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxAssertHandler(PxAssertHandler selfPtr);
+    static extern void W_~PxAssertHandler(PxAssertHandlerPtr selfPtr);
     
     public void ~PxAssertHandler(){
         W_~PxAssertHandler(this);

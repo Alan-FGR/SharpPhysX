@@ -23,7 +23,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L58~60
     #if NATIVE
     ES physx::PxTransform W_PxTransform_ctor(physx::PxVec3 position){
         auto nat_in_position = (position);
@@ -45,7 +44,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L62~65
     #if NATIVE
     ES physx::PxTransform W_PxTransform_ctor(physx::PxIDENTITY r){
         auto nat_in_r = (r);
@@ -67,7 +65,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L67~70
     #if NATIVE
     ES physx::PxTransform W_PxTransform_ctor(physx::PxQuat orientation){
         auto nat_in_orientation = (orientation);
@@ -89,7 +86,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L72~75
     #if NATIVE
     ES physx::PxTransform W_PxTransform_ctor(float x, float y, float z, physx::PxQuat aQ){
         auto nat_in_x = (x);
@@ -114,10 +110,33 @@ public unsafe partial struct PxTransform { // blittable
     #endif
     
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES physx::PxTransform W_PxTransform_ctor_OL1(float x, float y, float z){
+        auto nat_in_x = (x);
+        auto nat_in_y = (y);
+        auto nat_in_z = (z);
+        self.PxTransform(nat_in_x, nat_in_y, nat_in_z);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxTransform W_PxTransform_ctor_OL1(float x, float y, float z);
+    
+    public PxTransform(float x, float y, float z){
+        float pvk_in_x = (x);
+        float pvk_in_y = (y);
+        float pvk_in_z = (z);
+        var _new = W_PxTransform_ctor_OL1(pvk_in_x, pvk_in_y, pvk_in_z);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+    }
+    #endif
+    
+    
+    
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L77~80
     #if NATIVE
     ES physx::PxTransform W_PxTransform_ctor(physx::PxVec3 p0, physx::PxQuat q0){
         auto nat_in_p0 = (p0);
@@ -141,7 +160,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L82~82
     #if NATIVE
     ES physx::PxTransform W_PxTransform_ctor(physx::PxMat44 m){
         auto nat_in_m = (m);
@@ -163,7 +181,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L87~90
     #if NATIVE
     ES bool W_OP_EqualEqual(physx::PxTransform self, physx::PxTransform t){
         auto nat_in_t = (t);
@@ -185,7 +202,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L92~96
     #if NATIVE
     ES physx::PxTransform W_OP_Star(physx::PxTransform self, physx::PxTransform x){
         auto nat_in_x = (x);
@@ -214,7 +230,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       getInverse                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L105~109
     #if NATIVE
     ES physx::PxTransform W_getInverse(physx::PxTransform self){
         auto retVal = self.getInverse();
@@ -234,7 +249,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       transform                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L111~115
     #if NATIVE
     ES physx::PxVec3 W_transform(physx::PxTransform self, physx::PxVec3 input){
         auto nat_in_input = (input);
@@ -256,7 +270,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       transformInv                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L117~121
     #if NATIVE
     ES physx::PxVec3 W_transformInv(physx::PxTransform self, physx::PxVec3 input){
         auto nat_in_input = (input);
@@ -278,7 +291,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       rotate                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L123~127
     #if NATIVE
     ES physx::PxVec3 W_rotate(physx::PxTransform self, physx::PxVec3 input){
         auto nat_in_input = (input);
@@ -300,7 +312,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       rotateInv                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L129~133
     #if NATIVE
     ES physx::PxVec3 W_rotateInv(physx::PxTransform self, physx::PxVec3 input){
         auto nat_in_input = (input);
@@ -322,7 +333,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       transform                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L136~142
     #if NATIVE
     ES physx::PxTransform W_transform(physx::PxTransform self, physx::PxTransform src){
         auto nat_in_src = (src);
@@ -344,7 +354,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       isValid                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L148~151
     #if NATIVE
     ES bool W_isValid(physx::PxTransform self){
         auto retVal = self.isValid();
@@ -364,7 +373,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       isSane                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L158~161
     #if NATIVE
     ES bool W_isSane(physx::PxTransform self){
         auto retVal = self.isSane();
@@ -384,7 +392,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       isFinite                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L166~169
     #if NATIVE
     ES bool W_isFinite(physx::PxTransform self){
         auto retVal = self.isFinite();
@@ -404,7 +411,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       transformInv                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L172~179
     #if NATIVE
     ES physx::PxTransform W_transformInv(physx::PxTransform self, physx::PxTransform src){
         auto nat_in_src = (src);
@@ -426,7 +432,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       transform                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L185~189
     #if NATIVE
     ES physx::PxPlane W_transform(physx::PxTransform self, physx::PxPlane plane){
         auto nat_in_plane = (plane);
@@ -448,7 +453,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       inverseTransform                                                       #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L195~199
     #if NATIVE
     ES physx::PxPlane W_inverseTransform(physx::PxTransform self, physx::PxPlane plane){
         auto nat_in_plane = (plane);
@@ -470,7 +474,6 @@ public unsafe partial struct PxTransform { // blittable
     //================================================================================
     //#       getNormalized                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxTransform.h L204~207
     #if NATIVE
     ES physx::PxTransform W_getNormalized(physx::PxTransform self){
         auto retVal = self.getNormalized();

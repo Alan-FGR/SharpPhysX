@@ -9,31 +9,50 @@ public partial struct Lib {
 #endif
 
 //================================================================================
-//#       OVR_PxCreateFoundation                                                 #
+//#       MAN_PxCreateFoundation                                                 #
 //================================================================================
 /* ERRORS OCCURED: Unresolved parameter pointee ::SharpPhysXError
-// NATIVE SIG: physx::PxFoundation* OVR_PxCreateFoundation(SharpPhysXError* managedErrorCallback)
+// NATIVE SIG: PxFoundation* MAN_PxCreateFoundation(SharpPhysXError* managedErrorCallback)
 {
     return PxCreateFoundation(PX_PHYSICS_VERSION, allocator_, *new ShPxErrorCallbackWrapper(*managedErrorCallback));
-	//PxCreatePhysics()
 }
-// SOURCE: C:\Projects\SharpPhysX\LibSharpPhysX\Lib.cpp L88~92
 #if NATIVE
-ES physx::PxFoundation* W_OVR_PxCreateFoundation( managedErrorCallback){
+ES physx::PxFoundation* W_MAN_PxCreateFoundation( managedErrorCallback){
     auto nat_in_managedErrorCallback = (managedErrorCallback);
-    auto retVal = OVR_PxCreateFoundation(nat_in_managedErrorCallback);
+    auto retVal = MAN_PxCreateFoundation(nat_in_managedErrorCallback);
     return retVal;
 }
 #else
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern PxFoundation W_OVR_PxCreateFoundation( managedErrorCallback);
+static extern PxFoundationPtr W_MAN_PxCreateFoundation( managedErrorCallback);
 
-public static PxFoundation OVR_PxCreateFoundation( managedErrorCallback){
+public static PxFoundationPtr MAN_PxCreateFoundation( managedErrorCallback){
      pvk_in_managedErrorCallback = (managedErrorCallback);
-    PxFoundation retVal = W_OVR_PxCreateFoundation(pvk_in_managedErrorCallback);
+    PxFoundationPtr retVal = W_MAN_PxCreateFoundation(pvk_in_managedErrorCallback);
     return retVal;
 }
 #endif*/
+
+
+//================================================================================
+//#       MAN_PxCreatePhysics                                                    #
+//================================================================================
+#if NATIVE
+ES physx::PxPhysics* W_MAN_PxCreatePhysics(physx::PxFoundation* foundation){
+    auto nat_in_foundation = (foundation);
+    auto retVal = MAN_PxCreatePhysics(nat_in_foundation);
+    return retVal;
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern PxPhysicsPtr W_MAN_PxCreatePhysics(PxFoundationPtr foundation);
+
+public static PxPhysicsPtr MAN_PxCreatePhysics(PxFoundationPtr foundation){
+    PxFoundationPtr pvk_in_foundation = (foundation);
+    PxPhysicsPtr retVal = W_MAN_PxCreatePhysics(pvk_in_foundation);
+    return retVal;
+}
+#endif
 
 #if !NATIVE
 } // End Lib

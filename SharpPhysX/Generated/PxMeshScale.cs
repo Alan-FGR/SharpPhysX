@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 
 #if !NATIVE
-public unsafe partial struct PxMeshScale { // pointer
+public unsafe partial struct PxMeshScalePtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -26,7 +26,6 @@ public unsafe partial struct PxMeshScale { // pointer
     // NATIVE SIG: explicit PX_CUDA_CALLABLE PX_FORCE_INLINE PxMeshScale(PxReal r): scale(r), rotation(PxIdentity) 
     	{
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L87~89
     #if NATIVE
     ES UNPARSED_TYPE W_PxMeshScale_ctor(physx::PxReal r){
         auto nat_in_r = (r);
@@ -54,7 +53,6 @@ public unsafe partial struct PxMeshScale { // pointer
     		scale = s;
     		rotation = PxQuat(PxIdentity);
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L94~98
     #if NATIVE
     ES UNPARSED_TYPE W_PxMeshScale_ctor(physx::PxVec3 s){
         auto nat_in_s = (s);
@@ -83,7 +81,6 @@ public unsafe partial struct PxMeshScale { // pointer
     		scale = s;
     		rotation = r;
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L103~108
     #if NATIVE
     ES UNPARSED_TYPE W_PxMeshScale_ctor(physx::PxVec3 s, physx::PxQuat r){
         auto nat_in_s = (s);
@@ -107,7 +104,6 @@ public unsafe partial struct PxMeshScale { // pointer
     //================================================================================
     //#       isIdentity                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L114~117
     #if NATIVE
     ES bool W_isIdentity(physx::PxMeshScale* self){
         auto retVal = self->isIdentity();
@@ -115,7 +111,7 @@ public unsafe partial struct PxMeshScale { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isIdentity(PxMeshScale selfPtr);
+    static extern bool W_isIdentity(PxMeshScalePtr selfPtr);
     
     public bool isIdentity(){
         bool retVal = W_isIdentity(this);
@@ -132,7 +128,6 @@ public unsafe partial struct PxMeshScale { // pointer
     	{
     		return PxMeshScale(PxVec3(1.0f/scale.x, 1.0f/scale.y, 1.0f/scale.z), rotation);
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L122~125
     #if NATIVE
     ES UNPARSED_TYPE W_getInverse(physx::PxMeshScale* self){
         auto retVal = self->getInverse();
@@ -140,7 +135,7 @@ public unsafe partial struct PxMeshScale { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getInverse(PxMeshScale selfPtr);
+    static extern UNPARSED_TYPE W_getInverse(PxMeshScalePtr selfPtr);
     
     public UNPARSED_TYPE getInverse(){
         UNPARSED_TYPE retVal = W_getInverse(this);
@@ -152,7 +147,6 @@ public unsafe partial struct PxMeshScale { // pointer
     //================================================================================
     //#       toMat33                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L130~138
     #if NATIVE
     ES physx::PxMat33 W_toMat33(physx::PxMeshScale* self){
         auto retVal = self->toMat33();
@@ -160,7 +154,7 @@ public unsafe partial struct PxMeshScale { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_toMat33(PxMeshScale selfPtr);
+    static extern PxMat33 W_toMat33(PxMeshScalePtr selfPtr);
     
     public PxMat33 toMat33(){
         PxMat33 retVal = W_toMat33(this);
@@ -172,7 +166,6 @@ public unsafe partial struct PxMeshScale { // pointer
     //================================================================================
     //#       hasNegativeDeterminant                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L143~146
     #if NATIVE
     ES bool W_hasNegativeDeterminant(physx::PxMeshScale* self){
         auto retVal = self->hasNegativeDeterminant();
@@ -180,7 +173,7 @@ public unsafe partial struct PxMeshScale { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_hasNegativeDeterminant(PxMeshScale selfPtr);
+    static extern bool W_hasNegativeDeterminant(PxMeshScalePtr selfPtr);
     
     public bool hasNegativeDeterminant(){
         bool retVal = W_hasNegativeDeterminant(this);
@@ -192,7 +185,6 @@ public unsafe partial struct PxMeshScale { // pointer
     //================================================================================
     //#       transform                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L148~151
     #if NATIVE
     ES physx::PxVec3 W_transform(physx::PxMeshScale* self, physx::PxVec3 v){
         auto nat_in_v = (v);
@@ -201,7 +193,7 @@ public unsafe partial struct PxMeshScale { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_transform(PxMeshScale selfPtr, PxVec3 v);
+    static extern PxVec3 W_transform(PxMeshScalePtr selfPtr, PxVec3 v);
     
     public PxVec3 transform(PxVec3 v){
         PxVec3 pvk_in_v = (v);
@@ -214,7 +206,6 @@ public unsafe partial struct PxMeshScale { // pointer
     //================================================================================
     //#       isValidForTriangleMesh                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L153~157
     #if NATIVE
     ES bool W_isValidForTriangleMesh(physx::PxMeshScale* self){
         auto retVal = self->isValidForTriangleMesh();
@@ -222,7 +213,7 @@ public unsafe partial struct PxMeshScale { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isValidForTriangleMesh(PxMeshScale selfPtr);
+    static extern bool W_isValidForTriangleMesh(PxMeshScalePtr selfPtr);
     
     public bool isValidForTriangleMesh(){
         bool retVal = W_isValidForTriangleMesh(this);
@@ -234,7 +225,6 @@ public unsafe partial struct PxMeshScale { // pointer
     //================================================================================
     //#       isValidForConvexMesh                                                   #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxMeshScale.h L159~162
     #if NATIVE
     ES bool W_isValidForConvexMesh(physx::PxMeshScale* self){
         auto retVal = self->isValidForConvexMesh();
@@ -242,7 +232,7 @@ public unsafe partial struct PxMeshScale { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isValidForConvexMesh(PxMeshScale selfPtr);
+    static extern bool W_isValidForConvexMesh(PxMeshScalePtr selfPtr);
     
     public bool isValidForConvexMesh(){
         bool retVal = W_isValidForConvexMesh(this);

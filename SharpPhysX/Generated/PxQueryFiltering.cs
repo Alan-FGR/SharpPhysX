@@ -32,7 +32,6 @@ public partial struct PxQueryFiltering {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxQueryFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxQueryFiltering.h L86~86
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Pipe(physx::PxQueryFlag::Enum a, physx::PxQueryFlag::Enum b){
     auto nat_in_a = (a);
@@ -58,7 +57,6 @@ public static UNPARSED_TYPE operator|(PxQueryFlag a, PxQueryFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxQueryFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxQueryFiltering.h L86~86
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Amp(physx::PxQueryFlag::Enum a, physx::PxQueryFlag::Enum b){
     auto nat_in_a = (a);
@@ -84,7 +82,6 @@ public static UNPARSED_TYPE operator&(PxQueryFlag a, PxQueryFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxQueryFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxQueryFiltering.h L86~86
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Tilde(physx::PxQueryFlag::Enum a){
     auto nat_in_a = (a);
@@ -108,7 +105,7 @@ public static UNPARSED_TYPE operator~(PxQueryFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxQueryFilterData { // pointer
+public unsafe partial struct PxQueryFilterDataPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -127,7 +124,6 @@ public unsafe partial struct PxQueryFilterData { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxQueryFilterData
     Unresolved parameter type physx::PxQueryFlags
     // NATIVE SIG: explicit PX_INLINE PxQueryFilterData(const PxFilterData& fd, PxQueryFlags f) : data(fd), flags(f)	{}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryFiltering.h L138~138
     #if NATIVE
     ES UNPARSED_TYPE W_PxQueryFilterData_ctor(physx::PxFilterData* fd,  f){
         auto nat_in_fd = (fd);
@@ -136,10 +132,10 @@ public unsafe partial struct PxQueryFilterData { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxQueryFilterData_ctor(PxFilterData fd,  f);
+    static extern UNPARSED_TYPE W_PxQueryFilterData_ctor(PxFilterDataPtr fd,  f);
     
-    public PxQueryFilterData(PxFilterData fd,  f){
-        PxFilterData pvk_in_fd = (fd);
+    public PxQueryFilterData(PxFilterDataPtr fd,  f){
+        PxFilterDataPtr pvk_in_fd = (fd);
          pvk_in_f = (f);
         var _new = W_PxQueryFilterData_ctor(pvk_in_fd, pvk_in_f);
         fixed (void* ptr = &this)
@@ -154,7 +150,6 @@ public unsafe partial struct PxQueryFilterData { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxQueryFilterData
     Unresolved parameter type physx::PxQueryFlags
     // NATIVE SIG: explicit PX_INLINE PxQueryFilterData(PxQueryFlags f) : flags(f)										{}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryFiltering.h L141~141
     #if NATIVE
     ES UNPARSED_TYPE W_PxQueryFilterData_ctor( f){
         auto nat_in_f = (f);
@@ -190,7 +185,7 @@ public unsafe partial struct PxQueryFilterData { // pointer
 
 // Class physx::PxQueryFlag is enum namespace
 #if !NATIVE
-public unsafe partial struct PxQueryFilterCallback { // pointer
+public unsafe partial struct PxQueryFilterCallbackPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -200,7 +195,6 @@ public unsafe partial struct PxQueryFilterCallback { // pointer
     /* ERRORS OCCURED: fsdfasdf
     // NATIVE SIG: PxQueryHitType::Enum preFilter(
     		const PxFilterData& filterData, const PxShape* shape, const PxRigidActor* actor, PxHitFlags& queryFlags) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryFiltering.h L182~183
     #if NATIVE
     ES physx::PxQueryHitType::Enum W_preFilter(physx::PxQueryFilterCallback* self, physx::PxFilterData* filterData, physx::PxShape* shape, physx::PxRigidActor* actor,  queryFlags){
         auto nat_in_filterData = (filterData);
@@ -212,12 +206,12 @@ public unsafe partial struct PxQueryFilterCallback { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQueryHitType W_preFilter(PxQueryFilterCallback selfPtr, PxFilterData filterData, PxShape shape, PxRigidActor actor,  queryFlags);
+    static extern PxQueryHitType W_preFilter(PxQueryFilterCallbackPtr selfPtr, PxFilterDataPtr filterData, PxShapePtr shape, PxRigidActorPtr actor,  queryFlags);
     
-    public PxQueryHitType preFilter(PxFilterData filterData, PxShape shape, PxRigidActor actor,  queryFlags){
-        PxFilterData pvk_in_filterData = (filterData);
-        PxShape pvk_in_shape = (shape);
-        PxRigidActor pvk_in_actor = (actor);
+    public PxQueryHitType preFilter(PxFilterDataPtr filterData, PxShapePtr shape, PxRigidActorPtr actor,  queryFlags){
+        PxFilterDataPtr pvk_in_filterData = (filterData);
+        PxShapePtr pvk_in_shape = (shape);
+        PxRigidActorPtr pvk_in_actor = (actor);
          pvk_in_queryFlags = (queryFlags);
         PxQueryHitType retVal = W_preFilter(this, pvk_in_filterData, pvk_in_shape, pvk_in_actor, pvk_in_queryFlags);
         return retVal;
@@ -228,7 +222,6 @@ public unsafe partial struct PxQueryFilterCallback { // pointer
     //================================================================================
     //#       postFilter                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryFiltering.h L192~192
     #if NATIVE
     ES physx::PxQueryHitType::Enum W_postFilter(physx::PxQueryFilterCallback* self, physx::PxFilterData* filterData, physx::PxQueryHit* hit){
         auto nat_in_filterData = (filterData);
@@ -238,11 +231,11 @@ public unsafe partial struct PxQueryFilterCallback { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQueryHitType W_postFilter(PxQueryFilterCallback selfPtr, PxFilterData filterData, PxQueryHit hit);
+    static extern PxQueryHitType W_postFilter(PxQueryFilterCallbackPtr selfPtr, PxFilterDataPtr filterData, PxQueryHitPtr hit);
     
-    public PxQueryHitType postFilter(PxFilterData filterData, PxQueryHit hit){
-        PxFilterData pvk_in_filterData = (filterData);
-        PxQueryHit pvk_in_hit = (hit);
+    public PxQueryHitType postFilter(PxFilterDataPtr filterData, PxQueryHitPtr hit){
+        PxFilterDataPtr pvk_in_filterData = (filterData);
+        PxQueryHitPtr pvk_in_hit = (hit);
         PxQueryHitType retVal = W_postFilter(this, pvk_in_filterData, pvk_in_hit);
         return retVal;
     }
@@ -254,14 +247,13 @@ public unsafe partial struct PxQueryFilterCallback { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual ~PxQueryFilterCallback() {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryFiltering.h L197~197
     #if NATIVE
     ES void W_~PxQueryFilterCallback(physx::PxQueryFilterCallback* self){
         self->~PxQueryFilterCallback();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxQueryFilterCallback(PxQueryFilterCallback selfPtr);
+    static extern void W_~PxQueryFilterCallback(PxQueryFilterCallbackPtr selfPtr);
     
     public void ~PxQueryFilterCallback(){
         W_~PxQueryFilterCallback(this);

@@ -18,7 +18,6 @@ public partial struct PxTriangleMeshGeometry {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMeshGeometryFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMeshGeometry.h L69~69
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Pipe(physx::PxMeshGeometryFlag::Enum a, physx::PxMeshGeometryFlag::Enum b){
     auto nat_in_a = (a);
@@ -44,7 +43,6 @@ public static UNPARSED_TYPE operator|(PxMeshGeometryFlag a, PxMeshGeometryFlag b
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMeshGeometryFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMeshGeometry.h L69~69
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Amp(physx::PxMeshGeometryFlag::Enum a, physx::PxMeshGeometryFlag::Enum b){
     auto nat_in_a = (a);
@@ -70,7 +68,6 @@ public static UNPARSED_TYPE operator&(PxMeshGeometryFlag a, PxMeshGeometryFlag b
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMeshGeometryFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMeshGeometry.h L69~69
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Tilde(physx::PxMeshGeometryFlag::Enum a){
     auto nat_in_a = (a);

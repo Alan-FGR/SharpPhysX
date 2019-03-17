@@ -15,14 +15,14 @@ public partial class PhysX
     public const string Lib = "LibSharpPhysX";
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxFoundation MAN_PxCreateFoundation(SharpPhysXError managedErrorCallback);
-    public static PxFoundation PxCreateFoundation(SharpPhysXError errorCallback){
+    static extern PxFoundationPtr MAN_PxCreateFoundation(SharpPhysXError managedErrorCallback);
+    public static PxFoundationPtr PxCreateFoundation(SharpPhysXError errorCallback){
         return MAN_PxCreateFoundation(errorCallback);
     }
 
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPhysics MAN_PxCreatePhysics(PxFoundation foundation);
-    public static PxPhysics PxCreatePhysics(PxFoundation foundation)
+    static extern PxPhysicsPtr MAN_PxCreatePhysics(PxFoundationPtr foundation);
+    public static PxPhysicsPtr PxCreatePhysics(PxFoundationPtr foundation)
     {
         return MAN_PxCreatePhysics(foundation);
     }

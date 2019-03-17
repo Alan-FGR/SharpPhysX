@@ -6,14 +6,13 @@ using System.Runtime.InteropServices;
 
 
 #if !NATIVE
-public unsafe partial struct PxGeometryHolder { // pointer
+public unsafe partial struct PxGeometryHolderPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
     //================================================================================
     //#       getType                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L67~70
     #if NATIVE
     ES physx::PxGeometryType::Enum W_getType(physx::PxGeometryHolder* self){
         auto retVal = self->getType();
@@ -21,7 +20,7 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxGeometryType W_getType(PxGeometryHolder selfPtr);
+    static extern PxGeometryType W_getType(PxGeometryHolderPtr selfPtr);
     
     public PxGeometryType getType(){
         PxGeometryType retVal = W_getType(this);
@@ -33,7 +32,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       any                                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L72~75
     #if NATIVE
     ES physx::PxGeometry* W_any(physx::PxGeometryHolder* self){
         auto retVal = &self->any();
@@ -41,10 +39,10 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxGeometry W_any(PxGeometryHolder selfPtr);
+    static extern PxGeometryPtr W_any(PxGeometryHolderPtr selfPtr);
     
-    public PxGeometry any(){
-        PxGeometry retVal = W_any(this);
+    public PxGeometryPtr any(){
+        PxGeometryPtr retVal = W_any(this);
         return retVal;
     }
     #endif
@@ -53,7 +51,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       any                                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L77~80
     #if NATIVE
     ES physx::PxGeometry* W_any(physx::PxGeometryHolder* self){
         auto retVal = &self->any();
@@ -61,10 +58,10 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxGeometry W_any(PxGeometryHolder selfPtr);
+    static extern PxGeometryPtr W_any(PxGeometryHolderPtr selfPtr);
     
-    public PxGeometry any(){
-        PxGeometry retVal = W_any(this);
+    public PxGeometryPtr any(){
+        PxGeometryPtr retVal = W_any(this);
         return retVal;
     }
     #endif
@@ -73,7 +70,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       sphere                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L82~85
     #if NATIVE
     ES physx::PxSphereGeometry* W_sphere(physx::PxGeometryHolder* self){
         auto retVal = &self->sphere();
@@ -81,7 +77,7 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxSphereGeometry W_sphere(PxGeometryHolder selfPtr);
+    static extern PxSphereGeometry W_sphere(PxGeometryHolderPtr selfPtr);
     
     public PxSphereGeometry sphere(){
         PxSphereGeometry retVal = W_sphere(this);
@@ -93,7 +89,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       sphere                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L87~90
     #if NATIVE
     ES physx::PxSphereGeometry* W_sphere(physx::PxGeometryHolder* self){
         auto retVal = &self->sphere();
@@ -101,7 +96,7 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxSphereGeometry W_sphere(PxGeometryHolder selfPtr);
+    static extern PxSphereGeometry W_sphere(PxGeometryHolderPtr selfPtr);
     
     public PxSphereGeometry sphere(){
         PxSphereGeometry retVal = W_sphere(this);
@@ -113,7 +108,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       plane                                                                  #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L92~95
     #if NATIVE
     ES physx::PxPlaneGeometry* W_plane(physx::PxGeometryHolder* self){
         auto retVal = &self->plane();
@@ -121,10 +115,10 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPlaneGeometry W_plane(PxGeometryHolder selfPtr);
+    static extern PxPlaneGeometryPtr W_plane(PxGeometryHolderPtr selfPtr);
     
-    public PxPlaneGeometry plane(){
-        PxPlaneGeometry retVal = W_plane(this);
+    public PxPlaneGeometryPtr plane(){
+        PxPlaneGeometryPtr retVal = W_plane(this);
         return retVal;
     }
     #endif
@@ -133,7 +127,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       plane                                                                  #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L97~100
     #if NATIVE
     ES physx::PxPlaneGeometry* W_plane(physx::PxGeometryHolder* self){
         auto retVal = &self->plane();
@@ -141,10 +134,10 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPlaneGeometry W_plane(PxGeometryHolder selfPtr);
+    static extern PxPlaneGeometryPtr W_plane(PxGeometryHolderPtr selfPtr);
     
-    public PxPlaneGeometry plane(){
-        PxPlaneGeometry retVal = W_plane(this);
+    public PxPlaneGeometryPtr plane(){
+        PxPlaneGeometryPtr retVal = W_plane(this);
         return retVal;
     }
     #endif
@@ -153,7 +146,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       capsule                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L102~105
     #if NATIVE
     ES physx::PxCapsuleGeometry* W_capsule(physx::PxGeometryHolder* self){
         auto retVal = &self->capsule();
@@ -161,7 +153,7 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxCapsuleGeometry W_capsule(PxGeometryHolder selfPtr);
+    static extern PxCapsuleGeometry W_capsule(PxGeometryHolderPtr selfPtr);
     
     public PxCapsuleGeometry capsule(){
         PxCapsuleGeometry retVal = W_capsule(this);
@@ -173,7 +165,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       capsule                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L107~110
     #if NATIVE
     ES physx::PxCapsuleGeometry* W_capsule(physx::PxGeometryHolder* self){
         auto retVal = &self->capsule();
@@ -181,7 +172,7 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxCapsuleGeometry W_capsule(PxGeometryHolder selfPtr);
+    static extern PxCapsuleGeometry W_capsule(PxGeometryHolderPtr selfPtr);
     
     public PxCapsuleGeometry capsule(){
         PxCapsuleGeometry retVal = W_capsule(this);
@@ -193,7 +184,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       box                                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L112~115
     #if NATIVE
     ES physx::PxBoxGeometry* W_box(physx::PxGeometryHolder* self){
         auto retVal = &self->box();
@@ -201,7 +191,7 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBoxGeometry W_box(PxGeometryHolder selfPtr);
+    static extern PxBoxGeometry W_box(PxGeometryHolderPtr selfPtr);
     
     public PxBoxGeometry box(){
         PxBoxGeometry retVal = W_box(this);
@@ -213,7 +203,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       box                                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L117~120
     #if NATIVE
     ES physx::PxBoxGeometry* W_box(physx::PxGeometryHolder* self){
         auto retVal = &self->box();
@@ -221,7 +210,7 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBoxGeometry W_box(PxGeometryHolder selfPtr);
+    static extern PxBoxGeometry W_box(PxGeometryHolderPtr selfPtr);
     
     public PxBoxGeometry box(){
         PxBoxGeometry retVal = W_box(this);
@@ -238,7 +227,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     	{
     		return get<PxConvexMeshGeometry, PxGeometryType::eCONVEXMESH>();
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L122~125
     #if NATIVE
     ES physx::PxConvexMeshGeometry* W_convexMesh(physx::PxGeometryHolder* self){
         auto retVal = &self->convexMesh();
@@ -246,10 +234,10 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxConvexMeshGeometry W_convexMesh(PxGeometryHolder selfPtr);
+    static extern PxConvexMeshGeometryPtr W_convexMesh(PxGeometryHolderPtr selfPtr);
     
-    public PxConvexMeshGeometry convexMesh(){
-        PxConvexMeshGeometry retVal = W_convexMesh(this);
+    public PxConvexMeshGeometryPtr convexMesh(){
+        PxConvexMeshGeometryPtr retVal = W_convexMesh(this);
         return retVal;
     }
     #endif*/
@@ -263,7 +251,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     	{
     		return get<const PxConvexMeshGeometry, PxGeometryType::eCONVEXMESH>();
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L127~130
     #if NATIVE
     ES physx::PxConvexMeshGeometry* W_convexMesh(physx::PxGeometryHolder* self){
         auto retVal = &self->convexMesh();
@@ -271,10 +258,10 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxConvexMeshGeometry W_convexMesh(PxGeometryHolder selfPtr);
+    static extern PxConvexMeshGeometryPtr W_convexMesh(PxGeometryHolderPtr selfPtr);
     
-    public PxConvexMeshGeometry convexMesh(){
-        PxConvexMeshGeometry retVal = W_convexMesh(this);
+    public PxConvexMeshGeometryPtr convexMesh(){
+        PxConvexMeshGeometryPtr retVal = W_convexMesh(this);
         return retVal;
     }
     #endif*/
@@ -288,7 +275,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     	{
     		return get<PxTriangleMeshGeometry, PxGeometryType::eTRIANGLEMESH>();
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L132~135
     #if NATIVE
     ES physx::PxTriangleMeshGeometry* W_triangleMesh(physx::PxGeometryHolder* self){
         auto retVal = &self->triangleMesh();
@@ -296,10 +282,10 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTriangleMeshGeometry W_triangleMesh(PxGeometryHolder selfPtr);
+    static extern PxTriangleMeshGeometryPtr W_triangleMesh(PxGeometryHolderPtr selfPtr);
     
-    public PxTriangleMeshGeometry triangleMesh(){
-        PxTriangleMeshGeometry retVal = W_triangleMesh(this);
+    public PxTriangleMeshGeometryPtr triangleMesh(){
+        PxTriangleMeshGeometryPtr retVal = W_triangleMesh(this);
         return retVal;
     }
     #endif*/
@@ -313,7 +299,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     	{
     		return get<const PxTriangleMeshGeometry, PxGeometryType::eTRIANGLEMESH>();
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L137~140
     #if NATIVE
     ES physx::PxTriangleMeshGeometry* W_triangleMesh(physx::PxGeometryHolder* self){
         auto retVal = &self->triangleMesh();
@@ -321,10 +306,10 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTriangleMeshGeometry W_triangleMesh(PxGeometryHolder selfPtr);
+    static extern PxTriangleMeshGeometryPtr W_triangleMesh(PxGeometryHolderPtr selfPtr);
     
-    public PxTriangleMeshGeometry triangleMesh(){
-        PxTriangleMeshGeometry retVal = W_triangleMesh(this);
+    public PxTriangleMeshGeometryPtr triangleMesh(){
+        PxTriangleMeshGeometryPtr retVal = W_triangleMesh(this);
         return retVal;
     }
     #endif*/
@@ -338,7 +323,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     	{
     		return get<PxHeightFieldGeometry, PxGeometryType::eHEIGHTFIELD>();
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L142~145
     #if NATIVE
     ES physx::PxHeightFieldGeometry* W_heightField(physx::PxGeometryHolder* self){
         auto retVal = &self->heightField();
@@ -346,10 +330,10 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxHeightFieldGeometry W_heightField(PxGeometryHolder selfPtr);
+    static extern PxHeightFieldGeometryPtr W_heightField(PxGeometryHolderPtr selfPtr);
     
-    public PxHeightFieldGeometry heightField(){
-        PxHeightFieldGeometry retVal = W_heightField(this);
+    public PxHeightFieldGeometryPtr heightField(){
+        PxHeightFieldGeometryPtr retVal = W_heightField(this);
         return retVal;
     }
     #endif*/
@@ -363,7 +347,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     	{
     		return get<const PxHeightFieldGeometry, PxGeometryType::eHEIGHTFIELD>();
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L147~150
     #if NATIVE
     ES physx::PxHeightFieldGeometry* W_heightField(physx::PxGeometryHolder* self){
         auto retVal = &self->heightField();
@@ -371,10 +354,10 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxHeightFieldGeometry W_heightField(PxGeometryHolder selfPtr);
+    static extern PxHeightFieldGeometryPtr W_heightField(PxGeometryHolderPtr selfPtr);
     
-    public PxHeightFieldGeometry heightField(){
-        PxHeightFieldGeometry retVal = W_heightField(this);
+    public PxHeightFieldGeometryPtr heightField(){
+        PxHeightFieldGeometryPtr retVal = W_heightField(this);
         return retVal;
     }
     #endif*/
@@ -383,7 +366,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       storeAny                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L152~170
     #if NATIVE
     ES void W_storeAny(physx::PxGeometryHolder* self, physx::PxGeometry* geometry){
         auto nat_in_geometry = (geometry);
@@ -391,10 +373,10 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_storeAny(PxGeometryHolder selfPtr, PxGeometry geometry);
+    static extern void W_storeAny(PxGeometryHolderPtr selfPtr, PxGeometryPtr geometry);
     
-    public void storeAny(PxGeometry geometry){
-        PxGeometry pvk_in_geometry = (geometry);
+    public void storeAny(PxGeometryPtr geometry){
+        PxGeometryPtr pvk_in_geometry = (geometry);
         W_storeAny(this, pvk_in_geometry);
     }
     #endif
@@ -414,7 +396,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxGeometryHolder
     // NATIVE SIG: PX_FORCE_INLINE	PxGeometryHolder(const PxGeometry& geometry){ storeAny(geometry);	}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L173~173
     #if NATIVE
     ES UNPARSED_TYPE W_PxGeometryHolder_ctor(physx::PxGeometry* geometry){
         auto nat_in_geometry = (geometry);
@@ -422,10 +403,10 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxGeometryHolder_ctor(PxGeometry geometry);
+    static extern UNPARSED_TYPE W_PxGeometryHolder_ctor(PxGeometryPtr geometry);
     
-    public PxGeometryHolder(PxGeometry geometry){
-        PxGeometry pvk_in_geometry = (geometry);
+    public PxGeometryHolder(PxGeometryPtr geometry){
+        PxGeometryPtr pvk_in_geometry = (geometry);
         var _new = W_PxGeometryHolder_ctor(pvk_in_geometry);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
@@ -436,7 +417,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     //================================================================================
     //#       put                                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L176~179
     #if NATIVE
     ES void W_put(physx::PxGeometryHolder* self, physx::PxGeometry* geometry){
         auto nat_in_geometry = (geometry);
@@ -444,10 +424,10 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_put(PxGeometryHolder selfPtr, PxGeometry geometry);
+    static extern void W_put(PxGeometryHolderPtr selfPtr, PxGeometryPtr geometry);
     
-    public void put(PxGeometry geometry){
-        PxGeometry pvk_in_geometry = (geometry);
+    public void put(PxGeometryPtr geometry){
+        PxGeometryPtr pvk_in_geometry = (geometry);
         W_put(this, pvk_in_geometry);
     }
     #endif
@@ -462,7 +442,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     			PX_ASSERT(getType() == type);
     			return static_cast<T&>(any());
     		}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L181~185
     #if NATIVE
     ES UNPARSED_TYPE W_get(physx::PxGeometryHolder* self){
         auto retVal = self->get();
@@ -470,7 +449,7 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_get(PxGeometryHolder selfPtr);
+    static extern UNPARSED_TYPE W_get(PxGeometryHolderPtr selfPtr);
     
     public UNPARSED_TYPE get(){
         UNPARSED_TYPE retVal = W_get(this);
@@ -488,7 +467,6 @@ public unsafe partial struct PxGeometryHolder { // pointer
     			PX_ASSERT(getType() == type);
     			return static_cast<T&>(any());
     		}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometryHelpers.h L187~191
     #if NATIVE
     ES UNPARSED_TYPE W_get(physx::PxGeometryHolder* self){
         auto retVal = self->get();
@@ -496,7 +474,7 @@ public unsafe partial struct PxGeometryHolder { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_get(PxGeometryHolder selfPtr);
+    static extern UNPARSED_TYPE W_get(PxGeometryHolderPtr selfPtr);
     
     public UNPARSED_TYPE get(){
         UNPARSED_TYPE retVal = W_get(this);

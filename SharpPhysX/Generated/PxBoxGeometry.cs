@@ -24,7 +24,6 @@ public unsafe partial struct PxBoxGeometry { // blittable
     //================================================================================
     //#       PxBoxGeometry                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxBoxGeometry.h L64~64
     #if NATIVE
     ES physx::PxBoxGeometry W_PxBoxGeometry_ctor(physx::PxReal hx, physx::PxReal hy, physx::PxReal hz){
         auto nat_in_hx = (hx);
@@ -50,7 +49,6 @@ public unsafe partial struct PxBoxGeometry { // blittable
     //================================================================================
     //#       PxBoxGeometry                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxBoxGeometry.h L70~70
     #if NATIVE
     ES physx::PxBoxGeometry W_PxBoxGeometry_ctor(physx::PxVec3 halfExtents_){
         auto nat_in_halfExtents_ = (halfExtents_);
@@ -72,7 +70,6 @@ public unsafe partial struct PxBoxGeometry { // blittable
     //================================================================================
     //#       isValid                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxBoxGeometry.h L82~82
     #if NATIVE
     ES bool W_isValid(physx::PxBoxGeometry self){
         auto retVal = self.isValid();

@@ -18,7 +18,6 @@ Unresolved parameter type T
 {
 	return a < b ? b : a;
 }
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L70~73
 #if NATIVE
 ES UNPARSED_TYPE W_PxMax( a,  b){
     auto nat_in_a = (a);
@@ -42,7 +41,6 @@ public static UNPARSED_TYPE PxMax( a,  b){
 //================================================================================
 //#       PxMax                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L76~80
 #if NATIVE
 ES float W_PxMax(float a, float b){
     auto nat_in_a = (a);
@@ -73,7 +71,6 @@ Unresolved parameter type T
 {
 	return a < b ? a : b;
 }
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L86~89
 #if NATIVE
 ES UNPARSED_TYPE W_PxMin( a,  b){
     auto nat_in_a = (a);
@@ -97,7 +94,6 @@ public static UNPARSED_TYPE PxMin( a,  b){
 //================================================================================
 //#       PxMin                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L91~96
 #if NATIVE
 ES float W_PxMin(float a, float b){
     auto nat_in_a = (a);
@@ -121,7 +117,6 @@ public static float PxMin(float a, float b){
 //================================================================================
 //#       PxAbs                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L107~110
 #if NATIVE
 ES float W_PxAbs(float a){
     auto nat_in_a = (a);
@@ -143,7 +138,6 @@ public static float PxAbs(float a){
 //================================================================================
 //#       PxEquals                                                               #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L112~115
 #if NATIVE
 ES bool W_PxEquals(float a, float b, float eps){
     auto nat_in_a = (a);
@@ -169,7 +163,6 @@ public static bool PxEquals(float a, float b, float eps){
 //================================================================================
 //#       PxAbs                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L120~123
 #if NATIVE
 ES double W_PxAbs(double a){
     auto nat_in_a = (a);
@@ -191,7 +184,6 @@ public static double PxAbs(double a){
 //================================================================================
 //#       PxAbs                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L128~131
 #if NATIVE
 ES ::int32_t W_PxAbs(::int32_t a){
     auto nat_in_a = (a);
@@ -222,7 +214,6 @@ Unresolved parameter type T
 	PX_ASSERT(lo <= hi);
 	return PxMin(hi, PxMax(lo, v));
 }
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L137~141
 #if NATIVE
 ES UNPARSED_TYPE W_PxClamp( v,  lo,  hi){
     auto nat_in_v = (v);
@@ -248,7 +239,6 @@ public static UNPARSED_TYPE PxClamp( v,  lo,  hi){
 //================================================================================
 //#       PxSqrt                                                                 #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L144~147
 #if NATIVE
 ES float W_PxSqrt(float a){
     auto nat_in_a = (a);
@@ -270,7 +260,6 @@ public static float PxSqrt(float a){
 //================================================================================
 //#       PxSqrt                                                                 #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L150~153
 #if NATIVE
 ES double W_PxSqrt(double a){
     auto nat_in_a = (a);
@@ -292,7 +281,6 @@ public static double PxSqrt(double a){
 //================================================================================
 //#       PxRecipSqrt                                                            #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L156~159
 #if NATIVE
 ES float W_PxRecipSqrt(float a){
     auto nat_in_a = (a);
@@ -314,7 +302,6 @@ public static float PxRecipSqrt(float a){
 //================================================================================
 //#       PxRecipSqrt                                                            #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L162~165
 #if NATIVE
 ES double W_PxRecipSqrt(double a){
     auto nat_in_a = (a);
@@ -336,7 +323,6 @@ public static double PxRecipSqrt(double a){
 //================================================================================
 //#       PxSin                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L170~173
 #if NATIVE
 ES float W_PxSin(float a){
     auto nat_in_a = (a);
@@ -358,7 +344,6 @@ public static float PxSin(float a){
 //================================================================================
 //#       PxSin                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L176~179
 #if NATIVE
 ES double W_PxSin(double a){
     auto nat_in_a = (a);
@@ -380,7 +365,6 @@ public static double PxSin(double a){
 //================================================================================
 //#       PxCos                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L182~185
 #if NATIVE
 ES float W_PxCos(float a){
     auto nat_in_a = (a);
@@ -402,7 +386,6 @@ public static float PxCos(float a){
 //================================================================================
 //#       PxCos                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L188~191
 #if NATIVE
 ES double W_PxCos(double a){
     auto nat_in_a = (a);
@@ -424,7 +407,6 @@ public static double PxCos(double a){
 //================================================================================
 //#       PxTan                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L197~200
 #if NATIVE
 ES float W_PxTan(float a){
     auto nat_in_a = (a);
@@ -446,7 +428,6 @@ public static float PxTan(float a){
 //================================================================================
 //#       PxTan                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L206~209
 #if NATIVE
 ES double W_PxTan(double a){
     auto nat_in_a = (a);
@@ -468,7 +449,6 @@ public static double PxTan(double a){
 //================================================================================
 //#       PxAsin                                                                 #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L216~219
 #if NATIVE
 ES float W_PxAsin(float f){
     auto nat_in_f = (f);
@@ -490,7 +470,6 @@ public static float PxAsin(float f){
 //================================================================================
 //#       PxAsin                                                                 #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L226~229
 #if NATIVE
 ES double W_PxAsin(double f){
     auto nat_in_f = (f);
@@ -512,7 +491,6 @@ public static double PxAsin(double f){
 //================================================================================
 //#       PxAcos                                                                 #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L236~239
 #if NATIVE
 ES float W_PxAcos(float f){
     auto nat_in_f = (f);
@@ -534,7 +512,6 @@ public static float PxAcos(float f){
 //================================================================================
 //#       PxAcos                                                                 #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L246~249
 #if NATIVE
 ES double W_PxAcos(double f){
     auto nat_in_f = (f);
@@ -556,7 +533,6 @@ public static double PxAcos(double f){
 //================================================================================
 //#       PxAtan                                                                 #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L256~259
 #if NATIVE
 ES float W_PxAtan(float a){
     auto nat_in_a = (a);
@@ -578,7 +554,6 @@ public static float PxAtan(float a){
 //================================================================================
 //#       PxAtan                                                                 #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L266~269
 #if NATIVE
 ES double W_PxAtan(double a){
     auto nat_in_a = (a);
@@ -600,7 +575,6 @@ public static double PxAtan(double a){
 //================================================================================
 //#       PxAtan2                                                                #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L276~279
 #if NATIVE
 ES float W_PxAtan2(float x, float y){
     auto nat_in_x = (x);
@@ -624,7 +598,6 @@ public static float PxAtan2(float x, float y){
 //================================================================================
 //#       PxAtan2                                                                #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L286~289
 #if NATIVE
 ES double W_PxAtan2(double x, double y){
     auto nat_in_x = (x);
@@ -648,7 +621,6 @@ public static double PxAtan2(double x, double y){
 //================================================================================
 //#       PxIsFinite                                                             #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L292~295
 #if NATIVE
 ES bool W_PxIsFinite(float f){
     auto nat_in_f = (f);
@@ -670,7 +642,6 @@ public static bool PxIsFinite(float f){
 //================================================================================
 //#       PxIsFinite                                                             #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L298~301
 #if NATIVE
 ES bool W_PxIsFinite(double f){
     auto nat_in_f = (f);
@@ -692,7 +663,6 @@ public static bool PxIsFinite(double f){
 //================================================================================
 //#       PxFloor                                                                #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L303~306
 #if NATIVE
 ES float W_PxFloor(float a){
     auto nat_in_a = (a);
@@ -714,7 +684,6 @@ public static float PxFloor(float a){
 //================================================================================
 //#       PxExp                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L308~311
 #if NATIVE
 ES float W_PxExp(float a){
     auto nat_in_a = (a);
@@ -736,7 +705,6 @@ public static float PxExp(float a){
 //================================================================================
 //#       PxCeil                                                                 #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L313~316
 #if NATIVE
 ES float W_PxCeil(float a){
     auto nat_in_a = (a);
@@ -758,7 +726,6 @@ public static float PxCeil(float a){
 //================================================================================
 //#       PxSign                                                                 #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L318~321
 #if NATIVE
 ES float W_PxSign(float a){
     auto nat_in_a = (a);
@@ -780,7 +747,6 @@ public static float PxSign(float a){
 //================================================================================
 //#       PxPow                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L323~326
 #if NATIVE
 ES float W_PxPow(float x, float y){
     auto nat_in_x = (x);
@@ -804,7 +770,6 @@ public static float PxPow(float x, float y){
 //================================================================================
 //#       PxLog                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMath.h L328~331
 #if NATIVE
 ES float W_PxLog(float x){
     auto nat_in_x = (x);

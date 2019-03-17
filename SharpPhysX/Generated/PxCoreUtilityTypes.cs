@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 
 #if !NATIVE
-public unsafe partial struct PxPadding { // pointer
+public unsafe partial struct PxPaddingPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -25,7 +25,7 @@ public unsafe partial struct PxPadding { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxStridedData { // pointer
+public unsafe partial struct PxStridedDataPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -43,7 +43,6 @@ public unsafe partial struct PxStridedData { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: TDataType
     // NATIVE SIG: TDataType& at( PxU32 idx ) const
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L59~59
     #if NATIVE
     ES UNPARSED_TYPE W_at(physx::PxStridedData* self, physx::PxU32 idx){
         auto nat_in_idx = (idx);
@@ -52,7 +51,7 @@ public unsafe partial struct PxStridedData { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_at(PxStridedData selfPtr, uint idx);
+    static extern UNPARSED_TYPE W_at(PxStridedDataPtr selfPtr, uint idx);
     
     public UNPARSED_TYPE at(uint idx){
         uint pvk_in_idx = (idx);
@@ -78,7 +77,7 @@ public unsafe partial struct PxStridedData { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxTypedStridedData { // pointer
+public unsafe partial struct PxTypedStridedDataPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -97,7 +96,7 @@ public unsafe partial struct PxTypedStridedData { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxBoundedData { // pointer
+public unsafe partial struct PxBoundedDataPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -126,7 +125,7 @@ public unsafe partial struct PxBoundedData { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxFixedSizeLookupTable { // pointer
+public unsafe partial struct PxFixedSizeLookupTablePtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -145,7 +144,6 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxFixedSizeLookupTable
     Invalid parameter name (empty)
     // NATIVE SIG: PxFixedSizeLookupTable(const PxEMPTY)
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L115~115
     #if NATIVE
     ES UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_ctor(physx::PxEMPTY ){
         auto nat_in_ = ();
@@ -169,7 +167,6 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxFixedSizeLookupTable
     // NATIVE SIG: PxFixedSizeLookupTable(const PxReal* dataPairs, const PxU32 numDataPairs)
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L117~117
     #if NATIVE
     ES UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_ctor(const physx::PxReal* dataPairs, physx::PxU32 numDataPairs){
         auto nat_in_dataPairs = (dataPairs);
@@ -196,7 +193,6 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxFixedSizeLookupTable
     fsdfasdf
     // NATIVE SIG: PxFixedSizeLookupTable(const PxFixedSizeLookupTable& src)
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L123~123
     #if NATIVE
     ES UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_ctor( src){
         auto nat_in_src = (src);
@@ -220,14 +216,13 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: ~PxFixedSizeLookupTable()
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L129~129
     #if NATIVE
     ES void W_~PxFixedSizeLookupTable<NB_ELEMENTS>(physx::PxFixedSizeLookupTable* self){
         self->~PxFixedSizeLookupTable<NB_ELEMENTS>();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxFixedSizeLookupTable<NB_ELEMENTS>(PxFixedSizeLookupTable selfPtr);
+    static extern void W_~PxFixedSizeLookupTable<NB_ELEMENTS>(PxFixedSizeLookupTablePtr selfPtr);
     
     public void ~PxFixedSizeLookupTable<NB_ELEMENTS>(){
         W_~PxFixedSizeLookupTable<NB_ELEMENTS>(this);
@@ -245,7 +240,6 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     //================================================================================
     //#       addPair                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L140~140
     #if NATIVE
     ES void W_addPair(physx::PxFixedSizeLookupTable* self, physx::PxReal x, physx::PxReal y){
         auto nat_in_x = (x);
@@ -254,7 +248,7 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addPair(PxFixedSizeLookupTable selfPtr, float x, float y);
+    static extern void W_addPair(PxFixedSizeLookupTablePtr selfPtr, float x, float y);
     
     public void addPair(float x, float y){
         float pvk_in_x = (x);
@@ -267,7 +261,6 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     //================================================================================
     //#       getYVal                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L148~148
     #if NATIVE
     ES physx::PxReal W_getYVal(physx::PxFixedSizeLookupTable* self, physx::PxReal x){
         auto nat_in_x = (x);
@@ -276,7 +269,7 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getYVal(PxFixedSizeLookupTable selfPtr, float x);
+    static extern float W_getYVal(PxFixedSizeLookupTablePtr selfPtr, float x);
     
     public float getYVal(float x){
         float pvk_in_x = (x);
@@ -289,7 +282,6 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     //================================================================================
     //#       getNbDataPairs                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L182~182
     #if NATIVE
     ES physx::PxU32 W_getNbDataPairs(physx::PxFixedSizeLookupTable* self){
         auto retVal = self->getNbDataPairs();
@@ -297,7 +289,7 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getNbDataPairs(PxFixedSizeLookupTable selfPtr);
+    static extern uint W_getNbDataPairs(PxFixedSizeLookupTablePtr selfPtr);
     
     public uint getNbDataPairs(){
         uint retVal = W_getNbDataPairs(this);
@@ -309,14 +301,13 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     //================================================================================
     //#       clear                                                                  #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L184~184
     #if NATIVE
     ES void W_clear(physx::PxFixedSizeLookupTable* self){
         self->clear();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_clear(PxFixedSizeLookupTable selfPtr);
+    static extern void W_clear(PxFixedSizeLookupTablePtr selfPtr);
     
     public void clear(){
         W_clear(this);
@@ -327,7 +318,6 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     //================================================================================
     //#       getX                                                                   #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L190~190
     #if NATIVE
     ES physx::PxReal W_getX(physx::PxFixedSizeLookupTable* self, physx::PxU32 i){
         auto nat_in_i = (i);
@@ -336,7 +326,7 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getX(PxFixedSizeLookupTable selfPtr, uint i);
+    static extern float W_getX(PxFixedSizeLookupTablePtr selfPtr, uint i);
     
     public float getX(uint i){
         uint pvk_in_i = (i);
@@ -349,7 +339,6 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     //================================================================================
     //#       getY                                                                   #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\common\PxCoreUtilityTypes.h L194~194
     #if NATIVE
     ES physx::PxReal W_getY(physx::PxFixedSizeLookupTable* self, physx::PxU32 i){
         auto nat_in_i = (i);
@@ -358,7 +347,7 @@ public unsafe partial struct PxFixedSizeLookupTable { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getY(PxFixedSizeLookupTable selfPtr, uint i);
+    static extern float W_getY(PxFixedSizeLookupTablePtr selfPtr, uint i);
     
     public float getY(uint i){
         uint pvk_in_i = (i);

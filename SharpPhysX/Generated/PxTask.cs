@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 // Class physx::PxBaseTask Manually Ignored
 #if !NATIVE
-public unsafe partial struct PxTask { // pointer
+public unsafe partial struct PxTaskPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -25,14 +25,13 @@ public unsafe partial struct PxTask { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual ~PxTask() {}
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L115~115
     #if NATIVE
     ES void W_~PxTask(physx::PxTask* self){
         self->~PxTask();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxTask(PxTask selfPtr);
+    static extern void W_~PxTask(PxTaskPtr selfPtr);
     
     public void ~PxTask(){
         W_~PxTask(this);
@@ -43,14 +42,13 @@ public unsafe partial struct PxTask { // pointer
     //================================================================================
     //#       release                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L118~126
     #if NATIVE
     ES void W_release(physx::PxTask* self){
         self->release();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_release(PxTask selfPtr);
+    static extern void W_release(PxTaskPtr selfPtr);
     
     public void release(){
         W_release(this);
@@ -61,7 +59,6 @@ public unsafe partial struct PxTask { // pointer
     //================================================================================
     //#       finishBefore                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L130~134
     #if NATIVE
     ES void W_finishBefore(physx::PxTask* self, physx::PxTaskID taskID){
         auto nat_in_taskID = (taskID);
@@ -69,7 +66,7 @@ public unsafe partial struct PxTask { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_finishBefore(PxTask selfPtr, uint taskID);
+    static extern void W_finishBefore(PxTaskPtr selfPtr, uint taskID);
     
     public void finishBefore(uint taskID){
         uint pvk_in_taskID = (taskID);
@@ -81,7 +78,6 @@ public unsafe partial struct PxTask { // pointer
     //================================================================================
     //#       startAfter                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L138~142
     #if NATIVE
     ES void W_startAfter(physx::PxTask* self, physx::PxTaskID taskID){
         auto nat_in_taskID = (taskID);
@@ -89,7 +85,7 @@ public unsafe partial struct PxTask { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_startAfter(PxTask selfPtr, uint taskID);
+    static extern void W_startAfter(PxTaskPtr selfPtr, uint taskID);
     
     public void startAfter(uint taskID){
         uint pvk_in_taskID = (taskID);
@@ -101,14 +97,13 @@ public unsafe partial struct PxTask { // pointer
     //================================================================================
     //#       addReference                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L148~152
     #if NATIVE
     ES void W_addReference(physx::PxTask* self){
         self->addReference();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addReference(PxTask selfPtr);
+    static extern void W_addReference(PxTaskPtr selfPtr);
     
     public void addReference(){
         W_addReference(this);
@@ -119,14 +114,13 @@ public unsafe partial struct PxTask { // pointer
     //================================================================================
     //#       removeReference                                                        #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L158~162
     #if NATIVE
     ES void W_removeReference(physx::PxTask* self){
         self->removeReference();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_removeReference(PxTask selfPtr);
+    static extern void W_removeReference(PxTaskPtr selfPtr);
     
     public void removeReference(){
         W_removeReference(this);
@@ -137,7 +131,6 @@ public unsafe partial struct PxTask { // pointer
     //================================================================================
     //#       getReference                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L167~170
     #if NATIVE
     ES ::int32_t W_getReference(physx::PxTask* self){
         auto retVal = self->getReference();
@@ -145,7 +138,7 @@ public unsafe partial struct PxTask { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern int W_getReference(PxTask selfPtr);
+    static extern int W_getReference(PxTaskPtr selfPtr);
     
     public int getReference(){
         int retVal = W_getReference(this);
@@ -157,7 +150,6 @@ public unsafe partial struct PxTask { // pointer
     //================================================================================
     //#       getTaskID                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L175~178
     #if NATIVE
     ES physx::PxTaskID W_getTaskID(physx::PxTask* self){
         auto retVal = self->getTaskID();
@@ -165,7 +157,7 @@ public unsafe partial struct PxTask { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getTaskID(PxTask selfPtr);
+    static extern uint W_getTaskID(PxTaskPtr selfPtr);
     
     public uint getTaskID(){
         uint retVal = W_getTaskID(this);
@@ -177,14 +169,13 @@ public unsafe partial struct PxTask { // pointer
     //================================================================================
     //#       submitted                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L185~189
     #if NATIVE
     ES void W_submitted(physx::PxTask* self){
         self->submitted();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_submitted(PxTask selfPtr);
+    static extern void W_submitted(PxTaskPtr selfPtr);
     
     public void submitted(){
         W_submitted(this);
@@ -195,14 +186,13 @@ public unsafe partial struct PxTask { // pointer
     //================================================================================
     //#       requestSyncPoint                                                       #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L194~197
     #if NATIVE
     ES void W_requestSyncPoint(physx::PxTask* self){
         self->requestSyncPoint();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_requestSyncPoint(PxTask selfPtr);
+    static extern void W_requestSyncPoint(PxTaskPtr selfPtr);
     
     public void requestSyncPoint(){
         W_requestSyncPoint(this);
@@ -220,7 +210,7 @@ public unsafe partial struct PxTask { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxLightCpuTask { // pointer
+public unsafe partial struct PxLightCpuTaskPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -241,14 +231,13 @@ public unsafe partial struct PxLightCpuTask { // pointer
     	{
     		mTm = NULL;
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L230~233
     #if NATIVE
     ES void W_~PxLightCpuTask(physx::PxLightCpuTask* self){
         self->~PxLightCpuTask();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxLightCpuTask(PxLightCpuTask selfPtr);
+    static extern void W_~PxLightCpuTask(PxLightCpuTaskPtr selfPtr);
     
     public void ~PxLightCpuTask(){
         W_~PxLightCpuTask(this);
@@ -259,8 +248,8 @@ public unsafe partial struct PxLightCpuTask { // pointer
     //================================================================================
     //#       setContinuation                                                        #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxTaskManager
-    Forbidden parameter type: PxBaseTask
+    /* ERRORS OCCURED: Forbidden parameter type: PxTaskManagerPtr
+    Forbidden parameter type: PxBaseTaskPtr
     // NATIVE SIG: void setContinuation(PxTaskManager& tm, PxBaseTask* c)
     	{
     		PX_ASSERT( mRefCount == 0 );
@@ -272,7 +261,6 @@ public unsafe partial struct PxLightCpuTask { // pointer
     			mCont->addReference();
     	    }
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L244~254
     #if NATIVE
     ES void W_setContinuation(physx::PxLightCpuTask* self, physx::PxTaskManager* tm, physx::PxBaseTask* c){
         auto nat_in_tm = (tm);
@@ -281,11 +269,11 @@ public unsafe partial struct PxLightCpuTask { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setContinuation(PxLightCpuTask selfPtr, PxTaskManager tm, PxBaseTask c);
+    static extern void W_setContinuation(PxLightCpuTaskPtr selfPtr, PxTaskManagerPtr tm, PxBaseTaskPtr c);
     
-    public void setContinuation(PxTaskManager tm, PxBaseTask c){
-        PxTaskManager pvk_in_tm = (tm);
-        PxBaseTask pvk_in_c = (c);
+    public void setContinuation(PxTaskManagerPtr tm, PxBaseTaskPtr c){
+        PxTaskManagerPtr pvk_in_tm = (tm);
+        PxBaseTaskPtr pvk_in_c = (c);
         W_setContinuation(this, pvk_in_tm, pvk_in_c);
     }
     #endif*/
@@ -294,7 +282,7 @@ public unsafe partial struct PxLightCpuTask { // pointer
     //================================================================================
     //#       setContinuation                                                        #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTask
+    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
     // NATIVE SIG: void setContinuation( PxBaseTask* c )
     	{
     		PX_ASSERT( c );
@@ -308,7 +296,6 @@ public unsafe partial struct PxLightCpuTask { // pointer
     			PX_ASSERT( mTm );
     		}
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L263~275
     #if NATIVE
     ES void W_setContinuation(physx::PxLightCpuTask* self, physx::PxBaseTask* c){
         auto nat_in_c = (c);
@@ -316,10 +303,10 @@ public unsafe partial struct PxLightCpuTask { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setContinuation(PxLightCpuTask selfPtr, PxBaseTask c);
+    static extern void W_setContinuation(PxLightCpuTaskPtr selfPtr, PxBaseTaskPtr c);
     
-    public void setContinuation(PxBaseTask c){
-        PxBaseTask pvk_in_c = (c);
+    public void setContinuation(PxBaseTaskPtr c){
+        PxBaseTaskPtr pvk_in_c = (c);
         W_setContinuation(this, pvk_in_c);
     }
     #endif*/
@@ -333,7 +320,6 @@ public unsafe partial struct PxLightCpuTask { // pointer
     	{
     		return mCont;
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L280~283
     #if NATIVE
     ES physx::PxBaseTask* W_getContinuation(physx::PxLightCpuTask* self){
         auto retVal = self->getContinuation();
@@ -341,10 +327,10 @@ public unsafe partial struct PxLightCpuTask { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBaseTask W_getContinuation(PxLightCpuTask selfPtr);
+    static extern PxBaseTaskPtr W_getContinuation(PxLightCpuTaskPtr selfPtr);
     
-    public PxBaseTask getContinuation(){
-        PxBaseTask retVal = W_getContinuation(this);
+    public PxBaseTaskPtr getContinuation(){
+        PxBaseTaskPtr retVal = W_getContinuation(this);
         return retVal;
     }
     #endif*/
@@ -353,14 +339,13 @@ public unsafe partial struct PxLightCpuTask { // pointer
     //================================================================================
     //#       removeReference                                                        #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L289~292
     #if NATIVE
     ES void W_removeReference(physx::PxLightCpuTask* self){
         self->removeReference();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_removeReference(PxLightCpuTask selfPtr);
+    static extern void W_removeReference(PxLightCpuTaskPtr selfPtr);
     
     public void removeReference(){
         W_removeReference(this);
@@ -371,7 +356,6 @@ public unsafe partial struct PxLightCpuTask { // pointer
     //================================================================================
     //#       getReference                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L295~298
     #if NATIVE
     ES ::int32_t W_getReference(physx::PxLightCpuTask* self){
         auto retVal = self->getReference();
@@ -379,7 +363,7 @@ public unsafe partial struct PxLightCpuTask { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern int W_getReference(PxLightCpuTask selfPtr);
+    static extern int W_getReference(PxLightCpuTaskPtr selfPtr);
     
     public int getReference(){
         int retVal = W_getReference(this);
@@ -391,14 +375,13 @@ public unsafe partial struct PxLightCpuTask { // pointer
     //================================================================================
     //#       addReference                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L304~307
     #if NATIVE
     ES void W_addReference(physx::PxLightCpuTask* self){
         self->addReference();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addReference(PxLightCpuTask selfPtr);
+    static extern void W_addReference(PxLightCpuTaskPtr selfPtr);
     
     public void addReference(){
         W_addReference(this);
@@ -409,14 +392,13 @@ public unsafe partial struct PxLightCpuTask { // pointer
     //================================================================================
     //#       release                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\task\PxTask.h L314~320
     #if NATIVE
     ES void W_release(physx::PxLightCpuTask* self){
         self->release();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_release(PxLightCpuTask selfPtr);
+    static extern void W_release(PxLightCpuTaskPtr selfPtr);
     
     public void release(){
         W_release(this);

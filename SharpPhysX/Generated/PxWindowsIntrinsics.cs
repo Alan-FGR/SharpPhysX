@@ -11,7 +11,6 @@ public partial struct PxWindowsIntrinsics {
 //================================================================================
 //#       abs                                                                    #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L51~54
 #if NATIVE
 ES float W_abs(float a){
     auto nat_in_a = (a);
@@ -33,7 +32,6 @@ public static float abs(float a){
 //================================================================================
 //#       fsel                                                                   #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L57~60
 #if NATIVE
 ES float W_fsel(float a, float b, float c){
     auto nat_in_a = (a);
@@ -59,7 +57,6 @@ public static float fsel(float a, float b, float c){
 //================================================================================
 //#       sign                                                                   #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L63~66
 #if NATIVE
 ES float W_sign(float a){
     auto nat_in_a = (a);
@@ -81,7 +78,6 @@ public static float sign(float a){
 //================================================================================
 //#       recip                                                                  #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L69~72
 #if NATIVE
 ES float W_recip(float a){
     auto nat_in_a = (a);
@@ -103,7 +99,6 @@ public static float recip(float a){
 //================================================================================
 //#       recipFast                                                              #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L75~78
 #if NATIVE
 ES float W_recipFast(float a){
     auto nat_in_a = (a);
@@ -125,7 +120,6 @@ public static float recipFast(float a){
 //================================================================================
 //#       sqrt                                                                   #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L81~84
 #if NATIVE
 ES float W_sqrt(float a){
     auto nat_in_a = (a);
@@ -147,7 +141,6 @@ public static float sqrt(float a){
 //================================================================================
 //#       recipSqrt                                                              #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L87~90
 #if NATIVE
 ES float W_recipSqrt(float a){
     auto nat_in_a = (a);
@@ -169,7 +162,6 @@ public static float recipSqrt(float a){
 //================================================================================
 //#       recipSqrtFast                                                          #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L93~96
 #if NATIVE
 ES float W_recipSqrtFast(float a){
     auto nat_in_a = (a);
@@ -191,7 +183,6 @@ public static float recipSqrtFast(float a){
 //================================================================================
 //#       sin                                                                    #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L99~102
 #if NATIVE
 ES float W_sin(float a){
     auto nat_in_a = (a);
@@ -213,7 +204,6 @@ public static float sin(float a){
 //================================================================================
 //#       cos                                                                    #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L105~108
 #if NATIVE
 ES float W_cos(float a){
     auto nat_in_a = (a);
@@ -235,7 +225,6 @@ public static float cos(float a){
 //================================================================================
 //#       selectMin                                                              #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L111~114
 #if NATIVE
 ES float W_selectMin(float a, float b){
     auto nat_in_a = (a);
@@ -259,7 +248,6 @@ public static float selectMin(float a, float b){
 //================================================================================
 //#       selectMax                                                              #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L117~120
 #if NATIVE
 ES float W_selectMax(float a, float b){
     auto nat_in_a = (a);
@@ -283,7 +271,6 @@ public static float selectMax(float a, float b){
 //================================================================================
 //#       isFinite                                                               #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L123~130
 #if NATIVE
 ES bool W_isFinite(float a){
     auto nat_in_a = (a);
@@ -305,7 +292,6 @@ public static bool isFinite(float a){
 //================================================================================
 //#       isFinite                                                               #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L133~140
 #if NATIVE
 ES bool W_isFinite(double a){
     auto nat_in_a = (a);
@@ -327,7 +313,6 @@ public static bool isFinite(double a){
 //================================================================================
 //#       memZero                                                                #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L145~148
 #if NATIVE
 ES void* W_memZero(void* dest, ::uint32_t count){
     auto nat_in_dest = (dest);
@@ -351,7 +336,6 @@ public static IntPtr memZero(global::System.IntPtr dest, uint count){
 //================================================================================
 //#       memSet                                                                 #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L153~156
 #if NATIVE
 ES void* W_memSet(void* dest, ::int32_t c, ::uint32_t count){
     auto nat_in_dest = (dest);
@@ -377,7 +361,6 @@ public static IntPtr memSet(global::System.IntPtr dest, int c, uint count){
 //================================================================================
 //#       memCopy                                                                #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L161~164
 #if NATIVE
 ES void* W_memCopy(void* dest, const void* src, ::uint32_t count){
     auto nat_in_dest = (dest);
@@ -403,7 +386,6 @@ public static IntPtr memCopy(global::System.IntPtr dest, global::System.IntPtr s
 //================================================================================
 //#       memMove                                                                #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L169~172
 #if NATIVE
 ES void* W_memMove(void* dest, const void* src, ::uint32_t count){
     auto nat_in_dest = (dest);
@@ -429,7 +411,6 @@ public static IntPtr memMove(global::System.IntPtr dest, global::System.IntPtr s
 //================================================================================
 //#       memZero128                                                             #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\windows\PxWindowsIntrinsics.h L177~181
 #if NATIVE
 ES void W_memZero128(void* dest, ::uint32_t offset){
     auto nat_in_dest = (dest);
@@ -446,6 +427,24 @@ public static void memZero128(global::System.IntPtr dest, uint offset){
     W_memZero128(pvk_in_dest, pvk_in_offset);
 }
 #endif
+
+
+// ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+#if NATIVE
+ES void W_memZero128_OL1(void* dest){
+    auto nat_in_dest = (dest);
+    physx::intrinsics::memZero128(nat_in_dest);
+}
+#else
+[DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+static extern void W_memZero128_OL1(global::System.IntPtr dest);
+
+public static void memZero128(global::System.IntPtr dest){
+    global::System.IntPtr pvk_in_dest = (dest);
+    W_memZero128_OL1(pvk_in_dest);
+}
+#endif
+
 
 #if !NATIVE
 } // End PxWindowsIntrinsics

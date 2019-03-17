@@ -30,7 +30,6 @@ Unresolved parameter type B
 #endif
 	return u._a;
 }
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxUnionCast.h L45~61
 #if NATIVE
 ES UNPARSED_TYPE W_PxUnionCast( b){
     auto nat_in_b = (b);

@@ -19,7 +19,6 @@ public partial struct PxDeletionListener {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxDeletionEventFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxDeletionListener.h L66~66
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Pipe(physx::PxDeletionEventFlag::Enum a, physx::PxDeletionEventFlag::Enum b){
     auto nat_in_a = (a);
@@ -45,7 +44,6 @@ public static UNPARSED_TYPE operator|(PxDeletionEventFlag a, PxDeletionEventFlag
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxDeletionEventFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxDeletionListener.h L66~66
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Amp(physx::PxDeletionEventFlag::Enum a, physx::PxDeletionEventFlag::Enum b){
     auto nat_in_a = (a);
@@ -71,7 +69,6 @@ public static UNPARSED_TYPE operator&(PxDeletionEventFlag a, PxDeletionEventFlag
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxDeletionEventFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxDeletionListener.h L66~66
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Tilde(physx::PxDeletionEventFlag::Enum a){
     auto nat_in_a = (a);

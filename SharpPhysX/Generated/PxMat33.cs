@@ -14,7 +14,6 @@ public partial struct PxMat33 {
 /* ERRORS OCCURED: Invalid parameter name (empty)
 Invalid parameter name (empty)
 // NATIVE SIG: PxMat33 operator*(float, const PxMat33&)
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L259~259
 #if NATIVE
 ES physx::PxMat33 W_OP_Star(float , physx::PxMat33 ){
     auto nat_in_ = ();
@@ -58,7 +57,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L99~103
     #if NATIVE
     ES physx::PxMat33 W_PxMat33_ctor(physx::PxIDENTITY r){
         auto nat_in_r = (r);
@@ -80,7 +78,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L106~109
     #if NATIVE
     ES physx::PxMat33 W_PxMat33_ctor(physx::PxZERO r){
         auto nat_in_r = (r);
@@ -102,7 +99,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L112~115
     #if NATIVE
     ES physx::PxMat33 W_PxMat33_ctor(physx::PxVec3 col0, physx::PxVec3 col1, physx::PxVec3 col2){
         auto nat_in_col0 = (col0);
@@ -128,7 +124,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L118~121
     #if NATIVE
     ES physx::PxMat33 W_PxMat33_ctor(float r){
         auto nat_in_r = (r);
@@ -157,7 +152,6 @@ public unsafe partial struct PxMat33 { // blittable
     	, column2(values[6], values[7], values[8])
     	{
     	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L124~129
     #if NATIVE
     ES physx::PxMat33 W_PxMat33_ctor( values){
         auto nat_in_values = (values);
@@ -179,7 +173,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L132~158
     #if NATIVE
     ES physx::PxMat33 W_PxMat33_ctor(physx::PxQuat q){
         auto nat_in_q = (q);
@@ -201,7 +194,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L161~164
     #if NATIVE
     ES physx::PxMat33 W_PxMat33_ctor(physx::PxMat33 other){
         auto nat_in_other = (other);
@@ -230,7 +222,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       createDiagonal                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L176~179
     #if NATIVE
     ES physx::PxMat33 W_createDiagonal(physx::PxMat33 self, physx::PxVec3 d){
         auto nat_in_d = (d);
@@ -252,7 +243,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L184~187
     #if NATIVE
     ES bool W_OP_EqualEqual(physx::PxMat33 self, physx::PxMat33 m){
         auto nat_in_m = (m);
@@ -274,7 +264,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       getTranspose                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L190~197
     #if NATIVE
     ES physx::PxMat33 W_getTranspose(physx::PxMat33 self){
         auto retVal = self.getTranspose();
@@ -294,7 +283,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       getInverse                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L200~227
     #if NATIVE
     ES physx::PxMat33 W_getInverse(physx::PxMat33 self){
         auto retVal = self.getInverse();
@@ -314,7 +302,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       getDeterminant                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L230~233
     #if NATIVE
     ES float W_getDeterminant(physx::PxMat33 self){
         auto retVal = self.getDeterminant();
@@ -334,7 +321,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L236~239
     #if NATIVE
     ES physx::PxMat33 W_OP_Minus(physx::PxMat33 self){
         auto retVal = self.operator-();
@@ -354,7 +340,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       operator+                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L242~245
     #if NATIVE
     ES physx::PxMat33 W_OP_Plus(physx::PxMat33 self, physx::PxMat33 other){
         auto nat_in_other = (other);
@@ -376,7 +361,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L248~251
     #if NATIVE
     ES physx::PxMat33 W_OP_Minus(physx::PxMat33 self, physx::PxMat33 other){
         auto nat_in_other = (other);
@@ -398,7 +382,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L254~257
     #if NATIVE
     ES physx::PxMat33 W_OP_Star(physx::PxMat33 self, float scalar){
         auto nat_in_scalar = (scalar);
@@ -420,7 +403,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L262~265
     #if NATIVE
     ES physx::PxVec3 W_OP_Star(physx::PxMat33 self, physx::PxVec3 vec){
         auto nat_in_vec = (vec);
@@ -442,7 +424,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L270~275
     #if NATIVE
     ES physx::PxMat33 W_OP_Star(physx::PxMat33 self, physx::PxMat33 other){
         auto nat_in_other = (other);
@@ -506,7 +487,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       transform                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L326~329
     #if NATIVE
     ES physx::PxVec3 W_transform(physx::PxMat33 self, physx::PxVec3 other){
         auto nat_in_other = (other);
@@ -528,7 +508,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       transformTranspose                                                     #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L332~335
     #if NATIVE
     ES physx::PxVec3 W_transformTranspose(physx::PxMat33 self, physx::PxVec3 other){
         auto nat_in_other = (other);
@@ -550,7 +529,6 @@ public unsafe partial struct PxMat33 { // blittable
     //================================================================================
     //#       front                                                                  #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxMat33.h L337~340
     #if NATIVE
     ES float* W_front(physx::PxMat33 self){
         auto retVal = self.front();

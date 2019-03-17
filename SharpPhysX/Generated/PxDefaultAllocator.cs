@@ -11,7 +11,6 @@ public partial struct PxDefaultAllocator {
 //================================================================================
 //#       platformAlignedAlloc                                                   #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\physx\include\extensions\PxDefaultAllocator.h L54~57
 #if NATIVE
 ES void* W_platformAlignedAlloc(::size_t size){
     auto nat_in_size = (size);
@@ -33,7 +32,6 @@ public static IntPtr platformAlignedAlloc(ulong size){
 //================================================================================
 //#       platformAlignedFree                                                    #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\physx\include\extensions\PxDefaultAllocator.h L59~62
 #if NATIVE
 ES void W_platformAlignedFree(void* ptr){
     auto nat_in_ptr = (ptr);
@@ -55,7 +53,7 @@ public static void platformAlignedFree(global::System.IntPtr ptr){
 
 
 #if !NATIVE
-public unsafe partial struct PxDefaultAllocator { // pointer
+public unsafe partial struct PxDefaultAllocatorPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -71,7 +69,6 @@ public unsafe partial struct PxDefaultAllocator { // pointer
     		PX_ASSERT((reinterpret_cast<size_t>(ptr) & 15)==0);
     		return ptr;
     	}
-    // SOURCE: C:\Projects\PhysX\physx\include\extensions\PxDefaultAllocator.h L92~97
     #if NATIVE
     ES void* W_allocate(physx::PxDefaultAllocator* self, ::size_t size, const char* , const char* , int ){
         auto nat_in_size = (size);
@@ -83,7 +80,7 @@ public unsafe partial struct PxDefaultAllocator { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_allocate(PxDefaultAllocator selfPtr, ulong size, string , string , int );
+    static extern IntPtr W_allocate(PxDefaultAllocatorPtr selfPtr, ulong size, string , string , int );
     
     public IntPtr allocate(ulong size, string , string , int ){
         ulong pvk_in_size = (size);
@@ -99,7 +96,6 @@ public unsafe partial struct PxDefaultAllocator { // pointer
     //================================================================================
     //#       deallocate                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\extensions\PxDefaultAllocator.h L99~102
     #if NATIVE
     ES void W_deallocate(physx::PxDefaultAllocator* self, void* ptr){
         auto nat_in_ptr = (ptr);
@@ -107,7 +103,7 @@ public unsafe partial struct PxDefaultAllocator { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_deallocate(PxDefaultAllocator selfPtr, global::System.IntPtr ptr);
+    static extern void W_deallocate(PxDefaultAllocatorPtr selfPtr, global::System.IntPtr ptr);
     
     public void deallocate(global::System.IntPtr ptr){
         global::System.IntPtr pvk_in_ptr = (ptr);

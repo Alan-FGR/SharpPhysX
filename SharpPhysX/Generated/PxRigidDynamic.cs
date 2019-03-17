@@ -23,7 +23,6 @@ public partial struct PxRigidDynamic {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L64~64
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Pipe(physx::PxRigidDynamicLockFlag::Enum a, physx::PxRigidDynamicLockFlag::Enum b){
     auto nat_in_a = (a);
@@ -49,7 +48,6 @@ public static UNPARSED_TYPE operator|(PxRigidDynamicLockFlag a, PxRigidDynamicLo
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L64~64
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Amp(physx::PxRigidDynamicLockFlag::Enum a, physx::PxRigidDynamicLockFlag::Enum b){
     auto nat_in_a = (a);
@@ -75,7 +73,6 @@ public static UNPARSED_TYPE operator&(PxRigidDynamicLockFlag a, PxRigidDynamicLo
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L64~64
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Tilde(physx::PxRigidDynamicLockFlag::Enum a){
     auto nat_in_a = (a);
@@ -99,14 +96,13 @@ public static UNPARSED_TYPE operator~(PxRigidDynamicLockFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxRigidDynamic { // pointer
+public unsafe partial struct PxRigidDynamicPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
     //================================================================================
     //#       setKinematicTarget                                                     #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L117~117
     #if NATIVE
     ES void W_setKinematicTarget(physx::PxRigidDynamic* self, physx::PxTransform destination){
         auto nat_in_destination = (destination);
@@ -114,7 +110,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setKinematicTarget(PxRigidDynamic selfPtr, PxTransform destination);
+    static extern void W_setKinematicTarget(PxRigidDynamicPtr selfPtr, PxTransform destination);
     
     public void setKinematicTarget(PxTransform destination){
         PxTransform pvk_in_destination = (destination);
@@ -128,7 +124,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxTransform
     // NATIVE SIG: bool				getKinematicTarget(PxTransform& target)	const	= 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L127~127
     #if NATIVE
     ES bool W_getKinematicTarget(physx::PxRigidDynamic* self,  target){
         auto nat_in_target = (target);
@@ -137,7 +132,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_getKinematicTarget(PxRigidDynamic selfPtr,  target);
+    static extern bool W_getKinematicTarget(PxRigidDynamicPtr selfPtr,  target);
     
     public bool getKinematicTarget( target){
          pvk_in_target = (target);
@@ -150,7 +145,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       isSleeping                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L168~168
     #if NATIVE
     ES bool W_isSleeping(physx::PxRigidDynamic* self){
         auto retVal = self->isSleeping();
@@ -158,7 +152,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isSleeping(PxRigidDynamic selfPtr);
+    static extern bool W_isSleeping(PxRigidDynamicPtr selfPtr);
     
     public bool isSleeping(){
         bool retVal = W_isSleeping(this);
@@ -170,7 +164,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       setSleepThreshold                                                      #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L182~182
     #if NATIVE
     ES void W_setSleepThreshold(physx::PxRigidDynamic* self, physx::PxReal threshold){
         auto nat_in_threshold = (threshold);
@@ -178,7 +171,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setSleepThreshold(PxRigidDynamic selfPtr, float threshold);
+    static extern void W_setSleepThreshold(PxRigidDynamicPtr selfPtr, float threshold);
     
     public void setSleepThreshold(float threshold){
         float pvk_in_threshold = (threshold);
@@ -190,7 +183,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       getSleepThreshold                                                      #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L191~191
     #if NATIVE
     ES physx::PxReal W_getSleepThreshold(physx::PxRigidDynamic* self){
         auto retVal = self->getSleepThreshold();
@@ -198,7 +190,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getSleepThreshold(PxRigidDynamic selfPtr);
+    static extern float W_getSleepThreshold(PxRigidDynamicPtr selfPtr);
     
     public float getSleepThreshold(){
         float retVal = W_getSleepThreshold(this);
@@ -210,7 +202,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       setStabilizationThreshold                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L206~206
     #if NATIVE
     ES void W_setStabilizationThreshold(physx::PxRigidDynamic* self, physx::PxReal threshold){
         auto nat_in_threshold = (threshold);
@@ -218,7 +209,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setStabilizationThreshold(PxRigidDynamic selfPtr, float threshold);
+    static extern void W_setStabilizationThreshold(PxRigidDynamicPtr selfPtr, float threshold);
     
     public void setStabilizationThreshold(float threshold){
         float pvk_in_threshold = (threshold);
@@ -230,7 +221,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       getStabilizationThreshold                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L217~217
     #if NATIVE
     ES physx::PxReal W_getStabilizationThreshold(physx::PxRigidDynamic* self){
         auto retVal = self->getStabilizationThreshold();
@@ -238,7 +228,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getStabilizationThreshold(PxRigidDynamic selfPtr);
+    static extern float W_getStabilizationThreshold(PxRigidDynamicPtr selfPtr);
     
     public float getStabilizationThreshold(){
         float retVal = W_getStabilizationThreshold(this);
@@ -252,7 +242,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxRigidDynamicLockFlags
     // NATIVE SIG: PxRigidDynamicLockFlags getRigidDynamicLockFlags() const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L229~229
     #if NATIVE
     ES UNPARSED_TYPE W_getRigidDynamicLockFlags(physx::PxRigidDynamic* self){
         auto retVal = self->getRigidDynamicLockFlags();
@@ -260,7 +249,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getRigidDynamicLockFlags(PxRigidDynamic selfPtr);
+    static extern UNPARSED_TYPE W_getRigidDynamicLockFlags(PxRigidDynamicPtr selfPtr);
     
     public UNPARSED_TYPE getRigidDynamicLockFlags(){
         UNPARSED_TYPE retVal = W_getRigidDynamicLockFlags(this);
@@ -272,7 +261,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       setRigidDynamicLockFlag                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L244~244
     #if NATIVE
     ES void W_setRigidDynamicLockFlag(physx::PxRigidDynamic* self, physx::PxRigidDynamicLockFlag::Enum flag, bool value){
         auto nat_in_flag = (flag);
@@ -281,7 +269,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setRigidDynamicLockFlag(PxRigidDynamic selfPtr, PxRigidDynamicLockFlag flag, bool value);
+    static extern void W_setRigidDynamicLockFlag(PxRigidDynamicPtr selfPtr, PxRigidDynamicLockFlag flag, bool value);
     
     public void setRigidDynamicLockFlag(PxRigidDynamicLockFlag flag, bool value){
         PxRigidDynamicLockFlag pvk_in_flag = (flag);
@@ -296,7 +284,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxRigidDynamicLockFlags
     // NATIVE SIG: void				setRigidDynamicLockFlags(PxRigidDynamicLockFlags flags) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L245~245
     #if NATIVE
     ES void W_setRigidDynamicLockFlags(physx::PxRigidDynamic* self,  flags){
         auto nat_in_flags = (flags);
@@ -304,7 +291,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setRigidDynamicLockFlags(PxRigidDynamic selfPtr,  flags);
+    static extern void W_setRigidDynamicLockFlags(PxRigidDynamicPtr selfPtr,  flags);
     
     public void setRigidDynamicLockFlags( flags){
          pvk_in_flags = (flags);
@@ -316,7 +303,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       setWakeCounter                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L269~269
     #if NATIVE
     ES void W_setWakeCounter(physx::PxRigidDynamic* self, physx::PxReal wakeCounterValue){
         auto nat_in_wakeCounterValue = (wakeCounterValue);
@@ -324,7 +310,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setWakeCounter(PxRigidDynamic selfPtr, float wakeCounterValue);
+    static extern void W_setWakeCounter(PxRigidDynamicPtr selfPtr, float wakeCounterValue);
     
     public void setWakeCounter(float wakeCounterValue){
         float pvk_in_wakeCounterValue = (wakeCounterValue);
@@ -336,7 +322,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       getWakeCounter                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L278~278
     #if NATIVE
     ES physx::PxReal W_getWakeCounter(physx::PxRigidDynamic* self){
         auto retVal = self->getWakeCounter();
@@ -344,7 +329,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getWakeCounter(PxRigidDynamic selfPtr);
+    static extern float W_getWakeCounter(PxRigidDynamicPtr selfPtr);
     
     public float getWakeCounter(){
         float retVal = W_getWakeCounter(this);
@@ -356,14 +341,13 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       wakeUp                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L294~294
     #if NATIVE
     ES void W_wakeUp(physx::PxRigidDynamic* self){
         self->wakeUp();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_wakeUp(PxRigidDynamic selfPtr);
+    static extern void W_wakeUp(PxRigidDynamicPtr selfPtr);
     
     public void wakeUp(){
         W_wakeUp(this);
@@ -374,14 +358,13 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       putToSleep                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L310~310
     #if NATIVE
     ES void W_putToSleep(physx::PxRigidDynamic* self){
         self->putToSleep();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_putToSleep(PxRigidDynamic selfPtr);
+    static extern void W_putToSleep(PxRigidDynamicPtr selfPtr);
     
     public void putToSleep(){
         W_putToSleep(this);
@@ -392,7 +375,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       setSolverIterationCounts                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L332~332
     #if NATIVE
     ES void W_setSolverIterationCounts(physx::PxRigidDynamic* self, physx::PxU32 minPositionIters, physx::PxU32 minVelocityIters){
         auto nat_in_minPositionIters = (minPositionIters);
@@ -401,7 +383,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setSolverIterationCounts(PxRigidDynamic selfPtr, uint minPositionIters, uint minVelocityIters);
+    static extern void W_setSolverIterationCounts(PxRigidDynamicPtr selfPtr, uint minPositionIters, uint minVelocityIters);
     
     public void setSolverIterationCounts(uint minPositionIters, uint minVelocityIters){
         uint pvk_in_minPositionIters = (minPositionIters);
@@ -411,10 +393,27 @@ public unsafe partial struct PxRigidDynamic { // pointer
     #endif
     
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_setSolverIterationCounts_OL1(physx::PxRigidDynamic* self, physx::PxU32 minPositionIters){
+        auto nat_in_minPositionIters = (minPositionIters);
+        self->setSolverIterationCounts(nat_in_minPositionIters);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_setSolverIterationCounts_OL1(PxRigidDynamicPtr selfPtr, uint minPositionIters);
+    
+    public void setSolverIterationCounts(uint minPositionIters){
+        uint pvk_in_minPositionIters = (minPositionIters);
+        W_setSolverIterationCounts_OL1(this, pvk_in_minPositionIters);
+    }
+    #endif
+    
+    
+    
     //================================================================================
     //#       getSolverIterationCounts                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L339~339
     #if NATIVE
     ES void W_getSolverIterationCounts(physx::PxRigidDynamic* self, physx::PxU32& minPositionIters, physx::PxU32& minVelocityIters){
         auto nat_in_minPositionIters = (minPositionIters);
@@ -423,7 +422,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_getSolverIterationCounts(PxRigidDynamic selfPtr, uint* minPositionIters, uint* minVelocityIters);
+    static extern void W_getSolverIterationCounts(PxRigidDynamicPtr selfPtr, uint* minPositionIters, uint* minVelocityIters);
     
     public void getSolverIterationCounts(uint* minPositionIters, uint* minVelocityIters){
         uint* pvk_in_minPositionIters = (minPositionIters);
@@ -436,7 +435,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       getContactReportThreshold                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L360~360
     #if NATIVE
     ES physx::PxReal W_getContactReportThreshold(physx::PxRigidDynamic* self){
         auto retVal = self->getContactReportThreshold();
@@ -444,7 +442,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getContactReportThreshold(PxRigidDynamic selfPtr);
+    static extern float W_getContactReportThreshold(PxRigidDynamicPtr selfPtr);
     
     public float getContactReportThreshold(){
         float retVal = W_getContactReportThreshold(this);
@@ -456,7 +454,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       setContactReportThreshold                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L371~371
     #if NATIVE
     ES void W_setContactReportThreshold(physx::PxRigidDynamic* self, physx::PxReal threshold){
         auto nat_in_threshold = (threshold);
@@ -464,7 +461,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setContactReportThreshold(PxRigidDynamic selfPtr, float threshold);
+    static extern void W_setContactReportThreshold(PxRigidDynamicPtr selfPtr, float threshold);
     
     public void setContactReportThreshold(float threshold){
         float pvk_in_threshold = (threshold);
@@ -476,7 +473,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       getConcreteTypeName                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L373~373
     #if NATIVE
     ES sbyte* W_getConcreteTypeName(physx::PxRigidDynamic* self){
         auto retVal = self->getConcreteTypeName();
@@ -484,7 +480,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_getConcreteTypeName(PxRigidDynamic selfPtr);
+    static extern IntPtr W_getConcreteTypeName(PxRigidDynamicPtr selfPtr);
     
     public IntPtr getConcreteTypeName(){
         IntPtr retVal = W_getConcreteTypeName(this);
@@ -499,7 +495,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxRigidDynamic
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE						PxRigidDynamic(PxType concreteType, PxBaseFlags baseFlags) : PxRigidBody(concreteType, baseFlags) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L376~376
     #if NATIVE
     ES UNPARSED_TYPE W_PxRigidDynamic_ctor(physx::PxType concreteType,  baseFlags){
         auto nat_in_concreteType = (concreteType);
@@ -526,7 +521,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxRigidDynamic
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE						PxRigidDynamic(PxBaseFlags baseFlags) : PxRigidBody(baseFlags) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L377~377
     #if NATIVE
     ES UNPARSED_TYPE W_PxRigidDynamic_ctor( baseFlags){
         auto nat_in_baseFlags = (baseFlags);
@@ -550,14 +544,13 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual							~PxRigidDynamic() {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L378~378
     #if NATIVE
     ES void W_~PxRigidDynamic(physx::PxRigidDynamic* self){
         self->~PxRigidDynamic();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxRigidDynamic(PxRigidDynamic selfPtr);
+    static extern void W_~PxRigidDynamic(PxRigidDynamicPtr selfPtr);
     
     public void ~PxRigidDynamic(){
         W_~PxRigidDynamic(this);
@@ -568,7 +561,6 @@ public unsafe partial struct PxRigidDynamic { // pointer
     //================================================================================
     //#       isKindOf                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxRigidDynamic.h L379~379
     #if NATIVE
     ES bool W_isKindOf(physx::PxRigidDynamic* self, const char* name){
         auto nat_in_name = (name);
@@ -577,7 +569,7 @@ public unsafe partial struct PxRigidDynamic { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isKindOf(PxRigidDynamic selfPtr, string name);
+    static extern bool W_isKindOf(PxRigidDynamicPtr selfPtr, string name);
     
     public bool isKindOf(string name){
         string pvk_in_name = (name);

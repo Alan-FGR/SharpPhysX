@@ -19,7 +19,6 @@ public partial struct PxScene {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorTypeFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L123~123
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Pipe(physx::PxActorTypeFlag::Enum a, physx::PxActorTypeFlag::Enum b){
     auto nat_in_a = (a);
@@ -45,7 +44,6 @@ public static UNPARSED_TYPE operator|(PxActorTypeFlag a, PxActorTypeFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorTypeFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L123~123
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Amp(physx::PxActorTypeFlag::Enum a, physx::PxActorTypeFlag::Enum b){
     auto nat_in_a = (a);
@@ -71,7 +69,6 @@ public static UNPARSED_TYPE operator&(PxActorTypeFlag a, PxActorTypeFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorTypeFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L123~123
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Tilde(physx::PxActorTypeFlag::Enum a){
     auto nat_in_a = (a);
@@ -97,7 +94,7 @@ public static UNPARSED_TYPE operator~(PxActorTypeFlag a){
 // Class physx::PxAggregate Manually Ignored
 // Class physx::PxBVHStructure Manually Ignored
 #if !NATIVE
-public unsafe partial struct PxScene { // pointer
+public unsafe partial struct PxScenePtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -115,14 +112,13 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual						~PxScene()	{}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L180~180
     #if NATIVE
     ES void W_~PxScene(physx::PxScene* self){
         self->~PxScene();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxScene(PxScene selfPtr);
+    static extern void W_~PxScene(PxScenePtr selfPtr);
     
     public void ~PxScene(){
         W_~PxScene(this);
@@ -133,14 +129,13 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       release                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L195~195
     #if NATIVE
     ES void W_release(physx::PxScene* self){
         self->release();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_release(PxScene selfPtr);
+    static extern void W_release(PxScenePtr selfPtr);
     
     public void release(){
         W_release(this);
@@ -151,7 +146,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setFlag                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L204~204
     #if NATIVE
     ES void W_setFlag(physx::PxScene* self, physx::PxSceneFlag::Enum flag, bool value){
         auto nat_in_flag = (flag);
@@ -160,7 +154,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setFlag(PxScene selfPtr, PxSceneFlag flag, bool value);
+    static extern void W_setFlag(PxScenePtr selfPtr, PxSceneFlag flag, bool value);
     
     public void setFlag(PxSceneFlag flag, bool value){
         PxSceneFlag pvk_in_flag = (flag);
@@ -175,7 +169,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxSceneFlags
     // NATIVE SIG: PxSceneFlags	getFlags() const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L213~213
     #if NATIVE
     ES UNPARSED_TYPE W_getFlags(physx::PxScene* self){
         auto retVal = self->getFlags();
@@ -183,7 +176,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getFlags(PxScene selfPtr);
+    static extern UNPARSED_TYPE W_getFlags(PxScenePtr selfPtr);
     
     public UNPARSED_TYPE getFlags(){
         UNPARSED_TYPE retVal = W_getFlags(this);
@@ -195,7 +188,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setLimits                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L226~226
     #if NATIVE
     ES void W_setLimits(physx::PxScene* self, physx::PxSceneLimits* limits){
         auto nat_in_limits = (limits);
@@ -203,10 +195,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setLimits(PxScene selfPtr, PxSceneLimits limits);
+    static extern void W_setLimits(PxScenePtr selfPtr, PxSceneLimitsPtr limits);
     
-    public void setLimits(PxSceneLimits limits){
-        PxSceneLimits pvk_in_limits = (limits);
+    public void setLimits(PxSceneLimitsPtr limits){
+        PxSceneLimitsPtr pvk_in_limits = (limits);
         W_setLimits(this, pvk_in_limits);
     }
     #endif
@@ -217,7 +209,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxSceneLimits
     // NATIVE SIG: PxSceneLimits		getLimits() const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L233~233
     #if NATIVE
     ES UNPARSED_TYPE W_getLimits(physx::PxScene* self){
         auto retVal = self->getLimits();
@@ -225,7 +216,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getLimits(PxScene selfPtr);
+    static extern UNPARSED_TYPE W_getLimits(PxScenePtr selfPtr);
     
     public UNPARSED_TYPE getLimits(){
         UNPARSED_TYPE retVal = W_getLimits(this);
@@ -237,7 +228,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getPhysics                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L243~243
     #if NATIVE
     ES physx::PxPhysics* W_getPhysics(physx::PxScene* self){
         auto retVal = &self->getPhysics();
@@ -245,10 +235,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPhysics W_getPhysics(PxScene selfPtr);
+    static extern PxPhysicsPtr W_getPhysics(PxScenePtr selfPtr);
     
-    public PxPhysics getPhysics(){
-        PxPhysics retVal = W_getPhysics(this);
+    public PxPhysicsPtr getPhysics(){
+        PxPhysicsPtr retVal = W_getPhysics(this);
         return retVal;
     }
     #endif
@@ -257,7 +247,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getTimestamp                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L250~250
     #if NATIVE
     ES physx::PxU32 W_getTimestamp(physx::PxScene* self){
         auto retVal = self->getTimestamp();
@@ -265,7 +254,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getTimestamp(PxScene selfPtr);
+    static extern uint W_getTimestamp(PxScenePtr selfPtr);
     
     public uint getTimestamp(){
         uint retVal = W_getTimestamp(this);
@@ -277,9 +266,8 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       addArticulation                                                        #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxArticulationBase
+    /* ERRORS OCCURED: Forbidden parameter type: PxArticulationBasePtr
     // NATIVE SIG: void				addArticulation(PxArticulationBase& articulation) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L268~268
     #if NATIVE
     ES void W_addArticulation(physx::PxScene* self, physx::PxArticulationBase* articulation){
         auto nat_in_articulation = (articulation);
@@ -287,10 +275,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addArticulation(PxScene selfPtr, PxArticulationBase articulation);
+    static extern void W_addArticulation(PxScenePtr selfPtr, PxArticulationBasePtr articulation);
     
-    public void addArticulation(PxArticulationBase articulation){
-        PxArticulationBase pvk_in_articulation = (articulation);
+    public void addArticulation(PxArticulationBasePtr articulation){
+        PxArticulationBasePtr pvk_in_articulation = (articulation);
         W_addArticulation(this, pvk_in_articulation);
     }
     #endif*/
@@ -299,9 +287,8 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       removeArticulation                                                     #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxArticulationBase
+    /* ERRORS OCCURED: Forbidden parameter type: PxArticulationBasePtr
     // NATIVE SIG: void				removeArticulation(PxArticulationBase& articulation, bool wakeOnLostTouch = true) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L282~282
     #if NATIVE
     ES void W_removeArticulation(physx::PxScene* self, physx::PxArticulationBase* articulation, bool wakeOnLostTouch){
         auto nat_in_articulation = (articulation);
@@ -310,22 +297,41 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_removeArticulation(PxScene selfPtr, PxArticulationBase articulation, bool wakeOnLostTouch);
+    static extern void W_removeArticulation(PxScenePtr selfPtr, PxArticulationBasePtr articulation, bool wakeOnLostTouch);
     
-    public void removeArticulation(PxArticulationBase articulation, bool wakeOnLostTouch){
-        PxArticulationBase pvk_in_articulation = (articulation);
+    public void removeArticulation(PxArticulationBasePtr articulation, bool wakeOnLostTouch){
+        PxArticulationBasePtr pvk_in_articulation = (articulation);
         bool pvk_in_wakeOnLostTouch = (wakeOnLostTouch);
         W_removeArticulation(this, pvk_in_articulation, pvk_in_wakeOnLostTouch);
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Forbidden parameter type: PxArticulationBasePtr
+    // NATIVE SIG: void				removeArticulation(PxArticulationBase& articulation, bool wakeOnLostTouch = true) = 0
+    #if NATIVE
+    ES void W_removeArticulation_OL1(physx::PxScene* self, physx::PxArticulationBase* articulation){
+        auto nat_in_articulation = (articulation);
+        self->removeArticulation(*nat_in_articulation);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_removeArticulation_OL1(PxScenePtr selfPtr, PxArticulationBasePtr articulation);
+    
+    public void removeArticulation(PxArticulationBasePtr articulation){
+        PxArticulationBasePtr pvk_in_articulation = (articulation);
+        W_removeArticulation_OL1(this, pvk_in_articulation);
+    }
+    #endif*/
+    
+    
+    
     
     //================================================================================
     //#       addActor                                                               #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxBVHStructure
+    /* ERRORS OCCURED: Forbidden parameter type: PxBVHStructurePtr
     // NATIVE SIG: void				addActor(PxActor& actor, const PxBVHStructure* bvhStructure = NULL) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L311~311
     #if NATIVE
     ES void W_addActor(physx::PxScene* self, physx::PxActor* actor, physx::PxBVHStructure* bvhStructure){
         auto nat_in_actor = (actor);
@@ -334,14 +340,32 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addActor(PxScene selfPtr, PxActor actor, PxBVHStructure bvhStructure);
+    static extern void W_addActor(PxScenePtr selfPtr, PxActorPtr actor, PxBVHStructurePtr bvhStructure);
     
-    public void addActor(PxActor actor, PxBVHStructure bvhStructure){
-        PxActor pvk_in_actor = (actor);
-        PxBVHStructure pvk_in_bvhStructure = (bvhStructure);
+    public void addActor(PxActorPtr actor, PxBVHStructurePtr bvhStructure){
+        PxActorPtr pvk_in_actor = (actor);
+        PxBVHStructurePtr pvk_in_bvhStructure = (bvhStructure);
         W_addActor(this, pvk_in_actor, pvk_in_bvhStructure);
     }
     #endif*/
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_addActor_OL1(physx::PxScene* self, physx::PxActor* actor){
+        auto nat_in_actor = (actor);
+        self->addActor(*nat_in_actor);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_addActor_OL1(PxScenePtr selfPtr, PxActorPtr actor);
+    
+    public void addActor(PxActorPtr actor){
+        PxActorPtr pvk_in_actor = (actor);
+        W_addActor_OL1(this, pvk_in_actor);
+    }
+    #endif
+    
+    
     
     
     //================================================================================
@@ -349,7 +373,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxActor*
     // NATIVE SIG: void				addActors(PxActor*const* actors, PxU32 nbActors) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L331~331
     #if NATIVE
     ES void W_addActors(physx::PxScene* self,  actors, physx::PxU32 nbActors){
         auto nat_in_actors = (actors);
@@ -358,7 +381,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addActors(PxScene selfPtr,  actors, uint nbActors);
+    static extern void W_addActors(PxScenePtr selfPtr,  actors, uint nbActors);
     
     public void addActors( actors, uint nbActors){
          pvk_in_actors = (actors);
@@ -371,9 +394,8 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       addActors                                                              #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxPruningStructure
+    /* ERRORS OCCURED: Forbidden parameter type: PxPruningStructurePtr
     // NATIVE SIG: void				addActors(const PxPruningStructure& pruningStructure) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L351~351
     #if NATIVE
     ES void W_addActors(physx::PxScene* self, physx::PxPruningStructure* pruningStructure){
         auto nat_in_pruningStructure = (pruningStructure);
@@ -381,10 +403,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addActors(PxScene selfPtr, PxPruningStructure pruningStructure);
+    static extern void W_addActors(PxScenePtr selfPtr, PxPruningStructurePtr pruningStructure);
     
-    public void addActors(PxPruningStructure pruningStructure){
-        PxPruningStructure pvk_in_pruningStructure = (pruningStructure);
+    public void addActors(PxPruningStructurePtr pruningStructure){
+        PxPruningStructurePtr pvk_in_pruningStructure = (pruningStructure);
         W_addActors(this, pvk_in_pruningStructure);
     }
     #endif*/
@@ -393,7 +415,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       removeActor                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L369~369
     #if NATIVE
     ES void W_removeActor(physx::PxScene* self, physx::PxActor* actor, bool wakeOnLostTouch){
         auto nat_in_actor = (actor);
@@ -402,14 +423,32 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_removeActor(PxScene selfPtr, PxActor actor, bool wakeOnLostTouch);
+    static extern void W_removeActor(PxScenePtr selfPtr, PxActorPtr actor, bool wakeOnLostTouch);
     
-    public void removeActor(PxActor actor, bool wakeOnLostTouch){
-        PxActor pvk_in_actor = (actor);
+    public void removeActor(PxActorPtr actor, bool wakeOnLostTouch){
+        PxActorPtr pvk_in_actor = (actor);
         bool pvk_in_wakeOnLostTouch = (wakeOnLostTouch);
         W_removeActor(this, pvk_in_actor, pvk_in_wakeOnLostTouch);
     }
     #endif
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_removeActor_OL1(physx::PxScene* self, physx::PxActor* actor){
+        auto nat_in_actor = (actor);
+        self->removeActor(*nat_in_actor);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_removeActor_OL1(PxScenePtr selfPtr, PxActorPtr actor);
+    
+    public void removeActor(PxActorPtr actor){
+        PxActorPtr pvk_in_actor = (actor);
+        W_removeActor_OL1(this, pvk_in_actor);
+    }
+    #endif
+    
     
     
     //================================================================================
@@ -417,7 +456,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxActor*
     // NATIVE SIG: void				removeActors(PxActor*const* actors, PxU32 nbActors, bool wakeOnLostTouch = true) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L386~386
     #if NATIVE
     ES void W_removeActors(physx::PxScene* self,  actors, physx::PxU32 nbActors, bool wakeOnLostTouch){
         auto nat_in_actors = (actors);
@@ -427,7 +465,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_removeActors(PxScene selfPtr,  actors, uint nbActors, bool wakeOnLostTouch);
+    static extern void W_removeActors(PxScenePtr selfPtr,  actors, uint nbActors, bool wakeOnLostTouch);
     
     public void removeActors( actors, uint nbActors, bool wakeOnLostTouch){
          pvk_in_actors = (actors);
@@ -437,13 +475,34 @@ public unsafe partial struct PxScene { // pointer
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Unresolved parameter pointee physx::PxActor*
+    // NATIVE SIG: void				removeActors(PxActor*const* actors, PxU32 nbActors, bool wakeOnLostTouch = true) = 0
+    #if NATIVE
+    ES void W_removeActors_OL1(physx::PxScene* self,  actors, physx::PxU32 nbActors){
+        auto nat_in_actors = (actors);
+        auto nat_in_nbActors = (nbActors);
+        self->removeActors(nat_in_actors, nat_in_nbActors);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_removeActors_OL1(PxScenePtr selfPtr,  actors, uint nbActors);
+    
+    public void removeActors( actors, uint nbActors){
+         pvk_in_actors = (actors);
+        uint pvk_in_nbActors = (nbActors);
+        W_removeActors_OL1(this, pvk_in_actors, pvk_in_nbActors);
+    }
+    #endif*/
+    
+    
+    
     
     //================================================================================
     //#       addAggregate                                                           #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxAggregate
+    /* ERRORS OCCURED: Forbidden parameter type: PxAggregatePtr
     // NATIVE SIG: void				addAggregate(PxAggregate& aggregate)	= 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L400~400
     #if NATIVE
     ES void W_addAggregate(physx::PxScene* self, physx::PxAggregate* aggregate){
         auto nat_in_aggregate = (aggregate);
@@ -451,10 +510,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addAggregate(PxScene selfPtr, PxAggregate aggregate);
+    static extern void W_addAggregate(PxScenePtr selfPtr, PxAggregatePtr aggregate);
     
-    public void addAggregate(PxAggregate aggregate){
-        PxAggregate pvk_in_aggregate = (aggregate);
+    public void addAggregate(PxAggregatePtr aggregate){
+        PxAggregatePtr pvk_in_aggregate = (aggregate);
         W_addAggregate(this, pvk_in_aggregate);
     }
     #endif*/
@@ -463,9 +522,8 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       removeAggregate                                                        #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxAggregate
+    /* ERRORS OCCURED: Forbidden parameter type: PxAggregatePtr
     // NATIVE SIG: void				removeAggregate(PxAggregate& aggregate, bool wakeOnLostTouch = true)	= 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L414~414
     #if NATIVE
     ES void W_removeAggregate(physx::PxScene* self, physx::PxAggregate* aggregate, bool wakeOnLostTouch){
         auto nat_in_aggregate = (aggregate);
@@ -474,22 +532,41 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_removeAggregate(PxScene selfPtr, PxAggregate aggregate, bool wakeOnLostTouch);
+    static extern void W_removeAggregate(PxScenePtr selfPtr, PxAggregatePtr aggregate, bool wakeOnLostTouch);
     
-    public void removeAggregate(PxAggregate aggregate, bool wakeOnLostTouch){
-        PxAggregate pvk_in_aggregate = (aggregate);
+    public void removeAggregate(PxAggregatePtr aggregate, bool wakeOnLostTouch){
+        PxAggregatePtr pvk_in_aggregate = (aggregate);
         bool pvk_in_wakeOnLostTouch = (wakeOnLostTouch);
         W_removeAggregate(this, pvk_in_aggregate, pvk_in_wakeOnLostTouch);
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Forbidden parameter type: PxAggregatePtr
+    // NATIVE SIG: void				removeAggregate(PxAggregate& aggregate, bool wakeOnLostTouch = true)	= 0
+    #if NATIVE
+    ES void W_removeAggregate_OL1(physx::PxScene* self, physx::PxAggregate* aggregate){
+        auto nat_in_aggregate = (aggregate);
+        self->removeAggregate(*nat_in_aggregate);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_removeAggregate_OL1(PxScenePtr selfPtr, PxAggregatePtr aggregate);
+    
+    public void removeAggregate(PxAggregatePtr aggregate){
+        PxAggregatePtr pvk_in_aggregate = (aggregate);
+        W_removeAggregate_OL1(this, pvk_in_aggregate);
+    }
+    #endif*/
+    
+    
+    
     
     //================================================================================
     //#       addCollection                                                          #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxCollection
+    /* ERRORS OCCURED: Forbidden parameter type: PxCollectionPtr
     // NATIVE SIG: void				addCollection(const PxCollection& collection) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L428~428
     #if NATIVE
     ES void W_addCollection(physx::PxScene* self, physx::PxCollection* collection){
         auto nat_in_collection = (collection);
@@ -497,10 +574,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addCollection(PxScene selfPtr, PxCollection collection);
+    static extern void W_addCollection(PxScenePtr selfPtr, PxCollectionPtr collection);
     
-    public void addCollection(PxCollection collection){
-        PxCollection pvk_in_collection = (collection);
+    public void addCollection(PxCollectionPtr collection){
+        PxCollectionPtr pvk_in_collection = (collection);
         W_addCollection(this, pvk_in_collection);
     }
     #endif*/
@@ -511,7 +588,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxActorTypeFlags
     // NATIVE SIG: PxU32				getNbActors(PxActorTypeFlags types) const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L444~444
     #if NATIVE
     ES physx::PxU32 W_getNbActors(physx::PxScene* self,  types){
         auto nat_in_types = (types);
@@ -520,7 +596,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getNbActors(PxScene selfPtr,  types);
+    static extern uint W_getNbActors(PxScenePtr selfPtr,  types);
     
     public uint getNbActors( types){
          pvk_in_types = (types);
@@ -536,7 +612,6 @@ public unsafe partial struct PxScene { // pointer
     /* ERRORS OCCURED: Unresolved parameter type physx::PxActorTypeFlags
     Unresolved parameter pointee physx::PxActor*
     // NATIVE SIG: PxU32				getActors(PxActorTypeFlags types, PxActor** userBuffer, PxU32 bufferSize, PxU32 startIndex=0) const	= 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L457~457
     #if NATIVE
     ES physx::PxU32 W_getActors(physx::PxScene* self,  types,  userBuffer, physx::PxU32 bufferSize, physx::PxU32 startIndex){
         auto nat_in_types = (types);
@@ -548,7 +623,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getActors(PxScene selfPtr,  types,  userBuffer, uint bufferSize, uint startIndex);
+    static extern uint W_getActors(PxScenePtr selfPtr,  types,  userBuffer, uint bufferSize, uint startIndex);
     
     public uint getActors( types,  userBuffer, uint bufferSize, uint startIndex){
          pvk_in_types = (types);
@@ -560,13 +635,39 @@ public unsafe partial struct PxScene { // pointer
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Unresolved parameter type physx::PxActorTypeFlags
+    Unresolved parameter pointee physx::PxActor*
+    // NATIVE SIG: PxU32				getActors(PxActorTypeFlags types, PxActor** userBuffer, PxU32 bufferSize, PxU32 startIndex=0) const	= 0
+    #if NATIVE
+    ES physx::PxU32 W_getActors_OL1(physx::PxScene* self,  types,  userBuffer, physx::PxU32 bufferSize){
+        auto nat_in_types = (types);
+        auto nat_in_userBuffer = (userBuffer);
+        auto nat_in_bufferSize = (bufferSize);
+        auto retVal = self->getActors(nat_in_types, nat_in_userBuffer, nat_in_bufferSize);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern uint W_getActors_OL1(PxScenePtr selfPtr,  types,  userBuffer, uint bufferSize);
+    
+    public uint getActors( types,  userBuffer, uint bufferSize){
+         pvk_in_types = (types);
+         pvk_in_userBuffer = (userBuffer);
+        uint pvk_in_bufferSize = (bufferSize);
+        uint retVal = W_getActors_OL1(this, pvk_in_types, pvk_in_userBuffer, pvk_in_bufferSize);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
     
     //================================================================================
     //#       getActiveActors                                                        #
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: ERR_PTR_TO_BLITTABLE TAGTYPE
     // NATIVE SIG: PxActor**		getActiveActors(PxU32& nbActorsOut) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L473~473
     #if NATIVE
     ES UNPARSED_TYPE W_getActiveActors(physx::PxScene* self, physx::PxU32& nbActorsOut){
         auto nat_in_nbActorsOut = (nbActorsOut);
@@ -575,7 +676,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getActiveActors(PxScene selfPtr, uint* nbActorsOut);
+    static extern UNPARSED_TYPE W_getActiveActors(PxScenePtr selfPtr, uint* nbActorsOut);
     
     public UNPARSED_TYPE getActiveActors(uint* nbActorsOut){
         uint* pvk_in_nbActorsOut = (nbActorsOut);
@@ -588,7 +689,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getNbArticulations                                                     #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L482~482
     #if NATIVE
     ES physx::PxU32 W_getNbArticulations(physx::PxScene* self){
         auto retVal = self->getNbArticulations();
@@ -596,7 +696,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getNbArticulations(PxScene selfPtr);
+    static extern uint W_getNbArticulations(PxScenePtr selfPtr);
     
     public uint getNbArticulations(){
         uint retVal = W_getNbArticulations(this);
@@ -610,7 +710,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxArticulationBase*
     // NATIVE SIG: PxU32				getArticulations(PxArticulationBase** userBuffer, PxU32 bufferSize, PxU32 startIndex=0) const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L494~494
     #if NATIVE
     ES physx::PxU32 W_getArticulations(physx::PxScene* self,  userBuffer, physx::PxU32 bufferSize, physx::PxU32 startIndex){
         auto nat_in_userBuffer = (userBuffer);
@@ -621,7 +720,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getArticulations(PxScene selfPtr,  userBuffer, uint bufferSize, uint startIndex);
+    static extern uint W_getArticulations(PxScenePtr selfPtr,  userBuffer, uint bufferSize, uint startIndex);
     
     public uint getArticulations( userBuffer, uint bufferSize, uint startIndex){
          pvk_in_userBuffer = (userBuffer);
@@ -632,11 +731,34 @@ public unsafe partial struct PxScene { // pointer
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Unresolved parameter pointee physx::PxArticulationBase*
+    // NATIVE SIG: PxU32				getArticulations(PxArticulationBase** userBuffer, PxU32 bufferSize, PxU32 startIndex=0) const = 0
+    #if NATIVE
+    ES physx::PxU32 W_getArticulations_OL1(physx::PxScene* self,  userBuffer, physx::PxU32 bufferSize){
+        auto nat_in_userBuffer = (userBuffer);
+        auto nat_in_bufferSize = (bufferSize);
+        auto retVal = self->getArticulations(nat_in_userBuffer, nat_in_bufferSize);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern uint W_getArticulations_OL1(PxScenePtr selfPtr,  userBuffer, uint bufferSize);
+    
+    public uint getArticulations( userBuffer, uint bufferSize){
+         pvk_in_userBuffer = (userBuffer);
+        uint pvk_in_bufferSize = (bufferSize);
+        uint retVal = W_getArticulations_OL1(this, pvk_in_userBuffer, pvk_in_bufferSize);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
     
     //================================================================================
     //#       getNbConstraints                                                       #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L503~503
     #if NATIVE
     ES physx::PxU32 W_getNbConstraints(physx::PxScene* self){
         auto retVal = self->getNbConstraints();
@@ -644,7 +766,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getNbConstraints(PxScene selfPtr);
+    static extern uint W_getNbConstraints(PxScenePtr selfPtr);
     
     public uint getNbConstraints(){
         uint retVal = W_getNbConstraints(this);
@@ -658,7 +780,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxConstraint*
     // NATIVE SIG: PxU32				getConstraints(PxConstraint** userBuffer, PxU32 bufferSize, PxU32 startIndex=0) const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L515~515
     #if NATIVE
     ES physx::PxU32 W_getConstraints(physx::PxScene* self,  userBuffer, physx::PxU32 bufferSize, physx::PxU32 startIndex){
         auto nat_in_userBuffer = (userBuffer);
@@ -669,7 +790,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getConstraints(PxScene selfPtr,  userBuffer, uint bufferSize, uint startIndex);
+    static extern uint W_getConstraints(PxScenePtr selfPtr,  userBuffer, uint bufferSize, uint startIndex);
     
     public uint getConstraints( userBuffer, uint bufferSize, uint startIndex){
          pvk_in_userBuffer = (userBuffer);
@@ -680,11 +801,34 @@ public unsafe partial struct PxScene { // pointer
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Unresolved parameter pointee physx::PxConstraint*
+    // NATIVE SIG: PxU32				getConstraints(PxConstraint** userBuffer, PxU32 bufferSize, PxU32 startIndex=0) const = 0
+    #if NATIVE
+    ES physx::PxU32 W_getConstraints_OL1(physx::PxScene* self,  userBuffer, physx::PxU32 bufferSize){
+        auto nat_in_userBuffer = (userBuffer);
+        auto nat_in_bufferSize = (bufferSize);
+        auto retVal = self->getConstraints(nat_in_userBuffer, nat_in_bufferSize);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern uint W_getConstraints_OL1(PxScenePtr selfPtr,  userBuffer, uint bufferSize);
+    
+    public uint getConstraints( userBuffer, uint bufferSize){
+         pvk_in_userBuffer = (userBuffer);
+        uint pvk_in_bufferSize = (bufferSize);
+        uint retVal = W_getConstraints_OL1(this, pvk_in_userBuffer, pvk_in_bufferSize);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
     
     //================================================================================
     //#       getNbAggregates                                                        #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L525~525
     #if NATIVE
     ES physx::PxU32 W_getNbAggregates(physx::PxScene* self){
         auto retVal = self->getNbAggregates();
@@ -692,7 +836,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getNbAggregates(PxScene selfPtr);
+    static extern uint W_getNbAggregates(PxScenePtr selfPtr);
     
     public uint getNbAggregates(){
         uint retVal = W_getNbAggregates(this);
@@ -706,7 +850,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxAggregate*
     // NATIVE SIG: PxU32		getAggregates(PxAggregate** userBuffer, PxU32 bufferSize, PxU32 startIndex=0)	const	= 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L537~537
     #if NATIVE
     ES physx::PxU32 W_getAggregates(physx::PxScene* self,  userBuffer, physx::PxU32 bufferSize, physx::PxU32 startIndex){
         auto nat_in_userBuffer = (userBuffer);
@@ -717,7 +860,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getAggregates(PxScene selfPtr,  userBuffer, uint bufferSize, uint startIndex);
+    static extern uint W_getAggregates(PxScenePtr selfPtr,  userBuffer, uint bufferSize, uint startIndex);
     
     public uint getAggregates( userBuffer, uint bufferSize, uint startIndex){
          pvk_in_userBuffer = (userBuffer);
@@ -728,11 +871,34 @@ public unsafe partial struct PxScene { // pointer
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Unresolved parameter pointee physx::PxAggregate*
+    // NATIVE SIG: PxU32		getAggregates(PxAggregate** userBuffer, PxU32 bufferSize, PxU32 startIndex=0)	const	= 0
+    #if NATIVE
+    ES physx::PxU32 W_getAggregates_OL1(physx::PxScene* self,  userBuffer, physx::PxU32 bufferSize){
+        auto nat_in_userBuffer = (userBuffer);
+        auto nat_in_bufferSize = (bufferSize);
+        auto retVal = self->getAggregates(nat_in_userBuffer, nat_in_bufferSize);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern uint W_getAggregates_OL1(PxScenePtr selfPtr,  userBuffer, uint bufferSize);
+    
+    public uint getAggregates( userBuffer, uint bufferSize){
+         pvk_in_userBuffer = (userBuffer);
+        uint pvk_in_bufferSize = (bufferSize);
+        uint retVal = W_getAggregates_OL1(this, pvk_in_userBuffer, pvk_in_bufferSize);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
     
     //================================================================================
     //#       setDominanceGroupPair                                                  #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L596~597
     #if NATIVE
     ES void W_setDominanceGroupPair(physx::PxScene* self, physx::PxDominanceGroup group1, physx::PxDominanceGroup group2, physx::PxDominanceGroupPair* dominance){
         auto nat_in_group1 = (group1);
@@ -742,12 +908,12 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setDominanceGroupPair(PxScene selfPtr, byte group1, byte group2, PxDominanceGroupPair dominance);
+    static extern void W_setDominanceGroupPair(PxScenePtr selfPtr, byte group1, byte group2, PxDominanceGroupPairPtr dominance);
     
-    public void setDominanceGroupPair(byte group1, byte group2, PxDominanceGroupPair dominance){
+    public void setDominanceGroupPair(byte group1, byte group2, PxDominanceGroupPairPtr dominance){
         byte pvk_in_group1 = (group1);
         byte pvk_in_group2 = (group2);
-        PxDominanceGroupPair pvk_in_dominance = (dominance);
+        PxDominanceGroupPairPtr pvk_in_dominance = (dominance);
         W_setDominanceGroupPair(this, pvk_in_group1, pvk_in_group2, pvk_in_dominance);
     }
     #endif
@@ -758,7 +924,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxDominanceGroupPair
     // NATIVE SIG: PxDominanceGroupPair getDominanceGroupPair(PxDominanceGroup group1, PxDominanceGroup group2) const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L604~604
     #if NATIVE
     ES UNPARSED_TYPE W_getDominanceGroupPair(physx::PxScene* self, physx::PxDominanceGroup group1, physx::PxDominanceGroup group2){
         auto nat_in_group1 = (group1);
@@ -768,7 +933,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getDominanceGroupPair(PxScene selfPtr, byte group1, byte group2);
+    static extern UNPARSED_TYPE W_getDominanceGroupPair(PxScenePtr selfPtr, byte group1, byte group2);
     
     public UNPARSED_TYPE getDominanceGroupPair(byte group1, byte group2){
         byte pvk_in_group1 = (group1);
@@ -784,7 +949,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxCpuDispatcher* getCpuDispatcher() const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L618~618
     #if NATIVE
     ES physx::PxCpuDispatcher* W_getCpuDispatcher(physx::PxScene* self){
         auto retVal = self->getCpuDispatcher();
@@ -792,10 +956,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxCpuDispatcher W_getCpuDispatcher(PxScene selfPtr);
+    static extern PxCpuDispatcherPtr W_getCpuDispatcher(PxScenePtr selfPtr);
     
-    public PxCpuDispatcher getCpuDispatcher(){
-        PxCpuDispatcher retVal = W_getCpuDispatcher(this);
+    public PxCpuDispatcherPtr getCpuDispatcher(){
+        PxCpuDispatcherPtr retVal = W_getCpuDispatcher(this);
         return retVal;
     }
     #endif*/
@@ -806,7 +970,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxGpuDispatcher* getGpuDispatcher() const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L627~627
     #if NATIVE
     ES physx::PxGpuDispatcher* W_getGpuDispatcher(physx::PxScene* self){
         auto retVal = self->getGpuDispatcher();
@@ -814,10 +977,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxGpuDispatcher W_getGpuDispatcher(PxScene selfPtr);
+    static extern PxGpuDispatcherPtr W_getGpuDispatcher(PxScenePtr selfPtr);
     
-    public PxGpuDispatcher getGpuDispatcher(){
-        PxGpuDispatcher retVal = W_getGpuDispatcher(this);
+    public PxGpuDispatcherPtr getGpuDispatcher(){
+        PxGpuDispatcherPtr retVal = W_getGpuDispatcher(this);
         return retVal;
     }
     #endif*/
@@ -826,7 +989,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       createClient                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L643~643
     #if NATIVE
     ES physx::PxClientID W_createClient(physx::PxScene* self){
         auto retVal = self->createClient();
@@ -834,7 +996,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern byte W_createClient(PxScene selfPtr);
+    static extern byte W_createClient(PxScenePtr selfPtr);
     
     public byte createClient(){
         byte retVal = W_createClient(this);
@@ -846,9 +1008,8 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setSimulationEventCallback                                             #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxSimulationEventCallback
+    /* ERRORS OCCURED: Forbidden parameter type: PxSimulationEventCallbackPtr
     // NATIVE SIG: void				setSimulationEventCallback(PxSimulationEventCallback* callback) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L662~662
     #if NATIVE
     ES void W_setSimulationEventCallback(physx::PxScene* self, physx::PxSimulationEventCallback* callback){
         auto nat_in_callback = (callback);
@@ -856,10 +1017,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setSimulationEventCallback(PxScene selfPtr, PxSimulationEventCallback callback);
+    static extern void W_setSimulationEventCallback(PxScenePtr selfPtr, PxSimulationEventCallbackPtr callback);
     
-    public void setSimulationEventCallback(PxSimulationEventCallback callback){
-        PxSimulationEventCallback pvk_in_callback = (callback);
+    public void setSimulationEventCallback(PxSimulationEventCallbackPtr callback){
+        PxSimulationEventCallbackPtr pvk_in_callback = (callback);
         W_setSimulationEventCallback(this, pvk_in_callback);
     }
     #endif*/
@@ -870,7 +1031,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxSimulationEventCallback*	getSimulationEventCallback() const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L671~671
     #if NATIVE
     ES physx::PxSimulationEventCallback* W_getSimulationEventCallback(physx::PxScene* self){
         auto retVal = self->getSimulationEventCallback();
@@ -878,10 +1038,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxSimulationEventCallback W_getSimulationEventCallback(PxScene selfPtr);
+    static extern PxSimulationEventCallbackPtr W_getSimulationEventCallback(PxScenePtr selfPtr);
     
-    public PxSimulationEventCallback getSimulationEventCallback(){
-        PxSimulationEventCallback retVal = W_getSimulationEventCallback(this);
+    public PxSimulationEventCallbackPtr getSimulationEventCallback(){
+        PxSimulationEventCallbackPtr retVal = W_getSimulationEventCallback(this);
         return retVal;
     }
     #endif*/
@@ -890,9 +1050,8 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setContactModifyCallback                                               #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxContactModifyCallback
+    /* ERRORS OCCURED: Forbidden parameter type: PxContactModifyCallbackPtr
     // NATIVE SIG: void				setContactModifyCallback(PxContactModifyCallback* callback) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L680~680
     #if NATIVE
     ES void W_setContactModifyCallback(physx::PxScene* self, physx::PxContactModifyCallback* callback){
         auto nat_in_callback = (callback);
@@ -900,10 +1059,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setContactModifyCallback(PxScene selfPtr, PxContactModifyCallback callback);
+    static extern void W_setContactModifyCallback(PxScenePtr selfPtr, PxContactModifyCallbackPtr callback);
     
-    public void setContactModifyCallback(PxContactModifyCallback callback){
-        PxContactModifyCallback pvk_in_callback = (callback);
+    public void setContactModifyCallback(PxContactModifyCallbackPtr callback){
+        PxContactModifyCallbackPtr pvk_in_callback = (callback);
         W_setContactModifyCallback(this, pvk_in_callback);
     }
     #endif*/
@@ -912,9 +1071,8 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setCCDContactModifyCallback                                            #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxCCDContactModifyCallback
+    /* ERRORS OCCURED: Forbidden parameter type: PxCCDContactModifyCallbackPtr
     // NATIVE SIG: void				setCCDContactModifyCallback(PxCCDContactModifyCallback* callback) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L689~689
     #if NATIVE
     ES void W_setCCDContactModifyCallback(physx::PxScene* self, physx::PxCCDContactModifyCallback* callback){
         auto nat_in_callback = (callback);
@@ -922,10 +1080,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setCCDContactModifyCallback(PxScene selfPtr, PxCCDContactModifyCallback callback);
+    static extern void W_setCCDContactModifyCallback(PxScenePtr selfPtr, PxCCDContactModifyCallbackPtr callback);
     
-    public void setCCDContactModifyCallback(PxCCDContactModifyCallback callback){
-        PxCCDContactModifyCallback pvk_in_callback = (callback);
+    public void setCCDContactModifyCallback(PxCCDContactModifyCallbackPtr callback){
+        PxCCDContactModifyCallbackPtr pvk_in_callback = (callback);
         W_setCCDContactModifyCallback(this, pvk_in_callback);
     }
     #endif*/
@@ -936,7 +1094,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxContactModifyCallback*	getContactModifyCallback() const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L698~698
     #if NATIVE
     ES physx::PxContactModifyCallback* W_getContactModifyCallback(physx::PxScene* self){
         auto retVal = self->getContactModifyCallback();
@@ -944,10 +1101,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxContactModifyCallback W_getContactModifyCallback(PxScene selfPtr);
+    static extern PxContactModifyCallbackPtr W_getContactModifyCallback(PxScenePtr selfPtr);
     
-    public PxContactModifyCallback getContactModifyCallback(){
-        PxContactModifyCallback retVal = W_getContactModifyCallback(this);
+    public PxContactModifyCallbackPtr getContactModifyCallback(){
+        PxContactModifyCallbackPtr retVal = W_getContactModifyCallback(this);
         return retVal;
     }
     #endif*/
@@ -958,7 +1115,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxCCDContactModifyCallback*	getCCDContactModifyCallback() const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L707~707
     #if NATIVE
     ES physx::PxCCDContactModifyCallback* W_getCCDContactModifyCallback(physx::PxScene* self){
         auto retVal = self->getCCDContactModifyCallback();
@@ -966,10 +1122,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxCCDContactModifyCallback W_getCCDContactModifyCallback(PxScene selfPtr);
+    static extern PxCCDContactModifyCallbackPtr W_getCCDContactModifyCallback(PxScenePtr selfPtr);
     
-    public PxCCDContactModifyCallback getCCDContactModifyCallback(){
-        PxCCDContactModifyCallback retVal = W_getCCDContactModifyCallback(this);
+    public PxCCDContactModifyCallbackPtr getCCDContactModifyCallback(){
+        PxCCDContactModifyCallbackPtr retVal = W_getCCDContactModifyCallback(this);
         return retVal;
     }
     #endif*/
@@ -978,9 +1134,8 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setBroadPhaseCallback                                                  #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxBroadPhaseCallback
+    /* ERRORS OCCURED: Forbidden parameter type: PxBroadPhaseCallbackPtr
     // NATIVE SIG: void				setBroadPhaseCallback(PxBroadPhaseCallback* callback) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L716~716
     #if NATIVE
     ES void W_setBroadPhaseCallback(physx::PxScene* self, physx::PxBroadPhaseCallback* callback){
         auto nat_in_callback = (callback);
@@ -988,10 +1143,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setBroadPhaseCallback(PxScene selfPtr, PxBroadPhaseCallback callback);
+    static extern void W_setBroadPhaseCallback(PxScenePtr selfPtr, PxBroadPhaseCallbackPtr callback);
     
-    public void setBroadPhaseCallback(PxBroadPhaseCallback callback){
-        PxBroadPhaseCallback pvk_in_callback = (callback);
+    public void setBroadPhaseCallback(PxBroadPhaseCallbackPtr callback){
+        PxBroadPhaseCallbackPtr pvk_in_callback = (callback);
         W_setBroadPhaseCallback(this, pvk_in_callback);
     }
     #endif*/
@@ -1002,7 +1157,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxBroadPhaseCallback* getBroadPhaseCallback()	const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L725~725
     #if NATIVE
     ES physx::PxBroadPhaseCallback* W_getBroadPhaseCallback(physx::PxScene* self){
         auto retVal = self->getBroadPhaseCallback();
@@ -1010,10 +1164,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBroadPhaseCallback W_getBroadPhaseCallback(PxScene selfPtr);
+    static extern PxBroadPhaseCallbackPtr W_getBroadPhaseCallback(PxScenePtr selfPtr);
     
-    public PxBroadPhaseCallback getBroadPhaseCallback(){
-        PxBroadPhaseCallback retVal = W_getBroadPhaseCallback(this);
+    public PxBroadPhaseCallbackPtr getBroadPhaseCallback(){
+        PxBroadPhaseCallbackPtr retVal = W_getBroadPhaseCallback(this);
         return retVal;
     }
     #endif*/
@@ -1022,7 +1176,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setFilterShaderData                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L750~750
     #if NATIVE
     ES void W_setFilterShaderData(physx::PxScene* self, const void* data, physx::PxU32 dataSize){
         auto nat_in_data = (data);
@@ -1031,7 +1184,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setFilterShaderData(PxScene selfPtr, global::System.IntPtr data, uint dataSize);
+    static extern void W_setFilterShaderData(PxScenePtr selfPtr, global::System.IntPtr data, uint dataSize);
     
     public void setFilterShaderData(global::System.IntPtr data, uint dataSize){
         global::System.IntPtr pvk_in_data = (data);
@@ -1044,7 +1197,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getFilterShaderData                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L761~761
     #if NATIVE
     ES void* W_getFilterShaderData(physx::PxScene* self){
         auto retVal = self->getFilterShaderData();
@@ -1052,7 +1204,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_getFilterShaderData(PxScene selfPtr);
+    static extern IntPtr W_getFilterShaderData(PxScenePtr selfPtr);
     
     public IntPtr getFilterShaderData(){
         IntPtr retVal = W_getFilterShaderData(this);
@@ -1064,7 +1216,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getFilterShaderDataSize                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L770~770
     #if NATIVE
     ES physx::PxU32 W_getFilterShaderDataSize(physx::PxScene* self){
         auto retVal = self->getFilterShaderDataSize();
@@ -1072,7 +1223,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getFilterShaderDataSize(PxScene selfPtr);
+    static extern uint W_getFilterShaderDataSize(PxScenePtr selfPtr);
     
     public uint getFilterShaderDataSize(){
         uint retVal = W_getFilterShaderDataSize(this);
@@ -1087,7 +1238,6 @@ public unsafe partial struct PxScene { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxSimulationFilterShader
     // NATIVE SIG: PxSimulationFilterShader
     								getFilterShader() const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L779~780
     #if NATIVE
     ES UNPARSED_TYPE W_getFilterShader(physx::PxScene* self){
         auto retVal = self->getFilterShader();
@@ -1095,7 +1245,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getFilterShader(PxScene selfPtr);
+    static extern UNPARSED_TYPE W_getFilterShader(PxScenePtr selfPtr);
     
     public UNPARSED_TYPE getFilterShader(){
         UNPARSED_TYPE retVal = W_getFilterShader(this);
@@ -1107,7 +1257,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getFilterCallback                                                      #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L789~790
     #if NATIVE
     ES physx::PxSimulationFilterCallback* W_getFilterCallback(physx::PxScene* self){
         auto retVal = self->getFilterCallback();
@@ -1115,10 +1264,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxSimulationFilterCallback W_getFilterCallback(PxScene selfPtr);
+    static extern PxSimulationFilterCallbackPtr W_getFilterCallback(PxScenePtr selfPtr);
     
-    public PxSimulationFilterCallback getFilterCallback(){
-        PxSimulationFilterCallback retVal = W_getFilterCallback(this);
+    public PxSimulationFilterCallbackPtr getFilterCallback(){
+        PxSimulationFilterCallbackPtr retVal = W_getFilterCallback(this);
         return retVal;
     }
     #endif
@@ -1127,7 +1276,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       resetFiltering                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L821~821
     #if NATIVE
     ES void W_resetFiltering(physx::PxScene* self, physx::PxActor* actor){
         auto nat_in_actor = (actor);
@@ -1135,10 +1283,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_resetFiltering(PxScene selfPtr, PxActor actor);
+    static extern void W_resetFiltering(PxScenePtr selfPtr, PxActorPtr actor);
     
-    public void resetFiltering(PxActor actor){
-        PxActor pvk_in_actor = (actor);
+    public void resetFiltering(PxActorPtr actor){
+        PxActorPtr pvk_in_actor = (actor);
         W_resetFiltering(this, pvk_in_actor);
     }
     #endif
@@ -1149,7 +1297,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxShape*
     // NATIVE SIG: void				resetFiltering(PxRigidActor& actor, PxShape*const* shapes, PxU32 shapeCount) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L837~837
     #if NATIVE
     ES void W_resetFiltering(physx::PxScene* self, physx::PxRigidActor* actor,  shapes, physx::PxU32 shapeCount){
         auto nat_in_actor = (actor);
@@ -1159,10 +1306,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_resetFiltering(PxScene selfPtr, PxRigidActor actor,  shapes, uint shapeCount);
+    static extern void W_resetFiltering(PxScenePtr selfPtr, PxRigidActorPtr actor,  shapes, uint shapeCount);
     
-    public void resetFiltering(PxRigidActor actor,  shapes, uint shapeCount){
-        PxRigidActor pvk_in_actor = (actor);
+    public void resetFiltering(PxRigidActorPtr actor,  shapes, uint shapeCount){
+        PxRigidActorPtr pvk_in_actor = (actor);
          pvk_in_shapes = (shapes);
         uint pvk_in_shapeCount = (shapeCount);
         W_resetFiltering(this, pvk_in_actor, pvk_in_shapes, pvk_in_shapeCount);
@@ -1173,10 +1320,9 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       simulate                                                               #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTask
+    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
     // NATIVE SIG: void				simulate(PxReal elapsedTime, physx::PxBaseTask* completionTask = NULL,
     									void* scratchMemBlock = 0, PxU32 scratchMemBlockSize = 0, bool controlSimulation = true) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L876~877
     #if NATIVE
     ES void W_simulate(physx::PxScene* self, physx::PxReal elapsedTime, physx::PxBaseTask* completionTask, void* scratchMemBlock, physx::PxU32 scratchMemBlockSize, bool controlSimulation){
         auto nat_in_elapsedTime = (elapsedTime);
@@ -1188,11 +1334,11 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_simulate(PxScene selfPtr, float elapsedTime, PxBaseTask completionTask, global::System.IntPtr scratchMemBlock, uint scratchMemBlockSize, bool controlSimulation);
+    static extern void W_simulate(PxScenePtr selfPtr, float elapsedTime, PxBaseTaskPtr completionTask, global::System.IntPtr scratchMemBlock, uint scratchMemBlockSize, bool controlSimulation);
     
-    public void simulate(float elapsedTime, PxBaseTask completionTask, global::System.IntPtr scratchMemBlock, uint scratchMemBlockSize, bool controlSimulation){
+    public void simulate(float elapsedTime, PxBaseTaskPtr completionTask, global::System.IntPtr scratchMemBlock, uint scratchMemBlockSize, bool controlSimulation){
         float pvk_in_elapsedTime = (elapsedTime);
-        PxBaseTask pvk_in_completionTask = (completionTask);
+        PxBaseTaskPtr pvk_in_completionTask = (completionTask);
         global::System.IntPtr pvk_in_scratchMemBlock = (scratchMemBlock);
         uint pvk_in_scratchMemBlockSize = (scratchMemBlockSize);
         bool pvk_in_controlSimulation = (controlSimulation);
@@ -1200,13 +1346,105 @@ public unsafe partial struct PxScene { // pointer
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
+    // NATIVE SIG: void				simulate(PxReal elapsedTime, physx::PxBaseTask* completionTask = NULL,
+    									void* scratchMemBlock = 0, PxU32 scratchMemBlockSize = 0, bool controlSimulation = true) = 0
+    #if NATIVE
+    ES void W_simulate_OL1(physx::PxScene* self, physx::PxReal elapsedTime, physx::PxBaseTask* completionTask, void* scratchMemBlock, physx::PxU32 scratchMemBlockSize){
+        auto nat_in_elapsedTime = (elapsedTime);
+        auto nat_in_completionTask = (completionTask);
+        auto nat_in_scratchMemBlock = (scratchMemBlock);
+        auto nat_in_scratchMemBlockSize = (scratchMemBlockSize);
+        self->simulate(nat_in_elapsedTime, nat_in_completionTask, nat_in_scratchMemBlock, nat_in_scratchMemBlockSize);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_simulate_OL1(PxScenePtr selfPtr, float elapsedTime, PxBaseTaskPtr completionTask, global::System.IntPtr scratchMemBlock, uint scratchMemBlockSize);
+    
+    public void simulate(float elapsedTime, PxBaseTaskPtr completionTask, global::System.IntPtr scratchMemBlock, uint scratchMemBlockSize){
+        float pvk_in_elapsedTime = (elapsedTime);
+        PxBaseTaskPtr pvk_in_completionTask = (completionTask);
+        global::System.IntPtr pvk_in_scratchMemBlock = (scratchMemBlock);
+        uint pvk_in_scratchMemBlockSize = (scratchMemBlockSize);
+        W_simulate_OL1(this, pvk_in_elapsedTime, pvk_in_completionTask, pvk_in_scratchMemBlock, pvk_in_scratchMemBlockSize);
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
+    // NATIVE SIG: void				simulate(PxReal elapsedTime, physx::PxBaseTask* completionTask = NULL,
+    									void* scratchMemBlock = 0, PxU32 scratchMemBlockSize = 0, bool controlSimulation = true) = 0
+    #if NATIVE
+    ES void W_simulate_OL2(physx::PxScene* self, physx::PxReal elapsedTime, physx::PxBaseTask* completionTask, void* scratchMemBlock){
+        auto nat_in_elapsedTime = (elapsedTime);
+        auto nat_in_completionTask = (completionTask);
+        auto nat_in_scratchMemBlock = (scratchMemBlock);
+        self->simulate(nat_in_elapsedTime, nat_in_completionTask, nat_in_scratchMemBlock);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_simulate_OL2(PxScenePtr selfPtr, float elapsedTime, PxBaseTaskPtr completionTask, global::System.IntPtr scratchMemBlock);
+    
+    public void simulate(float elapsedTime, PxBaseTaskPtr completionTask, global::System.IntPtr scratchMemBlock){
+        float pvk_in_elapsedTime = (elapsedTime);
+        PxBaseTaskPtr pvk_in_completionTask = (completionTask);
+        global::System.IntPtr pvk_in_scratchMemBlock = (scratchMemBlock);
+        W_simulate_OL2(this, pvk_in_elapsedTime, pvk_in_completionTask, pvk_in_scratchMemBlock);
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
+    // NATIVE SIG: void				simulate(PxReal elapsedTime, physx::PxBaseTask* completionTask = NULL,
+    									void* scratchMemBlock = 0, PxU32 scratchMemBlockSize = 0, bool controlSimulation = true) = 0
+    #if NATIVE
+    ES void W_simulate_OL3(physx::PxScene* self, physx::PxReal elapsedTime, physx::PxBaseTask* completionTask){
+        auto nat_in_elapsedTime = (elapsedTime);
+        auto nat_in_completionTask = (completionTask);
+        self->simulate(nat_in_elapsedTime, nat_in_completionTask);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_simulate_OL3(PxScenePtr selfPtr, float elapsedTime, PxBaseTaskPtr completionTask);
+    
+    public void simulate(float elapsedTime, PxBaseTaskPtr completionTask){
+        float pvk_in_elapsedTime = (elapsedTime);
+        PxBaseTaskPtr pvk_in_completionTask = (completionTask);
+        W_simulate_OL3(this, pvk_in_elapsedTime, pvk_in_completionTask);
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_simulate_OL4(physx::PxScene* self, physx::PxReal elapsedTime){
+        auto nat_in_elapsedTime = (elapsedTime);
+        self->simulate(nat_in_elapsedTime);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_simulate_OL4(PxScenePtr selfPtr, float elapsedTime);
+    
+    public void simulate(float elapsedTime){
+        float pvk_in_elapsedTime = (elapsedTime);
+        W_simulate_OL4(this, pvk_in_elapsedTime);
+    }
+    #endif
+    
+    
+    
     
     //================================================================================
     //#       advance                                                                #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTask
+    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
     // NATIVE SIG: void				advance(physx::PxBaseTask* completionTask = 0) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L890~890
     #if NATIVE
     ES void W_advance(physx::PxScene* self, physx::PxBaseTask* completionTask){
         auto nat_in_completionTask = (completionTask);
@@ -1214,22 +1452,37 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_advance(PxScene selfPtr, PxBaseTask completionTask);
+    static extern void W_advance(PxScenePtr selfPtr, PxBaseTaskPtr completionTask);
     
-    public void advance(PxBaseTask completionTask){
-        PxBaseTask pvk_in_completionTask = (completionTask);
+    public void advance(PxBaseTaskPtr completionTask){
+        PxBaseTaskPtr pvk_in_completionTask = (completionTask);
         W_advance(this, pvk_in_completionTask);
     }
     #endif*/
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_advance_OL1(physx::PxScene* self){
+        self->advance();
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_advance_OL1(PxScenePtr selfPtr);
+    
+    public void advance(){
+        W_advance_OL1(this);
+    }
+    #endif
+    
+    
     
     
     //================================================================================
     //#       collide                                                                #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTask
+    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
     // NATIVE SIG: void				collide(PxReal elapsedTime, physx::PxBaseTask* completionTask = 0, void* scratchMemBlock = 0,
     									PxU32 scratchMemBlockSize = 0, bool controlSimulation = true) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L909~910
     #if NATIVE
     ES void W_collide(physx::PxScene* self, physx::PxReal elapsedTime, physx::PxBaseTask* completionTask, void* scratchMemBlock, physx::PxU32 scratchMemBlockSize, bool controlSimulation){
         auto nat_in_elapsedTime = (elapsedTime);
@@ -1241,11 +1494,11 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_collide(PxScene selfPtr, float elapsedTime, PxBaseTask completionTask, global::System.IntPtr scratchMemBlock, uint scratchMemBlockSize, bool controlSimulation);
+    static extern void W_collide(PxScenePtr selfPtr, float elapsedTime, PxBaseTaskPtr completionTask, global::System.IntPtr scratchMemBlock, uint scratchMemBlockSize, bool controlSimulation);
     
-    public void collide(float elapsedTime, PxBaseTask completionTask, global::System.IntPtr scratchMemBlock, uint scratchMemBlockSize, bool controlSimulation){
+    public void collide(float elapsedTime, PxBaseTaskPtr completionTask, global::System.IntPtr scratchMemBlock, uint scratchMemBlockSize, bool controlSimulation){
         float pvk_in_elapsedTime = (elapsedTime);
-        PxBaseTask pvk_in_completionTask = (completionTask);
+        PxBaseTaskPtr pvk_in_completionTask = (completionTask);
         global::System.IntPtr pvk_in_scratchMemBlock = (scratchMemBlock);
         uint pvk_in_scratchMemBlockSize = (scratchMemBlockSize);
         bool pvk_in_controlSimulation = (controlSimulation);
@@ -1253,11 +1506,103 @@ public unsafe partial struct PxScene { // pointer
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
+    // NATIVE SIG: void				collide(PxReal elapsedTime, physx::PxBaseTask* completionTask = 0, void* scratchMemBlock = 0,
+    									PxU32 scratchMemBlockSize = 0, bool controlSimulation = true) = 0
+    #if NATIVE
+    ES void W_collide_OL1(physx::PxScene* self, physx::PxReal elapsedTime, physx::PxBaseTask* completionTask, void* scratchMemBlock, physx::PxU32 scratchMemBlockSize){
+        auto nat_in_elapsedTime = (elapsedTime);
+        auto nat_in_completionTask = (completionTask);
+        auto nat_in_scratchMemBlock = (scratchMemBlock);
+        auto nat_in_scratchMemBlockSize = (scratchMemBlockSize);
+        self->collide(nat_in_elapsedTime, nat_in_completionTask, nat_in_scratchMemBlock, nat_in_scratchMemBlockSize);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_collide_OL1(PxScenePtr selfPtr, float elapsedTime, PxBaseTaskPtr completionTask, global::System.IntPtr scratchMemBlock, uint scratchMemBlockSize);
+    
+    public void collide(float elapsedTime, PxBaseTaskPtr completionTask, global::System.IntPtr scratchMemBlock, uint scratchMemBlockSize){
+        float pvk_in_elapsedTime = (elapsedTime);
+        PxBaseTaskPtr pvk_in_completionTask = (completionTask);
+        global::System.IntPtr pvk_in_scratchMemBlock = (scratchMemBlock);
+        uint pvk_in_scratchMemBlockSize = (scratchMemBlockSize);
+        W_collide_OL1(this, pvk_in_elapsedTime, pvk_in_completionTask, pvk_in_scratchMemBlock, pvk_in_scratchMemBlockSize);
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
+    // NATIVE SIG: void				collide(PxReal elapsedTime, physx::PxBaseTask* completionTask = 0, void* scratchMemBlock = 0,
+    									PxU32 scratchMemBlockSize = 0, bool controlSimulation = true) = 0
+    #if NATIVE
+    ES void W_collide_OL2(physx::PxScene* self, physx::PxReal elapsedTime, physx::PxBaseTask* completionTask, void* scratchMemBlock){
+        auto nat_in_elapsedTime = (elapsedTime);
+        auto nat_in_completionTask = (completionTask);
+        auto nat_in_scratchMemBlock = (scratchMemBlock);
+        self->collide(nat_in_elapsedTime, nat_in_completionTask, nat_in_scratchMemBlock);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_collide_OL2(PxScenePtr selfPtr, float elapsedTime, PxBaseTaskPtr completionTask, global::System.IntPtr scratchMemBlock);
+    
+    public void collide(float elapsedTime, PxBaseTaskPtr completionTask, global::System.IntPtr scratchMemBlock){
+        float pvk_in_elapsedTime = (elapsedTime);
+        PxBaseTaskPtr pvk_in_completionTask = (completionTask);
+        global::System.IntPtr pvk_in_scratchMemBlock = (scratchMemBlock);
+        W_collide_OL2(this, pvk_in_elapsedTime, pvk_in_completionTask, pvk_in_scratchMemBlock);
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
+    // NATIVE SIG: void				collide(PxReal elapsedTime, physx::PxBaseTask* completionTask = 0, void* scratchMemBlock = 0,
+    									PxU32 scratchMemBlockSize = 0, bool controlSimulation = true) = 0
+    #if NATIVE
+    ES void W_collide_OL3(physx::PxScene* self, physx::PxReal elapsedTime, physx::PxBaseTask* completionTask){
+        auto nat_in_elapsedTime = (elapsedTime);
+        auto nat_in_completionTask = (completionTask);
+        self->collide(nat_in_elapsedTime, nat_in_completionTask);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_collide_OL3(PxScenePtr selfPtr, float elapsedTime, PxBaseTaskPtr completionTask);
+    
+    public void collide(float elapsedTime, PxBaseTaskPtr completionTask){
+        float pvk_in_elapsedTime = (elapsedTime);
+        PxBaseTaskPtr pvk_in_completionTask = (completionTask);
+        W_collide_OL3(this, pvk_in_elapsedTime, pvk_in_completionTask);
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_collide_OL4(physx::PxScene* self, physx::PxReal elapsedTime){
+        auto nat_in_elapsedTime = (elapsedTime);
+        self->collide(nat_in_elapsedTime);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_collide_OL4(PxScenePtr selfPtr, float elapsedTime);
+    
+    public void collide(float elapsedTime){
+        float pvk_in_elapsedTime = (elapsedTime);
+        W_collide_OL4(this, pvk_in_elapsedTime);
+    }
+    #endif
+    
+    
+    
     
     //================================================================================
     //#       checkResults                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L923~923
     #if NATIVE
     ES bool W_checkResults(physx::PxScene* self, bool block){
         auto nat_in_block = (block);
@@ -1266,7 +1611,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_checkResults(PxScene selfPtr, bool block);
+    static extern bool W_checkResults(PxScenePtr selfPtr, bool block);
     
     public bool checkResults(bool block){
         bool pvk_in_block = (block);
@@ -1276,10 +1621,27 @@ public unsafe partial struct PxScene { // pointer
     #endif
     
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES bool W_checkResults_OL1(physx::PxScene* self){
+        auto retVal = self->checkResults();
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_checkResults_OL1(PxScenePtr selfPtr);
+    
+    public bool checkResults(){
+        bool retVal = W_checkResults_OL1(this);
+        return retVal;
+    }
+    #endif
+    
+    
+    
     //================================================================================
     //#       fetchCollision                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L932~932
     #if NATIVE
     ES bool W_fetchCollision(physx::PxScene* self, bool block){
         auto nat_in_block = (block);
@@ -1288,7 +1650,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_fetchCollision(PxScene selfPtr, bool block);
+    static extern bool W_fetchCollision(PxScenePtr selfPtr, bool block);
     
     public bool fetchCollision(bool block){
         bool pvk_in_block = (block);
@@ -1298,10 +1660,27 @@ public unsafe partial struct PxScene { // pointer
     #endif
     
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES bool W_fetchCollision_OL1(physx::PxScene* self){
+        auto retVal = self->fetchCollision();
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_fetchCollision_OL1(PxScenePtr selfPtr);
+    
+    public bool fetchCollision(){
+        bool retVal = W_fetchCollision_OL1(this);
+        return retVal;
+    }
+    #endif
+    
+    
+    
     //================================================================================
     //#       fetchResults                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L955~955
     #if NATIVE
     ES bool W_fetchResults(physx::PxScene* self, bool block, physx::PxU32* errorState){
         auto nat_in_block = (block);
@@ -1311,7 +1690,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_fetchResults(PxScene selfPtr, bool block, uint* errorState);
+    static extern bool W_fetchResults(PxScenePtr selfPtr, bool block, uint* errorState);
     
     public bool fetchResults(bool block, uint* errorState){
         bool pvk_in_block = (block);
@@ -1322,12 +1701,49 @@ public unsafe partial struct PxScene { // pointer
     #endif
     
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES bool W_fetchResults_OL1(physx::PxScene* self, bool block){
+        auto nat_in_block = (block);
+        auto retVal = self->fetchResults(nat_in_block);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_fetchResults_OL1(PxScenePtr selfPtr, bool block);
+    
+    public bool fetchResults(bool block){
+        bool pvk_in_block = (block);
+        bool retVal = W_fetchResults_OL1(this, pvk_in_block);
+        return retVal;
+    }
+    #endif
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES bool W_fetchResults_OL2(physx::PxScene* self){
+        auto retVal = self->fetchResults();
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_fetchResults_OL2(PxScenePtr selfPtr);
+    
+    public bool fetchResults(){
+        bool retVal = W_fetchResults_OL2(this);
+        return retVal;
+    }
+    #endif
+    
+    
+    
     //================================================================================
     //#       fetchResultsStart                                                      #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee const physx::PxContactPairHeader*
     // NATIVE SIG: bool				fetchResultsStart(const PxContactPairHeader*& contactPairs, PxU32& nbContactPairs, bool block = false) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L973~973
     #if NATIVE
     ES bool W_fetchResultsStart(physx::PxScene* self,  contactPairs, physx::PxU32& nbContactPairs, bool block){
         auto nat_in_contactPairs = (contactPairs);
@@ -1338,7 +1754,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_fetchResultsStart(PxScene selfPtr,  contactPairs, uint* nbContactPairs, bool block);
+    static extern bool W_fetchResultsStart(PxScenePtr selfPtr,  contactPairs, uint* nbContactPairs, bool block);
     
     public bool fetchResultsStart( contactPairs, uint* nbContactPairs, bool block){
          pvk_in_contactPairs = (contactPairs);
@@ -1349,13 +1765,36 @@ public unsafe partial struct PxScene { // pointer
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Unresolved parameter pointee const physx::PxContactPairHeader*
+    // NATIVE SIG: bool				fetchResultsStart(const PxContactPairHeader*& contactPairs, PxU32& nbContactPairs, bool block = false) = 0
+    #if NATIVE
+    ES bool W_fetchResultsStart_OL1(physx::PxScene* self,  contactPairs, physx::PxU32& nbContactPairs){
+        auto nat_in_contactPairs = (contactPairs);
+        auto nat_in_nbContactPairs = (nbContactPairs);
+        auto retVal = self->fetchResultsStart(nat_in_contactPairs, nat_in_nbContactPairs);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_fetchResultsStart_OL1(PxScenePtr selfPtr,  contactPairs, uint* nbContactPairs);
+    
+    public bool fetchResultsStart( contactPairs, uint* nbContactPairs){
+         pvk_in_contactPairs = (contactPairs);
+        uint* pvk_in_nbContactPairs = (nbContactPairs);
+        bool retVal = W_fetchResultsStart_OL1(this, pvk_in_contactPairs, pvk_in_nbContactPairs);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
     
     //================================================================================
     //#       processCallbacks                                                       #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTask
+    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
     // NATIVE SIG: void				processCallbacks(physx::PxBaseTask* continuation) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L984~984
     #if NATIVE
     ES void W_processCallbacks(physx::PxScene* self, physx::PxBaseTask* continuation){
         auto nat_in_continuation = (continuation);
@@ -1363,10 +1802,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_processCallbacks(PxScene selfPtr, PxBaseTask continuation);
+    static extern void W_processCallbacks(PxScenePtr selfPtr, PxBaseTaskPtr continuation);
     
-    public void processCallbacks(PxBaseTask continuation){
-        PxBaseTask pvk_in_continuation = (continuation);
+    public void processCallbacks(PxBaseTaskPtr continuation){
+        PxBaseTaskPtr pvk_in_continuation = (continuation);
         W_processCallbacks(this, pvk_in_continuation);
     }
     #endif*/
@@ -1375,7 +1814,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       fetchResultsFinish                                                     #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L998~998
     #if NATIVE
     ES void W_fetchResultsFinish(physx::PxScene* self, physx::PxU32* errorState){
         auto nat_in_errorState = (errorState);
@@ -1383,7 +1821,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_fetchResultsFinish(PxScene selfPtr, uint* errorState);
+    static extern void W_fetchResultsFinish(PxScenePtr selfPtr, uint* errorState);
     
     public void fetchResultsFinish(uint* errorState){
         uint* pvk_in_errorState = (errorState);
@@ -1392,10 +1830,25 @@ public unsafe partial struct PxScene { // pointer
     #endif
     
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_fetchResultsFinish_OL1(physx::PxScene* self){
+        self->fetchResultsFinish();
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_fetchResultsFinish_OL1(PxScenePtr selfPtr);
+    
+    public void fetchResultsFinish(){
+        W_fetchResultsFinish_OL1(this);
+    }
+    #endif
+    
+    
+    
     //================================================================================
     //#       flushSimulation                                                        #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1011~1011
     #if NATIVE
     ES void W_flushSimulation(physx::PxScene* self, bool sendPendingReports){
         auto nat_in_sendPendingReports = (sendPendingReports);
@@ -1403,7 +1856,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_flushSimulation(PxScene selfPtr, bool sendPendingReports);
+    static extern void W_flushSimulation(PxScenePtr selfPtr, bool sendPendingReports);
     
     public void flushSimulation(bool sendPendingReports){
         bool pvk_in_sendPendingReports = (sendPendingReports);
@@ -1412,10 +1865,25 @@ public unsafe partial struct PxScene { // pointer
     #endif
     
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_flushSimulation_OL1(physx::PxScene* self){
+        self->flushSimulation();
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_flushSimulation_OL1(PxScenePtr selfPtr);
+    
+    public void flushSimulation(){
+        W_flushSimulation_OL1(this);
+    }
+    #endif
+    
+    
+    
     //================================================================================
     //#       setGravity                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1022~1022
     #if NATIVE
     ES void W_setGravity(physx::PxScene* self, physx::PxVec3 vec){
         auto nat_in_vec = (vec);
@@ -1423,7 +1891,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setGravity(PxScene selfPtr, PxVec3 vec);
+    static extern void W_setGravity(PxScenePtr selfPtr, PxVec3 vec);
     
     public void setGravity(PxVec3 vec){
         PxVec3 pvk_in_vec = (vec);
@@ -1435,7 +1903,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getGravity                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1031~1031
     #if NATIVE
     ES physx::PxVec3 W_getGravity(physx::PxScene* self){
         auto retVal = self->getGravity();
@@ -1443,7 +1910,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_getGravity(PxScene selfPtr);
+    static extern PxVec3 W_getGravity(PxScenePtr selfPtr);
     
     public PxVec3 getGravity(){
         PxVec3 retVal = W_getGravity(this);
@@ -1455,7 +1922,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setBounceThresholdVelocity                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1038~1038
     #if NATIVE
     ES void W_setBounceThresholdVelocity(physx::PxScene* self, physx::PxReal t){
         auto nat_in_t = (t);
@@ -1463,7 +1929,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setBounceThresholdVelocity(PxScene selfPtr, float t);
+    static extern void W_setBounceThresholdVelocity(PxScenePtr selfPtr, float t);
     
     public void setBounceThresholdVelocity(float t){
         float pvk_in_t = (t);
@@ -1475,7 +1941,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getBounceThresholdVelocity                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1045~1045
     #if NATIVE
     ES physx::PxReal W_getBounceThresholdVelocity(physx::PxScene* self){
         auto retVal = self->getBounceThresholdVelocity();
@@ -1483,7 +1948,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getBounceThresholdVelocity(PxScene selfPtr);
+    static extern float W_getBounceThresholdVelocity(PxScenePtr selfPtr);
     
     public float getBounceThresholdVelocity(){
         float retVal = W_getBounceThresholdVelocity(this);
@@ -1495,7 +1960,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setCCDMaxPasses                                                        #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1056~1056
     #if NATIVE
     ES void W_setCCDMaxPasses(physx::PxScene* self, physx::PxU32 ccdMaxPasses){
         auto nat_in_ccdMaxPasses = (ccdMaxPasses);
@@ -1503,7 +1967,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setCCDMaxPasses(PxScene selfPtr, uint ccdMaxPasses);
+    static extern void W_setCCDMaxPasses(PxScenePtr selfPtr, uint ccdMaxPasses);
     
     public void setCCDMaxPasses(uint ccdMaxPasses){
         uint pvk_in_ccdMaxPasses = (ccdMaxPasses);
@@ -1515,7 +1979,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getCCDMaxPasses                                                        #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1066~1066
     #if NATIVE
     ES physx::PxU32 W_getCCDMaxPasses(physx::PxScene* self){
         auto retVal = self->getCCDMaxPasses();
@@ -1523,7 +1986,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getCCDMaxPasses(PxScene selfPtr);
+    static extern uint W_getCCDMaxPasses(PxScenePtr selfPtr);
     
     public uint getCCDMaxPasses(){
         uint retVal = W_getCCDMaxPasses(this);
@@ -1535,7 +1998,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getFrictionOffsetThreshold                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1073~1073
     #if NATIVE
     ES physx::PxReal W_getFrictionOffsetThreshold(physx::PxScene* self){
         auto retVal = self->getFrictionOffsetThreshold();
@@ -1543,7 +2005,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getFrictionOffsetThreshold(PxScene selfPtr);
+    static extern float W_getFrictionOffsetThreshold(PxScenePtr selfPtr);
     
     public float getFrictionOffsetThreshold(){
         float retVal = W_getFrictionOffsetThreshold(this);
@@ -1555,7 +2017,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setFrictionType                                                        #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1079~1079
     #if NATIVE
     ES void W_setFrictionType(physx::PxScene* self, physx::PxFrictionType::Enum frictionType){
         auto nat_in_frictionType = (frictionType);
@@ -1563,7 +2024,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setFrictionType(PxScene selfPtr, PxFrictionType frictionType);
+    static extern void W_setFrictionType(PxScenePtr selfPtr, PxFrictionType frictionType);
     
     public void setFrictionType(PxFrictionType frictionType){
         PxFrictionType pvk_in_frictionType = (frictionType);
@@ -1575,7 +2036,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getFrictionType                                                        #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1085~1085
     #if NATIVE
     ES physx::PxFrictionType::Enum W_getFrictionType(physx::PxScene* self){
         auto retVal = self->getFrictionType();
@@ -1583,7 +2043,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxFrictionType W_getFrictionType(PxScene selfPtr);
+    static extern PxFrictionType W_getFrictionType(PxScenePtr selfPtr);
     
     public PxFrictionType getFrictionType(){
         PxFrictionType retVal = W_getFrictionType(this);
@@ -1597,7 +2057,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxVisualizationParameter
     // NATIVE SIG: bool				setVisualizationParameter(PxVisualizationParameter::Enum param, PxReal value) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1104~1104
     #if NATIVE
     ES bool W_setVisualizationParameter(physx::PxScene* self, physx::PxVisualizationParameter::Enum param, physx::PxReal value){
         auto nat_in_param = (param);
@@ -1607,7 +2066,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_setVisualizationParameter(PxScene selfPtr, PxVisualizationParameter param, float value);
+    static extern bool W_setVisualizationParameter(PxScenePtr selfPtr, PxVisualizationParameter param, float value);
     
     public bool setVisualizationParameter(PxVisualizationParameter param, float value){
         PxVisualizationParameter pvk_in_param = (param);
@@ -1623,7 +2082,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxVisualizationParameter
     // NATIVE SIG: PxReal				getVisualizationParameter(PxVisualizationParameter::Enum paramEnum) const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1114~1114
     #if NATIVE
     ES physx::PxReal W_getVisualizationParameter(physx::PxScene* self, physx::PxVisualizationParameter::Enum paramEnum){
         auto nat_in_paramEnum = (paramEnum);
@@ -1632,7 +2090,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getVisualizationParameter(PxScene selfPtr, PxVisualizationParameter paramEnum);
+    static extern float W_getVisualizationParameter(PxScenePtr selfPtr, PxVisualizationParameter paramEnum);
     
     public float getVisualizationParameter(PxVisualizationParameter paramEnum){
         PxVisualizationParameter pvk_in_paramEnum = (paramEnum);
@@ -1645,7 +2103,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setVisualizationCullingBox                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1123~1123
     #if NATIVE
     ES void W_setVisualizationCullingBox(physx::PxScene* self, physx::PxBounds3 box){
         auto nat_in_box = (box);
@@ -1653,7 +2110,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setVisualizationCullingBox(PxScene selfPtr, PxBounds3 box);
+    static extern void W_setVisualizationCullingBox(PxScenePtr selfPtr, PxBounds3 box);
     
     public void setVisualizationCullingBox(PxBounds3 box){
         PxBounds3 pvk_in_box = (box);
@@ -1665,7 +2122,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getVisualizationCullingBox                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1131~1131
     #if NATIVE
     ES physx::PxBounds3 W_getVisualizationCullingBox(physx::PxScene* self){
         auto retVal = self->getVisualizationCullingBox();
@@ -1673,7 +2129,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBounds3 W_getVisualizationCullingBox(PxScene selfPtr);
+    static extern PxBounds3 W_getVisualizationCullingBox(PxScenePtr selfPtr);
     
     public PxBounds3 getVisualizationCullingBox(){
         PxBounds3 retVal = W_getVisualizationCullingBox(this);
@@ -1687,7 +2143,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxRenderBuffer& getRenderBuffer() = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1144~1144
     #if NATIVE
     ES physx::PxRenderBuffer* W_getRenderBuffer(physx::PxScene* self){
         auto retVal = &self->getRenderBuffer();
@@ -1695,10 +2150,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxRenderBuffer W_getRenderBuffer(PxScene selfPtr);
+    static extern PxRenderBufferPtr W_getRenderBuffer(PxScenePtr selfPtr);
     
-    public PxRenderBuffer getRenderBuffer(){
-        PxRenderBuffer retVal = W_getRenderBuffer(this);
+    public PxRenderBufferPtr getRenderBuffer(){
+        PxRenderBufferPtr retVal = W_getRenderBuffer(this);
         return retVal;
     }
     #endif*/
@@ -1707,9 +2162,8 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getSimulationStatistics                                                #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxSimulationStatistics
+    /* ERRORS OCCURED: Forbidden parameter type: PxSimulationStatisticsPtr
     // NATIVE SIG: void				getSimulationStatistics(PxSimulationStatistics& stats) const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1155~1155
     #if NATIVE
     ES void W_getSimulationStatistics(physx::PxScene* self, physx::PxSimulationStatistics* stats){
         auto nat_in_stats = (stats);
@@ -1717,10 +2171,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_getSimulationStatistics(PxScene selfPtr, PxSimulationStatistics stats);
+    static extern void W_getSimulationStatistics(PxScenePtr selfPtr, PxSimulationStatisticsPtr stats);
     
-    public void getSimulationStatistics(PxSimulationStatistics stats){
-        PxSimulationStatistics pvk_in_stats = (stats);
+    public void getSimulationStatistics(PxSimulationStatisticsPtr stats){
+        PxSimulationStatisticsPtr pvk_in_stats = (stats);
         W_getSimulationStatistics(this, pvk_in_stats);
     }
     #endif*/
@@ -1729,7 +2183,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getStaticStructure                                                     #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1170~1170
     #if NATIVE
     ES physx::PxPruningStructureType::Enum W_getStaticStructure(physx::PxScene* self){
         auto retVal = self->getStaticStructure();
@@ -1737,7 +2190,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPruningStructureType W_getStaticStructure(PxScene selfPtr);
+    static extern PxPruningStructureType W_getStaticStructure(PxScenePtr selfPtr);
     
     public PxPruningStructureType getStaticStructure(){
         PxPruningStructureType retVal = W_getStaticStructure(this);
@@ -1749,7 +2202,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getDynamicStructure                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1177~1177
     #if NATIVE
     ES physx::PxPruningStructureType::Enum W_getDynamicStructure(physx::PxScene* self){
         auto retVal = self->getDynamicStructure();
@@ -1757,7 +2209,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPruningStructureType W_getDynamicStructure(PxScene selfPtr);
+    static extern PxPruningStructureType W_getDynamicStructure(PxScenePtr selfPtr);
     
     public PxPruningStructureType getDynamicStructure(){
         PxPruningStructureType retVal = W_getDynamicStructure(this);
@@ -1769,14 +2221,13 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       flushQueryUpdates                                                      #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1194~1194
     #if NATIVE
     ES void W_flushQueryUpdates(physx::PxScene* self){
         self->flushQueryUpdates();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_flushQueryUpdates(PxScene selfPtr);
+    static extern void W_flushQueryUpdates(PxScenePtr selfPtr);
     
     public void flushQueryUpdates(){
         W_flushQueryUpdates(this);
@@ -1789,7 +2240,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxBatchQuery*		createBatchQuery(const PxBatchQueryDesc& desc) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1207~1207
     #if NATIVE
     ES physx::PxBatchQuery* W_createBatchQuery(physx::PxScene* self, physx::PxBatchQueryDesc* desc){
         auto nat_in_desc = (desc);
@@ -1798,11 +2248,11 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBatchQuery W_createBatchQuery(PxScene selfPtr, PxBatchQueryDesc desc);
+    static extern PxBatchQueryPtr W_createBatchQuery(PxScenePtr selfPtr, PxBatchQueryDescPtr desc);
     
-    public PxBatchQuery createBatchQuery(PxBatchQueryDesc desc){
-        PxBatchQueryDesc pvk_in_desc = (desc);
-        PxBatchQuery retVal = W_createBatchQuery(this, pvk_in_desc);
+    public PxBatchQueryPtr createBatchQuery(PxBatchQueryDescPtr desc){
+        PxBatchQueryDescPtr pvk_in_desc = (desc);
+        PxBatchQueryPtr retVal = W_createBatchQuery(this, pvk_in_desc);
         return retVal;
     }
     #endif*/
@@ -1811,7 +2261,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setDynamicTreeRebuildRateHint                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1216~1216
     #if NATIVE
     ES void W_setDynamicTreeRebuildRateHint(physx::PxScene* self, physx::PxU32 dynamicTreeRebuildRateHint){
         auto nat_in_dynamicTreeRebuildRateHint = (dynamicTreeRebuildRateHint);
@@ -1819,7 +2268,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setDynamicTreeRebuildRateHint(PxScene selfPtr, uint dynamicTreeRebuildRateHint);
+    static extern void W_setDynamicTreeRebuildRateHint(PxScenePtr selfPtr, uint dynamicTreeRebuildRateHint);
     
     public void setDynamicTreeRebuildRateHint(uint dynamicTreeRebuildRateHint){
         uint pvk_in_dynamicTreeRebuildRateHint = (dynamicTreeRebuildRateHint);
@@ -1831,7 +2280,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getDynamicTreeRebuildRateHint                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1225~1225
     #if NATIVE
     ES physx::PxU32 W_getDynamicTreeRebuildRateHint(physx::PxScene* self){
         auto retVal = self->getDynamicTreeRebuildRateHint();
@@ -1839,7 +2287,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getDynamicTreeRebuildRateHint(PxScene selfPtr);
+    static extern uint W_getDynamicTreeRebuildRateHint(PxScenePtr selfPtr);
     
     public uint getDynamicTreeRebuildRateHint(){
         uint retVal = W_getDynamicTreeRebuildRateHint(this);
@@ -1851,7 +2299,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       forceDynamicTreeRebuild                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1235~1235
     #if NATIVE
     ES void W_forceDynamicTreeRebuild(physx::PxScene* self, bool rebuildStaticStructure, bool rebuildDynamicStructure){
         auto nat_in_rebuildStaticStructure = (rebuildStaticStructure);
@@ -1860,7 +2307,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_forceDynamicTreeRebuild(PxScene selfPtr, bool rebuildStaticStructure, bool rebuildDynamicStructure);
+    static extern void W_forceDynamicTreeRebuild(PxScenePtr selfPtr, bool rebuildStaticStructure, bool rebuildDynamicStructure);
     
     public void forceDynamicTreeRebuild(bool rebuildStaticStructure, bool rebuildDynamicStructure){
         bool pvk_in_rebuildStaticStructure = (rebuildStaticStructure);
@@ -1873,7 +2320,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setSceneQueryUpdateMode                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1244~1244
     #if NATIVE
     ES void W_setSceneQueryUpdateMode(physx::PxScene* self, physx::PxSceneQueryUpdateMode::Enum updateMode){
         auto nat_in_updateMode = (updateMode);
@@ -1881,7 +2327,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setSceneQueryUpdateMode(PxScene selfPtr, PxSceneQueryUpdateMode updateMode);
+    static extern void W_setSceneQueryUpdateMode(PxScenePtr selfPtr, PxSceneQueryUpdateMode updateMode);
     
     public void setSceneQueryUpdateMode(PxSceneQueryUpdateMode updateMode){
         PxSceneQueryUpdateMode pvk_in_updateMode = (updateMode);
@@ -1893,7 +2339,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getSceneQueryUpdateMode                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1253~1253
     #if NATIVE
     ES physx::PxSceneQueryUpdateMode::Enum W_getSceneQueryUpdateMode(physx::PxScene* self){
         auto retVal = self->getSceneQueryUpdateMode();
@@ -1901,7 +2346,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxSceneQueryUpdateMode W_getSceneQueryUpdateMode(PxScene selfPtr);
+    static extern PxSceneQueryUpdateMode W_getSceneQueryUpdateMode(PxScenePtr selfPtr);
     
     public PxSceneQueryUpdateMode getSceneQueryUpdateMode(){
         PxSceneQueryUpdateMode retVal = W_getSceneQueryUpdateMode(this);
@@ -1913,9 +2358,8 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       sceneQueriesUpdate                                                     #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTask
+    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
     // NATIVE SIG: void				sceneQueriesUpdate(physx::PxBaseTask* completionTask = NULL, bool controlSimulation = true)	= 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1272~1272
     #if NATIVE
     ES void W_sceneQueriesUpdate(physx::PxScene* self, physx::PxBaseTask* completionTask, bool controlSimulation){
         auto nat_in_completionTask = (completionTask);
@@ -1924,20 +2368,55 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_sceneQueriesUpdate(PxScene selfPtr, PxBaseTask completionTask, bool controlSimulation);
+    static extern void W_sceneQueriesUpdate(PxScenePtr selfPtr, PxBaseTaskPtr completionTask, bool controlSimulation);
     
-    public void sceneQueriesUpdate(PxBaseTask completionTask, bool controlSimulation){
-        PxBaseTask pvk_in_completionTask = (completionTask);
+    public void sceneQueriesUpdate(PxBaseTaskPtr completionTask, bool controlSimulation){
+        PxBaseTaskPtr pvk_in_completionTask = (completionTask);
         bool pvk_in_controlSimulation = (controlSimulation);
         W_sceneQueriesUpdate(this, pvk_in_completionTask, pvk_in_controlSimulation);
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
+    // NATIVE SIG: void				sceneQueriesUpdate(physx::PxBaseTask* completionTask = NULL, bool controlSimulation = true)	= 0
+    #if NATIVE
+    ES void W_sceneQueriesUpdate_OL1(physx::PxScene* self, physx::PxBaseTask* completionTask){
+        auto nat_in_completionTask = (completionTask);
+        self->sceneQueriesUpdate(nat_in_completionTask);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_sceneQueriesUpdate_OL1(PxScenePtr selfPtr, PxBaseTaskPtr completionTask);
+    
+    public void sceneQueriesUpdate(PxBaseTaskPtr completionTask){
+        PxBaseTaskPtr pvk_in_completionTask = (completionTask);
+        W_sceneQueriesUpdate_OL1(this, pvk_in_completionTask);
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_sceneQueriesUpdate_OL2(physx::PxScene* self){
+        self->sceneQueriesUpdate();
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_sceneQueriesUpdate_OL2(PxScenePtr selfPtr);
+    
+    public void sceneQueriesUpdate(){
+        W_sceneQueriesUpdate_OL2(this);
+    }
+    #endif
+    
+    
+    
     
     //================================================================================
     //#       checkQueries                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1285~1285
     #if NATIVE
     ES bool W_checkQueries(physx::PxScene* self, bool block){
         auto nat_in_block = (block);
@@ -1946,7 +2425,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_checkQueries(PxScene selfPtr, bool block);
+    static extern bool W_checkQueries(PxScenePtr selfPtr, bool block);
     
     public bool checkQueries(bool block){
         bool pvk_in_block = (block);
@@ -1956,10 +2435,27 @@ public unsafe partial struct PxScene { // pointer
     #endif
     
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES bool W_checkQueries_OL1(physx::PxScene* self){
+        auto retVal = self->checkQueries();
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_checkQueries_OL1(PxScenePtr selfPtr);
+    
+    public bool checkQueries(){
+        bool retVal = W_checkQueries_OL1(this);
+        return retVal;
+    }
+    #endif
+    
+    
+    
     //================================================================================
     //#       fetchQueries                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1296~1296
     #if NATIVE
     ES bool W_fetchQueries(physx::PxScene* self, bool block){
         auto nat_in_block = (block);
@@ -1968,7 +2464,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_fetchQueries(PxScene selfPtr, bool block);
+    static extern bool W_fetchQueries(PxScenePtr selfPtr, bool block);
     
     public bool fetchQueries(bool block){
         bool pvk_in_block = (block);
@@ -1976,6 +2472,24 @@ public unsafe partial struct PxScene { // pointer
         return retVal;
     }
     #endif
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES bool W_fetchQueries_OL1(physx::PxScene* self){
+        auto retVal = self->fetchQueries();
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_fetchQueries_OL1(PxScenePtr selfPtr);
+    
+    public bool fetchQueries(){
+        bool retVal = W_fetchQueries_OL1(this);
+        return retVal;
+    }
+    #endif
+    
     
     
     //================================================================================
@@ -1988,7 +2502,6 @@ public unsafe partial struct PxScene { // pointer
     									PxRaycastCallback& hitCall, PxHitFlags hitFlags = PxHitFlags(PxHitFlag::eDEFAULT),
     									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL,
     									const PxQueryCache* cache = NULL) const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1320~1324
     #if NATIVE
     ES bool W_raycast(physx::PxScene* self, physx::PxVec3 origin, physx::PxVec3 unitDir, physx::PxReal distance,  hitCall,  hitFlags, physx::PxQueryFilterData* filterData, physx::PxQueryFilterCallback* filterCall, physx::PxQueryCache* cache){
         auto nat_in_origin = (origin);
@@ -2004,21 +2517,164 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_raycast(PxScene selfPtr, PxVec3 origin, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterData filterData, PxQueryFilterCallback filterCall, PxQueryCache cache);
+    static extern bool W_raycast(PxScenePtr selfPtr, PxVec3 origin, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall, PxQueryCachePtr cache);
     
-    public bool raycast(PxVec3 origin, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterData filterData, PxQueryFilterCallback filterCall, PxQueryCache cache){
+    public bool raycast(PxVec3 origin, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall, PxQueryCachePtr cache){
         PxVec3 pvk_in_origin = (origin);
         PxVec3 pvk_in_unitDir = (unitDir);
         float pvk_in_distance = (distance);
          pvk_in_hitCall = (hitCall);
          pvk_in_hitFlags = (hitFlags);
-        PxQueryFilterData pvk_in_filterData = (filterData);
-        PxQueryFilterCallback pvk_in_filterCall = (filterCall);
-        PxQueryCache pvk_in_cache = (cache);
+        PxQueryFilterDataPtr pvk_in_filterData = (filterData);
+        PxQueryFilterCallbackPtr pvk_in_filterCall = (filterCall);
+        PxQueryCachePtr pvk_in_cache = (cache);
         bool retVal = W_raycast(this, pvk_in_origin, pvk_in_unitDir, pvk_in_distance, pvk_in_hitCall, pvk_in_hitFlags, pvk_in_filterData, pvk_in_filterCall, pvk_in_cache);
         return retVal;
     }
     #endif*/
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: fsdfasdf
+    Unresolved parameter type physx::PxHitFlags
+    // NATIVE SIG: bool				raycast(
+    									const PxVec3& origin, const PxVec3& unitDir, const PxReal distance,
+    									PxRaycastCallback& hitCall, PxHitFlags hitFlags = PxHitFlags(PxHitFlag::eDEFAULT),
+    									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL,
+    									const PxQueryCache* cache = NULL) const = 0
+    #if NATIVE
+    ES bool W_raycast_OL1(physx::PxScene* self, physx::PxVec3 origin, physx::PxVec3 unitDir, physx::PxReal distance,  hitCall,  hitFlags, physx::PxQueryFilterData* filterData, physx::PxQueryFilterCallback* filterCall){
+        auto nat_in_origin = (origin);
+        auto nat_in_unitDir = (unitDir);
+        auto nat_in_distance = (distance);
+        auto nat_in_hitCall = (hitCall);
+        auto nat_in_hitFlags = (hitFlags);
+        auto nat_in_filterData = (filterData);
+        auto nat_in_filterCall = (filterCall);
+        auto retVal = self->raycast(nat_in_origin, nat_in_unitDir, nat_in_distance, nat_in_hitCall, nat_in_hitFlags, *nat_in_filterData, nat_in_filterCall);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_raycast_OL1(PxScenePtr selfPtr, PxVec3 origin, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall);
+    
+    public bool raycast(PxVec3 origin, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall){
+        PxVec3 pvk_in_origin = (origin);
+        PxVec3 pvk_in_unitDir = (unitDir);
+        float pvk_in_distance = (distance);
+         pvk_in_hitCall = (hitCall);
+         pvk_in_hitFlags = (hitFlags);
+        PxQueryFilterDataPtr pvk_in_filterData = (filterData);
+        PxQueryFilterCallbackPtr pvk_in_filterCall = (filterCall);
+        bool retVal = W_raycast_OL1(this, pvk_in_origin, pvk_in_unitDir, pvk_in_distance, pvk_in_hitCall, pvk_in_hitFlags, pvk_in_filterData, pvk_in_filterCall);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: fsdfasdf
+    Unresolved parameter type physx::PxHitFlags
+    // NATIVE SIG: bool				raycast(
+    									const PxVec3& origin, const PxVec3& unitDir, const PxReal distance,
+    									PxRaycastCallback& hitCall, PxHitFlags hitFlags = PxHitFlags(PxHitFlag::eDEFAULT),
+    									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL,
+    									const PxQueryCache* cache = NULL) const = 0
+    #if NATIVE
+    ES bool W_raycast_OL2(physx::PxScene* self, physx::PxVec3 origin, physx::PxVec3 unitDir, physx::PxReal distance,  hitCall,  hitFlags, physx::PxQueryFilterData* filterData){
+        auto nat_in_origin = (origin);
+        auto nat_in_unitDir = (unitDir);
+        auto nat_in_distance = (distance);
+        auto nat_in_hitCall = (hitCall);
+        auto nat_in_hitFlags = (hitFlags);
+        auto nat_in_filterData = (filterData);
+        auto retVal = self->raycast(nat_in_origin, nat_in_unitDir, nat_in_distance, nat_in_hitCall, nat_in_hitFlags, *nat_in_filterData);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_raycast_OL2(PxScenePtr selfPtr, PxVec3 origin, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData);
+    
+    public bool raycast(PxVec3 origin, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData){
+        PxVec3 pvk_in_origin = (origin);
+        PxVec3 pvk_in_unitDir = (unitDir);
+        float pvk_in_distance = (distance);
+         pvk_in_hitCall = (hitCall);
+         pvk_in_hitFlags = (hitFlags);
+        PxQueryFilterDataPtr pvk_in_filterData = (filterData);
+        bool retVal = W_raycast_OL2(this, pvk_in_origin, pvk_in_unitDir, pvk_in_distance, pvk_in_hitCall, pvk_in_hitFlags, pvk_in_filterData);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: fsdfasdf
+    Unresolved parameter type physx::PxHitFlags
+    // NATIVE SIG: bool				raycast(
+    									const PxVec3& origin, const PxVec3& unitDir, const PxReal distance,
+    									PxRaycastCallback& hitCall, PxHitFlags hitFlags = PxHitFlags(PxHitFlag::eDEFAULT),
+    									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL,
+    									const PxQueryCache* cache = NULL) const = 0
+    #if NATIVE
+    ES bool W_raycast_OL3(physx::PxScene* self, physx::PxVec3 origin, physx::PxVec3 unitDir, physx::PxReal distance,  hitCall,  hitFlags){
+        auto nat_in_origin = (origin);
+        auto nat_in_unitDir = (unitDir);
+        auto nat_in_distance = (distance);
+        auto nat_in_hitCall = (hitCall);
+        auto nat_in_hitFlags = (hitFlags);
+        auto retVal = self->raycast(nat_in_origin, nat_in_unitDir, nat_in_distance, nat_in_hitCall, nat_in_hitFlags);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_raycast_OL3(PxScenePtr selfPtr, PxVec3 origin, PxVec3 unitDir, float distance,  hitCall,  hitFlags);
+    
+    public bool raycast(PxVec3 origin, PxVec3 unitDir, float distance,  hitCall,  hitFlags){
+        PxVec3 pvk_in_origin = (origin);
+        PxVec3 pvk_in_unitDir = (unitDir);
+        float pvk_in_distance = (distance);
+         pvk_in_hitCall = (hitCall);
+         pvk_in_hitFlags = (hitFlags);
+        bool retVal = W_raycast_OL3(this, pvk_in_origin, pvk_in_unitDir, pvk_in_distance, pvk_in_hitCall, pvk_in_hitFlags);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: fsdfasdf
+    // NATIVE SIG: bool				raycast(
+    									const PxVec3& origin, const PxVec3& unitDir, const PxReal distance,
+    									PxRaycastCallback& hitCall, PxHitFlags hitFlags = PxHitFlags(PxHitFlag::eDEFAULT),
+    									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL,
+    									const PxQueryCache* cache = NULL) const = 0
+    #if NATIVE
+    ES bool W_raycast_OL4(physx::PxScene* self, physx::PxVec3 origin, physx::PxVec3 unitDir, physx::PxReal distance,  hitCall){
+        auto nat_in_origin = (origin);
+        auto nat_in_unitDir = (unitDir);
+        auto nat_in_distance = (distance);
+        auto nat_in_hitCall = (hitCall);
+        auto retVal = self->raycast(nat_in_origin, nat_in_unitDir, nat_in_distance, nat_in_hitCall);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_raycast_OL4(PxScenePtr selfPtr, PxVec3 origin, PxVec3 unitDir, float distance,  hitCall);
+    
+    public bool raycast(PxVec3 origin, PxVec3 unitDir, float distance,  hitCall){
+        PxVec3 pvk_in_origin = (origin);
+        PxVec3 pvk_in_unitDir = (unitDir);
+        float pvk_in_distance = (distance);
+         pvk_in_hitCall = (hitCall);
+        bool retVal = W_raycast_OL4(this, pvk_in_origin, pvk_in_unitDir, pvk_in_distance, pvk_in_hitCall);
+        return retVal;
+    }
+    #endif*/
+    
+    
     
     
     //================================================================================
@@ -2030,7 +2686,6 @@ public unsafe partial struct PxScene { // pointer
     									PxSweepCallback& hitCall, PxHitFlags hitFlags = PxHitFlags(PxHitFlag::eDEFAULT),
     									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL,
     									const PxQueryCache* cache = NULL, const PxReal inflation = 0.f) const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1353~1356
     #if NATIVE
     ES bool W_sweep(physx::PxScene* self, physx::PxGeometry* geometry, physx::PxTransform pose, physx::PxVec3 unitDir, physx::PxReal distance,  hitCall,  hitFlags, physx::PxQueryFilterData* filterData, physx::PxQueryFilterCallback* filterCall, physx::PxQueryCache* cache, physx::PxReal inflation){
         auto nat_in_geometry = (geometry);
@@ -2048,23 +2703,212 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_sweep(PxScene selfPtr, PxGeometry geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterData filterData, PxQueryFilterCallback filterCall, PxQueryCache cache, float inflation);
+    static extern bool W_sweep(PxScenePtr selfPtr, PxGeometryPtr geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall, PxQueryCachePtr cache, float inflation);
     
-    public bool sweep(PxGeometry geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterData filterData, PxQueryFilterCallback filterCall, PxQueryCache cache, float inflation){
-        PxGeometry pvk_in_geometry = (geometry);
+    public bool sweep(PxGeometryPtr geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall, PxQueryCachePtr cache, float inflation){
+        PxGeometryPtr pvk_in_geometry = (geometry);
         PxTransform pvk_in_pose = (pose);
         PxVec3 pvk_in_unitDir = (unitDir);
         float pvk_in_distance = (distance);
          pvk_in_hitCall = (hitCall);
          pvk_in_hitFlags = (hitFlags);
-        PxQueryFilterData pvk_in_filterData = (filterData);
-        PxQueryFilterCallback pvk_in_filterCall = (filterCall);
-        PxQueryCache pvk_in_cache = (cache);
+        PxQueryFilterDataPtr pvk_in_filterData = (filterData);
+        PxQueryFilterCallbackPtr pvk_in_filterCall = (filterCall);
+        PxQueryCachePtr pvk_in_cache = (cache);
         float pvk_in_inflation = (inflation);
         bool retVal = W_sweep(this, pvk_in_geometry, pvk_in_pose, pvk_in_unitDir, pvk_in_distance, pvk_in_hitCall, pvk_in_hitFlags, pvk_in_filterData, pvk_in_filterCall, pvk_in_cache, pvk_in_inflation);
         return retVal;
     }
     #endif*/
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: fsdfasdf
+    Unresolved parameter type physx::PxHitFlags
+    // NATIVE SIG: bool				sweep(const PxGeometry& geometry, const PxTransform& pose, const PxVec3& unitDir, const PxReal distance,
+    									PxSweepCallback& hitCall, PxHitFlags hitFlags = PxHitFlags(PxHitFlag::eDEFAULT),
+    									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL,
+    									const PxQueryCache* cache = NULL, const PxReal inflation = 0.f) const = 0
+    #if NATIVE
+    ES bool W_sweep_OL1(physx::PxScene* self, physx::PxGeometry* geometry, physx::PxTransform pose, physx::PxVec3 unitDir, physx::PxReal distance,  hitCall,  hitFlags, physx::PxQueryFilterData* filterData, physx::PxQueryFilterCallback* filterCall, physx::PxQueryCache* cache){
+        auto nat_in_geometry = (geometry);
+        auto nat_in_pose = (pose);
+        auto nat_in_unitDir = (unitDir);
+        auto nat_in_distance = (distance);
+        auto nat_in_hitCall = (hitCall);
+        auto nat_in_hitFlags = (hitFlags);
+        auto nat_in_filterData = (filterData);
+        auto nat_in_filterCall = (filterCall);
+        auto nat_in_cache = (cache);
+        auto retVal = self->sweep(*nat_in_geometry, nat_in_pose, nat_in_unitDir, nat_in_distance, nat_in_hitCall, nat_in_hitFlags, *nat_in_filterData, nat_in_filterCall, nat_in_cache);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_sweep_OL1(PxScenePtr selfPtr, PxGeometryPtr geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall, PxQueryCachePtr cache);
+    
+    public bool sweep(PxGeometryPtr geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall, PxQueryCachePtr cache){
+        PxGeometryPtr pvk_in_geometry = (geometry);
+        PxTransform pvk_in_pose = (pose);
+        PxVec3 pvk_in_unitDir = (unitDir);
+        float pvk_in_distance = (distance);
+         pvk_in_hitCall = (hitCall);
+         pvk_in_hitFlags = (hitFlags);
+        PxQueryFilterDataPtr pvk_in_filterData = (filterData);
+        PxQueryFilterCallbackPtr pvk_in_filterCall = (filterCall);
+        PxQueryCachePtr pvk_in_cache = (cache);
+        bool retVal = W_sweep_OL1(this, pvk_in_geometry, pvk_in_pose, pvk_in_unitDir, pvk_in_distance, pvk_in_hitCall, pvk_in_hitFlags, pvk_in_filterData, pvk_in_filterCall, pvk_in_cache);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: fsdfasdf
+    Unresolved parameter type physx::PxHitFlags
+    // NATIVE SIG: bool				sweep(const PxGeometry& geometry, const PxTransform& pose, const PxVec3& unitDir, const PxReal distance,
+    									PxSweepCallback& hitCall, PxHitFlags hitFlags = PxHitFlags(PxHitFlag::eDEFAULT),
+    									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL,
+    									const PxQueryCache* cache = NULL, const PxReal inflation = 0.f) const = 0
+    #if NATIVE
+    ES bool W_sweep_OL2(physx::PxScene* self, physx::PxGeometry* geometry, physx::PxTransform pose, physx::PxVec3 unitDir, physx::PxReal distance,  hitCall,  hitFlags, physx::PxQueryFilterData* filterData, physx::PxQueryFilterCallback* filterCall){
+        auto nat_in_geometry = (geometry);
+        auto nat_in_pose = (pose);
+        auto nat_in_unitDir = (unitDir);
+        auto nat_in_distance = (distance);
+        auto nat_in_hitCall = (hitCall);
+        auto nat_in_hitFlags = (hitFlags);
+        auto nat_in_filterData = (filterData);
+        auto nat_in_filterCall = (filterCall);
+        auto retVal = self->sweep(*nat_in_geometry, nat_in_pose, nat_in_unitDir, nat_in_distance, nat_in_hitCall, nat_in_hitFlags, *nat_in_filterData, nat_in_filterCall);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_sweep_OL2(PxScenePtr selfPtr, PxGeometryPtr geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall);
+    
+    public bool sweep(PxGeometryPtr geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall){
+        PxGeometryPtr pvk_in_geometry = (geometry);
+        PxTransform pvk_in_pose = (pose);
+        PxVec3 pvk_in_unitDir = (unitDir);
+        float pvk_in_distance = (distance);
+         pvk_in_hitCall = (hitCall);
+         pvk_in_hitFlags = (hitFlags);
+        PxQueryFilterDataPtr pvk_in_filterData = (filterData);
+        PxQueryFilterCallbackPtr pvk_in_filterCall = (filterCall);
+        bool retVal = W_sweep_OL2(this, pvk_in_geometry, pvk_in_pose, pvk_in_unitDir, pvk_in_distance, pvk_in_hitCall, pvk_in_hitFlags, pvk_in_filterData, pvk_in_filterCall);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: fsdfasdf
+    Unresolved parameter type physx::PxHitFlags
+    // NATIVE SIG: bool				sweep(const PxGeometry& geometry, const PxTransform& pose, const PxVec3& unitDir, const PxReal distance,
+    									PxSweepCallback& hitCall, PxHitFlags hitFlags = PxHitFlags(PxHitFlag::eDEFAULT),
+    									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL,
+    									const PxQueryCache* cache = NULL, const PxReal inflation = 0.f) const = 0
+    #if NATIVE
+    ES bool W_sweep_OL3(physx::PxScene* self, physx::PxGeometry* geometry, physx::PxTransform pose, physx::PxVec3 unitDir, physx::PxReal distance,  hitCall,  hitFlags, physx::PxQueryFilterData* filterData){
+        auto nat_in_geometry = (geometry);
+        auto nat_in_pose = (pose);
+        auto nat_in_unitDir = (unitDir);
+        auto nat_in_distance = (distance);
+        auto nat_in_hitCall = (hitCall);
+        auto nat_in_hitFlags = (hitFlags);
+        auto nat_in_filterData = (filterData);
+        auto retVal = self->sweep(*nat_in_geometry, nat_in_pose, nat_in_unitDir, nat_in_distance, nat_in_hitCall, nat_in_hitFlags, *nat_in_filterData);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_sweep_OL3(PxScenePtr selfPtr, PxGeometryPtr geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData);
+    
+    public bool sweep(PxGeometryPtr geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall,  hitFlags, PxQueryFilterDataPtr filterData){
+        PxGeometryPtr pvk_in_geometry = (geometry);
+        PxTransform pvk_in_pose = (pose);
+        PxVec3 pvk_in_unitDir = (unitDir);
+        float pvk_in_distance = (distance);
+         pvk_in_hitCall = (hitCall);
+         pvk_in_hitFlags = (hitFlags);
+        PxQueryFilterDataPtr pvk_in_filterData = (filterData);
+        bool retVal = W_sweep_OL3(this, pvk_in_geometry, pvk_in_pose, pvk_in_unitDir, pvk_in_distance, pvk_in_hitCall, pvk_in_hitFlags, pvk_in_filterData);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: fsdfasdf
+    Unresolved parameter type physx::PxHitFlags
+    // NATIVE SIG: bool				sweep(const PxGeometry& geometry, const PxTransform& pose, const PxVec3& unitDir, const PxReal distance,
+    									PxSweepCallback& hitCall, PxHitFlags hitFlags = PxHitFlags(PxHitFlag::eDEFAULT),
+    									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL,
+    									const PxQueryCache* cache = NULL, const PxReal inflation = 0.f) const = 0
+    #if NATIVE
+    ES bool W_sweep_OL4(physx::PxScene* self, physx::PxGeometry* geometry, physx::PxTransform pose, physx::PxVec3 unitDir, physx::PxReal distance,  hitCall,  hitFlags){
+        auto nat_in_geometry = (geometry);
+        auto nat_in_pose = (pose);
+        auto nat_in_unitDir = (unitDir);
+        auto nat_in_distance = (distance);
+        auto nat_in_hitCall = (hitCall);
+        auto nat_in_hitFlags = (hitFlags);
+        auto retVal = self->sweep(*nat_in_geometry, nat_in_pose, nat_in_unitDir, nat_in_distance, nat_in_hitCall, nat_in_hitFlags);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_sweep_OL4(PxScenePtr selfPtr, PxGeometryPtr geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall,  hitFlags);
+    
+    public bool sweep(PxGeometryPtr geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall,  hitFlags){
+        PxGeometryPtr pvk_in_geometry = (geometry);
+        PxTransform pvk_in_pose = (pose);
+        PxVec3 pvk_in_unitDir = (unitDir);
+        float pvk_in_distance = (distance);
+         pvk_in_hitCall = (hitCall);
+         pvk_in_hitFlags = (hitFlags);
+        bool retVal = W_sweep_OL4(this, pvk_in_geometry, pvk_in_pose, pvk_in_unitDir, pvk_in_distance, pvk_in_hitCall, pvk_in_hitFlags);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: fsdfasdf
+    // NATIVE SIG: bool				sweep(const PxGeometry& geometry, const PxTransform& pose, const PxVec3& unitDir, const PxReal distance,
+    									PxSweepCallback& hitCall, PxHitFlags hitFlags = PxHitFlags(PxHitFlag::eDEFAULT),
+    									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL,
+    									const PxQueryCache* cache = NULL, const PxReal inflation = 0.f) const = 0
+    #if NATIVE
+    ES bool W_sweep_OL5(physx::PxScene* self, physx::PxGeometry* geometry, physx::PxTransform pose, physx::PxVec3 unitDir, physx::PxReal distance,  hitCall){
+        auto nat_in_geometry = (geometry);
+        auto nat_in_pose = (pose);
+        auto nat_in_unitDir = (unitDir);
+        auto nat_in_distance = (distance);
+        auto nat_in_hitCall = (hitCall);
+        auto retVal = self->sweep(*nat_in_geometry, nat_in_pose, nat_in_unitDir, nat_in_distance, nat_in_hitCall);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_sweep_OL5(PxScenePtr selfPtr, PxGeometryPtr geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall);
+    
+    public bool sweep(PxGeometryPtr geometry, PxTransform pose, PxVec3 unitDir, float distance,  hitCall){
+        PxGeometryPtr pvk_in_geometry = (geometry);
+        PxTransform pvk_in_pose = (pose);
+        PxVec3 pvk_in_unitDir = (unitDir);
+        float pvk_in_distance = (distance);
+         pvk_in_hitCall = (hitCall);
+        bool retVal = W_sweep_OL5(this, pvk_in_geometry, pvk_in_pose, pvk_in_unitDir, pvk_in_distance, pvk_in_hitCall);
+        return retVal;
+    }
+    #endif*/
+    
+    
     
     
     //================================================================================
@@ -2074,7 +2918,6 @@ public unsafe partial struct PxScene { // pointer
     // NATIVE SIG: bool				overlap(const PxGeometry& geometry, const PxTransform& pose, PxOverlapCallback& hitCall,
     									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL
     									) const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1378~1380
     #if NATIVE
     ES bool W_overlap(physx::PxScene* self, physx::PxGeometry* geometry, physx::PxTransform pose,  hitCall, physx::PxQueryFilterData* filterData, physx::PxQueryFilterCallback* filterCall){
         auto nat_in_geometry = (geometry);
@@ -2087,24 +2930,81 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_overlap(PxScene selfPtr, PxGeometry geometry, PxTransform pose,  hitCall, PxQueryFilterData filterData, PxQueryFilterCallback filterCall);
+    static extern bool W_overlap(PxScenePtr selfPtr, PxGeometryPtr geometry, PxTransform pose,  hitCall, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall);
     
-    public bool overlap(PxGeometry geometry, PxTransform pose,  hitCall, PxQueryFilterData filterData, PxQueryFilterCallback filterCall){
-        PxGeometry pvk_in_geometry = (geometry);
+    public bool overlap(PxGeometryPtr geometry, PxTransform pose,  hitCall, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall){
+        PxGeometryPtr pvk_in_geometry = (geometry);
         PxTransform pvk_in_pose = (pose);
          pvk_in_hitCall = (hitCall);
-        PxQueryFilterData pvk_in_filterData = (filterData);
-        PxQueryFilterCallback pvk_in_filterCall = (filterCall);
+        PxQueryFilterDataPtr pvk_in_filterData = (filterData);
+        PxQueryFilterCallbackPtr pvk_in_filterCall = (filterCall);
         bool retVal = W_overlap(this, pvk_in_geometry, pvk_in_pose, pvk_in_hitCall, pvk_in_filterData, pvk_in_filterCall);
         return retVal;
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: fsdfasdf
+    // NATIVE SIG: bool				overlap(const PxGeometry& geometry, const PxTransform& pose, PxOverlapCallback& hitCall,
+    									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL
+    									) const = 0
+    #if NATIVE
+    ES bool W_overlap_OL1(physx::PxScene* self, physx::PxGeometry* geometry, physx::PxTransform pose,  hitCall, physx::PxQueryFilterData* filterData){
+        auto nat_in_geometry = (geometry);
+        auto nat_in_pose = (pose);
+        auto nat_in_hitCall = (hitCall);
+        auto nat_in_filterData = (filterData);
+        auto retVal = self->overlap(*nat_in_geometry, nat_in_pose, nat_in_hitCall, *nat_in_filterData);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_overlap_OL1(PxScenePtr selfPtr, PxGeometryPtr geometry, PxTransform pose,  hitCall, PxQueryFilterDataPtr filterData);
+    
+    public bool overlap(PxGeometryPtr geometry, PxTransform pose,  hitCall, PxQueryFilterDataPtr filterData){
+        PxGeometryPtr pvk_in_geometry = (geometry);
+        PxTransform pvk_in_pose = (pose);
+         pvk_in_hitCall = (hitCall);
+        PxQueryFilterDataPtr pvk_in_filterData = (filterData);
+        bool retVal = W_overlap_OL1(this, pvk_in_geometry, pvk_in_pose, pvk_in_hitCall, pvk_in_filterData);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: fsdfasdf
+    // NATIVE SIG: bool				overlap(const PxGeometry& geometry, const PxTransform& pose, PxOverlapCallback& hitCall,
+    									const PxQueryFilterData& filterData = PxQueryFilterData(), PxQueryFilterCallback* filterCall = NULL
+    									) const = 0
+    #if NATIVE
+    ES bool W_overlap_OL2(physx::PxScene* self, physx::PxGeometry* geometry, physx::PxTransform pose,  hitCall){
+        auto nat_in_geometry = (geometry);
+        auto nat_in_pose = (pose);
+        auto nat_in_hitCall = (hitCall);
+        auto retVal = self->overlap(*nat_in_geometry, nat_in_pose, nat_in_hitCall);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern bool W_overlap_OL2(PxScenePtr selfPtr, PxGeometryPtr geometry, PxTransform pose,  hitCall);
+    
+    public bool overlap(PxGeometryPtr geometry, PxTransform pose,  hitCall){
+        PxGeometryPtr pvk_in_geometry = (geometry);
+        PxTransform pvk_in_pose = (pose);
+         pvk_in_hitCall = (hitCall);
+        bool retVal = W_overlap_OL2(this, pvk_in_geometry, pvk_in_pose, pvk_in_hitCall);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
     
     //================================================================================
     //#       getSceneQueryStaticTimestamp                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1389~1389
     #if NATIVE
     ES physx::PxU32 W_getSceneQueryStaticTimestamp(physx::PxScene* self){
         auto retVal = self->getSceneQueryStaticTimestamp();
@@ -2112,7 +3012,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getSceneQueryStaticTimestamp(PxScene selfPtr);
+    static extern uint W_getSceneQueryStaticTimestamp(PxScenePtr selfPtr);
     
     public uint getSceneQueryStaticTimestamp(){
         uint retVal = W_getSceneQueryStaticTimestamp(this);
@@ -2126,7 +3026,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxBroadPhaseType::Enum	getBroadPhaseType()								const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1402~1402
     #if NATIVE
     ES physx::PxBroadPhaseType::Enum W_getBroadPhaseType(physx::PxScene* self){
         auto retVal = self->getBroadPhaseType();
@@ -2134,7 +3033,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBroadPhaseType W_getBroadPhaseType(PxScene selfPtr);
+    static extern PxBroadPhaseType W_getBroadPhaseType(PxScenePtr selfPtr);
     
     public PxBroadPhaseType getBroadPhaseType(){
         PxBroadPhaseType retVal = W_getBroadPhaseType(this);
@@ -2148,7 +3047,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxBroadPhaseCaps
     // NATIVE SIG: bool					getBroadPhaseCaps(PxBroadPhaseCaps& caps)			const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1410~1410
     #if NATIVE
     ES bool W_getBroadPhaseCaps(physx::PxScene* self,  caps){
         auto nat_in_caps = (caps);
@@ -2157,7 +3055,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_getBroadPhaseCaps(PxScene selfPtr,  caps);
+    static extern bool W_getBroadPhaseCaps(PxScenePtr selfPtr,  caps);
     
     public bool getBroadPhaseCaps( caps){
          pvk_in_caps = (caps);
@@ -2170,7 +3068,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getNbBroadPhaseRegions                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1417~1417
     #if NATIVE
     ES physx::PxU32 W_getNbBroadPhaseRegions(physx::PxScene* self){
         auto retVal = self->getNbBroadPhaseRegions();
@@ -2178,7 +3075,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getNbBroadPhaseRegions(PxScene selfPtr);
+    static extern uint W_getNbBroadPhaseRegions(PxScenePtr selfPtr);
     
     public uint getNbBroadPhaseRegions(){
         uint retVal = W_getNbBroadPhaseRegions(this);
@@ -2190,9 +3087,8 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getBroadPhaseRegions                                                   #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxBroadPhaseRegionInfo
+    /* ERRORS OCCURED: Forbidden parameter type: PxBroadPhaseRegionInfoPtr
     // NATIVE SIG: PxU32					getBroadPhaseRegions(PxBroadPhaseRegionInfo* userBuffer, PxU32 bufferSize, PxU32 startIndex=0) const	= 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1427~1427
     #if NATIVE
     ES physx::PxU32 W_getBroadPhaseRegions(physx::PxScene* self, physx::PxBroadPhaseRegionInfo* userBuffer, physx::PxU32 bufferSize, physx::PxU32 startIndex){
         auto nat_in_userBuffer = (userBuffer);
@@ -2203,10 +3099,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getBroadPhaseRegions(PxScene selfPtr, PxBroadPhaseRegionInfo userBuffer, uint bufferSize, uint startIndex);
+    static extern uint W_getBroadPhaseRegions(PxScenePtr selfPtr, PxBroadPhaseRegionInfoPtr userBuffer, uint bufferSize, uint startIndex);
     
-    public uint getBroadPhaseRegions(PxBroadPhaseRegionInfo userBuffer, uint bufferSize, uint startIndex){
-        PxBroadPhaseRegionInfo pvk_in_userBuffer = (userBuffer);
+    public uint getBroadPhaseRegions(PxBroadPhaseRegionInfoPtr userBuffer, uint bufferSize, uint startIndex){
+        PxBroadPhaseRegionInfoPtr pvk_in_userBuffer = (userBuffer);
         uint pvk_in_bufferSize = (bufferSize);
         uint pvk_in_startIndex = (startIndex);
         uint retVal = W_getBroadPhaseRegions(this, pvk_in_userBuffer, pvk_in_bufferSize, pvk_in_startIndex);
@@ -2214,13 +3110,36 @@ public unsafe partial struct PxScene { // pointer
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Forbidden parameter type: PxBroadPhaseRegionInfoPtr
+    // NATIVE SIG: PxU32					getBroadPhaseRegions(PxBroadPhaseRegionInfo* userBuffer, PxU32 bufferSize, PxU32 startIndex=0) const	= 0
+    #if NATIVE
+    ES physx::PxU32 W_getBroadPhaseRegions_OL1(physx::PxScene* self, physx::PxBroadPhaseRegionInfo* userBuffer, physx::PxU32 bufferSize){
+        auto nat_in_userBuffer = (userBuffer);
+        auto nat_in_bufferSize = (bufferSize);
+        auto retVal = self->getBroadPhaseRegions(nat_in_userBuffer, nat_in_bufferSize);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern uint W_getBroadPhaseRegions_OL1(PxScenePtr selfPtr, PxBroadPhaseRegionInfoPtr userBuffer, uint bufferSize);
+    
+    public uint getBroadPhaseRegions(PxBroadPhaseRegionInfoPtr userBuffer, uint bufferSize){
+        PxBroadPhaseRegionInfoPtr pvk_in_userBuffer = (userBuffer);
+        uint pvk_in_bufferSize = (bufferSize);
+        uint retVal = W_getBroadPhaseRegions_OL1(this, pvk_in_userBuffer, pvk_in_bufferSize);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
     
     //================================================================================
     //#       addBroadPhaseRegion                                                    #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxBroadPhaseRegion
+    /* ERRORS OCCURED: Forbidden parameter type: PxBroadPhaseRegionPtr
     // NATIVE SIG: PxU32					addBroadPhaseRegion(const PxBroadPhaseRegion& region, bool populateRegion=false)		= 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1445~1445
     #if NATIVE
     ES physx::PxU32 W_addBroadPhaseRegion(physx::PxScene* self, physx::PxBroadPhaseRegion* region, bool populateRegion){
         auto nat_in_region = (region);
@@ -2230,21 +3149,42 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_addBroadPhaseRegion(PxScene selfPtr, PxBroadPhaseRegion region, bool populateRegion);
+    static extern uint W_addBroadPhaseRegion(PxScenePtr selfPtr, PxBroadPhaseRegionPtr region, bool populateRegion);
     
-    public uint addBroadPhaseRegion(PxBroadPhaseRegion region, bool populateRegion){
-        PxBroadPhaseRegion pvk_in_region = (region);
+    public uint addBroadPhaseRegion(PxBroadPhaseRegionPtr region, bool populateRegion){
+        PxBroadPhaseRegionPtr pvk_in_region = (region);
         bool pvk_in_populateRegion = (populateRegion);
         uint retVal = W_addBroadPhaseRegion(this, pvk_in_region, pvk_in_populateRegion);
         return retVal;
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: Forbidden parameter type: PxBroadPhaseRegionPtr
+    // NATIVE SIG: PxU32					addBroadPhaseRegion(const PxBroadPhaseRegion& region, bool populateRegion=false)		= 0
+    #if NATIVE
+    ES physx::PxU32 W_addBroadPhaseRegion_OL1(physx::PxScene* self, physx::PxBroadPhaseRegion* region){
+        auto nat_in_region = (region);
+        auto retVal = self->addBroadPhaseRegion(*nat_in_region);
+        return retVal;
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern uint W_addBroadPhaseRegion_OL1(PxScenePtr selfPtr, PxBroadPhaseRegionPtr region);
+    
+    public uint addBroadPhaseRegion(PxBroadPhaseRegionPtr region){
+        PxBroadPhaseRegionPtr pvk_in_region = (region);
+        uint retVal = W_addBroadPhaseRegion_OL1(this, pvk_in_region);
+        return retVal;
+    }
+    #endif*/
+    
+    
+    
     
     //================================================================================
     //#       removeBroadPhaseRegion                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1460~1460
     #if NATIVE
     ES bool W_removeBroadPhaseRegion(physx::PxScene* self, physx::PxU32 handle){
         auto nat_in_handle = (handle);
@@ -2253,7 +3193,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_removeBroadPhaseRegion(PxScene selfPtr, uint handle);
+    static extern bool W_removeBroadPhaseRegion(PxScenePtr selfPtr, uint handle);
     
     public bool removeBroadPhaseRegion(uint handle){
         uint pvk_in_handle = (handle);
@@ -2268,7 +3208,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxTaskManager*			getTaskManager() const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1475~1475
     #if NATIVE
     ES physx::PxTaskManager* W_getTaskManager(physx::PxScene* self){
         auto retVal = self->getTaskManager();
@@ -2276,10 +3215,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTaskManager W_getTaskManager(PxScene selfPtr);
+    static extern PxTaskManagerPtr W_getTaskManager(PxScenePtr selfPtr);
     
-    public PxTaskManager getTaskManager(){
-        PxTaskManager retVal = W_getTaskManager(this);
+    public PxTaskManagerPtr getTaskManager(){
+        PxTaskManagerPtr retVal = W_getTaskManager(this);
         return retVal;
     }
     #endif*/
@@ -2288,7 +3227,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       lockRead                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1496~1496
     #if NATIVE
     ES void W_lockRead(physx::PxScene* self, const char* file, physx::PxU32 line){
         auto nat_in_file = (file);
@@ -2297,7 +3235,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_lockRead(PxScene selfPtr, string file, uint line);
+    static extern void W_lockRead(PxScenePtr selfPtr, string file, uint line);
     
     public void lockRead(string file, uint line){
         string pvk_in_file = (file);
@@ -2307,17 +3245,50 @@ public unsafe partial struct PxScene { // pointer
     #endif
     
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_lockRead_OL1(physx::PxScene* self, const char* file){
+        auto nat_in_file = (file);
+        self->lockRead(nat_in_file);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_lockRead_OL1(PxScenePtr selfPtr, string file);
+    
+    public void lockRead(string file){
+        string pvk_in_file = (file);
+        W_lockRead_OL1(this, pvk_in_file);
+    }
+    #endif
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_lockRead_OL2(physx::PxScene* self){
+        self->lockRead();
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_lockRead_OL2(PxScenePtr selfPtr);
+    
+    public void lockRead(){
+        W_lockRead_OL2(this);
+    }
+    #endif
+    
+    
+    
     //================================================================================
     //#       unlockRead                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1503~1503
     #if NATIVE
     ES void W_unlockRead(physx::PxScene* self){
         self->unlockRead();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_unlockRead(PxScene selfPtr);
+    static extern void W_unlockRead(PxScenePtr selfPtr);
     
     public void unlockRead(){
         W_unlockRead(this);
@@ -2328,7 +3299,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       lockWrite                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1530~1530
     #if NATIVE
     ES void W_lockWrite(physx::PxScene* self, const char* file, physx::PxU32 line){
         auto nat_in_file = (file);
@@ -2337,7 +3307,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_lockWrite(PxScene selfPtr, string file, uint line);
+    static extern void W_lockWrite(PxScenePtr selfPtr, string file, uint line);
     
     public void lockWrite(string file, uint line){
         string pvk_in_file = (file);
@@ -2347,17 +3317,50 @@ public unsafe partial struct PxScene { // pointer
     #endif
     
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_lockWrite_OL1(physx::PxScene* self, const char* file){
+        auto nat_in_file = (file);
+        self->lockWrite(nat_in_file);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_lockWrite_OL1(PxScenePtr selfPtr, string file);
+    
+    public void lockWrite(string file){
+        string pvk_in_file = (file);
+        W_lockWrite_OL1(this, pvk_in_file);
+    }
+    #endif
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    #if NATIVE
+    ES void W_lockWrite_OL2(physx::PxScene* self){
+        self->lockWrite();
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern void W_lockWrite_OL2(PxScenePtr selfPtr);
+    
+    public void lockWrite(){
+        W_lockWrite_OL2(this);
+    }
+    #endif
+    
+    
+    
     //================================================================================
     //#       unlockWrite                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1537~1537
     #if NATIVE
     ES void W_unlockWrite(physx::PxScene* self){
         self->unlockWrite();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_unlockWrite(PxScene selfPtr);
+    static extern void W_unlockWrite(PxScenePtr selfPtr);
     
     public void unlockWrite(){
         W_unlockWrite(this);
@@ -2368,7 +3371,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setNbContactDataBlocks                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1553~1553
     #if NATIVE
     ES void W_setNbContactDataBlocks(physx::PxScene* self, physx::PxU32 numBlocks){
         auto nat_in_numBlocks = (numBlocks);
@@ -2376,7 +3378,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setNbContactDataBlocks(PxScene selfPtr, uint numBlocks);
+    static extern void W_setNbContactDataBlocks(PxScenePtr selfPtr, uint numBlocks);
     
     public void setNbContactDataBlocks(uint numBlocks){
         uint pvk_in_numBlocks = (numBlocks);
@@ -2388,7 +3390,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getNbContactDataBlocksUsed                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1565~1565
     #if NATIVE
     ES physx::PxU32 W_getNbContactDataBlocksUsed(physx::PxScene* self){
         auto retVal = self->getNbContactDataBlocksUsed();
@@ -2396,7 +3397,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getNbContactDataBlocksUsed(PxScene selfPtr);
+    static extern uint W_getNbContactDataBlocksUsed(PxScenePtr selfPtr);
     
     public uint getNbContactDataBlocksUsed(){
         uint retVal = W_getNbContactDataBlocksUsed(this);
@@ -2408,7 +3409,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getMaxNbContactDataBlocksUsed                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1576~1576
     #if NATIVE
     ES physx::PxU32 W_getMaxNbContactDataBlocksUsed(physx::PxScene* self){
         auto retVal = self->getMaxNbContactDataBlocksUsed();
@@ -2416,7 +3416,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getMaxNbContactDataBlocksUsed(PxScene selfPtr);
+    static extern uint W_getMaxNbContactDataBlocksUsed(PxScenePtr selfPtr);
     
     public uint getMaxNbContactDataBlocksUsed(){
         uint retVal = W_getMaxNbContactDataBlocksUsed(this);
@@ -2428,7 +3428,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getContactReportStreamBufferSize                                       #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1584~1584
     #if NATIVE
     ES physx::PxU32 W_getContactReportStreamBufferSize(physx::PxScene* self){
         auto retVal = self->getContactReportStreamBufferSize();
@@ -2436,7 +3435,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getContactReportStreamBufferSize(PxScene selfPtr);
+    static extern uint W_getContactReportStreamBufferSize(PxScenePtr selfPtr);
     
     public uint getContactReportStreamBufferSize(){
         uint retVal = W_getContactReportStreamBufferSize(this);
@@ -2448,7 +3447,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       setSolverBatchSize                                                     #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1594~1594
     #if NATIVE
     ES void W_setSolverBatchSize(physx::PxScene* self, physx::PxU32 solverBatchSize){
         auto nat_in_solverBatchSize = (solverBatchSize);
@@ -2456,7 +3454,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setSolverBatchSize(PxScene selfPtr, uint solverBatchSize);
+    static extern void W_setSolverBatchSize(PxScenePtr selfPtr, uint solverBatchSize);
     
     public void setSolverBatchSize(uint solverBatchSize){
         uint pvk_in_solverBatchSize = (solverBatchSize);
@@ -2468,7 +3466,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getSolverBatchSize                                                     #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1603~1603
     #if NATIVE
     ES physx::PxU32 W_getSolverBatchSize(physx::PxScene* self){
         auto retVal = self->getSolverBatchSize();
@@ -2476,7 +3473,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getSolverBatchSize(PxScene selfPtr);
+    static extern uint W_getSolverBatchSize(PxScenePtr selfPtr);
     
     public uint getSolverBatchSize(){
         uint retVal = W_getSolverBatchSize(this);
@@ -2488,7 +3485,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       getWakeCounterResetValue                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1615~1615
     #if NATIVE
     ES physx::PxReal W_getWakeCounterResetValue(physx::PxScene* self){
         auto retVal = self->getWakeCounterResetValue();
@@ -2496,7 +3492,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getWakeCounterResetValue(PxScene selfPtr);
+    static extern float W_getWakeCounterResetValue(PxScenePtr selfPtr);
     
     public float getWakeCounterResetValue(){
         float retVal = W_getWakeCounterResetValue(this);
@@ -2508,7 +3504,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     //#       shiftOrigin                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1633~1633
     #if NATIVE
     ES void W_shiftOrigin(physx::PxScene* self, physx::PxVec3 shift){
         auto nat_in_shift = (shift);
@@ -2516,7 +3511,7 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_shiftOrigin(PxScene selfPtr, PxVec3 shift);
+    static extern void W_shiftOrigin(PxScenePtr selfPtr, PxVec3 shift);
     
     public void shiftOrigin(PxVec3 shift){
         PxVec3 pvk_in_shift = (shift);
@@ -2530,7 +3525,6 @@ public unsafe partial struct PxScene { // pointer
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxPvdSceneClient*		getScenePvdClient() = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L1639~1639
     #if NATIVE
     ES physx::PxPvdSceneClient* W_getScenePvdClient(physx::PxScene* self){
         auto retVal = self->getScenePvdClient();
@@ -2538,10 +3532,10 @@ public unsafe partial struct PxScene { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPvdSceneClient W_getScenePvdClient(PxScene selfPtr);
+    static extern PxPvdSceneClientPtr W_getScenePvdClient(PxScenePtr selfPtr);
     
-    public PxPvdSceneClient getScenePvdClient(){
-        PxPvdSceneClient retVal = W_getScenePvdClient(this);
+    public PxPvdSceneClientPtr getScenePvdClient(){
+        PxPvdSceneClientPtr retVal = W_getScenePvdClient(this);
         return retVal;
     }
     #endif*/
@@ -2559,7 +3553,7 @@ public unsafe partial struct PxScene { // pointer
 // Class physx::PxPruningStructure Manually Ignored
 // Class physx::PxActorTypeFlag is enum namespace
 #if !NATIVE
-public unsafe partial struct PxDominanceGroupPair { // pointer
+public unsafe partial struct PxDominanceGroupPairPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -2569,7 +3563,6 @@ public unsafe partial struct PxDominanceGroupPair { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxDominanceGroupPair
     // NATIVE SIG: PxDominanceGroupPair(PxU8 a, PxU8 b) 
     		: dominance0(a), dominance1(b) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L85~86
     #if NATIVE
     ES UNPARSED_TYPE W_PxDominanceGroupPair_ctor(physx::PxU8 a, physx::PxU8 b){
         auto nat_in_a = (a);
@@ -2611,7 +3604,7 @@ public unsafe partial struct PxDominanceGroupPair { // pointer
 // Class physx::PxBatchQuery Manually Ignored
 
 #if !NATIVE
-public unsafe partial struct PxQueryCache { // pointer
+public unsafe partial struct PxQueryCachePtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -2629,7 +3622,6 @@ public unsafe partial struct PxQueryCache { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxQueryCache
     // NATIVE SIG: PX_INLINE PxQueryCache(PxShape* s, PxU32 findex) : shape(s), actor(NULL), faceIndex(findex) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxScene.h L153~153
     #if NATIVE
     ES UNPARSED_TYPE W_PxQueryCache_ctor(physx::PxShape* s, physx::PxU32 findex){
         auto nat_in_s = (s);
@@ -2638,10 +3630,10 @@ public unsafe partial struct PxQueryCache { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxQueryCache_ctor(PxShape s, uint findex);
+    static extern UNPARSED_TYPE W_PxQueryCache_ctor(PxShapePtr s, uint findex);
     
-    public PxQueryCache(PxShape s, uint findex){
-        PxShape pvk_in_s = (s);
+    public PxQueryCache(PxShapePtr s, uint findex){
+        PxShapePtr pvk_in_s = (s);
         uint pvk_in_findex = (findex);
         var _new = W_PxQueryCache_ctor(pvk_in_s, pvk_in_findex);
         fixed (void* ptr = &this)

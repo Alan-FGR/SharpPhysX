@@ -71,7 +71,7 @@ TypeList<
 	PxBounds3,
 	Px1DConstraint,
 	PxBoxGeometry,
-	PxPlaneGeometry,
+	//PxPlaneGeometry, NO FIELDS
 	PxCapsuleGeometry,
 	PxSphereGeometry
 >

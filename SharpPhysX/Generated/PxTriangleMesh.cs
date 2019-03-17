@@ -27,7 +27,6 @@ public partial struct PxTriangleMesh {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxTriangleMeshFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L95~95
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Pipe(physx::PxTriangleMeshFlag::Enum a, physx::PxTriangleMeshFlag::Enum b){
     auto nat_in_a = (a);
@@ -53,7 +52,6 @@ public static UNPARSED_TYPE operator|(PxTriangleMeshFlag a, PxTriangleMeshFlag b
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxTriangleMeshFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L95~95
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Amp(physx::PxTriangleMeshFlag::Enum a, physx::PxTriangleMeshFlag::Enum b){
     auto nat_in_a = (a);
@@ -79,7 +77,6 @@ public static UNPARSED_TYPE operator&(PxTriangleMeshFlag a, PxTriangleMeshFlag b
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxTriangleMeshFlag::Enum, unsigned char>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L95~95
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Tilde(physx::PxTriangleMeshFlag::Enum a){
     auto nat_in_a = (a);
@@ -103,14 +100,13 @@ public static UNPARSED_TYPE operator~(PxTriangleMeshFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxTriangleMesh { // pointer
+public unsafe partial struct PxTriangleMeshPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
     //================================================================================
     //#       getNbVertices                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L134~134
     #if NATIVE
     ES physx::PxU32 W_getNbVertices(physx::PxTriangleMesh* self){
         auto retVal = self->getNbVertices();
@@ -118,7 +114,7 @@ public unsafe partial struct PxTriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getNbVertices(PxTriangleMesh selfPtr);
+    static extern uint W_getNbVertices(PxTriangleMeshPtr selfPtr);
     
     public uint getNbVertices(){
         uint retVal = W_getNbVertices(this);
@@ -130,7 +126,6 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     //#       getVertices                                                            #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L141~141
     #if NATIVE
     ES physx::PxVec3* W_getVertices(physx::PxTriangleMesh* self){
         auto retVal = self->getVertices();
@@ -138,7 +133,7 @@ public unsafe partial struct PxTriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_getVertices(PxTriangleMesh selfPtr);
+    static extern PxVec3 W_getVertices(PxTriangleMeshPtr selfPtr);
     
     public PxVec3 getVertices(){
         PxVec3 retVal = W_getVertices(this);
@@ -150,7 +145,6 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     //#       getVerticesForModification                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L163~163
     #if NATIVE
     ES physx::PxVec3* W_getVerticesForModification(physx::PxTriangleMesh* self){
         auto retVal = self->getVerticesForModification();
@@ -158,7 +152,7 @@ public unsafe partial struct PxTriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_getVerticesForModification(PxTriangleMesh selfPtr);
+    static extern PxVec3 W_getVerticesForModification(PxTriangleMeshPtr selfPtr);
     
     public PxVec3 getVerticesForModification(){
         PxVec3 retVal = W_getVerticesForModification(this);
@@ -170,7 +164,6 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     //#       refitBVH                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L182~182
     #if NATIVE
     ES physx::PxBounds3 W_refitBVH(physx::PxTriangleMesh* self){
         auto retVal = self->refitBVH();
@@ -178,7 +171,7 @@ public unsafe partial struct PxTriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBounds3 W_refitBVH(PxTriangleMesh selfPtr);
+    static extern PxBounds3 W_refitBVH(PxTriangleMeshPtr selfPtr);
     
     public PxBounds3 refitBVH(){
         PxBounds3 retVal = W_refitBVH(this);
@@ -190,7 +183,6 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     //#       getNbTriangles                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L190~190
     #if NATIVE
     ES physx::PxU32 W_getNbTriangles(physx::PxTriangleMesh* self){
         auto retVal = self->getNbTriangles();
@@ -198,7 +190,7 @@ public unsafe partial struct PxTriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getNbTriangles(PxTriangleMesh selfPtr);
+    static extern uint W_getNbTriangles(PxTriangleMeshPtr selfPtr);
     
     public uint getNbTriangles(){
         uint retVal = W_getNbTriangles(this);
@@ -210,7 +202,6 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     //#       getTriangles                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L203~203
     #if NATIVE
     ES void* W_getTriangles(physx::PxTriangleMesh* self){
         auto retVal = self->getTriangles();
@@ -218,7 +209,7 @@ public unsafe partial struct PxTriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_getTriangles(PxTriangleMesh selfPtr);
+    static extern IntPtr W_getTriangles(PxTriangleMeshPtr selfPtr);
     
     public IntPtr getTriangles(){
         IntPtr retVal = W_getTriangles(this);
@@ -232,7 +223,6 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxTriangleMeshFlags
     // NATIVE SIG: PxTriangleMeshFlags		getTriangleMeshFlags()							const = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L214~214
     #if NATIVE
     ES UNPARSED_TYPE W_getTriangleMeshFlags(physx::PxTriangleMesh* self){
         auto retVal = self->getTriangleMeshFlags();
@@ -240,7 +230,7 @@ public unsafe partial struct PxTriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getTriangleMeshFlags(PxTriangleMesh selfPtr);
+    static extern UNPARSED_TYPE W_getTriangleMeshFlags(PxTriangleMeshPtr selfPtr);
     
     public UNPARSED_TYPE getTriangleMeshFlags(){
         UNPARSED_TYPE retVal = W_getTriangleMeshFlags(this);
@@ -252,7 +242,6 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     //#       getTrianglesRemap                                                      #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L228~228
     #if NATIVE
     ES uint* W_getTrianglesRemap(physx::PxTriangleMesh* self){
         auto retVal = self->getTrianglesRemap();
@@ -260,7 +249,7 @@ public unsafe partial struct PxTriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_getTrianglesRemap(PxTriangleMesh selfPtr);
+    static extern IntPtr W_getTrianglesRemap(PxTriangleMeshPtr selfPtr);
     
     public IntPtr getTrianglesRemap(){
         IntPtr retVal = W_getTrianglesRemap(this);
@@ -272,14 +261,13 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     //#       release                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L236~236
     #if NATIVE
     ES void W_release(physx::PxTriangleMesh* self){
         self->release();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_release(PxTriangleMesh selfPtr);
+    static extern void W_release(PxTriangleMeshPtr selfPtr);
     
     public void release(){
         W_release(this);
@@ -290,7 +278,6 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     //#       getTriangleMaterialIndex                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L246~246
     #if NATIVE
     ES physx::PxMaterialTableIndex W_getTriangleMaterialIndex(physx::PxTriangleMesh* self, physx::PxTriangleID triangleIndex){
         auto nat_in_triangleIndex = (triangleIndex);
@@ -299,7 +286,7 @@ public unsafe partial struct PxTriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern ushort W_getTriangleMaterialIndex(PxTriangleMesh selfPtr, uint triangleIndex);
+    static extern ushort W_getTriangleMaterialIndex(PxTriangleMeshPtr selfPtr, uint triangleIndex);
     
     public ushort getTriangleMaterialIndex(uint triangleIndex){
         uint pvk_in_triangleIndex = (triangleIndex);
@@ -312,7 +299,6 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     //#       getLocalBounds                                                         #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L253~253
     #if NATIVE
     ES physx::PxBounds3 W_getLocalBounds(physx::PxTriangleMesh* self){
         auto retVal = self->getLocalBounds();
@@ -320,7 +306,7 @@ public unsafe partial struct PxTriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBounds3 W_getLocalBounds(PxTriangleMesh selfPtr);
+    static extern PxBounds3 W_getLocalBounds(PxTriangleMeshPtr selfPtr);
     
     public PxBounds3 getLocalBounds(){
         PxBounds3 retVal = W_getLocalBounds(this);
@@ -332,7 +318,6 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     //#       getReferenceCount                                                      #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L263~263
     #if NATIVE
     ES physx::PxU32 W_getReferenceCount(physx::PxTriangleMesh* self){
         auto retVal = self->getReferenceCount();
@@ -340,7 +325,7 @@ public unsafe partial struct PxTriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getReferenceCount(PxTriangleMesh selfPtr);
+    static extern uint W_getReferenceCount(PxTriangleMeshPtr selfPtr);
     
     public uint getReferenceCount(){
         uint retVal = W_getReferenceCount(this);
@@ -352,14 +337,13 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     //#       acquireReference                                                       #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L270~270
     #if NATIVE
     ES void W_acquireReference(physx::PxTriangleMesh* self){
         self->acquireReference();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_acquireReference(PxTriangleMesh selfPtr);
+    static extern void W_acquireReference(PxTriangleMeshPtr selfPtr);
     
     public void acquireReference(){
         W_acquireReference(this);
@@ -373,7 +357,6 @@ public unsafe partial struct PxTriangleMesh { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxTriangleMesh
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE						PxTriangleMesh(PxType concreteType, PxBaseFlags baseFlags) : PxBase(concreteType, baseFlags)	{}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L273~273
     #if NATIVE
     ES UNPARSED_TYPE W_PxTriangleMesh_ctor(physx::PxType concreteType,  baseFlags){
         auto nat_in_concreteType = (concreteType);
@@ -400,7 +383,6 @@ public unsafe partial struct PxTriangleMesh { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxTriangleMesh
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE						PxTriangleMesh(PxBaseFlags baseFlags) : PxBase(baseFlags)										{}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L274~274
     #if NATIVE
     ES UNPARSED_TYPE W_PxTriangleMesh_ctor( baseFlags){
         auto nat_in_baseFlags = (baseFlags);
@@ -424,14 +406,13 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual							~PxTriangleMesh() {}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L275~275
     #if NATIVE
     ES void W_~PxTriangleMesh(physx::PxTriangleMesh* self){
         self->~PxTriangleMesh();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxTriangleMesh(PxTriangleMesh selfPtr);
+    static extern void W_~PxTriangleMesh(PxTriangleMeshPtr selfPtr);
     
     public void ~PxTriangleMesh(){
         W_~PxTriangleMesh(this);
@@ -442,7 +423,6 @@ public unsafe partial struct PxTriangleMesh { // pointer
     //================================================================================
     //#       isKindOf                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L277~277
     #if NATIVE
     ES bool W_isKindOf(physx::PxTriangleMesh* self, const char* name){
         auto nat_in_name = (name);
@@ -451,7 +431,7 @@ public unsafe partial struct PxTriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isKindOf(PxTriangleMesh selfPtr, string name);
+    static extern bool W_isKindOf(PxTriangleMeshPtr selfPtr, string name);
     
     public bool isKindOf(string name){
         string pvk_in_name = (name);
@@ -472,7 +452,7 @@ public unsafe partial struct PxTriangleMesh { // pointer
 
 // Class physx::PxTriangleMeshFlag is enum namespace
 #if !NATIVE
-public unsafe partial struct PxBVH33TriangleMesh { // pointer
+public unsafe partial struct PxBVH33TriangleMeshPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -482,7 +462,6 @@ public unsafe partial struct PxBVH33TriangleMesh { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxBVH33TriangleMesh
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE						PxBVH33TriangleMesh(PxType concreteType, PxBaseFlags baseFlags) : PxTriangleMesh(concreteType, baseFlags) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L290~290
     #if NATIVE
     ES UNPARSED_TYPE W_PxBVH33TriangleMesh_ctor(physx::PxType concreteType,  baseFlags){
         auto nat_in_concreteType = (concreteType);
@@ -509,7 +488,6 @@ public unsafe partial struct PxBVH33TriangleMesh { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxBVH33TriangleMesh
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE						PxBVH33TriangleMesh(PxBaseFlags baseFlags) : PxTriangleMesh(baseFlags) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L291~291
     #if NATIVE
     ES UNPARSED_TYPE W_PxBVH33TriangleMesh_ctor( baseFlags){
         auto nat_in_baseFlags = (baseFlags);
@@ -533,14 +511,13 @@ public unsafe partial struct PxBVH33TriangleMesh { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual							~PxBVH33TriangleMesh() {}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L292~292
     #if NATIVE
     ES void W_~PxBVH33TriangleMesh(physx::PxBVH33TriangleMesh* self){
         self->~PxBVH33TriangleMesh();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxBVH33TriangleMesh(PxBVH33TriangleMesh selfPtr);
+    static extern void W_~PxBVH33TriangleMesh(PxBVH33TriangleMeshPtr selfPtr);
     
     public void ~PxBVH33TriangleMesh(){
         W_~PxBVH33TriangleMesh(this);
@@ -551,7 +528,6 @@ public unsafe partial struct PxBVH33TriangleMesh { // pointer
     //================================================================================
     //#       isKindOf                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L293~293
     #if NATIVE
     ES bool W_isKindOf(physx::PxBVH33TriangleMesh* self, const char* name){
         auto nat_in_name = (name);
@@ -560,7 +536,7 @@ public unsafe partial struct PxBVH33TriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isKindOf(PxBVH33TriangleMesh selfPtr, string name);
+    static extern bool W_isKindOf(PxBVH33TriangleMeshPtr selfPtr, string name);
     
     public bool isKindOf(string name){
         string pvk_in_name = (name);
@@ -580,7 +556,7 @@ public unsafe partial struct PxBVH33TriangleMesh { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxBVH34TriangleMesh { // pointer
+public unsafe partial struct PxBVH34TriangleMeshPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -590,7 +566,6 @@ public unsafe partial struct PxBVH34TriangleMesh { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxBVH34TriangleMesh
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE						PxBVH34TriangleMesh(PxType concreteType, PxBaseFlags baseFlags) : PxTriangleMesh(concreteType, baseFlags) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L306~306
     #if NATIVE
     ES UNPARSED_TYPE W_PxBVH34TriangleMesh_ctor(physx::PxType concreteType,  baseFlags){
         auto nat_in_concreteType = (concreteType);
@@ -617,7 +592,6 @@ public unsafe partial struct PxBVH34TriangleMesh { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxBVH34TriangleMesh
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE						PxBVH34TriangleMesh(PxBaseFlags baseFlags) : PxTriangleMesh(baseFlags) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L307~307
     #if NATIVE
     ES UNPARSED_TYPE W_PxBVH34TriangleMesh_ctor( baseFlags){
         auto nat_in_baseFlags = (baseFlags);
@@ -641,14 +615,13 @@ public unsafe partial struct PxBVH34TriangleMesh { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual							~PxBVH34TriangleMesh() {}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L308~308
     #if NATIVE
     ES void W_~PxBVH34TriangleMesh(physx::PxBVH34TriangleMesh* self){
         self->~PxBVH34TriangleMesh();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxBVH34TriangleMesh(PxBVH34TriangleMesh selfPtr);
+    static extern void W_~PxBVH34TriangleMesh(PxBVH34TriangleMeshPtr selfPtr);
     
     public void ~PxBVH34TriangleMesh(){
         W_~PxBVH34TriangleMesh(this);
@@ -659,7 +632,6 @@ public unsafe partial struct PxBVH34TriangleMesh { // pointer
     //================================================================================
     //#       isKindOf                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxTriangleMesh.h L309~309
     #if NATIVE
     ES bool W_isKindOf(physx::PxBVH34TriangleMesh* self, const char* name){
         auto nat_in_name = (name);
@@ -668,7 +640,7 @@ public unsafe partial struct PxBVH34TriangleMesh { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isKindOf(PxBVH34TriangleMesh selfPtr, string name);
+    static extern bool W_isKindOf(PxBVH34TriangleMeshPtr selfPtr, string name);
     
     public bool isKindOf(string name){
         string pvk_in_name = (name);

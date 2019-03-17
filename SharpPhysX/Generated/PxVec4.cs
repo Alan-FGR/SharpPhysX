@@ -11,7 +11,6 @@ public partial struct PxVec4 {
 //================================================================================
 //#       operator*                                                              #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L366~369
 #if NATIVE
 ES physx::PxVec4 W_OP_Star(float f, physx::PxVec4 v){
     auto nat_in_f = (f);
@@ -56,7 +55,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       PxVec4                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L62~65
     #if NATIVE
     ES physx::PxVec4 W_PxVec4_ctor(physx::PxZERO r){
         auto nat_in_r = (r);
@@ -78,7 +76,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       PxVec4                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L74~76
     #if NATIVE
     ES physx::PxVec4 W_PxVec4_ctor(float a){
         auto nat_in_a = (a);
@@ -100,7 +97,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       PxVec4                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L86~88
     #if NATIVE
     ES physx::PxVec4 W_PxVec4_ctor(float nx, float ny, float nz, float nw){
         auto nat_in_nx = (nx);
@@ -128,7 +124,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       PxVec4                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L96~98
     #if NATIVE
     ES physx::PxVec4 W_PxVec4_ctor(physx::PxVec3 v, float nw){
         auto nat_in_v = (v);
@@ -156,7 +151,6 @@ public unsafe partial struct PxVec4 { // blittable
     // NATIVE SIG: explicit PX_CUDA_CALLABLE PX_INLINE PxVec4(const float v[]) : x(v[0]), y(v[1]), z(v[2]), w(v[3])
     	{
     	}
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L105~107
     #if NATIVE
     ES physx::PxVec4 W_PxVec4_ctor( v){
         auto nat_in_v = (v);
@@ -178,7 +172,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       PxVec4                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L112~114
     #if NATIVE
     ES physx::PxVec4 W_PxVec4_ctor(physx::PxVec4 v){
         auto nat_in_v = (v);
@@ -221,7 +214,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L153~156
     #if NATIVE
     ES bool W_OP_EqualEqual(physx::PxVec4 self, physx::PxVec4 v){
         auto nat_in_v = (v);
@@ -243,7 +235,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       operator!=                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L161~164
     #if NATIVE
     ES bool W_OP_ExclaimEqual(physx::PxVec4 self, physx::PxVec4 v){
         auto nat_in_v = (v);
@@ -265,7 +256,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       isZero                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L169~172
     #if NATIVE
     ES bool W_isZero(physx::PxVec4 self){
         auto retVal = self.isZero();
@@ -285,7 +275,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       isFinite                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L177~180
     #if NATIVE
     ES bool W_isFinite(physx::PxVec4 self){
         auto retVal = self.isFinite();
@@ -305,7 +294,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       isNormalized                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L185~189
     #if NATIVE
     ES bool W_isNormalized(physx::PxVec4 self){
         auto retVal = self.isNormalized();
@@ -325,7 +313,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       magnitudeSquared                                                       #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L196~199
     #if NATIVE
     ES float W_magnitudeSquared(physx::PxVec4 self){
         auto retVal = self.magnitudeSquared();
@@ -345,7 +332,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       magnitude                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L204~207
     #if NATIVE
     ES float W_magnitude(physx::PxVec4 self){
         auto retVal = self.magnitude();
@@ -365,7 +351,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L212~215
     #if NATIVE
     ES physx::PxVec4 W_OP_Minus(physx::PxVec4 self){
         auto retVal = self.operator-();
@@ -385,7 +370,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       operator+                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L220~223
     #if NATIVE
     ES physx::PxVec4 W_OP_Plus(physx::PxVec4 self, physx::PxVec4 v){
         auto nat_in_v = (v);
@@ -407,7 +391,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L228~231
     #if NATIVE
     ES physx::PxVec4 W_OP_Minus(physx::PxVec4 self, physx::PxVec4 v){
         auto nat_in_v = (v);
@@ -429,7 +412,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L237~240
     #if NATIVE
     ES physx::PxVec4 W_OP_Star(physx::PxVec4 self, float f){
         auto nat_in_f = (f);
@@ -451,7 +433,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       operator/                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L245~249
     #if NATIVE
     ES physx::PxVec4 W_OP_Slash(physx::PxVec4 self, float f){
         auto nat_in_f = (f);
@@ -501,7 +482,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       dot                                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L302~305
     #if NATIVE
     ES float W_dot(physx::PxVec4 self, physx::PxVec4 v){
         auto nat_in_v = (v);
@@ -523,7 +503,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       getNormalized                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L309~313
     #if NATIVE
     ES physx::PxVec4 W_getNormalized(physx::PxVec4 self){
         auto retVal = self.getNormalized();
@@ -543,7 +522,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       normalize                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L318~324
     #if NATIVE
     ES float W_normalize(physx::PxVec4 self){
         auto retVal = self.normalize();
@@ -563,7 +541,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       multiply                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L329~332
     #if NATIVE
     ES physx::PxVec4 W_multiply(physx::PxVec4 self, physx::PxVec4 a){
         auto nat_in_a = (a);
@@ -585,7 +562,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       minimum                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L337~340
     #if NATIVE
     ES physx::PxVec4 W_minimum(physx::PxVec4 self, physx::PxVec4 v){
         auto nat_in_v = (v);
@@ -607,7 +583,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       maximum                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L345~348
     #if NATIVE
     ES physx::PxVec4 W_maximum(physx::PxVec4 self, physx::PxVec4 v){
         auto nat_in_v = (v);
@@ -629,7 +604,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       getXYZ                                                                 #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L350~353
     #if NATIVE
     ES physx::PxVec3 W_getXYZ(physx::PxVec4 self){
         auto retVal = self.getXYZ();
@@ -649,7 +623,6 @@ public unsafe partial struct PxVec4 { // blittable
     //================================================================================
     //#       setZero                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\pxshared\include\foundation\PxVec4.h L358~361
     #if NATIVE
     ES void W_setZero(physx::PxVec4 self){
         self.setZero();

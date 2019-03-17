@@ -29,7 +29,6 @@ public partial struct PxQueryReport {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxHitFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L94~94
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Pipe(physx::PxHitFlag::Enum a, physx::PxHitFlag::Enum b){
     auto nat_in_a = (a);
@@ -55,7 +54,6 @@ public static UNPARSED_TYPE operator|(PxHitFlag a, PxHitFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxHitFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L94~94
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Amp(physx::PxHitFlag::Enum a, physx::PxHitFlag::Enum b){
     auto nat_in_a = (a);
@@ -81,7 +79,6 @@ public static UNPARSED_TYPE operator&(PxHitFlag a, PxHitFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxHitFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L94~94
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Tilde(physx::PxHitFlag::Enum a){
     auto nat_in_a = (a);
@@ -105,7 +102,7 @@ public static UNPARSED_TYPE operator~(PxHitFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxHitCallback { // pointer
+public unsafe partial struct PxHitCallbackPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -115,7 +112,6 @@ public unsafe partial struct PxHitCallback { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxHitCallback
     Unresolved parameter pointee HitType
     // NATIVE SIG: PxHitCallback(HitType* aTouches, PxU32 aMaxNbTouches)
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L261~261
     #if NATIVE
     ES UNPARSED_TYPE W_PxHitCallback<HitType>_ctor( aTouches, physx::PxU32 aMaxNbTouches){
         auto nat_in_aTouches = (aTouches);
@@ -141,7 +137,6 @@ public unsafe partial struct PxHitCallback { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee HitType
     // NATIVE SIG: PxAgain processTouches(const HitType* buffer, PxU32 nbHits) = 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L285~285
     #if NATIVE
     ES physx::PxAgain W_processTouches(physx::PxHitCallback* self,  buffer, physx::PxU32 nbHits){
         auto nat_in_buffer = (buffer);
@@ -151,7 +146,7 @@ public unsafe partial struct PxHitCallback { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_processTouches(PxHitCallback selfPtr,  buffer, uint nbHits);
+    static extern bool W_processTouches(PxHitCallbackPtr selfPtr,  buffer, uint nbHits);
     
     public bool processTouches( buffer, uint nbHits){
          pvk_in_buffer = (buffer);
@@ -165,14 +160,13 @@ public unsafe partial struct PxHitCallback { // pointer
     //================================================================================
     //#       finalizeQuery                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L287~287
     #if NATIVE
     ES void W_finalizeQuery(physx::PxHitCallback* self){
         self->finalizeQuery();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_finalizeQuery(PxHitCallback selfPtr);
+    static extern void W_finalizeQuery(PxHitCallbackPtr selfPtr);
     
     public void finalizeQuery(){
         W_finalizeQuery(this);
@@ -185,14 +179,13 @@ public unsafe partial struct PxHitCallback { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual ~PxHitCallback()
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L289~289
     #if NATIVE
     ES void W_~PxHitCallback<HitType>(physx::PxHitCallback* self){
         self->~PxHitCallback<HitType>();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxHitCallback<HitType>(PxHitCallback selfPtr);
+    static extern void W_~PxHitCallback<HitType>(PxHitCallbackPtr selfPtr);
     
     public void ~PxHitCallback<HitType>(){
         W_~PxHitCallback<HitType>(this);
@@ -203,7 +196,6 @@ public unsafe partial struct PxHitCallback { // pointer
     //================================================================================
     //#       hasAnyHits                                                             #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L292~292
     #if NATIVE
     ES bool W_hasAnyHits(physx::PxHitCallback* self){
         auto retVal = self->hasAnyHits();
@@ -211,7 +203,7 @@ public unsafe partial struct PxHitCallback { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_hasAnyHits(PxHitCallback selfPtr);
+    static extern bool W_hasAnyHits(PxHitCallbackPtr selfPtr);
     
     public bool hasAnyHits(){
         bool retVal = W_hasAnyHits(this);
@@ -226,7 +218,7 @@ public unsafe partial struct PxHitCallback { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxRaycastHit { // pointer
+public unsafe partial struct PxRaycastHitPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -255,7 +247,7 @@ public unsafe partial struct PxRaycastHit { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxLocationHit { // pointer
+public unsafe partial struct PxLocationHitPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -271,7 +263,6 @@ public unsafe partial struct PxLocationHit { // pointer
     //================================================================================
     //#       hadInitialOverlap                                                      #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L147~147
     #if NATIVE
     ES bool W_hadInitialOverlap(physx::PxLocationHit* self){
         auto retVal = self->hadInitialOverlap();
@@ -279,7 +270,7 @@ public unsafe partial struct PxLocationHit { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_hadInitialOverlap(PxLocationHit selfPtr);
+    static extern bool W_hadInitialOverlap(PxLocationHitPtr selfPtr);
     
     public bool hadInitialOverlap(){
         bool retVal = W_hadInitialOverlap(this);
@@ -304,7 +295,7 @@ public unsafe partial struct PxLocationHit { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxQueryHit { // pointer
+public unsafe partial struct PxQueryHitPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -333,7 +324,7 @@ public unsafe partial struct PxQueryHit { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxActorShape { // pointer
+public unsafe partial struct PxActorShapePtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -351,7 +342,6 @@ public unsafe partial struct PxActorShape { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxActorShape
     // NATIVE SIG: PX_INLINE PxActorShape(PxRigidActor* a, PxShape* s) : actor(a), shape(s) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L106~106
     #if NATIVE
     ES UNPARSED_TYPE W_PxActorShape_ctor(physx::PxRigidActor* a, physx::PxShape* s){
         auto nat_in_a = (a);
@@ -360,11 +350,11 @@ public unsafe partial struct PxActorShape { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxActorShape_ctor(PxRigidActor a, PxShape s);
+    static extern UNPARSED_TYPE W_PxActorShape_ctor(PxRigidActorPtr a, PxShapePtr s);
     
-    public PxActorShape(PxRigidActor a, PxShape s){
-        PxRigidActor pvk_in_a = (a);
-        PxShape pvk_in_s = (s);
+    public PxActorShape(PxRigidActorPtr a, PxShapePtr s){
+        PxRigidActorPtr pvk_in_a = (a);
+        PxShapePtr pvk_in_s = (s);
         var _new = W_PxActorShape_ctor(pvk_in_a, pvk_in_s);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
@@ -389,7 +379,7 @@ public unsafe partial struct PxActorShape { // pointer
 
 // Class physx::PxHitFlag is enum namespace
 #if !NATIVE
-public unsafe partial struct PxSweepHit { // pointer
+public unsafe partial struct PxSweepHitPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -418,7 +408,7 @@ public unsafe partial struct PxSweepHit { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxOverlapHit { // pointer
+public unsafe partial struct PxOverlapHitPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -440,7 +430,7 @@ public unsafe partial struct PxOverlapHit { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxHitBuffer { // pointer
+public unsafe partial struct PxHitBufferPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -450,7 +440,6 @@ public unsafe partial struct PxHitBuffer { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxHitBuffer
     Unresolved parameter pointee HitType
     // NATIVE SIG: PxHitBuffer(HitType* aTouches = NULL, PxU32 aMaxNbTouches = 0)
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L322~322
     #if NATIVE
     ES UNPARSED_TYPE W_PxHitBuffer<HitType>_ctor( aTouches, physx::PxU32 aMaxNbTouches){
         auto nat_in_aTouches = (aTouches);
@@ -470,11 +459,41 @@ public unsafe partial struct PxHitBuffer { // pointer
     }
     #endif*/
     
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    /* ERRORS OCCURED: unhandled return type: physx::PxHitBuffer
+    Unresolved parameter pointee HitType
+    // NATIVE SIG: PxHitBuffer(HitType* aTouches = NULL, PxU32 aMaxNbTouches = 0)
+    #if NATIVE
+    ES UNPARSED_TYPE W_PxHitBuffer<HitType>_ctor_OL1( aTouches){
+        auto nat_in_aTouches = (aTouches);
+        self->PxHitBuffer<HitType>(nat_in_aTouches);
+    }
+    #else
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern UNPARSED_TYPE W_PxHitBuffer<HitType>_ctor_OL1( aTouches);
+    
+    public PxHitBuffer<HitType>( aTouches){
+         pvk_in_aTouches = (aTouches);
+        var _new = W_PxHitBuffer<HitType>_ctor_OL1(pvk_in_aTouches);
+        fixed (void* ptr = &this)
+            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+    }
+    #endif*/
+    
+    
+    
+    // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
+    //Skipped invalid managed declaration:
+    /*unhandled return type: physx::PxHitBuffer
+    Parameterless constructor not allowed
+    */
+    
+    
+    
     
     //================================================================================
     //#       getNbAnyHits                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L325~325
     #if NATIVE
     ES physx::PxU32 W_getNbAnyHits(physx::PxHitBuffer* self){
         auto retVal = self->getNbAnyHits();
@@ -482,7 +501,7 @@ public unsafe partial struct PxHitBuffer { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getNbAnyHits(PxHitBuffer selfPtr);
+    static extern uint W_getNbAnyHits(PxHitBufferPtr selfPtr);
     
     public uint getNbAnyHits(){
         uint retVal = W_getNbAnyHits(this);
@@ -496,7 +515,6 @@ public unsafe partial struct PxHitBuffer { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: HitType
     // NATIVE SIG: HitType&	getAnyHit(const PxU32 index) const
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L327~327
     #if NATIVE
     ES UNPARSED_TYPE W_getAnyHit(physx::PxHitBuffer* self, physx::PxU32 index){
         auto nat_in_index = (index);
@@ -505,7 +523,7 @@ public unsafe partial struct PxHitBuffer { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getAnyHit(PxHitBuffer selfPtr, uint index);
+    static extern UNPARSED_TYPE W_getAnyHit(PxHitBufferPtr selfPtr, uint index);
     
     public UNPARSED_TYPE getAnyHit(uint index){
         uint pvk_in_index = (index);
@@ -518,7 +536,6 @@ public unsafe partial struct PxHitBuffer { // pointer
     //================================================================================
     //#       getNbTouches                                                           #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L330~330
     #if NATIVE
     ES physx::PxU32 W_getNbTouches(physx::PxHitBuffer* self){
         auto retVal = self->getNbTouches();
@@ -526,7 +543,7 @@ public unsafe partial struct PxHitBuffer { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getNbTouches(PxHitBuffer selfPtr);
+    static extern uint W_getNbTouches(PxHitBufferPtr selfPtr);
     
     public uint getNbTouches(){
         uint retVal = W_getNbTouches(this);
@@ -540,7 +557,6 @@ public unsafe partial struct PxHitBuffer { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: HitType
     // NATIVE SIG: HitType*	getTouches() const
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L331~331
     #if NATIVE
     ES UNPARSED_TYPE W_getTouches(physx::PxHitBuffer* self){
         auto retVal = self->getTouches();
@@ -548,7 +564,7 @@ public unsafe partial struct PxHitBuffer { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getTouches(PxHitBuffer selfPtr);
+    static extern UNPARSED_TYPE W_getTouches(PxHitBufferPtr selfPtr);
     
     public UNPARSED_TYPE getTouches(){
         UNPARSED_TYPE retVal = W_getTouches(this);
@@ -562,7 +578,6 @@ public unsafe partial struct PxHitBuffer { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: HitType
     // NATIVE SIG: HitType&	getTouch(const PxU32 index) const
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L332~332
     #if NATIVE
     ES UNPARSED_TYPE W_getTouch(physx::PxHitBuffer* self, physx::PxU32 index){
         auto nat_in_index = (index);
@@ -571,7 +586,7 @@ public unsafe partial struct PxHitBuffer { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getTouch(PxHitBuffer selfPtr, uint index);
+    static extern UNPARSED_TYPE W_getTouch(PxHitBufferPtr selfPtr, uint index);
     
     public UNPARSED_TYPE getTouch(uint index){
         uint pvk_in_index = (index);
@@ -584,7 +599,6 @@ public unsafe partial struct PxHitBuffer { // pointer
     //================================================================================
     //#       getMaxNbTouches                                                        #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L333~333
     #if NATIVE
     ES physx::PxU32 W_getMaxNbTouches(physx::PxHitBuffer* self){
         auto retVal = self->getMaxNbTouches();
@@ -592,7 +606,7 @@ public unsafe partial struct PxHitBuffer { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getMaxNbTouches(PxHitBuffer selfPtr);
+    static extern uint W_getMaxNbTouches(PxHitBufferPtr selfPtr);
     
     public uint getMaxNbTouches(){
         uint retVal = W_getMaxNbTouches(this);
@@ -606,14 +620,13 @@ public unsafe partial struct PxHitBuffer { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual ~PxHitBuffer()
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L335~335
     #if NATIVE
     ES void W_~PxHitBuffer<HitType>(physx::PxHitBuffer* self){
         self->~PxHitBuffer<HitType>();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxHitBuffer<HitType>(PxHitBuffer selfPtr);
+    static extern void W_~PxHitBuffer<HitType>(PxHitBufferPtr selfPtr);
     
     public void ~PxHitBuffer<HitType>(){
         W_~PxHitBuffer<HitType>(this);
@@ -626,7 +639,6 @@ public unsafe partial struct PxHitBuffer { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee HitType
     // NATIVE SIG: PxAgain processTouches(const HitType* buffer, PxU32 nbHits)
-    // SOURCE: C:\Projects\PhysX\physx\include\PxQueryReport.h L339~339
     #if NATIVE
     ES physx::PxAgain W_processTouches(physx::PxHitBuffer* self,  buffer, physx::PxU32 nbHits){
         auto nat_in_buffer = (buffer);
@@ -636,7 +648,7 @@ public unsafe partial struct PxHitBuffer { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_processTouches(PxHitBuffer selfPtr,  buffer, uint nbHits);
+    static extern bool W_processTouches(PxHitBufferPtr selfPtr,  buffer, uint nbHits);
     
     public bool processTouches( buffer, uint nbHits){
          pvk_in_buffer = (buffer);
@@ -653,7 +665,7 @@ public unsafe partial struct PxHitBuffer { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxRaycastBufferN { // pointer
+public unsafe partial struct PxRaycastBufferNPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -672,7 +684,7 @@ public unsafe partial struct PxRaycastBufferN { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxOverlapBufferN { // pointer
+public unsafe partial struct PxOverlapBufferNPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
@@ -691,7 +703,7 @@ public unsafe partial struct PxOverlapBufferN { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxSweepBufferN { // pointer
+public unsafe partial struct PxSweepBufferNPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 

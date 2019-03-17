@@ -47,6 +47,7 @@
     <Compile Include="Generated\PxMaterial.cs" />
     <Compile Include="Generated\PxPhysics.cs" />
     <Compile Include="Generated\PxPlane.cs" />
+    <Compile Include="Generated\PxPlaneGeometry.cs" />
     <Compile Include="Generated\PxQuat.cs" />
     <Compile Include="Generated\PxRigidActor.cs" />
     <Compile Include="Generated\PxRigidBody.cs" />

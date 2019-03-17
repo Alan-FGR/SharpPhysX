@@ -20,14 +20,13 @@ public enum PxGeometryType : int {
 
 // Class physx::PxGeometryType is enum namespace
 #if !NATIVE
-public unsafe partial struct PxGeometry { // pointer
+public unsafe partial struct PxGeometryPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
     //================================================================================
     //#       getType                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L82~82
     #if NATIVE
     ES physx::PxGeometryType::Enum W_getType(physx::PxGeometry* self){
         auto retVal = self->getType();
@@ -35,7 +34,7 @@ public unsafe partial struct PxGeometry { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxGeometryType W_getType(PxGeometry selfPtr);
+    static extern PxGeometryType W_getType(PxGeometryPtr selfPtr);
     
     public PxGeometryType getType(){
         PxGeometryType retVal = W_getType(this);
@@ -49,7 +48,6 @@ public unsafe partial struct PxGeometry { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxGeometry
     // NATIVE SIG: PX_FORCE_INLINE PxGeometry(PxGeometryType::Enum type) : mType(type) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxGeometry.h L85~85
     #if NATIVE
     ES UNPARSED_TYPE W_PxGeometry_ctor(physx::PxGeometryType::Enum type){
         auto nat_in_type = (type);

@@ -11,7 +11,6 @@ public partial struct PxPlaneGeometry {
 //================================================================================
 //#       PxTransformFromPlaneEquation                                           #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\physx\include\geometry\PxPlaneGeometry.h L87~87
 #if NATIVE
 ES physx::PxTransform W_PxTransformFromPlaneEquation(physx::PxPlane plane){
     auto nat_in_plane = (plane);
@@ -33,7 +32,6 @@ public static PxTransform PxTransformFromPlaneEquation(PxPlane plane){
 //================================================================================
 //#       PxPlaneEquationFromTransform                                           #
 //================================================================================
-// SOURCE: C:\Projects\PhysX\physx\include\geometry\PxPlaneGeometry.h L96~99
 #if NATIVE
 ES physx::PxPlane W_PxPlaneEquationFromTransform(physx::PxTransform transform){
     auto nat_in_transform = (transform);
@@ -57,32 +55,30 @@ public static PxPlane PxPlaneEquationFromTransform(PxTransform transform){
 
 
 #if !NATIVE
-public unsafe partial struct PxPlaneGeometry { // blittable
-    // TODO extract fields from base classes reliably (if possible at all)
-    // FIELDS COULDN'T BE RESOLVED AUTOMATICALLY. YOU MAY HANDLE THAT MANUALLY AS GETTERS BELOW:
-
+public unsafe partial struct PxPlaneGeometryPtr { // pointer
+    private IntPtr nativePtr_;
 #endif
 
     //================================================================================
     //#       PxPlaneGeometry                                                        #
     //================================================================================
     //Skipped invalid managed declaration:
-    /*Parameterless constructor not allowed
+    /*unhandled return type: physx::PxPlaneGeometry
+    Parameterless constructor not allowed
     */
     
     
     //================================================================================
     //#       isValid                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\geometry\PxPlaneGeometry.h L68~68
     #if NATIVE
-    ES bool W_isValid(physx::PxPlaneGeometry self){
-        auto retVal = self.isValid();
+    ES bool W_isValid(physx::PxPlaneGeometry* self){
+        auto retVal = self->isValid();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isValid(PxPlaneGeometry selfBlt);
+    static extern bool W_isValid(PxPlaneGeometryPtr selfPtr);
     
     public bool isValid(){
         bool retVal = W_isValid(this);

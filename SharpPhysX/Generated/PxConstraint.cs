@@ -34,7 +34,6 @@ public partial struct PxConstraint {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConstraintFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L86~86
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Pipe(physx::PxConstraintFlag::Enum a, physx::PxConstraintFlag::Enum b){
     auto nat_in_a = (a);
@@ -60,7 +59,6 @@ public static UNPARSED_TYPE operator|(PxConstraintFlag a, PxConstraintFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConstraintFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L86~86
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Amp(physx::PxConstraintFlag::Enum a, physx::PxConstraintFlag::Enum b){
     auto nat_in_a = (a);
@@ -86,7 +84,6 @@ public static UNPARSED_TYPE operator&(PxConstraintFlag a, PxConstraintFlag b){
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConstraintFlag::Enum, unsigned short>
 // NATIVE SIG: 
-// SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L86~86
 #if NATIVE
 ES UNPARSED_TYPE W_OP_Tilde(physx::PxConstraintFlag::Enum a){
     auto nat_in_a = (a);
@@ -110,21 +107,20 @@ public static UNPARSED_TYPE operator~(PxConstraintFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxConstraint { // pointer
+public unsafe partial struct PxConstraintPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
     //================================================================================
     //#       release                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L119~119
     #if NATIVE
     ES void W_release(physx::PxConstraint* self){
         self->release();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_release(PxConstraint selfPtr);
+    static extern void W_release(PxConstraintPtr selfPtr);
     
     public void release(){
         W_release(this);
@@ -135,7 +131,6 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     //#       getScene                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L128~128
     #if NATIVE
     ES physx::PxScene* W_getScene(physx::PxConstraint* self){
         auto retVal = self->getScene();
@@ -143,10 +138,10 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxScene W_getScene(PxConstraint selfPtr);
+    static extern PxScenePtr W_getScene(PxConstraintPtr selfPtr);
     
-    public PxScene getScene(){
-        PxScene retVal = W_getScene(this);
+    public PxScenePtr getScene(){
+        PxScenePtr retVal = W_getScene(this);
         return retVal;
     }
     #endif
@@ -158,7 +153,6 @@ public unsafe partial struct PxConstraint { // pointer
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxRigidActor*
     Unresolved parameter pointee physx::PxRigidActor*
     // NATIVE SIG: void				getActors(PxRigidActor*& actor0, PxRigidActor*& actor1)	const	= 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L138~138
     #if NATIVE
     ES void W_getActors(physx::PxConstraint* self,  actor0,  actor1){
         auto nat_in_actor0 = (actor0);
@@ -167,7 +161,7 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_getActors(PxConstraint selfPtr,  actor0,  actor1);
+    static extern void W_getActors(PxConstraintPtr selfPtr,  actor0,  actor1);
     
     public void getActors( actor0,  actor1){
          pvk_in_actor0 = (actor0);
@@ -180,7 +174,6 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     //#       setActors                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L148~148
     #if NATIVE
     ES void W_setActors(physx::PxConstraint* self, physx::PxRigidActor* actor0, physx::PxRigidActor* actor1){
         auto nat_in_actor0 = (actor0);
@@ -189,11 +182,11 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setActors(PxConstraint selfPtr, PxRigidActor actor0, PxRigidActor actor1);
+    static extern void W_setActors(PxConstraintPtr selfPtr, PxRigidActorPtr actor0, PxRigidActorPtr actor1);
     
-    public void setActors(PxRigidActor actor0, PxRigidActor actor1){
-        PxRigidActor pvk_in_actor0 = (actor0);
-        PxRigidActor pvk_in_actor1 = (actor1);
+    public void setActors(PxRigidActorPtr actor0, PxRigidActorPtr actor1){
+        PxRigidActorPtr pvk_in_actor0 = (actor0);
+        PxRigidActorPtr pvk_in_actor1 = (actor1);
         W_setActors(this, pvk_in_actor0, pvk_in_actor1);
     }
     #endif
@@ -202,14 +195,13 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     //#       markDirty                                                              #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L153~153
     #if NATIVE
     ES void W_markDirty(physx::PxConstraint* self){
         self->markDirty();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_markDirty(PxConstraint selfPtr);
+    static extern void W_markDirty(PxConstraintPtr selfPtr);
     
     public void markDirty(){
         W_markDirty(this);
@@ -222,7 +214,6 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxConstraintFlags
     // NATIVE SIG: void				setFlags(PxConstraintFlags flags)								= 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L164~164
     #if NATIVE
     ES void W_setFlags(physx::PxConstraint* self,  flags){
         auto nat_in_flags = (flags);
@@ -230,7 +221,7 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setFlags(PxConstraint selfPtr,  flags);
+    static extern void W_setFlags(PxConstraintPtr selfPtr,  flags);
     
     public void setFlags( flags){
          pvk_in_flags = (flags);
@@ -244,7 +235,6 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxConstraintFlags
     // NATIVE SIG: PxConstraintFlags	getFlags()												const	= 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L172~172
     #if NATIVE
     ES UNPARSED_TYPE W_getFlags(physx::PxConstraint* self){
         auto retVal = self->getFlags();
@@ -252,7 +242,7 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getFlags(PxConstraint selfPtr);
+    static extern UNPARSED_TYPE W_getFlags(PxConstraintPtr selfPtr);
     
     public UNPARSED_TYPE getFlags(){
         UNPARSED_TYPE retVal = W_getFlags(this);
@@ -264,7 +254,6 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     //#       setFlag                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L182~182
     #if NATIVE
     ES void W_setFlag(physx::PxConstraint* self, physx::PxConstraintFlag::Enum flag, bool value){
         auto nat_in_flag = (flag);
@@ -273,7 +262,7 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setFlag(PxConstraint selfPtr, PxConstraintFlag flag, bool value);
+    static extern void W_setFlag(PxConstraintPtr selfPtr, PxConstraintFlag flag, bool value);
     
     public void setFlag(PxConstraintFlag flag, bool value){
         PxConstraintFlag pvk_in_flag = (flag);
@@ -289,7 +278,6 @@ public unsafe partial struct PxConstraint { // pointer
     /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxVec3
     Non const pointer/reference global::PhysX.physx.PxVec3
     // NATIVE SIG: void				getForce(PxVec3& linear, PxVec3& angular)				const	= 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L190~190
     #if NATIVE
     ES void W_getForce(physx::PxConstraint* self,  linear,  angular){
         auto nat_in_linear = (linear);
@@ -298,7 +286,7 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_getForce(PxConstraint selfPtr,  linear,  angular);
+    static extern void W_getForce(PxConstraintPtr selfPtr,  linear,  angular);
     
     public void getForce( linear,  angular){
          pvk_in_linear = (linear);
@@ -311,7 +299,6 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     //#       isValid                                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L201~201
     #if NATIVE
     ES bool W_isValid(physx::PxConstraint* self){
         auto retVal = self->isValid();
@@ -319,7 +306,7 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isValid(PxConstraint selfPtr);
+    static extern bool W_isValid(PxConstraintPtr selfPtr);
     
     public bool isValid(){
         bool retVal = W_isValid(this);
@@ -331,7 +318,6 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     //#       setBreakForce                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L211~211
     #if NATIVE
     ES void W_setBreakForce(physx::PxConstraint* self, physx::PxReal linear, physx::PxReal angular){
         auto nat_in_linear = (linear);
@@ -340,7 +326,7 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setBreakForce(PxConstraint selfPtr, float linear, float angular);
+    static extern void W_setBreakForce(PxConstraintPtr selfPtr, float linear, float angular);
     
     public void setBreakForce(float linear, float angular){
         float pvk_in_linear = (linear);
@@ -353,7 +339,6 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     //#       getBreakForce                                                          #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L219~219
     #if NATIVE
     ES void W_getBreakForce(physx::PxConstraint* self, physx::PxReal& linear, physx::PxReal& angular){
         auto nat_in_linear = (linear);
@@ -362,7 +347,7 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_getBreakForce(PxConstraint selfPtr, float* linear, float* angular);
+    static extern void W_getBreakForce(PxConstraintPtr selfPtr, float* linear, float* angular);
     
     public void getBreakForce(float* linear, float* angular){
         float* pvk_in_linear = (linear);
@@ -375,7 +360,6 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     //#       setMinResponseThreshold                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L233~233
     #if NATIVE
     ES void W_setMinResponseThreshold(physx::PxConstraint* self, physx::PxReal threshold){
         auto nat_in_threshold = (threshold);
@@ -383,7 +367,7 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setMinResponseThreshold(PxConstraint selfPtr, float threshold);
+    static extern void W_setMinResponseThreshold(PxConstraintPtr selfPtr, float threshold);
     
     public void setMinResponseThreshold(float threshold){
         float pvk_in_threshold = (threshold);
@@ -395,7 +379,6 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     //#       getMinResponseThreshold                                                #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L240~240
     #if NATIVE
     ES physx::PxReal W_getMinResponseThreshold(physx::PxConstraint* self){
         auto retVal = self->getMinResponseThreshold();
@@ -403,7 +386,7 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getMinResponseThreshold(PxConstraint selfPtr);
+    static extern float W_getMinResponseThreshold(PxConstraintPtr selfPtr);
     
     public float getMinResponseThreshold(){
         float retVal = W_getMinResponseThreshold(this);
@@ -415,7 +398,6 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     //#       getExternalReference                                                   #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L252~252
     #if NATIVE
     ES void* W_getExternalReference(physx::PxConstraint* self, physx::PxU32& typeID){
         auto nat_in_typeID = (typeID);
@@ -424,7 +406,7 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_getExternalReference(PxConstraint selfPtr, uint* typeID);
+    static extern IntPtr W_getExternalReference(PxConstraintPtr selfPtr, uint* typeID);
     
     public IntPtr getExternalReference(uint* typeID){
         uint* pvk_in_typeID = (typeID);
@@ -437,10 +419,9 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     //#       setConstraintFunctions                                                 #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxConstraintShaderTable
+    /* ERRORS OCCURED: Forbidden parameter type: PxConstraintShaderTablePtr
     // NATIVE SIG: void				setConstraintFunctions(PxConstraintConnector& connector,
     													   const PxConstraintShaderTable& shaders)		= 0
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L262~263
     #if NATIVE
     ES void W_setConstraintFunctions(physx::PxConstraint* self, physx::PxConstraintConnector* connector, physx::PxConstraintShaderTable shaders){
         auto nat_in_connector = (connector);
@@ -449,10 +430,10 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setConstraintFunctions(PxConstraint selfPtr, PxConstraintConnector connector, PxConstraintShaderTable shaders);
+    static extern void W_setConstraintFunctions(PxConstraintPtr selfPtr, PxConstraintConnectorPtr connector, PxConstraintShaderTable shaders);
     
-    public void setConstraintFunctions(PxConstraintConnector connector, PxConstraintShaderTable shaders){
-        PxConstraintConnector pvk_in_connector = (connector);
+    public void setConstraintFunctions(PxConstraintConnectorPtr connector, PxConstraintShaderTable shaders){
+        PxConstraintConnectorPtr pvk_in_connector = (connector);
         PxConstraintShaderTable pvk_in_shaders = (shaders);
         W_setConstraintFunctions(this, pvk_in_connector, pvk_in_shaders);
     }
@@ -462,7 +443,6 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     //#       getConcreteTypeName                                                    #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L265~265
     #if NATIVE
     ES sbyte* W_getConcreteTypeName(physx::PxConstraint* self){
         auto retVal = self->getConcreteTypeName();
@@ -470,7 +450,7 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_getConcreteTypeName(PxConstraint selfPtr);
+    static extern IntPtr W_getConcreteTypeName(PxConstraintPtr selfPtr);
     
     public IntPtr getConcreteTypeName(){
         IntPtr retVal = W_getConcreteTypeName(this);
@@ -485,7 +465,6 @@ public unsafe partial struct PxConstraint { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxConstraint
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE					PxConstraint(PxType concreteType, PxBaseFlags baseFlags) : PxBase(concreteType, baseFlags) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L268~268
     #if NATIVE
     ES UNPARSED_TYPE W_PxConstraint_ctor(physx::PxType concreteType,  baseFlags){
         auto nat_in_concreteType = (concreteType);
@@ -512,7 +491,6 @@ public unsafe partial struct PxConstraint { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxConstraint
     Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: PX_INLINE					PxConstraint(PxBaseFlags baseFlags) : PxBase(baseFlags) {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L269~269
     #if NATIVE
     ES UNPARSED_TYPE W_PxConstraint_ctor( baseFlags){
         auto nat_in_baseFlags = (baseFlags);
@@ -536,14 +514,13 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual						~PxConstraint() {}
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L270~270
     #if NATIVE
     ES void W_~PxConstraint(physx::PxConstraint* self){
         self->~PxConstraint();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxConstraint(PxConstraint selfPtr);
+    static extern void W_~PxConstraint(PxConstraintPtr selfPtr);
     
     public void ~PxConstraint(){
         W_~PxConstraint(this);
@@ -554,7 +531,6 @@ public unsafe partial struct PxConstraint { // pointer
     //================================================================================
     //#       isKindOf                                                               #
     //================================================================================
-    // SOURCE: C:\Projects\PhysX\physx\include\PxConstraint.h L271~271
     #if NATIVE
     ES bool W_isKindOf(physx::PxConstraint* self, const char* name){
         auto nat_in_name = (name);
@@ -563,7 +539,7 @@ public unsafe partial struct PxConstraint { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isKindOf(PxConstraint selfPtr, string name);
+    static extern bool W_isKindOf(PxConstraintPtr selfPtr, string name);
     
     public bool isKindOf(string name){
         string pvk_in_name = (name);

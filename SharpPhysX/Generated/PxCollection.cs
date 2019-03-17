@@ -13,7 +13,6 @@ public partial struct PxCollection {
 //================================================================================
 /* ERRORS OCCURED: Forbidden return type
 // NATIVE SIG: physx::PxCollection* PX_CALL_CONV PxCreateCollection()
-// SOURCE: C:\Projects\PhysX\physx\include\common\PxCollection.h L275~275
 #if NATIVE
 ES physx::PxCollection* W_PxCreateCollection(){
     auto retVal = PxCreateCollection();
@@ -21,10 +20,10 @@ ES physx::PxCollection* W_PxCreateCollection(){
 }
 #else
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern PxCollection W_PxCreateCollection();
+static extern PxCollectionPtr W_PxCreateCollection();
 
-public static PxCollection PxCreateCollection(){
-    PxCollection retVal = W_PxCreateCollection();
+public static PxCollectionPtr PxCreateCollection(){
+    PxCollectionPtr retVal = W_PxCreateCollection();
     return retVal;
 }
 #endif*/
