@@ -94,9 +94,81 @@ public static UNPARSED_TYPE operator~(PxShapeFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxShapePtr { // pointer
+public unsafe interface IPxShapePtr {
+     void release();
+     uint getReferenceCount();
+     void acquireReference();
+     PxGeometryType getGeometryType();
+     void setGeometry(PxGeometryPtr geometry);
+    // UNPARSED_TYPE getGeometry();
+    // bool getBoxGeometry( geometry);
+    // bool getSphereGeometry( geometry);
+    // bool getCapsuleGeometry( geometry);
+     bool getPlaneGeometry(PxPlaneGeometryPtr geometry);
+    // bool getConvexMeshGeometry(PxConvexMeshGeometryPtr geometry);
+    // bool getTriangleMeshGeometry(PxTriangleMeshGeometryPtr geometry);
+    // bool getHeightFieldGeometry(PxHeightFieldGeometryPtr geometry);
+     PxRigidActorPtr getActor();
+     void setLocalPose(PxTransform pose);
+     PxTransform getLocalPose();
+     void setSimulationFilterData(PxFilterDataPtr data);
+    // UNPARSED_TYPE getSimulationFilterData();
+     void setQueryFilterData(PxFilterDataPtr data);
+    // UNPARSED_TYPE getQueryFilterData();
+    // void setMaterials( materials, ushort materialCount);
+     ushort getNbMaterials();
+    // uint getMaterials( userBuffer, uint bufferSize);
+    // uint getMaterials( userBuffer, uint bufferSize, uint startIndex);
+     PxMaterialPtr getMaterialFromInternalFaceIndex(uint faceIndex);
+     void setContactOffset(float contactOffset);
+     float getContactOffset();
+     void setRestOffset(float restOffset);
+     float getRestOffset();
+     void setTorsionalPatchRadius(float radius);
+     float getTorsionalPatchRadius();
+     void setMinTorsionalPatchRadius(float radius);
+     float getMinTorsionalPatchRadius();
+     void setFlag(PxShapeFlag flag, bool value);
+    // void setFlags( inFlags);
+    // UNPARSED_TYPE getFlags();
+     bool isExclusive();
+     void setName(string name);
+     IntPtr getName();
+     IntPtr getConcreteTypeName();
+    // PxShape( baseFlags);
+    // PxShape(ushort concreteType,  baseFlags);
+    // void ~PxShape();
+     bool isKindOf(string name);
+    // PxShape(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxShapePtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxBasePtr, PxShapePtr
+    public static implicit operator PxBasePtr(PxShapePtr obj){return *(PxBasePtr*)&obj;}
+    public static explicit operator PxShapePtr(PxBasePtr obj){return *(PxShapePtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxBasePtr
+    //public  UNPARSED_TYPE is(){return ((PxBasePtr)this).is();}
+    //public  UNPARSED_TYPE is(){return ((PxBasePtr)this).is();}
+    public  ushort getConcreteType(){return ((PxBasePtr)this).getConcreteType();}
+    public  void setBaseFlag(PxBaseFlag flag, bool value){((PxBasePtr)this).setBaseFlag(flag, value);}
+    //public  void setBaseFlags( inFlags){((PxBasePtr)this).setBaseFlags(inFlags);}
+    //public  UNPARSED_TYPE getBaseFlags(){return ((PxBasePtr)this).getBaseFlags();}
+    public  bool isReleasable(){return ((PxBasePtr)this).isReleasable();}
+    //public  PxBase(ushort concreteType,  baseFlags){((PxBasePtr)this).PxBase(concreteType, baseFlags);}
+    //public  PxBase( baseFlags){((PxBasePtr)this).PxBase(baseFlags);}
+    //public  void ~PxBase(){((PxBasePtr)this).~PxBase();}
+    public  bool typeMatch(){return ((PxBasePtr)this).typeMatch();}
+    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxBasePtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       release                                                                #
@@ -109,7 +181,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_release(PxShapePtr selfPtr);
     
-    public void release(){
+    public  void release(){
         W_release(this);
     }
     #endif
@@ -127,7 +199,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern uint W_getReferenceCount(PxShapePtr selfPtr);
     
-    public uint getReferenceCount(){
+    public  uint getReferenceCount(){
         uint retVal = W_getReferenceCount(this);
         return retVal;
     }
@@ -145,7 +217,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_acquireReference(PxShapePtr selfPtr);
     
-    public void acquireReference(){
+    public  void acquireReference(){
         W_acquireReference(this);
     }
     #endif
@@ -163,7 +235,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxGeometryType W_getGeometryType(PxShapePtr selfPtr);
     
-    public PxGeometryType getGeometryType(){
+    public  PxGeometryType getGeometryType(){
         PxGeometryType retVal = W_getGeometryType(this);
         return retVal;
     }
@@ -182,7 +254,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setGeometry(PxShapePtr selfPtr, PxGeometryPtr geometry);
     
-    public void setGeometry(PxGeometryPtr geometry){
+    public  void setGeometry(PxGeometryPtr geometry){
         PxGeometryPtr pvk_in_geometry = (geometry);
         W_setGeometry(this, pvk_in_geometry);
     }
@@ -203,7 +275,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_getGeometry(PxShapePtr selfPtr);
     
-    public UNPARSED_TYPE getGeometry(){
+    public  UNPARSED_TYPE getGeometry(){
         UNPARSED_TYPE retVal = W_getGeometry(this);
         return retVal;
     }
@@ -225,7 +297,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_getBoxGeometry(PxShapePtr selfPtr,  geometry);
     
-    public bool getBoxGeometry( geometry){
+    public  bool getBoxGeometry( geometry){
          pvk_in_geometry = (geometry);
         bool retVal = W_getBoxGeometry(this, pvk_in_geometry);
         return retVal;
@@ -248,7 +320,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_getSphereGeometry(PxShapePtr selfPtr,  geometry);
     
-    public bool getSphereGeometry( geometry){
+    public  bool getSphereGeometry( geometry){
          pvk_in_geometry = (geometry);
         bool retVal = W_getSphereGeometry(this, pvk_in_geometry);
         return retVal;
@@ -271,7 +343,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_getCapsuleGeometry(PxShapePtr selfPtr,  geometry);
     
-    public bool getCapsuleGeometry( geometry){
+    public  bool getCapsuleGeometry( geometry){
          pvk_in_geometry = (geometry);
         bool retVal = W_getCapsuleGeometry(this, pvk_in_geometry);
         return retVal;
@@ -292,7 +364,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_getPlaneGeometry(PxShapePtr selfPtr, PxPlaneGeometryPtr geometry);
     
-    public bool getPlaneGeometry(PxPlaneGeometryPtr geometry){
+    public  bool getPlaneGeometry(PxPlaneGeometryPtr geometry){
         PxPlaneGeometryPtr pvk_in_geometry = (geometry);
         bool retVal = W_getPlaneGeometry(this, pvk_in_geometry);
         return retVal;
@@ -315,7 +387,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_getConvexMeshGeometry(PxShapePtr selfPtr, PxConvexMeshGeometryPtr geometry);
     
-    public bool getConvexMeshGeometry(PxConvexMeshGeometryPtr geometry){
+    public  bool getConvexMeshGeometry(PxConvexMeshGeometryPtr geometry){
         PxConvexMeshGeometryPtr pvk_in_geometry = (geometry);
         bool retVal = W_getConvexMeshGeometry(this, pvk_in_geometry);
         return retVal;
@@ -338,7 +410,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_getTriangleMeshGeometry(PxShapePtr selfPtr, PxTriangleMeshGeometryPtr geometry);
     
-    public bool getTriangleMeshGeometry(PxTriangleMeshGeometryPtr geometry){
+    public  bool getTriangleMeshGeometry(PxTriangleMeshGeometryPtr geometry){
         PxTriangleMeshGeometryPtr pvk_in_geometry = (geometry);
         bool retVal = W_getTriangleMeshGeometry(this, pvk_in_geometry);
         return retVal;
@@ -361,7 +433,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_getHeightFieldGeometry(PxShapePtr selfPtr, PxHeightFieldGeometryPtr geometry);
     
-    public bool getHeightFieldGeometry(PxHeightFieldGeometryPtr geometry){
+    public  bool getHeightFieldGeometry(PxHeightFieldGeometryPtr geometry){
         PxHeightFieldGeometryPtr pvk_in_geometry = (geometry);
         bool retVal = W_getHeightFieldGeometry(this, pvk_in_geometry);
         return retVal;
@@ -381,7 +453,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxRigidActorPtr W_getActor(PxShapePtr selfPtr);
     
-    public PxRigidActorPtr getActor(){
+    public  PxRigidActorPtr getActor(){
         PxRigidActorPtr retVal = W_getActor(this);
         return retVal;
     }
@@ -400,7 +472,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setLocalPose(PxShapePtr selfPtr, PxTransform pose);
     
-    public void setLocalPose(PxTransform pose){
+    public  void setLocalPose(PxTransform pose){
         PxTransform pvk_in_pose = (pose);
         W_setLocalPose(this, pvk_in_pose);
     }
@@ -419,7 +491,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform W_getLocalPose(PxShapePtr selfPtr);
     
-    public PxTransform getLocalPose(){
+    public  PxTransform getLocalPose(){
         PxTransform retVal = W_getLocalPose(this);
         return retVal;
     }
@@ -438,7 +510,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setSimulationFilterData(PxShapePtr selfPtr, PxFilterDataPtr data);
     
-    public void setSimulationFilterData(PxFilterDataPtr data){
+    public  void setSimulationFilterData(PxFilterDataPtr data){
         PxFilterDataPtr pvk_in_data = (data);
         W_setSimulationFilterData(this, pvk_in_data);
     }
@@ -459,7 +531,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_getSimulationFilterData(PxShapePtr selfPtr);
     
-    public UNPARSED_TYPE getSimulationFilterData(){
+    public  UNPARSED_TYPE getSimulationFilterData(){
         UNPARSED_TYPE retVal = W_getSimulationFilterData(this);
         return retVal;
     }
@@ -478,7 +550,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setQueryFilterData(PxShapePtr selfPtr, PxFilterDataPtr data);
     
-    public void setQueryFilterData(PxFilterDataPtr data){
+    public  void setQueryFilterData(PxFilterDataPtr data){
         PxFilterDataPtr pvk_in_data = (data);
         W_setQueryFilterData(this, pvk_in_data);
     }
@@ -499,7 +571,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_getQueryFilterData(PxShapePtr selfPtr);
     
-    public UNPARSED_TYPE getQueryFilterData(){
+    public  UNPARSED_TYPE getQueryFilterData(){
         UNPARSED_TYPE retVal = W_getQueryFilterData(this);
         return retVal;
     }
@@ -521,7 +593,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setMaterials(PxShapePtr selfPtr,  materials, ushort materialCount);
     
-    public void setMaterials( materials, ushort materialCount){
+    public  void setMaterials( materials, ushort materialCount){
          pvk_in_materials = (materials);
         ushort pvk_in_materialCount = (materialCount);
         W_setMaterials(this, pvk_in_materials, pvk_in_materialCount);
@@ -541,7 +613,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern ushort W_getNbMaterials(PxShapePtr selfPtr);
     
-    public ushort getNbMaterials(){
+    public  ushort getNbMaterials(){
         ushort retVal = W_getNbMaterials(this);
         return retVal;
     }
@@ -565,7 +637,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern uint W_getMaterials(PxShapePtr selfPtr,  userBuffer, uint bufferSize, uint startIndex);
     
-    public uint getMaterials( userBuffer, uint bufferSize, uint startIndex){
+    public  uint getMaterials( userBuffer, uint bufferSize, uint startIndex){
          pvk_in_userBuffer = (userBuffer);
         uint pvk_in_bufferSize = (bufferSize);
         uint pvk_in_startIndex = (startIndex);
@@ -578,7 +650,7 @@ public unsafe partial struct PxShapePtr { // pointer
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxMaterial*
     // NATIVE SIG: PxU32					getMaterials(PxMaterial** userBuffer, PxU32 bufferSize, PxU32 startIndex=0) const	= 0
     #if NATIVE
-    ES physx::PxU32 W_getMaterials_OL1(physx::PxShape* self,  userBuffer, physx::PxU32 bufferSize){
+    ES physx::PxU32 W_getMaterials(physx::PxShape* self,  userBuffer, physx::PxU32 bufferSize){
         auto nat_in_userBuffer = (userBuffer);
         auto nat_in_bufferSize = (bufferSize);
         auto retVal = self->getMaterials(nat_in_userBuffer, nat_in_bufferSize);
@@ -586,12 +658,12 @@ public unsafe partial struct PxShapePtr { // pointer
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getMaterials_OL1(PxShapePtr selfPtr,  userBuffer, uint bufferSize);
+    static extern uint W_getMaterials(PxShapePtr selfPtr,  userBuffer, uint bufferSize);
     
-    public uint getMaterials( userBuffer, uint bufferSize){
+    public  uint getMaterials( userBuffer, uint bufferSize){
          pvk_in_userBuffer = (userBuffer);
         uint pvk_in_bufferSize = (bufferSize);
-        uint retVal = W_getMaterials_OL1(this, pvk_in_userBuffer, pvk_in_bufferSize);
+        uint retVal = W_getMaterials(this, pvk_in_userBuffer, pvk_in_bufferSize);
         return retVal;
     }
     #endif*/
@@ -612,7 +684,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxMaterialPtr W_getMaterialFromInternalFaceIndex(PxShapePtr selfPtr, uint faceIndex);
     
-    public PxMaterialPtr getMaterialFromInternalFaceIndex(uint faceIndex){
+    public  PxMaterialPtr getMaterialFromInternalFaceIndex(uint faceIndex){
         uint pvk_in_faceIndex = (faceIndex);
         PxMaterialPtr retVal = W_getMaterialFromInternalFaceIndex(this, pvk_in_faceIndex);
         return retVal;
@@ -632,7 +704,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setContactOffset(PxShapePtr selfPtr, float contactOffset);
     
-    public void setContactOffset(float contactOffset){
+    public  void setContactOffset(float contactOffset){
         float pvk_in_contactOffset = (contactOffset);
         W_setContactOffset(this, pvk_in_contactOffset);
     }
@@ -651,7 +723,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getContactOffset(PxShapePtr selfPtr);
     
-    public float getContactOffset(){
+    public  float getContactOffset(){
         float retVal = W_getContactOffset(this);
         return retVal;
     }
@@ -670,7 +742,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setRestOffset(PxShapePtr selfPtr, float restOffset);
     
-    public void setRestOffset(float restOffset){
+    public  void setRestOffset(float restOffset){
         float pvk_in_restOffset = (restOffset);
         W_setRestOffset(this, pvk_in_restOffset);
     }
@@ -689,7 +761,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getRestOffset(PxShapePtr selfPtr);
     
-    public float getRestOffset(){
+    public  float getRestOffset(){
         float retVal = W_getRestOffset(this);
         return retVal;
     }
@@ -708,7 +780,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setTorsionalPatchRadius(PxShapePtr selfPtr, float radius);
     
-    public void setTorsionalPatchRadius(float radius){
+    public  void setTorsionalPatchRadius(float radius){
         float pvk_in_radius = (radius);
         W_setTorsionalPatchRadius(this, pvk_in_radius);
     }
@@ -727,7 +799,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getTorsionalPatchRadius(PxShapePtr selfPtr);
     
-    public float getTorsionalPatchRadius(){
+    public  float getTorsionalPatchRadius(){
         float retVal = W_getTorsionalPatchRadius(this);
         return retVal;
     }
@@ -746,7 +818,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setMinTorsionalPatchRadius(PxShapePtr selfPtr, float radius);
     
-    public void setMinTorsionalPatchRadius(float radius){
+    public  void setMinTorsionalPatchRadius(float radius){
         float pvk_in_radius = (radius);
         W_setMinTorsionalPatchRadius(this, pvk_in_radius);
     }
@@ -765,7 +837,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getMinTorsionalPatchRadius(PxShapePtr selfPtr);
     
-    public float getMinTorsionalPatchRadius(){
+    public  float getMinTorsionalPatchRadius(){
         float retVal = W_getMinTorsionalPatchRadius(this);
         return retVal;
     }
@@ -785,7 +857,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setFlag(PxShapePtr selfPtr, PxShapeFlag flag, bool value);
     
-    public void setFlag(PxShapeFlag flag, bool value){
+    public  void setFlag(PxShapeFlag flag, bool value){
         PxShapeFlag pvk_in_flag = (flag);
         bool pvk_in_value = (value);
         W_setFlag(this, pvk_in_flag, pvk_in_value);
@@ -807,7 +879,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setFlags(PxShapePtr selfPtr,  inFlags);
     
-    public void setFlags( inFlags){
+    public  void setFlags( inFlags){
          pvk_in_inFlags = (inFlags);
         W_setFlags(this, pvk_in_inFlags);
     }
@@ -828,7 +900,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_getFlags(PxShapePtr selfPtr);
     
-    public UNPARSED_TYPE getFlags(){
+    public  UNPARSED_TYPE getFlags(){
         UNPARSED_TYPE retVal = W_getFlags(this);
         return retVal;
     }
@@ -847,7 +919,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isExclusive(PxShapePtr selfPtr);
     
-    public bool isExclusive(){
+    public  bool isExclusive(){
         bool retVal = W_isExclusive(this);
         return retVal;
     }
@@ -866,7 +938,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setName(PxShapePtr selfPtr, string name);
     
-    public void setName(string name){
+    public  void setName(string name){
         string pvk_in_name = (name);
         W_setName(this, pvk_in_name);
     }
@@ -885,7 +957,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern IntPtr W_getName(PxShapePtr selfPtr);
     
-    public IntPtr getName(){
+    public  IntPtr getName(){
         IntPtr retVal = W_getName(this);
         return retVal;
     }
@@ -904,7 +976,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern IntPtr W_getConcreteTypeName(PxShapePtr selfPtr);
     
-    public IntPtr getConcreteTypeName(){
+    public  IntPtr getConcreteTypeName(){
         IntPtr retVal = W_getConcreteTypeName(this);
         return retVal;
     }
@@ -926,7 +998,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxShape_ctor( baseFlags);
     
-    public PxShape( baseFlags){
+    public  PxShape( baseFlags){
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxShape_ctor(pvk_in_baseFlags);
         fixed (void* ptr = &this)
@@ -951,7 +1023,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxShape_ctor(ushort concreteType,  baseFlags);
     
-    public PxShape(ushort concreteType,  baseFlags){
+    public  PxShape(ushort concreteType,  baseFlags){
         ushort pvk_in_concreteType = (concreteType);
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxShape_ctor(pvk_in_concreteType, pvk_in_baseFlags);
@@ -974,7 +1046,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxShape(PxShapePtr selfPtr);
     
-    public void ~PxShape(){
+    public  void ~PxShape(){
         W_~PxShape(this);
     }
     #endif*/
@@ -993,7 +1065,7 @@ public unsafe partial struct PxShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isKindOf(PxShapePtr selfPtr, string name);
     
-    public bool isKindOf(string name){
+    public  bool isKindOf(string name){
         string pvk_in_name = (name);
         bool retVal = W_isKindOf(this, pvk_in_name);
         return retVal;

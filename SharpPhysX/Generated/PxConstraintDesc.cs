@@ -129,10 +129,28 @@ public static UNPARSED_TYPE operator~(Type a){
 
 // Class physx::pvdsdk::PvdDataStream Manually Ignored
 #if !NATIVE
-public unsafe partial struct PxConstraintConnectorPtr { // pointer
+public unsafe interface IPxConstraintConnectorPtr {
+     IntPtr prepareData();
+    // bool updatePvdProperties(PvdDataStreamPtr pvdConnection, PxConstraintPtr c, PxPvdUpdateType updateType);
+     void onConstraintRelease();
+     void onComShift(uint actor);
+     void onOriginShift(PxVec3 shift);
+     IntPtr getExternalReference(uint* typeID);
+     PxBasePtr getSerializable();
+    // UNPARSED_TYPE getPrep();
+     IntPtr getConstantBlock();
+    // void ~PxConstraintConnector();
+    //static UNPARSED_TYPE operator=(PxConstraintConnectorPtr lhs, /*NULLPARS*/);
+    // PxConstraintConnector(/*NULLPARS*/);
+    // PxConstraintConnector(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxConstraintConnectorPtr : IPxConstraintConnectorPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxConstraintConnectorPtr
     //================================================================================
     //#       prepareData                                                            #
     //================================================================================
@@ -145,7 +163,7 @@ public unsafe partial struct PxConstraintConnectorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern IntPtr W_prepareData(PxConstraintConnectorPtr selfPtr);
     
-    public IntPtr prepareData(){
+    public  IntPtr prepareData(){
         IntPtr retVal = W_prepareData(this);
         return retVal;
     }
@@ -171,7 +189,7 @@ public unsafe partial struct PxConstraintConnectorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_updatePvdProperties(PxConstraintConnectorPtr selfPtr, PvdDataStreamPtr pvdConnection, PxConstraintPtr c, PxPvdUpdateType updateType);
     
-    public bool updatePvdProperties(PvdDataStreamPtr pvdConnection, PxConstraintPtr c, PxPvdUpdateType updateType){
+    public  bool updatePvdProperties(PvdDataStreamPtr pvdConnection, PxConstraintPtr c, PxPvdUpdateType updateType){
         PvdDataStreamPtr pvk_in_pvdConnection = (pvdConnection);
         PxConstraintPtr pvk_in_c = (c);
         PxPvdUpdateType pvk_in_updateType = (updateType);
@@ -192,7 +210,7 @@ public unsafe partial struct PxConstraintConnectorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_onConstraintRelease(PxConstraintConnectorPtr selfPtr);
     
-    public void onConstraintRelease(){
+    public  void onConstraintRelease(){
         W_onConstraintRelease(this);
     }
     #endif
@@ -210,7 +228,7 @@ public unsafe partial struct PxConstraintConnectorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_onComShift(PxConstraintConnectorPtr selfPtr, uint actor);
     
-    public void onComShift(uint actor){
+    public  void onComShift(uint actor){
         uint pvk_in_actor = (actor);
         W_onComShift(this, pvk_in_actor);
     }
@@ -229,7 +247,7 @@ public unsafe partial struct PxConstraintConnectorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_onOriginShift(PxConstraintConnectorPtr selfPtr, PxVec3 shift);
     
-    public void onOriginShift(PxVec3 shift){
+    public  void onOriginShift(PxVec3 shift){
         PxVec3 pvk_in_shift = (shift);
         W_onOriginShift(this, pvk_in_shift);
     }
@@ -249,7 +267,7 @@ public unsafe partial struct PxConstraintConnectorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern IntPtr W_getExternalReference(PxConstraintConnectorPtr selfPtr, uint* typeID);
     
-    public IntPtr getExternalReference(uint* typeID){
+    public  IntPtr getExternalReference(uint* typeID){
         uint* pvk_in_typeID = (typeID);
         IntPtr retVal = W_getExternalReference(this, pvk_in_typeID);
         return retVal;
@@ -269,7 +287,7 @@ public unsafe partial struct PxConstraintConnectorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBasePtr W_getSerializable(PxConstraintConnectorPtr selfPtr);
     
-    public PxBasePtr getSerializable(){
+    public  PxBasePtr getSerializable(){
         PxBasePtr retVal = W_getSerializable(this);
         return retVal;
     }
@@ -290,7 +308,7 @@ public unsafe partial struct PxConstraintConnectorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_getPrep(PxConstraintConnectorPtr selfPtr);
     
-    public UNPARSED_TYPE getPrep(){
+    public  UNPARSED_TYPE getPrep(){
         UNPARSED_TYPE retVal = W_getPrep(this);
         return retVal;
     }
@@ -309,7 +327,7 @@ public unsafe partial struct PxConstraintConnectorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern IntPtr W_getConstantBlock(PxConstraintConnectorPtr selfPtr);
     
-    public IntPtr getConstantBlock(){
+    public  IntPtr getConstantBlock(){
         IntPtr retVal = W_getConstantBlock(this);
         return retVal;
     }
@@ -329,7 +347,7 @@ public unsafe partial struct PxConstraintConnectorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxConstraintConnector(PxConstraintConnectorPtr selfPtr);
     
-    public void ~PxConstraintConnector(){
+    public  void ~PxConstraintConnector(){
         W_~PxConstraintConnector(this);
     }
     #endif*/
@@ -350,12 +368,23 @@ public unsafe partial struct PxConstraintConnectorPtr { // pointer
 // Class physx::Px1DConstraint Manually Ignored
 // Union physx::Px1DConstraint TODO
 #if !NATIVE
-public unsafe partial struct SpringModifiers { // blittable
+public unsafe interface ISpringModifiers {
+    // SpringModifiers(/*NULLPARS*/);
+    // SpringModifiers(/*NULLPARS*/);
+    // UNPARSED_TYPE ~SpringModifiers(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(SpringModifiers lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(SpringModifiers lhs, /*NULLPARS*/);
+    // SpringModifiers(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct SpringModifiers : ISpringModifiers { // blittable
     public float stiffness;
     public float damping;
 
 #endif
 
+    // Hierarchy: SpringModifiers
     //Skipped generated implicit entry: SpringModifiers
     
     //Skipped generated implicit entry: SpringModifiers
@@ -374,12 +403,23 @@ public unsafe partial struct SpringModifiers { // blittable
 #endif
 
 #if !NATIVE
-public unsafe partial struct RestitutionModifiers { // blittable
+public unsafe interface IRestitutionModifiers {
+    // RestitutionModifiers(/*NULLPARS*/);
+    // RestitutionModifiers(/*NULLPARS*/);
+    // UNPARSED_TYPE ~RestitutionModifiers(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(RestitutionModifiers lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(RestitutionModifiers lhs, /*NULLPARS*/);
+    // RestitutionModifiers(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct RestitutionModifiers : IRestitutionModifiers { // blittable
     public float restitution;
     public float velocityThreshold;
 
 #endif
 
+    // Hierarchy: RestitutionModifiers
     //Skipped generated implicit entry: RestitutionModifiers
     
     //Skipped generated implicit entry: RestitutionModifiers
@@ -398,10 +438,22 @@ public unsafe partial struct RestitutionModifiers { // blittable
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxConstraintInvMassScalePtr { // pointer
+public unsafe interface IPxConstraintInvMassScalePtr {
+    // PxConstraintInvMassScale();
+    // PxConstraintInvMassScale(float lin0, float ang0, float lin1, float ang1);
+    // PxConstraintInvMassScale(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxConstraintInvMassScalePtr lhs, /*NULLPARS*/);
+    // PxConstraintInvMassScale(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxConstraintInvMassScalePtr lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxConstraintInvMassScale(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxConstraintInvMassScalePtr : IPxConstraintInvMassScalePtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxConstraintInvMassScalePtr
     //================================================================================
     //#       PxConstraintInvMassScale                                               #
     //================================================================================
@@ -428,7 +480,7 @@ public unsafe partial struct PxConstraintInvMassScalePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxConstraintInvMassScale_ctor(float lin0, float ang0, float lin1, float ang1);
     
-    public PxConstraintInvMassScale(float lin0, float ang0, float lin1, float ang1){
+    public  PxConstraintInvMassScale(float lin0, float ang0, float lin1, float ang1){
         float pvk_in_lin0 = (lin0);
         float pvk_in_ang0 = (ang0);
         float pvk_in_lin1 = (lin1);
@@ -456,10 +508,25 @@ public unsafe partial struct PxConstraintInvMassScalePtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxConstraintVisualizerPtr { // pointer
+public unsafe interface IPxConstraintVisualizerPtr {
+    // void ~PxConstraintVisualizer();
+     void visualizeJointFrames(PxTransform parent, PxTransform child);
+     void visualizeLinearLimit(PxTransform t0, PxTransform t1, float value, bool active);
+     void visualizeAngularLimit(PxTransform t0, float lower, float upper, bool active);
+     void visualizeLimitCone(PxTransform t, float tanQSwingY, float tanQSwingZ, bool active);
+     void visualizeDoubleCone(PxTransform t, float angle, bool active);
+     void visualizeLine(PxVec3 p0, PxVec3 p1, uint color);
+    //static UNPARSED_TYPE operator=(PxConstraintVisualizerPtr lhs, /*NULLPARS*/);
+    // PxConstraintVisualizer(/*NULLPARS*/);
+    // PxConstraintVisualizer(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxConstraintVisualizerPtr : IPxConstraintVisualizerPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxConstraintVisualizerPtr
     //================================================================================
     //#       ~PxConstraintVisualizer                                                #
     //================================================================================
@@ -473,7 +540,7 @@ public unsafe partial struct PxConstraintVisualizerPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxConstraintVisualizer(PxConstraintVisualizerPtr selfPtr);
     
-    public void ~PxConstraintVisualizer(){
+    public  void ~PxConstraintVisualizer(){
         W_~PxConstraintVisualizer(this);
     }
     #endif*/
@@ -492,7 +559,7 @@ public unsafe partial struct PxConstraintVisualizerPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_visualizeJointFrames(PxConstraintVisualizerPtr selfPtr, PxTransform parent, PxTransform child);
     
-    public void visualizeJointFrames(PxTransform parent, PxTransform child){
+    public  void visualizeJointFrames(PxTransform parent, PxTransform child){
         PxTransform pvk_in_parent = (parent);
         PxTransform pvk_in_child = (child);
         W_visualizeJointFrames(this, pvk_in_parent, pvk_in_child);
@@ -515,7 +582,7 @@ public unsafe partial struct PxConstraintVisualizerPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_visualizeLinearLimit(PxConstraintVisualizerPtr selfPtr, PxTransform t0, PxTransform t1, float value, bool active);
     
-    public void visualizeLinearLimit(PxTransform t0, PxTransform t1, float value, bool active){
+    public  void visualizeLinearLimit(PxTransform t0, PxTransform t1, float value, bool active){
         PxTransform pvk_in_t0 = (t0);
         PxTransform pvk_in_t1 = (t1);
         float pvk_in_value = (value);
@@ -540,7 +607,7 @@ public unsafe partial struct PxConstraintVisualizerPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_visualizeAngularLimit(PxConstraintVisualizerPtr selfPtr, PxTransform t0, float lower, float upper, bool active);
     
-    public void visualizeAngularLimit(PxTransform t0, float lower, float upper, bool active){
+    public  void visualizeAngularLimit(PxTransform t0, float lower, float upper, bool active){
         PxTransform pvk_in_t0 = (t0);
         float pvk_in_lower = (lower);
         float pvk_in_upper = (upper);
@@ -565,7 +632,7 @@ public unsafe partial struct PxConstraintVisualizerPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_visualizeLimitCone(PxConstraintVisualizerPtr selfPtr, PxTransform t, float tanQSwingY, float tanQSwingZ, bool active);
     
-    public void visualizeLimitCone(PxTransform t, float tanQSwingY, float tanQSwingZ, bool active){
+    public  void visualizeLimitCone(PxTransform t, float tanQSwingY, float tanQSwingZ, bool active){
         PxTransform pvk_in_t = (t);
         float pvk_in_tanQSwingY = (tanQSwingY);
         float pvk_in_tanQSwingZ = (tanQSwingZ);
@@ -589,7 +656,7 @@ public unsafe partial struct PxConstraintVisualizerPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_visualizeDoubleCone(PxConstraintVisualizerPtr selfPtr, PxTransform t, float angle, bool active);
     
-    public void visualizeDoubleCone(PxTransform t, float angle, bool active){
+    public  void visualizeDoubleCone(PxTransform t, float angle, bool active){
         PxTransform pvk_in_t = (t);
         float pvk_in_angle = (angle);
         bool pvk_in_active = (active);
@@ -612,7 +679,7 @@ public unsafe partial struct PxConstraintVisualizerPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_visualizeLine(PxConstraintVisualizerPtr selfPtr, PxVec3 p0, PxVec3 p1, uint color);
     
-    public void visualizeLine(PxVec3 p0, PxVec3 p1, uint color){
+    public  void visualizeLine(PxVec3 p0, PxVec3 p1, uint color){
         PxVec3 pvk_in_p0 = (p0);
         PxVec3 pvk_in_p1 = (p1);
         uint pvk_in_color = (color);
@@ -634,10 +701,21 @@ public unsafe partial struct PxConstraintVisualizerPtr { // pointer
 
 // Class physx::PxRenderBuffer Manually Ignored
 #if !NATIVE
-public unsafe partial struct Px1DConstraintFlagPtr { // pointer
+public unsafe interface IPx1DConstraintFlagPtr {
+    // Px1DConstraintFlag();
+    // Px1DConstraintFlag(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(Px1DConstraintFlagPtr lhs, /*NULLPARS*/);
+    // Px1DConstraintFlag(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(Px1DConstraintFlagPtr lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~Px1DConstraintFlag(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct Px1DConstraintFlagPtr : IPx1DConstraintFlagPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: Px1DConstraintFlagPtr
     //================================================================================
     //#       Px1DConstraintFlag                                                     #
     //================================================================================

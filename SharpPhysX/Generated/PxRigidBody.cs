@@ -98,9 +98,113 @@ public static UNPARSED_TYPE operator~(PxRigidBodyFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxRigidBodyPtr { // pointer
+public unsafe interface IPxRigidBodyPtr {
+     void setCMassLocalPose(PxTransform pose);
+     PxTransform getCMassLocalPose();
+     void setMass(float mass);
+     float getMass();
+     float getInvMass();
+     void setMassSpaceInertiaTensor(PxVec3 m);
+     PxVec3 getMassSpaceInertiaTensor();
+     PxVec3 getMassSpaceInvInertiaTensor();
+     void setLinearDamping(float linDamp);
+     float getLinearDamping();
+     void setAngularDamping(float angDamp);
+     float getAngularDamping();
+     PxVec3 getLinearVelocity();
+     void setLinearVelocity(PxVec3 linVel);
+     void setLinearVelocity(PxVec3 linVel, bool autowake);
+     PxVec3 getAngularVelocity();
+     void setAngularVelocity(PxVec3 angVel);
+     void setAngularVelocity(PxVec3 angVel, bool autowake);
+     void setMaxAngularVelocity(float maxAngVel);
+     float getMaxAngularVelocity();
+     void setMaxLinearVelocity(float maxLinVel);
+     float getMaxLinearVelocity();
+     void addForce(PxVec3 force, PxForceMode mode);
+     void addForce(PxVec3 force);
+     void addForce(PxVec3 force, PxForceMode mode, bool autowake);
+     void addTorque(PxVec3 torque, PxForceMode mode);
+     void addTorque(PxVec3 torque);
+     void addTorque(PxVec3 torque, PxForceMode mode, bool autowake);
+     void clearForce();
+     void clearForce(PxForceMode mode);
+     void clearTorque();
+     void clearTorque(PxForceMode mode);
+     void setForceAndTorque(PxVec3 force, PxVec3 torque);
+     void setForceAndTorque(PxVec3 force, PxVec3 torque, PxForceMode mode);
+     void setRigidBodyFlag(PxRigidBodyFlag flag, bool value);
+    // void setRigidBodyFlags( inFlags);
+    // UNPARSED_TYPE getRigidBodyFlags();
+     void setMinCCDAdvanceCoefficient(float advanceCoefficient);
+     float getMinCCDAdvanceCoefficient();
+     void setMaxDepenetrationVelocity(float biasClamp);
+     float getMaxDepenetrationVelocity();
+     void setMaxContactImpulse(float maxImpulse);
+     float getMaxContactImpulse();
+     uint getInternalIslandNodeIndex();
+    // PxRigidBody(ushort concreteType,  baseFlags);
+    // PxRigidBody( baseFlags);
+    // void ~PxRigidBody();
+     bool isKindOf(string name);
+    // PxRigidBody(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxRigidBodyPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPxRigidBodyPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxActorPtr, PxRigidActorPtr, PxRigidBodyPtr
+    public static implicit operator PxActorPtr(PxRigidBodyPtr obj){return *(PxActorPtr*)&obj;}
+    public static explicit operator PxRigidBodyPtr(PxActorPtr obj){return *(PxRigidBodyPtr*)&obj;}
+    public static implicit operator PxRigidActorPtr(PxRigidBodyPtr obj){return *(PxRigidActorPtr*)&obj;}
+    public static explicit operator PxRigidBodyPtr(PxRigidActorPtr obj){return *(PxRigidBodyPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxRigidActorPtr
+    public  void release(){((PxRigidActorPtr)this).release();}
+    public  PxTransform getGlobalPose(){return ((PxRigidActorPtr)this).getGlobalPose();}
+    public  void setGlobalPose(PxTransform pose){((PxRigidActorPtr)this).setGlobalPose(pose);}
+    public  void setGlobalPose(PxTransform pose, bool autowake){((PxRigidActorPtr)this).setGlobalPose(pose, autowake);}
+    public  bool attachShape(PxShapePtr shape){return ((PxRigidActorPtr)this).attachShape(shape);}
+    public  void detachShape(PxShapePtr shape){((PxRigidActorPtr)this).detachShape(shape);}
+    public  void detachShape(PxShapePtr shape, bool wakeOnLostTouch){((PxRigidActorPtr)this).detachShape(shape, wakeOnLostTouch);}
+    public  uint getNbShapes(){return ((PxRigidActorPtr)this).getNbShapes();}
+    //public  uint getShapes( userBuffer, uint bufferSize){return ((PxRigidActorPtr)this).getShapes(userBuffer, bufferSize);}
+    //public  uint getShapes( userBuffer, uint bufferSize, uint startIndex){return ((PxRigidActorPtr)this).getShapes(userBuffer, bufferSize, startIndex);}
+    public  uint getNbConstraints(){return ((PxRigidActorPtr)this).getNbConstraints();}
+    //public  uint getConstraints( userBuffer, uint bufferSize){return ((PxRigidActorPtr)this).getConstraints(userBuffer, bufferSize);}
+    //public  uint getConstraints( userBuffer, uint bufferSize, uint startIndex){return ((PxRigidActorPtr)this).getConstraints(userBuffer, bufferSize, startIndex);}
+    //public  PxRigidActor(ushort concreteType,  baseFlags){((PxRigidActorPtr)this).PxRigidActor(concreteType, baseFlags);}
+    //public  PxRigidActor( baseFlags){((PxRigidActorPtr)this).PxRigidActor(baseFlags);}
+    //public  void ~PxRigidActor(){((PxRigidActorPtr)this).~PxRigidActor();}
+    //public  PxRigidActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxRigidActorPtr lhs, /*NULLPARS*/){return ((PxRigidActorPtr)this).operator=(/*NULLARGS*/);}
+    
+    // --- PxActorPtr
+    public  PxActorType getType(){return ((PxRigidActorPtr)this).getType();}
+    public  PxScenePtr getScene(){return ((PxRigidActorPtr)this).getScene();}
+    public  void setName(string name){((PxRigidActorPtr)this).setName(name);}
+    public  IntPtr getName(){return ((PxRigidActorPtr)this).getName();}
+    public  PxBounds3 getWorldBounds(){return ((PxRigidActorPtr)this).getWorldBounds();}
+    public  PxBounds3 getWorldBounds(float inflation){return ((PxRigidActorPtr)this).getWorldBounds(inflation);}
+    public  void setActorFlag(PxActorFlag flag, bool value){((PxRigidActorPtr)this).setActorFlag(flag, value);}
+    //public  void setActorFlags( inFlags){((PxRigidActorPtr)this).setActorFlags(inFlags);}
+    //public  UNPARSED_TYPE getActorFlags(){return ((PxRigidActorPtr)this).getActorFlags();}
+    public  void setDominanceGroup(byte dominanceGroup){((PxRigidActorPtr)this).setDominanceGroup(dominanceGroup);}
+    public  byte getDominanceGroup(){return ((PxRigidActorPtr)this).getDominanceGroup();}
+    public  void setOwnerClient(byte inClient){((PxRigidActorPtr)this).setOwnerClient(inClient);}
+    public  byte getOwnerClient(){return ((PxRigidActorPtr)this).getOwnerClient();}
+    //public  PxAggregatePtr getAggregate(){return ((PxRigidActorPtr)this).getAggregate();}
+    //public  PxActor(ushort concreteType,  baseFlags){((PxRigidActorPtr)this).PxActor(concreteType, baseFlags);}
+    //public  PxActor( baseFlags){((PxRigidActorPtr)this).PxActor(baseFlags);}
+    //public  void ~PxActor(){((PxRigidActorPtr)this).~PxActor();}
+    //public  PxActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxActorPtr lhs, /*NULLPARS*/){return ((PxRigidActorPtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       setCMassLocalPose                                                      #
@@ -114,7 +218,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setCMassLocalPose(PxRigidBodyPtr selfPtr, PxTransform pose);
     
-    public void setCMassLocalPose(PxTransform pose){
+    public  void setCMassLocalPose(PxTransform pose){
         PxTransform pvk_in_pose = (pose);
         W_setCMassLocalPose(this, pvk_in_pose);
     }
@@ -133,7 +237,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform W_getCMassLocalPose(PxRigidBodyPtr selfPtr);
     
-    public PxTransform getCMassLocalPose(){
+    public  PxTransform getCMassLocalPose(){
         PxTransform retVal = W_getCMassLocalPose(this);
         return retVal;
     }
@@ -152,7 +256,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setMass(PxRigidBodyPtr selfPtr, float mass);
     
-    public void setMass(float mass){
+    public  void setMass(float mass){
         float pvk_in_mass = (mass);
         W_setMass(this, pvk_in_mass);
     }
@@ -171,7 +275,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getMass(PxRigidBodyPtr selfPtr);
     
-    public float getMass(){
+    public  float getMass(){
         float retVal = W_getMass(this);
         return retVal;
     }
@@ -190,7 +294,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getInvMass(PxRigidBodyPtr selfPtr);
     
-    public float getInvMass(){
+    public  float getInvMass(){
         float retVal = W_getInvMass(this);
         return retVal;
     }
@@ -209,7 +313,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setMassSpaceInertiaTensor(PxRigidBodyPtr selfPtr, PxVec3 m);
     
-    public void setMassSpaceInertiaTensor(PxVec3 m){
+    public  void setMassSpaceInertiaTensor(PxVec3 m){
         PxVec3 pvk_in_m = (m);
         W_setMassSpaceInertiaTensor(this, pvk_in_m);
     }
@@ -228,7 +332,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getMassSpaceInertiaTensor(PxRigidBodyPtr selfPtr);
     
-    public PxVec3 getMassSpaceInertiaTensor(){
+    public  PxVec3 getMassSpaceInertiaTensor(){
         PxVec3 retVal = W_getMassSpaceInertiaTensor(this);
         return retVal;
     }
@@ -247,7 +351,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getMassSpaceInvInertiaTensor(PxRigidBodyPtr selfPtr);
     
-    public PxVec3 getMassSpaceInvInertiaTensor(){
+    public  PxVec3 getMassSpaceInvInertiaTensor(){
         PxVec3 retVal = W_getMassSpaceInvInertiaTensor(this);
         return retVal;
     }
@@ -266,7 +370,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setLinearDamping(PxRigidBodyPtr selfPtr, float linDamp);
     
-    public void setLinearDamping(float linDamp){
+    public  void setLinearDamping(float linDamp){
         float pvk_in_linDamp = (linDamp);
         W_setLinearDamping(this, pvk_in_linDamp);
     }
@@ -285,7 +389,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getLinearDamping(PxRigidBodyPtr selfPtr);
     
-    public float getLinearDamping(){
+    public  float getLinearDamping(){
         float retVal = W_getLinearDamping(this);
         return retVal;
     }
@@ -304,7 +408,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setAngularDamping(PxRigidBodyPtr selfPtr, float angDamp);
     
-    public void setAngularDamping(float angDamp){
+    public  void setAngularDamping(float angDamp){
         float pvk_in_angDamp = (angDamp);
         W_setAngularDamping(this, pvk_in_angDamp);
     }
@@ -323,7 +427,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getAngularDamping(PxRigidBodyPtr selfPtr);
     
-    public float getAngularDamping(){
+    public  float getAngularDamping(){
         float retVal = W_getAngularDamping(this);
         return retVal;
     }
@@ -342,7 +446,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getLinearVelocity(PxRigidBodyPtr selfPtr);
     
-    public PxVec3 getLinearVelocity(){
+    public  PxVec3 getLinearVelocity(){
         PxVec3 retVal = W_getLinearVelocity(this);
         return retVal;
     }
@@ -362,7 +466,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setLinearVelocity(PxRigidBodyPtr selfPtr, PxVec3 linVel, bool autowake);
     
-    public void setLinearVelocity(PxVec3 linVel, bool autowake){
+    public  void setLinearVelocity(PxVec3 linVel, bool autowake){
         PxVec3 pvk_in_linVel = (linVel);
         bool pvk_in_autowake = (autowake);
         W_setLinearVelocity(this, pvk_in_linVel, pvk_in_autowake);
@@ -372,17 +476,17 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES void W_setLinearVelocity_OL1(physx::PxRigidBody* self, physx::PxVec3 linVel){
+    ES void W_setLinearVelocity(physx::PxRigidBody* self, physx::PxVec3 linVel){
         auto nat_in_linVel = (linVel);
         self->setLinearVelocity(nat_in_linVel);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setLinearVelocity_OL1(PxRigidBodyPtr selfPtr, PxVec3 linVel);
+    static extern void W_setLinearVelocity(PxRigidBodyPtr selfPtr, PxVec3 linVel);
     
-    public void setLinearVelocity(PxVec3 linVel){
+    public  void setLinearVelocity(PxVec3 linVel){
         PxVec3 pvk_in_linVel = (linVel);
-        W_setLinearVelocity_OL1(this, pvk_in_linVel);
+        W_setLinearVelocity(this, pvk_in_linVel);
     }
     #endif
     
@@ -400,7 +504,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getAngularVelocity(PxRigidBodyPtr selfPtr);
     
-    public PxVec3 getAngularVelocity(){
+    public  PxVec3 getAngularVelocity(){
         PxVec3 retVal = W_getAngularVelocity(this);
         return retVal;
     }
@@ -420,7 +524,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setAngularVelocity(PxRigidBodyPtr selfPtr, PxVec3 angVel, bool autowake);
     
-    public void setAngularVelocity(PxVec3 angVel, bool autowake){
+    public  void setAngularVelocity(PxVec3 angVel, bool autowake){
         PxVec3 pvk_in_angVel = (angVel);
         bool pvk_in_autowake = (autowake);
         W_setAngularVelocity(this, pvk_in_angVel, pvk_in_autowake);
@@ -430,17 +534,17 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES void W_setAngularVelocity_OL1(physx::PxRigidBody* self, physx::PxVec3 angVel){
+    ES void W_setAngularVelocity(physx::PxRigidBody* self, physx::PxVec3 angVel){
         auto nat_in_angVel = (angVel);
         self->setAngularVelocity(nat_in_angVel);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setAngularVelocity_OL1(PxRigidBodyPtr selfPtr, PxVec3 angVel);
+    static extern void W_setAngularVelocity(PxRigidBodyPtr selfPtr, PxVec3 angVel);
     
-    public void setAngularVelocity(PxVec3 angVel){
+    public  void setAngularVelocity(PxVec3 angVel){
         PxVec3 pvk_in_angVel = (angVel);
-        W_setAngularVelocity_OL1(this, pvk_in_angVel);
+        W_setAngularVelocity(this, pvk_in_angVel);
     }
     #endif
     
@@ -458,7 +562,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setMaxAngularVelocity(PxRigidBodyPtr selfPtr, float maxAngVel);
     
-    public void setMaxAngularVelocity(float maxAngVel){
+    public  void setMaxAngularVelocity(float maxAngVel){
         float pvk_in_maxAngVel = (maxAngVel);
         W_setMaxAngularVelocity(this, pvk_in_maxAngVel);
     }
@@ -477,7 +581,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getMaxAngularVelocity(PxRigidBodyPtr selfPtr);
     
-    public float getMaxAngularVelocity(){
+    public  float getMaxAngularVelocity(){
         float retVal = W_getMaxAngularVelocity(this);
         return retVal;
     }
@@ -496,7 +600,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setMaxLinearVelocity(PxRigidBodyPtr selfPtr, float maxLinVel);
     
-    public void setMaxLinearVelocity(float maxLinVel){
+    public  void setMaxLinearVelocity(float maxLinVel){
         float pvk_in_maxLinVel = (maxLinVel);
         W_setMaxLinearVelocity(this, pvk_in_maxLinVel);
     }
@@ -515,7 +619,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getMaxLinearVelocity(PxRigidBodyPtr selfPtr);
     
-    public float getMaxLinearVelocity(){
+    public  float getMaxLinearVelocity(){
         float retVal = W_getMaxLinearVelocity(this);
         return retVal;
     }
@@ -536,7 +640,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_addForce(PxRigidBodyPtr selfPtr, PxVec3 force, PxForceMode mode, bool autowake);
     
-    public void addForce(PxVec3 force, PxForceMode mode, bool autowake){
+    public  void addForce(PxVec3 force, PxForceMode mode, bool autowake){
         PxVec3 pvk_in_force = (force);
         PxForceMode pvk_in_mode = (mode);
         bool pvk_in_autowake = (autowake);
@@ -547,19 +651,19 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES void W_addForce_OL1(physx::PxRigidBody* self, physx::PxVec3 force, physx::PxForceMode::Enum mode){
+    ES void W_addForce(physx::PxRigidBody* self, physx::PxVec3 force, physx::PxForceMode::Enum mode){
         auto nat_in_force = (force);
         auto nat_in_mode = (mode);
         self->addForce(nat_in_force, nat_in_mode);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addForce_OL1(PxRigidBodyPtr selfPtr, PxVec3 force, PxForceMode mode);
+    static extern void W_addForce(PxRigidBodyPtr selfPtr, PxVec3 force, PxForceMode mode);
     
-    public void addForce(PxVec3 force, PxForceMode mode){
+    public  void addForce(PxVec3 force, PxForceMode mode){
         PxVec3 pvk_in_force = (force);
         PxForceMode pvk_in_mode = (mode);
-        W_addForce_OL1(this, pvk_in_force, pvk_in_mode);
+        W_addForce(this, pvk_in_force, pvk_in_mode);
     }
     #endif
     
@@ -567,17 +671,17 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES void W_addForce_OL2(physx::PxRigidBody* self, physx::PxVec3 force){
+    ES void W_addForce(physx::PxRigidBody* self, physx::PxVec3 force){
         auto nat_in_force = (force);
         self->addForce(nat_in_force);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addForce_OL2(PxRigidBodyPtr selfPtr, PxVec3 force);
+    static extern void W_addForce(PxRigidBodyPtr selfPtr, PxVec3 force);
     
-    public void addForce(PxVec3 force){
+    public  void addForce(PxVec3 force){
         PxVec3 pvk_in_force = (force);
-        W_addForce_OL2(this, pvk_in_force);
+        W_addForce(this, pvk_in_force);
     }
     #endif
     
@@ -597,7 +701,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_addTorque(PxRigidBodyPtr selfPtr, PxVec3 torque, PxForceMode mode, bool autowake);
     
-    public void addTorque(PxVec3 torque, PxForceMode mode, bool autowake){
+    public  void addTorque(PxVec3 torque, PxForceMode mode, bool autowake){
         PxVec3 pvk_in_torque = (torque);
         PxForceMode pvk_in_mode = (mode);
         bool pvk_in_autowake = (autowake);
@@ -608,19 +712,19 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES void W_addTorque_OL1(physx::PxRigidBody* self, physx::PxVec3 torque, physx::PxForceMode::Enum mode){
+    ES void W_addTorque(physx::PxRigidBody* self, physx::PxVec3 torque, physx::PxForceMode::Enum mode){
         auto nat_in_torque = (torque);
         auto nat_in_mode = (mode);
         self->addTorque(nat_in_torque, nat_in_mode);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addTorque_OL1(PxRigidBodyPtr selfPtr, PxVec3 torque, PxForceMode mode);
+    static extern void W_addTorque(PxRigidBodyPtr selfPtr, PxVec3 torque, PxForceMode mode);
     
-    public void addTorque(PxVec3 torque, PxForceMode mode){
+    public  void addTorque(PxVec3 torque, PxForceMode mode){
         PxVec3 pvk_in_torque = (torque);
         PxForceMode pvk_in_mode = (mode);
-        W_addTorque_OL1(this, pvk_in_torque, pvk_in_mode);
+        W_addTorque(this, pvk_in_torque, pvk_in_mode);
     }
     #endif
     
@@ -628,17 +732,17 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES void W_addTorque_OL2(physx::PxRigidBody* self, physx::PxVec3 torque){
+    ES void W_addTorque(physx::PxRigidBody* self, physx::PxVec3 torque){
         auto nat_in_torque = (torque);
         self->addTorque(nat_in_torque);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addTorque_OL2(PxRigidBodyPtr selfPtr, PxVec3 torque);
+    static extern void W_addTorque(PxRigidBodyPtr selfPtr, PxVec3 torque);
     
-    public void addTorque(PxVec3 torque){
+    public  void addTorque(PxVec3 torque){
         PxVec3 pvk_in_torque = (torque);
-        W_addTorque_OL2(this, pvk_in_torque);
+        W_addTorque(this, pvk_in_torque);
     }
     #endif
     
@@ -656,7 +760,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_clearForce(PxRigidBodyPtr selfPtr, PxForceMode mode);
     
-    public void clearForce(PxForceMode mode){
+    public  void clearForce(PxForceMode mode){
         PxForceMode pvk_in_mode = (mode);
         W_clearForce(this, pvk_in_mode);
     }
@@ -665,15 +769,15 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES void W_clearForce_OL1(physx::PxRigidBody* self){
+    ES void W_clearForce(physx::PxRigidBody* self){
         self->clearForce();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_clearForce_OL1(PxRigidBodyPtr selfPtr);
+    static extern void W_clearForce(PxRigidBodyPtr selfPtr);
     
-    public void clearForce(){
-        W_clearForce_OL1(this);
+    public  void clearForce(){
+        W_clearForce(this);
     }
     #endif
     
@@ -691,7 +795,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_clearTorque(PxRigidBodyPtr selfPtr, PxForceMode mode);
     
-    public void clearTorque(PxForceMode mode){
+    public  void clearTorque(PxForceMode mode){
         PxForceMode pvk_in_mode = (mode);
         W_clearTorque(this, pvk_in_mode);
     }
@@ -700,15 +804,15 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES void W_clearTorque_OL1(physx::PxRigidBody* self){
+    ES void W_clearTorque(physx::PxRigidBody* self){
         self->clearTorque();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_clearTorque_OL1(PxRigidBodyPtr selfPtr);
+    static extern void W_clearTorque(PxRigidBodyPtr selfPtr);
     
-    public void clearTorque(){
-        W_clearTorque_OL1(this);
+    public  void clearTorque(){
+        W_clearTorque(this);
     }
     #endif
     
@@ -728,7 +832,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setForceAndTorque(PxRigidBodyPtr selfPtr, PxVec3 force, PxVec3 torque, PxForceMode mode);
     
-    public void setForceAndTorque(PxVec3 force, PxVec3 torque, PxForceMode mode){
+    public  void setForceAndTorque(PxVec3 force, PxVec3 torque, PxForceMode mode){
         PxVec3 pvk_in_force = (force);
         PxVec3 pvk_in_torque = (torque);
         PxForceMode pvk_in_mode = (mode);
@@ -739,19 +843,19 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES void W_setForceAndTorque_OL1(physx::PxRigidBody* self, physx::PxVec3 force, physx::PxVec3 torque){
+    ES void W_setForceAndTorque(physx::PxRigidBody* self, physx::PxVec3 force, physx::PxVec3 torque){
         auto nat_in_force = (force);
         auto nat_in_torque = (torque);
         self->setForceAndTorque(nat_in_force, nat_in_torque);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setForceAndTorque_OL1(PxRigidBodyPtr selfPtr, PxVec3 force, PxVec3 torque);
+    static extern void W_setForceAndTorque(PxRigidBodyPtr selfPtr, PxVec3 force, PxVec3 torque);
     
-    public void setForceAndTorque(PxVec3 force, PxVec3 torque){
+    public  void setForceAndTorque(PxVec3 force, PxVec3 torque){
         PxVec3 pvk_in_force = (force);
         PxVec3 pvk_in_torque = (torque);
-        W_setForceAndTorque_OL1(this, pvk_in_force, pvk_in_torque);
+        W_setForceAndTorque(this, pvk_in_force, pvk_in_torque);
     }
     #endif
     
@@ -770,7 +874,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setRigidBodyFlag(PxRigidBodyPtr selfPtr, PxRigidBodyFlag flag, bool value);
     
-    public void setRigidBodyFlag(PxRigidBodyFlag flag, bool value){
+    public  void setRigidBodyFlag(PxRigidBodyFlag flag, bool value){
         PxRigidBodyFlag pvk_in_flag = (flag);
         bool pvk_in_value = (value);
         W_setRigidBodyFlag(this, pvk_in_flag, pvk_in_value);
@@ -792,7 +896,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setRigidBodyFlags(PxRigidBodyPtr selfPtr,  inFlags);
     
-    public void setRigidBodyFlags( inFlags){
+    public  void setRigidBodyFlags( inFlags){
          pvk_in_inFlags = (inFlags);
         W_setRigidBodyFlags(this, pvk_in_inFlags);
     }
@@ -813,7 +917,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_getRigidBodyFlags(PxRigidBodyPtr selfPtr);
     
-    public UNPARSED_TYPE getRigidBodyFlags(){
+    public  UNPARSED_TYPE getRigidBodyFlags(){
         UNPARSED_TYPE retVal = W_getRigidBodyFlags(this);
         return retVal;
     }
@@ -832,7 +936,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setMinCCDAdvanceCoefficient(PxRigidBodyPtr selfPtr, float advanceCoefficient);
     
-    public void setMinCCDAdvanceCoefficient(float advanceCoefficient){
+    public  void setMinCCDAdvanceCoefficient(float advanceCoefficient){
         float pvk_in_advanceCoefficient = (advanceCoefficient);
         W_setMinCCDAdvanceCoefficient(this, pvk_in_advanceCoefficient);
     }
@@ -851,7 +955,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getMinCCDAdvanceCoefficient(PxRigidBodyPtr selfPtr);
     
-    public float getMinCCDAdvanceCoefficient(){
+    public  float getMinCCDAdvanceCoefficient(){
         float retVal = W_getMinCCDAdvanceCoefficient(this);
         return retVal;
     }
@@ -870,7 +974,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setMaxDepenetrationVelocity(PxRigidBodyPtr selfPtr, float biasClamp);
     
-    public void setMaxDepenetrationVelocity(float biasClamp){
+    public  void setMaxDepenetrationVelocity(float biasClamp){
         float pvk_in_biasClamp = (biasClamp);
         W_setMaxDepenetrationVelocity(this, pvk_in_biasClamp);
     }
@@ -889,7 +993,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getMaxDepenetrationVelocity(PxRigidBodyPtr selfPtr);
     
-    public float getMaxDepenetrationVelocity(){
+    public  float getMaxDepenetrationVelocity(){
         float retVal = W_getMaxDepenetrationVelocity(this);
         return retVal;
     }
@@ -908,7 +1012,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setMaxContactImpulse(PxRigidBodyPtr selfPtr, float maxImpulse);
     
-    public void setMaxContactImpulse(float maxImpulse){
+    public  void setMaxContactImpulse(float maxImpulse){
         float pvk_in_maxImpulse = (maxImpulse);
         W_setMaxContactImpulse(this, pvk_in_maxImpulse);
     }
@@ -927,7 +1031,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getMaxContactImpulse(PxRigidBodyPtr selfPtr);
     
-    public float getMaxContactImpulse(){
+    public  float getMaxContactImpulse(){
         float retVal = W_getMaxContactImpulse(this);
         return retVal;
     }
@@ -946,7 +1050,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern uint W_getInternalIslandNodeIndex(PxRigidBodyPtr selfPtr);
     
-    public uint getInternalIslandNodeIndex(){
+    public  uint getInternalIslandNodeIndex(){
         uint retVal = W_getInternalIslandNodeIndex(this);
         return retVal;
     }
@@ -969,7 +1073,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxRigidBody_ctor(ushort concreteType,  baseFlags);
     
-    public PxRigidBody(ushort concreteType,  baseFlags){
+    public  PxRigidBody(ushort concreteType,  baseFlags){
         ushort pvk_in_concreteType = (concreteType);
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxRigidBody_ctor(pvk_in_concreteType, pvk_in_baseFlags);
@@ -994,7 +1098,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxRigidBody_ctor( baseFlags);
     
-    public PxRigidBody( baseFlags){
+    public  PxRigidBody( baseFlags){
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxRigidBody_ctor(pvk_in_baseFlags);
         fixed (void* ptr = &this)
@@ -1016,7 +1120,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxRigidBody(PxRigidBodyPtr selfPtr);
     
-    public void ~PxRigidBody(){
+    public  void ~PxRigidBody(){
         W_~PxRigidBody(this);
     }
     #endif*/
@@ -1035,7 +1139,7 @@ public unsafe partial struct PxRigidBodyPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isKindOf(PxRigidBodyPtr selfPtr, string name);
     
-    public bool isKindOf(string name){
+    public  bool isKindOf(string name){
         string pvk_in_name = (name);
         bool retVal = W_isKindOf(this, pvk_in_name);
         return retVal;

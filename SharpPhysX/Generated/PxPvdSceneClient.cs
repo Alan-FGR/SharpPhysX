@@ -92,10 +92,80 @@ public static UNPARSED_TYPE operator~(PxPvdSceneFlag a){
 #endif
 
 
+#if !NATIVE
+public unsafe interface IPvdDebugPointPtr {
+    
+}
 
+public unsafe partial struct PvdDebugPointPtr : IPvdDebugPointPtr { // pointer
+    private IntPtr nativePtr_;
+#endif
 
+    // Hierarchy: PvdDebugPointPtr
 
+#if !NATIVE
+}
+#endif
 
+#if !NATIVE
+public unsafe interface IPvdDebugLinePtr {
+    
+}
+
+public unsafe partial struct PvdDebugLinePtr : IPvdDebugLinePtr { // pointer
+    private IntPtr nativePtr_;
+#endif
+
+    // Hierarchy: PvdDebugLinePtr
+
+#if !NATIVE
+}
+#endif
+
+#if !NATIVE
+public unsafe interface IPvdDebugTrianglePtr {
+    
+}
+
+public unsafe partial struct PvdDebugTrianglePtr : IPvdDebugTrianglePtr { // pointer
+    private IntPtr nativePtr_;
+#endif
+
+    // Hierarchy: PvdDebugTrianglePtr
+
+#if !NATIVE
+}
+#endif
+
+#if !NATIVE
+public unsafe interface IPvdDebugTextPtr {
+    
+}
+
+public unsafe partial struct PvdDebugTextPtr : IPvdDebugTextPtr { // pointer
+    private IntPtr nativePtr_;
+#endif
+
+    // Hierarchy: PvdDebugTextPtr
+
+#if !NATIVE
+}
+#endif
+
+#if !NATIVE
+public unsafe interface IPvdClientPtr {
+    
+}
+
+public unsafe partial struct PvdClientPtr : IPvdClientPtr { // pointer
+    private IntPtr nativePtr_;
+#endif
+
+    // Hierarchy: PvdClientPtr
+
+#if !NATIVE
+}
+#endif
 
 // Class physx::PxPvdSceneClient Manually Ignored
 // Class physx::PxPvdSceneFlag is enum namespace

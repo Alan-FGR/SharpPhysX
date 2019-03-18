@@ -6,12 +6,53 @@ using System.Runtime.InteropServices;
 
 
 #if !NATIVE
-public unsafe partial struct PxBounds3 { // blittable
+public unsafe interface IPxBounds3 {
+    // PxBounds3();
+    // PxBounds3(PxVec3 minimum, PxVec3 maximum);
+     PxBounds3 empty();
+     PxBounds3 boundsOfPoints(PxVec3 v0, PxVec3 v1);
+     PxBounds3 centerExtents(PxVec3 center, PxVec3 extent);
+     PxBounds3 basisExtent(PxVec3 center, PxMat33 basis, PxVec3 extent);
+     PxBounds3 poseExtent(PxTransform pose, PxVec3 extent);
+     PxBounds3 transformSafe(PxMat33 matrix, PxBounds3 bounds);
+     PxBounds3 transformFast(PxMat33 matrix, PxBounds3 bounds);
+     PxBounds3 transformSafe(PxTransform transform, PxBounds3 bounds);
+     PxBounds3 transformFast(PxTransform transform, PxBounds3 bounds);
+     void setEmpty();
+     void setMaximal();
+     void include(PxVec3 v);
+     void include(PxBounds3 b);
+     bool isEmpty();
+     bool intersects(PxBounds3 b);
+     bool intersects1D(PxBounds3 a, uint axis);
+     bool contains(PxVec3 v);
+     bool isInside(PxBounds3 box);
+     PxVec3 getCenter();
+     float getCenter(uint axis);
+     float getExtents(uint axis);
+     PxVec3 getDimensions();
+     PxVec3 getExtents();
+     void scaleSafe(float scale);
+     void scaleFast(float scale);
+     void fattenSafe(float distance);
+     void fattenFast(float distance);
+     bool isFinite();
+     bool isValid();
+    // PxBounds3(/*NULLPARS*/);
+    // PxBounds3(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxBounds3 lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxBounds3(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxBounds3 lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     public PxVec3 minimum;
     public PxVec3 maximum;
 
 #endif
 
+    // Hierarchy: PxBounds3
     //================================================================================
     //#       PxBounds3                                                              #
     //================================================================================
@@ -33,7 +74,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBounds3 W_PxBounds3_ctor(PxVec3 minimum, PxVec3 maximum);
     
-    public PxBounds3(PxVec3 minimum, PxVec3 maximum){
+    public  PxBounds3(PxVec3 minimum, PxVec3 maximum){
         PxVec3 pvk_in_minimum = (minimum);
         PxVec3 pvk_in_maximum = (maximum);
         var _new = W_PxBounds3_ctor(pvk_in_minimum, pvk_in_maximum);
@@ -55,7 +96,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBounds3 W_empty(PxBounds3 selfBlt);
     
-    public PxBounds3 empty(){
+    public  PxBounds3 empty(){
         PxBounds3 retVal = W_empty(this);
         return retVal;
     }
@@ -76,7 +117,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBounds3 W_boundsOfPoints(PxBounds3 selfBlt, PxVec3 v0, PxVec3 v1);
     
-    public PxBounds3 boundsOfPoints(PxVec3 v0, PxVec3 v1){
+    public  PxBounds3 boundsOfPoints(PxVec3 v0, PxVec3 v1){
         PxVec3 pvk_in_v0 = (v0);
         PxVec3 pvk_in_v1 = (v1);
         PxBounds3 retVal = W_boundsOfPoints(this, pvk_in_v0, pvk_in_v1);
@@ -99,7 +140,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBounds3 W_centerExtents(PxBounds3 selfBlt, PxVec3 center, PxVec3 extent);
     
-    public PxBounds3 centerExtents(PxVec3 center, PxVec3 extent){
+    public  PxBounds3 centerExtents(PxVec3 center, PxVec3 extent){
         PxVec3 pvk_in_center = (center);
         PxVec3 pvk_in_extent = (extent);
         PxBounds3 retVal = W_centerExtents(this, pvk_in_center, pvk_in_extent);
@@ -123,7 +164,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBounds3 W_basisExtent(PxBounds3 selfBlt, PxVec3 center, PxMat33 basis, PxVec3 extent);
     
-    public PxBounds3 basisExtent(PxVec3 center, PxMat33 basis, PxVec3 extent){
+    public  PxBounds3 basisExtent(PxVec3 center, PxMat33 basis, PxVec3 extent){
         PxVec3 pvk_in_center = (center);
         PxMat33 pvk_in_basis = (basis);
         PxVec3 pvk_in_extent = (extent);
@@ -147,7 +188,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBounds3 W_poseExtent(PxBounds3 selfBlt, PxTransform pose, PxVec3 extent);
     
-    public PxBounds3 poseExtent(PxTransform pose, PxVec3 extent){
+    public  PxBounds3 poseExtent(PxTransform pose, PxVec3 extent){
         PxTransform pvk_in_pose = (pose);
         PxVec3 pvk_in_extent = (extent);
         PxBounds3 retVal = W_poseExtent(this, pvk_in_pose, pvk_in_extent);
@@ -170,7 +211,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBounds3 W_transformSafe(PxBounds3 selfBlt, PxMat33 matrix, PxBounds3 bounds);
     
-    public PxBounds3 transformSafe(PxMat33 matrix, PxBounds3 bounds){
+    public  PxBounds3 transformSafe(PxMat33 matrix, PxBounds3 bounds){
         PxMat33 pvk_in_matrix = (matrix);
         PxBounds3 pvk_in_bounds = (bounds);
         PxBounds3 retVal = W_transformSafe(this, pvk_in_matrix, pvk_in_bounds);
@@ -193,7 +234,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBounds3 W_transformFast(PxBounds3 selfBlt, PxMat33 matrix, PxBounds3 bounds);
     
-    public PxBounds3 transformFast(PxMat33 matrix, PxBounds3 bounds){
+    public  PxBounds3 transformFast(PxMat33 matrix, PxBounds3 bounds){
         PxMat33 pvk_in_matrix = (matrix);
         PxBounds3 pvk_in_bounds = (bounds);
         PxBounds3 retVal = W_transformFast(this, pvk_in_matrix, pvk_in_bounds);
@@ -216,7 +257,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBounds3 W_transformSafe(PxBounds3 selfBlt, PxTransform transform, PxBounds3 bounds);
     
-    public PxBounds3 transformSafe(PxTransform transform, PxBounds3 bounds){
+    public  PxBounds3 transformSafe(PxTransform transform, PxBounds3 bounds){
         PxTransform pvk_in_transform = (transform);
         PxBounds3 pvk_in_bounds = (bounds);
         PxBounds3 retVal = W_transformSafe(this, pvk_in_transform, pvk_in_bounds);
@@ -239,7 +280,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBounds3 W_transformFast(PxBounds3 selfBlt, PxTransform transform, PxBounds3 bounds);
     
-    public PxBounds3 transformFast(PxTransform transform, PxBounds3 bounds){
+    public  PxBounds3 transformFast(PxTransform transform, PxBounds3 bounds){
         PxTransform pvk_in_transform = (transform);
         PxBounds3 pvk_in_bounds = (bounds);
         PxBounds3 retVal = W_transformFast(this, pvk_in_transform, pvk_in_bounds);
@@ -259,7 +300,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setEmpty(PxBounds3 selfBlt);
     
-    public void setEmpty(){
+    public  void setEmpty(){
         W_setEmpty(this);
     }
     #endif
@@ -276,7 +317,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setMaximal(PxBounds3 selfBlt);
     
-    public void setMaximal(){
+    public  void setMaximal(){
         W_setMaximal(this);
     }
     #endif
@@ -294,7 +335,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_include(PxBounds3 selfBlt, PxVec3 v);
     
-    public void include(PxVec3 v){
+    public  void include(PxVec3 v){
         PxVec3 pvk_in_v = (v);
         W_include(this, pvk_in_v);
     }
@@ -313,7 +354,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_include(PxBounds3 selfBlt, PxBounds3 b);
     
-    public void include(PxBounds3 b){
+    public  void include(PxBounds3 b){
         PxBounds3 pvk_in_b = (b);
         W_include(this, pvk_in_b);
     }
@@ -332,7 +373,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isEmpty(PxBounds3 selfBlt);
     
-    public bool isEmpty(){
+    public  bool isEmpty(){
         bool retVal = W_isEmpty(this);
         return retVal;
     }
@@ -352,7 +393,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_intersects(PxBounds3 selfBlt, PxBounds3 b);
     
-    public bool intersects(PxBounds3 b){
+    public  bool intersects(PxBounds3 b){
         PxBounds3 pvk_in_b = (b);
         bool retVal = W_intersects(this, pvk_in_b);
         return retVal;
@@ -374,7 +415,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_intersects1D(PxBounds3 selfBlt, PxBounds3 a, uint axis);
     
-    public bool intersects1D(PxBounds3 a, uint axis){
+    public  bool intersects1D(PxBounds3 a, uint axis){
         PxBounds3 pvk_in_a = (a);
         uint pvk_in_axis = (axis);
         bool retVal = W_intersects1D(this, pvk_in_a, pvk_in_axis);
@@ -396,7 +437,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_contains(PxBounds3 selfBlt, PxVec3 v);
     
-    public bool contains(PxVec3 v){
+    public  bool contains(PxVec3 v){
         PxVec3 pvk_in_v = (v);
         bool retVal = W_contains(this, pvk_in_v);
         return retVal;
@@ -417,7 +458,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isInside(PxBounds3 selfBlt, PxBounds3 box);
     
-    public bool isInside(PxBounds3 box){
+    public  bool isInside(PxBounds3 box){
         PxBounds3 pvk_in_box = (box);
         bool retVal = W_isInside(this, pvk_in_box);
         return retVal;
@@ -437,7 +478,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getCenter(PxBounds3 selfBlt);
     
-    public PxVec3 getCenter(){
+    public  PxVec3 getCenter(){
         PxVec3 retVal = W_getCenter(this);
         return retVal;
     }
@@ -457,7 +498,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getCenter(PxBounds3 selfBlt, uint axis);
     
-    public float getCenter(uint axis){
+    public  float getCenter(uint axis){
         uint pvk_in_axis = (axis);
         float retVal = W_getCenter(this, pvk_in_axis);
         return retVal;
@@ -478,7 +519,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getExtents(PxBounds3 selfBlt, uint axis);
     
-    public float getExtents(uint axis){
+    public  float getExtents(uint axis){
         uint pvk_in_axis = (axis);
         float retVal = W_getExtents(this, pvk_in_axis);
         return retVal;
@@ -498,7 +539,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getDimensions(PxBounds3 selfBlt);
     
-    public PxVec3 getDimensions(){
+    public  PxVec3 getDimensions(){
         PxVec3 retVal = W_getDimensions(this);
         return retVal;
     }
@@ -517,7 +558,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getExtents(PxBounds3 selfBlt);
     
-    public PxVec3 getExtents(){
+    public  PxVec3 getExtents(){
         PxVec3 retVal = W_getExtents(this);
         return retVal;
     }
@@ -536,7 +577,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_scaleSafe(PxBounds3 selfBlt, float scale);
     
-    public void scaleSafe(float scale){
+    public  void scaleSafe(float scale){
         float pvk_in_scale = (scale);
         W_scaleSafe(this, pvk_in_scale);
     }
@@ -555,7 +596,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_scaleFast(PxBounds3 selfBlt, float scale);
     
-    public void scaleFast(float scale){
+    public  void scaleFast(float scale){
         float pvk_in_scale = (scale);
         W_scaleFast(this, pvk_in_scale);
     }
@@ -574,7 +615,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_fattenSafe(PxBounds3 selfBlt, float distance);
     
-    public void fattenSafe(float distance){
+    public  void fattenSafe(float distance){
         float pvk_in_distance = (distance);
         W_fattenSafe(this, pvk_in_distance);
     }
@@ -593,7 +634,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_fattenFast(PxBounds3 selfBlt, float distance);
     
-    public void fattenFast(float distance){
+    public  void fattenFast(float distance){
         float pvk_in_distance = (distance);
         W_fattenFast(this, pvk_in_distance);
     }
@@ -612,7 +653,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isFinite(PxBounds3 selfBlt);
     
-    public bool isFinite(){
+    public  bool isFinite(){
         bool retVal = W_isFinite(this);
         return retVal;
     }
@@ -631,7 +672,7 @@ public unsafe partial struct PxBounds3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isValid(PxBounds3 selfBlt);
     
-    public bool isValid(){
+    public  bool isValid(){
         bool retVal = W_isValid(this);
         return retVal;
     }

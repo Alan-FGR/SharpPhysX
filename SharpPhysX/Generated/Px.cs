@@ -23,5 +23,33 @@ public enum PxEMPTY : int {
 
 
 // Class physx::PxInputStream Manually Ignored
+#if !NATIVE
+public unsafe interface IPxInputDataPtr {
+    
+}
+
+public unsafe partial struct PxInputDataPtr : IPxInputDataPtr { // pointer
+    private IntPtr nativePtr_;
+#endif
+
+    // Hierarchy: PxInputDataPtr
+
+#if !NATIVE
+}
+#endif
 
 // Class physx::PxOutputStream Manually Ignored
+#if !NATIVE
+public unsafe interface IPxVec2 {
+    
+}
+
+public unsafe partial struct PxVec2 : IPxVec2 { // blittable
+
+#endif
+
+    // Hierarchy: PxVec2
+
+#if !NATIVE
+}
+#endif

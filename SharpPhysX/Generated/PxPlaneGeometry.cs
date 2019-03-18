@@ -55,9 +55,36 @@ public static PxPlane PxPlaneEquationFromTransform(PxTransform transform){
 
 
 #if !NATIVE
-public unsafe partial struct PxPlaneGeometryPtr { // pointer
+public unsafe interface IPxPlaneGeometryPtr {
+    // PxPlaneGeometry();
+     bool isValid();
+    //static UNPARSED_TYPE operator=(PxPlaneGeometryPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxPlaneGeometryPtr lhs, /*NULLPARS*/);
+    // PxPlaneGeometry(/*NULLPARS*/);
+    // PxPlaneGeometry(/*NULLPARS*/);
+    // UNPARSED_TYPE ~PxPlaneGeometry(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxPlaneGeometryPtr : IPxGeometryPtr, IPxPlaneGeometryPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxGeometryPtr, PxPlaneGeometryPtr
+    public static implicit operator PxGeometryPtr(PxPlaneGeometryPtr obj){return *(PxGeometryPtr*)&obj;}
+    public static explicit operator PxPlaneGeometryPtr(PxGeometryPtr obj){return *(PxPlaneGeometryPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxGeometryPtr
+    public  PxGeometryType getType(){return ((PxGeometryPtr)this).getType();}
+    //public  PxGeometry(PxGeometryType type){((PxGeometryPtr)this).PxGeometry(type);}
+    //public  PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
+    //public  PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).~PxGeometry(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxGeometryPtr lhs, /*NULLPARS*/){return ((PxGeometryPtr)this).operator=(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxGeometryPtr lhs, /*NULLPARS*/){return ((PxGeometryPtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxPlaneGeometry                                                        #
@@ -80,7 +107,7 @@ public unsafe partial struct PxPlaneGeometryPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isValid(PxPlaneGeometryPtr selfPtr);
     
-    public bool isValid(){
+    public  bool isValid(){
         bool retVal = W_isValid(this);
         return retVal;
     }

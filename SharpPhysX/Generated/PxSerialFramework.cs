@@ -6,10 +6,25 @@ using System.Runtime.InteropServices;
 
 
 #if !NATIVE
-public unsafe partial struct PxSerializationContextPtr { // pointer
+public unsafe interface IPxSerializationContextPtr {
+     void registerReference(PxBasePtr base, uint kind, ulong reference);
+    // PxCollectionPtr getCollection();
+     void writeData(global::System.IntPtr data, uint size);
+     void alignData();
+     void alignData(uint alignment);
+     void writeName(string name);
+    // PxSerializationContext();
+    // void ~PxSerializationContext();
+    //static UNPARSED_TYPE operator=(PxSerializationContextPtr lhs, /*NULLPARS*/);
+    // PxSerializationContext(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxSerializationContextPtr : IPxSerializationContextPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxSerializationContextPtr
     //================================================================================
     //#       registerReference                                                      #
     //================================================================================
@@ -24,7 +39,7 @@ public unsafe partial struct PxSerializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_registerReference(PxSerializationContextPtr selfPtr, PxBasePtr base, uint kind, ulong reference);
     
-    public void registerReference(PxBasePtr base, uint kind, ulong reference){
+    public  void registerReference(PxBasePtr base, uint kind, ulong reference){
         PxBasePtr pvk_in_base = (base);
         uint pvk_in_kind = (kind);
         ulong pvk_in_reference = (reference);
@@ -47,7 +62,7 @@ public unsafe partial struct PxSerializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxCollectionPtr W_getCollection(PxSerializationContextPtr selfPtr);
     
-    public PxCollectionPtr getCollection(){
+    public  PxCollectionPtr getCollection(){
         PxCollectionPtr retVal = W_getCollection(this);
         return retVal;
     }
@@ -67,7 +82,7 @@ public unsafe partial struct PxSerializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_writeData(PxSerializationContextPtr selfPtr, global::System.IntPtr data, uint size);
     
-    public void writeData(global::System.IntPtr data, uint size){
+    public  void writeData(global::System.IntPtr data, uint size){
         global::System.IntPtr pvk_in_data = (data);
         uint pvk_in_size = (size);
         W_writeData(this, pvk_in_data, pvk_in_size);
@@ -87,7 +102,7 @@ public unsafe partial struct PxSerializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_alignData(PxSerializationContextPtr selfPtr, uint alignment);
     
-    public void alignData(uint alignment){
+    public  void alignData(uint alignment){
         uint pvk_in_alignment = (alignment);
         W_alignData(this, pvk_in_alignment);
     }
@@ -96,15 +111,15 @@ public unsafe partial struct PxSerializationContextPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES void W_alignData_OL1(physx::PxSerializationContext* self){
+    ES void W_alignData(physx::PxSerializationContext* self){
         self->alignData();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_alignData_OL1(PxSerializationContextPtr selfPtr);
+    static extern void W_alignData(PxSerializationContextPtr selfPtr);
     
-    public void alignData(){
-        W_alignData_OL1(this);
+    public  void alignData(){
+        W_alignData(this);
     }
     #endif
     
@@ -122,7 +137,7 @@ public unsafe partial struct PxSerializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_writeName(PxSerializationContextPtr selfPtr, string name);
     
-    public void writeName(string name){
+    public  void writeName(string name){
         string pvk_in_name = (name);
         W_writeName(this, pvk_in_name);
     }
@@ -151,7 +166,7 @@ public unsafe partial struct PxSerializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxSerializationContext(PxSerializationContextPtr selfPtr);
     
-    public void ~PxSerializationContext(){
+    public  void ~PxSerializationContext(){
         W_~PxSerializationContext(this);
     }
     #endif*/
@@ -166,13 +181,51 @@ public unsafe partial struct PxSerializationContextPtr { // pointer
 }
 #endif
 
-
-
 #if !NATIVE
-public unsafe partial struct PxProcessPxBaseCallbackPtr { // pointer
+public unsafe interface IPxRepXSerializerPtr {
+    
+}
+
+public unsafe partial struct PxRepXSerializerPtr : IPxRepXSerializerPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxRepXSerializerPtr
+
+#if !NATIVE
+}
+#endif
+
+#if !NATIVE
+public unsafe interface IPxSerializerPtr {
+    
+}
+
+public unsafe partial struct PxSerializerPtr : IPxSerializerPtr { // pointer
+    private IntPtr nativePtr_;
+#endif
+
+    // Hierarchy: PxSerializerPtr
+
+#if !NATIVE
+}
+#endif
+
+#if !NATIVE
+public unsafe interface IPxProcessPxBaseCallbackPtr {
+    // void ~PxProcessPxBaseCallback();
+    // void process(PxBasePtr );
+    //static UNPARSED_TYPE operator=(PxProcessPxBaseCallbackPtr lhs, /*NULLPARS*/);
+    // PxProcessPxBaseCallback(/*NULLPARS*/);
+    // PxProcessPxBaseCallback(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxProcessPxBaseCallbackPtr : IPxProcessPxBaseCallbackPtr { // pointer
+    private IntPtr nativePtr_;
+#endif
+
+    // Hierarchy: PxProcessPxBaseCallbackPtr
     //================================================================================
     //#       ~PxProcessPxBaseCallback                                               #
     //================================================================================
@@ -186,7 +239,7 @@ public unsafe partial struct PxProcessPxBaseCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxProcessPxBaseCallback(PxProcessPxBaseCallbackPtr selfPtr);
     
-    public void ~PxProcessPxBaseCallback(){
+    public  void ~PxProcessPxBaseCallback(){
         W_~PxProcessPxBaseCallback(this);
     }
     #endif*/
@@ -206,7 +259,7 @@ public unsafe partial struct PxProcessPxBaseCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_process(PxProcessPxBaseCallbackPtr selfPtr, PxBasePtr );
     
-    public void process(PxBasePtr ){
+    public  void process(PxBasePtr ){
         PxBasePtr pvk_in_ = ();
         W_process(this, pvk_in_);
     }
@@ -225,10 +278,29 @@ public unsafe partial struct PxProcessPxBaseCallbackPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxDeserializationContextPtr { // pointer
+public unsafe interface IPxDeserializationContextPtr {
+     PxBasePtr resolveReference(uint kind, ulong reference);
+    // void translatePxBase( base);
+    // void readName( name);
+    // UNPARSED_TYPE readExtraData();
+    // UNPARSED_TYPE readExtraData(uint count);
+    // UNPARSED_TYPE readExtraData();
+    // UNPARSED_TYPE readExtraData(uint count);
+     void alignExtraData();
+     void alignExtraData(uint alignment);
+     uint getPhysXVersion();
+    // PxDeserializationContext();
+    // void ~PxDeserializationContext();
+    //static UNPARSED_TYPE operator=(PxDeserializationContextPtr lhs, /*NULLPARS*/);
+    // PxDeserializationContext(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationContextPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxDeserializationContextPtr
     //================================================================================
     //#       resolveReference                                                       #
     //================================================================================
@@ -243,7 +315,7 @@ public unsafe partial struct PxDeserializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBasePtr W_resolveReference(PxDeserializationContextPtr selfPtr, uint kind, ulong reference);
     
-    public PxBasePtr resolveReference(uint kind, ulong reference){
+    public  PxBasePtr resolveReference(uint kind, ulong reference){
         uint pvk_in_kind = (kind);
         ulong pvk_in_reference = (reference);
         PxBasePtr retVal = W_resolveReference(this, pvk_in_kind, pvk_in_reference);
@@ -266,7 +338,7 @@ public unsafe partial struct PxDeserializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_translatePxBase(PxDeserializationContextPtr selfPtr,  base);
     
-    public void translatePxBase( base){
+    public  void translatePxBase( base){
          pvk_in_base = (base);
         W_translatePxBase(this, pvk_in_base);
     }
@@ -293,7 +365,7 @@ public unsafe partial struct PxDeserializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_readName(PxDeserializationContextPtr selfPtr,  name);
     
-    public void readName( name){
+    public  void readName( name){
          pvk_in_name = (name);
         W_readName(this, pvk_in_name);
     }
@@ -315,7 +387,7 @@ public unsafe partial struct PxDeserializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_readExtraData(PxDeserializationContextPtr selfPtr, uint count);
     
-    public UNPARSED_TYPE readExtraData(uint count){
+    public  UNPARSED_TYPE readExtraData(uint count){
         uint pvk_in_count = (count);
         UNPARSED_TYPE retVal = W_readExtraData(this, pvk_in_count);
         return retVal;
@@ -326,16 +398,16 @@ public unsafe partial struct PxDeserializationContextPtr { // pointer
     /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*				readExtraData(PxU32 count=1)
     #if NATIVE
-    ES UNPARSED_TYPE W_readExtraData_OL1(physx::PxDeserializationContext* self){
+    ES UNPARSED_TYPE W_readExtraData(physx::PxDeserializationContext* self){
         auto retVal = self->readExtraData();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_readExtraData_OL1(PxDeserializationContextPtr selfPtr);
+    static extern UNPARSED_TYPE W_readExtraData(PxDeserializationContextPtr selfPtr);
     
-    public UNPARSED_TYPE readExtraData(){
-        UNPARSED_TYPE retVal = W_readExtraData_OL1(this);
+    public  UNPARSED_TYPE readExtraData(){
+        UNPARSED_TYPE retVal = W_readExtraData(this);
         return retVal;
     }
     #endif*/
@@ -358,7 +430,7 @@ public unsafe partial struct PxDeserializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_readExtraData(PxDeserializationContextPtr selfPtr, uint count);
     
-    public UNPARSED_TYPE readExtraData(uint count){
+    public  UNPARSED_TYPE readExtraData(uint count){
         uint pvk_in_count = (count);
         UNPARSED_TYPE retVal = W_readExtraData(this, pvk_in_count);
         return retVal;
@@ -369,16 +441,16 @@ public unsafe partial struct PxDeserializationContextPtr { // pointer
     /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*				readExtraData(PxU32 count=1)
     #if NATIVE
-    ES UNPARSED_TYPE W_readExtraData_OL1(physx::PxDeserializationContext* self){
+    ES UNPARSED_TYPE W_readExtraData(physx::PxDeserializationContext* self){
         auto retVal = self->readExtraData();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_readExtraData_OL1(PxDeserializationContextPtr selfPtr);
+    static extern UNPARSED_TYPE W_readExtraData(PxDeserializationContextPtr selfPtr);
     
-    public UNPARSED_TYPE readExtraData(){
-        UNPARSED_TYPE retVal = W_readExtraData_OL1(this);
+    public  UNPARSED_TYPE readExtraData(){
+        UNPARSED_TYPE retVal = W_readExtraData(this);
         return retVal;
     }
     #endif*/
@@ -398,7 +470,7 @@ public unsafe partial struct PxDeserializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_alignExtraData(PxDeserializationContextPtr selfPtr, uint alignment);
     
-    public void alignExtraData(uint alignment){
+    public  void alignExtraData(uint alignment){
         uint pvk_in_alignment = (alignment);
         W_alignExtraData(this, pvk_in_alignment);
     }
@@ -407,15 +479,15 @@ public unsafe partial struct PxDeserializationContextPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES void W_alignExtraData_OL1(physx::PxDeserializationContext* self){
+    ES void W_alignExtraData(physx::PxDeserializationContext* self){
         self->alignExtraData();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_alignExtraData_OL1(PxDeserializationContextPtr selfPtr);
+    static extern void W_alignExtraData(PxDeserializationContextPtr selfPtr);
     
-    public void alignExtraData(){
-        W_alignExtraData_OL1(this);
+    public  void alignExtraData(){
+        W_alignExtraData(this);
     }
     #endif
     
@@ -433,7 +505,7 @@ public unsafe partial struct PxDeserializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern uint W_getPhysXVersion(PxDeserializationContextPtr selfPtr);
     
-    public uint getPhysXVersion(){
+    public  uint getPhysXVersion(){
         uint retVal = W_getPhysXVersion(this);
         return retVal;
     }
@@ -462,7 +534,7 @@ public unsafe partial struct PxDeserializationContextPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxDeserializationContext(PxDeserializationContextPtr selfPtr);
     
-    public void ~PxDeserializationContext(){
+    public  void ~PxDeserializationContext(){
         W_~PxDeserializationContext(this);
     }
     #endif*/
@@ -478,10 +550,27 @@ public unsafe partial struct PxDeserializationContextPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxSerializationRegistryPtr { // pointer
+public unsafe interface IPxSerializationRegistryPtr {
+     void registerSerializer(ushort type, PxSerializerPtr serializer);
+     PxSerializerPtr unregisterSerializer(ushort type);
+    // void registerBinaryMetaDataCallback( callback);
+     PxSerializerPtr getSerializer(ushort type);
+     void registerRepXSerializer(ushort type, PxRepXSerializerPtr serializer);
+     PxRepXSerializerPtr unregisterRepXSerializer(ushort type);
+     PxRepXSerializerPtr getRepXSerializer(string typeName);
+     void release();
+    // void ~PxSerializationRegistry();
+    //static UNPARSED_TYPE operator=(PxSerializationRegistryPtr lhs, /*NULLPARS*/);
+    // PxSerializationRegistry(/*NULLPARS*/);
+    // PxSerializationRegistry(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxSerializationRegistryPtr : IPxSerializationRegistryPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxSerializationRegistryPtr
     //================================================================================
     //#       registerSerializer                                                     #
     //================================================================================
@@ -495,7 +584,7 @@ public unsafe partial struct PxSerializationRegistryPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_registerSerializer(PxSerializationRegistryPtr selfPtr, ushort type, PxSerializerPtr serializer);
     
-    public void registerSerializer(ushort type, PxSerializerPtr serializer){
+    public  void registerSerializer(ushort type, PxSerializerPtr serializer){
         ushort pvk_in_type = (type);
         PxSerializerPtr pvk_in_serializer = (serializer);
         W_registerSerializer(this, pvk_in_type, pvk_in_serializer);
@@ -516,7 +605,7 @@ public unsafe partial struct PxSerializationRegistryPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxSerializerPtr W_unregisterSerializer(PxSerializationRegistryPtr selfPtr, ushort type);
     
-    public PxSerializerPtr unregisterSerializer(ushort type){
+    public  PxSerializerPtr unregisterSerializer(ushort type){
         ushort pvk_in_type = (type);
         PxSerializerPtr retVal = W_unregisterSerializer(this, pvk_in_type);
         return retVal;
@@ -538,7 +627,7 @@ public unsafe partial struct PxSerializationRegistryPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_registerBinaryMetaDataCallback(PxSerializationRegistryPtr selfPtr,  callback);
     
-    public void registerBinaryMetaDataCallback( callback){
+    public  void registerBinaryMetaDataCallback( callback){
          pvk_in_callback = (callback);
         W_registerBinaryMetaDataCallback(this, pvk_in_callback);
     }
@@ -558,7 +647,7 @@ public unsafe partial struct PxSerializationRegistryPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxSerializerPtr W_getSerializer(PxSerializationRegistryPtr selfPtr, ushort type);
     
-    public PxSerializerPtr getSerializer(ushort type){
+    public  PxSerializerPtr getSerializer(ushort type){
         ushort pvk_in_type = (type);
         PxSerializerPtr retVal = W_getSerializer(this, pvk_in_type);
         return retVal;
@@ -579,7 +668,7 @@ public unsafe partial struct PxSerializationRegistryPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_registerRepXSerializer(PxSerializationRegistryPtr selfPtr, ushort type, PxRepXSerializerPtr serializer);
     
-    public void registerRepXSerializer(ushort type, PxRepXSerializerPtr serializer){
+    public  void registerRepXSerializer(ushort type, PxRepXSerializerPtr serializer){
         ushort pvk_in_type = (type);
         PxRepXSerializerPtr pvk_in_serializer = (serializer);
         W_registerRepXSerializer(this, pvk_in_type, pvk_in_serializer);
@@ -600,7 +689,7 @@ public unsafe partial struct PxSerializationRegistryPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxRepXSerializerPtr W_unregisterRepXSerializer(PxSerializationRegistryPtr selfPtr, ushort type);
     
-    public PxRepXSerializerPtr unregisterRepXSerializer(ushort type){
+    public  PxRepXSerializerPtr unregisterRepXSerializer(ushort type){
         ushort pvk_in_type = (type);
         PxRepXSerializerPtr retVal = W_unregisterRepXSerializer(this, pvk_in_type);
         return retVal;
@@ -621,7 +710,7 @@ public unsafe partial struct PxSerializationRegistryPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxRepXSerializerPtr W_getRepXSerializer(PxSerializationRegistryPtr selfPtr, string typeName);
     
-    public PxRepXSerializerPtr getRepXSerializer(string typeName){
+    public  PxRepXSerializerPtr getRepXSerializer(string typeName){
         string pvk_in_typeName = (typeName);
         PxRepXSerializerPtr retVal = W_getRepXSerializer(this, pvk_in_typeName);
         return retVal;
@@ -640,7 +729,7 @@ public unsafe partial struct PxSerializationRegistryPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_release(PxSerializationRegistryPtr selfPtr);
     
-    public void release(){
+    public  void release(){
         W_release(this);
     }
     #endif
@@ -659,7 +748,7 @@ public unsafe partial struct PxSerializationRegistryPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxSerializationRegistry(PxSerializationRegistryPtr selfPtr);
     
-    public void ~PxSerializationRegistry(){
+    public  void ~PxSerializationRegistry(){
         W_~PxSerializationRegistry(this);
     }
     #endif*/

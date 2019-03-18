@@ -103,10 +103,27 @@ public static void PxSetProfilerCallback(PxProfilerCallbackPtr profiler){
 
 
 #if !NATIVE
-public unsafe partial struct PxFoundationPtr { // pointer
+public unsafe interface IPxFoundationPtr {
+     void release();
+    // PxErrorCallbackPtr getErrorCallback();
+     void setErrorLevel();
+     void setErrorLevel(PxErrorCode mask);
+     PxErrorCode getErrorLevel();
+    // PxAllocatorCallbackPtr getAllocatorCallback();
+     bool getReportAllocationNames();
+     void setReportAllocationNames(bool value);
+    // void ~PxFoundation();
+    //static UNPARSED_TYPE operator=(PxFoundationPtr lhs, /*NULLPARS*/);
+    // PxFoundation(/*NULLPARS*/);
+    // PxFoundation(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxFoundationPtr : IPxFoundationPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxFoundationPtr
     //================================================================================
     //#       release                                                                #
     //================================================================================
@@ -118,7 +135,7 @@ public unsafe partial struct PxFoundationPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_release(PxFoundationPtr selfPtr);
     
-    public void release(){
+    public  void release(){
         W_release(this);
     }
     #endif
@@ -138,7 +155,7 @@ public unsafe partial struct PxFoundationPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxErrorCallbackPtr W_getErrorCallback(PxFoundationPtr selfPtr);
     
-    public PxErrorCallbackPtr getErrorCallback(){
+    public  PxErrorCallbackPtr getErrorCallback(){
         PxErrorCallbackPtr retVal = W_getErrorCallback(this);
         return retVal;
     }
@@ -157,7 +174,7 @@ public unsafe partial struct PxFoundationPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setErrorLevel(PxFoundationPtr selfPtr, PxErrorCode mask);
     
-    public void setErrorLevel(PxErrorCode mask){
+    public  void setErrorLevel(PxErrorCode mask){
         PxErrorCode pvk_in_mask = (mask);
         W_setErrorLevel(this, pvk_in_mask);
     }
@@ -166,15 +183,15 @@ public unsafe partial struct PxFoundationPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES void W_setErrorLevel_OL1(physx::PxFoundation* self){
+    ES void W_setErrorLevel(physx::PxFoundation* self){
         self->setErrorLevel();
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setErrorLevel_OL1(PxFoundationPtr selfPtr);
+    static extern void W_setErrorLevel(PxFoundationPtr selfPtr);
     
-    public void setErrorLevel(){
-        W_setErrorLevel_OL1(this);
+    public  void setErrorLevel(){
+        W_setErrorLevel(this);
     }
     #endif
     
@@ -192,7 +209,7 @@ public unsafe partial struct PxFoundationPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxErrorCode W_getErrorLevel(PxFoundationPtr selfPtr);
     
-    public PxErrorCode getErrorLevel(){
+    public  PxErrorCode getErrorLevel(){
         PxErrorCode retVal = W_getErrorLevel(this);
         return retVal;
     }
@@ -213,7 +230,7 @@ public unsafe partial struct PxFoundationPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxAllocatorCallbackPtr W_getAllocatorCallback(PxFoundationPtr selfPtr);
     
-    public PxAllocatorCallbackPtr getAllocatorCallback(){
+    public  PxAllocatorCallbackPtr getAllocatorCallback(){
         PxAllocatorCallbackPtr retVal = W_getAllocatorCallback(this);
         return retVal;
     }
@@ -232,7 +249,7 @@ public unsafe partial struct PxFoundationPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_getReportAllocationNames(PxFoundationPtr selfPtr);
     
-    public bool getReportAllocationNames(){
+    public  bool getReportAllocationNames(){
         bool retVal = W_getReportAllocationNames(this);
         return retVal;
     }
@@ -251,7 +268,7 @@ public unsafe partial struct PxFoundationPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setReportAllocationNames(PxFoundationPtr selfPtr, bool value);
     
-    public void setReportAllocationNames(bool value){
+    public  void setReportAllocationNames(bool value){
         bool pvk_in_value = (value);
         W_setReportAllocationNames(this, pvk_in_value);
     }
@@ -273,7 +290,7 @@ public unsafe partial struct PxFoundationPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxFoundation(PxFoundationPtr selfPtr);
     
-    public void ~PxFoundation(){
+    public  void ~PxFoundation(){
         W_~PxFoundation(this);
     }
     #endif*/

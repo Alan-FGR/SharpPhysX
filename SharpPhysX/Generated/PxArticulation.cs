@@ -5,13 +5,38 @@ using System.Runtime.InteropServices;
 
 
 
-
-// Class physx::PxArticulation Manually Ignored
 #if !NATIVE
-public unsafe partial struct PxArticulationDriveCachePtr { // pointer
+public unsafe interface IPxArticulationLinkPtr {
+    
+}
+
+public unsafe partial struct PxArticulationLinkPtr : IPxArticulationLinkPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxArticulationLinkPtr
+
+#if !NATIVE
+}
+#endif
+
+// Class physx::PxArticulation Manually Ignored
+#if !NATIVE
+public unsafe interface IPxArticulationDriveCachePtr {
+    // PxArticulationDriveCache();
+    // PxArticulationDriveCache(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxArticulationDriveCachePtr lhs, /*NULLPARS*/);
+    // PxArticulationDriveCache(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxArticulationDriveCachePtr lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxArticulationDriveCache(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxArticulationDriveCachePtr : IPxArticulationDriveCachePtr { // pointer
+    private IntPtr nativePtr_;
+#endif
+
+    // Hierarchy: PxArticulationDriveCachePtr
     //================================================================================
     //#       PxArticulationDriveCache                                               #
     //================================================================================

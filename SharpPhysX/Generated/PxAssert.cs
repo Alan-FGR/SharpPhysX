@@ -51,10 +51,20 @@ public static void PxSetAssertHandler(PxAssertHandlerPtr handler){
 
 
 #if !NATIVE
-public unsafe partial struct PxAssertHandlerPtr { // pointer
+public unsafe interface IPxAssertHandlerPtr {
+    // void ~PxAssertHandler();
+    //static void operator()(PxAssertHandlerPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxAssertHandlerPtr lhs, /*NULLPARS*/);
+    // PxAssertHandler(/*NULLPARS*/);
+    // PxAssertHandler(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxAssertHandlerPtr : IPxAssertHandlerPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxAssertHandlerPtr
     //================================================================================
     //#       ~PxAssertHandler                                                       #
     //================================================================================
@@ -70,7 +80,7 @@ public unsafe partial struct PxAssertHandlerPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxAssertHandler(PxAssertHandlerPtr selfPtr);
     
-    public void ~PxAssertHandler(){
+    public  void ~PxAssertHandler(){
         W_~PxAssertHandler(this);
     }
     #endif*/

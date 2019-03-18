@@ -12,3 +12,17 @@ public enum PxArticulationBase : int {
 
 
 // Class physx::PxArticulationBase Manually Ignored
+#if !NATIVE
+public unsafe interface IPxArticulationImplPtr {
+    
+}
+
+public unsafe partial struct PxArticulationImplPtr : IPxArticulationImplPtr { // pointer
+    private IntPtr nativePtr_;
+#endif
+
+    // Hierarchy: PxArticulationImplPtr
+
+#if !NATIVE
+}
+#endif

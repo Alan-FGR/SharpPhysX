@@ -141,10 +141,23 @@ public static UNPARSED_TYPE operator~(PxSceneFlag a){
 
 // Class physx::PxSceneFlag is enum namespace
 #if !NATIVE
-public unsafe partial struct PxSceneLimitsPtr { // pointer
+public unsafe interface IPxSceneLimitsPtr {
+    // PxSceneLimits();
+     void setToDefault();
+     bool isValid();
+    // PxSceneLimits(/*NULLPARS*/);
+    // PxSceneLimits(/*NULLPARS*/);
+    // UNPARSED_TYPE ~PxSceneLimits(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxSceneLimitsPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxSceneLimitsPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxSceneLimitsPtr : IPxSceneLimitsPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxSceneLimitsPtr
     //================================================================================
     //#       PxSceneLimits                                                          #
     //================================================================================
@@ -165,7 +178,7 @@ public unsafe partial struct PxSceneLimitsPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setToDefault(PxSceneLimitsPtr selfPtr);
     
-    public void setToDefault(){
+    public  void setToDefault(){
         W_setToDefault(this);
     }
     #endif
@@ -183,7 +196,7 @@ public unsafe partial struct PxSceneLimitsPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isValid(PxSceneLimitsPtr selfPtr);
     
-    public bool isValid(){
+    public  bool isValid(){
         bool retVal = W_isValid(this);
         return retVal;
     }
@@ -212,10 +225,24 @@ public unsafe partial struct PxSceneLimitsPtr { // pointer
 // Class physx::PxPruningStructureType is enum namespace
 // Class physx::PxSceneQueryUpdateMode is enum namespace
 #if !NATIVE
-public unsafe partial struct PxSceneDescPtr { // pointer
+public unsafe interface IPxSceneDescPtr {
+    // PxSceneDesc(PxTolerancesScalePtr scale);
+    // void setToDefault(PxTolerancesScalePtr scale);
+     bool isValid();
+    // PxTolerancesScalePtr getTolerancesScale();
+    // PxSceneDesc(/*NULLPARS*/);
+    // PxSceneDesc(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxSceneDescPtr lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxSceneDesc(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxSceneDescPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxSceneDescPtr : IPxSceneDescPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxSceneDescPtr
     //================================================================================
     //#       PxSceneDesc                                                            #
     //================================================================================
@@ -231,7 +258,7 @@ public unsafe partial struct PxSceneDescPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxSceneDesc_ctor(PxTolerancesScalePtr scale);
     
-    public PxSceneDesc(PxTolerancesScalePtr scale){
+    public  PxSceneDesc(PxTolerancesScalePtr scale){
         PxTolerancesScalePtr pvk_in_scale = (scale);
         var _new = W_PxSceneDesc_ctor(pvk_in_scale);
         fixed (void* ptr = &this)
@@ -254,7 +281,7 @@ public unsafe partial struct PxSceneDescPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setToDefault(PxSceneDescPtr selfPtr, PxTolerancesScalePtr scale);
     
-    public void setToDefault(PxTolerancesScalePtr scale){
+    public  void setToDefault(PxTolerancesScalePtr scale){
         PxTolerancesScalePtr pvk_in_scale = (scale);
         W_setToDefault(this, pvk_in_scale);
     }
@@ -273,7 +300,7 @@ public unsafe partial struct PxSceneDescPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isValid(PxSceneDescPtr selfPtr);
     
-    public bool isValid(){
+    public  bool isValid(){
         bool retVal = W_isValid(this);
         return retVal;
     }
@@ -294,7 +321,7 @@ public unsafe partial struct PxSceneDescPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTolerancesScalePtr W_getTolerancesScale(PxSceneDescPtr selfPtr);
     
-    public PxTolerancesScalePtr getTolerancesScale(){
+    public  PxTolerancesScalePtr getTolerancesScale(){
         PxTolerancesScalePtr retVal = W_getTolerancesScale(this);
         return retVal;
     }
@@ -318,10 +345,21 @@ public unsafe partial struct PxSceneDescPtr { // pointer
 
 // Class physx::PxSolverType is enum namespace
 #if !NATIVE
-public unsafe partial struct PxgDynamicsMemoryConfigPtr { // pointer
+public unsafe interface IPxgDynamicsMemoryConfigPtr {
+    // PxgDynamicsMemoryConfig();
+    // PxgDynamicsMemoryConfig(/*NULLPARS*/);
+    // PxgDynamicsMemoryConfig(/*NULLPARS*/);
+    // UNPARSED_TYPE ~PxgDynamicsMemoryConfig(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxgDynamicsMemoryConfigPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxgDynamicsMemoryConfigPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxgDynamicsMemoryConfigPtr : IPxgDynamicsMemoryConfigPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxgDynamicsMemoryConfigPtr
     //================================================================================
     //#       PxgDynamicsMemoryConfig                                                #
     //================================================================================

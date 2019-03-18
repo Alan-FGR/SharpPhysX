@@ -39,13 +39,50 @@ public static PxMat33 operator*(float , PxMat33 ){
 
 
 #if !NATIVE
-public unsafe partial struct PxMat33 { // blittable
+public unsafe interface IPxMat33 {
+    // PxMat33();
+    // PxMat33(PxIDENTITY r);
+    // PxMat33(PxZERO r);
+    // PxMat33(PxVec3 col0, PxVec3 col1, PxVec3 col2);
+    // PxMat33(float r);
+    // PxMat33( values);
+    // PxMat33(PxQuat q);
+    // PxMat33(PxMat33 other);
+    //static PxMat33 operator=(PxMat33 lhs, /*NULLPARS*/);
+     PxMat33 createDiagonal(PxVec3 d);
+    //static bool operator==(PxMat33 lhs, PxMat33 m);
+     PxMat33 getTranspose();
+     PxMat33 getInverse();
+     float getDeterminant();
+    //static PxMat33 operator-(PxMat33 lhs);
+    //static PxMat33 operator+(PxMat33 lhs, PxMat33 other);
+    //static PxMat33 operator-(PxMat33 lhs, PxMat33 other);
+    //static PxMat33 operator*(PxMat33 lhs, float scalar);
+    //static PxVec3 operator*(PxMat33 lhs, PxVec3 vec);
+    //static PxMat33 operator*(PxMat33 lhs, PxMat33 other);
+    //static PxMat33 operator+=(PxMat33 lhs, /*NULLPARS*/);
+    //static PxMat33 operator-=(PxMat33 lhs, /*NULLPARS*/);
+    //static PxMat33 operator*=(PxMat33 lhs, /*NULLPARS*/);
+    //static PxMat33 operator*=(PxMat33 lhs, /*NULLPARS*/);
+    //static float operator()(PxMat33 lhs, /*NULLPARS*/);
+    //static IntPtr operator()(PxMat33 lhs, /*NULLPARS*/);
+     PxVec3 transform(PxVec3 other);
+     PxVec3 transformTranspose(PxVec3 other);
+     IntPtr front();
+    //static PxVec3 operator[](PxMat33 lhs, /*NULLPARS*/);
+    //static PxVec3 operator[](PxMat33 lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxMat33(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxMat33 : IPxMat33 { // blittable
     public PxVec3 column0;
     public PxVec3 column1;
     public PxVec3 column2;
 
 #endif
 
+    // Hierarchy: PxMat33
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
@@ -66,7 +103,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxMat33 W_PxMat33_ctor(PxIDENTITY r);
     
-    public PxMat33(PxIDENTITY r){
+    public  PxMat33(PxIDENTITY r){
         PxIDENTITY pvk_in_r = (r);
         var _new = W_PxMat33_ctor(pvk_in_r);
         fixed (void* ptr = &this)
@@ -87,7 +124,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxMat33 W_PxMat33_ctor(PxZERO r);
     
-    public PxMat33(PxZERO r){
+    public  PxMat33(PxZERO r){
         PxZERO pvk_in_r = (r);
         var _new = W_PxMat33_ctor(pvk_in_r);
         fixed (void* ptr = &this)
@@ -110,7 +147,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxMat33 W_PxMat33_ctor(PxVec3 col0, PxVec3 col1, PxVec3 col2);
     
-    public PxMat33(PxVec3 col0, PxVec3 col1, PxVec3 col2){
+    public  PxMat33(PxVec3 col0, PxVec3 col1, PxVec3 col2){
         PxVec3 pvk_in_col0 = (col0);
         PxVec3 pvk_in_col1 = (col1);
         PxVec3 pvk_in_col2 = (col2);
@@ -133,7 +170,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxMat33 W_PxMat33_ctor(float r);
     
-    public PxMat33(float r){
+    public  PxMat33(float r){
         float pvk_in_r = (r);
         var _new = W_PxMat33_ctor(pvk_in_r);
         fixed (void* ptr = &this)
@@ -161,7 +198,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxMat33 W_PxMat33_ctor( values);
     
-    public PxMat33( values){
+    public  PxMat33( values){
          pvk_in_values = (values);
         var _new = W_PxMat33_ctor(pvk_in_values);
         fixed (void* ptr = &this)
@@ -182,7 +219,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxMat33 W_PxMat33_ctor(PxQuat q);
     
-    public PxMat33(PxQuat q){
+    public  PxMat33(PxQuat q){
         PxQuat pvk_in_q = (q);
         var _new = W_PxMat33_ctor(pvk_in_q);
         fixed (void* ptr = &this)
@@ -203,7 +240,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxMat33 W_PxMat33_ctor(PxMat33 other);
     
-    public PxMat33(PxMat33 other){
+    public  PxMat33(PxMat33 other){
         PxMat33 pvk_in_other = (other);
         var _new = W_PxMat33_ctor(pvk_in_other);
         fixed (void* ptr = &this)
@@ -232,7 +269,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxMat33 W_createDiagonal(PxMat33 selfBlt, PxVec3 d);
     
-    public PxMat33 createDiagonal(PxVec3 d){
+    public  PxMat33 createDiagonal(PxVec3 d){
         PxVec3 pvk_in_d = (d);
         PxMat33 retVal = W_createDiagonal(this, pvk_in_d);
         return retVal;
@@ -273,7 +310,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxMat33 W_getTranspose(PxMat33 selfBlt);
     
-    public PxMat33 getTranspose(){
+    public  PxMat33 getTranspose(){
         PxMat33 retVal = W_getTranspose(this);
         return retVal;
     }
@@ -292,7 +329,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxMat33 W_getInverse(PxMat33 selfBlt);
     
-    public PxMat33 getInverse(){
+    public  PxMat33 getInverse(){
         PxMat33 retVal = W_getInverse(this);
         return retVal;
     }
@@ -311,7 +348,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getDeterminant(PxMat33 selfBlt);
     
-    public float getDeterminant(){
+    public  float getDeterminant(){
         float retVal = W_getDeterminant(this);
         return retVal;
     }
@@ -497,7 +534,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_transform(PxMat33 selfBlt, PxVec3 other);
     
-    public PxVec3 transform(PxVec3 other){
+    public  PxVec3 transform(PxVec3 other){
         PxVec3 pvk_in_other = (other);
         PxVec3 retVal = W_transform(this, pvk_in_other);
         return retVal;
@@ -518,7 +555,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_transformTranspose(PxMat33 selfBlt, PxVec3 other);
     
-    public PxVec3 transformTranspose(PxVec3 other){
+    public  PxVec3 transformTranspose(PxVec3 other){
         PxVec3 pvk_in_other = (other);
         PxVec3 retVal = W_transformTranspose(this, pvk_in_other);
         return retVal;
@@ -538,7 +575,7 @@ public unsafe partial struct PxMat33 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern IntPtr W_front(PxMat33 selfBlt);
     
-    public IntPtr front(){
+    public  IntPtr front(){
         IntPtr retVal = W_front(this);
         return retVal;
     }

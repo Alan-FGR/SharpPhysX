@@ -280,10 +280,24 @@ public static bool PxFilterObjectIsTrigger(uint attr){
 
 
 #if !NATIVE
-public unsafe partial struct PxFilterDataPtr { // pointer
+public unsafe interface IPxFilterDataPtr {
+    // PxFilterData(PxEMPTY );
+    // PxFilterData();
+    // PxFilterData(PxFilterDataPtr fd);
+    // PxFilterData(uint w0, uint w1, uint w2, uint w3);
+     void setToDefault();
+    //static void operator=(PxFilterDataPtr lhs, /*NULLPARS*/);
+    //static bool operator==(PxFilterDataPtr lhs, PxFilterDataPtr a);
+    //static bool operator!=(PxFilterDataPtr lhs, PxFilterDataPtr a);
+    // UNPARSED_TYPE ~PxFilterData(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxFilterDataPtr : IPxFilterDataPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxFilterDataPtr
     //================================================================================
     //#       PxFilterData                                                           #
     //================================================================================
@@ -301,7 +315,7 @@ public unsafe partial struct PxFilterDataPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxFilterData_ctor(PxEMPTY );
     
-    public PxFilterData(PxEMPTY ){
+    public  PxFilterData(PxEMPTY ){
         PxEMPTY pvk_in_ = ();
         var _new = W_PxFilterData_ctor(pvk_in_);
         fixed (void* ptr = &this)
@@ -333,7 +347,7 @@ public unsafe partial struct PxFilterDataPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxFilterData_ctor(PxFilterDataPtr fd);
     
-    public PxFilterData(PxFilterDataPtr fd){
+    public  PxFilterData(PxFilterDataPtr fd){
         PxFilterDataPtr pvk_in_fd = (fd);
         var _new = W_PxFilterData_ctor(pvk_in_fd);
         fixed (void* ptr = &this)
@@ -359,7 +373,7 @@ public unsafe partial struct PxFilterDataPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxFilterData_ctor(uint w0, uint w1, uint w2, uint w3);
     
-    public PxFilterData(uint w0, uint w1, uint w2, uint w3){
+    public  PxFilterData(uint w0, uint w1, uint w2, uint w3){
         uint pvk_in_w0 = (w0);
         uint pvk_in_w1 = (w1);
         uint pvk_in_w2 = (w2);
@@ -382,7 +396,7 @@ public unsafe partial struct PxFilterDataPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setToDefault(PxFilterDataPtr selfPtr);
     
-    public void setToDefault(){
+    public  void setToDefault(){
         W_setToDefault(this);
     }
     #endif
@@ -447,10 +461,22 @@ public unsafe partial struct PxFilterDataPtr { // pointer
 // Class physx::PxFilterFlag is enum namespace
 // Class physx::PxPairFlag is enum namespace
 #if !NATIVE
-public unsafe partial struct PxSimulationFilterCallbackPtr { // pointer
+public unsafe interface IPxSimulationFilterCallbackPtr {
+    // UNPARSED_TYPE pairFound(uint pairID, uint attributes0,  filterData0, PxActorPtr a0, PxShapePtr s0, uint attributes1,  filterData1, PxActorPtr a1, PxShapePtr s1,  pairFlags);
+    // void pairLost(uint pairID, uint attributes0,  filterData0, uint attributes1,  filterData1, bool objectRemoved);
+    // bool statusChange(uint* pairID,  pairFlags,  filterFlags);
+    // void ~PxSimulationFilterCallback();
+    //static UNPARSED_TYPE operator=(PxSimulationFilterCallbackPtr lhs, /*NULLPARS*/);
+    // PxSimulationFilterCallback(/*NULLPARS*/);
+    // PxSimulationFilterCallback(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxSimulationFilterCallbackPtr : IPxSimulationFilterCallbackPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxSimulationFilterCallbackPtr
     //================================================================================
     //#       pairFound                                                              #
     //================================================================================
@@ -481,7 +507,7 @@ public unsafe partial struct PxSimulationFilterCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_pairFound(PxSimulationFilterCallbackPtr selfPtr, uint pairID, uint attributes0,  filterData0, PxActorPtr a0, PxShapePtr s0, uint attributes1,  filterData1, PxActorPtr a1, PxShapePtr s1,  pairFlags);
     
-    public UNPARSED_TYPE pairFound(uint pairID, uint attributes0,  filterData0, PxActorPtr a0, PxShapePtr s0, uint attributes1,  filterData1, PxActorPtr a1, PxShapePtr s1,  pairFlags){
+    public  UNPARSED_TYPE pairFound(uint pairID, uint attributes0,  filterData0, PxActorPtr a0, PxShapePtr s0, uint attributes1,  filterData1, PxActorPtr a1, PxShapePtr s1,  pairFlags){
         uint pvk_in_pairID = (pairID);
         uint pvk_in_attributes0 = (attributes0);
          pvk_in_filterData0 = (filterData0);
@@ -523,7 +549,7 @@ public unsafe partial struct PxSimulationFilterCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_pairLost(PxSimulationFilterCallbackPtr selfPtr, uint pairID, uint attributes0,  filterData0, uint attributes1,  filterData1, bool objectRemoved);
     
-    public void pairLost(uint pairID, uint attributes0,  filterData0, uint attributes1,  filterData1, bool objectRemoved){
+    public  void pairLost(uint pairID, uint attributes0,  filterData0, uint attributes1,  filterData1, bool objectRemoved){
         uint pvk_in_pairID = (pairID);
         uint pvk_in_attributes0 = (attributes0);
          pvk_in_filterData0 = (filterData0);
@@ -553,7 +579,7 @@ public unsafe partial struct PxSimulationFilterCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_statusChange(PxSimulationFilterCallbackPtr selfPtr, uint* pairID,  pairFlags,  filterFlags);
     
-    public bool statusChange(uint* pairID,  pairFlags,  filterFlags){
+    public  bool statusChange(uint* pairID,  pairFlags,  filterFlags){
         uint* pvk_in_pairID = (pairID);
          pvk_in_pairFlags = (pairFlags);
          pvk_in_filterFlags = (filterFlags);
@@ -576,7 +602,7 @@ public unsafe partial struct PxSimulationFilterCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxSimulationFilterCallback(PxSimulationFilterCallbackPtr selfPtr);
     
-    public void ~PxSimulationFilterCallback(){
+    public  void ~PxSimulationFilterCallback(){
         W_~PxSimulationFilterCallback(this);
     }
     #endif*/

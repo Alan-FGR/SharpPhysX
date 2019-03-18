@@ -103,11 +103,73 @@ public static UNPARSED_TYPE operator~(PxActorFlag a){
 #endif
 
 
-
 #if !NATIVE
-public unsafe partial struct PxActorPtr { // pointer
+public unsafe interface IPxArticulationLinkPtr {
+    
+}
+
+public unsafe partial struct PxArticulationLinkPtr : IPxArticulationLinkPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxArticulationLinkPtr
+
+#if !NATIVE
+}
+#endif
+
+#if !NATIVE
+public unsafe interface IPxActorPtr {
+     void release();
+     PxActorType getType();
+     PxScenePtr getScene();
+     void setName(string name);
+     IntPtr getName();
+     PxBounds3 getWorldBounds();
+     PxBounds3 getWorldBounds(float inflation);
+     void setActorFlag(PxActorFlag flag, bool value);
+    // void setActorFlags( inFlags);
+    // UNPARSED_TYPE getActorFlags();
+     void setDominanceGroup(byte dominanceGroup);
+     byte getDominanceGroup();
+     void setOwnerClient(byte inClient);
+     byte getOwnerClient();
+    // PxAggregatePtr getAggregate();
+    // PxActor(ushort concreteType,  baseFlags);
+    // PxActor( baseFlags);
+    // void ~PxActor();
+     bool isKindOf(string name);
+    // PxActor(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxActorPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
+    private IntPtr nativePtr_;
+#endif
+
+    // Hierarchy: PxBasePtr, PxActorPtr
+    public static implicit operator PxBasePtr(PxActorPtr obj){return *(PxBasePtr*)&obj;}
+    public static explicit operator PxActorPtr(PxBasePtr obj){return *(PxActorPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxBasePtr
+    public  IntPtr getConcreteTypeName(){return ((PxBasePtr)this).getConcreteTypeName();}
+    //public  UNPARSED_TYPE is(){return ((PxBasePtr)this).is();}
+    //public  UNPARSED_TYPE is(){return ((PxBasePtr)this).is();}
+    public  ushort getConcreteType(){return ((PxBasePtr)this).getConcreteType();}
+    public  void setBaseFlag(PxBaseFlag flag, bool value){((PxBasePtr)this).setBaseFlag(flag, value);}
+    //public  void setBaseFlags( inFlags){((PxBasePtr)this).setBaseFlags(inFlags);}
+    //public  UNPARSED_TYPE getBaseFlags(){return ((PxBasePtr)this).getBaseFlags();}
+    public  bool isReleasable(){return ((PxBasePtr)this).isReleasable();}
+    //public  PxBase(ushort concreteType,  baseFlags){((PxBasePtr)this).PxBase(concreteType, baseFlags);}
+    //public  PxBase( baseFlags){((PxBasePtr)this).PxBase(baseFlags);}
+    //public  void ~PxBase(){((PxBasePtr)this).~PxBase();}
+    public  bool typeMatch(){return ((PxBasePtr)this).typeMatch();}
+    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxBasePtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       release                                                                #
@@ -120,7 +182,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_release(PxActorPtr selfPtr);
     
-    public void release(){
+    public  void release(){
         W_release(this);
     }
     #endif
@@ -138,7 +200,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxActorType W_getType(PxActorPtr selfPtr);
     
-    public PxActorType getType(){
+    public  PxActorType getType(){
         PxActorType retVal = W_getType(this);
         return retVal;
     }
@@ -157,7 +219,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxScenePtr W_getScene(PxActorPtr selfPtr);
     
-    public PxScenePtr getScene(){
+    public  PxScenePtr getScene(){
         PxScenePtr retVal = W_getScene(this);
         return retVal;
     }
@@ -176,7 +238,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setName(PxActorPtr selfPtr, string name);
     
-    public void setName(string name){
+    public  void setName(string name){
         string pvk_in_name = (name);
         W_setName(this, pvk_in_name);
     }
@@ -195,7 +257,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern IntPtr W_getName(PxActorPtr selfPtr);
     
-    public IntPtr getName(){
+    public  IntPtr getName(){
         IntPtr retVal = W_getName(this);
         return retVal;
     }
@@ -215,7 +277,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBounds3 W_getWorldBounds(PxActorPtr selfPtr, float inflation);
     
-    public PxBounds3 getWorldBounds(float inflation){
+    public  PxBounds3 getWorldBounds(float inflation){
         float pvk_in_inflation = (inflation);
         PxBounds3 retVal = W_getWorldBounds(this, pvk_in_inflation);
         return retVal;
@@ -225,16 +287,16 @@ public unsafe partial struct PxActorPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES physx::PxBounds3 W_getWorldBounds_OL1(physx::PxActor* self){
+    ES physx::PxBounds3 W_getWorldBounds(physx::PxActor* self){
         auto retVal = self->getWorldBounds();
         return retVal;
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBounds3 W_getWorldBounds_OL1(PxActorPtr selfPtr);
+    static extern PxBounds3 W_getWorldBounds(PxActorPtr selfPtr);
     
-    public PxBounds3 getWorldBounds(){
-        PxBounds3 retVal = W_getWorldBounds_OL1(this);
+    public  PxBounds3 getWorldBounds(){
+        PxBounds3 retVal = W_getWorldBounds(this);
         return retVal;
     }
     #endif
@@ -254,7 +316,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setActorFlag(PxActorPtr selfPtr, PxActorFlag flag, bool value);
     
-    public void setActorFlag(PxActorFlag flag, bool value){
+    public  void setActorFlag(PxActorFlag flag, bool value){
         PxActorFlag pvk_in_flag = (flag);
         bool pvk_in_value = (value);
         W_setActorFlag(this, pvk_in_flag, pvk_in_value);
@@ -276,7 +338,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setActorFlags(PxActorPtr selfPtr,  inFlags);
     
-    public void setActorFlags( inFlags){
+    public  void setActorFlags( inFlags){
          pvk_in_inFlags = (inFlags);
         W_setActorFlags(this, pvk_in_inFlags);
     }
@@ -297,7 +359,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_getActorFlags(PxActorPtr selfPtr);
     
-    public UNPARSED_TYPE getActorFlags(){
+    public  UNPARSED_TYPE getActorFlags(){
         UNPARSED_TYPE retVal = W_getActorFlags(this);
         return retVal;
     }
@@ -316,7 +378,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setDominanceGroup(PxActorPtr selfPtr, byte dominanceGroup);
     
-    public void setDominanceGroup(byte dominanceGroup){
+    public  void setDominanceGroup(byte dominanceGroup){
         byte pvk_in_dominanceGroup = (dominanceGroup);
         W_setDominanceGroup(this, pvk_in_dominanceGroup);
     }
@@ -335,7 +397,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern byte W_getDominanceGroup(PxActorPtr selfPtr);
     
-    public byte getDominanceGroup(){
+    public  byte getDominanceGroup(){
         byte retVal = W_getDominanceGroup(this);
         return retVal;
     }
@@ -354,7 +416,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setOwnerClient(PxActorPtr selfPtr, byte inClient);
     
-    public void setOwnerClient(byte inClient){
+    public  void setOwnerClient(byte inClient){
         byte pvk_in_inClient = (inClient);
         W_setOwnerClient(this, pvk_in_inClient);
     }
@@ -373,7 +435,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern byte W_getOwnerClient(PxActorPtr selfPtr);
     
-    public byte getOwnerClient(){
+    public  byte getOwnerClient(){
         byte retVal = W_getOwnerClient(this);
         return retVal;
     }
@@ -394,7 +456,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxAggregatePtr W_getAggregate(PxActorPtr selfPtr);
     
-    public PxAggregatePtr getAggregate(){
+    public  PxAggregatePtr getAggregate(){
         PxAggregatePtr retVal = W_getAggregate(this);
         return retVal;
     }
@@ -417,7 +479,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxActor_ctor(ushort concreteType,  baseFlags);
     
-    public PxActor(ushort concreteType,  baseFlags){
+    public  PxActor(ushort concreteType,  baseFlags){
         ushort pvk_in_concreteType = (concreteType);
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxActor_ctor(pvk_in_concreteType, pvk_in_baseFlags);
@@ -442,7 +504,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxActor_ctor( baseFlags);
     
-    public PxActor( baseFlags){
+    public  PxActor( baseFlags){
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxActor_ctor(pvk_in_baseFlags);
         fixed (void* ptr = &this)
@@ -464,7 +526,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxActor(PxActorPtr selfPtr);
     
-    public void ~PxActor(){
+    public  void ~PxActor(){
         W_~PxActor(this);
     }
     #endif*/
@@ -483,7 +545,7 @@ public unsafe partial struct PxActorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isKindOf(PxActorPtr selfPtr, string name);
     
-    public bool isKindOf(string name){
+    public  bool isKindOf(string name){
         string pvk_in_name = (name);
         bool retVal = W_isKindOf(this, pvk_in_name);
         return retVal;

@@ -6,9 +6,33 @@ using System.Runtime.InteropServices;
 
 
 #if !NATIVE
-public unsafe partial struct ShPxErrorCallbackWrapperPtr { // pointer
+public unsafe interface IShPxErrorCallbackWrapperPtr {
+    // ShPxErrorCallbackWrapper( managedErrorCallback);
+     void reportError(PxErrorCode code, string message, string file, int line);
+    // ShPxErrorCallbackWrapper(/*NULLPARS*/);
+    // ShPxErrorCallbackWrapper(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(ShPxErrorCallbackWrapperPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(ShPxErrorCallbackWrapperPtr lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~ShPxErrorCallbackWrapper(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct ShPxErrorCallbackWrapperPtr : IPxErrorCallbackPtr, IShPxErrorCallbackWrapperPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxErrorCallbackPtr, ShPxErrorCallbackWrapperPtr
+    public static implicit operator PxErrorCallbackPtr(ShPxErrorCallbackWrapperPtr obj){return *(PxErrorCallbackPtr*)&obj;}
+    public static explicit operator ShPxErrorCallbackWrapperPtr(PxErrorCallbackPtr obj){return *(ShPxErrorCallbackWrapperPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxErrorCallbackPtr
+    //public  void ~PxErrorCallback(){((PxErrorCallbackPtr)this).~PxErrorCallback();}
+    //public static UNPARSED_TYPE operator=(PxErrorCallbackPtr lhs, /*NULLPARS*/){return ((PxErrorCallbackPtr)this).operator=(/*NULLARGS*/);}
+    //public  PxErrorCallback(/*NULLPARS*/){((PxErrorCallbackPtr)this).PxErrorCallback(/*NULLARGS*/);}
+    //public  PxErrorCallback(/*NULLPARS*/){((PxErrorCallbackPtr)this).PxErrorCallback(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       ShPxErrorCallbackWrapper                                               #
@@ -27,7 +51,7 @@ public unsafe partial struct ShPxErrorCallbackWrapperPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_ShPxErrorCallbackWrapper_ctor( managedErrorCallback);
     
-    public ShPxErrorCallbackWrapper( managedErrorCallback){
+    public  ShPxErrorCallbackWrapper( managedErrorCallback){
          pvk_in_managedErrorCallback = (managedErrorCallback);
         var _new = W_ShPxErrorCallbackWrapper_ctor(pvk_in_managedErrorCallback);
         fixed (void* ptr = &this)
@@ -51,7 +75,7 @@ public unsafe partial struct ShPxErrorCallbackWrapperPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_reportError(ShPxErrorCallbackWrapperPtr selfPtr, PxErrorCode code, string message, string file, int line);
     
-    public void reportError(PxErrorCode code, string message, string file, int line){
+    public  void reportError(PxErrorCode code, string message, string file, int line){
         PxErrorCode pvk_in_code = (code);
         string pvk_in_message = (message);
         string pvk_in_file = (file);

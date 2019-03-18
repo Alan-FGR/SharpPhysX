@@ -6,12 +6,41 @@ using System.Runtime.InteropServices;
 
 
 #if !NATIVE
-public unsafe partial struct PxBoxGeometry { // blittable
+public unsafe interface IPxBoxGeometry {
+    // PxBoxGeometry();
+    // PxBoxGeometry(float hx, float hy, float hz);
+    // PxBoxGeometry(PxVec3 halfExtents_);
+     bool isValid();
+    // PxBoxGeometry(/*NULLPARS*/);
+    // PxBoxGeometry(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxBoxGeometry lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxBoxGeometry lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxBoxGeometry(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxBoxGeometry : IPxGeometryPtr, IPxBoxGeometry { // blittable
     // TODO extract fields from base classes reliably (if possible at all)
     // FIELDS COULDN'T BE RESOLVED AUTOMATICALLY. YOU MAY HANDLE THAT MANUALLY AS GETTERS BELOW:
     private object CHECK_halfExtents => halfExtents; // physx::PxVec3
 
 #endif
+
+    // Hierarchy: PxGeometryPtr, PxBoxGeometry
+    public static implicit operator PxGeometryPtr(PxBoxGeometry obj){return *(PxGeometryPtr*)&obj;}
+    public static explicit operator PxBoxGeometry(PxGeometryPtr obj){return *(PxBoxGeometry*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxGeometryPtr
+    public  PxGeometryType getType(){return ((PxGeometryPtr)this).getType();}
+    //public  PxGeometry(PxGeometryType type){((PxGeometryPtr)this).PxGeometry(type);}
+    //public  PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
+    //public  PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).~PxGeometry(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxGeometryPtr lhs, /*NULLPARS*/){return ((PxGeometryPtr)this).operator=(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxGeometryPtr lhs, /*NULLPARS*/){return ((PxGeometryPtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxBoxGeometry                                                          #
@@ -35,7 +64,7 @@ public unsafe partial struct PxBoxGeometry { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBoxGeometry W_PxBoxGeometry_ctor(float hx, float hy, float hz);
     
-    public PxBoxGeometry(float hx, float hy, float hz){
+    public  PxBoxGeometry(float hx, float hy, float hz){
         float pvk_in_hx = (hx);
         float pvk_in_hy = (hy);
         float pvk_in_hz = (hz);
@@ -58,7 +87,7 @@ public unsafe partial struct PxBoxGeometry { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBoxGeometry W_PxBoxGeometry_ctor(PxVec3 halfExtents_);
     
-    public PxBoxGeometry(PxVec3 halfExtents_){
+    public  PxBoxGeometry(PxVec3 halfExtents_){
         PxVec3 pvk_in_halfExtents_ = (halfExtents_);
         var _new = W_PxBoxGeometry_ctor(pvk_in_halfExtents_);
         fixed (void* ptr = &this)
@@ -79,7 +108,7 @@ public unsafe partial struct PxBoxGeometry { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isValid(PxBoxGeometry selfBlt);
     
-    public bool isValid(){
+    public  bool isValid(){
         bool retVal = W_isValid(this);
         return retVal;
     }

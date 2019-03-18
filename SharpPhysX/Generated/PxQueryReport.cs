@@ -102,10 +102,20 @@ public static UNPARSED_TYPE operator~(PxHitFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxHitCallbackPtr { // pointer
+public unsafe interface IPxHitCallbackPtr {
+    // PxHitCallback<HitType>( aTouches, uint aMaxNbTouches);
+    // bool processTouches( buffer, uint nbHits);
+     void finalizeQuery();
+    // void ~PxHitCallback<HitType>();
+     bool hasAnyHits();
+    
+}
+
+public unsafe partial struct PxHitCallbackPtr : IPxHitCallbackPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxHitCallbackPtr
     //================================================================================
     //#       PxHitCallback<HitType>                                                 #
     //================================================================================
@@ -122,7 +132,7 @@ public unsafe partial struct PxHitCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxHitCallback<HitType>_ctor( aTouches, uint aMaxNbTouches);
     
-    public PxHitCallback<HitType>( aTouches, uint aMaxNbTouches){
+    public  PxHitCallback<HitType>( aTouches, uint aMaxNbTouches){
          pvk_in_aTouches = (aTouches);
         uint pvk_in_aMaxNbTouches = (aMaxNbTouches);
         var _new = W_PxHitCallback<HitType>_ctor(pvk_in_aTouches, pvk_in_aMaxNbTouches);
@@ -148,7 +158,7 @@ public unsafe partial struct PxHitCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_processTouches(PxHitCallbackPtr selfPtr,  buffer, uint nbHits);
     
-    public bool processTouches( buffer, uint nbHits){
+    public  bool processTouches( buffer, uint nbHits){
          pvk_in_buffer = (buffer);
         uint pvk_in_nbHits = (nbHits);
         bool retVal = W_processTouches(this, pvk_in_buffer, pvk_in_nbHits);
@@ -168,7 +178,7 @@ public unsafe partial struct PxHitCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_finalizeQuery(PxHitCallbackPtr selfPtr);
     
-    public void finalizeQuery(){
+    public  void finalizeQuery(){
         W_finalizeQuery(this);
     }
     #endif
@@ -187,7 +197,7 @@ public unsafe partial struct PxHitCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxHitCallback<HitType>(PxHitCallbackPtr selfPtr);
     
-    public void ~PxHitCallback<HitType>(){
+    public  void ~PxHitCallback<HitType>(){
         W_~PxHitCallback<HitType>(this);
     }
     #endif*/
@@ -205,7 +215,7 @@ public unsafe partial struct PxHitCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_hasAnyHits(PxHitCallbackPtr selfPtr);
     
-    public bool hasAnyHits(){
+    public  bool hasAnyHits(){
         bool retVal = W_hasAnyHits(this);
         return retVal;
     }
@@ -218,9 +228,45 @@ public unsafe partial struct PxHitCallbackPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxRaycastHitPtr { // pointer
+public unsafe interface IPxRaycastHitPtr {
+    // PxRaycastHit();
+    //static UNPARSED_TYPE operator=(PxRaycastHitPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxRaycastHitPtr lhs, /*NULLPARS*/);
+    // PxRaycastHit(/*NULLPARS*/);
+    // PxRaycastHit(/*NULLPARS*/);
+    // UNPARSED_TYPE ~PxRaycastHit(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxRaycastHitPtr : IPxQueryHitPtr, IPxLocationHitPtr, IPxRaycastHitPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxQueryHitPtr, PxLocationHitPtr, PxRaycastHitPtr
+    public static implicit operator PxQueryHitPtr(PxRaycastHitPtr obj){return *(PxQueryHitPtr*)&obj;}
+    public static explicit operator PxRaycastHitPtr(PxQueryHitPtr obj){return *(PxRaycastHitPtr*)&obj;}
+    public static implicit operator PxLocationHitPtr(PxRaycastHitPtr obj){return *(PxLocationHitPtr*)&obj;}
+    public static explicit operator PxRaycastHitPtr(PxLocationHitPtr obj){return *(PxRaycastHitPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxLocationHitPtr
+    //public  PxLocationHit(){((PxLocationHitPtr)this).PxLocationHit();}
+    public  bool hadInitialOverlap(){return ((PxLocationHitPtr)this).hadInitialOverlap();}
+    //public  PxLocationHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxLocationHit(/*NULLARGS*/);}
+    //public  PxLocationHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxLocationHit(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxLocationHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxLocationHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxLocationHit(/*NULLPARS*/){((PxLocationHitPtr)this).~PxLocationHit(/*NULLARGS*/);}
+    
+    // --- PxQueryHitPtr
+    //public  PxQueryHit(){((PxLocationHitPtr)this).PxQueryHit();}
+    //public  PxQueryHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    //public  PxQueryHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxQueryHit(/*NULLPARS*/){((PxLocationHitPtr)this).~PxQueryHit(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxRaycastHit                                                           #
@@ -247,9 +293,46 @@ public unsafe partial struct PxRaycastHitPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxLocationHitPtr { // pointer
+public unsafe interface IPxLocationHitPtr {
+    // PxLocationHit();
+     bool hadInitialOverlap();
+    // PxLocationHit(/*NULLPARS*/);
+    // PxLocationHit(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxLocationHitPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxLocationHitPtr lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxLocationHit(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxLocationHitPtr : IPxActorShapePtr, IPxQueryHitPtr, IPxLocationHitPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxActorShapePtr, PxQueryHitPtr, PxLocationHitPtr
+    public static implicit operator PxActorShapePtr(PxLocationHitPtr obj){return *(PxActorShapePtr*)&obj;}
+    public static explicit operator PxLocationHitPtr(PxActorShapePtr obj){return *(PxLocationHitPtr*)&obj;}
+    public static implicit operator PxQueryHitPtr(PxLocationHitPtr obj){return *(PxQueryHitPtr*)&obj;}
+    public static explicit operator PxLocationHitPtr(PxQueryHitPtr obj){return *(PxLocationHitPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxQueryHitPtr
+    //public  PxQueryHit(){((PxQueryHitPtr)this).PxQueryHit();}
+    //public  PxQueryHit(/*NULLPARS*/){((PxQueryHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    //public  PxQueryHit(/*NULLPARS*/){((PxQueryHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxQueryHit(/*NULLPARS*/){((PxQueryHitPtr)this).~PxQueryHit(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
+    
+    // --- PxActorShapePtr
+    //public  PxActorShape(){((PxQueryHitPtr)this).PxActorShape();}
+    //public  PxActorShape(PxRigidActorPtr a, PxShapePtr s){((PxQueryHitPtr)this).PxActorShape(a, s);}
+    //public  PxActorShape(/*NULLPARS*/){((PxQueryHitPtr)this).PxActorShape(/*NULLARGS*/);}
+    //public  PxActorShape(/*NULLPARS*/){((PxQueryHitPtr)this).PxActorShape(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxActorShape(/*NULLPARS*/){((PxQueryHitPtr)this).~PxActorShape(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxLocationHit                                                          #
@@ -272,7 +355,7 @@ public unsafe partial struct PxLocationHitPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_hadInitialOverlap(PxLocationHitPtr selfPtr);
     
-    public bool hadInitialOverlap(){
+    public  bool hadInitialOverlap(){
         bool retVal = W_hadInitialOverlap(this);
         return retVal;
     }
@@ -295,9 +378,35 @@ public unsafe partial struct PxLocationHitPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxQueryHitPtr { // pointer
+public unsafe interface IPxQueryHitPtr {
+    // PxQueryHit();
+    // PxQueryHit(/*NULLPARS*/);
+    // PxQueryHit(/*NULLPARS*/);
+    // UNPARSED_TYPE ~PxQueryHit(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxQueryHitPtr : IPxActorShapePtr, IPxQueryHitPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxActorShapePtr, PxQueryHitPtr
+    public static implicit operator PxActorShapePtr(PxQueryHitPtr obj){return *(PxActorShapePtr*)&obj;}
+    public static explicit operator PxQueryHitPtr(PxActorShapePtr obj){return *(PxQueryHitPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxActorShapePtr
+    //public  PxActorShape(){((PxActorShapePtr)this).PxActorShape();}
+    //public  PxActorShape(PxRigidActorPtr a, PxShapePtr s){((PxActorShapePtr)this).PxActorShape(a, s);}
+    //public  PxActorShape(/*NULLPARS*/){((PxActorShapePtr)this).PxActorShape(/*NULLARGS*/);}
+    //public  PxActorShape(/*NULLPARS*/){((PxActorShapePtr)this).PxActorShape(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxActorShape(/*NULLPARS*/){((PxActorShapePtr)this).~PxActorShape(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/){return ((PxActorShapePtr)this).operator=(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/){return ((PxActorShapePtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxQueryHit                                                             #
@@ -324,10 +433,22 @@ public unsafe partial struct PxQueryHitPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxActorShapePtr { // pointer
+public unsafe interface IPxActorShapePtr {
+    // PxActorShape();
+    // PxActorShape(PxRigidActorPtr a, PxShapePtr s);
+    // PxActorShape(/*NULLPARS*/);
+    // PxActorShape(/*NULLPARS*/);
+    // UNPARSED_TYPE ~PxActorShape(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxActorShapePtr : IPxActorShapePtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxActorShapePtr
     //================================================================================
     //#       PxActorShape                                                           #
     //================================================================================
@@ -352,7 +473,7 @@ public unsafe partial struct PxActorShapePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxActorShape_ctor(PxRigidActorPtr a, PxShapePtr s);
     
-    public PxActorShape(PxRigidActorPtr a, PxShapePtr s){
+    public  PxActorShape(PxRigidActorPtr a, PxShapePtr s){
         PxRigidActorPtr pvk_in_a = (a);
         PxShapePtr pvk_in_s = (s);
         var _new = W_PxActorShape_ctor(pvk_in_a, pvk_in_s);
@@ -379,9 +500,45 @@ public unsafe partial struct PxActorShapePtr { // pointer
 
 // Class physx::PxHitFlag is enum namespace
 #if !NATIVE
-public unsafe partial struct PxSweepHitPtr { // pointer
+public unsafe interface IPxSweepHitPtr {
+    // PxSweepHit();
+    //static UNPARSED_TYPE operator=(PxSweepHitPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxSweepHitPtr lhs, /*NULLPARS*/);
+    // PxSweepHit(/*NULLPARS*/);
+    // PxSweepHit(/*NULLPARS*/);
+    // UNPARSED_TYPE ~PxSweepHit(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxSweepHitPtr : IPxQueryHitPtr, IPxLocationHitPtr, IPxSweepHitPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxQueryHitPtr, PxLocationHitPtr, PxSweepHitPtr
+    public static implicit operator PxQueryHitPtr(PxSweepHitPtr obj){return *(PxQueryHitPtr*)&obj;}
+    public static explicit operator PxSweepHitPtr(PxQueryHitPtr obj){return *(PxSweepHitPtr*)&obj;}
+    public static implicit operator PxLocationHitPtr(PxSweepHitPtr obj){return *(PxLocationHitPtr*)&obj;}
+    public static explicit operator PxSweepHitPtr(PxLocationHitPtr obj){return *(PxSweepHitPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxLocationHitPtr
+    //public  PxLocationHit(){((PxLocationHitPtr)this).PxLocationHit();}
+    public  bool hadInitialOverlap(){return ((PxLocationHitPtr)this).hadInitialOverlap();}
+    //public  PxLocationHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxLocationHit(/*NULLARGS*/);}
+    //public  PxLocationHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxLocationHit(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxLocationHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxLocationHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxLocationHit(/*NULLPARS*/){((PxLocationHitPtr)this).~PxLocationHit(/*NULLARGS*/);}
+    
+    // --- PxQueryHitPtr
+    //public  PxQueryHit(){((PxLocationHitPtr)this).PxQueryHit();}
+    //public  PxQueryHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    //public  PxQueryHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxQueryHit(/*NULLPARS*/){((PxLocationHitPtr)this).~PxQueryHit(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxSweepHit                                                             #
@@ -408,9 +565,45 @@ public unsafe partial struct PxSweepHitPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxOverlapHitPtr { // pointer
+public unsafe interface IPxOverlapHitPtr {
+    //static UNPARSED_TYPE operator=(PxOverlapHitPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxOverlapHitPtr lhs, /*NULLPARS*/);
+    // PxOverlapHit(/*NULLPARS*/);
+    // PxOverlapHit(/*NULLPARS*/);
+    // UNPARSED_TYPE ~PxOverlapHit(/*NULLPARS*/);
+    // PxOverlapHit(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxOverlapHitPtr : IPxActorShapePtr, IPxQueryHitPtr, IPxOverlapHitPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxActorShapePtr, PxQueryHitPtr, PxOverlapHitPtr
+    public static implicit operator PxActorShapePtr(PxOverlapHitPtr obj){return *(PxActorShapePtr*)&obj;}
+    public static explicit operator PxOverlapHitPtr(PxActorShapePtr obj){return *(PxOverlapHitPtr*)&obj;}
+    public static implicit operator PxQueryHitPtr(PxOverlapHitPtr obj){return *(PxQueryHitPtr*)&obj;}
+    public static explicit operator PxOverlapHitPtr(PxQueryHitPtr obj){return *(PxOverlapHitPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxQueryHitPtr
+    //public  PxQueryHit(){((PxQueryHitPtr)this).PxQueryHit();}
+    //public  PxQueryHit(/*NULLPARS*/){((PxQueryHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    //public  PxQueryHit(/*NULLPARS*/){((PxQueryHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxQueryHit(/*NULLPARS*/){((PxQueryHitPtr)this).~PxQueryHit(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
+    
+    // --- PxActorShapePtr
+    //public  PxActorShape(){((PxQueryHitPtr)this).PxActorShape();}
+    //public  PxActorShape(PxRigidActorPtr a, PxShapePtr s){((PxQueryHitPtr)this).PxActorShape(a, s);}
+    //public  PxActorShape(/*NULLPARS*/){((PxQueryHitPtr)this).PxActorShape(/*NULLARGS*/);}
+    //public  PxActorShape(/*NULLPARS*/){((PxQueryHitPtr)this).PxActorShape(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxActorShape(/*NULLPARS*/){((PxQueryHitPtr)this).~PxActorShape(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
+    
 
     //Skipped generated implicit entry: operator=
     
@@ -430,9 +623,37 @@ public unsafe partial struct PxOverlapHitPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxHitBufferPtr { // pointer
+public unsafe interface IPxHitBufferPtr {
+    // PxHitBuffer<HitType>( aTouches);
+    // PxHitBuffer<HitType>();
+    // PxHitBuffer<HitType>( aTouches, uint aMaxNbTouches);
+     uint getNbAnyHits();
+    // UNPARSED_TYPE getAnyHit(uint index);
+     uint getNbTouches();
+    // UNPARSED_TYPE getTouches();
+    // UNPARSED_TYPE getTouch(uint index);
+     uint getMaxNbTouches();
+    // void ~PxHitBuffer<HitType>();
+    // bool processTouches( buffer, uint nbHits);
+    
+}
+
+public unsafe partial struct PxHitBufferPtr : IPxHitCallbackPtr, IPxHitBufferPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxHitCallbackPtr, PxHitBufferPtr
+    public static implicit operator PxHitCallbackPtr(PxHitBufferPtr obj){return *(PxHitCallbackPtr*)&obj;}
+    public static explicit operator PxHitBufferPtr(PxHitCallbackPtr obj){return *(PxHitBufferPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxHitCallbackPtr
+    //public  PxHitCallback<HitType>( aTouches, uint aMaxNbTouches){((PxHitCallbackPtr)this).PxHitCallback<HitType>(aTouches, aMaxNbTouches);}
+    public  void finalizeQuery(){((PxHitCallbackPtr)this).finalizeQuery();}
+    //public  void ~PxHitCallback<HitType>(){((PxHitCallbackPtr)this).~PxHitCallback<HitType>();}
+    public  bool hasAnyHits(){return ((PxHitCallbackPtr)this).hasAnyHits();}
+    
 
     //================================================================================
     //#       PxHitBuffer<HitType>                                                   #
@@ -450,7 +671,7 @@ public unsafe partial struct PxHitBufferPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxHitBuffer<HitType>_ctor( aTouches, uint aMaxNbTouches);
     
-    public PxHitBuffer<HitType>( aTouches, uint aMaxNbTouches){
+    public  PxHitBuffer<HitType>( aTouches, uint aMaxNbTouches){
          pvk_in_aTouches = (aTouches);
         uint pvk_in_aMaxNbTouches = (aMaxNbTouches);
         var _new = W_PxHitBuffer<HitType>_ctor(pvk_in_aTouches, pvk_in_aMaxNbTouches);
@@ -464,17 +685,17 @@ public unsafe partial struct PxHitBufferPtr { // pointer
     Unresolved parameter pointee HitType
     // NATIVE SIG: PxHitBuffer(HitType* aTouches = NULL, PxU32 aMaxNbTouches = 0)
     #if NATIVE
-    ES UNPARSED_TYPE W_PxHitBuffer<HitType>_ctor_OL1( aTouches){
+    ES UNPARSED_TYPE W_PxHitBuffer<HitType>_ctor( aTouches){
         auto nat_in_aTouches = (aTouches);
         self->PxHitBuffer<HitType>(nat_in_aTouches);
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxHitBuffer<HitType>_ctor_OL1( aTouches);
+    static extern UNPARSED_TYPE W_PxHitBuffer<HitType>_ctor( aTouches);
     
-    public PxHitBuffer<HitType>( aTouches){
+    public  PxHitBuffer<HitType>( aTouches){
          pvk_in_aTouches = (aTouches);
-        var _new = W_PxHitBuffer<HitType>_ctor_OL1(pvk_in_aTouches);
+        var _new = W_PxHitBuffer<HitType>_ctor(pvk_in_aTouches);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -503,7 +724,7 @@ public unsafe partial struct PxHitBufferPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern uint W_getNbAnyHits(PxHitBufferPtr selfPtr);
     
-    public uint getNbAnyHits(){
+    public  uint getNbAnyHits(){
         uint retVal = W_getNbAnyHits(this);
         return retVal;
     }
@@ -525,7 +746,7 @@ public unsafe partial struct PxHitBufferPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_getAnyHit(PxHitBufferPtr selfPtr, uint index);
     
-    public UNPARSED_TYPE getAnyHit(uint index){
+    public  UNPARSED_TYPE getAnyHit(uint index){
         uint pvk_in_index = (index);
         UNPARSED_TYPE retVal = W_getAnyHit(this, pvk_in_index);
         return retVal;
@@ -545,7 +766,7 @@ public unsafe partial struct PxHitBufferPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern uint W_getNbTouches(PxHitBufferPtr selfPtr);
     
-    public uint getNbTouches(){
+    public  uint getNbTouches(){
         uint retVal = W_getNbTouches(this);
         return retVal;
     }
@@ -566,7 +787,7 @@ public unsafe partial struct PxHitBufferPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_getTouches(PxHitBufferPtr selfPtr);
     
-    public UNPARSED_TYPE getTouches(){
+    public  UNPARSED_TYPE getTouches(){
         UNPARSED_TYPE retVal = W_getTouches(this);
         return retVal;
     }
@@ -588,7 +809,7 @@ public unsafe partial struct PxHitBufferPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_getTouch(PxHitBufferPtr selfPtr, uint index);
     
-    public UNPARSED_TYPE getTouch(uint index){
+    public  UNPARSED_TYPE getTouch(uint index){
         uint pvk_in_index = (index);
         UNPARSED_TYPE retVal = W_getTouch(this, pvk_in_index);
         return retVal;
@@ -608,7 +829,7 @@ public unsafe partial struct PxHitBufferPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern uint W_getMaxNbTouches(PxHitBufferPtr selfPtr);
     
-    public uint getMaxNbTouches(){
+    public  uint getMaxNbTouches(){
         uint retVal = W_getMaxNbTouches(this);
         return retVal;
     }
@@ -628,7 +849,7 @@ public unsafe partial struct PxHitBufferPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxHitBuffer<HitType>(PxHitBufferPtr selfPtr);
     
-    public void ~PxHitBuffer<HitType>(){
+    public  void ~PxHitBuffer<HitType>(){
         W_~PxHitBuffer<HitType>(this);
     }
     #endif*/
@@ -650,7 +871,7 @@ public unsafe partial struct PxHitBufferPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_processTouches(PxHitBufferPtr selfPtr,  buffer, uint nbHits);
     
-    public bool processTouches( buffer, uint nbHits){
+    public  bool processTouches( buffer, uint nbHits){
          pvk_in_buffer = (buffer);
         uint pvk_in_nbHits = (nbHits);
         bool retVal = W_processTouches(this, pvk_in_buffer, pvk_in_nbHits);
@@ -665,9 +886,46 @@ public unsafe partial struct PxHitBufferPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxRaycastBufferNPtr { // pointer
+public unsafe interface IPxRaycastBufferNPtr {
+    // PxRaycastBufferN<N>();
+    
+}
+
+public unsafe partial struct PxRaycastBufferNPtr : IPxHitCallbackPtr, IPxHitBufferPtr, IPxRaycastBufferNPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxHitCallbackPtr, PxHitBufferPtr, PxRaycastBufferNPtr
+    public static implicit operator PxHitCallbackPtr(PxRaycastBufferNPtr obj){return *(PxHitCallbackPtr*)&obj;}
+    public static explicit operator PxRaycastBufferNPtr(PxHitCallbackPtr obj){return *(PxRaycastBufferNPtr*)&obj;}
+    public static implicit operator PxHitBufferPtr(PxRaycastBufferNPtr obj){return *(PxHitBufferPtr*)&obj;}
+    public static explicit operator PxRaycastBufferNPtr(PxHitBufferPtr obj){return *(PxRaycastBufferNPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxHitBufferPtr
+    //public  PxHitBuffer( aTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches);}
+    //public  PxHitBuffer(){((PxHitBufferPtr)this).PxHitBuffer();}
+    //public  PxHitBuffer( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches, aMaxNbTouches);}
+    public  uint getNbAnyHits(){return ((PxHitBufferPtr)this).getNbAnyHits();}
+    //public  UNPARSED_TYPE getAnyHit(uint index){return ((PxHitBufferPtr)this).getAnyHit(index);}
+    public  uint getNbTouches(){return ((PxHitBufferPtr)this).getNbTouches();}
+    //public  UNPARSED_TYPE getTouches(){return ((PxHitBufferPtr)this).getTouches();}
+    //public  UNPARSED_TYPE getTouch(uint index){return ((PxHitBufferPtr)this).getTouch(index);}
+    public  uint getMaxNbTouches(){return ((PxHitBufferPtr)this).getMaxNbTouches();}
+    //public  void ~PxHitBuffer(){((PxHitBufferPtr)this).~PxHitBuffer();}
+    //public  bool processTouches( buffer, uint nbHits){return ((PxHitBufferPtr)this).processTouches(buffer, nbHits);}
+    //public  PxHitBuffer(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitBuffer(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxHitBufferPtr lhs, /*NULLPARS*/){return ((PxHitBufferPtr)this).operator=(/*NULLARGS*/);}
+    
+    // --- PxHitCallbackPtr
+    //public  PxHitCallback( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitCallback(aTouches, aMaxNbTouches);}
+    public  void finalizeQuery(){((PxHitBufferPtr)this).finalizeQuery();}
+    //public  void ~PxHitCallback(){((PxHitBufferPtr)this).~PxHitCallback();}
+    public  bool hasAnyHits(){return ((PxHitBufferPtr)this).hasAnyHits();}
+    //public static UNPARSED_TYPE operator=(PxHitCallbackPtr lhs, /*NULLPARS*/){return ((PxHitBufferPtr)this).operator=(/*NULLARGS*/);}
+    //public  PxHitCallback(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitCallback(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxRaycastBufferN<N>                                                    #
@@ -684,9 +942,46 @@ public unsafe partial struct PxRaycastBufferNPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxOverlapBufferNPtr { // pointer
+public unsafe interface IPxOverlapBufferNPtr {
+    // PxOverlapBufferN<N>();
+    
+}
+
+public unsafe partial struct PxOverlapBufferNPtr : IPxHitCallbackPtr, IPxHitBufferPtr, IPxOverlapBufferNPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxHitCallbackPtr, PxHitBufferPtr, PxOverlapBufferNPtr
+    public static implicit operator PxHitCallbackPtr(PxOverlapBufferNPtr obj){return *(PxHitCallbackPtr*)&obj;}
+    public static explicit operator PxOverlapBufferNPtr(PxHitCallbackPtr obj){return *(PxOverlapBufferNPtr*)&obj;}
+    public static implicit operator PxHitBufferPtr(PxOverlapBufferNPtr obj){return *(PxHitBufferPtr*)&obj;}
+    public static explicit operator PxOverlapBufferNPtr(PxHitBufferPtr obj){return *(PxOverlapBufferNPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxHitBufferPtr
+    //public  PxHitBuffer( aTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches);}
+    //public  PxHitBuffer(){((PxHitBufferPtr)this).PxHitBuffer();}
+    //public  PxHitBuffer( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches, aMaxNbTouches);}
+    public  uint getNbAnyHits(){return ((PxHitBufferPtr)this).getNbAnyHits();}
+    //public  UNPARSED_TYPE getAnyHit(uint index){return ((PxHitBufferPtr)this).getAnyHit(index);}
+    public  uint getNbTouches(){return ((PxHitBufferPtr)this).getNbTouches();}
+    //public  UNPARSED_TYPE getTouches(){return ((PxHitBufferPtr)this).getTouches();}
+    //public  UNPARSED_TYPE getTouch(uint index){return ((PxHitBufferPtr)this).getTouch(index);}
+    public  uint getMaxNbTouches(){return ((PxHitBufferPtr)this).getMaxNbTouches();}
+    //public  void ~PxHitBuffer(){((PxHitBufferPtr)this).~PxHitBuffer();}
+    //public  bool processTouches( buffer, uint nbHits){return ((PxHitBufferPtr)this).processTouches(buffer, nbHits);}
+    //public  PxHitBuffer(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitBuffer(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxHitBufferPtr lhs, /*NULLPARS*/){return ((PxHitBufferPtr)this).operator=(/*NULLARGS*/);}
+    
+    // --- PxHitCallbackPtr
+    //public  PxHitCallback( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitCallback(aTouches, aMaxNbTouches);}
+    public  void finalizeQuery(){((PxHitBufferPtr)this).finalizeQuery();}
+    //public  void ~PxHitCallback(){((PxHitBufferPtr)this).~PxHitCallback();}
+    public  bool hasAnyHits(){return ((PxHitBufferPtr)this).hasAnyHits();}
+    //public static UNPARSED_TYPE operator=(PxHitCallbackPtr lhs, /*NULLPARS*/){return ((PxHitBufferPtr)this).operator=(/*NULLARGS*/);}
+    //public  PxHitCallback(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitCallback(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxOverlapBufferN<N>                                                    #
@@ -703,9 +998,46 @@ public unsafe partial struct PxOverlapBufferNPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxSweepBufferNPtr { // pointer
+public unsafe interface IPxSweepBufferNPtr {
+    // PxSweepBufferN<N>();
+    
+}
+
+public unsafe partial struct PxSweepBufferNPtr : IPxHitCallbackPtr, IPxHitBufferPtr, IPxSweepBufferNPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxHitCallbackPtr, PxHitBufferPtr, PxSweepBufferNPtr
+    public static implicit operator PxHitCallbackPtr(PxSweepBufferNPtr obj){return *(PxHitCallbackPtr*)&obj;}
+    public static explicit operator PxSweepBufferNPtr(PxHitCallbackPtr obj){return *(PxSweepBufferNPtr*)&obj;}
+    public static implicit operator PxHitBufferPtr(PxSweepBufferNPtr obj){return *(PxHitBufferPtr*)&obj;}
+    public static explicit operator PxSweepBufferNPtr(PxHitBufferPtr obj){return *(PxSweepBufferNPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxHitBufferPtr
+    //public  PxHitBuffer( aTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches);}
+    //public  PxHitBuffer(){((PxHitBufferPtr)this).PxHitBuffer();}
+    //public  PxHitBuffer( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches, aMaxNbTouches);}
+    public  uint getNbAnyHits(){return ((PxHitBufferPtr)this).getNbAnyHits();}
+    //public  UNPARSED_TYPE getAnyHit(uint index){return ((PxHitBufferPtr)this).getAnyHit(index);}
+    public  uint getNbTouches(){return ((PxHitBufferPtr)this).getNbTouches();}
+    //public  UNPARSED_TYPE getTouches(){return ((PxHitBufferPtr)this).getTouches();}
+    //public  UNPARSED_TYPE getTouch(uint index){return ((PxHitBufferPtr)this).getTouch(index);}
+    public  uint getMaxNbTouches(){return ((PxHitBufferPtr)this).getMaxNbTouches();}
+    //public  void ~PxHitBuffer(){((PxHitBufferPtr)this).~PxHitBuffer();}
+    //public  bool processTouches( buffer, uint nbHits){return ((PxHitBufferPtr)this).processTouches(buffer, nbHits);}
+    //public  PxHitBuffer(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitBuffer(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxHitBufferPtr lhs, /*NULLPARS*/){return ((PxHitBufferPtr)this).operator=(/*NULLARGS*/);}
+    
+    // --- PxHitCallbackPtr
+    //public  PxHitCallback( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitCallback(aTouches, aMaxNbTouches);}
+    public  void finalizeQuery(){((PxHitBufferPtr)this).finalizeQuery();}
+    //public  void ~PxHitCallback(){((PxHitBufferPtr)this).~PxHitCallback();}
+    public  bool hasAnyHits(){return ((PxHitBufferPtr)this).hasAnyHits();}
+    //public static UNPARSED_TYPE operator=(PxHitCallbackPtr lhs, /*NULLPARS*/){return ((PxHitBufferPtr)this).operator=(/*NULLARGS*/);}
+    //public  PxHitCallback(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitCallback(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxSweepBufferN<N>                                                      #

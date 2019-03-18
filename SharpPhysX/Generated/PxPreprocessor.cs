@@ -37,12 +37,23 @@ public static void PX_UNUSED( ){
 
 
 #if !NATIVE
-public unsafe partial struct PxPackValidation { // blittable
+public unsafe interface IPxPackValidation {
+    // PxPackValidation(/*NULLPARS*/);
+    // PxPackValidation(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxPackValidation lhs, /*NULLPARS*/);
+    // PxPackValidation(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxPackValidation lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxPackValidation(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxPackValidation : IPxPackValidation { // blittable
     public sbyte _;
     public long a;
 
 #endif
 
+    // Hierarchy: PxPackValidation
     //Skipped generated implicit entry: PxPackValidation
     
     //Skipped generated implicit entry: PxPackValidation

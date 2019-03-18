@@ -36,13 +36,55 @@ public static PxVec3 operator*(float f, PxVec3 v){
 
 
 #if !NATIVE
-public unsafe partial struct PxVec3 { // blittable
+public unsafe interface IPxVec3 {
+    // PxVec3();
+    // PxVec3(PxZERO r);
+    // PxVec3(float a);
+    // PxVec3(float nx, float ny, float nz);
+    // PxVec3(PxVec3 v);
+    //static PxVec3 operator=(PxVec3 lhs, /*NULLPARS*/);
+    //static IntPtr operator[](PxVec3 lhs, /*NULLPARS*/);
+    //static IntPtr operator[](PxVec3 lhs, /*NULLPARS*/);
+    //static bool operator==(PxVec3 lhs, PxVec3 v);
+    //static bool operator!=(PxVec3 lhs, PxVec3 v);
+     bool isZero();
+     bool isFinite();
+     bool isNormalized();
+     float magnitudeSquared();
+     float magnitude();
+    //static PxVec3 operator-(PxVec3 lhs);
+    //static PxVec3 operator+(PxVec3 lhs, PxVec3 v);
+    //static PxVec3 operator-(PxVec3 lhs, PxVec3 v);
+    //static PxVec3 operator*(PxVec3 lhs, float f);
+    //static PxVec3 operator/(PxVec3 lhs, float f);
+    //static PxVec3 operator+=(PxVec3 lhs, /*NULLPARS*/);
+    //static PxVec3 operator-=(PxVec3 lhs, /*NULLPARS*/);
+    //static PxVec3 operator*=(PxVec3 lhs, /*NULLPARS*/);
+    //static PxVec3 operator/=(PxVec3 lhs, /*NULLPARS*/);
+     float dot(PxVec3 v);
+     PxVec3 cross(PxVec3 v);
+     PxVec3 getNormalized();
+     float normalize();
+     float normalizeSafe();
+     float normalizeFast();
+     PxVec3 multiply(PxVec3 a);
+     PxVec3 minimum(PxVec3 v);
+     float minElement();
+     PxVec3 maximum(PxVec3 v);
+     float maxElement();
+     PxVec3 abs();
+    // UNPARSED_TYPE ~PxVec3(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxVec3 : IPxVec3 { // blittable
     public float x;
     public float y;
     public float z;
 
 #endif
 
+    // Hierarchy: PxVec3
     //================================================================================
     //#       PxVec3                                                                 #
     //================================================================================
@@ -63,7 +105,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_PxVec3_ctor(PxZERO r);
     
-    public PxVec3(PxZERO r){
+    public  PxVec3(PxZERO r){
         PxZERO pvk_in_r = (r);
         var _new = W_PxVec3_ctor(pvk_in_r);
         fixed (void* ptr = &this)
@@ -84,7 +126,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_PxVec3_ctor(float a);
     
-    public PxVec3(float a){
+    public  PxVec3(float a){
         float pvk_in_a = (a);
         var _new = W_PxVec3_ctor(pvk_in_a);
         fixed (void* ptr = &this)
@@ -107,7 +149,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_PxVec3_ctor(float nx, float ny, float nz);
     
-    public PxVec3(float nx, float ny, float nz){
+    public  PxVec3(float nx, float ny, float nz){
         float pvk_in_nx = (nx);
         float pvk_in_ny = (ny);
         float pvk_in_nz = (nz);
@@ -130,7 +172,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_PxVec3_ctor(PxVec3 v);
     
-    public PxVec3(PxVec3 v){
+    public  PxVec3(PxVec3 v){
         PxVec3 pvk_in_v = (v);
         var _new = W_PxVec3_ctor(pvk_in_v);
         fixed (void* ptr = &this)
@@ -214,7 +256,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isZero(PxVec3 selfBlt);
     
-    public bool isZero(){
+    public  bool isZero(){
         bool retVal = W_isZero(this);
         return retVal;
     }
@@ -233,7 +275,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isFinite(PxVec3 selfBlt);
     
-    public bool isFinite(){
+    public  bool isFinite(){
         bool retVal = W_isFinite(this);
         return retVal;
     }
@@ -252,7 +294,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isNormalized(PxVec3 selfBlt);
     
-    public bool isNormalized(){
+    public  bool isNormalized(){
         bool retVal = W_isNormalized(this);
         return retVal;
     }
@@ -271,7 +313,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_magnitudeSquared(PxVec3 selfBlt);
     
-    public float magnitudeSquared(){
+    public  float magnitudeSquared(){
         float retVal = W_magnitudeSquared(this);
         return retVal;
     }
@@ -290,7 +332,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_magnitude(PxVec3 selfBlt);
     
-    public float magnitude(){
+    public  float magnitude(){
         float retVal = W_magnitude(this);
         return retVal;
     }
@@ -441,7 +483,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_dot(PxVec3 selfBlt, PxVec3 v);
     
-    public float dot(PxVec3 v){
+    public  float dot(PxVec3 v){
         PxVec3 pvk_in_v = (v);
         float retVal = W_dot(this, pvk_in_v);
         return retVal;
@@ -462,7 +504,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_cross(PxVec3 selfBlt, PxVec3 v);
     
-    public PxVec3 cross(PxVec3 v){
+    public  PxVec3 cross(PxVec3 v){
         PxVec3 pvk_in_v = (v);
         PxVec3 retVal = W_cross(this, pvk_in_v);
         return retVal;
@@ -482,7 +524,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getNormalized(PxVec3 selfBlt);
     
-    public PxVec3 getNormalized(){
+    public  PxVec3 getNormalized(){
         PxVec3 retVal = W_getNormalized(this);
         return retVal;
     }
@@ -501,7 +543,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_normalize(PxVec3 selfBlt);
     
-    public float normalize(){
+    public  float normalize(){
         float retVal = W_normalize(this);
         return retVal;
     }
@@ -520,7 +562,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_normalizeSafe(PxVec3 selfBlt);
     
-    public float normalizeSafe(){
+    public  float normalizeSafe(){
         float retVal = W_normalizeSafe(this);
         return retVal;
     }
@@ -539,7 +581,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_normalizeFast(PxVec3 selfBlt);
     
-    public float normalizeFast(){
+    public  float normalizeFast(){
         float retVal = W_normalizeFast(this);
         return retVal;
     }
@@ -559,7 +601,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_multiply(PxVec3 selfBlt, PxVec3 a);
     
-    public PxVec3 multiply(PxVec3 a){
+    public  PxVec3 multiply(PxVec3 a){
         PxVec3 pvk_in_a = (a);
         PxVec3 retVal = W_multiply(this, pvk_in_a);
         return retVal;
@@ -580,7 +622,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_minimum(PxVec3 selfBlt, PxVec3 v);
     
-    public PxVec3 minimum(PxVec3 v){
+    public  PxVec3 minimum(PxVec3 v){
         PxVec3 pvk_in_v = (v);
         PxVec3 retVal = W_minimum(this, pvk_in_v);
         return retVal;
@@ -600,7 +642,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_minElement(PxVec3 selfBlt);
     
-    public float minElement(){
+    public  float minElement(){
         float retVal = W_minElement(this);
         return retVal;
     }
@@ -620,7 +662,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_maximum(PxVec3 selfBlt, PxVec3 v);
     
-    public PxVec3 maximum(PxVec3 v){
+    public  PxVec3 maximum(PxVec3 v){
         PxVec3 pvk_in_v = (v);
         PxVec3 retVal = W_maximum(this, pvk_in_v);
         return retVal;
@@ -640,7 +682,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_maxElement(PxVec3 selfBlt);
     
-    public float maxElement(){
+    public  float maxElement(){
         float retVal = W_maxElement(this);
         return retVal;
     }
@@ -659,7 +701,7 @@ public unsafe partial struct PxVec3 { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_abs(PxVec3 selfBlt);
     
-    public PxVec3 abs(){
+    public  PxVec3 abs(){
         PxVec3 retVal = W_abs(this);
         return retVal;
     }

@@ -17,13 +17,24 @@ public enum PxBroadPhaseType : int {
 // Class physx::PxBroadPhaseCallback Manually Ignored
 // Class physx::PxBroadPhaseType Manually Ignored
 #if !NATIVE
-public unsafe partial struct PxBroadPhaseCaps { // blittable
+public unsafe interface IPxBroadPhaseCaps {
+    // PxBroadPhaseCaps(/*NULLPARS*/);
+    // PxBroadPhaseCaps(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxBroadPhaseCaps lhs, /*NULLPARS*/);
+    // PxBroadPhaseCaps(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxBroadPhaseCaps lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxBroadPhaseCaps(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxBroadPhaseCaps : IPxBroadPhaseCaps { // blittable
     public uint maxNbRegions;
     public uint maxNbObjects;
     public bool needsPredefinedBounds;
 
 #endif
 
+    // Hierarchy: PxBroadPhaseCaps
     //Skipped generated implicit entry: PxBroadPhaseCaps
     
     //Skipped generated implicit entry: PxBroadPhaseCaps

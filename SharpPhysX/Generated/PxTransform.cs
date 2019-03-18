@@ -6,12 +6,46 @@ using System.Runtime.InteropServices;
 
 
 #if !NATIVE
-public unsafe partial struct PxTransform { // blittable
+public unsafe interface IPxTransform {
+    // PxTransform();
+    // PxTransform(PxVec3 position);
+    // PxTransform(PxIDENTITY r);
+    // PxTransform(PxQuat orientation);
+    // PxTransform(float x, float y, float z);
+    // PxTransform(float x, float y, float z, PxQuat aQ);
+    // PxTransform(PxVec3 p0, PxQuat q0);
+    // PxTransform(PxMat44 m);
+    //static bool operator==(PxTransform lhs, PxTransform t);
+    //static PxTransform operator*(PxTransform lhs, PxTransform x);
+    //static PxTransform operator*=(PxTransform lhs, /*NULLPARS*/);
+     PxTransform getInverse();
+     PxVec3 transform(PxVec3 input);
+     PxVec3 transformInv(PxVec3 input);
+     PxVec3 rotate(PxVec3 input);
+     PxVec3 rotateInv(PxVec3 input);
+     PxTransform transform(PxTransform src);
+     bool isValid();
+     bool isSane();
+     bool isFinite();
+     PxTransform transformInv(PxTransform src);
+     PxPlane transform(PxPlane plane);
+     PxPlane inverseTransform(PxPlane plane);
+     PxTransform getNormalized();
+    // PxTransform(/*NULLPARS*/);
+    // PxTransform(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxTransform lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxTransform(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxTransform lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxTransform : IPxTransform { // blittable
     public PxQuat q;
     public PxVec3 p;
 
 #endif
 
+    // Hierarchy: PxTransform
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
@@ -32,7 +66,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform W_PxTransform_ctor(PxVec3 position);
     
-    public PxTransform(PxVec3 position){
+    public  PxTransform(PxVec3 position){
         PxVec3 pvk_in_position = (position);
         var _new = W_PxTransform_ctor(pvk_in_position);
         fixed (void* ptr = &this)
@@ -53,7 +87,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform W_PxTransform_ctor(PxIDENTITY r);
     
-    public PxTransform(PxIDENTITY r){
+    public  PxTransform(PxIDENTITY r){
         PxIDENTITY pvk_in_r = (r);
         var _new = W_PxTransform_ctor(pvk_in_r);
         fixed (void* ptr = &this)
@@ -74,7 +108,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform W_PxTransform_ctor(PxQuat orientation);
     
-    public PxTransform(PxQuat orientation){
+    public  PxTransform(PxQuat orientation){
         PxQuat pvk_in_orientation = (orientation);
         var _new = W_PxTransform_ctor(pvk_in_orientation);
         fixed (void* ptr = &this)
@@ -98,7 +132,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform W_PxTransform_ctor(float x, float y, float z, PxQuat aQ);
     
-    public PxTransform(float x, float y, float z, PxQuat aQ){
+    public  PxTransform(float x, float y, float z, PxQuat aQ){
         float pvk_in_x = (x);
         float pvk_in_y = (y);
         float pvk_in_z = (z);
@@ -112,7 +146,7 @@ public unsafe partial struct PxTransform { // blittable
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE
-    ES physx::PxTransform W_PxTransform_ctor_OL1(float x, float y, float z){
+    ES physx::PxTransform W_PxTransform_ctor(float x, float y, float z){
         auto nat_in_x = (x);
         auto nat_in_y = (y);
         auto nat_in_z = (z);
@@ -120,13 +154,13 @@ public unsafe partial struct PxTransform { // blittable
     }
     #else
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_PxTransform_ctor_OL1(float x, float y, float z);
+    static extern PxTransform W_PxTransform_ctor(float x, float y, float z);
     
-    public PxTransform(float x, float y, float z){
+    public  PxTransform(float x, float y, float z){
         float pvk_in_x = (x);
         float pvk_in_y = (y);
         float pvk_in_z = (z);
-        var _new = W_PxTransform_ctor_OL1(pvk_in_x, pvk_in_y, pvk_in_z);
+        var _new = W_PxTransform_ctor(pvk_in_x, pvk_in_y, pvk_in_z);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -147,7 +181,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform W_PxTransform_ctor(PxVec3 p0, PxQuat q0);
     
-    public PxTransform(PxVec3 p0, PxQuat q0){
+    public  PxTransform(PxVec3 p0, PxQuat q0){
         PxVec3 pvk_in_p0 = (p0);
         PxQuat pvk_in_q0 = (q0);
         var _new = W_PxTransform_ctor(pvk_in_p0, pvk_in_q0);
@@ -169,7 +203,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform W_PxTransform_ctor(PxMat44 m);
     
-    public PxTransform(PxMat44 m){
+    public  PxTransform(PxMat44 m){
         PxMat44 pvk_in_m = (m);
         var _new = W_PxTransform_ctor(pvk_in_m);
         fixed (void* ptr = &this)
@@ -239,7 +273,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform W_getInverse(PxTransform selfBlt);
     
-    public PxTransform getInverse(){
+    public  PxTransform getInverse(){
         PxTransform retVal = W_getInverse(this);
         return retVal;
     }
@@ -259,7 +293,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_transform(PxTransform selfBlt, PxVec3 input);
     
-    public PxVec3 transform(PxVec3 input){
+    public  PxVec3 transform(PxVec3 input){
         PxVec3 pvk_in_input = (input);
         PxVec3 retVal = W_transform(this, pvk_in_input);
         return retVal;
@@ -280,7 +314,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_transformInv(PxTransform selfBlt, PxVec3 input);
     
-    public PxVec3 transformInv(PxVec3 input){
+    public  PxVec3 transformInv(PxVec3 input){
         PxVec3 pvk_in_input = (input);
         PxVec3 retVal = W_transformInv(this, pvk_in_input);
         return retVal;
@@ -301,7 +335,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_rotate(PxTransform selfBlt, PxVec3 input);
     
-    public PxVec3 rotate(PxVec3 input){
+    public  PxVec3 rotate(PxVec3 input){
         PxVec3 pvk_in_input = (input);
         PxVec3 retVal = W_rotate(this, pvk_in_input);
         return retVal;
@@ -322,7 +356,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_rotateInv(PxTransform selfBlt, PxVec3 input);
     
-    public PxVec3 rotateInv(PxVec3 input){
+    public  PxVec3 rotateInv(PxVec3 input){
         PxVec3 pvk_in_input = (input);
         PxVec3 retVal = W_rotateInv(this, pvk_in_input);
         return retVal;
@@ -343,7 +377,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform W_transform(PxTransform selfBlt, PxTransform src);
     
-    public PxTransform transform(PxTransform src){
+    public  PxTransform transform(PxTransform src){
         PxTransform pvk_in_src = (src);
         PxTransform retVal = W_transform(this, pvk_in_src);
         return retVal;
@@ -363,7 +397,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isValid(PxTransform selfBlt);
     
-    public bool isValid(){
+    public  bool isValid(){
         bool retVal = W_isValid(this);
         return retVal;
     }
@@ -382,7 +416,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isSane(PxTransform selfBlt);
     
-    public bool isSane(){
+    public  bool isSane(){
         bool retVal = W_isSane(this);
         return retVal;
     }
@@ -401,7 +435,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isFinite(PxTransform selfBlt);
     
-    public bool isFinite(){
+    public  bool isFinite(){
         bool retVal = W_isFinite(this);
         return retVal;
     }
@@ -421,7 +455,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform W_transformInv(PxTransform selfBlt, PxTransform src);
     
-    public PxTransform transformInv(PxTransform src){
+    public  PxTransform transformInv(PxTransform src){
         PxTransform pvk_in_src = (src);
         PxTransform retVal = W_transformInv(this, pvk_in_src);
         return retVal;
@@ -442,7 +476,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxPlane W_transform(PxTransform selfBlt, PxPlane plane);
     
-    public PxPlane transform(PxPlane plane){
+    public  PxPlane transform(PxPlane plane){
         PxPlane pvk_in_plane = (plane);
         PxPlane retVal = W_transform(this, pvk_in_plane);
         return retVal;
@@ -463,7 +497,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxPlane W_inverseTransform(PxTransform selfBlt, PxPlane plane);
     
-    public PxPlane inverseTransform(PxPlane plane){
+    public  PxPlane inverseTransform(PxPlane plane){
         PxPlane pvk_in_plane = (plane);
         PxPlane retVal = W_inverseTransform(this, pvk_in_plane);
         return retVal;
@@ -483,7 +517,7 @@ public unsafe partial struct PxTransform { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxTransform W_getNormalized(PxTransform selfBlt);
     
-    public PxTransform getNormalized(){
+    public  PxTransform getNormalized(){
         PxTransform retVal = W_getNormalized(this);
         return retVal;
     }

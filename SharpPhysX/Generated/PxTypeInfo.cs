@@ -31,7 +31,49 @@ public enum PxConcreteType : int {
 
 // Class physx::PxHeightField Manually Ignored
 // Class physx::PxAggregate Manually Ignored
+#if !NATIVE
+public unsafe interface IPxArticulationLinkPtr {
+    
+}
+
+public unsafe partial struct PxArticulationLinkPtr : IPxArticulationLinkPtr { // pointer
+    private IntPtr nativePtr_;
+#endif
+
+    // Hierarchy: PxArticulationLinkPtr
+
+#if !NATIVE
+}
+#endif
 
 // Class physx::PxPruningStructure Manually Ignored
+#if !NATIVE
+public unsafe interface IPxArticulationJointPtr {
+    
+}
+
+public unsafe partial struct PxArticulationJointPtr : IPxArticulationJointPtr { // pointer
+    private IntPtr nativePtr_;
+#endif
+
+    // Hierarchy: PxArticulationJointPtr
+
+#if !NATIVE
+}
+#endif
 
 // Class physx::PxConcreteType is enum namespace
+#if !NATIVE
+public unsafe interface IPxTypeInfo {
+    
+}
+
+public unsafe partial struct PxTypeInfo : IPxTypeInfo { // blittable
+
+#endif
+
+    // Hierarchy: PxTypeInfo
+
+#if !NATIVE
+}
+#endif

@@ -6,12 +6,33 @@ using System.Runtime.InteropServices;
 
 
 #if !NATIVE
-public unsafe partial struct PxPlane { // blittable
+public unsafe interface IPxPlane {
+    // PxPlane();
+    // PxPlane(float nx, float ny, float nz, float distance);
+    // PxPlane(PxVec3 normal, float distance);
+    // PxPlane(PxVec3 point, PxVec3 normal);
+    // PxPlane(PxVec3 p0, PxVec3 p1, PxVec3 p2);
+    //static bool operator==(PxPlane lhs, PxPlane p);
+     float distance(PxVec3 p);
+     bool contains(PxVec3 p);
+     PxVec3 project(PxVec3 p);
+     PxVec3 pointInPlane();
+     void normalize();
+    // PxPlane(/*NULLPARS*/);
+    // PxPlane(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxPlane lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxPlane(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxPlane lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxPlane : IPxPlane { // blittable
     public PxVec3 n;
     public float d;
 
 #endif
 
+    // Hierarchy: PxPlane
     //================================================================================
     //#       PxPlane                                                                #
     //================================================================================
@@ -35,7 +56,7 @@ public unsafe partial struct PxPlane { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxPlane W_PxPlane_ctor(float nx, float ny, float nz, float distance);
     
-    public PxPlane(float nx, float ny, float nz, float distance){
+    public  PxPlane(float nx, float ny, float nz, float distance){
         float pvk_in_nx = (nx);
         float pvk_in_ny = (ny);
         float pvk_in_nz = (nz);
@@ -60,7 +81,7 @@ public unsafe partial struct PxPlane { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxPlane W_PxPlane_ctor(PxVec3 normal, float distance);
     
-    public PxPlane(PxVec3 normal, float distance){
+    public  PxPlane(PxVec3 normal, float distance){
         PxVec3 pvk_in_normal = (normal);
         float pvk_in_distance = (distance);
         var _new = W_PxPlane_ctor(pvk_in_normal, pvk_in_distance);
@@ -83,7 +104,7 @@ public unsafe partial struct PxPlane { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxPlane W_PxPlane_ctor(PxVec3 point, PxVec3 normal);
     
-    public PxPlane(PxVec3 point, PxVec3 normal){
+    public  PxPlane(PxVec3 point, PxVec3 normal){
         PxVec3 pvk_in_point = (point);
         PxVec3 pvk_in_normal = (normal);
         var _new = W_PxPlane_ctor(pvk_in_point, pvk_in_normal);
@@ -107,7 +128,7 @@ public unsafe partial struct PxPlane { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxPlane W_PxPlane_ctor(PxVec3 p0, PxVec3 p1, PxVec3 p2);
     
-    public PxPlane(PxVec3 p0, PxVec3 p1, PxVec3 p2){
+    public  PxPlane(PxVec3 p0, PxVec3 p1, PxVec3 p2){
         PxVec3 pvk_in_p0 = (p0);
         PxVec3 pvk_in_p1 = (p1);
         PxVec3 pvk_in_p2 = (p2);
@@ -152,7 +173,7 @@ public unsafe partial struct PxPlane { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_distance(PxPlane selfBlt, PxVec3 p);
     
-    public float distance(PxVec3 p){
+    public  float distance(PxVec3 p){
         PxVec3 pvk_in_p = (p);
         float retVal = W_distance(this, pvk_in_p);
         return retVal;
@@ -173,7 +194,7 @@ public unsafe partial struct PxPlane { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_contains(PxPlane selfBlt, PxVec3 p);
     
-    public bool contains(PxVec3 p){
+    public  bool contains(PxVec3 p){
         PxVec3 pvk_in_p = (p);
         bool retVal = W_contains(this, pvk_in_p);
         return retVal;
@@ -194,7 +215,7 @@ public unsafe partial struct PxPlane { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_project(PxPlane selfBlt, PxVec3 p);
     
-    public PxVec3 project(PxVec3 p){
+    public  PxVec3 project(PxVec3 p){
         PxVec3 pvk_in_p = (p);
         PxVec3 retVal = W_project(this, pvk_in_p);
         return retVal;
@@ -214,7 +235,7 @@ public unsafe partial struct PxPlane { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_pointInPlane(PxPlane selfBlt);
     
-    public PxVec3 pointInPlane(){
+    public  PxVec3 pointInPlane(){
         PxVec3 retVal = W_pointInPlane(this);
         return retVal;
     }
@@ -232,7 +253,7 @@ public unsafe partial struct PxPlane { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_normalize(PxPlane selfBlt);
     
-    public void normalize(){
+    public  void normalize(){
         W_normalize(this);
     }
     #endif

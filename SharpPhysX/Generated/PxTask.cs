@@ -7,9 +7,44 @@ using System.Runtime.InteropServices;
 
 // Class physx::PxBaseTask Manually Ignored
 #if !NATIVE
-public unsafe partial struct PxTaskPtr { // pointer
+public unsafe interface IPxTaskPtr {
+    // PxTask();
+    // void ~PxTask();
+     void release();
+     void finishBefore(uint taskID);
+     void startAfter(uint taskID);
+     void addReference();
+     void removeReference();
+     int getReference();
+     uint getTaskID();
+     void submitted();
+     void requestSyncPoint();
+    // PxTask(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxTaskPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxBaseTaskPtr, PxTaskPtr
+    public static implicit operator PxBaseTaskPtr(PxTaskPtr obj){return *(PxBaseTaskPtr*)&obj;}
+    public static explicit operator PxTaskPtr(PxBaseTaskPtr obj){return *(PxTaskPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxBaseTaskPtr
+    //public  void ~PxBaseTask(){((PxBaseTaskPtr)this).~PxBaseTask();}
+    public  void run(){((PxBaseTaskPtr)this).run();}
+    public  IntPtr getName(){return ((PxBaseTaskPtr)this).getName();}
+    //public  PxBaseTask(){((PxBaseTaskPtr)this).PxBaseTask();}
+    //public  PxTaskManagerPtr getTaskManager(){return ((PxBaseTaskPtr)this).getTaskManager();}
+    public  void setContextId(ulong id){((PxBaseTaskPtr)this).setContextId(id);}
+    public  ulong getContextId(){return ((PxBaseTaskPtr)this).getContextId();}
+    //public static UNPARSED_TYPE operator=(PxBaseTaskPtr lhs, /*NULLPARS*/){return ((PxBaseTaskPtr)this).operator=(/*NULLARGS*/);}
+    //public  PxBaseTask(/*NULLPARS*/){((PxBaseTaskPtr)this).PxBaseTask(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxTask                                                                 #
@@ -33,7 +68,7 @@ public unsafe partial struct PxTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxTask(PxTaskPtr selfPtr);
     
-    public void ~PxTask(){
+    public  void ~PxTask(){
         W_~PxTask(this);
     }
     #endif*/
@@ -50,7 +85,7 @@ public unsafe partial struct PxTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_release(PxTaskPtr selfPtr);
     
-    public void release(){
+    public  void release(){
         W_release(this);
     }
     #endif
@@ -68,7 +103,7 @@ public unsafe partial struct PxTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_finishBefore(PxTaskPtr selfPtr, uint taskID);
     
-    public void finishBefore(uint taskID){
+    public  void finishBefore(uint taskID){
         uint pvk_in_taskID = (taskID);
         W_finishBefore(this, pvk_in_taskID);
     }
@@ -87,7 +122,7 @@ public unsafe partial struct PxTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_startAfter(PxTaskPtr selfPtr, uint taskID);
     
-    public void startAfter(uint taskID){
+    public  void startAfter(uint taskID){
         uint pvk_in_taskID = (taskID);
         W_startAfter(this, pvk_in_taskID);
     }
@@ -105,7 +140,7 @@ public unsafe partial struct PxTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_addReference(PxTaskPtr selfPtr);
     
-    public void addReference(){
+    public  void addReference(){
         W_addReference(this);
     }
     #endif
@@ -122,7 +157,7 @@ public unsafe partial struct PxTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_removeReference(PxTaskPtr selfPtr);
     
-    public void removeReference(){
+    public  void removeReference(){
         W_removeReference(this);
     }
     #endif
@@ -140,7 +175,7 @@ public unsafe partial struct PxTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern int W_getReference(PxTaskPtr selfPtr);
     
-    public int getReference(){
+    public  int getReference(){
         int retVal = W_getReference(this);
         return retVal;
     }
@@ -159,7 +194,7 @@ public unsafe partial struct PxTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern uint W_getTaskID(PxTaskPtr selfPtr);
     
-    public uint getTaskID(){
+    public  uint getTaskID(){
         uint retVal = W_getTaskID(this);
         return retVal;
     }
@@ -177,7 +212,7 @@ public unsafe partial struct PxTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_submitted(PxTaskPtr selfPtr);
     
-    public void submitted(){
+    public  void submitted(){
         W_submitted(this);
     }
     #endif
@@ -194,7 +229,7 @@ public unsafe partial struct PxTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_requestSyncPoint(PxTaskPtr selfPtr);
     
-    public void requestSyncPoint(){
+    public  void requestSyncPoint(){
         W_requestSyncPoint(this);
     }
     #endif
@@ -210,9 +245,42 @@ public unsafe partial struct PxTaskPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxLightCpuTaskPtr { // pointer
+public unsafe interface IPxLightCpuTaskPtr {
+    // PxLightCpuTask();
+    // void ~PxLightCpuTask();
+    // void setContinuation(PxTaskManagerPtr tm, PxBaseTaskPtr c);
+    // void setContinuation(PxBaseTaskPtr c);
+    // PxBaseTaskPtr getContinuation();
+     void removeReference();
+     int getReference();
+     void addReference();
+     void release();
+    // PxLightCpuTask(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxLightCpuTaskPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTaskPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxBaseTaskPtr, PxLightCpuTaskPtr
+    public static implicit operator PxBaseTaskPtr(PxLightCpuTaskPtr obj){return *(PxBaseTaskPtr*)&obj;}
+    public static explicit operator PxLightCpuTaskPtr(PxBaseTaskPtr obj){return *(PxLightCpuTaskPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxBaseTaskPtr
+    //public  void ~PxBaseTask(){((PxBaseTaskPtr)this).~PxBaseTask();}
+    public  void run(){((PxBaseTaskPtr)this).run();}
+    public  IntPtr getName(){return ((PxBaseTaskPtr)this).getName();}
+    //public  PxBaseTask(){((PxBaseTaskPtr)this).PxBaseTask();}
+    //public  PxTaskManagerPtr getTaskManager(){return ((PxBaseTaskPtr)this).getTaskManager();}
+    public  void setContextId(ulong id){((PxBaseTaskPtr)this).setContextId(id);}
+    public  ulong getContextId(){return ((PxBaseTaskPtr)this).getContextId();}
+    //public static UNPARSED_TYPE operator=(PxBaseTaskPtr lhs, /*NULLPARS*/){return ((PxBaseTaskPtr)this).operator=(/*NULLARGS*/);}
+    //public  PxBaseTask(/*NULLPARS*/){((PxBaseTaskPtr)this).PxBaseTask(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxLightCpuTask                                                         #
@@ -239,7 +307,7 @@ public unsafe partial struct PxLightCpuTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxLightCpuTask(PxLightCpuTaskPtr selfPtr);
     
-    public void ~PxLightCpuTask(){
+    public  void ~PxLightCpuTask(){
         W_~PxLightCpuTask(this);
     }
     #endif*/
@@ -271,7 +339,7 @@ public unsafe partial struct PxLightCpuTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setContinuation(PxLightCpuTaskPtr selfPtr, PxTaskManagerPtr tm, PxBaseTaskPtr c);
     
-    public void setContinuation(PxTaskManagerPtr tm, PxBaseTaskPtr c){
+    public  void setContinuation(PxTaskManagerPtr tm, PxBaseTaskPtr c){
         PxTaskManagerPtr pvk_in_tm = (tm);
         PxBaseTaskPtr pvk_in_c = (c);
         W_setContinuation(this, pvk_in_tm, pvk_in_c);
@@ -305,7 +373,7 @@ public unsafe partial struct PxLightCpuTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setContinuation(PxLightCpuTaskPtr selfPtr, PxBaseTaskPtr c);
     
-    public void setContinuation(PxBaseTaskPtr c){
+    public  void setContinuation(PxBaseTaskPtr c){
         PxBaseTaskPtr pvk_in_c = (c);
         W_setContinuation(this, pvk_in_c);
     }
@@ -329,7 +397,7 @@ public unsafe partial struct PxLightCpuTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBaseTaskPtr W_getContinuation(PxLightCpuTaskPtr selfPtr);
     
-    public PxBaseTaskPtr getContinuation(){
+    public  PxBaseTaskPtr getContinuation(){
         PxBaseTaskPtr retVal = W_getContinuation(this);
         return retVal;
     }
@@ -347,7 +415,7 @@ public unsafe partial struct PxLightCpuTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_removeReference(PxLightCpuTaskPtr selfPtr);
     
-    public void removeReference(){
+    public  void removeReference(){
         W_removeReference(this);
     }
     #endif
@@ -365,7 +433,7 @@ public unsafe partial struct PxLightCpuTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern int W_getReference(PxLightCpuTaskPtr selfPtr);
     
-    public int getReference(){
+    public  int getReference(){
         int retVal = W_getReference(this);
         return retVal;
     }
@@ -383,7 +451,7 @@ public unsafe partial struct PxLightCpuTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_addReference(PxLightCpuTaskPtr selfPtr);
     
-    public void addReference(){
+    public  void addReference(){
         W_addReference(this);
     }
     #endif
@@ -400,7 +468,7 @@ public unsafe partial struct PxLightCpuTaskPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_release(PxLightCpuTaskPtr selfPtr);
     
-    public void release(){
+    public  void release(){
         W_release(this);
     }
     #endif

@@ -53,9 +53,34 @@ public static void platformAlignedFree(global::System.IntPtr ptr){
 
 
 #if !NATIVE
-public unsafe partial struct PxDefaultAllocatorPtr { // pointer
+public unsafe interface IPxDefaultAllocatorPtr {
+    // IntPtr allocate(ulong size, string , string , int );
+     void deallocate(global::System.IntPtr ptr);
+    // PxDefaultAllocator(/*NULLPARS*/);
+    // PxDefaultAllocator(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxDefaultAllocatorPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxDefaultAllocatorPtr lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxDefaultAllocator(/*NULLPARS*/);
+    // PxDefaultAllocator(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxDefaultAllocatorPtr : IPxAllocatorCallbackPtr, IPxDefaultAllocatorPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxAllocatorCallbackPtr, PxDefaultAllocatorPtr
+    public static implicit operator PxAllocatorCallbackPtr(PxDefaultAllocatorPtr obj){return *(PxAllocatorCallbackPtr*)&obj;}
+    public static explicit operator PxDefaultAllocatorPtr(PxAllocatorCallbackPtr obj){return *(PxDefaultAllocatorPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxAllocatorCallbackPtr
+    //public  void ~PxAllocatorCallback(){((PxAllocatorCallbackPtr)this).~PxAllocatorCallback();}
+    //public static UNPARSED_TYPE operator=(PxAllocatorCallbackPtr lhs, /*NULLPARS*/){return ((PxAllocatorCallbackPtr)this).operator=(/*NULLARGS*/);}
+    //public  PxAllocatorCallback(/*NULLPARS*/){((PxAllocatorCallbackPtr)this).PxAllocatorCallback(/*NULLARGS*/);}
+    //public  PxAllocatorCallback(/*NULLPARS*/){((PxAllocatorCallbackPtr)this).PxAllocatorCallback(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       allocate                                                               #
@@ -82,7 +107,7 @@ public unsafe partial struct PxDefaultAllocatorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern IntPtr W_allocate(PxDefaultAllocatorPtr selfPtr, ulong size, string , string , int );
     
-    public IntPtr allocate(ulong size, string , string , int ){
+    public  IntPtr allocate(ulong size, string , string , int ){
         ulong pvk_in_size = (size);
         string pvk_in_ = ();
         string pvk_in_ = ();
@@ -105,7 +130,7 @@ public unsafe partial struct PxDefaultAllocatorPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_deallocate(PxDefaultAllocatorPtr selfPtr, global::System.IntPtr ptr);
     
-    public void deallocate(global::System.IntPtr ptr){
+    public  void deallocate(global::System.IntPtr ptr){
         global::System.IntPtr pvk_in_ptr = (ptr);
         W_deallocate(this, pvk_in_ptr);
     }

@@ -20,10 +20,22 @@ public enum PxGeometryType : int {
 
 // Class physx::PxGeometryType is enum namespace
 #if !NATIVE
-public unsafe partial struct PxGeometryPtr { // pointer
+public unsafe interface IPxGeometryPtr {
+     PxGeometryType getType();
+    // PxGeometry(PxGeometryType type);
+    // PxGeometry(/*NULLPARS*/);
+    // PxGeometry(/*NULLPARS*/);
+    // UNPARSED_TYPE ~PxGeometry(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxGeometryPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxGeometryPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxGeometryPtr : IPxGeometryPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxGeometryPtr
     //================================================================================
     //#       getType                                                                #
     //================================================================================
@@ -36,7 +48,7 @@ public unsafe partial struct PxGeometryPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxGeometryType W_getType(PxGeometryPtr selfPtr);
     
-    public PxGeometryType getType(){
+    public  PxGeometryType getType(){
         PxGeometryType retVal = W_getType(this);
         return retVal;
     }
@@ -57,7 +69,7 @@ public unsafe partial struct PxGeometryPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxGeometry_ctor(PxGeometryType type);
     
-    public PxGeometry(PxGeometryType type){
+    public  PxGeometry(PxGeometryType type){
         PxGeometryType pvk_in_type = (type);
         var _new = W_PxGeometry_ctor(pvk_in_type);
         fixed (void* ptr = &this)

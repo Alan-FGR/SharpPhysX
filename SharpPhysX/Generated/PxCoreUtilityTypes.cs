@@ -6,10 +6,16 @@ using System.Runtime.InteropServices;
 
 
 #if !NATIVE
-public unsafe partial struct PxPaddingPtr { // pointer
+public unsafe interface IPxPaddingPtr {
+    // PxPadding<TNumBytes>();
+    
+}
+
+public unsafe partial struct PxPaddingPtr : IPxPaddingPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxPaddingPtr
     //================================================================================
     //#       PxPadding<TNumBytes>                                                   #
     //================================================================================
@@ -25,10 +31,22 @@ public unsafe partial struct PxPaddingPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxStridedDataPtr { // pointer
+public unsafe interface IPxStridedDataPtr {
+    // PxStridedData();
+    // UNPARSED_TYPE at(uint idx);
+    // PxStridedData(/*NULLPARS*/);
+    // PxStridedData(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxStridedDataPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxStridedDataPtr lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxStridedData(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxStridedDataPtr : IPxStridedDataPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxStridedDataPtr
     //================================================================================
     //#       PxStridedData                                                          #
     //================================================================================
@@ -53,7 +71,7 @@ public unsafe partial struct PxStridedDataPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_at(PxStridedDataPtr selfPtr, uint idx);
     
-    public UNPARSED_TYPE at(uint idx){
+    public  UNPARSED_TYPE at(uint idx){
         uint pvk_in_idx = (idx);
         UNPARSED_TYPE retVal = W_at(this, pvk_in_idx);
         return retVal;
@@ -77,10 +95,16 @@ public unsafe partial struct PxStridedDataPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxTypedStridedDataPtr { // pointer
+public unsafe interface IPxTypedStridedDataPtr {
+    // PxTypedStridedData<TDataType>();
+    
+}
+
+public unsafe partial struct PxTypedStridedDataPtr : IPxTypedStridedDataPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxTypedStridedDataPtr
     //================================================================================
     //#       PxTypedStridedData<TDataType>                                          #
     //================================================================================
@@ -96,9 +120,35 @@ public unsafe partial struct PxTypedStridedDataPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxBoundedDataPtr { // pointer
+public unsafe interface IPxBoundedDataPtr {
+    // PxBoundedData();
+    // PxBoundedData(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxBoundedDataPtr lhs, /*NULLPARS*/);
+    // PxBoundedData(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxBoundedDataPtr lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxBoundedData(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxBoundedDataPtr : IPxStridedDataPtr, IPxBoundedDataPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxStridedDataPtr, PxBoundedDataPtr
+    public static implicit operator PxStridedDataPtr(PxBoundedDataPtr obj){return *(PxStridedDataPtr*)&obj;}
+    public static explicit operator PxBoundedDataPtr(PxStridedDataPtr obj){return *(PxBoundedDataPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxStridedDataPtr
+    //public  PxStridedData(){((PxStridedDataPtr)this).PxStridedData();}
+    //public  UNPARSED_TYPE at(uint idx){return ((PxStridedDataPtr)this).at(idx);}
+    //public  PxStridedData(/*NULLPARS*/){((PxStridedDataPtr)this).PxStridedData(/*NULLARGS*/);}
+    //public  PxStridedData(/*NULLPARS*/){((PxStridedDataPtr)this).PxStridedData(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxStridedDataPtr lhs, /*NULLPARS*/){return ((PxStridedDataPtr)this).operator=(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxStridedDataPtr lhs, /*NULLPARS*/){return ((PxStridedDataPtr)this).operator=(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxStridedData(/*NULLPARS*/){((PxStridedDataPtr)this).~PxStridedData(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxBoundedData                                                          #
@@ -125,10 +175,27 @@ public unsafe partial struct PxBoundedDataPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxFixedSizeLookupTablePtr { // pointer
+public unsafe interface IPxFixedSizeLookupTablePtr {
+    // PxFixedSizeLookupTable<NB_ELEMENTS>();
+    // PxFixedSizeLookupTable<NB_ELEMENTS>(PxEMPTY );
+    // PxFixedSizeLookupTable<NB_ELEMENTS>(float* dataPairs, uint numDataPairs);
+    // PxFixedSizeLookupTable<NB_ELEMENTS>( src);
+    // void ~PxFixedSizeLookupTable<NB_ELEMENTS>();
+    //static UNPARSED_TYPE operator=(PxFixedSizeLookupTablePtr lhs, /*NULLPARS*/);
+     void addPair(float x, float y);
+     float getYVal(float x);
+     uint getNbDataPairs();
+     void clear();
+     float getX(uint i);
+     float getY(uint i);
+    
+}
+
+public unsafe partial struct PxFixedSizeLookupTablePtr : IPxFixedSizeLookupTablePtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxFixedSizeLookupTablePtr
     //================================================================================
     //#       PxFixedSizeLookupTable<NB_ELEMENTS>                                    #
     //================================================================================
@@ -153,7 +220,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_ctor(PxEMPTY );
     
-    public PxFixedSizeLookupTable<NB_ELEMENTS>(PxEMPTY ){
+    public  PxFixedSizeLookupTable<NB_ELEMENTS>(PxEMPTY ){
         PxEMPTY pvk_in_ = ();
         var _new = W_PxFixedSizeLookupTable<NB_ELEMENTS>_ctor(pvk_in_);
         fixed (void* ptr = &this)
@@ -177,7 +244,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_ctor(float* dataPairs, uint numDataPairs);
     
-    public PxFixedSizeLookupTable<NB_ELEMENTS>(float* dataPairs, uint numDataPairs){
+    public  PxFixedSizeLookupTable<NB_ELEMENTS>(float* dataPairs, uint numDataPairs){
         float* pvk_in_dataPairs = (dataPairs);
         uint pvk_in_numDataPairs = (numDataPairs);
         var _new = W_PxFixedSizeLookupTable<NB_ELEMENTS>_ctor(pvk_in_dataPairs, pvk_in_numDataPairs);
@@ -202,7 +269,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_ctor( src);
     
-    public PxFixedSizeLookupTable<NB_ELEMENTS>( src){
+    public  PxFixedSizeLookupTable<NB_ELEMENTS>( src){
          pvk_in_src = (src);
         var _new = W_PxFixedSizeLookupTable<NB_ELEMENTS>_ctor(pvk_in_src);
         fixed (void* ptr = &this)
@@ -224,7 +291,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxFixedSizeLookupTable<NB_ELEMENTS>(PxFixedSizeLookupTablePtr selfPtr);
     
-    public void ~PxFixedSizeLookupTable<NB_ELEMENTS>(){
+    public  void ~PxFixedSizeLookupTable<NB_ELEMENTS>(){
         W_~PxFixedSizeLookupTable<NB_ELEMENTS>(this);
     }
     #endif*/
@@ -250,7 +317,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_addPair(PxFixedSizeLookupTablePtr selfPtr, float x, float y);
     
-    public void addPair(float x, float y){
+    public  void addPair(float x, float y){
         float pvk_in_x = (x);
         float pvk_in_y = (y);
         W_addPair(this, pvk_in_x, pvk_in_y);
@@ -271,7 +338,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getYVal(PxFixedSizeLookupTablePtr selfPtr, float x);
     
-    public float getYVal(float x){
+    public  float getYVal(float x){
         float pvk_in_x = (x);
         float retVal = W_getYVal(this, pvk_in_x);
         return retVal;
@@ -291,7 +358,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern uint W_getNbDataPairs(PxFixedSizeLookupTablePtr selfPtr);
     
-    public uint getNbDataPairs(){
+    public  uint getNbDataPairs(){
         uint retVal = W_getNbDataPairs(this);
         return retVal;
     }
@@ -309,7 +376,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_clear(PxFixedSizeLookupTablePtr selfPtr);
     
-    public void clear(){
+    public  void clear(){
         W_clear(this);
     }
     #endif
@@ -328,7 +395,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getX(PxFixedSizeLookupTablePtr selfPtr, uint i);
     
-    public float getX(uint i){
+    public  float getX(uint i){
         uint pvk_in_i = (i);
         float retVal = W_getX(this, pvk_in_i);
         return retVal;
@@ -349,7 +416,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getY(PxFixedSizeLookupTablePtr selfPtr, uint i);
     
-    public float getY(uint i){
+    public  float getY(uint i){
         uint pvk_in_i = (i);
         float retVal = W_getY(this, pvk_in_i);
         return retVal;

@@ -6,7 +6,49 @@ using System.Runtime.InteropServices;
 
 
 #if !NATIVE
-public unsafe partial struct PxQuat { // blittable
+public unsafe interface IPxQuat {
+    // PxQuat();
+    // PxQuat(PxIDENTITY r);
+    // PxQuat(float r);
+    // PxQuat(float nx, float ny, float nz, float nw);
+    // PxQuat(float angleRadians, PxVec3 unitAxis);
+    // PxQuat(PxQuat v);
+    // PxQuat(PxMat33 m);
+     bool isIdentity();
+     bool isFinite();
+     bool isUnit();
+     bool isSane();
+    //static bool operator==(PxQuat lhs, PxQuat q);
+    // void toRadiansAndUnitAxis(float* angle,  axis);
+     float getAngle();
+     float getAngle(PxQuat q);
+     float magnitudeSquared();
+     float dot(PxQuat v);
+     PxQuat getNormalized();
+     float magnitude();
+     float normalize();
+     PxQuat getConjugate();
+     PxVec3 getImaginaryPart();
+     PxVec3 getBasisVector0();
+     PxVec3 getBasisVector1();
+     PxVec3 getBasisVector2();
+     PxVec3 rotate(PxVec3 v);
+     PxVec3 rotateInv(PxVec3 v);
+    //static PxQuat operator=(PxQuat lhs, /*NULLPARS*/);
+    //static PxQuat operator*=(PxQuat lhs, /*NULLPARS*/);
+    //static PxQuat operator+=(PxQuat lhs, /*NULLPARS*/);
+    //static PxQuat operator-=(PxQuat lhs, /*NULLPARS*/);
+    //static PxQuat operator*=(PxQuat lhs, /*NULLPARS*/);
+    //static PxQuat operator*(PxQuat lhs, PxQuat q);
+    //static PxQuat operator+(PxQuat lhs, PxQuat q);
+    //static PxQuat operator-(PxQuat lhs);
+    //static PxQuat operator-(PxQuat lhs, PxQuat q);
+    //static PxQuat operator*(PxQuat lhs, float r);
+    // UNPARSED_TYPE ~PxQuat(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxQuat : IPxQuat { // blittable
     public float x;
     public float y;
     public float z;
@@ -14,6 +56,7 @@ public unsafe partial struct PxQuat { // blittable
 
 #endif
 
+    // Hierarchy: PxQuat
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
@@ -34,7 +77,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQuat W_PxQuat_ctor(PxIDENTITY r);
     
-    public PxQuat(PxIDENTITY r){
+    public  PxQuat(PxIDENTITY r){
         PxIDENTITY pvk_in_r = (r);
         var _new = W_PxQuat_ctor(pvk_in_r);
         fixed (void* ptr = &this)
@@ -55,7 +98,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQuat W_PxQuat_ctor(float r);
     
-    public PxQuat(float r){
+    public  PxQuat(float r){
         float pvk_in_r = (r);
         var _new = W_PxQuat_ctor(pvk_in_r);
         fixed (void* ptr = &this)
@@ -79,7 +122,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQuat W_PxQuat_ctor(float nx, float ny, float nz, float nw);
     
-    public PxQuat(float nx, float ny, float nz, float nw){
+    public  PxQuat(float nx, float ny, float nz, float nw){
         float pvk_in_nx = (nx);
         float pvk_in_ny = (ny);
         float pvk_in_nz = (nz);
@@ -104,7 +147,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQuat W_PxQuat_ctor(float angleRadians, PxVec3 unitAxis);
     
-    public PxQuat(float angleRadians, PxVec3 unitAxis){
+    public  PxQuat(float angleRadians, PxVec3 unitAxis){
         float pvk_in_angleRadians = (angleRadians);
         PxVec3 pvk_in_unitAxis = (unitAxis);
         var _new = W_PxQuat_ctor(pvk_in_angleRadians, pvk_in_unitAxis);
@@ -126,7 +169,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQuat W_PxQuat_ctor(PxQuat v);
     
-    public PxQuat(PxQuat v){
+    public  PxQuat(PxQuat v){
         PxQuat pvk_in_v = (v);
         var _new = W_PxQuat_ctor(pvk_in_v);
         fixed (void* ptr = &this)
@@ -147,7 +190,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQuat W_PxQuat_ctor(PxMat33 m);
     
-    public PxQuat(PxMat33 m){
+    public  PxQuat(PxMat33 m){
         PxMat33 pvk_in_m = (m);
         var _new = W_PxQuat_ctor(pvk_in_m);
         fixed (void* ptr = &this)
@@ -168,7 +211,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isIdentity(PxQuat selfBlt);
     
-    public bool isIdentity(){
+    public  bool isIdentity(){
         bool retVal = W_isIdentity(this);
         return retVal;
     }
@@ -187,7 +230,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isFinite(PxQuat selfBlt);
     
-    public bool isFinite(){
+    public  bool isFinite(){
         bool retVal = W_isFinite(this);
         return retVal;
     }
@@ -206,7 +249,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isUnit(PxQuat selfBlt);
     
-    public bool isUnit(){
+    public  bool isUnit(){
         bool retVal = W_isUnit(this);
         return retVal;
     }
@@ -225,7 +268,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isSane(PxQuat selfBlt);
     
-    public bool isSane(){
+    public  bool isSane(){
         bool retVal = W_isSane(this);
         return retVal;
     }
@@ -283,7 +326,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_toRadiansAndUnitAxis(PxQuat selfBlt, float* angle,  axis);
     
-    public void toRadiansAndUnitAxis(float* angle,  axis){
+    public  void toRadiansAndUnitAxis(float* angle,  axis){
         float* pvk_in_angle = (angle);
          pvk_in_axis = (axis);
         W_toRadiansAndUnitAxis(this, pvk_in_angle, pvk_in_axis);
@@ -303,7 +346,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getAngle(PxQuat selfBlt);
     
-    public float getAngle(){
+    public  float getAngle(){
         float retVal = W_getAngle(this);
         return retVal;
     }
@@ -323,7 +366,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getAngle(PxQuat selfBlt, PxQuat q);
     
-    public float getAngle(PxQuat q){
+    public  float getAngle(PxQuat q){
         PxQuat pvk_in_q = (q);
         float retVal = W_getAngle(this, pvk_in_q);
         return retVal;
@@ -343,7 +386,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_magnitudeSquared(PxQuat selfBlt);
     
-    public float magnitudeSquared(){
+    public  float magnitudeSquared(){
         float retVal = W_magnitudeSquared(this);
         return retVal;
     }
@@ -363,7 +406,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_dot(PxQuat selfBlt, PxQuat v);
     
-    public float dot(PxQuat v){
+    public  float dot(PxQuat v){
         PxQuat pvk_in_v = (v);
         float retVal = W_dot(this, pvk_in_v);
         return retVal;
@@ -383,7 +426,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQuat W_getNormalized(PxQuat selfBlt);
     
-    public PxQuat getNormalized(){
+    public  PxQuat getNormalized(){
         PxQuat retVal = W_getNormalized(this);
         return retVal;
     }
@@ -402,7 +445,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_magnitude(PxQuat selfBlt);
     
-    public float magnitude(){
+    public  float magnitude(){
         float retVal = W_magnitude(this);
         return retVal;
     }
@@ -421,7 +464,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_normalize(PxQuat selfBlt);
     
-    public float normalize(){
+    public  float normalize(){
         float retVal = W_normalize(this);
         return retVal;
     }
@@ -440,7 +483,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQuat W_getConjugate(PxQuat selfBlt);
     
-    public PxQuat getConjugate(){
+    public  PxQuat getConjugate(){
         PxQuat retVal = W_getConjugate(this);
         return retVal;
     }
@@ -459,7 +502,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getImaginaryPart(PxQuat selfBlt);
     
-    public PxVec3 getImaginaryPart(){
+    public  PxVec3 getImaginaryPart(){
         PxVec3 retVal = W_getImaginaryPart(this);
         return retVal;
     }
@@ -478,7 +521,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getBasisVector0(PxQuat selfBlt);
     
-    public PxVec3 getBasisVector0(){
+    public  PxVec3 getBasisVector0(){
         PxVec3 retVal = W_getBasisVector0(this);
         return retVal;
     }
@@ -497,7 +540,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getBasisVector1(PxQuat selfBlt);
     
-    public PxVec3 getBasisVector1(){
+    public  PxVec3 getBasisVector1(){
         PxVec3 retVal = W_getBasisVector1(this);
         return retVal;
     }
@@ -516,7 +559,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getBasisVector2(PxQuat selfBlt);
     
-    public PxVec3 getBasisVector2(){
+    public  PxVec3 getBasisVector2(){
         PxVec3 retVal = W_getBasisVector2(this);
         return retVal;
     }
@@ -536,7 +579,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_rotate(PxQuat selfBlt, PxVec3 v);
     
-    public PxVec3 rotate(PxVec3 v){
+    public  PxVec3 rotate(PxVec3 v){
         PxVec3 pvk_in_v = (v);
         PxVec3 retVal = W_rotate(this, pvk_in_v);
         return retVal;
@@ -557,7 +600,7 @@ public unsafe partial struct PxQuat { // blittable
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_rotateInv(PxQuat selfBlt, PxVec3 v);
     
-    public PxVec3 rotateInv(PxVec3 v){
+    public  PxVec3 rotateInv(PxVec3 v){
         PxVec3 pvk_in_v = (v);
         PxVec3 retVal = W_rotateInv(this, pvk_in_v);
         return retVal;

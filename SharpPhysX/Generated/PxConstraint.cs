@@ -107,9 +107,58 @@ public static UNPARSED_TYPE operator~(PxConstraintFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxConstraintPtr { // pointer
+public unsafe interface IPxConstraintPtr {
+     void release();
+     PxScenePtr getScene();
+    // void getActors( actor0,  actor1);
+     void setActors(PxRigidActorPtr actor0, PxRigidActorPtr actor1);
+     void markDirty();
+    // void setFlags( flags);
+    // UNPARSED_TYPE getFlags();
+     void setFlag(PxConstraintFlag flag, bool value);
+    // void getForce( linear,  angular);
+     bool isValid();
+     void setBreakForce(float linear, float angular);
+     void getBreakForce(float* linear, float* angular);
+     void setMinResponseThreshold(float threshold);
+     float getMinResponseThreshold();
+     IntPtr getExternalReference(uint* typeID);
+    // void setConstraintFunctions(PxConstraintConnectorPtr connector, PxConstraintShaderTable shaders);
+     IntPtr getConcreteTypeName();
+    // PxConstraint(ushort concreteType,  baseFlags);
+    // PxConstraint( baseFlags);
+    // void ~PxConstraint();
+     bool isKindOf(string name);
+    // PxConstraint(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxConstraintPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxBasePtr, PxConstraintPtr
+    public static implicit operator PxBasePtr(PxConstraintPtr obj){return *(PxBasePtr*)&obj;}
+    public static explicit operator PxConstraintPtr(PxBasePtr obj){return *(PxConstraintPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxBasePtr
+    //public  UNPARSED_TYPE is(){return ((PxBasePtr)this).is();}
+    //public  UNPARSED_TYPE is(){return ((PxBasePtr)this).is();}
+    public  ushort getConcreteType(){return ((PxBasePtr)this).getConcreteType();}
+    public  void setBaseFlag(PxBaseFlag flag, bool value){((PxBasePtr)this).setBaseFlag(flag, value);}
+    //public  void setBaseFlags( inFlags){((PxBasePtr)this).setBaseFlags(inFlags);}
+    //public  UNPARSED_TYPE getBaseFlags(){return ((PxBasePtr)this).getBaseFlags();}
+    public  bool isReleasable(){return ((PxBasePtr)this).isReleasable();}
+    //public  PxBase(ushort concreteType,  baseFlags){((PxBasePtr)this).PxBase(concreteType, baseFlags);}
+    //public  PxBase( baseFlags){((PxBasePtr)this).PxBase(baseFlags);}
+    //public  void ~PxBase(){((PxBasePtr)this).~PxBase();}
+    public  bool typeMatch(){return ((PxBasePtr)this).typeMatch();}
+    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxBasePtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       release                                                                #
@@ -122,7 +171,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_release(PxConstraintPtr selfPtr);
     
-    public void release(){
+    public  void release(){
         W_release(this);
     }
     #endif
@@ -140,7 +189,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxScenePtr W_getScene(PxConstraintPtr selfPtr);
     
-    public PxScenePtr getScene(){
+    public  PxScenePtr getScene(){
         PxScenePtr retVal = W_getScene(this);
         return retVal;
     }
@@ -163,7 +212,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_getActors(PxConstraintPtr selfPtr,  actor0,  actor1);
     
-    public void getActors( actor0,  actor1){
+    public  void getActors( actor0,  actor1){
          pvk_in_actor0 = (actor0);
          pvk_in_actor1 = (actor1);
         W_getActors(this, pvk_in_actor0, pvk_in_actor1);
@@ -184,7 +233,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setActors(PxConstraintPtr selfPtr, PxRigidActorPtr actor0, PxRigidActorPtr actor1);
     
-    public void setActors(PxRigidActorPtr actor0, PxRigidActorPtr actor1){
+    public  void setActors(PxRigidActorPtr actor0, PxRigidActorPtr actor1){
         PxRigidActorPtr pvk_in_actor0 = (actor0);
         PxRigidActorPtr pvk_in_actor1 = (actor1);
         W_setActors(this, pvk_in_actor0, pvk_in_actor1);
@@ -203,7 +252,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_markDirty(PxConstraintPtr selfPtr);
     
-    public void markDirty(){
+    public  void markDirty(){
         W_markDirty(this);
     }
     #endif
@@ -223,7 +272,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setFlags(PxConstraintPtr selfPtr,  flags);
     
-    public void setFlags( flags){
+    public  void setFlags( flags){
          pvk_in_flags = (flags);
         W_setFlags(this, pvk_in_flags);
     }
@@ -244,7 +293,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_getFlags(PxConstraintPtr selfPtr);
     
-    public UNPARSED_TYPE getFlags(){
+    public  UNPARSED_TYPE getFlags(){
         UNPARSED_TYPE retVal = W_getFlags(this);
         return retVal;
     }
@@ -264,7 +313,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setFlag(PxConstraintPtr selfPtr, PxConstraintFlag flag, bool value);
     
-    public void setFlag(PxConstraintFlag flag, bool value){
+    public  void setFlag(PxConstraintFlag flag, bool value){
         PxConstraintFlag pvk_in_flag = (flag);
         bool pvk_in_value = (value);
         W_setFlag(this, pvk_in_flag, pvk_in_value);
@@ -288,7 +337,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_getForce(PxConstraintPtr selfPtr,  linear,  angular);
     
-    public void getForce( linear,  angular){
+    public  void getForce( linear,  angular){
          pvk_in_linear = (linear);
          pvk_in_angular = (angular);
         W_getForce(this, pvk_in_linear, pvk_in_angular);
@@ -308,7 +357,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isValid(PxConstraintPtr selfPtr);
     
-    public bool isValid(){
+    public  bool isValid(){
         bool retVal = W_isValid(this);
         return retVal;
     }
@@ -328,7 +377,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setBreakForce(PxConstraintPtr selfPtr, float linear, float angular);
     
-    public void setBreakForce(float linear, float angular){
+    public  void setBreakForce(float linear, float angular){
         float pvk_in_linear = (linear);
         float pvk_in_angular = (angular);
         W_setBreakForce(this, pvk_in_linear, pvk_in_angular);
@@ -349,7 +398,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_getBreakForce(PxConstraintPtr selfPtr, float* linear, float* angular);
     
-    public void getBreakForce(float* linear, float* angular){
+    public  void getBreakForce(float* linear, float* angular){
         float* pvk_in_linear = (linear);
         float* pvk_in_angular = (angular);
         W_getBreakForce(this, pvk_in_linear, pvk_in_angular);
@@ -369,7 +418,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setMinResponseThreshold(PxConstraintPtr selfPtr, float threshold);
     
-    public void setMinResponseThreshold(float threshold){
+    public  void setMinResponseThreshold(float threshold){
         float pvk_in_threshold = (threshold);
         W_setMinResponseThreshold(this, pvk_in_threshold);
     }
@@ -388,7 +437,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getMinResponseThreshold(PxConstraintPtr selfPtr);
     
-    public float getMinResponseThreshold(){
+    public  float getMinResponseThreshold(){
         float retVal = W_getMinResponseThreshold(this);
         return retVal;
     }
@@ -408,7 +457,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern IntPtr W_getExternalReference(PxConstraintPtr selfPtr, uint* typeID);
     
-    public IntPtr getExternalReference(uint* typeID){
+    public  IntPtr getExternalReference(uint* typeID){
         uint* pvk_in_typeID = (typeID);
         IntPtr retVal = W_getExternalReference(this, pvk_in_typeID);
         return retVal;
@@ -432,7 +481,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setConstraintFunctions(PxConstraintPtr selfPtr, PxConstraintConnectorPtr connector, PxConstraintShaderTable shaders);
     
-    public void setConstraintFunctions(PxConstraintConnectorPtr connector, PxConstraintShaderTable shaders){
+    public  void setConstraintFunctions(PxConstraintConnectorPtr connector, PxConstraintShaderTable shaders){
         PxConstraintConnectorPtr pvk_in_connector = (connector);
         PxConstraintShaderTable pvk_in_shaders = (shaders);
         W_setConstraintFunctions(this, pvk_in_connector, pvk_in_shaders);
@@ -452,7 +501,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern IntPtr W_getConcreteTypeName(PxConstraintPtr selfPtr);
     
-    public IntPtr getConcreteTypeName(){
+    public  IntPtr getConcreteTypeName(){
         IntPtr retVal = W_getConcreteTypeName(this);
         return retVal;
     }
@@ -475,7 +524,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxConstraint_ctor(ushort concreteType,  baseFlags);
     
-    public PxConstraint(ushort concreteType,  baseFlags){
+    public  PxConstraint(ushort concreteType,  baseFlags){
         ushort pvk_in_concreteType = (concreteType);
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxConstraint_ctor(pvk_in_concreteType, pvk_in_baseFlags);
@@ -500,7 +549,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxConstraint_ctor( baseFlags);
     
-    public PxConstraint( baseFlags){
+    public  PxConstraint( baseFlags){
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxConstraint_ctor(pvk_in_baseFlags);
         fixed (void* ptr = &this)
@@ -522,7 +571,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxConstraint(PxConstraintPtr selfPtr);
     
-    public void ~PxConstraint(){
+    public  void ~PxConstraint(){
         W_~PxConstraint(this);
     }
     #endif*/
@@ -541,7 +590,7 @@ public unsafe partial struct PxConstraintPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isKindOf(PxConstraintPtr selfPtr, string name);
     
-    public bool isKindOf(string name){
+    public  bool isKindOf(string name){
         string pvk_in_name = (name);
         bool retVal = W_isKindOf(this, pvk_in_name);
         return retVal;

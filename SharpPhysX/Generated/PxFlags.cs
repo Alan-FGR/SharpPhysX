@@ -534,10 +534,47 @@ public static UNPARSED_TYPE operator&(Type a,  b){
 
 
 #if !NATIVE
-public unsafe partial struct PxFlagsPtr { // pointer
+public unsafe interface IPxFlagsPtr {
+    // PxFlags<enumtype, storagetype>(PxEMPTY );
+    // PxFlags<enumtype, storagetype>();
+    // PxFlags<enumtype, storagetype>( e);
+    // PxFlags<enumtype, storagetype>( f);
+    // PxFlags<enumtype, storagetype>( b);
+    // bool isSet( e);
+    // UNPARSED_TYPE set( e);
+    //static bool operator==(PxFlagsPtr lhs,  e);
+    //static bool operator==(PxFlagsPtr lhs,  f);
+    //static bool operator==(PxFlagsPtr lhs, bool b);
+    //static bool operator!=(PxFlagsPtr lhs,  e);
+    //static bool operator!=(PxFlagsPtr lhs,  f);
+    //static UNPARSED_TYPE operator=(PxFlagsPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxFlagsPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator|=(PxFlagsPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator|=(PxFlagsPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator|(PxFlagsPtr lhs,  e);
+    //static UNPARSED_TYPE operator|(PxFlagsPtr lhs,  f);
+    //static UNPARSED_TYPE operator&=(PxFlagsPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator&=(PxFlagsPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator&(PxFlagsPtr lhs,  e);
+    //static UNPARSED_TYPE operator&(PxFlagsPtr lhs,  f);
+    //static UNPARSED_TYPE operator^=(PxFlagsPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator^=(PxFlagsPtr lhs, /*NULLPARS*/);
+    //static UNPARSED_TYPE operator^(PxFlagsPtr lhs,  e);
+    //static UNPARSED_TYPE operator^(PxFlagsPtr lhs,  f);
+    //static UNPARSED_TYPE operator~(PxFlagsPtr lhs);
+    //static bool operator bool(PxFlagsPtr lhs, /*NULLPARS*/);
+    //static byte operator unsigned char(PxFlagsPtr lhs, /*NULLPARS*/);
+    //static ushort operator unsigned short(PxFlagsPtr lhs, /*NULLPARS*/);
+    //static uint operator unsigned int(PxFlagsPtr lhs, /*NULLPARS*/);
+    // void clear( e);
+    
+}
+
+public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxFlagsPtr
     //================================================================================
     //#       PxFlags<enumtype, storagetype>                                         #
     //================================================================================
@@ -553,7 +590,7 @@ public unsafe partial struct PxFlagsPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor(PxEMPTY );
     
-    public PxFlags<enumtype, storagetype>(PxEMPTY ){
+    public  PxFlags<enumtype, storagetype>(PxEMPTY ){
         PxEMPTY pvk_in_ = ();
         var _new = W_PxFlags<enumtype, storagetype>_ctor(pvk_in_);
         fixed (void* ptr = &this)
@@ -586,7 +623,7 @@ public unsafe partial struct PxFlagsPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor( e);
     
-    public PxFlags<enumtype, storagetype>( e){
+    public  PxFlags<enumtype, storagetype>( e){
          pvk_in_e = (e);
         var _new = W_PxFlags<enumtype, storagetype>_ctor(pvk_in_e);
         fixed (void* ptr = &this)
@@ -610,7 +647,7 @@ public unsafe partial struct PxFlagsPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor( f);
     
-    public PxFlags<enumtype, storagetype>( f){
+    public  PxFlags<enumtype, storagetype>( f){
          pvk_in_f = (f);
         var _new = W_PxFlags<enumtype, storagetype>_ctor(pvk_in_f);
         fixed (void* ptr = &this)
@@ -634,7 +671,7 @@ public unsafe partial struct PxFlagsPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor( b);
     
-    public PxFlags<enumtype, storagetype>( b){
+    public  PxFlags<enumtype, storagetype>( b){
          pvk_in_b = (b);
         var _new = W_PxFlags<enumtype, storagetype>_ctor(pvk_in_b);
         fixed (void* ptr = &this)
@@ -658,7 +695,7 @@ public unsafe partial struct PxFlagsPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isSet(PxFlagsPtr selfPtr,  e);
     
-    public bool isSet( e){
+    public  bool isSet( e){
          pvk_in_e = (e);
         bool retVal = W_isSet(this, pvk_in_e);
         return retVal;
@@ -682,7 +719,7 @@ public unsafe partial struct PxFlagsPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_set(PxFlagsPtr selfPtr,  e);
     
-    public UNPARSED_TYPE set( e){
+    public  UNPARSED_TYPE set( e){
          pvk_in_e = (e);
         UNPARSED_TYPE retVal = W_set(this, pvk_in_e);
         return retVal;
@@ -1066,7 +1103,7 @@ public unsafe partial struct PxFlagsPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_clear(PxFlagsPtr selfPtr,  e);
     
-    public void clear( e){
+    public  void clear( e){
          pvk_in_e = (e);
         W_clear(this, pvk_in_e);
     }

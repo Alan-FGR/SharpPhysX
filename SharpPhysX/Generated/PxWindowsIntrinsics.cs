@@ -431,17 +431,17 @@ public static void memZero128(global::System.IntPtr dest, uint offset){
 
 // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
 #if NATIVE
-ES void W_memZero128_OL1(void* dest){
+ES void W_memZero128(void* dest){
     auto nat_in_dest = (dest);
     physx::intrinsics::memZero128(nat_in_dest);
 }
 #else
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern void W_memZero128_OL1(global::System.IntPtr dest);
+static extern void W_memZero128(global::System.IntPtr dest);
 
 public static void memZero128(global::System.IntPtr dest){
     global::System.IntPtr pvk_in_dest = (dest);
-    W_memZero128_OL1(pvk_in_dest);
+    W_memZero128(pvk_in_dest);
 }
 #endif
 

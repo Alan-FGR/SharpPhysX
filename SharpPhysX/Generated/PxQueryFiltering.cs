@@ -105,10 +105,23 @@ public static UNPARSED_TYPE operator~(PxQueryFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxQueryFilterDataPtr { // pointer
+public unsafe interface IPxQueryFilterDataPtr {
+    // PxQueryFilterData();
+    // PxQueryFilterData(PxFilterDataPtr fd,  f);
+    // PxQueryFilterData( f);
+    // PxQueryFilterData(/*NULLPARS*/);
+    // PxQueryFilterData(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxQueryFilterDataPtr lhs, /*NULLPARS*/);
+    // UNPARSED_TYPE ~PxQueryFilterData(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxQueryFilterDataPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxQueryFilterDataPtr : IPxQueryFilterDataPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxQueryFilterDataPtr
     //================================================================================
     //#       PxQueryFilterData                                                      #
     //================================================================================
@@ -134,7 +147,7 @@ public unsafe partial struct PxQueryFilterDataPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxQueryFilterData_ctor(PxFilterDataPtr fd,  f);
     
-    public PxQueryFilterData(PxFilterDataPtr fd,  f){
+    public  PxQueryFilterData(PxFilterDataPtr fd,  f){
         PxFilterDataPtr pvk_in_fd = (fd);
          pvk_in_f = (f);
         var _new = W_PxQueryFilterData_ctor(pvk_in_fd, pvk_in_f);
@@ -159,7 +172,7 @@ public unsafe partial struct PxQueryFilterDataPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxQueryFilterData_ctor( f);
     
-    public PxQueryFilterData( f){
+    public  PxQueryFilterData( f){
          pvk_in_f = (f);
         var _new = W_PxQueryFilterData_ctor(pvk_in_f);
         fixed (void* ptr = &this)
@@ -185,10 +198,21 @@ public unsafe partial struct PxQueryFilterDataPtr { // pointer
 
 // Class physx::PxQueryFlag is enum namespace
 #if !NATIVE
-public unsafe partial struct PxQueryFilterCallbackPtr { // pointer
+public unsafe interface IPxQueryFilterCallbackPtr {
+    // PxQueryHitType preFilter(PxFilterDataPtr filterData, PxShapePtr shape, PxRigidActorPtr actor,  queryFlags);
+     PxQueryHitType postFilter(PxFilterDataPtr filterData, PxQueryHitPtr hit);
+    // void ~PxQueryFilterCallback();
+    //static UNPARSED_TYPE operator=(PxQueryFilterCallbackPtr lhs, /*NULLPARS*/);
+    // PxQueryFilterCallback(/*NULLPARS*/);
+    // PxQueryFilterCallback(/*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxQueryFilterCallbackPtr : IPxQueryFilterCallbackPtr { // pointer
     private IntPtr nativePtr_;
 #endif
 
+    // Hierarchy: PxQueryFilterCallbackPtr
     //================================================================================
     //#       preFilter                                                              #
     //================================================================================
@@ -208,7 +232,7 @@ public unsafe partial struct PxQueryFilterCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQueryHitType W_preFilter(PxQueryFilterCallbackPtr selfPtr, PxFilterDataPtr filterData, PxShapePtr shape, PxRigidActorPtr actor,  queryFlags);
     
-    public PxQueryHitType preFilter(PxFilterDataPtr filterData, PxShapePtr shape, PxRigidActorPtr actor,  queryFlags){
+    public  PxQueryHitType preFilter(PxFilterDataPtr filterData, PxShapePtr shape, PxRigidActorPtr actor,  queryFlags){
         PxFilterDataPtr pvk_in_filterData = (filterData);
         PxShapePtr pvk_in_shape = (shape);
         PxRigidActorPtr pvk_in_actor = (actor);
@@ -233,7 +257,7 @@ public unsafe partial struct PxQueryFilterCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxQueryHitType W_postFilter(PxQueryFilterCallbackPtr selfPtr, PxFilterDataPtr filterData, PxQueryHitPtr hit);
     
-    public PxQueryHitType postFilter(PxFilterDataPtr filterData, PxQueryHitPtr hit){
+    public  PxQueryHitType postFilter(PxFilterDataPtr filterData, PxQueryHitPtr hit){
         PxFilterDataPtr pvk_in_filterData = (filterData);
         PxQueryHitPtr pvk_in_hit = (hit);
         PxQueryHitType retVal = W_postFilter(this, pvk_in_filterData, pvk_in_hit);
@@ -255,7 +279,7 @@ public unsafe partial struct PxQueryFilterCallbackPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxQueryFilterCallback(PxQueryFilterCallbackPtr selfPtr);
     
-    public void ~PxQueryFilterCallback(){
+    public  void ~PxQueryFilterCallback(){
         W_~PxQueryFilterCallback(this);
     }
     #endif*/

@@ -103,9 +103,58 @@ public static UNPARSED_TYPE operator~(PxMaterialFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxMaterialPtr { // pointer
+public unsafe interface IPxMaterialPtr {
+     void release();
+     uint getReferenceCount();
+     void acquireReference();
+     void setDynamicFriction(float coef);
+     float getDynamicFriction();
+     void setStaticFriction(float coef);
+     float getStaticFriction();
+     void setRestitution(float rest);
+     float getRestitution();
+    // void setFlag(PxMaterialFlag flag, bool );
+    // void setFlags( inFlags);
+    // UNPARSED_TYPE getFlags();
+     void setFrictionCombineMode(PxCombineMode combMode);
+     PxCombineMode getFrictionCombineMode();
+     void setRestitutionCombineMode(PxCombineMode combMode);
+     PxCombineMode getRestitutionCombineMode();
+     IntPtr getConcreteTypeName();
+    // PxMaterial(ushort concreteType,  baseFlags);
+    // PxMaterial( baseFlags);
+    // void ~PxMaterial();
+     bool isKindOf(string name);
+    // PxMaterial(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxMaterialPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxBasePtr, PxMaterialPtr
+    public static implicit operator PxBasePtr(PxMaterialPtr obj){return *(PxBasePtr*)&obj;}
+    public static explicit operator PxMaterialPtr(PxBasePtr obj){return *(PxMaterialPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxBasePtr
+    //public  UNPARSED_TYPE is(){return ((PxBasePtr)this).is();}
+    //public  UNPARSED_TYPE is(){return ((PxBasePtr)this).is();}
+    public  ushort getConcreteType(){return ((PxBasePtr)this).getConcreteType();}
+    public  void setBaseFlag(PxBaseFlag flag, bool value){((PxBasePtr)this).setBaseFlag(flag, value);}
+    //public  void setBaseFlags( inFlags){((PxBasePtr)this).setBaseFlags(inFlags);}
+    //public  UNPARSED_TYPE getBaseFlags(){return ((PxBasePtr)this).getBaseFlags();}
+    public  bool isReleasable(){return ((PxBasePtr)this).isReleasable();}
+    //public  PxBase(ushort concreteType,  baseFlags){((PxBasePtr)this).PxBase(concreteType, baseFlags);}
+    //public  PxBase( baseFlags){((PxBasePtr)this).PxBase(baseFlags);}
+    //public  void ~PxBase(){((PxBasePtr)this).~PxBase();}
+    public  bool typeMatch(){return ((PxBasePtr)this).typeMatch();}
+    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxBasePtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       release                                                                #
@@ -118,7 +167,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_release(PxMaterialPtr selfPtr);
     
-    public void release(){
+    public  void release(){
         W_release(this);
     }
     #endif
@@ -136,7 +185,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern uint W_getReferenceCount(PxMaterialPtr selfPtr);
     
-    public uint getReferenceCount(){
+    public  uint getReferenceCount(){
         uint retVal = W_getReferenceCount(this);
         return retVal;
     }
@@ -154,7 +203,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_acquireReference(PxMaterialPtr selfPtr);
     
-    public void acquireReference(){
+    public  void acquireReference(){
         W_acquireReference(this);
     }
     #endif
@@ -172,7 +221,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setDynamicFriction(PxMaterialPtr selfPtr, float coef);
     
-    public void setDynamicFriction(float coef){
+    public  void setDynamicFriction(float coef){
         float pvk_in_coef = (coef);
         W_setDynamicFriction(this, pvk_in_coef);
     }
@@ -191,7 +240,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getDynamicFriction(PxMaterialPtr selfPtr);
     
-    public float getDynamicFriction(){
+    public  float getDynamicFriction(){
         float retVal = W_getDynamicFriction(this);
         return retVal;
     }
@@ -210,7 +259,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setStaticFriction(PxMaterialPtr selfPtr, float coef);
     
-    public void setStaticFriction(float coef){
+    public  void setStaticFriction(float coef){
         float pvk_in_coef = (coef);
         W_setStaticFriction(this, pvk_in_coef);
     }
@@ -229,7 +278,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getStaticFriction(PxMaterialPtr selfPtr);
     
-    public float getStaticFriction(){
+    public  float getStaticFriction(){
         float retVal = W_getStaticFriction(this);
         return retVal;
     }
@@ -248,7 +297,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setRestitution(PxMaterialPtr selfPtr, float rest);
     
-    public void setRestitution(float rest){
+    public  void setRestitution(float rest){
         float pvk_in_rest = (rest);
         W_setRestitution(this, pvk_in_rest);
     }
@@ -267,7 +316,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern float W_getRestitution(PxMaterialPtr selfPtr);
     
-    public float getRestitution(){
+    public  float getRestitution(){
         float retVal = W_getRestitution(this);
         return retVal;
     }
@@ -289,7 +338,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setFlag(PxMaterialPtr selfPtr, PxMaterialFlag flag, bool );
     
-    public void setFlag(PxMaterialFlag flag, bool ){
+    public  void setFlag(PxMaterialFlag flag, bool ){
         PxMaterialFlag pvk_in_flag = (flag);
         bool pvk_in_ = ();
         W_setFlag(this, pvk_in_flag, pvk_in_);
@@ -311,7 +360,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setFlags(PxMaterialPtr selfPtr,  inFlags);
     
-    public void setFlags( inFlags){
+    public  void setFlags( inFlags){
          pvk_in_inFlags = (inFlags);
         W_setFlags(this, pvk_in_inFlags);
     }
@@ -332,7 +381,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_getFlags(PxMaterialPtr selfPtr);
     
-    public UNPARSED_TYPE getFlags(){
+    public  UNPARSED_TYPE getFlags(){
         UNPARSED_TYPE retVal = W_getFlags(this);
         return retVal;
     }
@@ -351,7 +400,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setFrictionCombineMode(PxMaterialPtr selfPtr, PxCombineMode combMode);
     
-    public void setFrictionCombineMode(PxCombineMode combMode){
+    public  void setFrictionCombineMode(PxCombineMode combMode){
         PxCombineMode pvk_in_combMode = (combMode);
         W_setFrictionCombineMode(this, pvk_in_combMode);
     }
@@ -370,7 +419,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxCombineMode W_getFrictionCombineMode(PxMaterialPtr selfPtr);
     
-    public PxCombineMode getFrictionCombineMode(){
+    public  PxCombineMode getFrictionCombineMode(){
         PxCombineMode retVal = W_getFrictionCombineMode(this);
         return retVal;
     }
@@ -389,7 +438,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_setRestitutionCombineMode(PxMaterialPtr selfPtr, PxCombineMode combMode);
     
-    public void setRestitutionCombineMode(PxCombineMode combMode){
+    public  void setRestitutionCombineMode(PxCombineMode combMode){
         PxCombineMode pvk_in_combMode = (combMode);
         W_setRestitutionCombineMode(this, pvk_in_combMode);
     }
@@ -408,7 +457,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxCombineMode W_getRestitutionCombineMode(PxMaterialPtr selfPtr);
     
-    public PxCombineMode getRestitutionCombineMode(){
+    public  PxCombineMode getRestitutionCombineMode(){
         PxCombineMode retVal = W_getRestitutionCombineMode(this);
         return retVal;
     }
@@ -427,7 +476,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern IntPtr W_getConcreteTypeName(PxMaterialPtr selfPtr);
     
-    public IntPtr getConcreteTypeName(){
+    public  IntPtr getConcreteTypeName(){
         IntPtr retVal = W_getConcreteTypeName(this);
         return retVal;
     }
@@ -450,7 +499,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxMaterial_ctor(ushort concreteType,  baseFlags);
     
-    public PxMaterial(ushort concreteType,  baseFlags){
+    public  PxMaterial(ushort concreteType,  baseFlags){
         ushort pvk_in_concreteType = (concreteType);
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxMaterial_ctor(pvk_in_concreteType, pvk_in_baseFlags);
@@ -475,7 +524,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxMaterial_ctor( baseFlags);
     
-    public PxMaterial( baseFlags){
+    public  PxMaterial( baseFlags){
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxMaterial_ctor(pvk_in_baseFlags);
         fixed (void* ptr = &this)
@@ -497,7 +546,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxMaterial(PxMaterialPtr selfPtr);
     
-    public void ~PxMaterial(){
+    public  void ~PxMaterial(){
         W_~PxMaterial(this);
     }
     #endif*/
@@ -516,7 +565,7 @@ public unsafe partial struct PxMaterialPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isKindOf(PxMaterialPtr selfPtr, string name);
     
-    public bool isKindOf(string name){
+    public  bool isKindOf(string name){
         string pvk_in_name = (name);
         bool retVal = W_isKindOf(this, pvk_in_name);
         return retVal;

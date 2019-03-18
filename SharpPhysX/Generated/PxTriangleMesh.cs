@@ -100,9 +100,55 @@ public static UNPARSED_TYPE operator~(PxTriangleMeshFlag a){
 
 
 #if !NATIVE
-public unsafe partial struct PxTriangleMeshPtr { // pointer
+public unsafe interface IPxTriangleMeshPtr {
+     uint getNbVertices();
+     PxVec3 getVertices();
+     PxVec3 getVerticesForModification();
+     PxBounds3 refitBVH();
+     uint getNbTriangles();
+     IntPtr getTriangles();
+    // UNPARSED_TYPE getTriangleMeshFlags();
+     IntPtr getTrianglesRemap();
+     void release();
+     ushort getTriangleMaterialIndex(uint triangleIndex);
+     PxBounds3 getLocalBounds();
+     uint getReferenceCount();
+     void acquireReference();
+    // PxTriangleMesh(ushort concreteType,  baseFlags);
+    // PxTriangleMesh( baseFlags);
+    // void ~PxTriangleMesh();
+     bool isKindOf(string name);
+    // PxTriangleMesh(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxTriangleMeshPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxBasePtr, PxTriangleMeshPtr
+    public static implicit operator PxBasePtr(PxTriangleMeshPtr obj){return *(PxBasePtr*)&obj;}
+    public static explicit operator PxTriangleMeshPtr(PxBasePtr obj){return *(PxTriangleMeshPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxBasePtr
+    public  IntPtr getConcreteTypeName(){return ((PxBasePtr)this).getConcreteTypeName();}
+    //public  UNPARSED_TYPE is(){return ((PxBasePtr)this).is();}
+    //public  UNPARSED_TYPE is(){return ((PxBasePtr)this).is();}
+    public  ushort getConcreteType(){return ((PxBasePtr)this).getConcreteType();}
+    public  void setBaseFlag(PxBaseFlag flag, bool value){((PxBasePtr)this).setBaseFlag(flag, value);}
+    //public  void setBaseFlags( inFlags){((PxBasePtr)this).setBaseFlags(inFlags);}
+    //public  UNPARSED_TYPE getBaseFlags(){return ((PxBasePtr)this).getBaseFlags();}
+    public  bool isReleasable(){return ((PxBasePtr)this).isReleasable();}
+    //public  PxBase(ushort concreteType,  baseFlags){((PxBasePtr)this).PxBase(concreteType, baseFlags);}
+    //public  PxBase( baseFlags){((PxBasePtr)this).PxBase(baseFlags);}
+    //public  void ~PxBase(){((PxBasePtr)this).~PxBase();}
+    public  bool typeMatch(){return ((PxBasePtr)this).typeMatch();}
+    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxBasePtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       getNbVertices                                                          #
@@ -116,7 +162,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern uint W_getNbVertices(PxTriangleMeshPtr selfPtr);
     
-    public uint getNbVertices(){
+    public  uint getNbVertices(){
         uint retVal = W_getNbVertices(this);
         return retVal;
     }
@@ -135,7 +181,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getVertices(PxTriangleMeshPtr selfPtr);
     
-    public PxVec3 getVertices(){
+    public  PxVec3 getVertices(){
         PxVec3 retVal = W_getVertices(this);
         return retVal;
     }
@@ -154,7 +200,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxVec3 W_getVerticesForModification(PxTriangleMeshPtr selfPtr);
     
-    public PxVec3 getVerticesForModification(){
+    public  PxVec3 getVerticesForModification(){
         PxVec3 retVal = W_getVerticesForModification(this);
         return retVal;
     }
@@ -173,7 +219,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBounds3 W_refitBVH(PxTriangleMeshPtr selfPtr);
     
-    public PxBounds3 refitBVH(){
+    public  PxBounds3 refitBVH(){
         PxBounds3 retVal = W_refitBVH(this);
         return retVal;
     }
@@ -192,7 +238,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern uint W_getNbTriangles(PxTriangleMeshPtr selfPtr);
     
-    public uint getNbTriangles(){
+    public  uint getNbTriangles(){
         uint retVal = W_getNbTriangles(this);
         return retVal;
     }
@@ -211,7 +257,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern IntPtr W_getTriangles(PxTriangleMeshPtr selfPtr);
     
-    public IntPtr getTriangles(){
+    public  IntPtr getTriangles(){
         IntPtr retVal = W_getTriangles(this);
         return retVal;
     }
@@ -232,7 +278,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_getTriangleMeshFlags(PxTriangleMeshPtr selfPtr);
     
-    public UNPARSED_TYPE getTriangleMeshFlags(){
+    public  UNPARSED_TYPE getTriangleMeshFlags(){
         UNPARSED_TYPE retVal = W_getTriangleMeshFlags(this);
         return retVal;
     }
@@ -251,7 +297,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern IntPtr W_getTrianglesRemap(PxTriangleMeshPtr selfPtr);
     
-    public IntPtr getTrianglesRemap(){
+    public  IntPtr getTrianglesRemap(){
         IntPtr retVal = W_getTrianglesRemap(this);
         return retVal;
     }
@@ -269,7 +315,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_release(PxTriangleMeshPtr selfPtr);
     
-    public void release(){
+    public  void release(){
         W_release(this);
     }
     #endif
@@ -288,7 +334,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern ushort W_getTriangleMaterialIndex(PxTriangleMeshPtr selfPtr, uint triangleIndex);
     
-    public ushort getTriangleMaterialIndex(uint triangleIndex){
+    public  ushort getTriangleMaterialIndex(uint triangleIndex){
         uint pvk_in_triangleIndex = (triangleIndex);
         ushort retVal = W_getTriangleMaterialIndex(this, pvk_in_triangleIndex);
         return retVal;
@@ -308,7 +354,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern PxBounds3 W_getLocalBounds(PxTriangleMeshPtr selfPtr);
     
-    public PxBounds3 getLocalBounds(){
+    public  PxBounds3 getLocalBounds(){
         PxBounds3 retVal = W_getLocalBounds(this);
         return retVal;
     }
@@ -327,7 +373,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern uint W_getReferenceCount(PxTriangleMeshPtr selfPtr);
     
-    public uint getReferenceCount(){
+    public  uint getReferenceCount(){
         uint retVal = W_getReferenceCount(this);
         return retVal;
     }
@@ -345,7 +391,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_acquireReference(PxTriangleMeshPtr selfPtr);
     
-    public void acquireReference(){
+    public  void acquireReference(){
         W_acquireReference(this);
     }
     #endif
@@ -367,7 +413,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxTriangleMesh_ctor(ushort concreteType,  baseFlags);
     
-    public PxTriangleMesh(ushort concreteType,  baseFlags){
+    public  PxTriangleMesh(ushort concreteType,  baseFlags){
         ushort pvk_in_concreteType = (concreteType);
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxTriangleMesh_ctor(pvk_in_concreteType, pvk_in_baseFlags);
@@ -392,7 +438,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxTriangleMesh_ctor( baseFlags);
     
-    public PxTriangleMesh( baseFlags){
+    public  PxTriangleMesh( baseFlags){
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxTriangleMesh_ctor(pvk_in_baseFlags);
         fixed (void* ptr = &this)
@@ -414,7 +460,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxTriangleMesh(PxTriangleMeshPtr selfPtr);
     
-    public void ~PxTriangleMesh(){
+    public  void ~PxTriangleMesh(){
         W_~PxTriangleMesh(this);
     }
     #endif*/
@@ -433,7 +479,7 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isKindOf(PxTriangleMeshPtr selfPtr, string name);
     
-    public bool isKindOf(string name){
+    public  bool isKindOf(string name){
         string pvk_in_name = (name);
         bool retVal = W_isKindOf(this, pvk_in_name);
         return retVal;
@@ -452,9 +498,64 @@ public unsafe partial struct PxTriangleMeshPtr { // pointer
 
 // Class physx::PxTriangleMeshFlag is enum namespace
 #if !NATIVE
-public unsafe partial struct PxBVH33TriangleMeshPtr { // pointer
+public unsafe interface IPxBVH33TriangleMeshPtr {
+    // PxBVH33TriangleMesh(ushort concreteType,  baseFlags);
+    // PxBVH33TriangleMesh( baseFlags);
+    // void ~PxBVH33TriangleMesh();
+     bool isKindOf(string name);
+    // PxBVH33TriangleMesh(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxBVH33TriangleMeshPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxBVH33TriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr, IPxBVH33TriangleMeshPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxBasePtr, PxTriangleMeshPtr, PxBVH33TriangleMeshPtr
+    public static implicit operator PxBasePtr(PxBVH33TriangleMeshPtr obj){return *(PxBasePtr*)&obj;}
+    public static explicit operator PxBVH33TriangleMeshPtr(PxBasePtr obj){return *(PxBVH33TriangleMeshPtr*)&obj;}
+    public static implicit operator PxTriangleMeshPtr(PxBVH33TriangleMeshPtr obj){return *(PxTriangleMeshPtr*)&obj;}
+    public static explicit operator PxBVH33TriangleMeshPtr(PxTriangleMeshPtr obj){return *(PxBVH33TriangleMeshPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxTriangleMeshPtr
+    public  uint getNbVertices(){return ((PxTriangleMeshPtr)this).getNbVertices();}
+    public  PxVec3 getVertices(){return ((PxTriangleMeshPtr)this).getVertices();}
+    public  PxVec3 getVerticesForModification(){return ((PxTriangleMeshPtr)this).getVerticesForModification();}
+    public  PxBounds3 refitBVH(){return ((PxTriangleMeshPtr)this).refitBVH();}
+    public  uint getNbTriangles(){return ((PxTriangleMeshPtr)this).getNbTriangles();}
+    public  IntPtr getTriangles(){return ((PxTriangleMeshPtr)this).getTriangles();}
+    //public  UNPARSED_TYPE getTriangleMeshFlags(){return ((PxTriangleMeshPtr)this).getTriangleMeshFlags();}
+    public  IntPtr getTrianglesRemap(){return ((PxTriangleMeshPtr)this).getTrianglesRemap();}
+    public  void release(){((PxTriangleMeshPtr)this).release();}
+    public  ushort getTriangleMaterialIndex(uint triangleIndex){return ((PxTriangleMeshPtr)this).getTriangleMaterialIndex(triangleIndex);}
+    public  PxBounds3 getLocalBounds(){return ((PxTriangleMeshPtr)this).getLocalBounds();}
+    public  uint getReferenceCount(){return ((PxTriangleMeshPtr)this).getReferenceCount();}
+    public  void acquireReference(){((PxTriangleMeshPtr)this).acquireReference();}
+    //public  PxTriangleMesh(ushort concreteType,  baseFlags){((PxTriangleMeshPtr)this).PxTriangleMesh(concreteType, baseFlags);}
+    //public  PxTriangleMesh( baseFlags){((PxTriangleMeshPtr)this).PxTriangleMesh(baseFlags);}
+    //public  void ~PxTriangleMesh(){((PxTriangleMeshPtr)this).~PxTriangleMesh();}
+    //public  PxTriangleMesh(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxTriangleMeshPtr lhs, /*NULLPARS*/){return ((PxTriangleMeshPtr)this).operator=(/*NULLARGS*/);}
+    
+    // --- PxBasePtr
+    public  IntPtr getConcreteTypeName(){return ((PxTriangleMeshPtr)this).getConcreteTypeName();}
+    //public  UNPARSED_TYPE is(){return ((PxTriangleMeshPtr)this).is();}
+    //public  UNPARSED_TYPE is(){return ((PxTriangleMeshPtr)this).is();}
+    public  ushort getConcreteType(){return ((PxTriangleMeshPtr)this).getConcreteType();}
+    public  void setBaseFlag(PxBaseFlag flag, bool value){((PxTriangleMeshPtr)this).setBaseFlag(flag, value);}
+    //public  void setBaseFlags( inFlags){((PxTriangleMeshPtr)this).setBaseFlags(inFlags);}
+    //public  UNPARSED_TYPE getBaseFlags(){return ((PxTriangleMeshPtr)this).getBaseFlags();}
+    public  bool isReleasable(){return ((PxTriangleMeshPtr)this).isReleasable();}
+    //public  PxBase(ushort concreteType,  baseFlags){((PxTriangleMeshPtr)this).PxBase(concreteType, baseFlags);}
+    //public  PxBase( baseFlags){((PxTriangleMeshPtr)this).PxBase(baseFlags);}
+    //public  void ~PxBase(){((PxTriangleMeshPtr)this).~PxBase();}
+    public  bool typeMatch(){return ((PxTriangleMeshPtr)this).typeMatch();}
+    //public  PxBase(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxTriangleMeshPtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxBVH33TriangleMesh                                                    #
@@ -472,7 +573,7 @@ public unsafe partial struct PxBVH33TriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxBVH33TriangleMesh_ctor(ushort concreteType,  baseFlags);
     
-    public PxBVH33TriangleMesh(ushort concreteType,  baseFlags){
+    public  PxBVH33TriangleMesh(ushort concreteType,  baseFlags){
         ushort pvk_in_concreteType = (concreteType);
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxBVH33TriangleMesh_ctor(pvk_in_concreteType, pvk_in_baseFlags);
@@ -497,7 +598,7 @@ public unsafe partial struct PxBVH33TriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxBVH33TriangleMesh_ctor( baseFlags);
     
-    public PxBVH33TriangleMesh( baseFlags){
+    public  PxBVH33TriangleMesh( baseFlags){
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxBVH33TriangleMesh_ctor(pvk_in_baseFlags);
         fixed (void* ptr = &this)
@@ -519,7 +620,7 @@ public unsafe partial struct PxBVH33TriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxBVH33TriangleMesh(PxBVH33TriangleMeshPtr selfPtr);
     
-    public void ~PxBVH33TriangleMesh(){
+    public  void ~PxBVH33TriangleMesh(){
         W_~PxBVH33TriangleMesh(this);
     }
     #endif*/
@@ -538,7 +639,7 @@ public unsafe partial struct PxBVH33TriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isKindOf(PxBVH33TriangleMeshPtr selfPtr, string name);
     
-    public bool isKindOf(string name){
+    public  bool isKindOf(string name){
         string pvk_in_name = (name);
         bool retVal = W_isKindOf(this, pvk_in_name);
         return retVal;
@@ -556,9 +657,64 @@ public unsafe partial struct PxBVH33TriangleMeshPtr { // pointer
 #endif
 
 #if !NATIVE
-public unsafe partial struct PxBVH34TriangleMeshPtr { // pointer
+public unsafe interface IPxBVH34TriangleMeshPtr {
+    // PxBVH34TriangleMesh(ushort concreteType,  baseFlags);
+    // PxBVH34TriangleMesh( baseFlags);
+    // void ~PxBVH34TriangleMesh();
+     bool isKindOf(string name);
+    // PxBVH34TriangleMesh(/*NULLPARS*/);
+    //static UNPARSED_TYPE operator=(PxBVH34TriangleMeshPtr lhs, /*NULLPARS*/);
+    
+}
+
+public unsafe partial struct PxBVH34TriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr, IPxBVH34TriangleMeshPtr { // pointer
     private IntPtr nativePtr_;
 #endif
+
+    // Hierarchy: PxBasePtr, PxTriangleMeshPtr, PxBVH34TriangleMeshPtr
+    public static implicit operator PxBasePtr(PxBVH34TriangleMeshPtr obj){return *(PxBasePtr*)&obj;}
+    public static explicit operator PxBVH34TriangleMeshPtr(PxBasePtr obj){return *(PxBVH34TriangleMeshPtr*)&obj;}
+    public static implicit operator PxTriangleMeshPtr(PxBVH34TriangleMeshPtr obj){return *(PxTriangleMeshPtr*)&obj;}
+    public static explicit operator PxBVH34TriangleMeshPtr(PxTriangleMeshPtr obj){return *(PxBVH34TriangleMeshPtr*)&obj;}
+    
+    // ### Piping
+    
+    // --- PxTriangleMeshPtr
+    public  uint getNbVertices(){return ((PxTriangleMeshPtr)this).getNbVertices();}
+    public  PxVec3 getVertices(){return ((PxTriangleMeshPtr)this).getVertices();}
+    public  PxVec3 getVerticesForModification(){return ((PxTriangleMeshPtr)this).getVerticesForModification();}
+    public  PxBounds3 refitBVH(){return ((PxTriangleMeshPtr)this).refitBVH();}
+    public  uint getNbTriangles(){return ((PxTriangleMeshPtr)this).getNbTriangles();}
+    public  IntPtr getTriangles(){return ((PxTriangleMeshPtr)this).getTriangles();}
+    //public  UNPARSED_TYPE getTriangleMeshFlags(){return ((PxTriangleMeshPtr)this).getTriangleMeshFlags();}
+    public  IntPtr getTrianglesRemap(){return ((PxTriangleMeshPtr)this).getTrianglesRemap();}
+    public  void release(){((PxTriangleMeshPtr)this).release();}
+    public  ushort getTriangleMaterialIndex(uint triangleIndex){return ((PxTriangleMeshPtr)this).getTriangleMaterialIndex(triangleIndex);}
+    public  PxBounds3 getLocalBounds(){return ((PxTriangleMeshPtr)this).getLocalBounds();}
+    public  uint getReferenceCount(){return ((PxTriangleMeshPtr)this).getReferenceCount();}
+    public  void acquireReference(){((PxTriangleMeshPtr)this).acquireReference();}
+    //public  PxTriangleMesh(ushort concreteType,  baseFlags){((PxTriangleMeshPtr)this).PxTriangleMesh(concreteType, baseFlags);}
+    //public  PxTriangleMesh( baseFlags){((PxTriangleMeshPtr)this).PxTriangleMesh(baseFlags);}
+    //public  void ~PxTriangleMesh(){((PxTriangleMeshPtr)this).~PxTriangleMesh();}
+    //public  PxTriangleMesh(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxTriangleMeshPtr lhs, /*NULLPARS*/){return ((PxTriangleMeshPtr)this).operator=(/*NULLARGS*/);}
+    
+    // --- PxBasePtr
+    public  IntPtr getConcreteTypeName(){return ((PxTriangleMeshPtr)this).getConcreteTypeName();}
+    //public  UNPARSED_TYPE is(){return ((PxTriangleMeshPtr)this).is();}
+    //public  UNPARSED_TYPE is(){return ((PxTriangleMeshPtr)this).is();}
+    public  ushort getConcreteType(){return ((PxTriangleMeshPtr)this).getConcreteType();}
+    public  void setBaseFlag(PxBaseFlag flag, bool value){((PxTriangleMeshPtr)this).setBaseFlag(flag, value);}
+    //public  void setBaseFlags( inFlags){((PxTriangleMeshPtr)this).setBaseFlags(inFlags);}
+    //public  UNPARSED_TYPE getBaseFlags(){return ((PxTriangleMeshPtr)this).getBaseFlags();}
+    public  bool isReleasable(){return ((PxTriangleMeshPtr)this).isReleasable();}
+    //public  PxBase(ushort concreteType,  baseFlags){((PxTriangleMeshPtr)this).PxBase(concreteType, baseFlags);}
+    //public  PxBase( baseFlags){((PxTriangleMeshPtr)this).PxBase(baseFlags);}
+    //public  void ~PxBase(){((PxTriangleMeshPtr)this).~PxBase();}
+    public  bool typeMatch(){return ((PxTriangleMeshPtr)this).typeMatch();}
+    //public  PxBase(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
+    //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxTriangleMeshPtr)this).operator=(/*NULLARGS*/);}
+    
 
     //================================================================================
     //#       PxBVH34TriangleMesh                                                    #
@@ -576,7 +732,7 @@ public unsafe partial struct PxBVH34TriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxBVH34TriangleMesh_ctor(ushort concreteType,  baseFlags);
     
-    public PxBVH34TriangleMesh(ushort concreteType,  baseFlags){
+    public  PxBVH34TriangleMesh(ushort concreteType,  baseFlags){
         ushort pvk_in_concreteType = (concreteType);
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxBVH34TriangleMesh_ctor(pvk_in_concreteType, pvk_in_baseFlags);
@@ -601,7 +757,7 @@ public unsafe partial struct PxBVH34TriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern UNPARSED_TYPE W_PxBVH34TriangleMesh_ctor( baseFlags);
     
-    public PxBVH34TriangleMesh( baseFlags){
+    public  PxBVH34TriangleMesh( baseFlags){
          pvk_in_baseFlags = (baseFlags);
         var _new = W_PxBVH34TriangleMesh_ctor(pvk_in_baseFlags);
         fixed (void* ptr = &this)
@@ -623,7 +779,7 @@ public unsafe partial struct PxBVH34TriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern void W_~PxBVH34TriangleMesh(PxBVH34TriangleMeshPtr selfPtr);
     
-    public void ~PxBVH34TriangleMesh(){
+    public  void ~PxBVH34TriangleMesh(){
         W_~PxBVH34TriangleMesh(this);
     }
     #endif*/
@@ -642,7 +798,7 @@ public unsafe partial struct PxBVH34TriangleMeshPtr { // pointer
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
     static extern bool W_isKindOf(PxBVH34TriangleMeshPtr selfPtr, string name);
     
-    public bool isKindOf(string name){
+    public  bool isKindOf(string name){
         string pvk_in_name = (name);
         bool retVal = W_isKindOf(this, pvk_in_name);
         return retVal;

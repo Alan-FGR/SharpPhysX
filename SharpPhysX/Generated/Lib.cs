@@ -59,3 +59,17 @@ public static PxPhysicsPtr MAN_PxCreatePhysics(PxFoundationPtr foundation){
 #endif
 
 
+#if !NATIVE
+public unsafe interface ITypeList {
+    
+}
+
+public unsafe partial struct TypeList : ITypeList { // blittable
+
+#endif
+
+    // Hierarchy: TypeList
+
+#if !NATIVE
+}
+#endif
