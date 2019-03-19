@@ -1,16 +1,16 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
-#if !NATIVE
+#if !NATIVE //enum
 public enum PxTaskType : int {
     TT_CPU = 0,         // TT_CPU
     TT_GPU = 1,         // TT_GPU
     TT_NOT_PRESENT = 2, // TT_NOT_PRESENT
     TT_COMPLETED = 3,   // TT_COMPLETED
 }
-#endif
+#endif //enum
 
 
 // Class physx::PxTaskManager Manually Ignored

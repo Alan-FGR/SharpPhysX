@@ -1,12 +1,12 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 
 // Class physx::PxConvexMesh Manually Ignored
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxHullPolygon {
     // PxHullPolygon(/*NULLPARS*/);
     // PxHullPolygon(/*NULLPARS*/);
@@ -16,15 +16,19 @@ public unsafe interface IPxHullPolygon {
     // UNPARSED_TYPE ~PxHullPolygon(/*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxHullPolygon : IPxHullPolygon { // blittable
     public float[] mPlane;
     public ushort mNbVerts;
     public ushort mIndexBase;
 
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxHullPolygon
+    #endif //hierarchy
     //Skipped generated implicit entry: PxHullPolygon
     
     //Skipped generated implicit entry: PxHullPolygon
@@ -38,6 +42,6 @@ public unsafe partial struct PxHullPolygon : IPxHullPolygon { // blittable
     //Skipped generated implicit entry: ~PxHullPolygon
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

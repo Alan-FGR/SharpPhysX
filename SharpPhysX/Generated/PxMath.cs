@@ -1,7 +1,7 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 #if !NATIVE
@@ -18,47 +18,47 @@ Unresolved parameter type T
 {
 	return a < b ? b : a;
 }
-#if NATIVE
-ES UNPARSED_TYPE W_PxMax( a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_PxMax_R_T_P__P_( a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::PxMax(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_PxMax( a,  b);
+static extern UNPARSED_TYPE W_PxMax_R_T_P__P_( a,  b);
 
 public static UNPARSED_TYPE PxMax( a,  b){
      pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_PxMax(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_PxMax_R_T_P__P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
 //#       PxMax                                                                  #
 //================================================================================
-#if NATIVE
-ES float W_PxMax(float a, float b){
+#if NATIVE //function start
+ES float W_PxMax_R_float_P_float_P_float(float a, float b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::PxMax(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxMax(float a, float b);
+static extern float W_PxMax_R_float_P_float_P_float(float a, float b);
 
 public static float PxMax(float a, float b){
     float pvk_in_a = (a);
     float pvk_in_b = (b);
-    float retVal = W_PxMax(pvk_in_a, pvk_in_b);
+    float retVal = W_PxMax_R_float_P_float_P_float(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
@@ -71,135 +71,135 @@ Unresolved parameter type T
 {
 	return a < b ? a : b;
 }
-#if NATIVE
-ES UNPARSED_TYPE W_PxMin( a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_PxMin_R_T_P__P_( a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::PxMin(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_PxMin( a,  b);
+static extern UNPARSED_TYPE W_PxMin_R_T_P__P_( a,  b);
 
 public static UNPARSED_TYPE PxMin( a,  b){
      pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_PxMin(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_PxMin_R_T_P__P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
 //#       PxMin                                                                  #
 //================================================================================
-#if NATIVE
-ES float W_PxMin(float a, float b){
+#if NATIVE //function start
+ES float W_PxMin_R_float_P_float_P_float(float a, float b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::PxMin(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxMin(float a, float b);
+static extern float W_PxMin_R_float_P_float_P_float(float a, float b);
 
 public static float PxMin(float a, float b){
     float pvk_in_a = (a);
     float pvk_in_b = (b);
-    float retVal = W_PxMin(pvk_in_a, pvk_in_b);
+    float retVal = W_PxMin_R_float_P_float_P_float(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxAbs                                                                  #
 //================================================================================
-#if NATIVE
-ES float W_PxAbs(float a){
+#if NATIVE //function start
+ES float W_PxAbs_R_float_P_float(float a){
     auto nat_in_a = (a);
     auto retVal = physx::PxAbs(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxAbs(float a);
+static extern float W_PxAbs_R_float_P_float(float a);
 
 public static float PxAbs(float a){
     float pvk_in_a = (a);
-    float retVal = W_PxAbs(pvk_in_a);
+    float retVal = W_PxAbs_R_float_P_float(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxEquals                                                               #
 //================================================================================
-#if NATIVE
-ES bool W_PxEquals(float a, float b, float eps){
+#if NATIVE //function start
+ES bool W_PxEquals_R_bool_P_float_P_float_P_float(float a, float b, float eps){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto nat_in_eps = (eps);
     auto retVal = physx::PxEquals(nat_in_a, nat_in_b, nat_in_eps);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern bool W_PxEquals(float a, float b, float eps);
+static extern bool W_PxEquals_R_bool_P_float_P_float_P_float(float a, float b, float eps);
 
 public static bool PxEquals(float a, float b, float eps){
     float pvk_in_a = (a);
     float pvk_in_b = (b);
     float pvk_in_eps = (eps);
-    bool retVal = W_PxEquals(pvk_in_a, pvk_in_b, pvk_in_eps);
+    bool retVal = W_PxEquals_R_bool_P_float_P_float_P_float(pvk_in_a, pvk_in_b, pvk_in_eps);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxAbs                                                                  #
 //================================================================================
-#if NATIVE
-ES double W_PxAbs(double a){
+#if NATIVE //function start
+ES double W_PxAbs_R_double_P_double(double a){
     auto nat_in_a = (a);
     auto retVal = physx::PxAbs(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern double W_PxAbs(double a);
+static extern double W_PxAbs_R_double_P_double(double a);
 
 public static double PxAbs(double a){
     double pvk_in_a = (a);
-    double retVal = W_PxAbs(pvk_in_a);
+    double retVal = W_PxAbs_R_double_P_double(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxAbs                                                                  #
 //================================================================================
-#if NATIVE
-ES ::int32_t W_PxAbs(::int32_t a){
+#if NATIVE //function start
+ES ::int32_t W_PxAbs_R_int_P_int(::int32_t a){
     auto nat_in_a = (a);
     auto retVal = physx::PxAbs(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern int W_PxAbs(int a);
+static extern int W_PxAbs_R_int_P_int(int a);
 
 public static int PxAbs(int a){
     int pvk_in_a = (a);
-    int retVal = W_PxAbs(pvk_in_a);
+    int retVal = W_PxAbs_R_int_P_int(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
@@ -214,578 +214,578 @@ Unresolved parameter type T
 	PX_ASSERT(lo <= hi);
 	return PxMin(hi, PxMax(lo, v));
 }
-#if NATIVE
-ES UNPARSED_TYPE W_PxClamp( v,  lo,  hi){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_PxClamp_R_T_P__P__P_( v,  lo,  hi){
     auto nat_in_v = (v);
     auto nat_in_lo = (lo);
     auto nat_in_hi = (hi);
     auto retVal = physx::PxClamp(nat_in_v, nat_in_lo, nat_in_hi);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_PxClamp( v,  lo,  hi);
+static extern UNPARSED_TYPE W_PxClamp_R_T_P__P__P_( v,  lo,  hi);
 
 public static UNPARSED_TYPE PxClamp( v,  lo,  hi){
      pvk_in_v = (v);
      pvk_in_lo = (lo);
      pvk_in_hi = (hi);
-    UNPARSED_TYPE retVal = W_PxClamp(pvk_in_v, pvk_in_lo, pvk_in_hi);
+    UNPARSED_TYPE retVal = W_PxClamp_R_T_P__P__P_(pvk_in_v, pvk_in_lo, pvk_in_hi);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
 //#       PxSqrt                                                                 #
 //================================================================================
-#if NATIVE
-ES float W_PxSqrt(float a){
+#if NATIVE //function start
+ES float W_PxSqrt_R_float_P_float(float a){
     auto nat_in_a = (a);
     auto retVal = physx::PxSqrt(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxSqrt(float a);
+static extern float W_PxSqrt_R_float_P_float(float a);
 
 public static float PxSqrt(float a){
     float pvk_in_a = (a);
-    float retVal = W_PxSqrt(pvk_in_a);
+    float retVal = W_PxSqrt_R_float_P_float(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxSqrt                                                                 #
 //================================================================================
-#if NATIVE
-ES double W_PxSqrt(double a){
+#if NATIVE //function start
+ES double W_PxSqrt_R_double_P_double(double a){
     auto nat_in_a = (a);
     auto retVal = physx::PxSqrt(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern double W_PxSqrt(double a);
+static extern double W_PxSqrt_R_double_P_double(double a);
 
 public static double PxSqrt(double a){
     double pvk_in_a = (a);
-    double retVal = W_PxSqrt(pvk_in_a);
+    double retVal = W_PxSqrt_R_double_P_double(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxRecipSqrt                                                            #
 //================================================================================
-#if NATIVE
-ES float W_PxRecipSqrt(float a){
+#if NATIVE //function start
+ES float W_PxRecipSqrt_R_float_P_float(float a){
     auto nat_in_a = (a);
     auto retVal = physx::PxRecipSqrt(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxRecipSqrt(float a);
+static extern float W_PxRecipSqrt_R_float_P_float(float a);
 
 public static float PxRecipSqrt(float a){
     float pvk_in_a = (a);
-    float retVal = W_PxRecipSqrt(pvk_in_a);
+    float retVal = W_PxRecipSqrt_R_float_P_float(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxRecipSqrt                                                            #
 //================================================================================
-#if NATIVE
-ES double W_PxRecipSqrt(double a){
+#if NATIVE //function start
+ES double W_PxRecipSqrt_R_double_P_double(double a){
     auto nat_in_a = (a);
     auto retVal = physx::PxRecipSqrt(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern double W_PxRecipSqrt(double a);
+static extern double W_PxRecipSqrt_R_double_P_double(double a);
 
 public static double PxRecipSqrt(double a){
     double pvk_in_a = (a);
-    double retVal = W_PxRecipSqrt(pvk_in_a);
+    double retVal = W_PxRecipSqrt_R_double_P_double(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxSin                                                                  #
 //================================================================================
-#if NATIVE
-ES float W_PxSin(float a){
+#if NATIVE //function start
+ES float W_PxSin_R_float_P_float(float a){
     auto nat_in_a = (a);
     auto retVal = physx::PxSin(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxSin(float a);
+static extern float W_PxSin_R_float_P_float(float a);
 
 public static float PxSin(float a){
     float pvk_in_a = (a);
-    float retVal = W_PxSin(pvk_in_a);
+    float retVal = W_PxSin_R_float_P_float(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxSin                                                                  #
 //================================================================================
-#if NATIVE
-ES double W_PxSin(double a){
+#if NATIVE //function start
+ES double W_PxSin_R_double_P_double(double a){
     auto nat_in_a = (a);
     auto retVal = physx::PxSin(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern double W_PxSin(double a);
+static extern double W_PxSin_R_double_P_double(double a);
 
 public static double PxSin(double a){
     double pvk_in_a = (a);
-    double retVal = W_PxSin(pvk_in_a);
+    double retVal = W_PxSin_R_double_P_double(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxCos                                                                  #
 //================================================================================
-#if NATIVE
-ES float W_PxCos(float a){
+#if NATIVE //function start
+ES float W_PxCos_R_float_P_float(float a){
     auto nat_in_a = (a);
     auto retVal = physx::PxCos(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxCos(float a);
+static extern float W_PxCos_R_float_P_float(float a);
 
 public static float PxCos(float a){
     float pvk_in_a = (a);
-    float retVal = W_PxCos(pvk_in_a);
+    float retVal = W_PxCos_R_float_P_float(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxCos                                                                  #
 //================================================================================
-#if NATIVE
-ES double W_PxCos(double a){
+#if NATIVE //function start
+ES double W_PxCos_R_double_P_double(double a){
     auto nat_in_a = (a);
     auto retVal = physx::PxCos(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern double W_PxCos(double a);
+static extern double W_PxCos_R_double_P_double(double a);
 
 public static double PxCos(double a){
     double pvk_in_a = (a);
-    double retVal = W_PxCos(pvk_in_a);
+    double retVal = W_PxCos_R_double_P_double(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxTan                                                                  #
 //================================================================================
-#if NATIVE
-ES float W_PxTan(float a){
+#if NATIVE //function start
+ES float W_PxTan_R_float_P_float(float a){
     auto nat_in_a = (a);
     auto retVal = physx::PxTan(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxTan(float a);
+static extern float W_PxTan_R_float_P_float(float a);
 
 public static float PxTan(float a){
     float pvk_in_a = (a);
-    float retVal = W_PxTan(pvk_in_a);
+    float retVal = W_PxTan_R_float_P_float(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxTan                                                                  #
 //================================================================================
-#if NATIVE
-ES double W_PxTan(double a){
+#if NATIVE //function start
+ES double W_PxTan_R_double_P_double(double a){
     auto nat_in_a = (a);
     auto retVal = physx::PxTan(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern double W_PxTan(double a);
+static extern double W_PxTan_R_double_P_double(double a);
 
 public static double PxTan(double a){
     double pvk_in_a = (a);
-    double retVal = W_PxTan(pvk_in_a);
+    double retVal = W_PxTan_R_double_P_double(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxAsin                                                                 #
 //================================================================================
-#if NATIVE
-ES float W_PxAsin(float f){
+#if NATIVE //function start
+ES float W_PxAsin_R_float_P_float(float f){
     auto nat_in_f = (f);
     auto retVal = physx::PxAsin(nat_in_f);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxAsin(float f);
+static extern float W_PxAsin_R_float_P_float(float f);
 
 public static float PxAsin(float f){
     float pvk_in_f = (f);
-    float retVal = W_PxAsin(pvk_in_f);
+    float retVal = W_PxAsin_R_float_P_float(pvk_in_f);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxAsin                                                                 #
 //================================================================================
-#if NATIVE
-ES double W_PxAsin(double f){
+#if NATIVE //function start
+ES double W_PxAsin_R_double_P_double(double f){
     auto nat_in_f = (f);
     auto retVal = physx::PxAsin(nat_in_f);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern double W_PxAsin(double f);
+static extern double W_PxAsin_R_double_P_double(double f);
 
 public static double PxAsin(double f){
     double pvk_in_f = (f);
-    double retVal = W_PxAsin(pvk_in_f);
+    double retVal = W_PxAsin_R_double_P_double(pvk_in_f);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxAcos                                                                 #
 //================================================================================
-#if NATIVE
-ES float W_PxAcos(float f){
+#if NATIVE //function start
+ES float W_PxAcos_R_float_P_float(float f){
     auto nat_in_f = (f);
     auto retVal = physx::PxAcos(nat_in_f);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxAcos(float f);
+static extern float W_PxAcos_R_float_P_float(float f);
 
 public static float PxAcos(float f){
     float pvk_in_f = (f);
-    float retVal = W_PxAcos(pvk_in_f);
+    float retVal = W_PxAcos_R_float_P_float(pvk_in_f);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxAcos                                                                 #
 //================================================================================
-#if NATIVE
-ES double W_PxAcos(double f){
+#if NATIVE //function start
+ES double W_PxAcos_R_double_P_double(double f){
     auto nat_in_f = (f);
     auto retVal = physx::PxAcos(nat_in_f);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern double W_PxAcos(double f);
+static extern double W_PxAcos_R_double_P_double(double f);
 
 public static double PxAcos(double f){
     double pvk_in_f = (f);
-    double retVal = W_PxAcos(pvk_in_f);
+    double retVal = W_PxAcos_R_double_P_double(pvk_in_f);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxAtan                                                                 #
 //================================================================================
-#if NATIVE
-ES float W_PxAtan(float a){
+#if NATIVE //function start
+ES float W_PxAtan_R_float_P_float(float a){
     auto nat_in_a = (a);
     auto retVal = physx::PxAtan(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxAtan(float a);
+static extern float W_PxAtan_R_float_P_float(float a);
 
 public static float PxAtan(float a){
     float pvk_in_a = (a);
-    float retVal = W_PxAtan(pvk_in_a);
+    float retVal = W_PxAtan_R_float_P_float(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxAtan                                                                 #
 //================================================================================
-#if NATIVE
-ES double W_PxAtan(double a){
+#if NATIVE //function start
+ES double W_PxAtan_R_double_P_double(double a){
     auto nat_in_a = (a);
     auto retVal = physx::PxAtan(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern double W_PxAtan(double a);
+static extern double W_PxAtan_R_double_P_double(double a);
 
 public static double PxAtan(double a){
     double pvk_in_a = (a);
-    double retVal = W_PxAtan(pvk_in_a);
+    double retVal = W_PxAtan_R_double_P_double(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxAtan2                                                                #
 //================================================================================
-#if NATIVE
-ES float W_PxAtan2(float x, float y){
+#if NATIVE //function start
+ES float W_PxAtan2_R_float_P_float_P_float(float x, float y){
     auto nat_in_x = (x);
     auto nat_in_y = (y);
     auto retVal = physx::PxAtan2(nat_in_x, nat_in_y);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxAtan2(float x, float y);
+static extern float W_PxAtan2_R_float_P_float_P_float(float x, float y);
 
 public static float PxAtan2(float x, float y){
     float pvk_in_x = (x);
     float pvk_in_y = (y);
-    float retVal = W_PxAtan2(pvk_in_x, pvk_in_y);
+    float retVal = W_PxAtan2_R_float_P_float_P_float(pvk_in_x, pvk_in_y);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxAtan2                                                                #
 //================================================================================
-#if NATIVE
-ES double W_PxAtan2(double x, double y){
+#if NATIVE //function start
+ES double W_PxAtan2_R_double_P_double_P_double(double x, double y){
     auto nat_in_x = (x);
     auto nat_in_y = (y);
     auto retVal = physx::PxAtan2(nat_in_x, nat_in_y);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern double W_PxAtan2(double x, double y);
+static extern double W_PxAtan2_R_double_P_double_P_double(double x, double y);
 
 public static double PxAtan2(double x, double y){
     double pvk_in_x = (x);
     double pvk_in_y = (y);
-    double retVal = W_PxAtan2(pvk_in_x, pvk_in_y);
+    double retVal = W_PxAtan2_R_double_P_double_P_double(pvk_in_x, pvk_in_y);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxIsFinite                                                             #
 //================================================================================
-#if NATIVE
-ES bool W_PxIsFinite(float f){
+#if NATIVE //function start
+ES bool W_PxIsFinite_R_bool_P_float(float f){
     auto nat_in_f = (f);
     auto retVal = physx::PxIsFinite(nat_in_f);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern bool W_PxIsFinite(float f);
+static extern bool W_PxIsFinite_R_bool_P_float(float f);
 
 public static bool PxIsFinite(float f){
     float pvk_in_f = (f);
-    bool retVal = W_PxIsFinite(pvk_in_f);
+    bool retVal = W_PxIsFinite_R_bool_P_float(pvk_in_f);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxIsFinite                                                             #
 //================================================================================
-#if NATIVE
-ES bool W_PxIsFinite(double f){
+#if NATIVE //function start
+ES bool W_PxIsFinite_R_bool_P_double(double f){
     auto nat_in_f = (f);
     auto retVal = physx::PxIsFinite(nat_in_f);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern bool W_PxIsFinite(double f);
+static extern bool W_PxIsFinite_R_bool_P_double(double f);
 
 public static bool PxIsFinite(double f){
     double pvk_in_f = (f);
-    bool retVal = W_PxIsFinite(pvk_in_f);
+    bool retVal = W_PxIsFinite_R_bool_P_double(pvk_in_f);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxFloor                                                                #
 //================================================================================
-#if NATIVE
-ES float W_PxFloor(float a){
+#if NATIVE //function start
+ES float W_PxFloor_R_float_P_float(float a){
     auto nat_in_a = (a);
     auto retVal = physx::PxFloor(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxFloor(float a);
+static extern float W_PxFloor_R_float_P_float(float a);
 
 public static float PxFloor(float a){
     float pvk_in_a = (a);
-    float retVal = W_PxFloor(pvk_in_a);
+    float retVal = W_PxFloor_R_float_P_float(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxExp                                                                  #
 //================================================================================
-#if NATIVE
-ES float W_PxExp(float a){
+#if NATIVE //function start
+ES float W_PxExp_R_float_P_float(float a){
     auto nat_in_a = (a);
     auto retVal = physx::PxExp(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxExp(float a);
+static extern float W_PxExp_R_float_P_float(float a);
 
 public static float PxExp(float a){
     float pvk_in_a = (a);
-    float retVal = W_PxExp(pvk_in_a);
+    float retVal = W_PxExp_R_float_P_float(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxCeil                                                                 #
 //================================================================================
-#if NATIVE
-ES float W_PxCeil(float a){
+#if NATIVE //function start
+ES float W_PxCeil_R_float_P_float(float a){
     auto nat_in_a = (a);
     auto retVal = physx::PxCeil(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxCeil(float a);
+static extern float W_PxCeil_R_float_P_float(float a);
 
 public static float PxCeil(float a){
     float pvk_in_a = (a);
-    float retVal = W_PxCeil(pvk_in_a);
+    float retVal = W_PxCeil_R_float_P_float(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxSign                                                                 #
 //================================================================================
-#if NATIVE
-ES float W_PxSign(float a){
+#if NATIVE //function start
+ES float W_PxSign_R_float_P_float(float a){
     auto nat_in_a = (a);
     auto retVal = physx::PxSign(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxSign(float a);
+static extern float W_PxSign_R_float_P_float(float a);
 
 public static float PxSign(float a){
     float pvk_in_a = (a);
-    float retVal = W_PxSign(pvk_in_a);
+    float retVal = W_PxSign_R_float_P_float(pvk_in_a);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxPow                                                                  #
 //================================================================================
-#if NATIVE
-ES float W_PxPow(float x, float y){
+#if NATIVE //function start
+ES float W_PxPow_R_float_P_float_P_float(float x, float y){
     auto nat_in_x = (x);
     auto nat_in_y = (y);
     auto retVal = physx::PxPow(nat_in_x, nat_in_y);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxPow(float x, float y);
+static extern float W_PxPow_R_float_P_float_P_float(float x, float y);
 
 public static float PxPow(float x, float y){
     float pvk_in_x = (x);
     float pvk_in_y = (y);
-    float retVal = W_PxPow(pvk_in_x, pvk_in_y);
+    float retVal = W_PxPow_R_float_P_float_P_float(pvk_in_x, pvk_in_y);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxLog                                                                  #
 //================================================================================
-#if NATIVE
-ES float W_PxLog(float x){
+#if NATIVE //function start
+ES float W_PxLog_R_float_P_float(float x){
     auto nat_in_x = (x);
     auto retVal = physx::PxLog(nat_in_x);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern float W_PxLog(float x);
+static extern float W_PxLog_R_float_P_float(float x);
 
 public static float PxLog(float x){
     float pvk_in_x = (x);
-    float retVal = W_PxLog(pvk_in_x);
+    float retVal = W_PxLog_R_float_P_float(pvk_in_x);
     return retVal;
 }
-#endif
+#endif //function end
 
 #if !NATIVE
 } // End PxMath

@@ -51,13 +51,47 @@ template<typename...> struct TypeList {};
 
 //#include "PxAggregate.h"
 
+using namespace physx;
+
+//#define uint PxU32;
+
 // We only include the generated wrapper when actually building otherwise we have feedback loop when parsing
 #ifdef BUILD_LIB
-#include "../Generated/PxFoundation.cs"
+#include "../Generated/Px.cs"                 
+#include "../Generated/PxActor.cs"            
+#include "../Generated/PxBase.cs"             
+#include "../Generated/PxBounds3.cs"          
+#include "../Generated/PxConstraint.cs"       
+#include "../Generated/PxConstraintDesc.cs"   
+#include "../Generated/PxErrors.cs"           
+#include "../Generated/PxFiltering.cs"        
+#include "../Generated/PxForceMode.cs"        
+#include "../Generated/PxFoundation.cs"       
+#include "../Generated/PxGeometry.cs"         
+#include "../Generated/PxMat33.cs"            
+#include "../Generated/PxMat44.cs"            
+#include "../Generated/PxMaterial.cs"         
+#include "../Generated/PxPhysics.cs"          
+#include "../Generated/PxPlane.cs"            
+#include "../Generated/PxPlaneGeometry.cs"    
+#include "../Generated/PxQuat.cs"             
+#include "../Generated/PxRigidActor.cs"       
+#include "../Generated/PxRigidBody.cs"        
+#include "../Generated/PxRigidDynamic.cs"     
+#include "../Generated/PxRigidStatic.cs"      
+#include "../Generated/PxScene.cs"            
+#include "../Generated/PxSceneDesc.cs"        
+#include "../Generated/PxShape.cs"            
+#include "../Generated/PxTransform.cs"        
+#include "../Generated/PxTriangleMesh.cs"     
+#include "../Generated/PxVec3.cs"             
+#include "../Generated/PxVec4.cs"             
+#include "../Generated/PxWindowsIntrinsics.cs"
+
+//#include "Staging.cpp"
 #endif
 
 
-using namespace physx;
 
 TypeList<
     PxVec2,

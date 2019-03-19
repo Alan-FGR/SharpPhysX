@@ -1,9 +1,9 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
-#if !NATIVE
+#if !NATIVE //enum
 public enum PxErrorCode : int {
     eNO_ERROR = 0,                    // eNO_ERROR = 0
     eDEBUG_INFO = 1,                  // eDEBUG_INFO = 1
@@ -16,7 +16,7 @@ public enum PxErrorCode : int {
     ePERF_WARNING = 128,              // ePERF_WARNING = 128
     eMASK_ALL = -1,                   // eMASK_ALL = -1
 }
-#endif
+#endif //enum
 
 
 // Class physx::PxErrorCode is enum namespace

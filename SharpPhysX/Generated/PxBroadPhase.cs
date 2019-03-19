@@ -1,9 +1,9 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
-#if !NATIVE
+#if !NATIVE //enum
 public enum PxBroadPhaseType : int {
     eSAP = 0,  // eSAP
     eMBP = 1,  // eMBP
@@ -11,12 +11,12 @@ public enum PxBroadPhaseType : int {
     eGPU = 3,  // eGPU
     eLAST = 4, // eLAST
 }
-#endif
+#endif //enum
 
 
 // Class physx::PxBroadPhaseCallback Manually Ignored
 // Class physx::PxBroadPhaseType Manually Ignored
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxBroadPhaseCaps {
     // PxBroadPhaseCaps(/*NULLPARS*/);
     // PxBroadPhaseCaps(/*NULLPARS*/);
@@ -26,15 +26,19 @@ public unsafe interface IPxBroadPhaseCaps {
     // UNPARSED_TYPE ~PxBroadPhaseCaps(/*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxBroadPhaseCaps : IPxBroadPhaseCaps { // blittable
     public uint maxNbRegions;
     public uint maxNbObjects;
     public bool needsPredefinedBounds;
 
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxBroadPhaseCaps
+    #endif //hierarchy
     //Skipped generated implicit entry: PxBroadPhaseCaps
     
     //Skipped generated implicit entry: PxBroadPhaseCaps
@@ -48,9 +52,9 @@ public unsafe partial struct PxBroadPhaseCaps : IPxBroadPhaseCaps { // blittable
     //Skipped generated implicit entry: ~PxBroadPhaseCaps
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close
 
 // Class physx::PxBroadPhaseRegionInfo Manually Ignored
 // Class physx::PxBroadPhaseRegion Manually Ignored

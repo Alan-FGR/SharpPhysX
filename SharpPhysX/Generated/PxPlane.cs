@@ -1,11 +1,11 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxPlane {
     // PxPlane();
     // PxPlane(float nx, float ny, float nz, float distance);
@@ -25,14 +25,18 @@ public unsafe interface IPxPlane {
     //static UNPARSED_TYPE operator=(PxPlane lhs, /*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxPlane : IPxPlane { // blittable
     public PxVec3 n;
     public float d;
 
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxPlane
+    #endif //hierarchy
     //================================================================================
     //#       PxPlane                                                                #
     //================================================================================
@@ -44,219 +48,219 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
     //================================================================================
     //#       PxPlane                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxPlane W_PxPlane_ctor(float nx, float ny, float nz, float distance){
+    #if NATIVE //function start
+    ES physx::PxPlane W_PxPlane_R_PxPlane_P_float_P_float_P_float_P_float_C_PxPlane_ctor(float nx, float ny, float nz, float distance){
         auto nat_in_nx = (nx);
         auto nat_in_ny = (ny);
         auto nat_in_nz = (nz);
         auto nat_in_distance = (distance);
-        self.PxPlane(nat_in_nx, nat_in_ny, nat_in_nz, nat_in_distance);
+        return PxPlane(nat_in_nx, nat_in_ny, nat_in_nz, nat_in_distance);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPlane W_PxPlane_ctor(float nx, float ny, float nz, float distance);
+    static extern PxPlane W_PxPlane_R_PxPlane_P_float_P_float_P_float_P_float_C_PxPlane_ctor(float nx, float ny, float nz, float distance);
     
     public  PxPlane(float nx, float ny, float nz, float distance){
         float pvk_in_nx = (nx);
         float pvk_in_ny = (ny);
         float pvk_in_nz = (nz);
         float pvk_in_distance = (distance);
-        var _new = W_PxPlane_ctor(pvk_in_nx, pvk_in_ny, pvk_in_nz, pvk_in_distance);
+        var _new = W_PxPlane_R_PxPlane_P_float_P_float_P_float_P_float_C_PxPlane_ctor(pvk_in_nx, pvk_in_ny, pvk_in_nz, pvk_in_distance);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxPlane                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxPlane W_PxPlane_ctor(physx::PxVec3 normal, float distance){
+    #if NATIVE //function start
+    ES physx::PxPlane W_PxPlane_R_PxPlane_P_PxVec3_P_float_C_PxPlane_ctor(physx::PxVec3 normal, float distance){
         auto nat_in_normal = (normal);
         auto nat_in_distance = (distance);
-        self.PxPlane(nat_in_normal, nat_in_distance);
+        return PxPlane(nat_in_normal, nat_in_distance);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPlane W_PxPlane_ctor(PxVec3 normal, float distance);
+    static extern PxPlane W_PxPlane_R_PxPlane_P_PxVec3_P_float_C_PxPlane_ctor(PxVec3 normal, float distance);
     
     public  PxPlane(PxVec3 normal, float distance){
         PxVec3 pvk_in_normal = (normal);
         float pvk_in_distance = (distance);
-        var _new = W_PxPlane_ctor(pvk_in_normal, pvk_in_distance);
+        var _new = W_PxPlane_R_PxPlane_P_PxVec3_P_float_C_PxPlane_ctor(pvk_in_normal, pvk_in_distance);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxPlane                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxPlane W_PxPlane_ctor(physx::PxVec3 point, physx::PxVec3 normal){
+    #if NATIVE //function start
+    ES physx::PxPlane W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_C_PxPlane_ctor(physx::PxVec3 point, physx::PxVec3 normal){
         auto nat_in_point = (point);
         auto nat_in_normal = (normal);
-        self.PxPlane(nat_in_point, nat_in_normal);
+        return PxPlane(nat_in_point, nat_in_normal);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPlane W_PxPlane_ctor(PxVec3 point, PxVec3 normal);
+    static extern PxPlane W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_C_PxPlane_ctor(PxVec3 point, PxVec3 normal);
     
     public  PxPlane(PxVec3 point, PxVec3 normal){
         PxVec3 pvk_in_point = (point);
         PxVec3 pvk_in_normal = (normal);
-        var _new = W_PxPlane_ctor(pvk_in_point, pvk_in_normal);
+        var _new = W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_C_PxPlane_ctor(pvk_in_point, pvk_in_normal);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxPlane                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxPlane W_PxPlane_ctor(physx::PxVec3 p0, physx::PxVec3 p1, physx::PxVec3 p2){
+    #if NATIVE //function start
+    ES physx::PxPlane W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_P_PxVec3_C_PxPlane_ctor(physx::PxVec3 p0, physx::PxVec3 p1, physx::PxVec3 p2){
         auto nat_in_p0 = (p0);
         auto nat_in_p1 = (p1);
         auto nat_in_p2 = (p2);
-        self.PxPlane(nat_in_p0, nat_in_p1, nat_in_p2);
+        return PxPlane(nat_in_p0, nat_in_p1, nat_in_p2);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPlane W_PxPlane_ctor(PxVec3 p0, PxVec3 p1, PxVec3 p2);
+    static extern PxPlane W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_P_PxVec3_C_PxPlane_ctor(PxVec3 p0, PxVec3 p1, PxVec3 p2);
     
     public  PxPlane(PxVec3 p0, PxVec3 p1, PxVec3 p2){
         PxVec3 pvk_in_p0 = (p0);
         PxVec3 pvk_in_p1 = (p1);
         PxVec3 pvk_in_p2 = (p2);
-        var _new = W_PxPlane_ctor(pvk_in_p0, pvk_in_p1, pvk_in_p2);
+        var _new = W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_P_PxVec3_C_PxPlane_ctor(pvk_in_p0, pvk_in_p1, pvk_in_p2);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    #if NATIVE
-    ES bool W_OP_EqualEqual(physx::PxPlane self, physx::PxPlane p){
+    #if NATIVE //function start
+    ES bool W_OP_EqualEqual_R_bool_P_PxPlane_C_PxPlane(physx::PxPlane self, physx::PxPlane p){
         auto nat_in_p = (p);
         auto retVal = self.operator==(nat_in_p);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_OP_EqualEqual(PxPlane selfBlt, PxPlane p);
+    static extern bool W_OP_EqualEqual_R_bool_P_PxPlane_C_PxPlane(PxPlane selfBlt, PxPlane p);
     
     public static bool operator==(PxPlane lhs, PxPlane p){
         PxPlane pvk_in_p = (p);
-        bool retVal = W_OP_EqualEqual(lhs, pvk_in_p);
+        bool retVal = W_OP_EqualEqual_R_bool_P_PxPlane_C_PxPlane(lhs, pvk_in_p);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       distance                                                               #
     //================================================================================
-    #if NATIVE
-    ES float W_distance(physx::PxPlane self, physx::PxVec3 p){
+    #if NATIVE //function start
+    ES float W_distance_R_float_P_PxVec3_C_PxPlane(physx::PxPlane self, physx::PxVec3 p){
         auto nat_in_p = (p);
         auto retVal = self.distance(nat_in_p);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_distance(PxPlane selfBlt, PxVec3 p);
+    static extern float W_distance_R_float_P_PxVec3_C_PxPlane(PxPlane selfBlt, PxVec3 p);
     
     public  float distance(PxVec3 p){
         PxVec3 pvk_in_p = (p);
-        float retVal = W_distance(this, pvk_in_p);
+        float retVal = W_distance_R_float_P_PxVec3_C_PxPlane(this, pvk_in_p);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       contains                                                               #
     //================================================================================
-    #if NATIVE
-    ES bool W_contains(physx::PxPlane self, physx::PxVec3 p){
+    #if NATIVE //function start
+    ES bool W_contains_R_bool_P_PxVec3_C_PxPlane(physx::PxPlane self, physx::PxVec3 p){
         auto nat_in_p = (p);
         auto retVal = self.contains(nat_in_p);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_contains(PxPlane selfBlt, PxVec3 p);
+    static extern bool W_contains_R_bool_P_PxVec3_C_PxPlane(PxPlane selfBlt, PxVec3 p);
     
     public  bool contains(PxVec3 p){
         PxVec3 pvk_in_p = (p);
-        bool retVal = W_contains(this, pvk_in_p);
+        bool retVal = W_contains_R_bool_P_PxVec3_C_PxPlane(this, pvk_in_p);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       project                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_project(physx::PxPlane self, physx::PxVec3 p){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_project_R_PxVec3_P_PxVec3_C_PxPlane(physx::PxPlane self, physx::PxVec3 p){
         auto nat_in_p = (p);
         auto retVal = self.project(nat_in_p);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_project(PxPlane selfBlt, PxVec3 p);
+    static extern PxVec3 W_project_R_PxVec3_P_PxVec3_C_PxPlane(PxPlane selfBlt, PxVec3 p);
     
     public  PxVec3 project(PxVec3 p){
         PxVec3 pvk_in_p = (p);
-        PxVec3 retVal = W_project(this, pvk_in_p);
+        PxVec3 retVal = W_project_R_PxVec3_P_PxVec3_C_PxPlane(this, pvk_in_p);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       pointInPlane                                                           #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_pointInPlane(physx::PxPlane self){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_pointInPlane_R_PxVec3_C_PxPlane(physx::PxPlane self){
         auto retVal = self.pointInPlane();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_pointInPlane(PxPlane selfBlt);
+    static extern PxVec3 W_pointInPlane_R_PxVec3_C_PxPlane(PxPlane selfBlt);
     
     public  PxVec3 pointInPlane(){
-        PxVec3 retVal = W_pointInPlane(this);
+        PxVec3 retVal = W_pointInPlane_R_PxVec3_C_PxPlane(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       normalize                                                              #
     //================================================================================
-    #if NATIVE
-    ES void W_normalize(physx::PxPlane self){
+    #if NATIVE //function start
+    ES void W_normalize_R_void_C_PxPlane(physx::PxPlane self){
         self.normalize();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_normalize(PxPlane selfBlt);
+    static extern void W_normalize_R_void_C_PxPlane(PxPlane selfBlt);
     
     public  void normalize(){
-        W_normalize(this);
+        W_normalize_R_void_C_PxPlane(this);
     }
-    #endif
+    #endif //function end
     
     
     //Skipped generated implicit entry: PxPlane
@@ -270,6 +274,6 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
     //Skipped generated implicit entry: operator=
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

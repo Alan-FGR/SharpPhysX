@@ -1,29 +1,33 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxArticulationLinkPtr {
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxArticulationLinkPtr : IPxArticulationLinkPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxArticulationLinkPtr
+    #endif //hierarchy
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close
 
 // Class physx::PxArticulation Manually Ignored
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxArticulationDriveCachePtr {
-    // PxArticulationDriveCache();
+    // PxArticulationDriveCache(/*NULLPARS*/);
     // PxArticulationDriveCache(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxArticulationDriveCachePtr lhs, /*NULLPARS*/);
     // PxArticulationDriveCache(/*NULLPARS*/);
@@ -31,20 +35,17 @@ public unsafe interface IPxArticulationDriveCachePtr {
     // UNPARSED_TYPE ~PxArticulationDriveCache(/*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxArticulationDriveCachePtr : IPxArticulationDriveCachePtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxArticulationDriveCachePtr
-    //================================================================================
-    //#       PxArticulationDriveCache                                               #
-    //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxArticulationDriveCache
-    Parameterless constructor not allowed
-    */
-    
+    #endif //hierarchy
+    //Skipped protected: PxArticulationDriveCache
     
     //Skipped generated implicit entry: PxArticulationDriveCache
     
@@ -57,6 +58,6 @@ public unsafe partial struct PxArticulationDriveCachePtr : IPxArticulationDriveC
     //Skipped generated implicit entry: ~PxArticulationDriveCache
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

@@ -1,9 +1,9 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
-#if !NATIVE
+#if !NATIVE //enum
 public enum PxRigidDynamicLockFlag : int {
     eLOCK_LINEAR_X = 1,   // eLOCK_LINEAR_X = (1 << 0)
     eLOCK_LINEAR_Y = 2,   // eLOCK_LINEAR_Y = (1 << 1)
@@ -12,7 +12,7 @@ public enum PxRigidDynamicLockFlag : int {
     eLOCK_ANGULAR_Y = 16, // eLOCK_ANGULAR_Y = (1 << 4)
     eLOCK_ANGULAR_Z = 32, // eLOCK_ANGULAR_Z = (1 << 5)
 }
-#endif
+#endif //enum
 
 #if !NATIVE
 public partial struct PxRigidDynamic {
@@ -23,24 +23,24 @@ public partial struct PxRigidDynamic {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short>
 // NATIVE SIG: 
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Pipe(physx::PxRigidDynamicLockFlag::Enum a, physx::PxRigidDynamicLockFlag::Enum b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxRigidDynamicLockFlag_ushort_P_PxRigidDynamicLockFlag_P_PxRigidDynamicLockFlag(physx::PxRigidDynamicLockFlag::Enum a, physx::PxRigidDynamicLockFlag::Enum b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator|(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Pipe(PxRigidDynamicLockFlag a, PxRigidDynamicLockFlag b);
+static extern UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxRigidDynamicLockFlag_ushort_P_PxRigidDynamicLockFlag_P_PxRigidDynamicLockFlag(PxRigidDynamicLockFlag a, PxRigidDynamicLockFlag b);
 
 public static UNPARSED_TYPE operator|(PxRigidDynamicLockFlag a, PxRigidDynamicLockFlag b){
     PxRigidDynamicLockFlag pvk_in_a = (a);
     PxRigidDynamicLockFlag pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Pipe(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Pipe_R_PxFlags_PxRigidDynamicLockFlag_ushort_P_PxRigidDynamicLockFlag_P_PxRigidDynamicLockFlag(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -48,24 +48,24 @@ public static UNPARSED_TYPE operator|(PxRigidDynamicLockFlag a, PxRigidDynamicLo
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short>
 // NATIVE SIG: 
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxRigidDynamicLockFlag::Enum a, physx::PxRigidDynamicLockFlag::Enum b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxRigidDynamicLockFlag_ushort_P_PxRigidDynamicLockFlag_P_PxRigidDynamicLockFlag(physx::PxRigidDynamicLockFlag::Enum a, physx::PxRigidDynamicLockFlag::Enum b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxRigidDynamicLockFlag a, PxRigidDynamicLockFlag b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxRigidDynamicLockFlag_ushort_P_PxRigidDynamicLockFlag_P_PxRigidDynamicLockFlag(PxRigidDynamicLockFlag a, PxRigidDynamicLockFlag b);
 
 public static UNPARSED_TYPE operator&(PxRigidDynamicLockFlag a, PxRigidDynamicLockFlag b){
     PxRigidDynamicLockFlag pvk_in_a = (a);
     PxRigidDynamicLockFlag pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_PxRigidDynamicLockFlag_ushort_P_PxRigidDynamicLockFlag_P_PxRigidDynamicLockFlag(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -73,29 +73,29 @@ public static UNPARSED_TYPE operator&(PxRigidDynamicLockFlag a, PxRigidDynamicLo
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short>
 // NATIVE SIG: 
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Tilde(physx::PxRigidDynamicLockFlag::Enum a){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxRigidDynamicLockFlag_ushort_P_PxRigidDynamicLockFlag(physx::PxRigidDynamicLockFlag::Enum a){
     auto nat_in_a = (a);
     auto retVal = physx::operator~(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Tilde(PxRigidDynamicLockFlag a);
+static extern UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxRigidDynamicLockFlag_ushort_P_PxRigidDynamicLockFlag(PxRigidDynamicLockFlag a);
 
 public static UNPARSED_TYPE operator~(PxRigidDynamicLockFlag a){
     PxRigidDynamicLockFlag pvk_in_a = (a);
-    UNPARSED_TYPE retVal = W_OP_Tilde(pvk_in_a);
+    UNPARSED_TYPE retVal = W_OP_Tilde_R_PxFlags_PxRigidDynamicLockFlag_ushort_P_PxRigidDynamicLockFlag(pvk_in_a);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 #if !NATIVE
 } // End PxRigidDynamic
 #endif
 
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxRigidDynamicPtr {
      void setKinematicTarget(PxTransform destination);
     // bool getKinematicTarget( target);
@@ -116,26 +116,31 @@ public unsafe interface IPxRigidDynamicPtr {
      void getSolverIterationCounts(uint* minPositionIters, uint* minVelocityIters);
      float getContactReportThreshold();
      void setContactReportThreshold(float threshold);
-     IntPtr getConcreteTypeName();
-    // PxRigidDynamic(ushort concreteType,  baseFlags);
-    // PxRigidDynamic( baseFlags);
-    // void ~PxRigidDynamic();
-     bool isKindOf(string name);
+     string getConcreteTypeName();
+    // PxRigidDynamic(/*NULLPARS*/);
+    // PxRigidDynamic(/*NULLPARS*/);
+    // UNPARSED_TYPE ~PxRigidDynamic(/*NULLPARS*/);
+    // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
     // PxRigidDynamic(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxRigidDynamicPtr lhs, /*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyPtr, IPxRigidDynamicPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxRigidActorPtr, PxRigidBodyPtr, PxRigidDynamicPtr
     public static implicit operator PxRigidActorPtr(PxRigidDynamicPtr obj){return *(PxRigidActorPtr*)&obj;}
     public static explicit operator PxRigidDynamicPtr(PxRigidActorPtr obj){return *(PxRigidDynamicPtr*)&obj;}
     public static implicit operator PxRigidBodyPtr(PxRigidDynamicPtr obj){return *(PxRigidBodyPtr*)&obj;}
     public static explicit operator PxRigidDynamicPtr(PxRigidBodyPtr obj){return *(PxRigidDynamicPtr*)&obj;}
+    #endif //hierarchy
     
+    #if !NATIVE //piping
     // ### Piping
     
     // --- PxRigidBodyPtr
@@ -183,9 +188,9 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     public  void setMaxContactImpulse(float maxImpulse){((PxRigidBodyPtr)this).setMaxContactImpulse(maxImpulse);}
     public  float getMaxContactImpulse(){return ((PxRigidBodyPtr)this).getMaxContactImpulse();}
     public  uint getInternalIslandNodeIndex(){return ((PxRigidBodyPtr)this).getInternalIslandNodeIndex();}
-    //public  PxRigidBody(ushort concreteType,  baseFlags){((PxRigidBodyPtr)this).PxRigidBody(concreteType, baseFlags);}
-    //public  PxRigidBody( baseFlags){((PxRigidBodyPtr)this).PxRigidBody(baseFlags);}
-    //public  void ~PxRigidBody(){((PxRigidBodyPtr)this).~PxRigidBody();}
+    //public  PxRigidBody(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidBody(/*NULLARGS*/);}
+    //public  PxRigidBody(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidBody(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxRigidBody(/*NULLPARS*/){((PxRigidBodyPtr)this).~PxRigidBody(/*NULLARGS*/);}
     //public  PxRigidBody(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidBody(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxRigidBodyPtr lhs, /*NULLPARS*/){return ((PxRigidBodyPtr)this).operator=(/*NULLARGS*/);}
     
@@ -203,30 +208,31 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     public  uint getNbConstraints(){return ((PxRigidBodyPtr)this).getNbConstraints();}
     //public  uint getConstraints( userBuffer, uint bufferSize){return ((PxRigidBodyPtr)this).getConstraints(userBuffer, bufferSize);}
     //public  uint getConstraints( userBuffer, uint bufferSize, uint startIndex){return ((PxRigidBodyPtr)this).getConstraints(userBuffer, bufferSize, startIndex);}
-    //public  PxRigidActor(ushort concreteType,  baseFlags){((PxRigidBodyPtr)this).PxRigidActor(concreteType, baseFlags);}
-    //public  PxRigidActor( baseFlags){((PxRigidBodyPtr)this).PxRigidActor(baseFlags);}
-    //public  void ~PxRigidActor(){((PxRigidBodyPtr)this).~PxRigidActor();}
+    //public  PxRigidActor(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public  PxRigidActor(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxRigidActor(/*NULLPARS*/){((PxRigidBodyPtr)this).~PxRigidActor(/*NULLARGS*/);}
     //public  PxRigidActor(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidActor(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxRigidActorPtr lhs, /*NULLPARS*/){return ((PxRigidBodyPtr)this).operator=(/*NULLARGS*/);}
     
-
+    #endif //piping
+    
     //================================================================================
     //#       setKinematicTarget                                                     #
     //================================================================================
-    #if NATIVE
-    ES void W_setKinematicTarget(physx::PxRigidDynamic* self, physx::PxTransform destination){
+    #if NATIVE //function start
+    ES void W_setKinematicTarget_R_void_P_PxTransform_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxTransform destination){
         auto nat_in_destination = (destination);
         self->setKinematicTarget(nat_in_destination);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setKinematicTarget(PxRigidDynamicPtr selfPtr, PxTransform destination);
+    static extern void W_setKinematicTarget_R_void_P_PxTransform_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr, PxTransform destination);
     
     public  void setKinematicTarget(PxTransform destination){
         PxTransform pvk_in_destination = (destination);
-        W_setKinematicTarget(this, pvk_in_destination);
+        W_setKinematicTarget_R_void_P_PxTransform_C_PxRigidDynamic(this, pvk_in_destination);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -234,117 +240,117 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     //================================================================================
     /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxTransform
     // NATIVE SIG: bool				getKinematicTarget(PxTransform& target)	const	= 0
-    #if NATIVE
-    ES bool W_getKinematicTarget(physx::PxRigidDynamic* self,  target){
+    #if NATIVE //function start
+    ES bool W_getKinematicTarget_R_bool_P__C_PxRigidDynamic(physx::PxRigidDynamic* self,  target){
         auto nat_in_target = (target);
         auto retVal = self->getKinematicTarget(nat_in_target);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_getKinematicTarget(PxRigidDynamicPtr selfPtr,  target);
+    static extern bool W_getKinematicTarget_R_bool_P__C_PxRigidDynamic(PxRigidDynamicPtr selfPtr,  target);
     
     public  bool getKinematicTarget( target){
          pvk_in_target = (target);
-        bool retVal = W_getKinematicTarget(this, pvk_in_target);
+        bool retVal = W_getKinematicTarget_R_bool_P__C_PxRigidDynamic(this, pvk_in_target);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
     //#       isSleeping                                                             #
     //================================================================================
-    #if NATIVE
-    ES bool W_isSleeping(physx::PxRigidDynamic* self){
+    #if NATIVE //function start
+    ES bool W_isSleeping_R_bool_C_PxRigidDynamic(physx::PxRigidDynamic* self){
         auto retVal = self->isSleeping();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isSleeping(PxRigidDynamicPtr selfPtr);
+    static extern bool W_isSleeping_R_bool_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr);
     
     public  bool isSleeping(){
-        bool retVal = W_isSleeping(this);
+        bool retVal = W_isSleeping_R_bool_C_PxRigidDynamic(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       setSleepThreshold                                                      #
     //================================================================================
-    #if NATIVE
-    ES void W_setSleepThreshold(physx::PxRigidDynamic* self, physx::PxReal threshold){
+    #if NATIVE //function start
+    ES void W_setSleepThreshold_R_void_P_float_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxReal threshold){
         auto nat_in_threshold = (threshold);
         self->setSleepThreshold(nat_in_threshold);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setSleepThreshold(PxRigidDynamicPtr selfPtr, float threshold);
+    static extern void W_setSleepThreshold_R_void_P_float_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr, float threshold);
     
     public  void setSleepThreshold(float threshold){
         float pvk_in_threshold = (threshold);
-        W_setSleepThreshold(this, pvk_in_threshold);
+        W_setSleepThreshold_R_void_P_float_C_PxRigidDynamic(this, pvk_in_threshold);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getSleepThreshold                                                      #
     //================================================================================
-    #if NATIVE
-    ES physx::PxReal W_getSleepThreshold(physx::PxRigidDynamic* self){
+    #if NATIVE //function start
+    ES physx::PxReal W_getSleepThreshold_R_float_C_PxRigidDynamic(physx::PxRigidDynamic* self){
         auto retVal = self->getSleepThreshold();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getSleepThreshold(PxRigidDynamicPtr selfPtr);
+    static extern float W_getSleepThreshold_R_float_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr);
     
     public  float getSleepThreshold(){
-        float retVal = W_getSleepThreshold(this);
+        float retVal = W_getSleepThreshold_R_float_C_PxRigidDynamic(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       setStabilizationThreshold                                              #
     //================================================================================
-    #if NATIVE
-    ES void W_setStabilizationThreshold(physx::PxRigidDynamic* self, physx::PxReal threshold){
+    #if NATIVE //function start
+    ES void W_setStabilizationThreshold_R_void_P_float_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxReal threshold){
         auto nat_in_threshold = (threshold);
         self->setStabilizationThreshold(nat_in_threshold);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setStabilizationThreshold(PxRigidDynamicPtr selfPtr, float threshold);
+    static extern void W_setStabilizationThreshold_R_void_P_float_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr, float threshold);
     
     public  void setStabilizationThreshold(float threshold){
         float pvk_in_threshold = (threshold);
-        W_setStabilizationThreshold(this, pvk_in_threshold);
+        W_setStabilizationThreshold_R_void_P_float_C_PxRigidDynamic(this, pvk_in_threshold);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getStabilizationThreshold                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxReal W_getStabilizationThreshold(physx::PxRigidDynamic* self){
+    #if NATIVE //function start
+    ES physx::PxReal W_getStabilizationThreshold_R_float_C_PxRigidDynamic(physx::PxRigidDynamic* self){
         auto retVal = self->getStabilizationThreshold();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getStabilizationThreshold(PxRigidDynamicPtr selfPtr);
+    static extern float W_getStabilizationThreshold_R_float_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr);
     
     public  float getStabilizationThreshold(){
-        float retVal = W_getStabilizationThreshold(this);
+        float retVal = W_getStabilizationThreshold_R_float_C_PxRigidDynamic(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -352,41 +358,41 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxRigidDynamicLockFlags
     // NATIVE SIG: PxRigidDynamicLockFlags getRigidDynamicLockFlags() const = 0
-    #if NATIVE
-    ES UNPARSED_TYPE W_getRigidDynamicLockFlags(physx::PxRigidDynamic* self){
+    #if NATIVE //function start
+    ES const UNPARSED_TYPE W_getRigidDynamicLockFlags_R_Enum, ushort>_C_PxRigidDynamic(physx::PxRigidDynamic* self){
         auto retVal = self->getRigidDynamicLockFlags();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getRigidDynamicLockFlags(PxRigidDynamicPtr selfPtr);
+    static extern UNPARSED_TYPE W_getRigidDynamicLockFlags_R_Enum, ushort>_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr);
     
     public  UNPARSED_TYPE getRigidDynamicLockFlags(){
-        UNPARSED_TYPE retVal = W_getRigidDynamicLockFlags(this);
+        UNPARSED_TYPE retVal = W_getRigidDynamicLockFlags_R_Enum, ushort>_C_PxRigidDynamic(this);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
     //#       setRigidDynamicLockFlag                                                #
     //================================================================================
-    #if NATIVE
-    ES void W_setRigidDynamicLockFlag(physx::PxRigidDynamic* self, physx::PxRigidDynamicLockFlag::Enum flag, bool value){
+    #if NATIVE //function start
+    ES void W_setRigidDynamicLockFlag_R_void_P_PxRigidDynamicLockFlag_P_bool_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxRigidDynamicLockFlag::Enum flag, bool value){
         auto nat_in_flag = (flag);
         auto nat_in_value = (value);
         self->setRigidDynamicLockFlag(nat_in_flag, nat_in_value);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setRigidDynamicLockFlag(PxRigidDynamicPtr selfPtr, PxRigidDynamicLockFlag flag, bool value);
+    static extern void W_setRigidDynamicLockFlag_R_void_P_PxRigidDynamicLockFlag_P_bool_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr, PxRigidDynamicLockFlag flag, bool value);
     
     public  void setRigidDynamicLockFlag(PxRigidDynamicLockFlag flag, bool value){
         PxRigidDynamicLockFlag pvk_in_flag = (flag);
         bool pvk_in_value = (value);
-        W_setRigidDynamicLockFlag(this, pvk_in_flag, pvk_in_value);
+        W_setRigidDynamicLockFlag_R_void_P_PxRigidDynamicLockFlag_P_bool_C_PxRigidDynamic(this, pvk_in_flag, pvk_in_value);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -394,308 +400,226 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxRigidDynamicLockFlags
     // NATIVE SIG: void				setRigidDynamicLockFlags(PxRigidDynamicLockFlags flags) = 0
-    #if NATIVE
-    ES void W_setRigidDynamicLockFlags(physx::PxRigidDynamic* self,  flags){
+    #if NATIVE //function start
+    ES void W_setRigidDynamicLockFlags_R_void_P__C_PxRigidDynamic(physx::PxRigidDynamic* self,  flags){
         auto nat_in_flags = (flags);
         self->setRigidDynamicLockFlags(nat_in_flags);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setRigidDynamicLockFlags(PxRigidDynamicPtr selfPtr,  flags);
+    static extern void W_setRigidDynamicLockFlags_R_void_P__C_PxRigidDynamic(PxRigidDynamicPtr selfPtr,  flags);
     
     public  void setRigidDynamicLockFlags( flags){
          pvk_in_flags = (flags);
-        W_setRigidDynamicLockFlags(this, pvk_in_flags);
+        W_setRigidDynamicLockFlags_R_void_P__C_PxRigidDynamic(this, pvk_in_flags);
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
     //#       setWakeCounter                                                         #
     //================================================================================
-    #if NATIVE
-    ES void W_setWakeCounter(physx::PxRigidDynamic* self, physx::PxReal wakeCounterValue){
+    #if NATIVE //function start
+    ES void W_setWakeCounter_R_void_P_float_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxReal wakeCounterValue){
         auto nat_in_wakeCounterValue = (wakeCounterValue);
         self->setWakeCounter(nat_in_wakeCounterValue);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setWakeCounter(PxRigidDynamicPtr selfPtr, float wakeCounterValue);
+    static extern void W_setWakeCounter_R_void_P_float_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr, float wakeCounterValue);
     
     public  void setWakeCounter(float wakeCounterValue){
         float pvk_in_wakeCounterValue = (wakeCounterValue);
-        W_setWakeCounter(this, pvk_in_wakeCounterValue);
+        W_setWakeCounter_R_void_P_float_C_PxRigidDynamic(this, pvk_in_wakeCounterValue);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getWakeCounter                                                         #
     //================================================================================
-    #if NATIVE
-    ES physx::PxReal W_getWakeCounter(physx::PxRigidDynamic* self){
+    #if NATIVE //function start
+    ES physx::PxReal W_getWakeCounter_R_float_C_PxRigidDynamic(physx::PxRigidDynamic* self){
         auto retVal = self->getWakeCounter();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getWakeCounter(PxRigidDynamicPtr selfPtr);
+    static extern float W_getWakeCounter_R_float_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr);
     
     public  float getWakeCounter(){
-        float retVal = W_getWakeCounter(this);
+        float retVal = W_getWakeCounter_R_float_C_PxRigidDynamic(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       wakeUp                                                                 #
     //================================================================================
-    #if NATIVE
-    ES void W_wakeUp(physx::PxRigidDynamic* self){
+    #if NATIVE //function start
+    ES void W_wakeUp_R_void_C_PxRigidDynamic(physx::PxRigidDynamic* self){
         self->wakeUp();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_wakeUp(PxRigidDynamicPtr selfPtr);
+    static extern void W_wakeUp_R_void_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr);
     
     public  void wakeUp(){
-        W_wakeUp(this);
+        W_wakeUp_R_void_C_PxRigidDynamic(this);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       putToSleep                                                             #
     //================================================================================
-    #if NATIVE
-    ES void W_putToSleep(physx::PxRigidDynamic* self){
+    #if NATIVE //function start
+    ES void W_putToSleep_R_void_C_PxRigidDynamic(physx::PxRigidDynamic* self){
         self->putToSleep();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_putToSleep(PxRigidDynamicPtr selfPtr);
+    static extern void W_putToSleep_R_void_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr);
     
     public  void putToSleep(){
-        W_putToSleep(this);
+        W_putToSleep_R_void_C_PxRigidDynamic(this);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       setSolverIterationCounts                                               #
     //================================================================================
-    #if NATIVE
-    ES void W_setSolverIterationCounts(physx::PxRigidDynamic* self, physx::PxU32 minPositionIters, physx::PxU32 minVelocityIters){
+    #if NATIVE //function start
+    ES void W_setSolverIterationCounts_R_void_P_uint_P_uint_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxU32 minPositionIters, physx::PxU32 minVelocityIters){
         auto nat_in_minPositionIters = (minPositionIters);
         auto nat_in_minVelocityIters = (minVelocityIters);
         self->setSolverIterationCounts(nat_in_minPositionIters, nat_in_minVelocityIters);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setSolverIterationCounts(PxRigidDynamicPtr selfPtr, uint minPositionIters, uint minVelocityIters);
+    static extern void W_setSolverIterationCounts_R_void_P_uint_P_uint_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr, uint minPositionIters, uint minVelocityIters);
     
     public  void setSolverIterationCounts(uint minPositionIters, uint minVelocityIters){
         uint pvk_in_minPositionIters = (minPositionIters);
         uint pvk_in_minVelocityIters = (minVelocityIters);
-        W_setSolverIterationCounts(this, pvk_in_minPositionIters, pvk_in_minVelocityIters);
+        W_setSolverIterationCounts_R_void_P_uint_P_uint_C_PxRigidDynamic(this, pvk_in_minPositionIters, pvk_in_minVelocityIters);
     }
-    #endif
+    #endif //function end
     
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
-    #if NATIVE
-    ES void W_setSolverIterationCounts(physx::PxRigidDynamic* self, physx::PxU32 minPositionIters){
+    #if NATIVE //function start
+    ES void W_setSolverIterationCounts_R_void_P_uint_OL1_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxU32 minPositionIters){
         auto nat_in_minPositionIters = (minPositionIters);
         self->setSolverIterationCounts(nat_in_minPositionIters);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setSolverIterationCounts(PxRigidDynamicPtr selfPtr, uint minPositionIters);
+    static extern void W_setSolverIterationCounts_R_void_P_uint_OL1_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr, uint minPositionIters);
     
     public  void setSolverIterationCounts(uint minPositionIters){
         uint pvk_in_minPositionIters = (minPositionIters);
-        W_setSolverIterationCounts(this, pvk_in_minPositionIters);
+        W_setSolverIterationCounts_R_void_P_uint_OL1_C_PxRigidDynamic(this, pvk_in_minPositionIters);
     }
-    #endif
+    #endif //function end
     
     
     
     //================================================================================
     //#       getSolverIterationCounts                                               #
     //================================================================================
-    #if NATIVE
-    ES void W_getSolverIterationCounts(physx::PxRigidDynamic* self, physx::PxU32& minPositionIters, physx::PxU32& minVelocityIters){
+    #if NATIVE //function start
+    ES void W_getSolverIterationCounts_R_void_P_uintPtr_P_uintPtr_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxU32& minPositionIters, physx::PxU32& minVelocityIters){
         auto nat_in_minPositionIters = (minPositionIters);
         auto nat_in_minVelocityIters = (minVelocityIters);
         self->getSolverIterationCounts(nat_in_minPositionIters, nat_in_minVelocityIters);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_getSolverIterationCounts(PxRigidDynamicPtr selfPtr, uint* minPositionIters, uint* minVelocityIters);
+    static extern void W_getSolverIterationCounts_R_void_P_uintPtr_P_uintPtr_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr, uint* minPositionIters, uint* minVelocityIters);
     
     public  void getSolverIterationCounts(uint* minPositionIters, uint* minVelocityIters){
         uint* pvk_in_minPositionIters = (minPositionIters);
         uint* pvk_in_minVelocityIters = (minVelocityIters);
-        W_getSolverIterationCounts(this, pvk_in_minPositionIters, pvk_in_minVelocityIters);
+        W_getSolverIterationCounts_R_void_P_uintPtr_P_uintPtr_C_PxRigidDynamic(this, pvk_in_minPositionIters, pvk_in_minVelocityIters);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getContactReportThreshold                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxReal W_getContactReportThreshold(physx::PxRigidDynamic* self){
+    #if NATIVE //function start
+    ES physx::PxReal W_getContactReportThreshold_R_float_C_PxRigidDynamic(physx::PxRigidDynamic* self){
         auto retVal = self->getContactReportThreshold();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getContactReportThreshold(PxRigidDynamicPtr selfPtr);
+    static extern float W_getContactReportThreshold_R_float_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr);
     
     public  float getContactReportThreshold(){
-        float retVal = W_getContactReportThreshold(this);
+        float retVal = W_getContactReportThreshold_R_float_C_PxRigidDynamic(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       setContactReportThreshold                                              #
     //================================================================================
-    #if NATIVE
-    ES void W_setContactReportThreshold(physx::PxRigidDynamic* self, physx::PxReal threshold){
+    #if NATIVE //function start
+    ES void W_setContactReportThreshold_R_void_P_float_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxReal threshold){
         auto nat_in_threshold = (threshold);
         self->setContactReportThreshold(nat_in_threshold);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setContactReportThreshold(PxRigidDynamicPtr selfPtr, float threshold);
+    static extern void W_setContactReportThreshold_R_void_P_float_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr, float threshold);
     
     public  void setContactReportThreshold(float threshold){
         float pvk_in_threshold = (threshold);
-        W_setContactReportThreshold(this, pvk_in_threshold);
+        W_setContactReportThreshold_R_void_P_float_C_PxRigidDynamic(this, pvk_in_threshold);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getConcreteTypeName                                                    #
     //================================================================================
-    #if NATIVE
-    ES sbyte* W_getConcreteTypeName(physx::PxRigidDynamic* self){
+    #if NATIVE //function start
+    ES const char* W_getConcreteTypeName_R_string_C_PxRigidDynamic(physx::PxRigidDynamic* self){
         auto retVal = self->getConcreteTypeName();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_getConcreteTypeName(PxRigidDynamicPtr selfPtr);
+    static extern string W_getConcreteTypeName_R_string_C_PxRigidDynamic(PxRigidDynamicPtr selfPtr);
     
-    public  IntPtr getConcreteTypeName(){
-        IntPtr retVal = W_getConcreteTypeName(this);
+    public  string getConcreteTypeName(){
+        string retVal = W_getConcreteTypeName_R_string_C_PxRigidDynamic(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
-    //================================================================================
-    //#       PxRigidDynamic                                                         #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxRigidDynamic
-    Unresolved parameter type physx::PxBaseFlags
-    // NATIVE SIG: PX_INLINE						PxRigidDynamic(PxType concreteType, PxBaseFlags baseFlags) : PxRigidBody(concreteType, baseFlags) {}
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxRigidDynamic_ctor(physx::PxType concreteType,  baseFlags){
-        auto nat_in_concreteType = (concreteType);
-        auto nat_in_baseFlags = (baseFlags);
-        self->PxRigidDynamic(nat_in_concreteType, nat_in_baseFlags);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxRigidDynamic_ctor(ushort concreteType,  baseFlags);
+    //Skipped protected: PxRigidDynamic
     
-    public  PxRigidDynamic(ushort concreteType,  baseFlags){
-        ushort pvk_in_concreteType = (concreteType);
-         pvk_in_baseFlags = (baseFlags);
-        var _new = W_PxRigidDynamic_ctor(pvk_in_concreteType, pvk_in_baseFlags);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped protected: PxRigidDynamic
     
+    //Skipped protected: ~PxRigidDynamic
     
-    //================================================================================
-    //#       PxRigidDynamic                                                         #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxRigidDynamic
-    Unresolved parameter type physx::PxBaseFlags
-    // NATIVE SIG: PX_INLINE						PxRigidDynamic(PxBaseFlags baseFlags) : PxRigidBody(baseFlags) {}
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxRigidDynamic_ctor( baseFlags){
-        auto nat_in_baseFlags = (baseFlags);
-        self->PxRigidDynamic(nat_in_baseFlags);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxRigidDynamic_ctor( baseFlags);
-    
-    public  PxRigidDynamic( baseFlags){
-         pvk_in_baseFlags = (baseFlags);
-        var _new = W_PxRigidDynamic_ctor(pvk_in_baseFlags);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       ~PxRigidDynamic                                                        #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: virtual							~PxRigidDynamic() {}
-    #if NATIVE
-    ES void W_~PxRigidDynamic(physx::PxRigidDynamic* self){
-        self->~PxRigidDynamic();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxRigidDynamic(PxRigidDynamicPtr selfPtr);
-    
-    public  void ~PxRigidDynamic(){
-        W_~PxRigidDynamic(this);
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       isKindOf                                                               #
-    //================================================================================
-    #if NATIVE
-    ES bool W_isKindOf(physx::PxRigidDynamic* self, const char* name){
-        auto nat_in_name = (name);
-        auto retVal = self->isKindOf(nat_in_name);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isKindOf(PxRigidDynamicPtr selfPtr, string name);
-    
-    public  bool isKindOf(string name){
-        string pvk_in_name = (name);
-        bool retVal = W_isKindOf(this, pvk_in_name);
-        return retVal;
-    }
-    #endif
-    
+    //Skipped protected: isKindOf
     
     //Skipped generated implicit entry: PxRigidDynamic
     
     //Skipped generated implicit entry: operator=
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close
 
 // Class physx::PxRigidDynamicLockFlag is enum namespace

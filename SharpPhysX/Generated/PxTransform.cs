@@ -1,11 +1,11 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxTransform {
     // PxTransform();
     // PxTransform(PxVec3 position);
@@ -38,14 +38,18 @@ public unsafe interface IPxTransform {
     //static UNPARSED_TYPE operator=(PxTransform lhs, /*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxTransform : IPxTransform { // blittable
     public PxQuat q;
     public PxVec3 p;
 
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxTransform
+    #endif //hierarchy
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
@@ -57,201 +61,201 @@ public unsafe partial struct PxTransform : IPxTransform { // blittable
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
-    #if NATIVE
-    ES physx::PxTransform W_PxTransform_ctor(physx::PxVec3 position){
+    #if NATIVE //function start
+    ES physx::PxTransform W_PxTransform_R_PxTransform_P_PxVec3_C_PxTransform_ctor(physx::PxVec3 position){
         auto nat_in_position = (position);
-        self.PxTransform(nat_in_position);
+        return PxTransform(nat_in_position);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_PxTransform_ctor(PxVec3 position);
+    static extern PxTransform W_PxTransform_R_PxTransform_P_PxVec3_C_PxTransform_ctor(PxVec3 position);
     
     public  PxTransform(PxVec3 position){
         PxVec3 pvk_in_position = (position);
-        var _new = W_PxTransform_ctor(pvk_in_position);
+        var _new = W_PxTransform_R_PxTransform_P_PxVec3_C_PxTransform_ctor(pvk_in_position);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
-    #if NATIVE
-    ES physx::PxTransform W_PxTransform_ctor(physx::PxIDENTITY r){
+    #if NATIVE //function start
+    ES physx::PxTransform W_PxTransform_R_PxTransform_P_PxIDENTITY_C_PxTransform_ctor(physx::PxIDENTITY r){
         auto nat_in_r = (r);
-        self.PxTransform(nat_in_r);
+        return PxTransform(nat_in_r);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_PxTransform_ctor(PxIDENTITY r);
+    static extern PxTransform W_PxTransform_R_PxTransform_P_PxIDENTITY_C_PxTransform_ctor(PxIDENTITY r);
     
     public  PxTransform(PxIDENTITY r){
         PxIDENTITY pvk_in_r = (r);
-        var _new = W_PxTransform_ctor(pvk_in_r);
+        var _new = W_PxTransform_R_PxTransform_P_PxIDENTITY_C_PxTransform_ctor(pvk_in_r);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
-    #if NATIVE
-    ES physx::PxTransform W_PxTransform_ctor(physx::PxQuat orientation){
+    #if NATIVE //function start
+    ES physx::PxTransform W_PxTransform_R_PxTransform_P_PxQuat_C_PxTransform_ctor(physx::PxQuat orientation){
         auto nat_in_orientation = (orientation);
-        self.PxTransform(nat_in_orientation);
+        return PxTransform(nat_in_orientation);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_PxTransform_ctor(PxQuat orientation);
+    static extern PxTransform W_PxTransform_R_PxTransform_P_PxQuat_C_PxTransform_ctor(PxQuat orientation);
     
     public  PxTransform(PxQuat orientation){
         PxQuat pvk_in_orientation = (orientation);
-        var _new = W_PxTransform_ctor(pvk_in_orientation);
+        var _new = W_PxTransform_R_PxTransform_P_PxQuat_C_PxTransform_ctor(pvk_in_orientation);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
-    #if NATIVE
-    ES physx::PxTransform W_PxTransform_ctor(float x, float y, float z, physx::PxQuat aQ){
+    #if NATIVE //function start
+    ES physx::PxTransform W_PxTransform_R_PxTransform_P_float_P_float_P_float_P_PxQuat_C_PxTransform_ctor(float x, float y, float z, physx::PxQuat aQ){
         auto nat_in_x = (x);
         auto nat_in_y = (y);
         auto nat_in_z = (z);
         auto nat_in_aQ = (aQ);
-        self.PxTransform(nat_in_x, nat_in_y, nat_in_z, nat_in_aQ);
+        return PxTransform(nat_in_x, nat_in_y, nat_in_z, nat_in_aQ);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_PxTransform_ctor(float x, float y, float z, PxQuat aQ);
+    static extern PxTransform W_PxTransform_R_PxTransform_P_float_P_float_P_float_P_PxQuat_C_PxTransform_ctor(float x, float y, float z, PxQuat aQ);
     
     public  PxTransform(float x, float y, float z, PxQuat aQ){
         float pvk_in_x = (x);
         float pvk_in_y = (y);
         float pvk_in_z = (z);
         PxQuat pvk_in_aQ = (aQ);
-        var _new = W_PxTransform_ctor(pvk_in_x, pvk_in_y, pvk_in_z, pvk_in_aQ);
+        var _new = W_PxTransform_R_PxTransform_P_float_P_float_P_float_P_PxQuat_C_PxTransform_ctor(pvk_in_x, pvk_in_y, pvk_in_z, pvk_in_aQ);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
-    #if NATIVE
-    ES physx::PxTransform W_PxTransform_ctor(float x, float y, float z){
+    #if NATIVE //function start
+    ES physx::PxTransform W_PxTransform_R_PxTransform_P_float_P_float_P_float_OL1_C_PxTransform_ctor(float x, float y, float z){
         auto nat_in_x = (x);
         auto nat_in_y = (y);
         auto nat_in_z = (z);
-        self.PxTransform(nat_in_x, nat_in_y, nat_in_z);
+        return PxTransform(nat_in_x, nat_in_y, nat_in_z);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_PxTransform_ctor(float x, float y, float z);
+    static extern PxTransform W_PxTransform_R_PxTransform_P_float_P_float_P_float_OL1_C_PxTransform_ctor(float x, float y, float z);
     
     public  PxTransform(float x, float y, float z){
         float pvk_in_x = (x);
         float pvk_in_y = (y);
         float pvk_in_z = (z);
-        var _new = W_PxTransform_ctor(pvk_in_x, pvk_in_y, pvk_in_z);
+        var _new = W_PxTransform_R_PxTransform_P_float_P_float_P_float_OL1_C_PxTransform_ctor(pvk_in_x, pvk_in_y, pvk_in_z);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
-    #if NATIVE
-    ES physx::PxTransform W_PxTransform_ctor(physx::PxVec3 p0, physx::PxQuat q0){
+    #if NATIVE //function start
+    ES physx::PxTransform W_PxTransform_R_PxTransform_P_PxVec3_P_PxQuat_C_PxTransform_ctor(physx::PxVec3 p0, physx::PxQuat q0){
         auto nat_in_p0 = (p0);
         auto nat_in_q0 = (q0);
-        self.PxTransform(nat_in_p0, nat_in_q0);
+        return PxTransform(nat_in_p0, nat_in_q0);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_PxTransform_ctor(PxVec3 p0, PxQuat q0);
+    static extern PxTransform W_PxTransform_R_PxTransform_P_PxVec3_P_PxQuat_C_PxTransform_ctor(PxVec3 p0, PxQuat q0);
     
     public  PxTransform(PxVec3 p0, PxQuat q0){
         PxVec3 pvk_in_p0 = (p0);
         PxQuat pvk_in_q0 = (q0);
-        var _new = W_PxTransform_ctor(pvk_in_p0, pvk_in_q0);
+        var _new = W_PxTransform_R_PxTransform_P_PxVec3_P_PxQuat_C_PxTransform_ctor(pvk_in_p0, pvk_in_q0);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxTransform                                                            #
     //================================================================================
-    #if NATIVE
-    ES physx::PxTransform W_PxTransform_ctor(physx::PxMat44 m){
+    #if NATIVE //function start
+    ES physx::PxTransform W_PxTransform_R_PxTransform_P_PxMat44_C_PxTransform_ctor(physx::PxMat44 m){
         auto nat_in_m = (m);
-        self.PxTransform(nat_in_m);
+        return PxTransform(nat_in_m);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_PxTransform_ctor(PxMat44 m);
+    static extern PxTransform W_PxTransform_R_PxTransform_P_PxMat44_C_PxTransform_ctor(PxMat44 m);
     
     public  PxTransform(PxMat44 m){
         PxMat44 pvk_in_m = (m);
-        var _new = W_PxTransform_ctor(pvk_in_m);
+        var _new = W_PxTransform_R_PxTransform_P_PxMat44_C_PxTransform_ctor(pvk_in_m);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    #if NATIVE
-    ES bool W_OP_EqualEqual(physx::PxTransform self, physx::PxTransform t){
+    #if NATIVE //function start
+    ES bool W_OP_EqualEqual_R_bool_P_PxTransform_C_PxTransform(physx::PxTransform self, physx::PxTransform t){
         auto nat_in_t = (t);
         auto retVal = self.operator==(nat_in_t);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_OP_EqualEqual(PxTransform selfBlt, PxTransform t);
+    static extern bool W_OP_EqualEqual_R_bool_P_PxTransform_C_PxTransform(PxTransform selfBlt, PxTransform t);
     
     public static bool operator==(PxTransform lhs, PxTransform t){
         PxTransform pvk_in_t = (t);
-        bool retVal = W_OP_EqualEqual(lhs, pvk_in_t);
+        bool retVal = W_OP_EqualEqual_R_bool_P_PxTransform_C_PxTransform(lhs, pvk_in_t);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxTransform W_OP_Star(physx::PxTransform self, physx::PxTransform x){
+    #if NATIVE //function start
+    ES physx::PxTransform W_OP_Star_R_PxTransform_P_PxTransform_C_PxTransform(physx::PxTransform self, physx::PxTransform x){
         auto nat_in_x = (x);
         auto retVal = self.operator*(nat_in_x);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_OP_Star(PxTransform selfBlt, PxTransform x);
+    static extern PxTransform W_OP_Star_R_PxTransform_P_PxTransform_C_PxTransform(PxTransform selfBlt, PxTransform x);
     
     public static PxTransform operator*(PxTransform lhs, PxTransform x){
         PxTransform pvk_in_x = (x);
-        PxTransform retVal = W_OP_Star(lhs, pvk_in_x);
+        PxTransform retVal = W_OP_Star_R_PxTransform_P_PxTransform_C_PxTransform(lhs, pvk_in_x);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -264,264 +268,264 @@ public unsafe partial struct PxTransform : IPxTransform { // blittable
     //================================================================================
     //#       getInverse                                                             #
     //================================================================================
-    #if NATIVE
-    ES physx::PxTransform W_getInverse(physx::PxTransform self){
+    #if NATIVE //function start
+    ES physx::PxTransform W_getInverse_R_PxTransform_C_PxTransform(physx::PxTransform self){
         auto retVal = self.getInverse();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_getInverse(PxTransform selfBlt);
+    static extern PxTransform W_getInverse_R_PxTransform_C_PxTransform(PxTransform selfBlt);
     
     public  PxTransform getInverse(){
-        PxTransform retVal = W_getInverse(this);
+        PxTransform retVal = W_getInverse_R_PxTransform_C_PxTransform(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       transform                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_transform(physx::PxTransform self, physx::PxVec3 input){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_transform_R_PxVec3_P_PxVec3_C_PxTransform(physx::PxTransform self, physx::PxVec3 input){
         auto nat_in_input = (input);
         auto retVal = self.transform(nat_in_input);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_transform(PxTransform selfBlt, PxVec3 input);
+    static extern PxVec3 W_transform_R_PxVec3_P_PxVec3_C_PxTransform(PxTransform selfBlt, PxVec3 input);
     
     public  PxVec3 transform(PxVec3 input){
         PxVec3 pvk_in_input = (input);
-        PxVec3 retVal = W_transform(this, pvk_in_input);
+        PxVec3 retVal = W_transform_R_PxVec3_P_PxVec3_C_PxTransform(this, pvk_in_input);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       transformInv                                                           #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_transformInv(physx::PxTransform self, physx::PxVec3 input){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_transformInv_R_PxVec3_P_PxVec3_C_PxTransform(physx::PxTransform self, physx::PxVec3 input){
         auto nat_in_input = (input);
         auto retVal = self.transformInv(nat_in_input);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_transformInv(PxTransform selfBlt, PxVec3 input);
+    static extern PxVec3 W_transformInv_R_PxVec3_P_PxVec3_C_PxTransform(PxTransform selfBlt, PxVec3 input);
     
     public  PxVec3 transformInv(PxVec3 input){
         PxVec3 pvk_in_input = (input);
-        PxVec3 retVal = W_transformInv(this, pvk_in_input);
+        PxVec3 retVal = W_transformInv_R_PxVec3_P_PxVec3_C_PxTransform(this, pvk_in_input);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       rotate                                                                 #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_rotate(physx::PxTransform self, physx::PxVec3 input){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_rotate_R_PxVec3_P_PxVec3_C_PxTransform(physx::PxTransform self, physx::PxVec3 input){
         auto nat_in_input = (input);
         auto retVal = self.rotate(nat_in_input);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_rotate(PxTransform selfBlt, PxVec3 input);
+    static extern PxVec3 W_rotate_R_PxVec3_P_PxVec3_C_PxTransform(PxTransform selfBlt, PxVec3 input);
     
     public  PxVec3 rotate(PxVec3 input){
         PxVec3 pvk_in_input = (input);
-        PxVec3 retVal = W_rotate(this, pvk_in_input);
+        PxVec3 retVal = W_rotate_R_PxVec3_P_PxVec3_C_PxTransform(this, pvk_in_input);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       rotateInv                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_rotateInv(physx::PxTransform self, physx::PxVec3 input){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_rotateInv_R_PxVec3_P_PxVec3_C_PxTransform(physx::PxTransform self, physx::PxVec3 input){
         auto nat_in_input = (input);
         auto retVal = self.rotateInv(nat_in_input);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_rotateInv(PxTransform selfBlt, PxVec3 input);
+    static extern PxVec3 W_rotateInv_R_PxVec3_P_PxVec3_C_PxTransform(PxTransform selfBlt, PxVec3 input);
     
     public  PxVec3 rotateInv(PxVec3 input){
         PxVec3 pvk_in_input = (input);
-        PxVec3 retVal = W_rotateInv(this, pvk_in_input);
+        PxVec3 retVal = W_rotateInv_R_PxVec3_P_PxVec3_C_PxTransform(this, pvk_in_input);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       transform                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxTransform W_transform(physx::PxTransform self, physx::PxTransform src){
+    #if NATIVE //function start
+    ES physx::PxTransform W_transform_R_PxTransform_P_PxTransform_C_PxTransform(physx::PxTransform self, physx::PxTransform src){
         auto nat_in_src = (src);
         auto retVal = self.transform(nat_in_src);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_transform(PxTransform selfBlt, PxTransform src);
+    static extern PxTransform W_transform_R_PxTransform_P_PxTransform_C_PxTransform(PxTransform selfBlt, PxTransform src);
     
     public  PxTransform transform(PxTransform src){
         PxTransform pvk_in_src = (src);
-        PxTransform retVal = W_transform(this, pvk_in_src);
+        PxTransform retVal = W_transform_R_PxTransform_P_PxTransform_C_PxTransform(this, pvk_in_src);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       isValid                                                                #
     //================================================================================
-    #if NATIVE
-    ES bool W_isValid(physx::PxTransform self){
+    #if NATIVE //function start
+    ES bool W_isValid_R_bool_C_PxTransform(physx::PxTransform self){
         auto retVal = self.isValid();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isValid(PxTransform selfBlt);
+    static extern bool W_isValid_R_bool_C_PxTransform(PxTransform selfBlt);
     
     public  bool isValid(){
-        bool retVal = W_isValid(this);
+        bool retVal = W_isValid_R_bool_C_PxTransform(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       isSane                                                                 #
     //================================================================================
-    #if NATIVE
-    ES bool W_isSane(physx::PxTransform self){
+    #if NATIVE //function start
+    ES bool W_isSane_R_bool_C_PxTransform(physx::PxTransform self){
         auto retVal = self.isSane();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isSane(PxTransform selfBlt);
+    static extern bool W_isSane_R_bool_C_PxTransform(PxTransform selfBlt);
     
     public  bool isSane(){
-        bool retVal = W_isSane(this);
+        bool retVal = W_isSane_R_bool_C_PxTransform(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       isFinite                                                               #
     //================================================================================
-    #if NATIVE
-    ES bool W_isFinite(physx::PxTransform self){
+    #if NATIVE //function start
+    ES bool W_isFinite_R_bool_C_PxTransform(physx::PxTransform self){
         auto retVal = self.isFinite();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isFinite(PxTransform selfBlt);
+    static extern bool W_isFinite_R_bool_C_PxTransform(PxTransform selfBlt);
     
     public  bool isFinite(){
-        bool retVal = W_isFinite(this);
+        bool retVal = W_isFinite_R_bool_C_PxTransform(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       transformInv                                                           #
     //================================================================================
-    #if NATIVE
-    ES physx::PxTransform W_transformInv(physx::PxTransform self, physx::PxTransform src){
+    #if NATIVE //function start
+    ES physx::PxTransform W_transformInv_R_PxTransform_P_PxTransform_C_PxTransform(physx::PxTransform self, physx::PxTransform src){
         auto nat_in_src = (src);
         auto retVal = self.transformInv(nat_in_src);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_transformInv(PxTransform selfBlt, PxTransform src);
+    static extern PxTransform W_transformInv_R_PxTransform_P_PxTransform_C_PxTransform(PxTransform selfBlt, PxTransform src);
     
     public  PxTransform transformInv(PxTransform src){
         PxTransform pvk_in_src = (src);
-        PxTransform retVal = W_transformInv(this, pvk_in_src);
+        PxTransform retVal = W_transformInv_R_PxTransform_P_PxTransform_C_PxTransform(this, pvk_in_src);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       transform                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxPlane W_transform(physx::PxTransform self, physx::PxPlane plane){
+    #if NATIVE //function start
+    ES physx::PxPlane W_transform_R_PxPlane_P_PxPlane_C_PxTransform(physx::PxTransform self, physx::PxPlane plane){
         auto nat_in_plane = (plane);
         auto retVal = self.transform(nat_in_plane);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPlane W_transform(PxTransform selfBlt, PxPlane plane);
+    static extern PxPlane W_transform_R_PxPlane_P_PxPlane_C_PxTransform(PxTransform selfBlt, PxPlane plane);
     
     public  PxPlane transform(PxPlane plane){
         PxPlane pvk_in_plane = (plane);
-        PxPlane retVal = W_transform(this, pvk_in_plane);
+        PxPlane retVal = W_transform_R_PxPlane_P_PxPlane_C_PxTransform(this, pvk_in_plane);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       inverseTransform                                                       #
     //================================================================================
-    #if NATIVE
-    ES physx::PxPlane W_inverseTransform(physx::PxTransform self, physx::PxPlane plane){
+    #if NATIVE //function start
+    ES physx::PxPlane W_inverseTransform_R_PxPlane_P_PxPlane_C_PxTransform(physx::PxTransform self, physx::PxPlane plane){
         auto nat_in_plane = (plane);
         auto retVal = self.inverseTransform(nat_in_plane);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPlane W_inverseTransform(PxTransform selfBlt, PxPlane plane);
+    static extern PxPlane W_inverseTransform_R_PxPlane_P_PxPlane_C_PxTransform(PxTransform selfBlt, PxPlane plane);
     
     public  PxPlane inverseTransform(PxPlane plane){
         PxPlane pvk_in_plane = (plane);
-        PxPlane retVal = W_inverseTransform(this, pvk_in_plane);
+        PxPlane retVal = W_inverseTransform_R_PxPlane_P_PxPlane_C_PxTransform(this, pvk_in_plane);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getNormalized                                                          #
     //================================================================================
-    #if NATIVE
-    ES physx::PxTransform W_getNormalized(physx::PxTransform self){
+    #if NATIVE //function start
+    ES physx::PxTransform W_getNormalized_R_PxTransform_C_PxTransform(physx::PxTransform self){
         auto retVal = self.getNormalized();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTransform W_getNormalized(PxTransform selfBlt);
+    static extern PxTransform W_getNormalized_R_PxTransform_C_PxTransform(PxTransform selfBlt);
     
     public  PxTransform getNormalized(){
-        PxTransform retVal = W_getNormalized(this);
+        PxTransform retVal = W_getNormalized_R_PxTransform_C_PxTransform(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //Skipped generated implicit entry: PxTransform
@@ -535,6 +539,6 @@ public unsafe partial struct PxTransform : IPxTransform { // blittable
     //Skipped generated implicit entry: operator=
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

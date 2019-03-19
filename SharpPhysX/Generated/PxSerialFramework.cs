@@ -1,51 +1,55 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxSerializationContextPtr {
      void registerReference(PxBasePtr base, uint kind, ulong reference);
     // PxCollectionPtr getCollection();
-     void writeData(global::System.IntPtr data, uint size);
+     void writeData(IntPtr data, uint size);
      void alignData();
      void alignData(uint alignment);
      void writeName(string name);
-    // PxSerializationContext();
-    // void ~PxSerializationContext();
+    // PxSerializationContext(/*NULLPARS*/);
+    // UNPARSED_TYPE ~PxSerializationContext(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxSerializationContextPtr lhs, /*NULLPARS*/);
     // PxSerializationContext(/*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxSerializationContextPtr : IPxSerializationContextPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxSerializationContextPtr
+    #endif //hierarchy
     //================================================================================
     //#       registerReference                                                      #
     //================================================================================
-    #if NATIVE
-    ES void W_registerReference(physx::PxSerializationContext* self, physx::PxBase* base, physx::PxU32 kind, ::size_t reference){
+    #if NATIVE //function start
+    ES void W_registerReference_R_void_P_PxBasePtr_P_uint_P_ulong_C_PxSerializationContext(physx::PxSerializationContext* self, physx::PxBase* base, physx::PxU32 kind, ::size_t reference){
         auto nat_in_base = (base);
         auto nat_in_kind = (kind);
         auto nat_in_reference = (reference);
         self->registerReference(*nat_in_base, nat_in_kind, nat_in_reference);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_registerReference(PxSerializationContextPtr selfPtr, PxBasePtr base, uint kind, ulong reference);
+    static extern void W_registerReference_R_void_P_PxBasePtr_P_uint_P_ulong_C_PxSerializationContext(PxSerializationContextPtr selfPtr, PxBasePtr base, uint kind, ulong reference);
     
     public  void registerReference(PxBasePtr base, uint kind, ulong reference){
         PxBasePtr pvk_in_base = (base);
         uint pvk_in_kind = (kind);
         ulong pvk_in_reference = (reference);
-        W_registerReference(this, pvk_in_base, pvk_in_kind, pvk_in_reference);
+        W_registerReference_R_void_P_PxBasePtr_P_uint_P_ulong_C_PxSerializationContext(this, pvk_in_base, pvk_in_kind, pvk_in_reference);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -53,165 +57,149 @@ public unsafe partial struct PxSerializationContextPtr : IPxSerializationContext
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxCollection&	getCollection()	const												= 0
-    #if NATIVE
-    ES physx::PxCollection* W_getCollection(physx::PxSerializationContext* self){
+    #if NATIVE //function start
+    ES const physx::PxCollection* W_getCollection_R_PxCollectionPtr_C_PxSerializationContext(physx::PxSerializationContext* self){
         auto retVal = &self->getCollection();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxCollectionPtr W_getCollection(PxSerializationContextPtr selfPtr);
+    static extern PxCollectionPtr W_getCollection_R_PxCollectionPtr_C_PxSerializationContext(PxSerializationContextPtr selfPtr);
     
     public  PxCollectionPtr getCollection(){
-        PxCollectionPtr retVal = W_getCollection(this);
+        PxCollectionPtr retVal = W_getCollection_R_PxCollectionPtr_C_PxSerializationContext(this);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
     //#       writeData                                                              #
     //================================================================================
-    #if NATIVE
-    ES void W_writeData(physx::PxSerializationContext* self, const void* data, physx::PxU32 size){
+    #if NATIVE //function start
+    ES void W_writeData_R_void_P_IntPtr_P_uint_C_PxSerializationContext(physx::PxSerializationContext* self, const void* data, physx::PxU32 size){
         auto nat_in_data = (data);
         auto nat_in_size = (size);
         self->writeData(nat_in_data, nat_in_size);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_writeData(PxSerializationContextPtr selfPtr, global::System.IntPtr data, uint size);
+    static extern void W_writeData_R_void_P_IntPtr_P_uint_C_PxSerializationContext(PxSerializationContextPtr selfPtr, IntPtr data, uint size);
     
-    public  void writeData(global::System.IntPtr data, uint size){
-        global::System.IntPtr pvk_in_data = (data);
+    public  void writeData(IntPtr data, uint size){
+        IntPtr pvk_in_data = (data);
         uint pvk_in_size = (size);
-        W_writeData(this, pvk_in_data, pvk_in_size);
+        W_writeData_R_void_P_IntPtr_P_uint_C_PxSerializationContext(this, pvk_in_data, pvk_in_size);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       alignData                                                              #
     //================================================================================
-    #if NATIVE
-    ES void W_alignData(physx::PxSerializationContext* self, physx::PxU32 alignment){
+    #if NATIVE //function start
+    ES void W_alignData_R_void_P_uint_C_PxSerializationContext(physx::PxSerializationContext* self, physx::PxU32 alignment){
         auto nat_in_alignment = (alignment);
         self->alignData(nat_in_alignment);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_alignData(PxSerializationContextPtr selfPtr, uint alignment);
+    static extern void W_alignData_R_void_P_uint_C_PxSerializationContext(PxSerializationContextPtr selfPtr, uint alignment);
     
     public  void alignData(uint alignment){
         uint pvk_in_alignment = (alignment);
-        W_alignData(this, pvk_in_alignment);
+        W_alignData_R_void_P_uint_C_PxSerializationContext(this, pvk_in_alignment);
     }
-    #endif
+    #endif //function end
     
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
-    #if NATIVE
-    ES void W_alignData(physx::PxSerializationContext* self){
+    #if NATIVE //function start
+    ES void W_alignData_R_void_OL1_C_PxSerializationContext(physx::PxSerializationContext* self){
         self->alignData();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_alignData(PxSerializationContextPtr selfPtr);
+    static extern void W_alignData_R_void_OL1_C_PxSerializationContext(PxSerializationContextPtr selfPtr);
     
     public  void alignData(){
-        W_alignData(this);
+        W_alignData_R_void_OL1_C_PxSerializationContext(this);
     }
-    #endif
+    #endif //function end
     
     
     
     //================================================================================
     //#       writeName                                                              #
     //================================================================================
-    #if NATIVE
-    ES void W_writeName(physx::PxSerializationContext* self, const char* name){
+    #if NATIVE //function start
+    ES void W_writeName_R_void_P_string_C_PxSerializationContext(physx::PxSerializationContext* self, const char* name){
         auto nat_in_name = (name);
         self->writeName(nat_in_name);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_writeName(PxSerializationContextPtr selfPtr, string name);
+    static extern void W_writeName_R_void_P_string_C_PxSerializationContext(PxSerializationContextPtr selfPtr, string name);
     
     public  void writeName(string name){
         string pvk_in_name = (name);
-        W_writeName(this, pvk_in_name);
+        W_writeName_R_void_P_string_C_PxSerializationContext(this, pvk_in_name);
     }
-    #endif
+    #endif //function end
     
     
-    //================================================================================
-    //#       PxSerializationContext                                                 #
-    //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxSerializationContext
-    Parameterless constructor not allowed
-    */
+    //Skipped protected: PxSerializationContext
     
-    
-    //================================================================================
-    //#       ~PxSerializationContext                                                #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: virtual					~PxSerializationContext() {}
-    #if NATIVE
-    ES void W_~PxSerializationContext(physx::PxSerializationContext* self){
-        self->~PxSerializationContext();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxSerializationContext(PxSerializationContextPtr selfPtr);
-    
-    public  void ~PxSerializationContext(){
-        W_~PxSerializationContext(this);
-    }
-    #endif*/
-    
+    //Skipped protected: ~PxSerializationContext
     
     //Skipped generated implicit entry: operator=
     
     //Skipped generated implicit entry: PxSerializationContext
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxRepXSerializerPtr {
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxRepXSerializerPtr : IPxRepXSerializerPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxRepXSerializerPtr
+    #endif //hierarchy
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxSerializerPtr {
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxSerializerPtr : IPxSerializerPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxSerializerPtr
+    #endif //hierarchy
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxProcessPxBaseCallbackPtr {
     // void ~PxProcessPxBaseCallback();
     // void process(PxBasePtr );
@@ -220,29 +208,33 @@ public unsafe interface IPxProcessPxBaseCallbackPtr {
     // PxProcessPxBaseCallback(/*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxProcessPxBaseCallbackPtr : IPxProcessPxBaseCallbackPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxProcessPxBaseCallbackPtr
+    #endif //hierarchy
     //================================================================================
     //#       ~PxProcessPxBaseCallback                                               #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual ~PxProcessPxBaseCallback()  {}
-    #if NATIVE
-    ES void W_~PxProcessPxBaseCallback(physx::PxProcessPxBaseCallback* self){
+    #if NATIVE //function start
+    ES void W_~PxProcessPxBaseCallback_R_void_C_PxProcessPxBaseCallback(physx::PxProcessPxBaseCallback* self){
         self->~PxProcessPxBaseCallback();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxProcessPxBaseCallback(PxProcessPxBaseCallbackPtr selfPtr);
+    static extern void W_~PxProcessPxBaseCallback_R_void_C_PxProcessPxBaseCallback(PxProcessPxBaseCallbackPtr selfPtr);
     
     public  void ~PxProcessPxBaseCallback(){
-        W_~PxProcessPxBaseCallback(this);
+        W_~PxProcessPxBaseCallback_R_void_C_PxProcessPxBaseCallback(this);
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -250,20 +242,20 @@ public unsafe partial struct PxProcessPxBaseCallbackPtr : IPxProcessPxBaseCallba
     //================================================================================
     /* ERRORS OCCURED: Invalid parameter name (empty)
     // NATIVE SIG: void process(PxBase&) = 0
-    #if NATIVE
-    ES void W_process(physx::PxProcessPxBaseCallback* self, physx::PxBase* ){
+    #if NATIVE //function start
+    ES void W_process_R_void_P_PxBasePtr_C_PxProcessPxBaseCallback(physx::PxProcessPxBaseCallback* self, physx::PxBase* ){
         auto nat_in_ = ();
         self->process(*nat_in_);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_process(PxProcessPxBaseCallbackPtr selfPtr, PxBasePtr );
+    static extern void W_process_R_void_P_PxBasePtr_C_PxProcessPxBaseCallback(PxProcessPxBaseCallbackPtr selfPtr, PxBasePtr );
     
     public  void process(PxBasePtr ){
         PxBasePtr pvk_in_ = ();
-        W_process(this, pvk_in_);
+        W_process_R_void_P_PxBasePtr_C_PxProcessPxBaseCallback(this, pvk_in_);
     }
-    #endif*/
+    #endif //function end*/
     
     
     //Skipped generated implicit entry: operator=
@@ -273,11 +265,11 @@ public unsafe partial struct PxProcessPxBaseCallbackPtr : IPxProcessPxBaseCallba
     //Skipped generated implicit entry: PxProcessPxBaseCallback
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxDeserializationContextPtr {
      PxBasePtr resolveReference(uint kind, ulong reference);
     // void translatePxBase( base);
@@ -289,39 +281,47 @@ public unsafe interface IPxDeserializationContextPtr {
      void alignExtraData();
      void alignExtraData(uint alignment);
      uint getPhysXVersion();
-    // PxDeserializationContext();
-    // void ~PxDeserializationContext();
+    // PxDeserializationContext(/*NULLPARS*/);
+    // UNPARSED_TYPE ~PxDeserializationContext(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxDeserializationContextPtr lhs, /*NULLPARS*/);
     // PxDeserializationContext(/*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationContextPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+
+    // ### Auto generated getters for fields
+    //Skipped protected field: mExtraDataAddress
+
+    #if !NATIVE //hierarchy
     // Hierarchy: PxDeserializationContextPtr
+    #endif //hierarchy
     //================================================================================
     //#       resolveReference                                                       #
     //================================================================================
-    #if NATIVE
-    ES physx::PxBase* W_resolveReference(physx::PxDeserializationContext* self, physx::PxU32 kind, ::size_t reference){
+    #if NATIVE //function start
+    ES const physx::PxBase* W_resolveReference_R_PxBasePtr_P_uint_P_ulong_C_PxDeserializationContext(physx::PxDeserializationContext* self, physx::PxU32 kind, ::size_t reference){
         auto nat_in_kind = (kind);
         auto nat_in_reference = (reference);
         auto retVal = self->resolveReference(nat_in_kind, nat_in_reference);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBasePtr W_resolveReference(PxDeserializationContextPtr selfPtr, uint kind, ulong reference);
+    static extern PxBasePtr W_resolveReference_R_PxBasePtr_P_uint_P_ulong_C_PxDeserializationContext(PxDeserializationContextPtr selfPtr, uint kind, ulong reference);
     
     public  PxBasePtr resolveReference(uint kind, ulong reference){
         uint pvk_in_kind = (kind);
         ulong pvk_in_reference = (reference);
-        PxBasePtr retVal = W_resolveReference(this, pvk_in_kind, pvk_in_reference);
+        PxBasePtr retVal = W_resolveReference_R_PxBasePtr_P_uint_P_ulong_C_PxDeserializationContext(this, pvk_in_kind, pvk_in_reference);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -329,20 +329,20 @@ public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationCon
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee T*
     // NATIVE SIG: void			translatePxBase(T*& base)
-    #if NATIVE
-    ES void W_translatePxBase(physx::PxDeserializationContext* self,  base){
+    #if NATIVE //function start
+    ES void W_translatePxBase_R_void_P__C_PxDeserializationContext(physx::PxDeserializationContext* self,  base){
         auto nat_in_base = (base);
         self->translatePxBase(nat_in_base);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_translatePxBase(PxDeserializationContextPtr selfPtr,  base);
+    static extern void W_translatePxBase_R_void_P__C_PxDeserializationContext(PxDeserializationContextPtr selfPtr,  base);
     
     public  void translatePxBase( base){
          pvk_in_base = (base);
-        W_translatePxBase(this, pvk_in_base);
+        W_translatePxBase_R_void_P__C_PxDeserializationContext(this, pvk_in_base);
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -356,20 +356,20 @@ public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationCon
     		name = len ? reinterpret_cast<const char*>(mExtraDataAddress) : NULL;
     		mExtraDataAddress += len; 
     	}
-    #if NATIVE
-    ES void W_readName(physx::PxDeserializationContext* self,  name){
+    #if NATIVE //function start
+    ES void W_readName_R_void_P__C_PxDeserializationContext(physx::PxDeserializationContext* self,  name){
         auto nat_in_name = (name);
         self->readName(nat_in_name);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_readName(PxDeserializationContextPtr selfPtr,  name);
+    static extern void W_readName_R_void_P__C_PxDeserializationContext(PxDeserializationContextPtr selfPtr,  name);
     
     public  void readName( name){
          pvk_in_name = (name);
-        W_readName(this, pvk_in_name);
+        W_readName_R_void_P__C_PxDeserializationContext(this, pvk_in_name);
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -377,40 +377,40 @@ public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationCon
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*				readExtraData(PxU32 count=1)
-    #if NATIVE
-    ES UNPARSED_TYPE W_readExtraData(physx::PxDeserializationContext* self, physx::PxU32 count){
+    #if NATIVE //function start
+    ES UNPARSED_TYPE W_readExtraData_R_T_P_uint_C_PxDeserializationContext(physx::PxDeserializationContext* self, physx::PxU32 count){
         auto nat_in_count = (count);
         auto retVal = self->readExtraData(nat_in_count);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_readExtraData(PxDeserializationContextPtr selfPtr, uint count);
+    static extern UNPARSED_TYPE W_readExtraData_R_T_P_uint_C_PxDeserializationContext(PxDeserializationContextPtr selfPtr, uint count);
     
     public  UNPARSED_TYPE readExtraData(uint count){
         uint pvk_in_count = (count);
-        UNPARSED_TYPE retVal = W_readExtraData(this, pvk_in_count);
+        UNPARSED_TYPE retVal = W_readExtraData_R_T_P_uint_C_PxDeserializationContext(this, pvk_in_count);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*				readExtraData(PxU32 count=1)
-    #if NATIVE
-    ES UNPARSED_TYPE W_readExtraData(physx::PxDeserializationContext* self){
+    #if NATIVE //function start
+    ES UNPARSED_TYPE W_readExtraData_R_T_OL1_C_PxDeserializationContext(physx::PxDeserializationContext* self){
         auto retVal = self->readExtraData();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_readExtraData(PxDeserializationContextPtr selfPtr);
+    static extern UNPARSED_TYPE W_readExtraData_R_T_OL1_C_PxDeserializationContext(PxDeserializationContextPtr selfPtr);
     
     public  UNPARSED_TYPE readExtraData(){
-        UNPARSED_TYPE retVal = W_readExtraData(this);
+        UNPARSED_TYPE retVal = W_readExtraData_R_T_OL1_C_PxDeserializationContext(this);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     
@@ -420,40 +420,40 @@ public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationCon
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*				readExtraData(PxU32 count=1)
-    #if NATIVE
-    ES UNPARSED_TYPE W_readExtraData(physx::PxDeserializationContext* self, physx::PxU32 count){
+    #if NATIVE //function start
+    ES UNPARSED_TYPE W_readExtraData_R_T_P_uint_C_PxDeserializationContext(physx::PxDeserializationContext* self, physx::PxU32 count){
         auto nat_in_count = (count);
         auto retVal = self->readExtraData(nat_in_count);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_readExtraData(PxDeserializationContextPtr selfPtr, uint count);
+    static extern UNPARSED_TYPE W_readExtraData_R_T_P_uint_C_PxDeserializationContext(PxDeserializationContextPtr selfPtr, uint count);
     
     public  UNPARSED_TYPE readExtraData(uint count){
         uint pvk_in_count = (count);
-        UNPARSED_TYPE retVal = W_readExtraData(this, pvk_in_count);
+        UNPARSED_TYPE retVal = W_readExtraData_R_T_P_uint_C_PxDeserializationContext(this, pvk_in_count);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*				readExtraData(PxU32 count=1)
-    #if NATIVE
-    ES UNPARSED_TYPE W_readExtraData(physx::PxDeserializationContext* self){
+    #if NATIVE //function start
+    ES UNPARSED_TYPE W_readExtraData_R_T_OL1_C_PxDeserializationContext(physx::PxDeserializationContext* self){
         auto retVal = self->readExtraData();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_readExtraData(PxDeserializationContextPtr selfPtr);
+    static extern UNPARSED_TYPE W_readExtraData_R_T_OL1_C_PxDeserializationContext(PxDeserializationContextPtr selfPtr);
     
     public  UNPARSED_TYPE readExtraData(){
-        UNPARSED_TYPE retVal = W_readExtraData(this);
+        UNPARSED_TYPE retVal = W_readExtraData_R_T_OL1_C_PxDeserializationContext(this);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     
@@ -461,95 +461,71 @@ public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationCon
     //================================================================================
     //#       alignExtraData                                                         #
     //================================================================================
-    #if NATIVE
-    ES void W_alignExtraData(physx::PxDeserializationContext* self, physx::PxU32 alignment){
+    #if NATIVE //function start
+    ES void W_alignExtraData_R_void_P_uint_C_PxDeserializationContext(physx::PxDeserializationContext* self, physx::PxU32 alignment){
         auto nat_in_alignment = (alignment);
         self->alignExtraData(nat_in_alignment);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_alignExtraData(PxDeserializationContextPtr selfPtr, uint alignment);
+    static extern void W_alignExtraData_R_void_P_uint_C_PxDeserializationContext(PxDeserializationContextPtr selfPtr, uint alignment);
     
     public  void alignExtraData(uint alignment){
         uint pvk_in_alignment = (alignment);
-        W_alignExtraData(this, pvk_in_alignment);
+        W_alignExtraData_R_void_P_uint_C_PxDeserializationContext(this, pvk_in_alignment);
     }
-    #endif
+    #endif //function end
     
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
-    #if NATIVE
-    ES void W_alignExtraData(physx::PxDeserializationContext* self){
+    #if NATIVE //function start
+    ES void W_alignExtraData_R_void_OL1_C_PxDeserializationContext(physx::PxDeserializationContext* self){
         self->alignExtraData();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_alignExtraData(PxDeserializationContextPtr selfPtr);
+    static extern void W_alignExtraData_R_void_OL1_C_PxDeserializationContext(PxDeserializationContextPtr selfPtr);
     
     public  void alignExtraData(){
-        W_alignExtraData(this);
+        W_alignExtraData_R_void_OL1_C_PxDeserializationContext(this);
     }
-    #endif
+    #endif //function end
     
     
     
     //================================================================================
     //#       getPhysXVersion                                                        #
     //================================================================================
-    #if NATIVE
-    ES physx::PxU32 W_getPhysXVersion(physx::PxDeserializationContext* self){
+    #if NATIVE //function start
+    ES physx::PxU32 W_getPhysXVersion_R_uint_C_PxDeserializationContext(physx::PxDeserializationContext* self){
         auto retVal = self->getPhysXVersion();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getPhysXVersion(PxDeserializationContextPtr selfPtr);
+    static extern uint W_getPhysXVersion_R_uint_C_PxDeserializationContext(PxDeserializationContextPtr selfPtr);
     
     public  uint getPhysXVersion(){
-        uint retVal = W_getPhysXVersion(this);
+        uint retVal = W_getPhysXVersion_R_uint_C_PxDeserializationContext(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
-    //================================================================================
-    //#       PxDeserializationContext                                               #
-    //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxDeserializationContext
-    Parameterless constructor not allowed
-    */
+    //Skipped protected: PxDeserializationContext
     
-    
-    //================================================================================
-    //#       ~PxDeserializationContext                                              #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: virtual						~PxDeserializationContext() {}
-    #if NATIVE
-    ES void W_~PxDeserializationContext(physx::PxDeserializationContext* self){
-        self->~PxDeserializationContext();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxDeserializationContext(PxDeserializationContextPtr selfPtr);
-    
-    public  void ~PxDeserializationContext(){
-        W_~PxDeserializationContext(this);
-    }
-    #endif*/
-    
+    //Skipped protected: ~PxDeserializationContext
     
     //Skipped generated implicit entry: operator=
     
     //Skipped generated implicit entry: PxDeserializationContext
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxSerializationRegistryPtr {
      void registerSerializer(ushort type, PxSerializerPtr serializer);
      PxSerializerPtr unregisterSerializer(ushort type);
@@ -559,58 +535,62 @@ public unsafe interface IPxSerializationRegistryPtr {
      PxRepXSerializerPtr unregisterRepXSerializer(ushort type);
      PxRepXSerializerPtr getRepXSerializer(string typeName);
      void release();
-    // void ~PxSerializationRegistry();
+    // UNPARSED_TYPE ~PxSerializationRegistry(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxSerializationRegistryPtr lhs, /*NULLPARS*/);
     // PxSerializationRegistry(/*NULLPARS*/);
     // PxSerializationRegistry(/*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxSerializationRegistryPtr : IPxSerializationRegistryPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxSerializationRegistryPtr
+    #endif //hierarchy
     //================================================================================
     //#       registerSerializer                                                     #
     //================================================================================
-    #if NATIVE
-    ES void W_registerSerializer(physx::PxSerializationRegistry* self, physx::PxType type, physx::PxSerializer* serializer){
+    #if NATIVE //function start
+    ES void W_registerSerializer_R_void_P_ushort_P_PxSerializerPtr_C_PxSerializationRegistry(physx::PxSerializationRegistry* self, physx::PxType type, physx::PxSerializer* serializer){
         auto nat_in_type = (type);
         auto nat_in_serializer = (serializer);
         self->registerSerializer(nat_in_type, *nat_in_serializer);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_registerSerializer(PxSerializationRegistryPtr selfPtr, ushort type, PxSerializerPtr serializer);
+    static extern void W_registerSerializer_R_void_P_ushort_P_PxSerializerPtr_C_PxSerializationRegistry(PxSerializationRegistryPtr selfPtr, ushort type, PxSerializerPtr serializer);
     
     public  void registerSerializer(ushort type, PxSerializerPtr serializer){
         ushort pvk_in_type = (type);
         PxSerializerPtr pvk_in_serializer = (serializer);
-        W_registerSerializer(this, pvk_in_type, pvk_in_serializer);
+        W_registerSerializer_R_void_P_ushort_P_PxSerializerPtr_C_PxSerializationRegistry(this, pvk_in_type, pvk_in_serializer);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       unregisterSerializer                                                   #
     //================================================================================
-    #if NATIVE
-    ES physx::PxSerializer* W_unregisterSerializer(physx::PxSerializationRegistry* self, physx::PxType type){
+    #if NATIVE //function start
+    ES physx::PxSerializer* W_unregisterSerializer_R_PxSerializerPtr_P_ushort_C_PxSerializationRegistry(physx::PxSerializationRegistry* self, physx::PxType type){
         auto nat_in_type = (type);
         auto retVal = self->unregisterSerializer(nat_in_type);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxSerializerPtr W_unregisterSerializer(PxSerializationRegistryPtr selfPtr, ushort type);
+    static extern PxSerializerPtr W_unregisterSerializer_R_PxSerializerPtr_P_ushort_C_PxSerializationRegistry(PxSerializationRegistryPtr selfPtr, ushort type);
     
     public  PxSerializerPtr unregisterSerializer(ushort type){
         ushort pvk_in_type = (type);
-        PxSerializerPtr retVal = W_unregisterSerializer(this, pvk_in_type);
+        PxSerializerPtr retVal = W_unregisterSerializer_R_PxSerializerPtr_P_ushort_C_PxSerializationRegistry(this, pvk_in_type);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -618,141 +598,124 @@ public unsafe partial struct PxSerializationRegistryPtr : IPxSerializationRegist
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxBinaryMetaDataCallback
     // NATIVE SIG: void						registerBinaryMetaDataCallback(PxBinaryMetaDataCallback callback) = 0
-    #if NATIVE
-    ES void W_registerBinaryMetaDataCallback(physx::PxSerializationRegistry* self,  callback){
+    #if NATIVE //function start
+    ES void W_registerBinaryMetaDataCallback_R_void_P__C_PxSerializationRegistry(physx::PxSerializationRegistry* self,  callback){
         auto nat_in_callback = (callback);
         self->registerBinaryMetaDataCallback(nat_in_callback);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_registerBinaryMetaDataCallback(PxSerializationRegistryPtr selfPtr,  callback);
+    static extern void W_registerBinaryMetaDataCallback_R_void_P__C_PxSerializationRegistry(PxSerializationRegistryPtr selfPtr,  callback);
     
     public  void registerBinaryMetaDataCallback( callback){
          pvk_in_callback = (callback);
-        W_registerBinaryMetaDataCallback(this, pvk_in_callback);
+        W_registerBinaryMetaDataCallback_R_void_P__C_PxSerializationRegistry(this, pvk_in_callback);
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
     //#       getSerializer                                                          #
     //================================================================================
-    #if NATIVE
-    ES physx::PxSerializer* W_getSerializer(physx::PxSerializationRegistry* self, physx::PxType type){
+    #if NATIVE //function start
+    ES const physx::PxSerializer* W_getSerializer_R_PxSerializerPtr_P_ushort_C_PxSerializationRegistry(physx::PxSerializationRegistry* self, physx::PxType type){
         auto nat_in_type = (type);
         auto retVal = self->getSerializer(nat_in_type);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxSerializerPtr W_getSerializer(PxSerializationRegistryPtr selfPtr, ushort type);
+    static extern PxSerializerPtr W_getSerializer_R_PxSerializerPtr_P_ushort_C_PxSerializationRegistry(PxSerializationRegistryPtr selfPtr, ushort type);
     
     public  PxSerializerPtr getSerializer(ushort type){
         ushort pvk_in_type = (type);
-        PxSerializerPtr retVal = W_getSerializer(this, pvk_in_type);
+        PxSerializerPtr retVal = W_getSerializer_R_PxSerializerPtr_P_ushort_C_PxSerializationRegistry(this, pvk_in_type);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       registerRepXSerializer                                                 #
     //================================================================================
-    #if NATIVE
-    ES void W_registerRepXSerializer(physx::PxSerializationRegistry* self, physx::PxType type, physx::PxRepXSerializer* serializer){
+    #if NATIVE //function start
+    ES void W_registerRepXSerializer_R_void_P_ushort_P_PxRepXSerializerPtr_C_PxSerializationRegistry(physx::PxSerializationRegistry* self, physx::PxType type, physx::PxRepXSerializer* serializer){
         auto nat_in_type = (type);
         auto nat_in_serializer = (serializer);
         self->registerRepXSerializer(nat_in_type, *nat_in_serializer);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_registerRepXSerializer(PxSerializationRegistryPtr selfPtr, ushort type, PxRepXSerializerPtr serializer);
+    static extern void W_registerRepXSerializer_R_void_P_ushort_P_PxRepXSerializerPtr_C_PxSerializationRegistry(PxSerializationRegistryPtr selfPtr, ushort type, PxRepXSerializerPtr serializer);
     
     public  void registerRepXSerializer(ushort type, PxRepXSerializerPtr serializer){
         ushort pvk_in_type = (type);
         PxRepXSerializerPtr pvk_in_serializer = (serializer);
-        W_registerRepXSerializer(this, pvk_in_type, pvk_in_serializer);
+        W_registerRepXSerializer_R_void_P_ushort_P_PxRepXSerializerPtr_C_PxSerializationRegistry(this, pvk_in_type, pvk_in_serializer);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       unregisterRepXSerializer                                               #
     //================================================================================
-    #if NATIVE
-    ES physx::PxRepXSerializer* W_unregisterRepXSerializer(physx::PxSerializationRegistry* self, physx::PxType type){
+    #if NATIVE //function start
+    ES physx::PxRepXSerializer* W_unregisterRepXSerializer_R_PxRepXSerializerPtr_P_ushort_C_PxSerializationRegistry(physx::PxSerializationRegistry* self, physx::PxType type){
         auto nat_in_type = (type);
         auto retVal = self->unregisterRepXSerializer(nat_in_type);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxRepXSerializerPtr W_unregisterRepXSerializer(PxSerializationRegistryPtr selfPtr, ushort type);
+    static extern PxRepXSerializerPtr W_unregisterRepXSerializer_R_PxRepXSerializerPtr_P_ushort_C_PxSerializationRegistry(PxSerializationRegistryPtr selfPtr, ushort type);
     
     public  PxRepXSerializerPtr unregisterRepXSerializer(ushort type){
         ushort pvk_in_type = (type);
-        PxRepXSerializerPtr retVal = W_unregisterRepXSerializer(this, pvk_in_type);
+        PxRepXSerializerPtr retVal = W_unregisterRepXSerializer_R_PxRepXSerializerPtr_P_ushort_C_PxSerializationRegistry(this, pvk_in_type);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getRepXSerializer                                                      #
     //================================================================================
-    #if NATIVE
-    ES physx::PxRepXSerializer* W_getRepXSerializer(physx::PxSerializationRegistry* self, const char* typeName){
+    #if NATIVE //function start
+    ES const physx::PxRepXSerializer* W_getRepXSerializer_R_PxRepXSerializerPtr_P_string_C_PxSerializationRegistry(physx::PxSerializationRegistry* self, const char* typeName){
         auto nat_in_typeName = (typeName);
         auto retVal = self->getRepXSerializer(nat_in_typeName);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxRepXSerializerPtr W_getRepXSerializer(PxSerializationRegistryPtr selfPtr, string typeName);
+    static extern PxRepXSerializerPtr W_getRepXSerializer_R_PxRepXSerializerPtr_P_string_C_PxSerializationRegistry(PxSerializationRegistryPtr selfPtr, string typeName);
     
     public  PxRepXSerializerPtr getRepXSerializer(string typeName){
         string pvk_in_typeName = (typeName);
-        PxRepXSerializerPtr retVal = W_getRepXSerializer(this, pvk_in_typeName);
+        PxRepXSerializerPtr retVal = W_getRepXSerializer_R_PxRepXSerializerPtr_P_string_C_PxSerializationRegistry(this, pvk_in_typeName);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       release                                                                #
     //================================================================================
-    #if NATIVE
-    ES void W_release(physx::PxSerializationRegistry* self){
+    #if NATIVE //function start
+    ES void W_release_R_void_C_PxSerializationRegistry(physx::PxSerializationRegistry* self){
         self->release();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_release(PxSerializationRegistryPtr selfPtr);
+    static extern void W_release_R_void_C_PxSerializationRegistry(PxSerializationRegistryPtr selfPtr);
     
     public  void release(){
-        W_release(this);
+        W_release_R_void_C_PxSerializationRegistry(this);
     }
-    #endif
+    #endif //function end
     
     
-    //================================================================================
-    //#       ~PxSerializationRegistry                                               #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: virtual ~PxSerializationRegistry(){}
-    #if NATIVE
-    ES void W_~PxSerializationRegistry(physx::PxSerializationRegistry* self){
-        self->~PxSerializationRegistry();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxSerializationRegistry(PxSerializationRegistryPtr selfPtr);
-    
-    public  void ~PxSerializationRegistry(){
-        W_~PxSerializationRegistry(this);
-    }
-    #endif*/
-    
+    //Skipped protected: ~PxSerializationRegistry
     
     //Skipped generated implicit entry: operator=
     
@@ -761,6 +724,6 @@ public unsafe partial struct PxSerializationRegistryPtr : IPxSerializationRegist
     //Skipped generated implicit entry: PxSerializationRegistry
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

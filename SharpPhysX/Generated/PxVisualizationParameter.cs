@@ -1,9 +1,9 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
-#if !NATIVE
+#if !NATIVE //enum
 public enum PxVisualizationParameter : int {
     eSCALE = 0,                       // eSCALE
     eWORLD_AXES = 1,                  // eWORLD_AXES
@@ -32,7 +32,7 @@ public enum PxVisualizationParameter : int {
     eNUM_VALUES = 24,                 // eNUM_VALUES
     eFORCE_DWORD = 2147483647,        // eFORCE_DWORD = 0x7fffffff
 }
-#endif
+#endif //enum
 
 
 // Class physx::PxVisualizationParameter Manually Ignored

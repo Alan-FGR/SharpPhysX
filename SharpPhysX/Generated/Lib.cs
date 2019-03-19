@@ -1,7 +1,7 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 #if !NATIVE
@@ -16,60 +16,64 @@ public partial struct Lib {
 {
     return PxCreateFoundation(PX_PHYSICS_VERSION, allocator_, *new ShPxErrorCallbackWrapper(*managedErrorCallback));
 }
-#if NATIVE
-ES physx::PxFoundation* W_MAN_PxCreateFoundation( managedErrorCallback){
+#if NATIVE //function start
+ES physx::PxFoundation* W_MAN_PxCreateFoundation_R_PxFoundationPtr_P_( managedErrorCallback){
     auto nat_in_managedErrorCallback = (managedErrorCallback);
     auto retVal = MAN_PxCreateFoundation(nat_in_managedErrorCallback);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern PxFoundationPtr W_MAN_PxCreateFoundation( managedErrorCallback);
+static extern PxFoundationPtr W_MAN_PxCreateFoundation_R_PxFoundationPtr_P_( managedErrorCallback);
 
 public static PxFoundationPtr MAN_PxCreateFoundation( managedErrorCallback){
      pvk_in_managedErrorCallback = (managedErrorCallback);
-    PxFoundationPtr retVal = W_MAN_PxCreateFoundation(pvk_in_managedErrorCallback);
+    PxFoundationPtr retVal = W_MAN_PxCreateFoundation_R_PxFoundationPtr_P_(pvk_in_managedErrorCallback);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
 //#       MAN_PxCreatePhysics                                                    #
 //================================================================================
-#if NATIVE
-ES physx::PxPhysics* W_MAN_PxCreatePhysics(physx::PxFoundation* foundation){
+#if NATIVE //function start
+ES physx::PxPhysics* W_MAN_PxCreatePhysics_R_PxPhysicsPtr_P_PxFoundationPtr(physx::PxFoundation* foundation){
     auto nat_in_foundation = (foundation);
     auto retVal = MAN_PxCreatePhysics(nat_in_foundation);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern PxPhysicsPtr W_MAN_PxCreatePhysics(PxFoundationPtr foundation);
+static extern PxPhysicsPtr W_MAN_PxCreatePhysics_R_PxPhysicsPtr_P_PxFoundationPtr(PxFoundationPtr foundation);
 
 public static PxPhysicsPtr MAN_PxCreatePhysics(PxFoundationPtr foundation){
     PxFoundationPtr pvk_in_foundation = (foundation);
-    PxPhysicsPtr retVal = W_MAN_PxCreatePhysics(pvk_in_foundation);
+    PxPhysicsPtr retVal = W_MAN_PxCreatePhysics_R_PxPhysicsPtr_P_PxFoundationPtr(pvk_in_foundation);
     return retVal;
 }
-#endif
+#endif //function end
 
 #if !NATIVE
 } // End Lib
 #endif
 
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface ITypeList {
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct TypeList : ITypeList { // blittable
 
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: TypeList
+    #endif //hierarchy
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

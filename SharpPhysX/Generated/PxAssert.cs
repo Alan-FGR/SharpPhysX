@@ -1,7 +1,7 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 #if !NATIVE
@@ -11,46 +11,46 @@ public partial struct PxAssert {
 //================================================================================
 //#       PxGetAssertHandler                                                     #
 //================================================================================
-#if NATIVE
-ES physx::PxAssertHandler* W_PxGetAssertHandler(){
+#if NATIVE //function start
+ES physx::PxAssertHandler* W_PxGetAssertHandler_R_PxAssertHandlerPtr(){
     auto retVal = &physx::PxGetAssertHandler();
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern PxAssertHandlerPtr W_PxGetAssertHandler();
+static extern PxAssertHandlerPtr W_PxGetAssertHandler_R_PxAssertHandlerPtr();
 
 public static PxAssertHandlerPtr PxGetAssertHandler(){
-    PxAssertHandlerPtr retVal = W_PxGetAssertHandler();
+    PxAssertHandlerPtr retVal = W_PxGetAssertHandler_R_PxAssertHandlerPtr();
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       PxSetAssertHandler                                                     #
 //================================================================================
-#if NATIVE
-ES void W_PxSetAssertHandler(physx::PxAssertHandler* handler){
+#if NATIVE //function start
+ES void W_PxSetAssertHandler_R_void_P_PxAssertHandlerPtr(physx::PxAssertHandler* handler){
     auto nat_in_handler = (handler);
     physx::PxSetAssertHandler(*nat_in_handler);
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern void W_PxSetAssertHandler(PxAssertHandlerPtr handler);
+static extern void W_PxSetAssertHandler_R_void_P_PxAssertHandlerPtr(PxAssertHandlerPtr handler);
 
 public static void PxSetAssertHandler(PxAssertHandlerPtr handler){
     PxAssertHandlerPtr pvk_in_handler = (handler);
-    W_PxSetAssertHandler(pvk_in_handler);
+    W_PxSetAssertHandler_R_void_P_PxAssertHandlerPtr(pvk_in_handler);
 }
-#endif
+#endif //function end
 
 #if !NATIVE
 } // End PxAssert
 #endif
 
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxAssertHandlerPtr {
     // void ~PxAssertHandler();
     //static void operator()(PxAssertHandlerPtr lhs, /*NULLPARS*/);
@@ -59,12 +59,16 @@ public unsafe interface IPxAssertHandlerPtr {
     // PxAssertHandler(/*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxAssertHandlerPtr : IPxAssertHandlerPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxAssertHandlerPtr
+    #endif //hierarchy
     //================================================================================
     //#       ~PxAssertHandler                                                       #
     //================================================================================
@@ -72,18 +76,18 @@ public unsafe partial struct PxAssertHandlerPtr : IPxAssertHandlerPtr { // point
     // NATIVE SIG: virtual ~PxAssertHandler()
     	{
     	}
-    #if NATIVE
-    ES void W_~PxAssertHandler(physx::PxAssertHandler* self){
+    #if NATIVE //function start
+    ES void W_~PxAssertHandler_R_void_C_PxAssertHandler(physx::PxAssertHandler* self){
         self->~PxAssertHandler();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxAssertHandler(PxAssertHandlerPtr selfPtr);
+    static extern void W_~PxAssertHandler_R_void_C_PxAssertHandler(PxAssertHandlerPtr selfPtr);
     
     public  void ~PxAssertHandler(){
-        W_~PxAssertHandler(this);
+        W_~PxAssertHandler_R_void_C_PxAssertHandler(this);
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -100,6 +104,6 @@ public unsafe partial struct PxAssertHandlerPtr : IPxAssertHandlerPtr { // point
     //Skipped generated implicit entry: PxAssertHandler
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

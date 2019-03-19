@@ -1,12 +1,12 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 
 // Class physx::PxBaseTask Manually Ignored
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxTaskPtr {
     // PxTask();
     // void ~PxTask();
@@ -23,21 +23,32 @@ public unsafe interface IPxTaskPtr {
     //static UNPARSED_TYPE operator=(PxTaskPtr lhs, /*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+
+    // ### Auto generated getters for fields
+    //Skipped protected field: mTaskID
+    //Skipped protected field: mStreamIndex
+    //Skipped protected field: mPreSyncRequired
+
+    #if !NATIVE //hierarchy
     // Hierarchy: PxBaseTaskPtr, PxTaskPtr
     public static implicit operator PxBaseTaskPtr(PxTaskPtr obj){return *(PxBaseTaskPtr*)&obj;}
     public static explicit operator PxTaskPtr(PxBaseTaskPtr obj){return *(PxTaskPtr*)&obj;}
+    #endif //hierarchy
     
+    #if !NATIVE //piping
     // ### Piping
     
     // --- PxBaseTaskPtr
     //public  void ~PxBaseTask(){((PxBaseTaskPtr)this).~PxBaseTask();}
     public  void run(){((PxBaseTaskPtr)this).run();}
-    public  IntPtr getName(){return ((PxBaseTaskPtr)this).getName();}
+    public  string getName(){return ((PxBaseTaskPtr)this).getName();}
     //public  PxBaseTask(){((PxBaseTaskPtr)this).PxBaseTask();}
     //public  PxTaskManagerPtr getTaskManager(){return ((PxBaseTaskPtr)this).getTaskManager();}
     public  void setContextId(ulong id){((PxBaseTaskPtr)this).setContextId(id);}
@@ -45,7 +56,8 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     //public static UNPARSED_TYPE operator=(PxBaseTaskPtr lhs, /*NULLPARS*/){return ((PxBaseTaskPtr)this).operator=(/*NULLARGS*/);}
     //public  PxBaseTask(/*NULLPARS*/){((PxBaseTaskPtr)this).PxBaseTask(/*NULLARGS*/);}
     
-
+    #endif //piping
+    
     //================================================================================
     //#       PxTask                                                                 #
     //================================================================================
@@ -60,179 +72,179 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual ~PxTask() {}
-    #if NATIVE
-    ES void W_~PxTask(physx::PxTask* self){
+    #if NATIVE //function start
+    ES void W_~PxTask_R_void_C_PxTask(physx::PxTask* self){
         self->~PxTask();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxTask(PxTaskPtr selfPtr);
+    static extern void W_~PxTask_R_void_C_PxTask(PxTaskPtr selfPtr);
     
     public  void ~PxTask(){
-        W_~PxTask(this);
+        W_~PxTask_R_void_C_PxTask(this);
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
     //#       release                                                                #
     //================================================================================
-    #if NATIVE
-    ES void W_release(physx::PxTask* self){
+    #if NATIVE //function start
+    ES void W_release_R_void_C_PxTask(physx::PxTask* self){
         self->release();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_release(PxTaskPtr selfPtr);
+    static extern void W_release_R_void_C_PxTask(PxTaskPtr selfPtr);
     
     public  void release(){
-        W_release(this);
+        W_release_R_void_C_PxTask(this);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       finishBefore                                                           #
     //================================================================================
-    #if NATIVE
-    ES void W_finishBefore(physx::PxTask* self, physx::PxTaskID taskID){
+    #if NATIVE //function start
+    ES void W_finishBefore_R_void_P_uint_C_PxTask(physx::PxTask* self, physx::PxTaskID taskID){
         auto nat_in_taskID = (taskID);
         self->finishBefore(nat_in_taskID);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_finishBefore(PxTaskPtr selfPtr, uint taskID);
+    static extern void W_finishBefore_R_void_P_uint_C_PxTask(PxTaskPtr selfPtr, uint taskID);
     
     public  void finishBefore(uint taskID){
         uint pvk_in_taskID = (taskID);
-        W_finishBefore(this, pvk_in_taskID);
+        W_finishBefore_R_void_P_uint_C_PxTask(this, pvk_in_taskID);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       startAfter                                                             #
     //================================================================================
-    #if NATIVE
-    ES void W_startAfter(physx::PxTask* self, physx::PxTaskID taskID){
+    #if NATIVE //function start
+    ES void W_startAfter_R_void_P_uint_C_PxTask(physx::PxTask* self, physx::PxTaskID taskID){
         auto nat_in_taskID = (taskID);
         self->startAfter(nat_in_taskID);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_startAfter(PxTaskPtr selfPtr, uint taskID);
+    static extern void W_startAfter_R_void_P_uint_C_PxTask(PxTaskPtr selfPtr, uint taskID);
     
     public  void startAfter(uint taskID){
         uint pvk_in_taskID = (taskID);
-        W_startAfter(this, pvk_in_taskID);
+        W_startAfter_R_void_P_uint_C_PxTask(this, pvk_in_taskID);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       addReference                                                           #
     //================================================================================
-    #if NATIVE
-    ES void W_addReference(physx::PxTask* self){
+    #if NATIVE //function start
+    ES void W_addReference_R_void_C_PxTask(physx::PxTask* self){
         self->addReference();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addReference(PxTaskPtr selfPtr);
+    static extern void W_addReference_R_void_C_PxTask(PxTaskPtr selfPtr);
     
     public  void addReference(){
-        W_addReference(this);
+        W_addReference_R_void_C_PxTask(this);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       removeReference                                                        #
     //================================================================================
-    #if NATIVE
-    ES void W_removeReference(physx::PxTask* self){
+    #if NATIVE //function start
+    ES void W_removeReference_R_void_C_PxTask(physx::PxTask* self){
         self->removeReference();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_removeReference(PxTaskPtr selfPtr);
+    static extern void W_removeReference_R_void_C_PxTask(PxTaskPtr selfPtr);
     
     public  void removeReference(){
-        W_removeReference(this);
+        W_removeReference_R_void_C_PxTask(this);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getReference                                                           #
     //================================================================================
-    #if NATIVE
-    ES ::int32_t W_getReference(physx::PxTask* self){
+    #if NATIVE //function start
+    ES ::int32_t W_getReference_R_int_C_PxTask(physx::PxTask* self){
         auto retVal = self->getReference();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern int W_getReference(PxTaskPtr selfPtr);
+    static extern int W_getReference_R_int_C_PxTask(PxTaskPtr selfPtr);
     
     public  int getReference(){
-        int retVal = W_getReference(this);
+        int retVal = W_getReference_R_int_C_PxTask(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getTaskID                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxTaskID W_getTaskID(physx::PxTask* self){
+    #if NATIVE //function start
+    ES physx::PxTaskID W_getTaskID_R_uint_C_PxTask(physx::PxTask* self){
         auto retVal = self->getTaskID();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern uint W_getTaskID(PxTaskPtr selfPtr);
+    static extern uint W_getTaskID_R_uint_C_PxTask(PxTaskPtr selfPtr);
     
     public  uint getTaskID(){
-        uint retVal = W_getTaskID(this);
+        uint retVal = W_getTaskID_R_uint_C_PxTask(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       submitted                                                              #
     //================================================================================
-    #if NATIVE
-    ES void W_submitted(physx::PxTask* self){
+    #if NATIVE //function start
+    ES void W_submitted_R_void_C_PxTask(physx::PxTask* self){
         self->submitted();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_submitted(PxTaskPtr selfPtr);
+    static extern void W_submitted_R_void_C_PxTask(PxTaskPtr selfPtr);
     
     public  void submitted(){
-        W_submitted(this);
+        W_submitted_R_void_C_PxTask(this);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       requestSyncPoint                                                       #
     //================================================================================
-    #if NATIVE
-    ES void W_requestSyncPoint(physx::PxTask* self){
+    #if NATIVE //function start
+    ES void W_requestSyncPoint_R_void_C_PxTask(physx::PxTask* self){
         self->requestSyncPoint();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_requestSyncPoint(PxTaskPtr selfPtr);
+    static extern void W_requestSyncPoint_R_void_C_PxTask(PxTaskPtr selfPtr);
     
     public  void requestSyncPoint(){
-        W_requestSyncPoint(this);
+        W_requestSyncPoint_R_void_C_PxTask(this);
     }
-    #endif
+    #endif //function end
     
     
     //Skipped generated implicit entry: PxTask
@@ -240,11 +252,11 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     //Skipped generated implicit entry: operator=
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxLightCpuTaskPtr {
     // PxLightCpuTask();
     // void ~PxLightCpuTask();
@@ -259,21 +271,31 @@ public unsafe interface IPxLightCpuTaskPtr {
     //static UNPARSED_TYPE operator=(PxLightCpuTaskPtr lhs, /*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTaskPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+
+    // ### Auto generated getters for fields
+    //Skipped protected field: mCont
+    //Skipped protected field: mRefCount
+
+    #if !NATIVE //hierarchy
     // Hierarchy: PxBaseTaskPtr, PxLightCpuTaskPtr
     public static implicit operator PxBaseTaskPtr(PxLightCpuTaskPtr obj){return *(PxBaseTaskPtr*)&obj;}
     public static explicit operator PxLightCpuTaskPtr(PxBaseTaskPtr obj){return *(PxLightCpuTaskPtr*)&obj;}
+    #endif //hierarchy
     
+    #if !NATIVE //piping
     // ### Piping
     
     // --- PxBaseTaskPtr
     //public  void ~PxBaseTask(){((PxBaseTaskPtr)this).~PxBaseTask();}
     public  void run(){((PxBaseTaskPtr)this).run();}
-    public  IntPtr getName(){return ((PxBaseTaskPtr)this).getName();}
+    public  string getName(){return ((PxBaseTaskPtr)this).getName();}
     //public  PxBaseTask(){((PxBaseTaskPtr)this).PxBaseTask();}
     //public  PxTaskManagerPtr getTaskManager(){return ((PxBaseTaskPtr)this).getTaskManager();}
     public  void setContextId(ulong id){((PxBaseTaskPtr)this).setContextId(id);}
@@ -281,7 +303,8 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     //public static UNPARSED_TYPE operator=(PxBaseTaskPtr lhs, /*NULLPARS*/){return ((PxBaseTaskPtr)this).operator=(/*NULLARGS*/);}
     //public  PxBaseTask(/*NULLPARS*/){((PxBaseTaskPtr)this).PxBaseTask(/*NULLARGS*/);}
     
-
+    #endif //piping
+    
     //================================================================================
     //#       PxLightCpuTask                                                         #
     //================================================================================
@@ -299,18 +322,18 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     	{
     		mTm = NULL;
     	}
-    #if NATIVE
-    ES void W_~PxLightCpuTask(physx::PxLightCpuTask* self){
+    #if NATIVE //function start
+    ES void W_~PxLightCpuTask_R_void_C_PxLightCpuTask(physx::PxLightCpuTask* self){
         self->~PxLightCpuTask();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxLightCpuTask(PxLightCpuTaskPtr selfPtr);
+    static extern void W_~PxLightCpuTask_R_void_C_PxLightCpuTask(PxLightCpuTaskPtr selfPtr);
     
     public  void ~PxLightCpuTask(){
-        W_~PxLightCpuTask(this);
+        W_~PxLightCpuTask_R_void_C_PxLightCpuTask(this);
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -329,22 +352,22 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     			mCont->addReference();
     	    }
     	}
-    #if NATIVE
-    ES void W_setContinuation(physx::PxLightCpuTask* self, physx::PxTaskManager* tm, physx::PxBaseTask* c){
+    #if NATIVE //function start
+    ES void W_setContinuation_R_void_P_PxTaskManagerPtr_P_PxBaseTaskPtr_C_PxLightCpuTask(physx::PxLightCpuTask* self, physx::PxTaskManager* tm, physx::PxBaseTask* c){
         auto nat_in_tm = (tm);
         auto nat_in_c = (c);
         self->setContinuation(*nat_in_tm, nat_in_c);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setContinuation(PxLightCpuTaskPtr selfPtr, PxTaskManagerPtr tm, PxBaseTaskPtr c);
+    static extern void W_setContinuation_R_void_P_PxTaskManagerPtr_P_PxBaseTaskPtr_C_PxLightCpuTask(PxLightCpuTaskPtr selfPtr, PxTaskManagerPtr tm, PxBaseTaskPtr c);
     
     public  void setContinuation(PxTaskManagerPtr tm, PxBaseTaskPtr c){
         PxTaskManagerPtr pvk_in_tm = (tm);
         PxBaseTaskPtr pvk_in_c = (c);
-        W_setContinuation(this, pvk_in_tm, pvk_in_c);
+        W_setContinuation_R_void_P_PxTaskManagerPtr_P_PxBaseTaskPtr_C_PxLightCpuTask(this, pvk_in_tm, pvk_in_c);
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -364,20 +387,20 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     			PX_ASSERT( mTm );
     		}
     	}
-    #if NATIVE
-    ES void W_setContinuation(physx::PxLightCpuTask* self, physx::PxBaseTask* c){
+    #if NATIVE //function start
+    ES void W_setContinuation_R_void_P_PxBaseTaskPtr_C_PxLightCpuTask(physx::PxLightCpuTask* self, physx::PxBaseTask* c){
         auto nat_in_c = (c);
         self->setContinuation(nat_in_c);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setContinuation(PxLightCpuTaskPtr selfPtr, PxBaseTaskPtr c);
+    static extern void W_setContinuation_R_void_P_PxBaseTaskPtr_C_PxLightCpuTask(PxLightCpuTaskPtr selfPtr, PxBaseTaskPtr c);
     
     public  void setContinuation(PxBaseTaskPtr c){
         PxBaseTaskPtr pvk_in_c = (c);
-        W_setContinuation(this, pvk_in_c);
+        W_setContinuation_R_void_P_PxBaseTaskPtr_C_PxLightCpuTask(this, pvk_in_c);
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -388,90 +411,90 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     	{
     		return mCont;
     	}
-    #if NATIVE
-    ES physx::PxBaseTask* W_getContinuation(physx::PxLightCpuTask* self){
+    #if NATIVE //function start
+    ES const physx::PxBaseTask* W_getContinuation_R_PxBaseTaskPtr_C_PxLightCpuTask(physx::PxLightCpuTask* self){
         auto retVal = self->getContinuation();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxBaseTaskPtr W_getContinuation(PxLightCpuTaskPtr selfPtr);
+    static extern PxBaseTaskPtr W_getContinuation_R_PxBaseTaskPtr_C_PxLightCpuTask(PxLightCpuTaskPtr selfPtr);
     
     public  PxBaseTaskPtr getContinuation(){
-        PxBaseTaskPtr retVal = W_getContinuation(this);
+        PxBaseTaskPtr retVal = W_getContinuation_R_PxBaseTaskPtr_C_PxLightCpuTask(this);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
     //#       removeReference                                                        #
     //================================================================================
-    #if NATIVE
-    ES void W_removeReference(physx::PxLightCpuTask* self){
+    #if NATIVE //function start
+    ES void W_removeReference_R_void_C_PxLightCpuTask(physx::PxLightCpuTask* self){
         self->removeReference();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_removeReference(PxLightCpuTaskPtr selfPtr);
+    static extern void W_removeReference_R_void_C_PxLightCpuTask(PxLightCpuTaskPtr selfPtr);
     
     public  void removeReference(){
-        W_removeReference(this);
+        W_removeReference_R_void_C_PxLightCpuTask(this);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getReference                                                           #
     //================================================================================
-    #if NATIVE
-    ES ::int32_t W_getReference(physx::PxLightCpuTask* self){
+    #if NATIVE //function start
+    ES ::int32_t W_getReference_R_int_C_PxLightCpuTask(physx::PxLightCpuTask* self){
         auto retVal = self->getReference();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern int W_getReference(PxLightCpuTaskPtr selfPtr);
+    static extern int W_getReference_R_int_C_PxLightCpuTask(PxLightCpuTaskPtr selfPtr);
     
     public  int getReference(){
-        int retVal = W_getReference(this);
+        int retVal = W_getReference_R_int_C_PxLightCpuTask(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       addReference                                                           #
     //================================================================================
-    #if NATIVE
-    ES void W_addReference(physx::PxLightCpuTask* self){
+    #if NATIVE //function start
+    ES void W_addReference_R_void_C_PxLightCpuTask(physx::PxLightCpuTask* self){
         self->addReference();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_addReference(PxLightCpuTaskPtr selfPtr);
+    static extern void W_addReference_R_void_C_PxLightCpuTask(PxLightCpuTaskPtr selfPtr);
     
     public  void addReference(){
-        W_addReference(this);
+        W_addReference_R_void_C_PxLightCpuTask(this);
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       release                                                                #
     //================================================================================
-    #if NATIVE
-    ES void W_release(physx::PxLightCpuTask* self){
+    #if NATIVE //function start
+    ES void W_release_R_void_C_PxLightCpuTask(physx::PxLightCpuTask* self){
         self->release();
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_release(PxLightCpuTaskPtr selfPtr);
+    static extern void W_release_R_void_C_PxLightCpuTask(PxLightCpuTaskPtr selfPtr);
     
     public  void release(){
-        W_release(this);
+        W_release_R_void_C_PxLightCpuTask(this);
     }
-    #endif
+    #endif //function end
     
     
     //Skipped generated implicit entry: PxLightCpuTask
@@ -479,6 +502,6 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     //Skipped generated implicit entry: operator=
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

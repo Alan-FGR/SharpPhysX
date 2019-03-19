@@ -1,7 +1,7 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 #if !NATIVE
@@ -15,24 +15,24 @@ public partial struct PxFlags {
 Unresolved parameter type enumtype
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp( a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_enumtype_storagetype_P__P_( a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp( a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_enumtype_storagetype_P__P_( a,  b);
 
 public static UNPARSED_TYPE operator&( a,  b){
      pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_enumtype_storagetype_P__P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -41,24 +41,24 @@ public static UNPARSED_TYPE operator&( a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxBaseFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxBaseFlag_P_(physx::PxBaseFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxBaseFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxBaseFlag_P_(PxBaseFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxBaseFlag a,  b){
     PxBaseFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_ushort_P_PxBaseFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -67,24 +67,24 @@ public static UNPARSED_TYPE operator&(PxBaseFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxTriangleMeshFlag::Enum, unsigned char>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxTriangleMeshFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxTriangleMeshFlag_P_(physx::PxTriangleMeshFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxTriangleMeshFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxTriangleMeshFlag_P_(PxTriangleMeshFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxTriangleMeshFlag a,  b){
     PxTriangleMeshFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_byte_P_PxTriangleMeshFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -93,24 +93,24 @@ public static UNPARSED_TYPE operator&(PxTriangleMeshFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxSceneFlag::Enum, unsigned int>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxSceneFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_uint_P_PxSceneFlag_P_(physx::PxSceneFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxSceneFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_uint_P_PxSceneFlag_P_(PxSceneFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxSceneFlag a,  b){
     PxSceneFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_uint_P_PxSceneFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -119,24 +119,24 @@ public static UNPARSED_TYPE operator&(PxSceneFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorFlag::Enum, unsigned char>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxActorFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxActorFlag_P_(physx::PxActorFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxActorFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxActorFlag_P_(PxActorFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxActorFlag a,  b){
     PxActorFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_byte_P_PxActorFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -145,24 +145,24 @@ public static UNPARSED_TYPE operator&(PxActorFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorTypeFlag::Enum, unsigned short>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxActorTypeFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxActorTypeFlag_P_(physx::PxActorTypeFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxActorTypeFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxActorTypeFlag_P_(PxActorTypeFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxActorTypeFlag a,  b){
     PxActorTypeFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_ushort_P_PxActorTypeFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -171,24 +171,24 @@ public static UNPARSED_TYPE operator&(PxActorTypeFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConvexMeshGeometryFlag::Enum, unsigned char>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxConvexMeshGeometryFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxConvexMeshGeometryFlag_P_(physx::PxConvexMeshGeometryFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxConvexMeshGeometryFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxConvexMeshGeometryFlag_P_(PxConvexMeshGeometryFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxConvexMeshGeometryFlag a,  b){
     PxConvexMeshGeometryFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_byte_P_PxConvexMeshGeometryFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -197,24 +197,24 @@ public static UNPARSED_TYPE operator&(PxConvexMeshGeometryFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMeshGeometryFlag::Enum, unsigned char>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxMeshGeometryFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxMeshGeometryFlag_P_(physx::PxMeshGeometryFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxMeshGeometryFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxMeshGeometryFlag_P_(PxMeshGeometryFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxMeshGeometryFlag a,  b){
     PxMeshGeometryFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_byte_P_PxMeshGeometryFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -223,24 +223,24 @@ public static UNPARSED_TYPE operator&(PxMeshGeometryFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMaterialFlag::Enum, unsigned short>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxMaterialFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxMaterialFlag_P_(physx::PxMaterialFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxMaterialFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxMaterialFlag_P_(PxMaterialFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxMaterialFlag a,  b){
     PxMaterialFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_ushort_P_PxMaterialFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -249,24 +249,24 @@ public static UNPARSED_TYPE operator&(PxMaterialFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxShapeFlag::Enum, unsigned char>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxShapeFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxShapeFlag_P_(physx::PxShapeFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxShapeFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxShapeFlag_P_(PxShapeFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxShapeFlag a,  b){
     PxShapeFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_byte_P_PxShapeFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -275,24 +275,24 @@ public static UNPARSED_TYPE operator&(PxShapeFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConstraintFlag::Enum, unsigned short>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxConstraintFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxConstraintFlag_P_(physx::PxConstraintFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxConstraintFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxConstraintFlag_P_(PxConstraintFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxConstraintFlag a,  b){
     PxConstraintFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_ushort_P_PxConstraintFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -301,24 +301,24 @@ public static UNPARSED_TYPE operator&(PxConstraintFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxFilterFlag::Enum, unsigned short>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxFilterFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxFilterFlag_P_(physx::PxFilterFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxFilterFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxFilterFlag_P_(PxFilterFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxFilterFlag a,  b){
     PxFilterFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_ushort_P_PxFilterFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -327,24 +327,24 @@ public static UNPARSED_TYPE operator&(PxFilterFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPairFlag::Enum, unsigned short>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxPairFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxPairFlag_P_(physx::PxPairFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxPairFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxPairFlag_P_(PxPairFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxPairFlag a,  b){
     PxPairFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_ushort_P_PxPairFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -353,24 +353,24 @@ public static UNPARSED_TYPE operator&(PxPairFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxHitFlag::Enum, unsigned short>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxHitFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxHitFlag_P_(physx::PxHitFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxHitFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxHitFlag_P_(PxHitFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxHitFlag a,  b){
     PxHitFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_ushort_P_PxHitFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -379,24 +379,24 @@ public static UNPARSED_TYPE operator&(PxHitFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxQueryFlag::Enum, unsigned short>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxQueryFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxQueryFlag_P_(physx::PxQueryFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxQueryFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxQueryFlag_P_(PxQueryFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxQueryFlag a,  b){
     PxQueryFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_ushort_P_PxQueryFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -405,24 +405,24 @@ public static UNPARSED_TYPE operator&(PxQueryFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPvdSceneFlag::Enum, unsigned char>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxPvdSceneFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxPvdSceneFlag_P_(physx::PxPvdSceneFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxPvdSceneFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxPvdSceneFlag_P_(PxPvdSceneFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxPvdSceneFlag a,  b){
     PxPvdSceneFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_byte_P_PxPvdSceneFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -431,24 +431,24 @@ public static UNPARSED_TYPE operator&(PxPvdSceneFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidBodyFlag::Enum, unsigned char>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxRigidBodyFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxRigidBodyFlag_P_(physx::PxRigidBodyFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxRigidBodyFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxRigidBodyFlag_P_(PxRigidBodyFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxRigidBodyFlag a,  b){
     PxRigidBodyFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_byte_P_PxRigidBodyFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -457,24 +457,24 @@ public static UNPARSED_TYPE operator&(PxRigidBodyFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxRigidDynamicLockFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxRigidDynamicLockFlag_P_(physx::PxRigidDynamicLockFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxRigidDynamicLockFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_ushort_P_PxRigidDynamicLockFlag_P_(PxRigidDynamicLockFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxRigidDynamicLockFlag a,  b){
     PxRigidDynamicLockFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_ushort_P_PxRigidDynamicLockFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -483,24 +483,24 @@ public static UNPARSED_TYPE operator&(PxRigidDynamicLockFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxDeletionEventFlag::Enum, unsigned char>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxDeletionEventFlag::Enum a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxDeletionEventFlag_P_(physx::PxDeletionEventFlag::Enum a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxDeletionEventFlag a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Enum_byte_P_PxDeletionEventFlag_P_(PxDeletionEventFlag a,  b);
 
 public static UNPARSED_TYPE operator&(PxDeletionEventFlag a,  b){
     PxDeletionEventFlag pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Enum_byte_P_PxDeletionEventFlag_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -509,31 +509,31 @@ public static UNPARSED_TYPE operator&(PxDeletionEventFlag a,  b){
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::Px1DConstraintFlag::Type, unsigned short>
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::Px1DConstraintFlag::Type a,  b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Type_ushort_P_Type_P_(physx::Px1DConstraintFlag::Type a,  b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(Type a,  b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_Type_ushort_P_Type_P_(Type a,  b);
 
 public static UNPARSED_TYPE operator&(Type a,  b){
     Type pvk_in_a = (a);
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_Type_ushort_P_Type_P_(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 #if !NATIVE
 } // End PxFlags
 #endif
 
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxFlagsPtr {
     // PxFlags<enumtype, storagetype>(PxEMPTY );
     // PxFlags<enumtype, storagetype>();
@@ -569,34 +569,44 @@ public unsafe interface IPxFlagsPtr {
     // void clear( e);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+
+    // ### Auto generated getters for fields
+    
+    /*Error generating getter/setter: Unresolved parameter type storagetype
+    */
+
+    #if !NATIVE //hierarchy
     // Hierarchy: PxFlagsPtr
+    #endif //hierarchy
     //================================================================================
     //#       PxFlags<enumtype, storagetype>                                         #
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: physx::PxFlags
     Invalid parameter name (empty)
     // NATIVE SIG: PX_INLINE explicit PxFlags(const PxEMPTY)
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor(physx::PxEMPTY ){
+    #if NATIVE //function start
+    ES UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P_PxEMPTY_C_PxFlags_ctor(physx::PxEMPTY ){
         auto nat_in_ = ();
-        self->PxFlags<enumtype, storagetype>(nat_in_);
+        return PxFlags<enumtype, storagetype>(nat_in_);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor(PxEMPTY );
+    static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P_PxEMPTY_C_PxFlags_ctor(PxEMPTY );
     
     public  PxFlags<enumtype, storagetype>(PxEMPTY ){
         PxEMPTY pvk_in_ = ();
-        var _new = W_PxFlags<enumtype, storagetype>_ctor(pvk_in_);
+        var _new = W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P_PxEMPTY_C_PxFlags_ctor(pvk_in_);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -614,22 +624,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxFlags
     Unresolved parameter type enumtype
     // NATIVE SIG: PX_INLINE PxFlags(enumtype e)
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor( e){
+    #if NATIVE //function start
+    ES UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( e){
         auto nat_in_e = (e);
-        self->PxFlags<enumtype, storagetype>(nat_in_e);
+        return PxFlags<enumtype, storagetype>(nat_in_e);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor( e);
+    static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( e);
     
     public  PxFlags<enumtype, storagetype>( e){
          pvk_in_e = (e);
-        var _new = W_PxFlags<enumtype, storagetype>_ctor(pvk_in_e);
+        var _new = W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor(pvk_in_e);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -638,22 +648,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxFlags
     fsdfasdf
     // NATIVE SIG: PX_INLINE PxFlags(const PxFlags<enumtype, storagetype>& f)
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor( f){
+    #if NATIVE //function start
+    ES UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( f){
         auto nat_in_f = (f);
-        self->PxFlags<enumtype, storagetype>(nat_in_f);
+        return PxFlags<enumtype, storagetype>(nat_in_f);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor( f);
+    static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( f);
     
     public  PxFlags<enumtype, storagetype>( f){
          pvk_in_f = (f);
-        var _new = W_PxFlags<enumtype, storagetype>_ctor(pvk_in_f);
+        var _new = W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor(pvk_in_f);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -662,22 +672,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     /* ERRORS OCCURED: unhandled return type: physx::PxFlags
     Unresolved parameter type storagetype
     // NATIVE SIG: PX_INLINE explicit PxFlags(storagetype b)
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor( b){
+    #if NATIVE //function start
+    ES UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( b){
         auto nat_in_b = (b);
-        self->PxFlags<enumtype, storagetype>(nat_in_b);
+        return PxFlags<enumtype, storagetype>(nat_in_b);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_ctor( b);
+    static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( b);
     
     public  PxFlags<enumtype, storagetype>( b){
          pvk_in_b = (b);
-        var _new = W_PxFlags<enumtype, storagetype>_ctor(pvk_in_b);
+        var _new = W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor(pvk_in_b);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -685,22 +695,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type enumtype
     // NATIVE SIG: bool isSet(enumtype e) const
-    #if NATIVE
-    ES bool W_isSet(physx::PxFlags* self,  e){
+    #if NATIVE //function start
+    ES bool W_isSet_R_bool_P__C_PxFlags(physx::PxFlags* self,  e){
         auto nat_in_e = (e);
         auto retVal = self->isSet(nat_in_e);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isSet(PxFlagsPtr selfPtr,  e);
+    static extern bool W_isSet_R_bool_P__C_PxFlags(PxFlagsPtr selfPtr,  e);
     
     public  bool isSet( e){
          pvk_in_e = (e);
-        bool retVal = W_isSet(this, pvk_in_e);
+        bool retVal = W_isSet_R_bool_P__C_PxFlags(this, pvk_in_e);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -709,22 +719,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     /* ERRORS OCCURED: unhandled return reference type: 
     Unresolved parameter type enumtype
     // NATIVE SIG: PxFlags<enumtype, storagetype>& set(enumtype e)
-    #if NATIVE
-    ES UNPARSED_TYPE W_set(physx::PxFlags* self,  e){
+    #if NATIVE //function start
+    ES UNPARSED_TYPE W_set_R_PxFlags_enumtype_storagetypePtr_P__C_PxFlags(physx::PxFlags* self,  e){
         auto nat_in_e = (e);
         auto retVal = self->set(nat_in_e);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_set(PxFlagsPtr selfPtr,  e);
+    static extern UNPARSED_TYPE W_set_R_PxFlags_enumtype_storagetypePtr_P__C_PxFlags(PxFlagsPtr selfPtr,  e);
     
     public  UNPARSED_TYPE set( e){
          pvk_in_e = (e);
-        UNPARSED_TYPE retVal = W_set(this, pvk_in_e);
+        UNPARSED_TYPE retVal = W_set_R_PxFlags_enumtype_storagetypePtr_P__C_PxFlags(this, pvk_in_e);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -732,22 +742,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type enumtype
     // NATIVE SIG: bool operator==(enumtype e) const
-    #if NATIVE
-    ES bool W_OP_EqualEqual(physx::PxFlags* self,  e){
+    #if NATIVE //function start
+    ES bool W_OP_EqualEqual_R_bool_P__C_PxFlags(physx::PxFlags* self,  e){
         auto nat_in_e = (e);
         auto retVal = self->operator==(nat_in_e);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_OP_EqualEqual(PxFlagsPtr selfPtr,  e);
+    static extern bool W_OP_EqualEqual_R_bool_P__C_PxFlags(PxFlagsPtr selfPtr,  e);
     
     public static bool operator==(PxFlagsPtr lhs,  e){
          pvk_in_e = (e);
-        bool retVal = W_OP_EqualEqual(lhs, pvk_in_e);
+        bool retVal = W_OP_EqualEqual_R_bool_P__C_PxFlags(lhs, pvk_in_e);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -755,43 +765,43 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     //================================================================================
     /* ERRORS OCCURED: fsdfasdf
     // NATIVE SIG: bool operator==(const PxFlags<enumtype, storagetype>& f) const
-    #if NATIVE
-    ES bool W_OP_EqualEqual(physx::PxFlags* self,  f){
+    #if NATIVE //function start
+    ES bool W_OP_EqualEqual_R_bool_P__C_PxFlags(physx::PxFlags* self,  f){
         auto nat_in_f = (f);
         auto retVal = self->operator==(nat_in_f);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_OP_EqualEqual(PxFlagsPtr selfPtr,  f);
+    static extern bool W_OP_EqualEqual_R_bool_P__C_PxFlags(PxFlagsPtr selfPtr,  f);
     
     public static bool operator==(PxFlagsPtr lhs,  f){
          pvk_in_f = (f);
-        bool retVal = W_OP_EqualEqual(lhs, pvk_in_f);
+        bool retVal = W_OP_EqualEqual_R_bool_P__C_PxFlags(lhs, pvk_in_f);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    #if NATIVE
-    ES bool W_OP_EqualEqual(physx::PxFlags* self, bool b){
+    #if NATIVE //function start
+    ES bool W_OP_EqualEqual_R_bool_P_bool_C_PxFlags(physx::PxFlags* self, bool b){
         auto nat_in_b = (b);
         auto retVal = self->operator==(nat_in_b);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_OP_EqualEqual(PxFlagsPtr selfPtr, bool b);
+    static extern bool W_OP_EqualEqual_R_bool_P_bool_C_PxFlags(PxFlagsPtr selfPtr, bool b);
     
     public static bool operator==(PxFlagsPtr lhs, bool b){
         bool pvk_in_b = (b);
-        bool retVal = W_OP_EqualEqual(lhs, pvk_in_b);
+        bool retVal = W_OP_EqualEqual_R_bool_P_bool_C_PxFlags(lhs, pvk_in_b);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -799,22 +809,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type enumtype
     // NATIVE SIG: bool operator!=(enumtype e) const
-    #if NATIVE
-    ES bool W_OP_ExclaimEqual(physx::PxFlags* self,  e){
+    #if NATIVE //function start
+    ES bool W_OP_ExclaimEqual_R_bool_P__C_PxFlags(physx::PxFlags* self,  e){
         auto nat_in_e = (e);
         auto retVal = self->operator!=(nat_in_e);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_OP_ExclaimEqual(PxFlagsPtr selfPtr,  e);
+    static extern bool W_OP_ExclaimEqual_R_bool_P__C_PxFlags(PxFlagsPtr selfPtr,  e);
     
     public static bool operator!=(PxFlagsPtr lhs,  e){
          pvk_in_e = (e);
-        bool retVal = W_OP_ExclaimEqual(lhs, pvk_in_e);
+        bool retVal = W_OP_ExclaimEqual_R_bool_P__C_PxFlags(lhs, pvk_in_e);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -822,22 +832,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     //================================================================================
     /* ERRORS OCCURED: fsdfasdf
     // NATIVE SIG: bool operator!=(const PxFlags<enumtype, storagetype>& f) const
-    #if NATIVE
-    ES bool W_OP_ExclaimEqual(physx::PxFlags* self,  f){
+    #if NATIVE //function start
+    ES bool W_OP_ExclaimEqual_R_bool_P__C_PxFlags(physx::PxFlags* self,  f){
         auto nat_in_f = (f);
         auto retVal = self->operator!=(nat_in_f);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_OP_ExclaimEqual(PxFlagsPtr selfPtr,  f);
+    static extern bool W_OP_ExclaimEqual_R_bool_P__C_PxFlags(PxFlagsPtr selfPtr,  f);
     
     public static bool operator!=(PxFlagsPtr lhs,  f){
          pvk_in_f = (f);
-        bool retVal = W_OP_ExclaimEqual(lhs, pvk_in_f);
+        bool retVal = W_OP_ExclaimEqual_R_bool_P__C_PxFlags(lhs, pvk_in_f);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -874,22 +884,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     /* ERRORS OCCURED: unhandled return type: 
     Unresolved parameter type enumtype
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator|(enumtype e) const
-    #if NATIVE
-    ES UNPARSED_TYPE W_OP_Pipe(physx::PxFlags* self,  e){
+    #if NATIVE //function start
+    ES const UNPARSED_TYPE W_OP_Pipe_R_PxFlags_enumtype_storagetype_P__C_PxFlags(physx::PxFlags* self,  e){
         auto nat_in_e = (e);
         auto retVal = self->operator|(nat_in_e);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_OP_Pipe(PxFlagsPtr selfPtr,  e);
+    static extern UNPARSED_TYPE W_OP_Pipe_R_PxFlags_enumtype_storagetype_P__C_PxFlags(PxFlagsPtr selfPtr,  e);
     
     public static UNPARSED_TYPE operator|(PxFlagsPtr lhs,  e){
          pvk_in_e = (e);
-        UNPARSED_TYPE retVal = W_OP_Pipe(lhs, pvk_in_e);
+        UNPARSED_TYPE retVal = W_OP_Pipe_R_PxFlags_enumtype_storagetype_P__C_PxFlags(lhs, pvk_in_e);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -898,22 +908,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     /* ERRORS OCCURED: unhandled return type: 
     fsdfasdf
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator|(const PxFlags<enumtype, storagetype>& f) const
-    #if NATIVE
-    ES UNPARSED_TYPE W_OP_Pipe(physx::PxFlags* self,  f){
+    #if NATIVE //function start
+    ES const UNPARSED_TYPE W_OP_Pipe_R_PxFlags_enumtype_storagetype_P__C_PxFlags(physx::PxFlags* self,  f){
         auto nat_in_f = (f);
         auto retVal = self->operator|(nat_in_f);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_OP_Pipe(PxFlagsPtr selfPtr,  f);
+    static extern UNPARSED_TYPE W_OP_Pipe_R_PxFlags_enumtype_storagetype_P__C_PxFlags(PxFlagsPtr selfPtr,  f);
     
     public static UNPARSED_TYPE operator|(PxFlagsPtr lhs,  f){
          pvk_in_f = (f);
-        UNPARSED_TYPE retVal = W_OP_Pipe(lhs, pvk_in_f);
+        UNPARSED_TYPE retVal = W_OP_Pipe_R_PxFlags_enumtype_storagetype_P__C_PxFlags(lhs, pvk_in_f);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -936,22 +946,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     /* ERRORS OCCURED: unhandled return type: 
     Unresolved parameter type enumtype
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype e) const
-    #if NATIVE
-    ES UNPARSED_TYPE W_OP_Amp(physx::PxFlags* self,  e){
+    #if NATIVE //function start
+    ES const UNPARSED_TYPE W_OP_Amp_R_PxFlags_enumtype_storagetype_P__C_PxFlags(physx::PxFlags* self,  e){
         auto nat_in_e = (e);
         auto retVal = self->operator&(nat_in_e);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_OP_Amp(PxFlagsPtr selfPtr,  e);
+    static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_enumtype_storagetype_P__C_PxFlags(PxFlagsPtr selfPtr,  e);
     
     public static UNPARSED_TYPE operator&(PxFlagsPtr lhs,  e){
          pvk_in_e = (e);
-        UNPARSED_TYPE retVal = W_OP_Amp(lhs, pvk_in_e);
+        UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_enumtype_storagetype_P__C_PxFlags(lhs, pvk_in_e);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -960,22 +970,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     /* ERRORS OCCURED: unhandled return type: 
     fsdfasdf
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(const PxFlags<enumtype, storagetype>& f) const
-    #if NATIVE
-    ES UNPARSED_TYPE W_OP_Amp(physx::PxFlags* self,  f){
+    #if NATIVE //function start
+    ES const UNPARSED_TYPE W_OP_Amp_R_PxFlags_enumtype_storagetype_P__C_PxFlags(physx::PxFlags* self,  f){
         auto nat_in_f = (f);
         auto retVal = self->operator&(nat_in_f);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_OP_Amp(PxFlagsPtr selfPtr,  f);
+    static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_enumtype_storagetype_P__C_PxFlags(PxFlagsPtr selfPtr,  f);
     
     public static UNPARSED_TYPE operator&(PxFlagsPtr lhs,  f){
          pvk_in_f = (f);
-        UNPARSED_TYPE retVal = W_OP_Amp(lhs, pvk_in_f);
+        UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_enumtype_storagetype_P__C_PxFlags(lhs, pvk_in_f);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -998,22 +1008,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     /* ERRORS OCCURED: unhandled return type: 
     Unresolved parameter type enumtype
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator^(enumtype e) const
-    #if NATIVE
-    ES UNPARSED_TYPE W_OP_Caret(physx::PxFlags* self,  e){
+    #if NATIVE //function start
+    ES const UNPARSED_TYPE W_OP_Caret_R_PxFlags_enumtype_storagetype_P__C_PxFlags(physx::PxFlags* self,  e){
         auto nat_in_e = (e);
         auto retVal = self->operator^(nat_in_e);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_OP_Caret(PxFlagsPtr selfPtr,  e);
+    static extern UNPARSED_TYPE W_OP_Caret_R_PxFlags_enumtype_storagetype_P__C_PxFlags(PxFlagsPtr selfPtr,  e);
     
     public static UNPARSED_TYPE operator^(PxFlagsPtr lhs,  e){
          pvk_in_e = (e);
-        UNPARSED_TYPE retVal = W_OP_Caret(lhs, pvk_in_e);
+        UNPARSED_TYPE retVal = W_OP_Caret_R_PxFlags_enumtype_storagetype_P__C_PxFlags(lhs, pvk_in_e);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -1022,22 +1032,22 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     /* ERRORS OCCURED: unhandled return type: 
     fsdfasdf
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator^(const PxFlags<enumtype, storagetype>& f) const
-    #if NATIVE
-    ES UNPARSED_TYPE W_OP_Caret(physx::PxFlags* self,  f){
+    #if NATIVE //function start
+    ES const UNPARSED_TYPE W_OP_Caret_R_PxFlags_enumtype_storagetype_P__C_PxFlags(physx::PxFlags* self,  f){
         auto nat_in_f = (f);
         auto retVal = self->operator^(nat_in_f);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_OP_Caret(PxFlagsPtr selfPtr,  f);
+    static extern UNPARSED_TYPE W_OP_Caret_R_PxFlags_enumtype_storagetype_P__C_PxFlags(PxFlagsPtr selfPtr,  f);
     
     public static UNPARSED_TYPE operator^(PxFlagsPtr lhs,  f){
          pvk_in_f = (f);
-        UNPARSED_TYPE retVal = W_OP_Caret(lhs, pvk_in_f);
+        UNPARSED_TYPE retVal = W_OP_Caret_R_PxFlags_enumtype_storagetype_P__C_PxFlags(lhs, pvk_in_f);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -1045,20 +1055,20 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     //================================================================================
     /* ERRORS OCCURED: unhandled return type: 
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator~(void) const
-    #if NATIVE
-    ES UNPARSED_TYPE W_OP_Tilde(physx::PxFlags* self){
+    #if NATIVE //function start
+    ES const UNPARSED_TYPE W_OP_Tilde_R_PxFlags_enumtype_storagetype_C_PxFlags(physx::PxFlags* self){
         auto retVal = self->operator~();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_OP_Tilde(PxFlagsPtr selfPtr);
+    static extern UNPARSED_TYPE W_OP_Tilde_R_PxFlags_enumtype_storagetype_C_PxFlags(PxFlagsPtr selfPtr);
     
     public static UNPARSED_TYPE operator~(PxFlagsPtr lhs){
-        UNPARSED_TYPE retVal = W_OP_Tilde(lhs);
+        UNPARSED_TYPE retVal = W_OP_Tilde_R_PxFlags_enumtype_storagetype_C_PxFlags(lhs);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
@@ -1094,23 +1104,23 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type enumtype
     // NATIVE SIG: void clear(enumtype e)
-    #if NATIVE
-    ES void W_clear(physx::PxFlags* self,  e){
+    #if NATIVE //function start
+    ES void W_clear_R_void_P__C_PxFlags(physx::PxFlags* self,  e){
         auto nat_in_e = (e);
         self->clear(nat_in_e);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_clear(PxFlagsPtr selfPtr,  e);
+    static extern void W_clear_R_void_P__C_PxFlags(PxFlagsPtr selfPtr,  e);
     
     public  void clear( e){
          pvk_in_e = (e);
-        W_clear(this, pvk_in_e);
+        W_clear_R_void_P__C_PxFlags(this, pvk_in_e);
     }
-    #endif*/
+    #endif //function end*/
     
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

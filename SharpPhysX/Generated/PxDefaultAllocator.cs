@@ -1,7 +1,7 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 #if !NATIVE
@@ -11,51 +11,51 @@ public partial struct PxDefaultAllocator {
 //================================================================================
 //#       platformAlignedAlloc                                                   #
 //================================================================================
-#if NATIVE
-ES void* W_platformAlignedAlloc(::size_t size){
+#if NATIVE //function start
+ES void* W_platformAlignedAlloc_R_IntPtr_P_ulong(::size_t size){
     auto nat_in_size = (size);
     auto retVal = physx::platformAlignedAlloc(nat_in_size);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern IntPtr W_platformAlignedAlloc(ulong size);
+static extern IntPtr W_platformAlignedAlloc_R_IntPtr_P_ulong(ulong size);
 
 public static IntPtr platformAlignedAlloc(ulong size){
     ulong pvk_in_size = (size);
-    IntPtr retVal = W_platformAlignedAlloc(pvk_in_size);
+    IntPtr retVal = W_platformAlignedAlloc_R_IntPtr_P_ulong(pvk_in_size);
     return retVal;
 }
-#endif
+#endif //function end
 
 
 //================================================================================
 //#       platformAlignedFree                                                    #
 //================================================================================
-#if NATIVE
-ES void W_platformAlignedFree(void* ptr){
+#if NATIVE //function start
+ES void W_platformAlignedFree_R_void_P_IntPtr(void* ptr){
     auto nat_in_ptr = (ptr);
     physx::platformAlignedFree(nat_in_ptr);
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern void W_platformAlignedFree(global::System.IntPtr ptr);
+static extern void W_platformAlignedFree_R_void_P_IntPtr(IntPtr ptr);
 
-public static void platformAlignedFree(global::System.IntPtr ptr){
-    global::System.IntPtr pvk_in_ptr = (ptr);
-    W_platformAlignedFree(pvk_in_ptr);
+public static void platformAlignedFree(IntPtr ptr){
+    IntPtr pvk_in_ptr = (ptr);
+    W_platformAlignedFree_R_void_P_IntPtr(pvk_in_ptr);
 }
-#endif
+#endif //function end
 
 #if !NATIVE
 } // End PxDefaultAllocator
 #endif
 
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxDefaultAllocatorPtr {
     // IntPtr allocate(ulong size, string , string , int );
-     void deallocate(global::System.IntPtr ptr);
+     void deallocate(IntPtr ptr);
     // PxDefaultAllocator(/*NULLPARS*/);
     // PxDefaultAllocator(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxDefaultAllocatorPtr lhs, /*NULLPARS*/);
@@ -64,15 +64,20 @@ public unsafe interface IPxDefaultAllocatorPtr {
     // PxDefaultAllocator(/*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxDefaultAllocatorPtr : IPxAllocatorCallbackPtr, IPxDefaultAllocatorPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxAllocatorCallbackPtr, PxDefaultAllocatorPtr
     public static implicit operator PxAllocatorCallbackPtr(PxDefaultAllocatorPtr obj){return *(PxAllocatorCallbackPtr*)&obj;}
     public static explicit operator PxDefaultAllocatorPtr(PxAllocatorCallbackPtr obj){return *(PxDefaultAllocatorPtr*)&obj;}
+    #endif //hierarchy
     
+    #if !NATIVE //piping
     // ### Piping
     
     // --- PxAllocatorCallbackPtr
@@ -81,7 +86,8 @@ public unsafe partial struct PxDefaultAllocatorPtr : IPxAllocatorCallbackPtr, IP
     //public  PxAllocatorCallback(/*NULLPARS*/){((PxAllocatorCallbackPtr)this).PxAllocatorCallback(/*NULLARGS*/);}
     //public  PxAllocatorCallback(/*NULLPARS*/){((PxAllocatorCallbackPtr)this).PxAllocatorCallback(/*NULLARGS*/);}
     
-
+    #endif //piping
+    
     //================================================================================
     //#       allocate                                                               #
     //================================================================================
@@ -94,8 +100,8 @@ public unsafe partial struct PxDefaultAllocatorPtr : IPxAllocatorCallbackPtr, IP
     		PX_ASSERT((reinterpret_cast<size_t>(ptr) & 15)==0);
     		return ptr;
     	}
-    #if NATIVE
-    ES void* W_allocate(physx::PxDefaultAllocator* self, ::size_t size, const char* , const char* , int ){
+    #if NATIVE //function start
+    ES void* W_allocate_R_IntPtr_P_ulong_P_string_P_string_P_int_C_PxDefaultAllocator(physx::PxDefaultAllocator* self, ::size_t size, const char* , const char* , int ){
         auto nat_in_size = (size);
         auto nat_in_ = ();
         auto nat_in_ = ();
@@ -103,38 +109,38 @@ public unsafe partial struct PxDefaultAllocatorPtr : IPxAllocatorCallbackPtr, IP
         auto retVal = self->allocate(nat_in_size, nat_in_, nat_in_, nat_in_);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_allocate(PxDefaultAllocatorPtr selfPtr, ulong size, string , string , int );
+    static extern IntPtr W_allocate_R_IntPtr_P_ulong_P_string_P_string_P_int_C_PxDefaultAllocator(PxDefaultAllocatorPtr selfPtr, ulong size, string , string , int );
     
     public  IntPtr allocate(ulong size, string , string , int ){
         ulong pvk_in_size = (size);
         string pvk_in_ = ();
         string pvk_in_ = ();
         int pvk_in_ = ();
-        IntPtr retVal = W_allocate(this, pvk_in_size, pvk_in_, pvk_in_, pvk_in_);
+        IntPtr retVal = W_allocate_R_IntPtr_P_ulong_P_string_P_string_P_int_C_PxDefaultAllocator(this, pvk_in_size, pvk_in_, pvk_in_, pvk_in_);
         return retVal;
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
     //#       deallocate                                                             #
     //================================================================================
-    #if NATIVE
-    ES void W_deallocate(physx::PxDefaultAllocator* self, void* ptr){
+    #if NATIVE //function start
+    ES void W_deallocate_R_void_P_IntPtr_C_PxDefaultAllocator(physx::PxDefaultAllocator* self, void* ptr){
         auto nat_in_ptr = (ptr);
         self->deallocate(nat_in_ptr);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_deallocate(PxDefaultAllocatorPtr selfPtr, global::System.IntPtr ptr);
+    static extern void W_deallocate_R_void_P_IntPtr_C_PxDefaultAllocator(PxDefaultAllocatorPtr selfPtr, IntPtr ptr);
     
-    public  void deallocate(global::System.IntPtr ptr){
-        global::System.IntPtr pvk_in_ptr = (ptr);
-        W_deallocate(this, pvk_in_ptr);
+    public  void deallocate(IntPtr ptr){
+        IntPtr pvk_in_ptr = (ptr);
+        W_deallocate_R_void_P_IntPtr_C_PxDefaultAllocator(this, pvk_in_ptr);
     }
-    #endif
+    #endif //function end
     
     
     //Skipped generated implicit entry: PxDefaultAllocator
@@ -150,6 +156,6 @@ public unsafe partial struct PxDefaultAllocatorPtr : IPxAllocatorCallbackPtr, IP
     //Skipped generated implicit entry: PxDefaultAllocator
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

@@ -1,13 +1,13 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
-#if !NATIVE
+#if !NATIVE //enum
 public enum PxMeshGeometryFlag : int {
     eDOUBLE_SIDED = 2, // eDOUBLE_SIDED = (1<<1)
 }
-#endif
+#endif //enum
 
 #if !NATIVE
 public partial struct PxTriangleMeshGeometry {
@@ -18,24 +18,24 @@ public partial struct PxTriangleMeshGeometry {
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMeshGeometryFlag::Enum, unsigned char>
 // NATIVE SIG: 
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Pipe(physx::PxMeshGeometryFlag::Enum a, physx::PxMeshGeometryFlag::Enum b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxMeshGeometryFlag_byte_P_PxMeshGeometryFlag_P_PxMeshGeometryFlag(physx::PxMeshGeometryFlag::Enum a, physx::PxMeshGeometryFlag::Enum b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator|(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Pipe(PxMeshGeometryFlag a, PxMeshGeometryFlag b);
+static extern UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxMeshGeometryFlag_byte_P_PxMeshGeometryFlag_P_PxMeshGeometryFlag(PxMeshGeometryFlag a, PxMeshGeometryFlag b);
 
 public static UNPARSED_TYPE operator|(PxMeshGeometryFlag a, PxMeshGeometryFlag b){
     PxMeshGeometryFlag pvk_in_a = (a);
     PxMeshGeometryFlag pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Pipe(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Pipe_R_PxFlags_PxMeshGeometryFlag_byte_P_PxMeshGeometryFlag_P_PxMeshGeometryFlag(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -43,24 +43,24 @@ public static UNPARSED_TYPE operator|(PxMeshGeometryFlag a, PxMeshGeometryFlag b
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMeshGeometryFlag::Enum, unsigned char>
 // NATIVE SIG: 
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Amp(physx::PxMeshGeometryFlag::Enum a, physx::PxMeshGeometryFlag::Enum b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxMeshGeometryFlag_byte_P_PxMeshGeometryFlag_P_PxMeshGeometryFlag(physx::PxMeshGeometryFlag::Enum a, physx::PxMeshGeometryFlag::Enum b){
     auto nat_in_a = (a);
     auto nat_in_b = (b);
     auto retVal = physx::operator&(nat_in_a, nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Amp(PxMeshGeometryFlag a, PxMeshGeometryFlag b);
+static extern UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxMeshGeometryFlag_byte_P_PxMeshGeometryFlag_P_PxMeshGeometryFlag(PxMeshGeometryFlag a, PxMeshGeometryFlag b);
 
 public static UNPARSED_TYPE operator&(PxMeshGeometryFlag a, PxMeshGeometryFlag b){
     PxMeshGeometryFlag pvk_in_a = (a);
     PxMeshGeometryFlag pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_OP_Amp(pvk_in_a, pvk_in_b);
+    UNPARSED_TYPE retVal = W_OP_Amp_R_PxFlags_PxMeshGeometryFlag_byte_P_PxMeshGeometryFlag_P_PxMeshGeometryFlag(pvk_in_a, pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 
 //================================================================================
@@ -68,22 +68,22 @@ public static UNPARSED_TYPE operator&(PxMeshGeometryFlag a, PxMeshGeometryFlag b
 //================================================================================
 /* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMeshGeometryFlag::Enum, unsigned char>
 // NATIVE SIG: 
-#if NATIVE
-ES UNPARSED_TYPE W_OP_Tilde(physx::PxMeshGeometryFlag::Enum a){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxMeshGeometryFlag_byte_P_PxMeshGeometryFlag(physx::PxMeshGeometryFlag::Enum a){
     auto nat_in_a = (a);
     auto retVal = physx::operator~(nat_in_a);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_OP_Tilde(PxMeshGeometryFlag a);
+static extern UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxMeshGeometryFlag_byte_P_PxMeshGeometryFlag(PxMeshGeometryFlag a);
 
 public static UNPARSED_TYPE operator~(PxMeshGeometryFlag a){
     PxMeshGeometryFlag pvk_in_a = (a);
-    UNPARSED_TYPE retVal = W_OP_Tilde(pvk_in_a);
+    UNPARSED_TYPE retVal = W_OP_Tilde_R_PxFlags_PxMeshGeometryFlag_byte_P_PxMeshGeometryFlag(pvk_in_a);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 #if !NATIVE
 } // End PxTriangleMeshGeometry

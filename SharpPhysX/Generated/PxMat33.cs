@@ -1,7 +1,7 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 #if !NATIVE
@@ -14,31 +14,31 @@ public partial struct PxMat33 {
 /* ERRORS OCCURED: Invalid parameter name (empty)
 Invalid parameter name (empty)
 // NATIVE SIG: PxMat33 operator*(float, const PxMat33&)
-#if NATIVE
-ES physx::PxMat33 W_OP_Star(float , physx::PxMat33 ){
+#if NATIVE //function start
+ES physx::PxMat33 W_OP_Star_R_PxMat33_P_float_P_PxMat33(float , physx::PxMat33 ){
     auto nat_in_ = ();
     auto nat_in_ = ();
     auto retVal = physx::operator*(nat_in_, nat_in_);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern PxMat33 W_OP_Star(float , PxMat33 );
+static extern PxMat33 W_OP_Star_R_PxMat33_P_float_P_PxMat33(float , PxMat33 );
 
 public static PxMat33 operator*(float , PxMat33 ){
     float pvk_in_ = ();
     PxMat33 pvk_in_ = ();
-    PxMat33 retVal = W_OP_Star(pvk_in_, pvk_in_);
+    PxMat33 retVal = W_OP_Star_R_PxMat33_P_float_P_PxMat33(pvk_in_, pvk_in_);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 #if !NATIVE
 } // End PxMat33
 #endif
 
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxMat33 {
     // PxMat33();
     // PxMat33(PxIDENTITY r);
@@ -74,15 +74,19 @@ public unsafe interface IPxMat33 {
     // UNPARSED_TYPE ~PxMat33(/*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxMat33 : IPxMat33 { // blittable
     public PxVec3 column0;
     public PxVec3 column1;
     public PxVec3 column2;
 
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxMat33
+    #endif //hierarchy
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
@@ -94,89 +98,89 @@ public unsafe partial struct PxMat33 : IPxMat33 { // blittable
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_PxMat33_ctor(physx::PxIDENTITY r){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_PxMat33_R_PxMat33_P_PxIDENTITY_C_PxMat33_ctor(physx::PxIDENTITY r){
         auto nat_in_r = (r);
-        self.PxMat33(nat_in_r);
+        return PxMat33(nat_in_r);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_PxMat33_ctor(PxIDENTITY r);
+    static extern PxMat33 W_PxMat33_R_PxMat33_P_PxIDENTITY_C_PxMat33_ctor(PxIDENTITY r);
     
     public  PxMat33(PxIDENTITY r){
         PxIDENTITY pvk_in_r = (r);
-        var _new = W_PxMat33_ctor(pvk_in_r);
+        var _new = W_PxMat33_R_PxMat33_P_PxIDENTITY_C_PxMat33_ctor(pvk_in_r);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_PxMat33_ctor(physx::PxZERO r){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_PxMat33_R_PxMat33_P_PxZERO_C_PxMat33_ctor(physx::PxZERO r){
         auto nat_in_r = (r);
-        self.PxMat33(nat_in_r);
+        return PxMat33(nat_in_r);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_PxMat33_ctor(PxZERO r);
+    static extern PxMat33 W_PxMat33_R_PxMat33_P_PxZERO_C_PxMat33_ctor(PxZERO r);
     
     public  PxMat33(PxZERO r){
         PxZERO pvk_in_r = (r);
-        var _new = W_PxMat33_ctor(pvk_in_r);
+        var _new = W_PxMat33_R_PxMat33_P_PxZERO_C_PxMat33_ctor(pvk_in_r);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_PxMat33_ctor(physx::PxVec3 col0, physx::PxVec3 col1, physx::PxVec3 col2){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_PxMat33_R_PxMat33_P_PxVec3_P_PxVec3_P_PxVec3_C_PxMat33_ctor(physx::PxVec3 col0, physx::PxVec3 col1, physx::PxVec3 col2){
         auto nat_in_col0 = (col0);
         auto nat_in_col1 = (col1);
         auto nat_in_col2 = (col2);
-        self.PxMat33(nat_in_col0, nat_in_col1, nat_in_col2);
+        return PxMat33(nat_in_col0, nat_in_col1, nat_in_col2);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_PxMat33_ctor(PxVec3 col0, PxVec3 col1, PxVec3 col2);
+    static extern PxMat33 W_PxMat33_R_PxMat33_P_PxVec3_P_PxVec3_P_PxVec3_C_PxMat33_ctor(PxVec3 col0, PxVec3 col1, PxVec3 col2);
     
     public  PxMat33(PxVec3 col0, PxVec3 col1, PxVec3 col2){
         PxVec3 pvk_in_col0 = (col0);
         PxVec3 pvk_in_col1 = (col1);
         PxVec3 pvk_in_col2 = (col2);
-        var _new = W_PxMat33_ctor(pvk_in_col0, pvk_in_col1, pvk_in_col2);
+        var _new = W_PxMat33_R_PxMat33_P_PxVec3_P_PxVec3_P_PxVec3_C_PxMat33_ctor(pvk_in_col0, pvk_in_col1, pvk_in_col2);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_PxMat33_ctor(float r){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_PxMat33_R_PxMat33_P_float_C_PxMat33_ctor(float r){
         auto nat_in_r = (r);
-        self.PxMat33(nat_in_r);
+        return PxMat33(nat_in_r);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_PxMat33_ctor(float r);
+    static extern PxMat33 W_PxMat33_R_PxMat33_P_float_C_PxMat33_ctor(float r);
     
     public  PxMat33(float r){
         float pvk_in_r = (r);
-        var _new = W_PxMat33_ctor(pvk_in_r);
+        var _new = W_PxMat33_R_PxMat33_P_float_C_PxMat33_ctor(pvk_in_r);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -189,64 +193,64 @@ public unsafe partial struct PxMat33 : IPxMat33 { // blittable
     	, column2(values[6], values[7], values[8])
     	{
     	}
-    #if NATIVE
-    ES physx::PxMat33 W_PxMat33_ctor( values){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_PxMat33_R_PxMat33_P__C_PxMat33_ctor( values){
         auto nat_in_values = (values);
-        self.PxMat33(nat_in_values);
+        return PxMat33(nat_in_values);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_PxMat33_ctor( values);
+    static extern PxMat33 W_PxMat33_R_PxMat33_P__C_PxMat33_ctor( values);
     
     public  PxMat33( values){
          pvk_in_values = (values);
-        var _new = W_PxMat33_ctor(pvk_in_values);
+        var _new = W_PxMat33_R_PxMat33_P__C_PxMat33_ctor(pvk_in_values);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_PxMat33_ctor(physx::PxQuat q){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_PxMat33_R_PxMat33_P_PxQuat_C_PxMat33_ctor(physx::PxQuat q){
         auto nat_in_q = (q);
-        self.PxMat33(nat_in_q);
+        return PxMat33(nat_in_q);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_PxMat33_ctor(PxQuat q);
+    static extern PxMat33 W_PxMat33_R_PxMat33_P_PxQuat_C_PxMat33_ctor(PxQuat q);
     
     public  PxMat33(PxQuat q){
         PxQuat pvk_in_q = (q);
-        var _new = W_PxMat33_ctor(pvk_in_q);
+        var _new = W_PxMat33_R_PxMat33_P_PxQuat_C_PxMat33_ctor(pvk_in_q);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxMat33                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_PxMat33_ctor(physx::PxMat33 other){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_PxMat33_R_PxMat33_P_PxMat33_C_PxMat33_ctor(physx::PxMat33 other){
         auto nat_in_other = (other);
-        self.PxMat33(nat_in_other);
+        return PxMat33(nat_in_other);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_PxMat33_ctor(PxMat33 other);
+    static extern PxMat33 W_PxMat33_R_PxMat33_P_PxMat33_C_PxMat33_ctor(PxMat33 other);
     
     public  PxMat33(PxMat33 other){
         PxMat33 pvk_in_other = (other);
-        var _new = W_PxMat33_ctor(pvk_in_other);
+        var _new = W_PxMat33_R_PxMat33_P_PxMat33_C_PxMat33_ctor(pvk_in_other);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -259,224 +263,224 @@ public unsafe partial struct PxMat33 : IPxMat33 { // blittable
     //================================================================================
     //#       createDiagonal                                                         #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_createDiagonal(physx::PxMat33 self, physx::PxVec3 d){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_createDiagonal_R_PxMat33_P_PxVec3_C_PxMat33(physx::PxMat33 self, physx::PxVec3 d){
         auto nat_in_d = (d);
         auto retVal = self.createDiagonal(nat_in_d);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_createDiagonal(PxMat33 selfBlt, PxVec3 d);
+    static extern PxMat33 W_createDiagonal_R_PxMat33_P_PxVec3_C_PxMat33(PxMat33 selfBlt, PxVec3 d);
     
     public  PxMat33 createDiagonal(PxVec3 d){
         PxVec3 pvk_in_d = (d);
-        PxMat33 retVal = W_createDiagonal(this, pvk_in_d);
+        PxMat33 retVal = W_createDiagonal_R_PxMat33_P_PxVec3_C_PxMat33(this, pvk_in_d);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    #if NATIVE
-    ES bool W_OP_EqualEqual(physx::PxMat33 self, physx::PxMat33 m){
+    #if NATIVE //function start
+    ES bool W_OP_EqualEqual_R_bool_P_PxMat33_C_PxMat33(physx::PxMat33 self, physx::PxMat33 m){
         auto nat_in_m = (m);
         auto retVal = self.operator==(nat_in_m);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_OP_EqualEqual(PxMat33 selfBlt, PxMat33 m);
+    static extern bool W_OP_EqualEqual_R_bool_P_PxMat33_C_PxMat33(PxMat33 selfBlt, PxMat33 m);
     
     public static bool operator==(PxMat33 lhs, PxMat33 m){
         PxMat33 pvk_in_m = (m);
-        bool retVal = W_OP_EqualEqual(lhs, pvk_in_m);
+        bool retVal = W_OP_EqualEqual_R_bool_P_PxMat33_C_PxMat33(lhs, pvk_in_m);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getTranspose                                                           #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_getTranspose(physx::PxMat33 self){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_getTranspose_R_PxMat33_C_PxMat33(physx::PxMat33 self){
         auto retVal = self.getTranspose();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_getTranspose(PxMat33 selfBlt);
+    static extern PxMat33 W_getTranspose_R_PxMat33_C_PxMat33(PxMat33 selfBlt);
     
     public  PxMat33 getTranspose(){
-        PxMat33 retVal = W_getTranspose(this);
+        PxMat33 retVal = W_getTranspose_R_PxMat33_C_PxMat33(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getInverse                                                             #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_getInverse(physx::PxMat33 self){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_getInverse_R_PxMat33_C_PxMat33(physx::PxMat33 self){
         auto retVal = self.getInverse();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_getInverse(PxMat33 selfBlt);
+    static extern PxMat33 W_getInverse_R_PxMat33_C_PxMat33(PxMat33 selfBlt);
     
     public  PxMat33 getInverse(){
-        PxMat33 retVal = W_getInverse(this);
+        PxMat33 retVal = W_getInverse_R_PxMat33_C_PxMat33(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getDeterminant                                                         #
     //================================================================================
-    #if NATIVE
-    ES float W_getDeterminant(physx::PxMat33 self){
+    #if NATIVE //function start
+    ES float W_getDeterminant_R_float_C_PxMat33(physx::PxMat33 self){
         auto retVal = self.getDeterminant();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getDeterminant(PxMat33 selfBlt);
+    static extern float W_getDeterminant_R_float_C_PxMat33(PxMat33 selfBlt);
     
     public  float getDeterminant(){
-        float retVal = W_getDeterminant(this);
+        float retVal = W_getDeterminant_R_float_C_PxMat33(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_OP_Minus(physx::PxMat33 self){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_OP_Minus_R_PxMat33_C_PxMat33(physx::PxMat33 self){
         auto retVal = self.operator-();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_OP_Minus(PxMat33 selfBlt);
+    static extern PxMat33 W_OP_Minus_R_PxMat33_C_PxMat33(PxMat33 selfBlt);
     
     public static PxMat33 operator-(PxMat33 lhs){
-        PxMat33 retVal = W_OP_Minus(lhs);
+        PxMat33 retVal = W_OP_Minus_R_PxMat33_C_PxMat33(lhs);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator+                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_OP_Plus(physx::PxMat33 self, physx::PxMat33 other){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_OP_Plus_R_PxMat33_P_PxMat33_C_PxMat33(physx::PxMat33 self, physx::PxMat33 other){
         auto nat_in_other = (other);
         auto retVal = self.operator+(nat_in_other);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_OP_Plus(PxMat33 selfBlt, PxMat33 other);
+    static extern PxMat33 W_OP_Plus_R_PxMat33_P_PxMat33_C_PxMat33(PxMat33 selfBlt, PxMat33 other);
     
     public static PxMat33 operator+(PxMat33 lhs, PxMat33 other){
         PxMat33 pvk_in_other = (other);
-        PxMat33 retVal = W_OP_Plus(lhs, pvk_in_other);
+        PxMat33 retVal = W_OP_Plus_R_PxMat33_P_PxMat33_C_PxMat33(lhs, pvk_in_other);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_OP_Minus(physx::PxMat33 self, physx::PxMat33 other){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_OP_Minus_R_PxMat33_P_PxMat33_C_PxMat33(physx::PxMat33 self, physx::PxMat33 other){
         auto nat_in_other = (other);
         auto retVal = self.operator-(nat_in_other);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_OP_Minus(PxMat33 selfBlt, PxMat33 other);
+    static extern PxMat33 W_OP_Minus_R_PxMat33_P_PxMat33_C_PxMat33(PxMat33 selfBlt, PxMat33 other);
     
     public static PxMat33 operator-(PxMat33 lhs, PxMat33 other){
         PxMat33 pvk_in_other = (other);
-        PxMat33 retVal = W_OP_Minus(lhs, pvk_in_other);
+        PxMat33 retVal = W_OP_Minus_R_PxMat33_P_PxMat33_C_PxMat33(lhs, pvk_in_other);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_OP_Star(physx::PxMat33 self, float scalar){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_OP_Star_R_PxMat33_P_float_C_PxMat33(physx::PxMat33 self, float scalar){
         auto nat_in_scalar = (scalar);
         auto retVal = self.operator*(nat_in_scalar);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_OP_Star(PxMat33 selfBlt, float scalar);
+    static extern PxMat33 W_OP_Star_R_PxMat33_P_float_C_PxMat33(PxMat33 selfBlt, float scalar);
     
     public static PxMat33 operator*(PxMat33 lhs, float scalar){
         float pvk_in_scalar = (scalar);
-        PxMat33 retVal = W_OP_Star(lhs, pvk_in_scalar);
+        PxMat33 retVal = W_OP_Star_R_PxMat33_P_float_C_PxMat33(lhs, pvk_in_scalar);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_OP_Star(physx::PxMat33 self, physx::PxVec3 vec){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_OP_Star_R_PxVec3_P_PxVec3_C_PxMat33(physx::PxMat33 self, physx::PxVec3 vec){
         auto nat_in_vec = (vec);
         auto retVal = self.operator*(nat_in_vec);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_OP_Star(PxMat33 selfBlt, PxVec3 vec);
+    static extern PxVec3 W_OP_Star_R_PxVec3_P_PxVec3_C_PxMat33(PxMat33 selfBlt, PxVec3 vec);
     
     public static PxVec3 operator*(PxMat33 lhs, PxVec3 vec){
         PxVec3 pvk_in_vec = (vec);
-        PxVec3 retVal = W_OP_Star(lhs, pvk_in_vec);
+        PxVec3 retVal = W_OP_Star_R_PxVec3_P_PxVec3_C_PxMat33(lhs, pvk_in_vec);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxMat33 W_OP_Star(physx::PxMat33 self, physx::PxMat33 other){
+    #if NATIVE //function start
+    ES physx::PxMat33 W_OP_Star_R_PxMat33_P_PxMat33_C_PxMat33(physx::PxMat33 self, physx::PxMat33 other){
         auto nat_in_other = (other);
         auto retVal = self.operator*(nat_in_other);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxMat33 W_OP_Star(PxMat33 selfBlt, PxMat33 other);
+    static extern PxMat33 W_OP_Star_R_PxMat33_P_PxMat33_C_PxMat33(PxMat33 selfBlt, PxMat33 other);
     
     public static PxMat33 operator*(PxMat33 lhs, PxMat33 other){
         PxMat33 pvk_in_other = (other);
-        PxMat33 retVal = W_OP_Star(lhs, pvk_in_other);
+        PxMat33 retVal = W_OP_Star_R_PxMat33_P_PxMat33_C_PxMat33(lhs, pvk_in_other);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -524,62 +528,62 @@ public unsafe partial struct PxMat33 : IPxMat33 { // blittable
     //================================================================================
     //#       transform                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_transform(physx::PxMat33 self, physx::PxVec3 other){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_transform_R_PxVec3_P_PxVec3_C_PxMat33(physx::PxMat33 self, physx::PxVec3 other){
         auto nat_in_other = (other);
         auto retVal = self.transform(nat_in_other);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_transform(PxMat33 selfBlt, PxVec3 other);
+    static extern PxVec3 W_transform_R_PxVec3_P_PxVec3_C_PxMat33(PxMat33 selfBlt, PxVec3 other);
     
     public  PxVec3 transform(PxVec3 other){
         PxVec3 pvk_in_other = (other);
-        PxVec3 retVal = W_transform(this, pvk_in_other);
+        PxVec3 retVal = W_transform_R_PxVec3_P_PxVec3_C_PxMat33(this, pvk_in_other);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       transformTranspose                                                     #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_transformTranspose(physx::PxMat33 self, physx::PxVec3 other){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_transformTranspose_R_PxVec3_P_PxVec3_C_PxMat33(physx::PxMat33 self, physx::PxVec3 other){
         auto nat_in_other = (other);
         auto retVal = self.transformTranspose(nat_in_other);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_transformTranspose(PxMat33 selfBlt, PxVec3 other);
+    static extern PxVec3 W_transformTranspose_R_PxVec3_P_PxVec3_C_PxMat33(PxMat33 selfBlt, PxVec3 other);
     
     public  PxVec3 transformTranspose(PxVec3 other){
         PxVec3 pvk_in_other = (other);
-        PxVec3 retVal = W_transformTranspose(this, pvk_in_other);
+        PxVec3 retVal = W_transformTranspose_R_PxVec3_P_PxVec3_C_PxMat33(this, pvk_in_other);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       front                                                                  #
     //================================================================================
-    #if NATIVE
-    ES float* W_front(physx::PxMat33 self){
+    #if NATIVE //function start
+    ES const float* W_front_R_floatPtr_C_PxMat33(physx::PxMat33 self){
         auto retVal = self.front();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_front(PxMat33 selfBlt);
+    static extern IntPtr W_front_R_floatPtr_C_PxMat33(PxMat33 selfBlt);
     
     public  IntPtr front(){
-        IntPtr retVal = W_front(this);
+        IntPtr retVal = W_front_R_floatPtr_C_PxMat33(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -599,6 +603,6 @@ public unsafe partial struct PxMat33 : IPxMat33 { // blittable
     //Skipped generated implicit entry: ~PxMat33
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

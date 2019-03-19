@@ -1,9 +1,9 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
-#if !NATIVE
+#if !NATIVE //enum
 public enum PxConcreteType : int {
     eUNDEFINED = 0,                 // eUNDEFINED
     eHEIGHTFIELD = 1,               // eHEIGHTFIELD
@@ -26,54 +26,66 @@ public enum PxConcreteType : int {
     eFIRST_VEHICLE_EXTENSION = 512, // eFIRST_VEHICLE_EXTENSION = 512
     eFIRST_USER_EXTENSION = 1024,   // eFIRST_USER_EXTENSION = 1024
 }
-#endif
+#endif //enum
 
 
 // Class physx::PxHeightField Manually Ignored
 // Class physx::PxAggregate Manually Ignored
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxArticulationLinkPtr {
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxArticulationLinkPtr : IPxArticulationLinkPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxArticulationLinkPtr
+    #endif //hierarchy
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close
 
 // Class physx::PxPruningStructure Manually Ignored
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxArticulationJointPtr {
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxArticulationJointPtr : IPxArticulationJointPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxArticulationJointPtr
+    #endif //hierarchy
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close
 
 // Class physx::PxConcreteType is enum namespace
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxTypeInfo {
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxTypeInfo : IPxTypeInfo { // blittable
 
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxTypeInfo
+    #endif //hierarchy
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

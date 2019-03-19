@@ -1,7 +1,7 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 #if !NATIVE
@@ -13,20 +13,20 @@ public partial struct PxCollection {
 //================================================================================
 /* ERRORS OCCURED: Forbidden return type
 // NATIVE SIG: physx::PxCollection* PX_CALL_CONV PxCreateCollection()
-#if NATIVE
-ES physx::PxCollection* W_PxCreateCollection(){
+#if NATIVE //function start
+ES physx::PxCollection* W_PxCreateCollection_R_PxCollectionPtr(){
     auto retVal = PxCreateCollection();
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern PxCollectionPtr W_PxCreateCollection();
+static extern PxCollectionPtr W_PxCreateCollection_R_PxCollectionPtr();
 
 public static PxCollectionPtr PxCreateCollection(){
-    PxCollectionPtr retVal = W_PxCreateCollection();
+    PxCollectionPtr retVal = W_PxCreateCollection_R_PxCollectionPtr();
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 #if !NATIVE
 } // End PxCollection

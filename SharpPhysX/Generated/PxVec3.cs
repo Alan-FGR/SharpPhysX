@@ -1,7 +1,7 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 #if !NATIVE
@@ -11,31 +11,31 @@ public partial struct PxVec3 {
 //================================================================================
 //#       operator*                                                              #
 //================================================================================
-#if NATIVE
-ES physx::PxVec3 W_OP_Star(float f, physx::PxVec3 v){
+#if NATIVE //function start
+ES physx::PxVec3 W_OP_Star_R_PxVec3_P_float_P_PxVec3(float f, physx::PxVec3 v){
     auto nat_in_f = (f);
     auto nat_in_v = (v);
     auto retVal = physx::operator*(nat_in_f, nat_in_v);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern PxVec3 W_OP_Star(float f, PxVec3 v);
+static extern PxVec3 W_OP_Star_R_PxVec3_P_float_P_PxVec3(float f, PxVec3 v);
 
 public static PxVec3 operator*(float f, PxVec3 v){
     float pvk_in_f = (f);
     PxVec3 pvk_in_v = (v);
-    PxVec3 retVal = W_OP_Star(pvk_in_f, pvk_in_v);
+    PxVec3 retVal = W_OP_Star_R_PxVec3_P_float_P_PxVec3(pvk_in_f, pvk_in_v);
     return retVal;
 }
-#endif
+#endif //function end
 
 #if !NATIVE
 } // End PxVec3
 #endif
 
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxVec3 {
     // PxVec3();
     // PxVec3(PxZERO r);
@@ -76,15 +76,19 @@ public unsafe interface IPxVec3 {
     // UNPARSED_TYPE ~PxVec3(/*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxVec3 : IPxVec3 { // blittable
     public float x;
     public float y;
     public float z;
 
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxVec3
+    #endif //hierarchy
     //================================================================================
     //#       PxVec3                                                                 #
     //================================================================================
@@ -96,89 +100,89 @@ public unsafe partial struct PxVec3 : IPxVec3 { // blittable
     //================================================================================
     //#       PxVec3                                                                 #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_PxVec3_ctor(physx::PxZERO r){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_PxVec3_R_PxVec3_P_PxZERO_C_PxVec3_ctor(physx::PxZERO r){
         auto nat_in_r = (r);
-        self.PxVec3(nat_in_r);
+        return PxVec3(nat_in_r);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_PxVec3_ctor(PxZERO r);
+    static extern PxVec3 W_PxVec3_R_PxVec3_P_PxZERO_C_PxVec3_ctor(PxZERO r);
     
     public  PxVec3(PxZERO r){
         PxZERO pvk_in_r = (r);
-        var _new = W_PxVec3_ctor(pvk_in_r);
+        var _new = W_PxVec3_R_PxVec3_P_PxZERO_C_PxVec3_ctor(pvk_in_r);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxVec3                                                                 #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_PxVec3_ctor(float a){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_PxVec3_R_PxVec3_P_float_C_PxVec3_ctor(float a){
         auto nat_in_a = (a);
-        self.PxVec3(nat_in_a);
+        return PxVec3(nat_in_a);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_PxVec3_ctor(float a);
+    static extern PxVec3 W_PxVec3_R_PxVec3_P_float_C_PxVec3_ctor(float a);
     
     public  PxVec3(float a){
         float pvk_in_a = (a);
-        var _new = W_PxVec3_ctor(pvk_in_a);
+        var _new = W_PxVec3_R_PxVec3_P_float_C_PxVec3_ctor(pvk_in_a);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxVec3                                                                 #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_PxVec3_ctor(float nx, float ny, float nz){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_PxVec3_R_PxVec3_P_float_P_float_P_float_C_PxVec3_ctor(float nx, float ny, float nz){
         auto nat_in_nx = (nx);
         auto nat_in_ny = (ny);
         auto nat_in_nz = (nz);
-        self.PxVec3(nat_in_nx, nat_in_ny, nat_in_nz);
+        return PxVec3(nat_in_nx, nat_in_ny, nat_in_nz);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_PxVec3_ctor(float nx, float ny, float nz);
+    static extern PxVec3 W_PxVec3_R_PxVec3_P_float_P_float_P_float_C_PxVec3_ctor(float nx, float ny, float nz);
     
     public  PxVec3(float nx, float ny, float nz){
         float pvk_in_nx = (nx);
         float pvk_in_ny = (ny);
         float pvk_in_nz = (nz);
-        var _new = W_PxVec3_ctor(pvk_in_nx, pvk_in_ny, pvk_in_nz);
+        var _new = W_PxVec3_R_PxVec3_P_float_P_float_P_float_C_PxVec3_ctor(pvk_in_nx, pvk_in_ny, pvk_in_nz);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxVec3                                                                 #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_PxVec3_ctor(physx::PxVec3 v){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_PxVec3_R_PxVec3_P_PxVec3_C_PxVec3_ctor(physx::PxVec3 v){
         auto nat_in_v = (v);
-        self.PxVec3(nat_in_v);
+        return PxVec3(nat_in_v);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_PxVec3_ctor(PxVec3 v);
+    static extern PxVec3 W_PxVec3_R_PxVec3_P_PxVec3_C_PxVec3_ctor(PxVec3 v);
     
     public  PxVec3(PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        var _new = W_PxVec3_ctor(pvk_in_v);
+        var _new = W_PxVec3_R_PxVec3_P_PxVec3_C_PxVec3_ctor(pvk_in_v);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -205,241 +209,241 @@ public unsafe partial struct PxVec3 : IPxVec3 { // blittable
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    #if NATIVE
-    ES bool W_OP_EqualEqual(physx::PxVec3 self, physx::PxVec3 v){
+    #if NATIVE //function start
+    ES bool W_OP_EqualEqual_R_bool_P_PxVec3_C_PxVec3(physx::PxVec3 self, physx::PxVec3 v){
         auto nat_in_v = (v);
         auto retVal = self.operator==(nat_in_v);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_OP_EqualEqual(PxVec3 selfBlt, PxVec3 v);
+    static extern bool W_OP_EqualEqual_R_bool_P_PxVec3_C_PxVec3(PxVec3 selfBlt, PxVec3 v);
     
     public static bool operator==(PxVec3 lhs, PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        bool retVal = W_OP_EqualEqual(lhs, pvk_in_v);
+        bool retVal = W_OP_EqualEqual_R_bool_P_PxVec3_C_PxVec3(lhs, pvk_in_v);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator!=                                                             #
     //================================================================================
-    #if NATIVE
-    ES bool W_OP_ExclaimEqual(physx::PxVec3 self, physx::PxVec3 v){
+    #if NATIVE //function start
+    ES bool W_OP_ExclaimEqual_R_bool_P_PxVec3_C_PxVec3(physx::PxVec3 self, physx::PxVec3 v){
         auto nat_in_v = (v);
         auto retVal = self.operator!=(nat_in_v);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_OP_ExclaimEqual(PxVec3 selfBlt, PxVec3 v);
+    static extern bool W_OP_ExclaimEqual_R_bool_P_PxVec3_C_PxVec3(PxVec3 selfBlt, PxVec3 v);
     
     public static bool operator!=(PxVec3 lhs, PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        bool retVal = W_OP_ExclaimEqual(lhs, pvk_in_v);
+        bool retVal = W_OP_ExclaimEqual_R_bool_P_PxVec3_C_PxVec3(lhs, pvk_in_v);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       isZero                                                                 #
     //================================================================================
-    #if NATIVE
-    ES bool W_isZero(physx::PxVec3 self){
+    #if NATIVE //function start
+    ES bool W_isZero_R_bool_C_PxVec3(physx::PxVec3 self){
         auto retVal = self.isZero();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isZero(PxVec3 selfBlt);
+    static extern bool W_isZero_R_bool_C_PxVec3(PxVec3 selfBlt);
     
     public  bool isZero(){
-        bool retVal = W_isZero(this);
+        bool retVal = W_isZero_R_bool_C_PxVec3(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       isFinite                                                               #
     //================================================================================
-    #if NATIVE
-    ES bool W_isFinite(physx::PxVec3 self){
+    #if NATIVE //function start
+    ES bool W_isFinite_R_bool_C_PxVec3(physx::PxVec3 self){
         auto retVal = self.isFinite();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isFinite(PxVec3 selfBlt);
+    static extern bool W_isFinite_R_bool_C_PxVec3(PxVec3 selfBlt);
     
     public  bool isFinite(){
-        bool retVal = W_isFinite(this);
+        bool retVal = W_isFinite_R_bool_C_PxVec3(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       isNormalized                                                           #
     //================================================================================
-    #if NATIVE
-    ES bool W_isNormalized(physx::PxVec3 self){
+    #if NATIVE //function start
+    ES bool W_isNormalized_R_bool_C_PxVec3(physx::PxVec3 self){
         auto retVal = self.isNormalized();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isNormalized(PxVec3 selfBlt);
+    static extern bool W_isNormalized_R_bool_C_PxVec3(PxVec3 selfBlt);
     
     public  bool isNormalized(){
-        bool retVal = W_isNormalized(this);
+        bool retVal = W_isNormalized_R_bool_C_PxVec3(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       magnitudeSquared                                                       #
     //================================================================================
-    #if NATIVE
-    ES float W_magnitudeSquared(physx::PxVec3 self){
+    #if NATIVE //function start
+    ES float W_magnitudeSquared_R_float_C_PxVec3(physx::PxVec3 self){
         auto retVal = self.magnitudeSquared();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_magnitudeSquared(PxVec3 selfBlt);
+    static extern float W_magnitudeSquared_R_float_C_PxVec3(PxVec3 selfBlt);
     
     public  float magnitudeSquared(){
-        float retVal = W_magnitudeSquared(this);
+        float retVal = W_magnitudeSquared_R_float_C_PxVec3(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       magnitude                                                              #
     //================================================================================
-    #if NATIVE
-    ES float W_magnitude(physx::PxVec3 self){
+    #if NATIVE //function start
+    ES float W_magnitude_R_float_C_PxVec3(physx::PxVec3 self){
         auto retVal = self.magnitude();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_magnitude(PxVec3 selfBlt);
+    static extern float W_magnitude_R_float_C_PxVec3(PxVec3 selfBlt);
     
     public  float magnitude(){
-        float retVal = W_magnitude(this);
+        float retVal = W_magnitude_R_float_C_PxVec3(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_OP_Minus(physx::PxVec3 self){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_OP_Minus_R_PxVec3_C_PxVec3(physx::PxVec3 self){
         auto retVal = self.operator-();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_OP_Minus(PxVec3 selfBlt);
+    static extern PxVec3 W_OP_Minus_R_PxVec3_C_PxVec3(PxVec3 selfBlt);
     
     public static PxVec3 operator-(PxVec3 lhs){
-        PxVec3 retVal = W_OP_Minus(lhs);
+        PxVec3 retVal = W_OP_Minus_R_PxVec3_C_PxVec3(lhs);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator+                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_OP_Plus(physx::PxVec3 self, physx::PxVec3 v){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_OP_Plus_R_PxVec3_P_PxVec3_C_PxVec3(physx::PxVec3 self, physx::PxVec3 v){
         auto nat_in_v = (v);
         auto retVal = self.operator+(nat_in_v);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_OP_Plus(PxVec3 selfBlt, PxVec3 v);
+    static extern PxVec3 W_OP_Plus_R_PxVec3_P_PxVec3_C_PxVec3(PxVec3 selfBlt, PxVec3 v);
     
     public static PxVec3 operator+(PxVec3 lhs, PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = W_OP_Plus(lhs, pvk_in_v);
+        PxVec3 retVal = W_OP_Plus_R_PxVec3_P_PxVec3_C_PxVec3(lhs, pvk_in_v);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_OP_Minus(physx::PxVec3 self, physx::PxVec3 v){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_OP_Minus_R_PxVec3_P_PxVec3_C_PxVec3(physx::PxVec3 self, physx::PxVec3 v){
         auto nat_in_v = (v);
         auto retVal = self.operator-(nat_in_v);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_OP_Minus(PxVec3 selfBlt, PxVec3 v);
+    static extern PxVec3 W_OP_Minus_R_PxVec3_P_PxVec3_C_PxVec3(PxVec3 selfBlt, PxVec3 v);
     
     public static PxVec3 operator-(PxVec3 lhs, PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = W_OP_Minus(lhs, pvk_in_v);
+        PxVec3 retVal = W_OP_Minus_R_PxVec3_P_PxVec3_C_PxVec3(lhs, pvk_in_v);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_OP_Star(physx::PxVec3 self, float f){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_OP_Star_R_PxVec3_P_float_C_PxVec3(physx::PxVec3 self, float f){
         auto nat_in_f = (f);
         auto retVal = self.operator*(nat_in_f);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_OP_Star(PxVec3 selfBlt, float f);
+    static extern PxVec3 W_OP_Star_R_PxVec3_P_float_C_PxVec3(PxVec3 selfBlt, float f);
     
     public static PxVec3 operator*(PxVec3 lhs, float f){
         float pvk_in_f = (f);
-        PxVec3 retVal = W_OP_Star(lhs, pvk_in_f);
+        PxVec3 retVal = W_OP_Star_R_PxVec3_P_float_C_PxVec3(lhs, pvk_in_f);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator/                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_OP_Slash(physx::PxVec3 self, float f){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_OP_Slash_R_PxVec3_P_float_C_PxVec3(physx::PxVec3 self, float f){
         auto nat_in_f = (f);
         auto retVal = self.operator/(nat_in_f);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_OP_Slash(PxVec3 selfBlt, float f);
+    static extern PxVec3 W_OP_Slash_R_PxVec3_P_float_C_PxVec3(PxVec3 selfBlt, float f);
     
     public static PxVec3 operator/(PxVec3 lhs, float f){
         float pvk_in_f = (f);
-        PxVec3 retVal = W_OP_Slash(lhs, pvk_in_f);
+        PxVec3 retVal = W_OP_Slash_R_PxVec3_P_float_C_PxVec3(lhs, pvk_in_f);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -473,244 +477,244 @@ public unsafe partial struct PxVec3 : IPxVec3 { // blittable
     //================================================================================
     //#       dot                                                                    #
     //================================================================================
-    #if NATIVE
-    ES float W_dot(physx::PxVec3 self, physx::PxVec3 v){
+    #if NATIVE //function start
+    ES float W_dot_R_float_P_PxVec3_C_PxVec3(physx::PxVec3 self, physx::PxVec3 v){
         auto nat_in_v = (v);
         auto retVal = self.dot(nat_in_v);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_dot(PxVec3 selfBlt, PxVec3 v);
+    static extern float W_dot_R_float_P_PxVec3_C_PxVec3(PxVec3 selfBlt, PxVec3 v);
     
     public  float dot(PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        float retVal = W_dot(this, pvk_in_v);
+        float retVal = W_dot_R_float_P_PxVec3_C_PxVec3(this, pvk_in_v);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       cross                                                                  #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_cross(physx::PxVec3 self, physx::PxVec3 v){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_cross_R_PxVec3_P_PxVec3_C_PxVec3(physx::PxVec3 self, physx::PxVec3 v){
         auto nat_in_v = (v);
         auto retVal = self.cross(nat_in_v);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_cross(PxVec3 selfBlt, PxVec3 v);
+    static extern PxVec3 W_cross_R_PxVec3_P_PxVec3_C_PxVec3(PxVec3 selfBlt, PxVec3 v);
     
     public  PxVec3 cross(PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = W_cross(this, pvk_in_v);
+        PxVec3 retVal = W_cross_R_PxVec3_P_PxVec3_C_PxVec3(this, pvk_in_v);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getNormalized                                                          #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_getNormalized(physx::PxVec3 self){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_getNormalized_R_PxVec3_C_PxVec3(physx::PxVec3 self){
         auto retVal = self.getNormalized();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_getNormalized(PxVec3 selfBlt);
+    static extern PxVec3 W_getNormalized_R_PxVec3_C_PxVec3(PxVec3 selfBlt);
     
     public  PxVec3 getNormalized(){
-        PxVec3 retVal = W_getNormalized(this);
+        PxVec3 retVal = W_getNormalized_R_PxVec3_C_PxVec3(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       normalize                                                              #
     //================================================================================
-    #if NATIVE
-    ES float W_normalize(physx::PxVec3 self){
+    #if NATIVE //function start
+    ES float W_normalize_R_float_C_PxVec3(physx::PxVec3 self){
         auto retVal = self.normalize();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_normalize(PxVec3 selfBlt);
+    static extern float W_normalize_R_float_C_PxVec3(PxVec3 selfBlt);
     
     public  float normalize(){
-        float retVal = W_normalize(this);
+        float retVal = W_normalize_R_float_C_PxVec3(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       normalizeSafe                                                          #
     //================================================================================
-    #if NATIVE
-    ES float W_normalizeSafe(physx::PxVec3 self){
+    #if NATIVE //function start
+    ES float W_normalizeSafe_R_float_C_PxVec3(physx::PxVec3 self){
         auto retVal = self.normalizeSafe();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_normalizeSafe(PxVec3 selfBlt);
+    static extern float W_normalizeSafe_R_float_C_PxVec3(PxVec3 selfBlt);
     
     public  float normalizeSafe(){
-        float retVal = W_normalizeSafe(this);
+        float retVal = W_normalizeSafe_R_float_C_PxVec3(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       normalizeFast                                                          #
     //================================================================================
-    #if NATIVE
-    ES float W_normalizeFast(physx::PxVec3 self){
+    #if NATIVE //function start
+    ES float W_normalizeFast_R_float_C_PxVec3(physx::PxVec3 self){
         auto retVal = self.normalizeFast();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_normalizeFast(PxVec3 selfBlt);
+    static extern float W_normalizeFast_R_float_C_PxVec3(PxVec3 selfBlt);
     
     public  float normalizeFast(){
-        float retVal = W_normalizeFast(this);
+        float retVal = W_normalizeFast_R_float_C_PxVec3(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       multiply                                                               #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_multiply(physx::PxVec3 self, physx::PxVec3 a){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_multiply_R_PxVec3_P_PxVec3_C_PxVec3(physx::PxVec3 self, physx::PxVec3 a){
         auto nat_in_a = (a);
         auto retVal = self.multiply(nat_in_a);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_multiply(PxVec3 selfBlt, PxVec3 a);
+    static extern PxVec3 W_multiply_R_PxVec3_P_PxVec3_C_PxVec3(PxVec3 selfBlt, PxVec3 a);
     
     public  PxVec3 multiply(PxVec3 a){
         PxVec3 pvk_in_a = (a);
-        PxVec3 retVal = W_multiply(this, pvk_in_a);
+        PxVec3 retVal = W_multiply_R_PxVec3_P_PxVec3_C_PxVec3(this, pvk_in_a);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       minimum                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_minimum(physx::PxVec3 self, physx::PxVec3 v){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_minimum_R_PxVec3_P_PxVec3_C_PxVec3(physx::PxVec3 self, physx::PxVec3 v){
         auto nat_in_v = (v);
         auto retVal = self.minimum(nat_in_v);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_minimum(PxVec3 selfBlt, PxVec3 v);
+    static extern PxVec3 W_minimum_R_PxVec3_P_PxVec3_C_PxVec3(PxVec3 selfBlt, PxVec3 v);
     
     public  PxVec3 minimum(PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = W_minimum(this, pvk_in_v);
+        PxVec3 retVal = W_minimum_R_PxVec3_P_PxVec3_C_PxVec3(this, pvk_in_v);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       minElement                                                             #
     //================================================================================
-    #if NATIVE
-    ES float W_minElement(physx::PxVec3 self){
+    #if NATIVE //function start
+    ES float W_minElement_R_float_C_PxVec3(physx::PxVec3 self){
         auto retVal = self.minElement();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_minElement(PxVec3 selfBlt);
+    static extern float W_minElement_R_float_C_PxVec3(PxVec3 selfBlt);
     
     public  float minElement(){
-        float retVal = W_minElement(this);
+        float retVal = W_minElement_R_float_C_PxVec3(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       maximum                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_maximum(physx::PxVec3 self, physx::PxVec3 v){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_maximum_R_PxVec3_P_PxVec3_C_PxVec3(physx::PxVec3 self, physx::PxVec3 v){
         auto nat_in_v = (v);
         auto retVal = self.maximum(nat_in_v);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_maximum(PxVec3 selfBlt, PxVec3 v);
+    static extern PxVec3 W_maximum_R_PxVec3_P_PxVec3_C_PxVec3(PxVec3 selfBlt, PxVec3 v);
     
     public  PxVec3 maximum(PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = W_maximum(this, pvk_in_v);
+        PxVec3 retVal = W_maximum_R_PxVec3_P_PxVec3_C_PxVec3(this, pvk_in_v);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       maxElement                                                             #
     //================================================================================
-    #if NATIVE
-    ES float W_maxElement(physx::PxVec3 self){
+    #if NATIVE //function start
+    ES float W_maxElement_R_float_C_PxVec3(physx::PxVec3 self){
         auto retVal = self.maxElement();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_maxElement(PxVec3 selfBlt);
+    static extern float W_maxElement_R_float_C_PxVec3(PxVec3 selfBlt);
     
     public  float maxElement(){
-        float retVal = W_maxElement(this);
+        float retVal = W_maxElement_R_float_C_PxVec3(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       abs                                                                    #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_abs(physx::PxVec3 self){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_abs_R_PxVec3_C_PxVec3(physx::PxVec3 self){
         auto retVal = self.abs();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_abs(PxVec3 selfBlt);
+    static extern PxVec3 W_abs_R_PxVec3_C_PxVec3(PxVec3 selfBlt);
     
     public  PxVec3 abs(){
-        PxVec3 retVal = W_abs(this);
+        PxVec3 retVal = W_abs_R_PxVec3_C_PxVec3(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //Skipped generated implicit entry: ~PxVec3
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

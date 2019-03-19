@@ -1,11 +1,11 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxQuat {
     // PxQuat();
     // PxQuat(PxIDENTITY r);
@@ -47,16 +47,20 @@ public unsafe interface IPxQuat {
     // UNPARSED_TYPE ~PxQuat(/*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxQuat : IPxQuat { // blittable
     public float x;
     public float y;
     public float z;
     public float w;
 
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxQuat
+    #endif //hierarchy
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
@@ -68,232 +72,232 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
-    #if NATIVE
-    ES physx::PxQuat W_PxQuat_ctor(physx::PxIDENTITY r){
+    #if NATIVE //function start
+    ES physx::PxQuat W_PxQuat_R_PxQuat_P_PxIDENTITY_C_PxQuat_ctor(physx::PxIDENTITY r){
         auto nat_in_r = (r);
-        self.PxQuat(nat_in_r);
+        return PxQuat(nat_in_r);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_PxQuat_ctor(PxIDENTITY r);
+    static extern PxQuat W_PxQuat_R_PxQuat_P_PxIDENTITY_C_PxQuat_ctor(PxIDENTITY r);
     
     public  PxQuat(PxIDENTITY r){
         PxIDENTITY pvk_in_r = (r);
-        var _new = W_PxQuat_ctor(pvk_in_r);
+        var _new = W_PxQuat_R_PxQuat_P_PxIDENTITY_C_PxQuat_ctor(pvk_in_r);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
-    #if NATIVE
-    ES physx::PxQuat W_PxQuat_ctor(float r){
+    #if NATIVE //function start
+    ES physx::PxQuat W_PxQuat_R_PxQuat_P_float_C_PxQuat_ctor(float r){
         auto nat_in_r = (r);
-        self.PxQuat(nat_in_r);
+        return PxQuat(nat_in_r);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_PxQuat_ctor(float r);
+    static extern PxQuat W_PxQuat_R_PxQuat_P_float_C_PxQuat_ctor(float r);
     
     public  PxQuat(float r){
         float pvk_in_r = (r);
-        var _new = W_PxQuat_ctor(pvk_in_r);
+        var _new = W_PxQuat_R_PxQuat_P_float_C_PxQuat_ctor(pvk_in_r);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
-    #if NATIVE
-    ES physx::PxQuat W_PxQuat_ctor(float nx, float ny, float nz, float nw){
+    #if NATIVE //function start
+    ES physx::PxQuat W_PxQuat_R_PxQuat_P_float_P_float_P_float_P_float_C_PxQuat_ctor(float nx, float ny, float nz, float nw){
         auto nat_in_nx = (nx);
         auto nat_in_ny = (ny);
         auto nat_in_nz = (nz);
         auto nat_in_nw = (nw);
-        self.PxQuat(nat_in_nx, nat_in_ny, nat_in_nz, nat_in_nw);
+        return PxQuat(nat_in_nx, nat_in_ny, nat_in_nz, nat_in_nw);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_PxQuat_ctor(float nx, float ny, float nz, float nw);
+    static extern PxQuat W_PxQuat_R_PxQuat_P_float_P_float_P_float_P_float_C_PxQuat_ctor(float nx, float ny, float nz, float nw);
     
     public  PxQuat(float nx, float ny, float nz, float nw){
         float pvk_in_nx = (nx);
         float pvk_in_ny = (ny);
         float pvk_in_nz = (nz);
         float pvk_in_nw = (nw);
-        var _new = W_PxQuat_ctor(pvk_in_nx, pvk_in_ny, pvk_in_nz, pvk_in_nw);
+        var _new = W_PxQuat_R_PxQuat_P_float_P_float_P_float_P_float_C_PxQuat_ctor(pvk_in_nx, pvk_in_ny, pvk_in_nz, pvk_in_nw);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
-    #if NATIVE
-    ES physx::PxQuat W_PxQuat_ctor(float angleRadians, physx::PxVec3 unitAxis){
+    #if NATIVE //function start
+    ES physx::PxQuat W_PxQuat_R_PxQuat_P_float_P_PxVec3_C_PxQuat_ctor(float angleRadians, physx::PxVec3 unitAxis){
         auto nat_in_angleRadians = (angleRadians);
         auto nat_in_unitAxis = (unitAxis);
-        self.PxQuat(nat_in_angleRadians, nat_in_unitAxis);
+        return PxQuat(nat_in_angleRadians, nat_in_unitAxis);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_PxQuat_ctor(float angleRadians, PxVec3 unitAxis);
+    static extern PxQuat W_PxQuat_R_PxQuat_P_float_P_PxVec3_C_PxQuat_ctor(float angleRadians, PxVec3 unitAxis);
     
     public  PxQuat(float angleRadians, PxVec3 unitAxis){
         float pvk_in_angleRadians = (angleRadians);
         PxVec3 pvk_in_unitAxis = (unitAxis);
-        var _new = W_PxQuat_ctor(pvk_in_angleRadians, pvk_in_unitAxis);
+        var _new = W_PxQuat_R_PxQuat_P_float_P_PxVec3_C_PxQuat_ctor(pvk_in_angleRadians, pvk_in_unitAxis);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
-    #if NATIVE
-    ES physx::PxQuat W_PxQuat_ctor(physx::PxQuat v){
+    #if NATIVE //function start
+    ES physx::PxQuat W_PxQuat_R_PxQuat_P_PxQuat_C_PxQuat_ctor(physx::PxQuat v){
         auto nat_in_v = (v);
-        self.PxQuat(nat_in_v);
+        return PxQuat(nat_in_v);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_PxQuat_ctor(PxQuat v);
+    static extern PxQuat W_PxQuat_R_PxQuat_P_PxQuat_C_PxQuat_ctor(PxQuat v);
     
     public  PxQuat(PxQuat v){
         PxQuat pvk_in_v = (v);
-        var _new = W_PxQuat_ctor(pvk_in_v);
+        var _new = W_PxQuat_R_PxQuat_P_PxQuat_C_PxQuat_ctor(pvk_in_v);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       PxQuat                                                                 #
     //================================================================================
-    #if NATIVE
-    ES physx::PxQuat W_PxQuat_ctor(physx::PxMat33 m){
+    #if NATIVE //function start
+    ES physx::PxQuat W_PxQuat_R_PxQuat_P_PxMat33_C_PxQuat_ctor(physx::PxMat33 m){
         auto nat_in_m = (m);
-        self.PxQuat(nat_in_m);
+        return PxQuat(nat_in_m);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_PxQuat_ctor(PxMat33 m);
+    static extern PxQuat W_PxQuat_R_PxQuat_P_PxMat33_C_PxQuat_ctor(PxMat33 m);
     
     public  PxQuat(PxMat33 m){
         PxMat33 pvk_in_m = (m);
-        var _new = W_PxQuat_ctor(pvk_in_m);
+        var _new = W_PxQuat_R_PxQuat_P_PxMat33_C_PxQuat_ctor(pvk_in_m);
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       isIdentity                                                             #
     //================================================================================
-    #if NATIVE
-    ES bool W_isIdentity(physx::PxQuat self){
+    #if NATIVE //function start
+    ES bool W_isIdentity_R_bool_C_PxQuat(physx::PxQuat self){
         auto retVal = self.isIdentity();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isIdentity(PxQuat selfBlt);
+    static extern bool W_isIdentity_R_bool_C_PxQuat(PxQuat selfBlt);
     
     public  bool isIdentity(){
-        bool retVal = W_isIdentity(this);
+        bool retVal = W_isIdentity_R_bool_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       isFinite                                                               #
     //================================================================================
-    #if NATIVE
-    ES bool W_isFinite(physx::PxQuat self){
+    #if NATIVE //function start
+    ES bool W_isFinite_R_bool_C_PxQuat(physx::PxQuat self){
         auto retVal = self.isFinite();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isFinite(PxQuat selfBlt);
+    static extern bool W_isFinite_R_bool_C_PxQuat(PxQuat selfBlt);
     
     public  bool isFinite(){
-        bool retVal = W_isFinite(this);
+        bool retVal = W_isFinite_R_bool_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       isUnit                                                                 #
     //================================================================================
-    #if NATIVE
-    ES bool W_isUnit(physx::PxQuat self){
+    #if NATIVE //function start
+    ES bool W_isUnit_R_bool_C_PxQuat(physx::PxQuat self){
         auto retVal = self.isUnit();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isUnit(PxQuat selfBlt);
+    static extern bool W_isUnit_R_bool_C_PxQuat(PxQuat selfBlt);
     
     public  bool isUnit(){
-        bool retVal = W_isUnit(this);
+        bool retVal = W_isUnit_R_bool_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       isSane                                                                 #
     //================================================================================
-    #if NATIVE
-    ES bool W_isSane(physx::PxQuat self){
+    #if NATIVE //function start
+    ES bool W_isSane_R_bool_C_PxQuat(physx::PxQuat self){
         auto retVal = self.isSane();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isSane(PxQuat selfBlt);
+    static extern bool W_isSane_R_bool_C_PxQuat(PxQuat selfBlt);
     
     public  bool isSane(){
-        bool retVal = W_isSane(this);
+        bool retVal = W_isSane_R_bool_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator==                                                             #
     //================================================================================
-    #if NATIVE
-    ES bool W_OP_EqualEqual(physx::PxQuat self, physx::PxQuat q){
+    #if NATIVE //function start
+    ES bool W_OP_EqualEqual_R_bool_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat q){
         auto nat_in_q = (q);
         auto retVal = self.operator==(nat_in_q);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_OP_EqualEqual(PxQuat selfBlt, PxQuat q);
+    static extern bool W_OP_EqualEqual_R_bool_P_PxQuat_C_PxQuat(PxQuat selfBlt, PxQuat q);
     
     public static bool operator==(PxQuat lhs, PxQuat q){
         PxQuat pvk_in_q = (q);
-        bool retVal = W_OP_EqualEqual(lhs, pvk_in_q);
+        bool retVal = W_OP_EqualEqual_R_bool_P_PxQuat_C_PxQuat(lhs, pvk_in_q);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -316,296 +320,296 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     			angle = PxAbs(w) < quatEpsilon ? PxPi : PxAtan2(s2 * s, w) * 2.0f;
     		}
     	}
-    #if NATIVE
-    ES void W_toRadiansAndUnitAxis(physx::PxQuat self, float& angle,  axis){
+    #if NATIVE //function start
+    ES void W_toRadiansAndUnitAxis_R_void_P_floatPtr_P__C_PxQuat(physx::PxQuat self, float& angle,  axis){
         auto nat_in_angle = (angle);
         auto nat_in_axis = (axis);
         self.toRadiansAndUnitAxis(nat_in_angle, nat_in_axis);
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_toRadiansAndUnitAxis(PxQuat selfBlt, float* angle,  axis);
+    static extern void W_toRadiansAndUnitAxis_R_void_P_floatPtr_P__C_PxQuat(PxQuat selfBlt, float* angle,  axis);
     
     public  void toRadiansAndUnitAxis(float* angle,  axis){
         float* pvk_in_angle = (angle);
          pvk_in_axis = (axis);
-        W_toRadiansAndUnitAxis(this, pvk_in_angle, pvk_in_axis);
+        W_toRadiansAndUnitAxis_R_void_P_floatPtr_P__C_PxQuat(this, pvk_in_angle, pvk_in_axis);
     }
-    #endif*/
+    #endif //function end*/
     
     
     //================================================================================
     //#       getAngle                                                               #
     //================================================================================
-    #if NATIVE
-    ES float W_getAngle(physx::PxQuat self){
+    #if NATIVE //function start
+    ES float W_getAngle_R_float_C_PxQuat(physx::PxQuat self){
         auto retVal = self.getAngle();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getAngle(PxQuat selfBlt);
+    static extern float W_getAngle_R_float_C_PxQuat(PxQuat selfBlt);
     
     public  float getAngle(){
-        float retVal = W_getAngle(this);
+        float retVal = W_getAngle_R_float_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getAngle                                                               #
     //================================================================================
-    #if NATIVE
-    ES float W_getAngle(physx::PxQuat self, physx::PxQuat q){
+    #if NATIVE //function start
+    ES float W_getAngle_R_float_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat q){
         auto nat_in_q = (q);
         auto retVal = self.getAngle(nat_in_q);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_getAngle(PxQuat selfBlt, PxQuat q);
+    static extern float W_getAngle_R_float_P_PxQuat_C_PxQuat(PxQuat selfBlt, PxQuat q);
     
     public  float getAngle(PxQuat q){
         PxQuat pvk_in_q = (q);
-        float retVal = W_getAngle(this, pvk_in_q);
+        float retVal = W_getAngle_R_float_P_PxQuat_C_PxQuat(this, pvk_in_q);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       magnitudeSquared                                                       #
     //================================================================================
-    #if NATIVE
-    ES float W_magnitudeSquared(physx::PxQuat self){
+    #if NATIVE //function start
+    ES float W_magnitudeSquared_R_float_C_PxQuat(physx::PxQuat self){
         auto retVal = self.magnitudeSquared();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_magnitudeSquared(PxQuat selfBlt);
+    static extern float W_magnitudeSquared_R_float_C_PxQuat(PxQuat selfBlt);
     
     public  float magnitudeSquared(){
-        float retVal = W_magnitudeSquared(this);
+        float retVal = W_magnitudeSquared_R_float_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       dot                                                                    #
     //================================================================================
-    #if NATIVE
-    ES float W_dot(physx::PxQuat self, physx::PxQuat v){
+    #if NATIVE //function start
+    ES float W_dot_R_float_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat v){
         auto nat_in_v = (v);
         auto retVal = self.dot(nat_in_v);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_dot(PxQuat selfBlt, PxQuat v);
+    static extern float W_dot_R_float_P_PxQuat_C_PxQuat(PxQuat selfBlt, PxQuat v);
     
     public  float dot(PxQuat v){
         PxQuat pvk_in_v = (v);
-        float retVal = W_dot(this, pvk_in_v);
+        float retVal = W_dot_R_float_P_PxQuat_C_PxQuat(this, pvk_in_v);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getNormalized                                                          #
     //================================================================================
-    #if NATIVE
-    ES physx::PxQuat W_getNormalized(physx::PxQuat self){
+    #if NATIVE //function start
+    ES physx::PxQuat W_getNormalized_R_PxQuat_C_PxQuat(physx::PxQuat self){
         auto retVal = self.getNormalized();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_getNormalized(PxQuat selfBlt);
+    static extern PxQuat W_getNormalized_R_PxQuat_C_PxQuat(PxQuat selfBlt);
     
     public  PxQuat getNormalized(){
-        PxQuat retVal = W_getNormalized(this);
+        PxQuat retVal = W_getNormalized_R_PxQuat_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       magnitude                                                              #
     //================================================================================
-    #if NATIVE
-    ES float W_magnitude(physx::PxQuat self){
+    #if NATIVE //function start
+    ES float W_magnitude_R_float_C_PxQuat(physx::PxQuat self){
         auto retVal = self.magnitude();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_magnitude(PxQuat selfBlt);
+    static extern float W_magnitude_R_float_C_PxQuat(PxQuat selfBlt);
     
     public  float magnitude(){
-        float retVal = W_magnitude(this);
+        float retVal = W_magnitude_R_float_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       normalize                                                              #
     //================================================================================
-    #if NATIVE
-    ES float W_normalize(physx::PxQuat self){
+    #if NATIVE //function start
+    ES float W_normalize_R_float_C_PxQuat(physx::PxQuat self){
         auto retVal = self.normalize();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern float W_normalize(PxQuat selfBlt);
+    static extern float W_normalize_R_float_C_PxQuat(PxQuat selfBlt);
     
     public  float normalize(){
-        float retVal = W_normalize(this);
+        float retVal = W_normalize_R_float_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getConjugate                                                           #
     //================================================================================
-    #if NATIVE
-    ES physx::PxQuat W_getConjugate(physx::PxQuat self){
+    #if NATIVE //function start
+    ES physx::PxQuat W_getConjugate_R_PxQuat_C_PxQuat(physx::PxQuat self){
         auto retVal = self.getConjugate();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_getConjugate(PxQuat selfBlt);
+    static extern PxQuat W_getConjugate_R_PxQuat_C_PxQuat(PxQuat selfBlt);
     
     public  PxQuat getConjugate(){
-        PxQuat retVal = W_getConjugate(this);
+        PxQuat retVal = W_getConjugate_R_PxQuat_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getImaginaryPart                                                       #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_getImaginaryPart(physx::PxQuat self){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_getImaginaryPart_R_PxVec3_C_PxQuat(physx::PxQuat self){
         auto retVal = self.getImaginaryPart();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_getImaginaryPart(PxQuat selfBlt);
+    static extern PxVec3 W_getImaginaryPart_R_PxVec3_C_PxQuat(PxQuat selfBlt);
     
     public  PxVec3 getImaginaryPart(){
-        PxVec3 retVal = W_getImaginaryPart(this);
+        PxVec3 retVal = W_getImaginaryPart_R_PxVec3_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getBasisVector0                                                        #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_getBasisVector0(physx::PxQuat self){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_getBasisVector0_R_PxVec3_C_PxQuat(physx::PxQuat self){
         auto retVal = self.getBasisVector0();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_getBasisVector0(PxQuat selfBlt);
+    static extern PxVec3 W_getBasisVector0_R_PxVec3_C_PxQuat(PxQuat selfBlt);
     
     public  PxVec3 getBasisVector0(){
-        PxVec3 retVal = W_getBasisVector0(this);
+        PxVec3 retVal = W_getBasisVector0_R_PxVec3_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getBasisVector1                                                        #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_getBasisVector1(physx::PxQuat self){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_getBasisVector1_R_PxVec3_C_PxQuat(physx::PxQuat self){
         auto retVal = self.getBasisVector1();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_getBasisVector1(PxQuat selfBlt);
+    static extern PxVec3 W_getBasisVector1_R_PxVec3_C_PxQuat(PxQuat selfBlt);
     
     public  PxVec3 getBasisVector1(){
-        PxVec3 retVal = W_getBasisVector1(this);
+        PxVec3 retVal = W_getBasisVector1_R_PxVec3_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       getBasisVector2                                                        #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_getBasisVector2(physx::PxQuat self){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_getBasisVector2_R_PxVec3_C_PxQuat(physx::PxQuat self){
         auto retVal = self.getBasisVector2();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_getBasisVector2(PxQuat selfBlt);
+    static extern PxVec3 W_getBasisVector2_R_PxVec3_C_PxQuat(PxQuat selfBlt);
     
     public  PxVec3 getBasisVector2(){
-        PxVec3 retVal = W_getBasisVector2(this);
+        PxVec3 retVal = W_getBasisVector2_R_PxVec3_C_PxQuat(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       rotate                                                                 #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_rotate(physx::PxQuat self, physx::PxVec3 v){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_rotate_R_PxVec3_P_PxVec3_C_PxQuat(physx::PxQuat self, physx::PxVec3 v){
         auto nat_in_v = (v);
         auto retVal = self.rotate(nat_in_v);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_rotate(PxQuat selfBlt, PxVec3 v);
+    static extern PxVec3 W_rotate_R_PxVec3_P_PxVec3_C_PxQuat(PxQuat selfBlt, PxVec3 v);
     
     public  PxVec3 rotate(PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = W_rotate(this, pvk_in_v);
+        PxVec3 retVal = W_rotate_R_PxVec3_P_PxVec3_C_PxQuat(this, pvk_in_v);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       rotateInv                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxVec3 W_rotateInv(physx::PxQuat self, physx::PxVec3 v){
+    #if NATIVE //function start
+    ES physx::PxVec3 W_rotateInv_R_PxVec3_P_PxVec3_C_PxQuat(physx::PxQuat self, physx::PxVec3 v){
         auto nat_in_v = (v);
         auto retVal = self.rotateInv(nat_in_v);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxVec3 W_rotateInv(PxQuat selfBlt, PxVec3 v);
+    static extern PxVec3 W_rotateInv_R_PxVec3_P_PxVec3_C_PxQuat(PxQuat selfBlt, PxVec3 v);
     
     public  PxVec3 rotateInv(PxVec3 v){
         PxVec3 pvk_in_v = (v);
-        PxVec3 retVal = W_rotateInv(this, pvk_in_v);
+        PxVec3 retVal = W_rotateInv_R_PxVec3_P_PxVec3_C_PxQuat(this, pvk_in_v);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
@@ -646,109 +650,109 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxQuat W_OP_Star(physx::PxQuat self, physx::PxQuat q){
+    #if NATIVE //function start
+    ES physx::PxQuat W_OP_Star_R_PxQuat_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat q){
         auto nat_in_q = (q);
         auto retVal = self.operator*(nat_in_q);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_OP_Star(PxQuat selfBlt, PxQuat q);
+    static extern PxQuat W_OP_Star_R_PxQuat_P_PxQuat_C_PxQuat(PxQuat selfBlt, PxQuat q);
     
     public static PxQuat operator*(PxQuat lhs, PxQuat q){
         PxQuat pvk_in_q = (q);
-        PxQuat retVal = W_OP_Star(lhs, pvk_in_q);
+        PxQuat retVal = W_OP_Star_R_PxQuat_P_PxQuat_C_PxQuat(lhs, pvk_in_q);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator+                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxQuat W_OP_Plus(physx::PxQuat self, physx::PxQuat q){
+    #if NATIVE //function start
+    ES physx::PxQuat W_OP_Plus_R_PxQuat_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat q){
         auto nat_in_q = (q);
         auto retVal = self.operator+(nat_in_q);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_OP_Plus(PxQuat selfBlt, PxQuat q);
+    static extern PxQuat W_OP_Plus_R_PxQuat_P_PxQuat_C_PxQuat(PxQuat selfBlt, PxQuat q);
     
     public static PxQuat operator+(PxQuat lhs, PxQuat q){
         PxQuat pvk_in_q = (q);
-        PxQuat retVal = W_OP_Plus(lhs, pvk_in_q);
+        PxQuat retVal = W_OP_Plus_R_PxQuat_P_PxQuat_C_PxQuat(lhs, pvk_in_q);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxQuat W_OP_Minus(physx::PxQuat self){
+    #if NATIVE //function start
+    ES physx::PxQuat W_OP_Minus_R_PxQuat_C_PxQuat(physx::PxQuat self){
         auto retVal = self.operator-();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_OP_Minus(PxQuat selfBlt);
+    static extern PxQuat W_OP_Minus_R_PxQuat_C_PxQuat(PxQuat selfBlt);
     
     public static PxQuat operator-(PxQuat lhs){
-        PxQuat retVal = W_OP_Minus(lhs);
+        PxQuat retVal = W_OP_Minus_R_PxQuat_C_PxQuat(lhs);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator-                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxQuat W_OP_Minus(physx::PxQuat self, physx::PxQuat q){
+    #if NATIVE //function start
+    ES physx::PxQuat W_OP_Minus_R_PxQuat_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat q){
         auto nat_in_q = (q);
         auto retVal = self.operator-(nat_in_q);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_OP_Minus(PxQuat selfBlt, PxQuat q);
+    static extern PxQuat W_OP_Minus_R_PxQuat_P_PxQuat_C_PxQuat(PxQuat selfBlt, PxQuat q);
     
     public static PxQuat operator-(PxQuat lhs, PxQuat q){
         PxQuat pvk_in_q = (q);
-        PxQuat retVal = W_OP_Minus(lhs, pvk_in_q);
+        PxQuat retVal = W_OP_Minus_R_PxQuat_P_PxQuat_C_PxQuat(lhs, pvk_in_q);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //================================================================================
     //#       operator*                                                              #
     //================================================================================
-    #if NATIVE
-    ES physx::PxQuat W_OP_Star(physx::PxQuat self, float r){
+    #if NATIVE //function start
+    ES physx::PxQuat W_OP_Star_R_PxQuat_P_float_C_PxQuat(physx::PxQuat self, float r){
         auto nat_in_r = (r);
         auto retVal = self.operator*(nat_in_r);
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxQuat W_OP_Star(PxQuat selfBlt, float r);
+    static extern PxQuat W_OP_Star_R_PxQuat_P_float_C_PxQuat(PxQuat selfBlt, float r);
     
     public static PxQuat operator*(PxQuat lhs, float r){
         float pvk_in_r = (r);
-        PxQuat retVal = W_OP_Star(lhs, pvk_in_r);
+        PxQuat retVal = W_OP_Star_R_PxQuat_P_float_C_PxQuat(lhs, pvk_in_r);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
     //Skipped generated implicit entry: ~PxQuat
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

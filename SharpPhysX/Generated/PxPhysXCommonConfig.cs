@@ -1,22 +1,26 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 
 // Class physx::PxHeightField Manually Ignored
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxHeightFieldDescPtr {
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxHeightFieldDescPtr : IPxHeightFieldDescPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxHeightFieldDescPtr
+    #endif //hierarchy
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

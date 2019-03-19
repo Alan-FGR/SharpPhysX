@@ -1,32 +1,37 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxRigidStaticPtr {
-     IntPtr getConcreteTypeName();
-    // PxRigidStatic(ushort concreteType,  baseFlags);
-    // PxRigidStatic( baseFlags);
-    // void ~PxRigidStatic();
-     bool isKindOf(string name);
+     string getConcreteTypeName();
+    // PxRigidStatic(/*NULLPARS*/);
+    // PxRigidStatic(/*NULLPARS*/);
+    // UNPARSED_TYPE ~PxRigidStatic(/*NULLPARS*/);
+    // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
     // PxRigidStatic(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxRigidStaticPtr lhs, /*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxRigidStaticPtr : IPxActorPtr, IPxRigidActorPtr, IPxRigidStaticPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+    #if !NATIVE //hierarchy
     // Hierarchy: PxActorPtr, PxRigidActorPtr, PxRigidStaticPtr
     public static implicit operator PxActorPtr(PxRigidStaticPtr obj){return *(PxActorPtr*)&obj;}
     public static explicit operator PxRigidStaticPtr(PxActorPtr obj){return *(PxRigidStaticPtr*)&obj;}
     public static implicit operator PxRigidActorPtr(PxRigidStaticPtr obj){return *(PxRigidActorPtr*)&obj;}
     public static explicit operator PxRigidStaticPtr(PxRigidActorPtr obj){return *(PxRigidStaticPtr*)&obj;}
+    #endif //hierarchy
     
+    #if !NATIVE //piping
     // ### Piping
     
     // --- PxRigidActorPtr
@@ -43,9 +48,9 @@ public unsafe partial struct PxRigidStaticPtr : IPxActorPtr, IPxRigidActorPtr, I
     public  uint getNbConstraints(){return ((PxRigidActorPtr)this).getNbConstraints();}
     //public  uint getConstraints( userBuffer, uint bufferSize){return ((PxRigidActorPtr)this).getConstraints(userBuffer, bufferSize);}
     //public  uint getConstraints( userBuffer, uint bufferSize, uint startIndex){return ((PxRigidActorPtr)this).getConstraints(userBuffer, bufferSize, startIndex);}
-    //public  PxRigidActor(ushort concreteType,  baseFlags){((PxRigidActorPtr)this).PxRigidActor(concreteType, baseFlags);}
-    //public  PxRigidActor( baseFlags){((PxRigidActorPtr)this).PxRigidActor(baseFlags);}
-    //public  void ~PxRigidActor(){((PxRigidActorPtr)this).~PxRigidActor();}
+    //public  PxRigidActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public  PxRigidActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxRigidActor(/*NULLPARS*/){((PxRigidActorPtr)this).~PxRigidActor(/*NULLARGS*/);}
     //public  PxRigidActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxRigidActorPtr lhs, /*NULLPARS*/){return ((PxRigidActorPtr)this).operator=(/*NULLARGS*/);}
     
@@ -53,7 +58,7 @@ public unsafe partial struct PxRigidStaticPtr : IPxActorPtr, IPxRigidActorPtr, I
     public  PxActorType getType(){return ((PxRigidActorPtr)this).getType();}
     public  PxScenePtr getScene(){return ((PxRigidActorPtr)this).getScene();}
     public  void setName(string name){((PxRigidActorPtr)this).setName(name);}
-    public  IntPtr getName(){return ((PxRigidActorPtr)this).getName();}
+    public  string getName(){return ((PxRigidActorPtr)this).getName();}
     public  PxBounds3 getWorldBounds(){return ((PxRigidActorPtr)this).getWorldBounds();}
     public  PxBounds3 getWorldBounds(float inflation){return ((PxRigidActorPtr)this).getWorldBounds(inflation);}
     public  void setActorFlag(PxActorFlag flag, bool value){((PxRigidActorPtr)this).setActorFlag(flag, value);}
@@ -64,127 +69,46 @@ public unsafe partial struct PxRigidStaticPtr : IPxActorPtr, IPxRigidActorPtr, I
     public  void setOwnerClient(byte inClient){((PxRigidActorPtr)this).setOwnerClient(inClient);}
     public  byte getOwnerClient(){return ((PxRigidActorPtr)this).getOwnerClient();}
     //public  PxAggregatePtr getAggregate(){return ((PxRigidActorPtr)this).getAggregate();}
-    //public  PxActor(ushort concreteType,  baseFlags){((PxRigidActorPtr)this).PxActor(concreteType, baseFlags);}
-    //public  PxActor( baseFlags){((PxRigidActorPtr)this).PxActor(baseFlags);}
-    //public  void ~PxActor(){((PxRigidActorPtr)this).~PxActor();}
+    //public  PxActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
+    //public  PxActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
+    //public  UNPARSED_TYPE ~PxActor(/*NULLPARS*/){((PxRigidActorPtr)this).~PxActor(/*NULLARGS*/);}
     //public  PxActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxActorPtr lhs, /*NULLPARS*/){return ((PxRigidActorPtr)this).operator=(/*NULLARGS*/);}
     
-
+    #endif //piping
+    
     //================================================================================
     //#       getConcreteTypeName                                                    #
     //================================================================================
-    #if NATIVE
-    ES sbyte* W_getConcreteTypeName(physx::PxRigidStatic* self){
+    #if NATIVE //function start
+    ES const char* W_getConcreteTypeName_R_string_C_PxRigidStatic(physx::PxRigidStatic* self){
         auto retVal = self->getConcreteTypeName();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern IntPtr W_getConcreteTypeName(PxRigidStaticPtr selfPtr);
+    static extern string W_getConcreteTypeName_R_string_C_PxRigidStatic(PxRigidStaticPtr selfPtr);
     
-    public  IntPtr getConcreteTypeName(){
-        IntPtr retVal = W_getConcreteTypeName(this);
+    public  string getConcreteTypeName(){
+        string retVal = W_getConcreteTypeName_R_string_C_PxRigidStatic(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
-    //================================================================================
-    //#       PxRigidStatic                                                          #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxRigidStatic
-    Unresolved parameter type physx::PxBaseFlags
-    // NATIVE SIG: PX_INLINE					PxRigidStatic(PxType concreteType, PxBaseFlags baseFlags) : PxRigidActor(concreteType, baseFlags) {}
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxRigidStatic_ctor(physx::PxType concreteType,  baseFlags){
-        auto nat_in_concreteType = (concreteType);
-        auto nat_in_baseFlags = (baseFlags);
-        self->PxRigidStatic(nat_in_concreteType, nat_in_baseFlags);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxRigidStatic_ctor(ushort concreteType,  baseFlags);
+    //Skipped protected: PxRigidStatic
     
-    public  PxRigidStatic(ushort concreteType,  baseFlags){
-        ushort pvk_in_concreteType = (concreteType);
-         pvk_in_baseFlags = (baseFlags);
-        var _new = W_PxRigidStatic_ctor(pvk_in_concreteType, pvk_in_baseFlags);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
+    //Skipped protected: PxRigidStatic
     
+    //Skipped protected: ~PxRigidStatic
     
-    //================================================================================
-    //#       PxRigidStatic                                                          #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxRigidStatic
-    Unresolved parameter type physx::PxBaseFlags
-    // NATIVE SIG: PX_INLINE					PxRigidStatic(PxBaseFlags baseFlags) : PxRigidActor(baseFlags) {}
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxRigidStatic_ctor( baseFlags){
-        auto nat_in_baseFlags = (baseFlags);
-        self->PxRigidStatic(nat_in_baseFlags);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxRigidStatic_ctor( baseFlags);
-    
-    public  PxRigidStatic( baseFlags){
-         pvk_in_baseFlags = (baseFlags);
-        var _new = W_PxRigidStatic_ctor(pvk_in_baseFlags);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       ~PxRigidStatic                                                         #
-    //================================================================================
-    /* ERRORS OCCURED: Destructor TODO
-    // NATIVE SIG: virtual						~PxRigidStatic() {}
-    #if NATIVE
-    ES void W_~PxRigidStatic(physx::PxRigidStatic* self){
-        self->~PxRigidStatic();
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_~PxRigidStatic(PxRigidStaticPtr selfPtr);
-    
-    public  void ~PxRigidStatic(){
-        W_~PxRigidStatic(this);
-    }
-    #endif*/
-    
-    
-    //================================================================================
-    //#       isKindOf                                                               #
-    //================================================================================
-    #if NATIVE
-    ES bool W_isKindOf(physx::PxRigidStatic* self, const char* name){
-        auto nat_in_name = (name);
-        auto retVal = self->isKindOf(nat_in_name);
-        return retVal;
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern bool W_isKindOf(PxRigidStaticPtr selfPtr, string name);
-    
-    public  bool isKindOf(string name){
-        string pvk_in_name = (name);
-        bool retVal = W_isKindOf(this, pvk_in_name);
-        return retVal;
-    }
-    #endif
-    
+    //Skipped protected: isKindOf
     
     //Skipped generated implicit entry: PxRigidStatic
     
     //Skipped generated implicit entry: operator=
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close

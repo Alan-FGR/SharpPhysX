@@ -1,7 +1,7 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
 
 #if !NATIVE
@@ -30,22 +30,22 @@ Unresolved parameter type B
 #endif
 	return u._a;
 }
-#if NATIVE
-ES UNPARSED_TYPE W_PxUnionCast( b){
+#if NATIVE //function start
+ES UNPARSED_TYPE W_PxUnionCast_R_A_P_( b){
     auto nat_in_b = (b);
     auto retVal = physx::PxUnionCast(nat_in_b);
     return retVal;
 }
-#else
+#else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-static extern UNPARSED_TYPE W_PxUnionCast( b);
+static extern UNPARSED_TYPE W_PxUnionCast_R_A_P_( b);
 
 public static UNPARSED_TYPE PxUnionCast( b){
      pvk_in_b = (b);
-    UNPARSED_TYPE retVal = W_PxUnionCast(pvk_in_b);
+    UNPARSED_TYPE retVal = W_PxUnionCast_R_A_P_(pvk_in_b);
     return retVal;
 }
-#endif*/
+#endif //function end*/
 
 #if !NATIVE
 } // End PxUnionCast

@@ -1,9 +1,9 @@
-#if !NATIVE
+#if !NATIVE //C# includes
 using System;
 using System.Runtime.InteropServices;
-#endif
+#endif //C# includes
 
-#if !NATIVE
+#if !NATIVE //enum
 public enum PxGeometryType : int {
     eSPHERE = 0,                     // eSPHERE
     ePLANE = 1,                      // ePLANE
@@ -15,14 +15,14 @@ public enum PxGeometryType : int {
     eGEOMETRY_COUNT = 7,             // eGEOMETRY_COUNT
     eINVALID = -1,                   // eINVALID = -1
 }
-#endif
+#endif //enum
 
 
 // Class physx::PxGeometryType is enum namespace
-#if !NATIVE
+#if !NATIVE //interface
 public unsafe interface IPxGeometryPtr {
      PxGeometryType getType();
-    // PxGeometry(PxGeometryType type);
+    // PxGeometry(/*NULLPARS*/);
     // PxGeometry(/*NULLPARS*/);
     // PxGeometry(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxGeometry(/*NULLPARS*/);
@@ -30,53 +30,40 @@ public unsafe interface IPxGeometryPtr {
     //static UNPARSED_TYPE operator=(PxGeometryPtr lhs, /*NULLPARS*/);
     
 }
+#endif //interface
 
+#if !NATIVE //struct start
 public unsafe partial struct PxGeometryPtr : IPxGeometryPtr { // pointer
     private IntPtr nativePtr_;
-#endif
+#endif //struct start
 
+
+    // ### Auto generated getters for fields
+    //Skipped protected field: mType
+
+    #if !NATIVE //hierarchy
     // Hierarchy: PxGeometryPtr
+    #endif //hierarchy
     //================================================================================
     //#       getType                                                                #
     //================================================================================
-    #if NATIVE
-    ES physx::PxGeometryType::Enum W_getType(physx::PxGeometry* self){
+    #if NATIVE //function start
+    ES physx::PxGeometryType::Enum W_getType_R_PxGeometryType_C_PxGeometry(physx::PxGeometry* self){
         auto retVal = self->getType();
         return retVal;
     }
-    #else
+    #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxGeometryType W_getType(PxGeometryPtr selfPtr);
+    static extern PxGeometryType W_getType_R_PxGeometryType_C_PxGeometry(PxGeometryPtr selfPtr);
     
     public  PxGeometryType getType(){
-        PxGeometryType retVal = W_getType(this);
+        PxGeometryType retVal = W_getType_R_PxGeometryType_C_PxGeometry(this);
         return retVal;
     }
-    #endif
+    #endif //function end
     
     
-    //================================================================================
-    //#       PxGeometry                                                             #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxGeometry
-    // NATIVE SIG: PX_FORCE_INLINE PxGeometry(PxGeometryType::Enum type) : mType(type) {}
-    #if NATIVE
-    ES UNPARSED_TYPE W_PxGeometry_ctor(physx::PxGeometryType::Enum type){
-        auto nat_in_type = (type);
-        self->PxGeometry(nat_in_type);
-    }
-    #else
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxGeometry_ctor(PxGeometryType type);
-    
-    public  PxGeometry(PxGeometryType type){
-        PxGeometryType pvk_in_type = (type);
-        var _new = W_PxGeometry_ctor(pvk_in_type);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
-    }
-    #endif*/
-    
+    //Skipped protected: PxGeometry
     
     //Skipped generated implicit entry: PxGeometry
     
@@ -89,6 +76,6 @@ public unsafe partial struct PxGeometryPtr : IPxGeometryPtr { // pointer
     //Skipped generated implicit entry: operator=
     
 
-#if !NATIVE
+#if !NATIVE //struct close
 }
-#endif
+#endif //struct close
