@@ -23,14 +23,15 @@ public enum PxQueryHitType : int {
 }
 #endif //enum
 
-#if !NATIVE
+#if !NATIVE //functions holder
 public partial struct PxQueryFiltering {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxQueryFlag a, PxQueryFlag b)                                #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxQueryFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxQueryFlag::Enum, unsigned short> -> PxFlags_PxQueryFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxQueryFlag_ushort_P_PxQueryFlag_P_PxQueryFlag(physx::PxQueryFlag::Enum a, physx::PxQueryFlag::Enum b){
@@ -53,9 +54,10 @@ public static UNPARSED_TYPE operator|(PxQueryFlag a, PxQueryFlag b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxQueryFlag a, PxQueryFlag b)                                #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxQueryFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxQueryFlag::Enum, unsigned short> -> PxFlags_PxQueryFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxQueryFlag_ushort_P_PxQueryFlag_P_PxQueryFlag(physx::PxQueryFlag::Enum a, physx::PxQueryFlag::Enum b){
@@ -78,9 +80,10 @@ public static UNPARSED_TYPE operator&(PxQueryFlag a, PxQueryFlag b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxQueryFlag a)                                               #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxQueryFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxQueryFlag::Enum, unsigned short> -> PxFlags_PxQueryFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxQueryFlag_ushort_P_PxQueryFlag(physx::PxQueryFlag::Enum a){
@@ -99,18 +102,18 @@ public static UNPARSED_TYPE operator~(PxQueryFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxQueryFiltering
+#if !NATIVE //end functions holder
+} //end PxQueryFiltering
 #endif
 
 
 #if !NATIVE //interface
 public unsafe interface IPxQueryFilterDataPtr {
-    // PxQueryFilterData();
-    // PxQueryFilterData(PxFilterDataPtr fd,  f);
-    // PxQueryFilterData( f);
-    // PxQueryFilterData(/*NULLPARS*/);
-    // PxQueryFilterData(/*NULLPARS*/);
+    // static PxQueryFilterDataPtr New();
+    // static PxQueryFilterDataPtr New(PxFilterDataPtr fd,  f);
+    // static PxQueryFilterDataPtr New( f);
+    // static PxQueryFilterDataPtr New(/*NULLPARS*/);
+    // static PxQueryFilterDataPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxQueryFilterDataPtr lhs, /*NULLPARS*/);
     // UNPARSED_TYPE ~PxQueryFilterData(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxQueryFilterDataPtr lhs, /*NULLPARS*/);
@@ -118,9 +121,15 @@ public unsafe interface IPxQueryFilterDataPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxQueryFilterDataPtr : IPxQueryFilterDataPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxQueryFilterDataPtrPOD{
+    physx::PxFilterData data;
+    physx::PxQueryFlags flags;
+};
 #endif //struct start
 
 
@@ -136,60 +145,74 @@ public unsafe partial struct PxQueryFilterDataPtr : IPxQueryFilterDataPtr { // p
     // Hierarchy: PxQueryFilterDataPtr
     #endif //hierarchy
     //================================================================================
-    //#       PxQueryFilterData                                                      #
+    //#       PxQueryFilterData()                                                    #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxQueryFilterData
-    Parameterless constructor not allowed
-    */
-    
-    
-    //================================================================================
-    //#       PxQueryFilterData                                                      #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxQueryFilterData
-    Unresolved parameter type physx::PxQueryFlags
-    // NATIVE SIG: explicit PX_INLINE PxQueryFilterData(const PxFilterData& fd, PxQueryFlags f) : data(fd), flags(f)	{}
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxQueryFilterData_R_PxQueryFilterDataPtr_P_PxFilterDataPtr_P__C_PxQueryFilterData_ctor(physx::PxFilterData* fd,  f){
-        auto nat_in_fd = (fd);
-        auto nat_in_f = (f);
-        return PxQueryFilterData(*nat_in_fd, nat_in_f);
+    ES PxQueryFilterDataPtrPOD W_PxQueryFilterData_R_PxQueryFilterDataPtr_C_PxQueryFilterData_ctor(){
+        auto val = new PxQueryFilterData();
+        return *(PxQueryFilterDataPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxQueryFilterData_R_PxQueryFilterDataPtr_P_PxFilterDataPtr_P__C_PxQueryFilterData_ctor(PxFilterDataPtr fd,  f);
+    static extern PxQueryFilterDataPtr W_PxQueryFilterData_R_PxQueryFilterDataPtr_C_PxQueryFilterData_ctor();
     
-    public  PxQueryFilterData(PxFilterDataPtr fd,  f){
+    public  static PxQueryFilterDataPtr New(){
+        var _new = W_PxQueryFilterData_R_PxQueryFilterDataPtr_C_PxQueryFilterData_ctor();
+        PxQueryFilterDataPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
+    
+    
+    //================================================================================
+    //#       PxQueryFilterData(PxFilterDataPtr fd, Enum, ushort> f)                 #
+    //================================================================================
+    /* ERRORS OCCURED: Unresolved parameter type physx::PxQueryFlags
+    // NATIVE SIG: explicit PX_INLINE PxQueryFilterData(const PxFilterData& fd, PxQueryFlags f) : data(fd), flags(f)	{}
+    #if NATIVE //function start
+    ES PxQueryFilterDataPtrPOD W_PxQueryFilterData_R_PxQueryFilterDataPtr_P_PxFilterDataPtr_P__C_PxQueryFilterData_ctor(physx::PxFilterData* fd,  f){
+        auto nat_in_fd = (fd);
+        auto nat_in_f = (f);
+        auto val = new PxQueryFilterData();
+        return *(PxQueryFilterDataPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxQueryFilterDataPtr W_PxQueryFilterData_R_PxQueryFilterDataPtr_P_PxFilterDataPtr_P__C_PxQueryFilterData_ctor(PxFilterDataPtr fd,  f);
+    
+    public  static PxQueryFilterDataPtr New(PxFilterDataPtr fd,  f){
         PxFilterDataPtr pvk_in_fd = (fd);
          pvk_in_f = (f);
         var _new = W_PxQueryFilterData_R_PxQueryFilterDataPtr_P_PxFilterDataPtr_P__C_PxQueryFilterData_ctor(pvk_in_fd, pvk_in_f);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxQueryFilterDataPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       PxQueryFilterData                                                      #
+    //#       PxQueryFilterData(Enum, ushort> f)                                     #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxQueryFilterData
-    Unresolved parameter type physx::PxQueryFlags
+    /* ERRORS OCCURED: Unresolved parameter type physx::PxQueryFlags
     // NATIVE SIG: explicit PX_INLINE PxQueryFilterData(PxQueryFlags f) : flags(f)										{}
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxQueryFilterData_R_PxQueryFilterDataPtr_P__C_PxQueryFilterData_ctor( f){
+    ES PxQueryFilterDataPtrPOD W_PxQueryFilterData_R_PxQueryFilterDataPtr_P__C_PxQueryFilterData_ctor( f){
         auto nat_in_f = (f);
-        return PxQueryFilterData(nat_in_f);
+        auto val = new PxQueryFilterData();
+        return *(PxQueryFilterDataPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxQueryFilterData_R_PxQueryFilterDataPtr_P__C_PxQueryFilterData_ctor( f);
+    static extern PxQueryFilterDataPtr W_PxQueryFilterData_R_PxQueryFilterDataPtr_P__C_PxQueryFilterData_ctor( f);
     
-    public  PxQueryFilterData( f){
+    public  static PxQueryFilterDataPtr New( f){
          pvk_in_f = (f);
         var _new = W_PxQueryFilterData_R_PxQueryFilterDataPtr_P__C_PxQueryFilterData_ctor(pvk_in_f);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxQueryFilterDataPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
     #endif //function end*/
     
@@ -216,22 +239,26 @@ public unsafe interface IPxQueryFilterCallbackPtr {
      PxQueryHitType postFilter(PxFilterDataPtr filterData, PxQueryHitPtr hit);
     // void ~PxQueryFilterCallback();
     //static UNPARSED_TYPE operator=(PxQueryFilterCallbackPtr lhs, /*NULLPARS*/);
-    // PxQueryFilterCallback(/*NULLPARS*/);
-    // PxQueryFilterCallback(/*NULLPARS*/);
+    // static PxQueryFilterCallbackPtr New(/*NULLPARS*/);
+    // static PxQueryFilterCallbackPtr New(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxQueryFilterCallbackPtr : IPxQueryFilterCallbackPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxQueryFilterCallbackPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxQueryFilterCallbackPtr
     #endif //hierarchy
     //================================================================================
-    //#       preFilter                                                              #
+    //#       preFilter(PxFilterDataPtr filterData, PxShapePtr shape, PxRigidActorPtr actor, Enum, ushort> queryFlags) #
     //================================================================================
     /* ERRORS OCCURED: fsdfasdf
     // NATIVE SIG: PxQueryHitType::Enum preFilter(
@@ -261,7 +288,7 @@ public unsafe partial struct PxQueryFilterCallbackPtr : IPxQueryFilterCallbackPt
     
     
     //================================================================================
-    //#       postFilter                                                             #
+    //#       postFilter(PxFilterDataPtr filterData, PxQueryHitPtr hit)              #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxQueryHitType::Enum W_postFilter_R_PxQueryHitType_P_PxFilterDataPtr_P_PxQueryHitPtr_C_PxQueryFilterCallback(physx::PxQueryFilterCallback* self, physx::PxFilterData* filterData, physx::PxQueryHit* hit){
@@ -284,7 +311,7 @@ public unsafe partial struct PxQueryFilterCallbackPtr : IPxQueryFilterCallbackPt
     
     
     //================================================================================
-    //#       ~PxQueryFilterCallback                                                 #
+    //#       ~PxQueryFilterCallback()                                               #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual ~PxQueryFilterCallback() {}

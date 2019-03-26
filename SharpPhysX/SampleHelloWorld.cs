@@ -61,8 +61,18 @@ public class SampleHelloWorld
 
         physics_ = PhysX.PxCreatePhysics(foundation_);
 
-        
+        var vec3 = new PxVec3(42);
 
+        var vec2 = PxVec2Ptr.New(1337);
+
+
+        PxSceneDescPtr sd = PhysX.PxCreateSceneDesc();
+
+
+
+
+        var t = PxTolerancesScale.Default();
+        PxSceneDescPtr sceneDesc = PxSceneDescPtr.New(PxTolerancesScale.Default());
 
     }
 

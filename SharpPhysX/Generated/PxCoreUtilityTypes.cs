@@ -7,14 +7,19 @@ using System.Runtime.InteropServices;
 
 #if !NATIVE //interface
 public unsafe interface IPxPaddingPtr {
-    // PxPadding<TNumBytes>();
+    // static PxPaddingPtr New();
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxPaddingPtr : IPxPaddingPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxPaddingPtrPOD{
+    physx::PxU8[] mPadding;
+};
 #endif //struct start
 
 
@@ -27,12 +32,24 @@ public unsafe partial struct PxPaddingPtr : IPxPaddingPtr { // pointer
     // Hierarchy: PxPaddingPtr
     #endif //hierarchy
     //================================================================================
-    //#       PxPadding<TNumBytes>                                                   #
+    //#       PxPadding<TNumBytes>()                                                 #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxPadding
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxPaddingPtrPOD W_PxPadding<TNumBytes>_R_PxPaddingPtr_C_PxPadding_ctor(){
+        auto val = new PxPadding<TNumBytes>();
+        return *(PxPaddingPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxPaddingPtr W_PxPadding<TNumBytes>_R_PxPaddingPtr_C_PxPadding_ctor();
+    
+    public  static PxPaddingPtr New(){
+        var _new = W_PxPadding<TNumBytes>_R_PxPaddingPtr_C_PxPadding_ctor();
+        PxPaddingPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
 
@@ -42,10 +59,10 @@ public unsafe partial struct PxPaddingPtr : IPxPaddingPtr { // pointer
 
 #if !NATIVE //interface
 public unsafe interface IPxStridedDataPtr {
-    // PxStridedData();
+    // static PxStridedDataPtr New();
     // UNPARSED_TYPE at(uint idx);
-    // PxStridedData(/*NULLPARS*/);
-    // PxStridedData(/*NULLPARS*/);
+    // static PxStridedDataPtr New(/*NULLPARS*/);
+    // static PxStridedDataPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxStridedDataPtr lhs, /*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxStridedDataPtr lhs, /*NULLPARS*/);
     // UNPARSED_TYPE ~PxStridedData(/*NULLPARS*/);
@@ -53,9 +70,15 @@ public unsafe interface IPxStridedDataPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxStridedDataPtr : IPxStridedDataPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxStridedDataPtrPOD{
+    physx::PxU32 stride;
+    const void* data;
+};
 #endif //struct start
 
 
@@ -97,16 +120,28 @@ public unsafe partial struct PxStridedDataPtr : IPxStridedDataPtr { // pointer
     // Hierarchy: PxStridedDataPtr
     #endif //hierarchy
     //================================================================================
-    //#       PxStridedData                                                          #
+    //#       PxStridedData()                                                        #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxStridedData
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxStridedDataPtrPOD W_PxStridedData_R_PxStridedDataPtr_C_PxStridedData_ctor(){
+        auto val = new PxStridedData();
+        return *(PxStridedDataPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxStridedDataPtr W_PxStridedData_R_PxStridedDataPtr_C_PxStridedData_ctor();
+    
+    public  static PxStridedDataPtr New(){
+        var _new = W_PxStridedData_R_PxStridedDataPtr_C_PxStridedData_ctor();
+        PxStridedDataPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     //================================================================================
-    //#       at                                                                     #
+    //#       at(uint idx)                                                           #
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: TDataType
     // NATIVE SIG: TDataType& at( PxU32 idx ) const
@@ -145,14 +180,20 @@ public unsafe partial struct PxStridedDataPtr : IPxStridedDataPtr { // pointer
 
 #if !NATIVE //interface
 public unsafe interface IPxTypedStridedDataPtr {
-    // PxTypedStridedData<TDataType>();
+    // static PxTypedStridedDataPtr New();
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxTypedStridedDataPtr : IPxTypedStridedDataPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxTypedStridedDataPtrPOD{
+    physx::PxU32 stride;
+    TDataType* data;
+};
 #endif //struct start
 
 
@@ -181,12 +222,24 @@ public unsafe partial struct PxTypedStridedDataPtr : IPxTypedStridedDataPtr { //
     // Hierarchy: PxTypedStridedDataPtr
     #endif //hierarchy
     //================================================================================
-    //#       PxTypedStridedData<TDataType>                                          #
+    //#       PxTypedStridedData<TDataType>()                                        #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxTypedStridedData
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxTypedStridedDataPtrPOD W_PxTypedStridedData<TDataType>_R_PxTypedStridedDataPtr_C_PxTypedStridedData_ctor(){
+        auto val = new PxTypedStridedData<TDataType>();
+        return *(PxTypedStridedDataPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxTypedStridedDataPtr W_PxTypedStridedData<TDataType>_R_PxTypedStridedDataPtr_C_PxTypedStridedData_ctor();
+    
+    public  static PxTypedStridedDataPtr New(){
+        var _new = W_PxTypedStridedData<TDataType>_R_PxTypedStridedDataPtr_C_PxTypedStridedData_ctor();
+        PxTypedStridedDataPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
 
@@ -196,19 +249,24 @@ public unsafe partial struct PxTypedStridedDataPtr : IPxTypedStridedDataPtr { //
 
 #if !NATIVE //interface
 public unsafe interface IPxBoundedDataPtr {
-    // PxBoundedData();
-    // PxBoundedData(/*NULLPARS*/);
+    // static PxBoundedDataPtr New();
+    // static PxBoundedDataPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxBoundedDataPtr lhs, /*NULLPARS*/);
-    // PxBoundedData(/*NULLPARS*/);
+    // static PxBoundedDataPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxBoundedDataPtr lhs, /*NULLPARS*/);
     // UNPARSED_TYPE ~PxBoundedData(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxBoundedDataPtr : IPxStridedDataPtr, IPxBoundedDataPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxBoundedDataPtrPOD{
+    physx::PxU32 count;
+};
 #endif //struct start
 
 
@@ -240,10 +298,10 @@ public unsafe partial struct PxBoundedDataPtr : IPxStridedDataPtr, IPxBoundedDat
     // ### Piping
     
     // --- PxStridedDataPtr
-    //public  PxStridedData(){((PxStridedDataPtr)this).PxStridedData();}
+    public  static PxStridedDataPtr New(){((PxStridedDataPtr)this).PxStridedData();}
     //public  UNPARSED_TYPE at(uint idx){return ((PxStridedDataPtr)this).at(idx);}
-    //public  PxStridedData(/*NULLPARS*/){((PxStridedDataPtr)this).PxStridedData(/*NULLARGS*/);}
-    //public  PxStridedData(/*NULLPARS*/){((PxStridedDataPtr)this).PxStridedData(/*NULLARGS*/);}
+    //public  static PxStridedDataPtr New(/*NULLPARS*/){((PxStridedDataPtr)this).PxStridedData(/*NULLARGS*/);}
+    //public  static PxStridedDataPtr New(/*NULLPARS*/){((PxStridedDataPtr)this).PxStridedData(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxStridedDataPtr lhs, /*NULLPARS*/){return ((PxStridedDataPtr)this).operator=(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxStridedDataPtr lhs, /*NULLPARS*/){return ((PxStridedDataPtr)this).operator=(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxStridedData(/*NULLPARS*/){((PxStridedDataPtr)this).~PxStridedData(/*NULLARGS*/);}
@@ -251,12 +309,24 @@ public unsafe partial struct PxBoundedDataPtr : IPxStridedDataPtr, IPxBoundedDat
     #endif //piping
     
     //================================================================================
-    //#       PxBoundedData                                                          #
+    //#       PxBoundedData()                                                        #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxBoundedData
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxBoundedDataPtrPOD W_PxBoundedData_R_PxBoundedDataPtr_C_PxBoundedData_ctor(){
+        auto val = new PxBoundedData();
+        return *(PxBoundedDataPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxBoundedDataPtr W_PxBoundedData_R_PxBoundedDataPtr_C_PxBoundedData_ctor();
+    
+    public  static PxBoundedDataPtr New(){
+        var _new = W_PxBoundedData_R_PxBoundedDataPtr_C_PxBoundedData_ctor();
+        PxBoundedDataPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     //Skipped generated implicit entry: PxBoundedData
@@ -276,10 +346,10 @@ public unsafe partial struct PxBoundedDataPtr : IPxStridedDataPtr, IPxBoundedDat
 
 #if !NATIVE //interface
 public unsafe interface IPxFixedSizeLookupTablePtr {
-    // PxFixedSizeLookupTable<NB_ELEMENTS>();
-    // PxFixedSizeLookupTable<NB_ELEMENTS>(PxEMPTY );
-    // PxFixedSizeLookupTable<NB_ELEMENTS>(float* dataPairs, uint numDataPairs);
-    // PxFixedSizeLookupTable<NB_ELEMENTS>( src);
+    // static PxFixedSizeLookupTablePtr New();
+    // static PxFixedSizeLookupTablePtr New(PxEMPTY );
+    // static PxFixedSizeLookupTablePtr New(float* dataPairs, uint numDataPairs);
+    // static PxFixedSizeLookupTablePtr New( src);
     // void ~PxFixedSizeLookupTable<NB_ELEMENTS>();
     //static UNPARSED_TYPE operator=(PxFixedSizeLookupTablePtr lhs, /*NULLPARS*/);
      void addPair(float x, float y);
@@ -292,9 +362,16 @@ public unsafe interface IPxFixedSizeLookupTablePtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxFixedSizeLookupTablePtr : IPxFixedSizeLookupTablePtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxFixedSizeLookupTablePtrPOD{
+    physx::PxReal[] mDataPairs;
+    physx::PxU32 mNbDataPairs;
+    physx::PxU32[3] mPad;
+};
 #endif //struct start
 
 
@@ -326,89 +403,103 @@ public unsafe partial struct PxFixedSizeLookupTablePtr : IPxFixedSizeLookupTable
     // Hierarchy: PxFixedSizeLookupTablePtr
     #endif //hierarchy
     //================================================================================
-    //#       PxFixedSizeLookupTable<NB_ELEMENTS>                                    #
+    //#       PxFixedSizeLookupTable<NB_ELEMENTS>()                                  #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxFixedSizeLookupTable
-    Parameterless constructor not allowed
-    */
-    
-    
-    //================================================================================
-    //#       PxFixedSizeLookupTable<NB_ELEMENTS>                                    #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxFixedSizeLookupTable
-    Invalid parameter name (empty)
-    // NATIVE SIG: PxFixedSizeLookupTable(const PxEMPTY)
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P_PxEMPTY_C_PxFixedSizeLookupTable_ctor(physx::PxEMPTY ){
-        auto nat_in_ = ();
-        return PxFixedSizeLookupTable<NB_ELEMENTS>(nat_in_);
+    ES PxFixedSizeLookupTablePtrPOD W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_C_PxFixedSizeLookupTable_ctor(){
+        auto val = new PxFixedSizeLookupTable<NB_ELEMENTS>();
+        return *(PxFixedSizeLookupTablePtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P_PxEMPTY_C_PxFixedSizeLookupTable_ctor(PxEMPTY );
+    static extern PxFixedSizeLookupTablePtr W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_C_PxFixedSizeLookupTable_ctor();
     
-    public  PxFixedSizeLookupTable<NB_ELEMENTS>(PxEMPTY ){
+    public  static PxFixedSizeLookupTablePtr New(){
+        var _new = W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_C_PxFixedSizeLookupTable_ctor();
+        PxFixedSizeLookupTablePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
+    
+    
+    //================================================================================
+    //#       PxFixedSizeLookupTable<NB_ELEMENTS>(physx )                            #
+    //================================================================================
+    /* ERRORS OCCURED: Invalid parameter name (empty)
+    // NATIVE SIG: PxFixedSizeLookupTable(const PxEMPTY)
+    #if NATIVE //function start
+    ES PxFixedSizeLookupTablePtrPOD W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P_PxEMPTY_C_PxFixedSizeLookupTable_ctor(physx::PxEMPTY ){
+        auto nat_in_ = ();
+        auto val = new PxFixedSizeLookupTable<NB_ELEMENTS>();
+        return *(PxFixedSizeLookupTablePtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxFixedSizeLookupTablePtr W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P_PxEMPTY_C_PxFixedSizeLookupTable_ctor(PxEMPTY );
+    
+    public  static PxFixedSizeLookupTablePtr New(PxEMPTY ){
         PxEMPTY pvk_in_ = ();
         var _new = W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P_PxEMPTY_C_PxFixedSizeLookupTable_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxFixedSizeLookupTablePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       PxFixedSizeLookupTable<NB_ELEMENTS>                                    #
+    //#       PxFixedSizeLookupTable<NB_ELEMENTS>(float* dataPairs, uint numDataPairs) #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxFixedSizeLookupTable
-    // NATIVE SIG: PxFixedSizeLookupTable(const PxReal* dataPairs, const PxU32 numDataPairs)
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P_floatPtr_P_uint_C_PxFixedSizeLookupTable_ctor(const physx::PxReal* dataPairs, physx::PxU32 numDataPairs){
+    ES PxFixedSizeLookupTablePtrPOD W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P_floatPtr_P_uint_C_PxFixedSizeLookupTable_ctor(const physx::PxReal* dataPairs, physx::PxU32 numDataPairs){
         auto nat_in_dataPairs = (dataPairs);
         auto nat_in_numDataPairs = (numDataPairs);
-        return PxFixedSizeLookupTable<NB_ELEMENTS>(nat_in_dataPairs, nat_in_numDataPairs);
+        auto val = new PxFixedSizeLookupTable<NB_ELEMENTS>();
+        return *(PxFixedSizeLookupTablePtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P_floatPtr_P_uint_C_PxFixedSizeLookupTable_ctor(float* dataPairs, uint numDataPairs);
+    static extern PxFixedSizeLookupTablePtr W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P_floatPtr_P_uint_C_PxFixedSizeLookupTable_ctor(float* dataPairs, uint numDataPairs);
     
-    public  PxFixedSizeLookupTable<NB_ELEMENTS>(float* dataPairs, uint numDataPairs){
+    public  static PxFixedSizeLookupTablePtr New(float* dataPairs, uint numDataPairs){
         float* pvk_in_dataPairs = (dataPairs);
         uint pvk_in_numDataPairs = (numDataPairs);
         var _new = W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P_floatPtr_P_uint_C_PxFixedSizeLookupTable_ctor(pvk_in_dataPairs, pvk_in_numDataPairs);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxFixedSizeLookupTablePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
-    #endif //function end*/
+    #endif //function end
     
     
     //================================================================================
-    //#       PxFixedSizeLookupTable<NB_ELEMENTS>                                    #
+    //#       PxFixedSizeLookupTable<NB_ELEMENTS>(PxFixedSizeLookupTablePtr src)     #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxFixedSizeLookupTable
-    fsdfasdf
+    /* ERRORS OCCURED: fsdfasdf
     // NATIVE SIG: PxFixedSizeLookupTable(const PxFixedSizeLookupTable& src)
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P__C_PxFixedSizeLookupTable_ctor( src){
+    ES PxFixedSizeLookupTablePtrPOD W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P__C_PxFixedSizeLookupTable_ctor( src){
         auto nat_in_src = (src);
-        return PxFixedSizeLookupTable<NB_ELEMENTS>(nat_in_src);
+        auto val = new PxFixedSizeLookupTable<NB_ELEMENTS>();
+        return *(PxFixedSizeLookupTablePtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P__C_PxFixedSizeLookupTable_ctor( src);
+    static extern PxFixedSizeLookupTablePtr W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P__C_PxFixedSizeLookupTable_ctor( src);
     
-    public  PxFixedSizeLookupTable<NB_ELEMENTS>( src){
+    public  static PxFixedSizeLookupTablePtr New( src){
          pvk_in_src = (src);
         var _new = W_PxFixedSizeLookupTable<NB_ELEMENTS>_R_PxFixedSizeLookupTablePtr_P__C_PxFixedSizeLookupTable_ctor(pvk_in_src);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxFixedSizeLookupTablePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       ~PxFixedSizeLookupTable<NB_ELEMENTS>                                   #
+    //#       ~PxFixedSizeLookupTable<NB_ELEMENTS>()                                 #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: ~PxFixedSizeLookupTable()
@@ -427,14 +518,14 @@ public unsafe partial struct PxFixedSizeLookupTablePtr : IPxFixedSizeLookupTable
     
     
     //================================================================================
-    //#       operator=                                                              #
+    //#       operator=(PxFixedSizeLookupTablePtr src)                               #
     //================================================================================
     //Skipped unsupported operator Equal.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       addPair                                                                #
+    //#       addPair(float x, float y)                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_addPair_R_void_P_float_P_float_C_PxFixedSizeLookupTable(physx::PxFixedSizeLookupTable* self, physx::PxReal x, physx::PxReal y){
@@ -455,7 +546,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr : IPxFixedSizeLookupTable
     
     
     //================================================================================
-    //#       getYVal                                                                #
+    //#       getYVal(float x)                                                       #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getYVal_R_float_P_float_C_PxFixedSizeLookupTable(physx::PxFixedSizeLookupTable* self, physx::PxReal x){
@@ -476,7 +567,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr : IPxFixedSizeLookupTable
     
     
     //================================================================================
-    //#       getNbDataPairs                                                         #
+    //#       getNbDataPairs()                                                       #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getNbDataPairs_R_uint_C_PxFixedSizeLookupTable(physx::PxFixedSizeLookupTable* self){
@@ -495,7 +586,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr : IPxFixedSizeLookupTable
     
     
     //================================================================================
-    //#       clear                                                                  #
+    //#       clear()                                                                #
     //================================================================================
     #if NATIVE //function start
     ES void W_clear_R_void_C_PxFixedSizeLookupTable(physx::PxFixedSizeLookupTable* self){
@@ -512,7 +603,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr : IPxFixedSizeLookupTable
     
     
     //================================================================================
-    //#       getX                                                                   #
+    //#       getX(uint i)                                                           #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getX_R_float_P_uint_C_PxFixedSizeLookupTable(physx::PxFixedSizeLookupTable* self, physx::PxU32 i){
@@ -533,7 +624,7 @@ public unsafe partial struct PxFixedSizeLookupTablePtr : IPxFixedSizeLookupTable
     
     
     //================================================================================
-    //#       getY                                                                   #
+    //#       getY(uint i)                                                           #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getY_R_float_P_uint_C_PxFixedSizeLookupTable(physx::PxFixedSizeLookupTable* self, physx::PxU32 i){

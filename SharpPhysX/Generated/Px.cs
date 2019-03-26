@@ -29,9 +29,13 @@ public unsafe interface IPxInputDataPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxInputDataPtr : IPxInputDataPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxInputDataPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -43,21 +47,3 @@ public unsafe partial struct PxInputDataPtr : IPxInputDataPtr { // pointer
 #endif //struct close
 
 // Class physx::PxOutputStream Manually Ignored
-#if !NATIVE //interface
-public unsafe interface IPxVec2 {
-    
-}
-#endif //interface
-
-#if !NATIVE //struct start
-public unsafe partial struct PxVec2 : IPxVec2 { // blittable
-
-#endif //struct start
-
-    #if !NATIVE //hierarchy
-    // Hierarchy: PxVec2
-    #endif //hierarchy
-
-#if !NATIVE //struct close
-}
-#endif //struct close

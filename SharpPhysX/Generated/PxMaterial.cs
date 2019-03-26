@@ -21,14 +21,15 @@ public enum PxCombineMode : int {
 }
 #endif //enum
 
-#if !NATIVE
-public partial struct PxMaterial {
+#if !NATIVE //functions holder
+public partial struct PxMaterialPtr {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxMaterialFlag a, PxMaterialFlag b)                          #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMaterialFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxMaterialFlag::Enum, unsigned short> -> PxFlags_PxMaterialFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxMaterialFlag_ushort_P_PxMaterialFlag_P_PxMaterialFlag(physx::PxMaterialFlag::Enum a, physx::PxMaterialFlag::Enum b){
@@ -51,9 +52,10 @@ public static UNPARSED_TYPE operator|(PxMaterialFlag a, PxMaterialFlag b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxMaterialFlag a, PxMaterialFlag b)                          #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMaterialFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxMaterialFlag::Enum, unsigned short> -> PxFlags_PxMaterialFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxMaterialFlag_ushort_P_PxMaterialFlag_P_PxMaterialFlag(physx::PxMaterialFlag::Enum a, physx::PxMaterialFlag::Enum b){
@@ -76,9 +78,10 @@ public static UNPARSED_TYPE operator&(PxMaterialFlag a, PxMaterialFlag b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxMaterialFlag a)                                            #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMaterialFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxMaterialFlag::Enum, unsigned short> -> PxFlags_PxMaterialFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxMaterialFlag_ushort_P_PxMaterialFlag(physx::PxMaterialFlag::Enum a){
@@ -97,8 +100,8 @@ public static UNPARSED_TYPE operator~(PxMaterialFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxMaterial
+#if !NATIVE //end functions holder
+} //end PxMaterialPtr
 #endif
 
 
@@ -121,19 +124,24 @@ public unsafe interface IPxMaterialPtr {
      void setRestitutionCombineMode(PxCombineMode combMode);
      PxCombineMode getRestitutionCombineMode();
      string getConcreteTypeName();
-    // PxMaterial(/*NULLPARS*/);
-    // PxMaterial(/*NULLPARS*/);
+    // static PxMaterialPtr New(/*NULLPARS*/);
+    // static PxMaterialPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxMaterial(/*NULLPARS*/);
     // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
-    // PxMaterial(/*NULLPARS*/);
+    // static PxMaterialPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxMaterialPtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxMaterialPtrPOD{
+    void* userData;
+};
 #endif //struct start
 
 
@@ -172,17 +180,17 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     //public  void setBaseFlags( inFlags){((PxBasePtr)this).setBaseFlags(inFlags);}
     //public  UNPARSED_TYPE getBaseFlags(){return ((PxBasePtr)this).getBaseFlags();}
     public  bool isReleasable(){return ((PxBasePtr)this).isReleasable();}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxBase(/*NULLPARS*/){((PxBasePtr)this).~PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE typeMatch(/*NULLPARS*/){return ((PxBasePtr)this).typeMatch(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxBasePtr)this).operator=(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       release                                                                #
+    //#       release()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_release_R_void_C_PxMaterial(physx::PxMaterial* self){
@@ -199,7 +207,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       getReferenceCount                                                      #
+    //#       getReferenceCount()                                                    #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getReferenceCount_R_uint_C_PxMaterial(physx::PxMaterial* self){
@@ -218,7 +226,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       acquireReference                                                       #
+    //#       acquireReference()                                                     #
     //================================================================================
     #if NATIVE //function start
     ES void W_acquireReference_R_void_C_PxMaterial(physx::PxMaterial* self){
@@ -235,7 +243,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       setDynamicFriction                                                     #
+    //#       setDynamicFriction(float coef)                                         #
     //================================================================================
     #if NATIVE //function start
     ES void W_setDynamicFriction_R_void_P_float_C_PxMaterial(physx::PxMaterial* self, physx::PxReal coef){
@@ -254,7 +262,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       getDynamicFriction                                                     #
+    //#       getDynamicFriction()                                                   #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getDynamicFriction_R_float_C_PxMaterial(physx::PxMaterial* self){
@@ -273,7 +281,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       setStaticFriction                                                      #
+    //#       setStaticFriction(float coef)                                          #
     //================================================================================
     #if NATIVE //function start
     ES void W_setStaticFriction_R_void_P_float_C_PxMaterial(physx::PxMaterial* self, physx::PxReal coef){
@@ -292,7 +300,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       getStaticFriction                                                      #
+    //#       getStaticFriction()                                                    #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getStaticFriction_R_float_C_PxMaterial(physx::PxMaterial* self){
@@ -311,7 +319,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       setRestitution                                                         #
+    //#       setRestitution(float rest)                                             #
     //================================================================================
     #if NATIVE //function start
     ES void W_setRestitution_R_void_P_float_C_PxMaterial(physx::PxMaterial* self, physx::PxReal rest){
@@ -330,7 +338,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       getRestitution                                                         #
+    //#       getRestitution()                                                       #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getRestitution_R_float_C_PxMaterial(physx::PxMaterial* self){
@@ -349,7 +357,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       setFlag                                                                #
+    //#       setFlag(PxMaterialFlag flag, bool )                                    #
     //================================================================================
     /* ERRORS OCCURED: Invalid parameter name (empty)
     // NATIVE SIG: void			setFlag(PxMaterialFlag::Enum flag, bool) = 0
@@ -372,7 +380,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       setFlags                                                               #
+    //#       setFlags(Enum, ushort> inFlags)                                        #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxMaterialFlags
     // NATIVE SIG: void 			setFlags( PxMaterialFlags inFlags ) = 0
@@ -393,9 +401,9 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       getFlags                                                               #
+    //#       getFlags()                                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxMaterialFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxMaterialFlags -> Enum, ushort>
     // NATIVE SIG: PxMaterialFlags	getFlags() const = 0
     #if NATIVE //function start
     ES const UNPARSED_TYPE W_getFlags_R_Enum, ushort>_C_PxMaterial(physx::PxMaterial* self){
@@ -414,7 +422,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       setFrictionCombineMode                                                 #
+    //#       setFrictionCombineMode(PxCombineMode combMode)                         #
     //================================================================================
     #if NATIVE //function start
     ES void W_setFrictionCombineMode_R_void_P_PxCombineMode_C_PxMaterial(physx::PxMaterial* self, physx::PxCombineMode::Enum combMode){
@@ -433,7 +441,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       getFrictionCombineMode                                                 #
+    //#       getFrictionCombineMode()                                               #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxCombineMode::Enum W_getFrictionCombineMode_R_PxCombineMode_C_PxMaterial(physx::PxMaterial* self){
@@ -452,7 +460,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       setRestitutionCombineMode                                              #
+    //#       setRestitutionCombineMode(PxCombineMode combMode)                      #
     //================================================================================
     #if NATIVE //function start
     ES void W_setRestitutionCombineMode_R_void_P_PxCombineMode_C_PxMaterial(physx::PxMaterial* self, physx::PxCombineMode::Enum combMode){
@@ -471,7 +479,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       getRestitutionCombineMode                                              #
+    //#       getRestitutionCombineMode()                                            #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxCombineMode::Enum W_getRestitutionCombineMode_R_PxCombineMode_C_PxMaterial(physx::PxMaterial* self){
@@ -490,7 +498,7 @@ public unsafe partial struct PxMaterialPtr : IPxBasePtr, IPxMaterialPtr { // poi
     
     
     //================================================================================
-    //#       getConcreteTypeName                                                    #
+    //#       getConcreteTypeName()                                                  #
     //================================================================================
     #if NATIVE //function start
     ES const char* W_getConcreteTypeName_R_string_C_PxMaterial(physx::PxMaterial* self){

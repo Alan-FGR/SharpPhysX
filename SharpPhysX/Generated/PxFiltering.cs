@@ -62,14 +62,15 @@ public enum PxFilterObjectFlag : int {
 }
 #endif //enum
 
-#if !NATIVE
+#if !NATIVE //functions holder
 public partial struct PxFiltering {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxPairFlag a, PxPairFlag b)                                  #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPairFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxPairFlag::Enum, unsigned short> -> PxFlags_PxPairFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxPairFlag_ushort_P_PxPairFlag_P_PxPairFlag(physx::PxPairFlag::Enum a, physx::PxPairFlag::Enum b){
@@ -92,9 +93,10 @@ public static UNPARSED_TYPE operator|(PxPairFlag a, PxPairFlag b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxPairFlag a, PxPairFlag b)                                  #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPairFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxPairFlag::Enum, unsigned short> -> PxFlags_PxPairFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxPairFlag_ushort_P_PxPairFlag_P_PxPairFlag(physx::PxPairFlag::Enum a, physx::PxPairFlag::Enum b){
@@ -117,9 +119,10 @@ public static UNPARSED_TYPE operator&(PxPairFlag a, PxPairFlag b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxPairFlag a)                                                #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPairFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxPairFlag::Enum, unsigned short> -> PxFlags_PxPairFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxPairFlag_ushort_P_PxPairFlag(physx::PxPairFlag::Enum a){
@@ -140,9 +143,10 @@ public static UNPARSED_TYPE operator~(PxPairFlag a){
 
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxFilterFlag a, PxFilterFlag b)                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxFilterFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxFilterFlag::Enum, unsigned short> -> PxFlags_PxFilterFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxFilterFlag_ushort_P_PxFilterFlag_P_PxFilterFlag(physx::PxFilterFlag::Enum a, physx::PxFilterFlag::Enum b){
@@ -165,9 +169,10 @@ public static UNPARSED_TYPE operator|(PxFilterFlag a, PxFilterFlag b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxFilterFlag a, PxFilterFlag b)                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxFilterFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxFilterFlag::Enum, unsigned short> -> PxFlags_PxFilterFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxFilterFlag_ushort_P_PxFilterFlag_P_PxFilterFlag(physx::PxFilterFlag::Enum a, physx::PxFilterFlag::Enum b){
@@ -190,9 +195,10 @@ public static UNPARSED_TYPE operator&(PxFilterFlag a, PxFilterFlag b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxFilterFlag a)                                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxFilterFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxFilterFlag::Enum, unsigned short> -> PxFlags_PxFilterFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxFilterFlag_ushort_P_PxFilterFlag(physx::PxFilterFlag::Enum a){
@@ -213,7 +219,7 @@ public static UNPARSED_TYPE operator~(PxFilterFlag a){
 
 
 //================================================================================
-//#       PxGetFilterObjectType                                                  #
+//#       PxGetFilterObjectType(uint attr)                                       #
 //================================================================================
 #if NATIVE //function start
 ES physx::PxFilterObjectType::Enum W_PxGetFilterObjectType_R_PxFilterObjectType_P_uint(physx::PxFilterObjectAttributes attr){
@@ -234,7 +240,7 @@ public static PxFilterObjectType PxGetFilterObjectType(uint attr){
 
 
 //================================================================================
-//#       PxFilterObjectIsKinematic                                              #
+//#       PxFilterObjectIsKinematic(uint attr)                                   #
 //================================================================================
 #if NATIVE //function start
 ES bool W_PxFilterObjectIsKinematic_R_bool_P_uint(physx::PxFilterObjectAttributes attr){
@@ -255,7 +261,7 @@ public static bool PxFilterObjectIsKinematic(uint attr){
 
 
 //================================================================================
-//#       PxFilterObjectIsTrigger                                                #
+//#       PxFilterObjectIsTrigger(uint attr)                                     #
 //================================================================================
 #if NATIVE //function start
 ES bool W_PxFilterObjectIsTrigger_R_bool_P_uint(physx::PxFilterObjectAttributes attr){
@@ -274,17 +280,17 @@ public static bool PxFilterObjectIsTrigger(uint attr){
 }
 #endif //function end
 
-#if !NATIVE
-} // End PxFiltering
+#if !NATIVE //end functions holder
+} //end PxFiltering
 #endif
 
 
 #if !NATIVE //interface
 public unsafe interface IPxFilterDataPtr {
-    // PxFilterData(PxEMPTY );
-    // PxFilterData();
-    // PxFilterData(PxFilterDataPtr fd);
-    // PxFilterData(uint w0, uint w1, uint w2, uint w3);
+    // static PxFilterDataPtr New(PxEMPTY );
+    // static PxFilterDataPtr New();
+    // static PxFilterDataPtr New(PxFilterDataPtr fd);
+    // static PxFilterDataPtr New(uint w0, uint w1, uint w2, uint w3);
      void setToDefault();
     //static void operator=(PxFilterDataPtr lhs, /*NULLPARS*/);
     //static bool operator==(PxFilterDataPtr lhs, PxFilterDataPtr a);
@@ -294,9 +300,17 @@ public unsafe interface IPxFilterDataPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxFilterDataPtr : IPxFilterDataPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxFilterDataPtrPOD{
+    physx::PxU32 word0;
+    physx::PxU32 word1;
+    physx::PxU32 word2;
+    physx::PxU32 word3;
+};
 #endif //struct start
 
 
@@ -370,94 +384,107 @@ public unsafe partial struct PxFilterDataPtr : IPxFilterDataPtr { // pointer
     // Hierarchy: PxFilterDataPtr
     #endif //hierarchy
     //================================================================================
-    //#       PxFilterData                                                           #
+    //#       PxFilterData(physx )                                                   #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxFilterData
-    Invalid parameter name (empty)
+    /* ERRORS OCCURED: Invalid parameter name (empty)
     // NATIVE SIG: PX_INLINE PxFilterData(const PxEMPTY)
     	{
     	}
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxFilterData_R_PxFilterDataPtr_P_PxEMPTY_C_PxFilterData_ctor(physx::PxEMPTY ){
+    ES PxFilterDataPtrPOD W_PxFilterData_R_PxFilterDataPtr_P_PxEMPTY_C_PxFilterData_ctor(physx::PxEMPTY ){
         auto nat_in_ = ();
-        return PxFilterData(nat_in_);
+        auto val = new PxFilterData();
+        return *(PxFilterDataPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFilterData_R_PxFilterDataPtr_P_PxEMPTY_C_PxFilterData_ctor(PxEMPTY );
+    static extern PxFilterDataPtr W_PxFilterData_R_PxFilterDataPtr_P_PxEMPTY_C_PxFilterData_ctor(PxEMPTY );
     
-    public  PxFilterData(PxEMPTY ){
+    public  static PxFilterDataPtr New(PxEMPTY ){
         PxEMPTY pvk_in_ = ();
         var _new = W_PxFilterData_R_PxFilterDataPtr_P_PxEMPTY_C_PxFilterData_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxFilterDataPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       PxFilterData                                                           #
+    //#       PxFilterData()                                                         #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxFilterData
-    Parameterless constructor not allowed
-    */
-    
-    
-    //================================================================================
-    //#       PxFilterData                                                           #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxFilterData
-    // NATIVE SIG: PX_INLINE PxFilterData(const PxFilterData& fd) : word0(fd.word0), word1(fd.word1), word2(fd.word2), word3(fd.word3)	{}
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxFilterData_R_PxFilterDataPtr_P_PxFilterDataPtr_C_PxFilterData_ctor(physx::PxFilterData* fd){
-        auto nat_in_fd = (fd);
-        return PxFilterData(*nat_in_fd);
+    ES PxFilterDataPtrPOD W_PxFilterData_R_PxFilterDataPtr_C_PxFilterData_ctor(){
+        auto val = new PxFilterData();
+        return *(PxFilterDataPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFilterData_R_PxFilterDataPtr_P_PxFilterDataPtr_C_PxFilterData_ctor(PxFilterDataPtr fd);
+    static extern PxFilterDataPtr W_PxFilterData_R_PxFilterDataPtr_C_PxFilterData_ctor();
     
-    public  PxFilterData(PxFilterDataPtr fd){
+    public  static PxFilterDataPtr New(){
+        var _new = W_PxFilterData_R_PxFilterDataPtr_C_PxFilterData_ctor();
+        PxFilterDataPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
+    
+    
+    //================================================================================
+    //#       PxFilterData(PxFilterDataPtr fd)                                       #
+    //================================================================================
+    #if NATIVE //function start
+    ES PxFilterDataPtrPOD W_PxFilterData_R_PxFilterDataPtr_P_PxFilterDataPtr_C_PxFilterData_ctor(physx::PxFilterData* fd){
+        auto nat_in_fd = (fd);
+        auto val = new PxFilterData();
+        return *(PxFilterDataPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxFilterDataPtr W_PxFilterData_R_PxFilterDataPtr_P_PxFilterDataPtr_C_PxFilterData_ctor(PxFilterDataPtr fd);
+    
+    public  static PxFilterDataPtr New(PxFilterDataPtr fd){
         PxFilterDataPtr pvk_in_fd = (fd);
         var _new = W_PxFilterData_R_PxFilterDataPtr_P_PxFilterDataPtr_C_PxFilterData_ctor(pvk_in_fd);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxFilterDataPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
-    #endif //function end*/
+    #endif //function end
     
     
     //================================================================================
-    //#       PxFilterData                                                           #
+    //#       PxFilterData(uint w0, uint w1, uint w2, uint w3)                       #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxFilterData
-    // NATIVE SIG: PX_INLINE PxFilterData(PxU32 w0, PxU32 w1, PxU32 w2, PxU32 w3) : word0(w0), word1(w1), word2(w2), word3(w3) {}
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxFilterData_R_PxFilterDataPtr_P_uint_P_uint_P_uint_P_uint_C_PxFilterData_ctor(physx::PxU32 w0, physx::PxU32 w1, physx::PxU32 w2, physx::PxU32 w3){
+    ES PxFilterDataPtrPOD W_PxFilterData_R_PxFilterDataPtr_P_uint_P_uint_P_uint_P_uint_C_PxFilterData_ctor(physx::PxU32 w0, physx::PxU32 w1, physx::PxU32 w2, physx::PxU32 w3){
         auto nat_in_w0 = (w0);
         auto nat_in_w1 = (w1);
         auto nat_in_w2 = (w2);
         auto nat_in_w3 = (w3);
-        return PxFilterData(nat_in_w0, nat_in_w1, nat_in_w2, nat_in_w3);
+        auto val = new PxFilterData();
+        return *(PxFilterDataPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFilterData_R_PxFilterDataPtr_P_uint_P_uint_P_uint_P_uint_C_PxFilterData_ctor(uint w0, uint w1, uint w2, uint w3);
+    static extern PxFilterDataPtr W_PxFilterData_R_PxFilterDataPtr_P_uint_P_uint_P_uint_P_uint_C_PxFilterData_ctor(uint w0, uint w1, uint w2, uint w3);
     
-    public  PxFilterData(uint w0, uint w1, uint w2, uint w3){
+    public  static PxFilterDataPtr New(uint w0, uint w1, uint w2, uint w3){
         uint pvk_in_w0 = (w0);
         uint pvk_in_w1 = (w1);
         uint pvk_in_w2 = (w2);
         uint pvk_in_w3 = (w3);
         var _new = W_PxFilterData_R_PxFilterDataPtr_P_uint_P_uint_P_uint_P_uint_C_PxFilterData_ctor(pvk_in_w0, pvk_in_w1, pvk_in_w2, pvk_in_w3);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxFilterDataPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
-    #endif //function end*/
+    #endif //function end
     
     
     //================================================================================
-    //#       setToDefault                                                           #
+    //#       setToDefault()                                                         #
     //================================================================================
     #if NATIVE //function start
     ES void W_setToDefault_R_void_C_PxFilterData(physx::PxFilterData* self){
@@ -474,14 +501,14 @@ public unsafe partial struct PxFilterDataPtr : IPxFilterDataPtr { // pointer
     
     
     //================================================================================
-    //#       operator=                                                              #
+    //#       operator=(PxFilterDataPtr fd)                                          #
     //================================================================================
     //Skipped unsupported operator Equal.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator==                                                             #
+    //#       operator==(PxFilterDataPtr a)                                          #
     //================================================================================
     #if NATIVE //function start
     ES bool W_OP_EqualEqual_R_bool_P_PxFilterDataPtr_C_PxFilterData(physx::PxFilterData* self, physx::PxFilterData* a){
@@ -502,7 +529,7 @@ public unsafe partial struct PxFilterDataPtr : IPxFilterDataPtr { // pointer
     
     
     //================================================================================
-    //#       operator!=                                                             #
+    //#       operator!=(PxFilterDataPtr a)                                          #
     //================================================================================
     #if NATIVE //function start
     ES bool W_OP_ExclaimEqual_R_bool_P_PxFilterDataPtr_C_PxFilterData(physx::PxFilterData* self, physx::PxFilterData* a){
@@ -538,24 +565,28 @@ public unsafe interface IPxSimulationFilterCallbackPtr {
     // bool statusChange(uint* pairID,  pairFlags,  filterFlags);
     // UNPARSED_TYPE ~PxSimulationFilterCallback(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxSimulationFilterCallbackPtr lhs, /*NULLPARS*/);
-    // PxSimulationFilterCallback(/*NULLPARS*/);
-    // PxSimulationFilterCallback(/*NULLPARS*/);
+    // static PxSimulationFilterCallbackPtr New(/*NULLPARS*/);
+    // static PxSimulationFilterCallbackPtr New(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxSimulationFilterCallbackPtr : IPxSimulationFilterCallbackPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxSimulationFilterCallbackPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxSimulationFilterCallbackPtr
     #endif //hierarchy
     //================================================================================
-    //#       pairFound                                                              #
+    //#       pairFound(uint pairID, uint attributes0, PxFilterDataPtr filterData0, PxActorPtr a0, PxShapePtr s0, uint attributes1, PxFilterDataPtr filterData1, PxActorPtr a1, PxShapePtr s1, Enum, ushort> pairFlags) #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxFilterFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxFilterFlags -> Enum, ushort>
     Unresolved parameter type physx::PxFilterData
     Unresolved parameter type physx::PxFilterData
     fsdfasdf
@@ -600,7 +631,7 @@ public unsafe partial struct PxSimulationFilterCallbackPtr : IPxSimulationFilter
     
     
     //================================================================================
-    //#       pairLost                                                               #
+    //#       pairLost(uint pairID, uint attributes0, PxFilterDataPtr filterData0, uint attributes1, PxFilterDataPtr filterData1, bool objectRemoved) #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxFilterData
     Unresolved parameter type physx::PxFilterData
@@ -637,7 +668,7 @@ public unsafe partial struct PxSimulationFilterCallbackPtr : IPxSimulationFilter
     
     
     //================================================================================
-    //#       statusChange                                                           #
+    //#       statusChange(uint* pairID, Enum, ushort> pairFlags, Enum, ushort> filterFlags) #
     //================================================================================
     /* ERRORS OCCURED: fsdfasdf
     fsdfasdf

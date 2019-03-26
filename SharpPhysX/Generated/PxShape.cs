@@ -12,14 +12,15 @@ public enum PxShapeFlag : int {
 }
 #endif //enum
 
-#if !NATIVE
-public partial struct PxShape {
+#if !NATIVE //functions holder
+public partial struct PxShapePtr {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxShapeFlag a, PxShapeFlag b)                                #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxShapeFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxShapeFlag::Enum, unsigned char> -> PxFlags_PxShapeFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxShapeFlag_byte_P_PxShapeFlag_P_PxShapeFlag(physx::PxShapeFlag::Enum a, physx::PxShapeFlag::Enum b){
@@ -42,9 +43,10 @@ public static UNPARSED_TYPE operator|(PxShapeFlag a, PxShapeFlag b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxShapeFlag a, PxShapeFlag b)                                #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxShapeFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxShapeFlag::Enum, unsigned char> -> PxFlags_PxShapeFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxShapeFlag_byte_P_PxShapeFlag_P_PxShapeFlag(physx::PxShapeFlag::Enum a, physx::PxShapeFlag::Enum b){
@@ -67,9 +69,10 @@ public static UNPARSED_TYPE operator&(PxShapeFlag a, PxShapeFlag b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxShapeFlag a)                                               #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxShapeFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxShapeFlag::Enum, unsigned char> -> PxFlags_PxShapeFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxShapeFlag_byte_P_PxShapeFlag(physx::PxShapeFlag::Enum a){
@@ -88,8 +91,8 @@ public static UNPARSED_TYPE operator~(PxShapeFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxShape
+#if !NATIVE //end functions holder
+} //end PxShapePtr
 #endif
 
 
@@ -100,7 +103,7 @@ public unsafe interface IPxShapePtr {
      void acquireReference();
      PxGeometryType getGeometryType();
      void setGeometry(PxGeometryPtr geometry);
-    // UNPARSED_TYPE getGeometry();
+    // PxGeometryHolderPtr getGeometry();
     // bool getBoxGeometry( geometry);
     // bool getSphereGeometry( geometry);
     // bool getCapsuleGeometry( geometry);
@@ -112,9 +115,9 @@ public unsafe interface IPxShapePtr {
      void setLocalPose(PxTransform pose);
      PxTransform getLocalPose();
      void setSimulationFilterData(PxFilterDataPtr data);
-    // UNPARSED_TYPE getSimulationFilterData();
+    // PxFilterDataPtr getSimulationFilterData();
      void setQueryFilterData(PxFilterDataPtr data);
-    // UNPARSED_TYPE getQueryFilterData();
+    // PxFilterDataPtr getQueryFilterData();
     // void setMaterials( materials, ushort materialCount);
      ushort getNbMaterials();
     // uint getMaterials( userBuffer, uint bufferSize);
@@ -135,19 +138,24 @@ public unsafe interface IPxShapePtr {
      void setName(string name);
      string getName();
      string getConcreteTypeName();
-    // PxShape(/*NULLPARS*/);
-    // PxShape(/*NULLPARS*/);
+    // static PxShapePtr New(/*NULLPARS*/);
+    // static PxShapePtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxShape(/*NULLPARS*/);
     // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
-    // PxShape(/*NULLPARS*/);
+    // static PxShapePtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxShapePtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxShapePtrPOD{
+    void* userData;
+};
 #endif //struct start
 
 
@@ -186,17 +194,17 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     //public  void setBaseFlags( inFlags){((PxBasePtr)this).setBaseFlags(inFlags);}
     //public  UNPARSED_TYPE getBaseFlags(){return ((PxBasePtr)this).getBaseFlags();}
     public  bool isReleasable(){return ((PxBasePtr)this).isReleasable();}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxBase(/*NULLPARS*/){((PxBasePtr)this).~PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE typeMatch(/*NULLPARS*/){return ((PxBasePtr)this).typeMatch(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxBasePtr)this).operator=(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       release                                                                #
+    //#       release()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_release_R_void_C_PxShape(physx::PxShape* self){
@@ -213,7 +221,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getReferenceCount                                                      #
+    //#       getReferenceCount()                                                    #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getReferenceCount_R_uint_C_PxShape(physx::PxShape* self){
@@ -232,7 +240,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       acquireReference                                                       #
+    //#       acquireReference()                                                     #
     //================================================================================
     #if NATIVE //function start
     ES void W_acquireReference_R_void_C_PxShape(physx::PxShape* self){
@@ -249,7 +257,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getGeometryType                                                        #
+    //#       getGeometryType()                                                      #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxGeometryType::Enum W_getGeometryType_R_PxGeometryType_C_PxShape(physx::PxShape* self){
@@ -268,7 +276,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       setGeometry                                                            #
+    //#       setGeometry(PxGeometryPtr geometry)                                    #
     //================================================================================
     #if NATIVE //function start
     ES void W_setGeometry_R_void_P_PxGeometryPtr_C_PxShape(physx::PxShape* self, physx::PxGeometry* geometry){
@@ -287,28 +295,29 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getGeometry                                                            #
+    //#       getGeometry()                                                          #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxGeometryHolder
+    /* ERRORS OCCURED: Forbidden return type
+    returned native value can't be converted into ptr
     // NATIVE SIG: PxGeometryHolder		getGeometry() const = 0
     #if NATIVE //function start
-    ES const UNPARSED_TYPE W_getGeometry_R_PxGeometryHolderPtr_C_PxShape(physx::PxShape* self){
-        auto retVal = self->getGeometry();
-        return retVal;
+    ES PxGeometryHolderPtrPOD W_getGeometry_R_PxGeometryHolderPtr_C_PxShape(physx::PxShape* self){
+        auto retVal = self->getGeometry;
+        return *(PxGeometryHolderPtrPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getGeometry_R_PxGeometryHolderPtr_C_PxShape(PxShapePtr selfPtr);
+    static extern PxGeometryHolderPtr W_getGeometry_R_PxGeometryHolderPtr_C_PxShape(PxShapePtr selfPtr);
     
-    public  UNPARSED_TYPE getGeometry(){
-        UNPARSED_TYPE retVal = W_getGeometry_R_PxGeometryHolderPtr_C_PxShape(this);
+    public  PxGeometryHolderPtr getGeometry(){
+        PxGeometryHolderPtr retVal = W_getGeometry_R_PxGeometryHolderPtr_C_PxShape(this);
         return retVal;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       getBoxGeometry                                                         #
+    //#       getBoxGeometry(PxBoxGeometryPtr geometry)                              #
     //================================================================================
     /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxBoxGeometry
     // NATIVE SIG: bool					getBoxGeometry(PxBoxGeometry& geometry) const = 0
@@ -331,7 +340,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getSphereGeometry                                                      #
+    //#       getSphereGeometry(PxSphereGeometryPtr geometry)                        #
     //================================================================================
     /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxSphereGeometry
     // NATIVE SIG: bool					getSphereGeometry(PxSphereGeometry& geometry) const = 0
@@ -354,7 +363,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getCapsuleGeometry                                                     #
+    //#       getCapsuleGeometry(PxCapsuleGeometryPtr geometry)                      #
     //================================================================================
     /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxCapsuleGeometry
     // NATIVE SIG: bool					getCapsuleGeometry(PxCapsuleGeometry& geometry) const = 0
@@ -377,7 +386,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getPlaneGeometry                                                       #
+    //#       getPlaneGeometry(PxPlaneGeometryPtr geometry)                          #
     //================================================================================
     #if NATIVE //function start
     ES bool W_getPlaneGeometry_R_bool_P_PxPlaneGeometryPtr_C_PxShape(physx::PxShape* self, physx::PxPlaneGeometry* geometry){
@@ -398,7 +407,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getConvexMeshGeometry                                                  #
+    //#       getConvexMeshGeometry(PxConvexMeshGeometryPtr geometry)                #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxConvexMeshGeometryPtr
     // NATIVE SIG: bool					getConvexMeshGeometry(PxConvexMeshGeometry& geometry) const = 0
@@ -421,7 +430,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getTriangleMeshGeometry                                                #
+    //#       getTriangleMeshGeometry(PxTriangleMeshGeometryPtr geometry)            #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxTriangleMeshGeometryPtr
     // NATIVE SIG: bool					getTriangleMeshGeometry(PxTriangleMeshGeometry& geometry) const = 0
@@ -444,7 +453,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getHeightFieldGeometry                                                 #
+    //#       getHeightFieldGeometry(PxHeightFieldGeometryPtr geometry)              #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxHeightFieldGeometryPtr
     // NATIVE SIG: bool					getHeightFieldGeometry(PxHeightFieldGeometry& geometry) const = 0
@@ -467,7 +476,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getActor                                                               #
+    //#       getActor()                                                             #
     //================================================================================
     #if NATIVE //function start
     ES const physx::PxRigidActor* W_getActor_R_PxRigidActorPtr_C_PxShape(physx::PxShape* self){
@@ -486,7 +495,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       setLocalPose                                                           #
+    //#       setLocalPose(PxTransformPtr pose)                                      #
     //================================================================================
     #if NATIVE //function start
     ES void W_setLocalPose_R_void_P_PxTransform_C_PxShape(physx::PxShape* self, physx::PxTransform pose){
@@ -505,12 +514,12 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getLocalPose                                                           #
+    //#       getLocalPose()                                                         #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxTransform W_getLocalPose_R_PxTransform_C_PxShape(physx::PxShape* self){
-        auto retVal = self->getLocalPose();
-        return retVal;
+    ES PxTransformPOD W_getLocalPose_R_PxTransform_C_PxShape(physx::PxShape* self){
+        auto retVal = self->getLocalPose;
+        return *(PxTransformPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -524,7 +533,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       setSimulationFilterData                                                #
+    //#       setSimulationFilterData(PxFilterDataPtr data)                          #
     //================================================================================
     #if NATIVE //function start
     ES void W_setSimulationFilterData_R_void_P_PxFilterDataPtr_C_PxShape(physx::PxShape* self, physx::PxFilterData* data){
@@ -543,28 +552,28 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getSimulationFilterData                                                #
+    //#       getSimulationFilterData()                                              #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxFilterData
+    /* ERRORS OCCURED: returned native value can't be converted into ptr
     // NATIVE SIG: PxFilterData			getSimulationFilterData()					const	= 0
     #if NATIVE //function start
-    ES const UNPARSED_TYPE W_getSimulationFilterData_R_PxFilterDataPtr_C_PxShape(physx::PxShape* self){
-        auto retVal = self->getSimulationFilterData();
-        return retVal;
+    ES PxFilterDataPtrPOD W_getSimulationFilterData_R_PxFilterDataPtr_C_PxShape(physx::PxShape* self){
+        auto retVal = self->getSimulationFilterData;
+        return *(PxFilterDataPtrPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getSimulationFilterData_R_PxFilterDataPtr_C_PxShape(PxShapePtr selfPtr);
+    static extern PxFilterDataPtr W_getSimulationFilterData_R_PxFilterDataPtr_C_PxShape(PxShapePtr selfPtr);
     
-    public  UNPARSED_TYPE getSimulationFilterData(){
-        UNPARSED_TYPE retVal = W_getSimulationFilterData_R_PxFilterDataPtr_C_PxShape(this);
+    public  PxFilterDataPtr getSimulationFilterData(){
+        PxFilterDataPtr retVal = W_getSimulationFilterData_R_PxFilterDataPtr_C_PxShape(this);
         return retVal;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       setQueryFilterData                                                     #
+    //#       setQueryFilterData(PxFilterDataPtr data)                               #
     //================================================================================
     #if NATIVE //function start
     ES void W_setQueryFilterData_R_void_P_PxFilterDataPtr_C_PxShape(physx::PxShape* self, physx::PxFilterData* data){
@@ -583,28 +592,28 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getQueryFilterData                                                     #
+    //#       getQueryFilterData()                                                   #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxFilterData
+    /* ERRORS OCCURED: returned native value can't be converted into ptr
     // NATIVE SIG: PxFilterData			getQueryFilterData()					const	= 0
     #if NATIVE //function start
-    ES const UNPARSED_TYPE W_getQueryFilterData_R_PxFilterDataPtr_C_PxShape(physx::PxShape* self){
-        auto retVal = self->getQueryFilterData();
-        return retVal;
+    ES PxFilterDataPtrPOD W_getQueryFilterData_R_PxFilterDataPtr_C_PxShape(physx::PxShape* self){
+        auto retVal = self->getQueryFilterData;
+        return *(PxFilterDataPtrPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getQueryFilterData_R_PxFilterDataPtr_C_PxShape(PxShapePtr selfPtr);
+    static extern PxFilterDataPtr W_getQueryFilterData_R_PxFilterDataPtr_C_PxShape(PxShapePtr selfPtr);
     
-    public  UNPARSED_TYPE getQueryFilterData(){
-        UNPARSED_TYPE retVal = W_getQueryFilterData_R_PxFilterDataPtr_C_PxShape(this);
+    public  PxFilterDataPtr getQueryFilterData(){
+        PxFilterDataPtr retVal = W_getQueryFilterData_R_PxFilterDataPtr_C_PxShape(this);
         return retVal;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       setMaterials                                                           #
+    //#       setMaterials(PxMaterial materials, ushort materialCount)               #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxMaterial*
     // NATIVE SIG: void					setMaterials(PxMaterial*const* materials, PxU16 materialCount)	= 0
@@ -627,7 +636,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getNbMaterials                                                         #
+    //#       getNbMaterials()                                                       #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU16 W_getNbMaterials_R_ushort_C_PxShape(physx::PxShape* self){
@@ -646,7 +655,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getMaterials                                                           #
+    //#       getMaterials(PxMaterial userBuffer, uint bufferSize, uint startIndex)  #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxMaterial*
     // NATIVE SIG: PxU32					getMaterials(PxMaterial** userBuffer, PxU32 bufferSize, PxU32 startIndex=0) const	= 0
@@ -697,7 +706,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getMaterialFromInternalFaceIndex                                       #
+    //#       getMaterialFromInternalFaceIndex(uint faceIndex)                       #
     //================================================================================
     #if NATIVE //function start
     ES const physx::PxMaterial* W_getMaterialFromInternalFaceIndex_R_PxMaterialPtr_P_uint_C_PxShape(physx::PxShape* self, physx::PxU32 faceIndex){
@@ -718,7 +727,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       setContactOffset                                                       #
+    //#       setContactOffset(float contactOffset)                                  #
     //================================================================================
     #if NATIVE //function start
     ES void W_setContactOffset_R_void_P_float_C_PxShape(physx::PxShape* self, physx::PxReal contactOffset){
@@ -737,7 +746,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getContactOffset                                                       #
+    //#       getContactOffset()                                                     #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getContactOffset_R_float_C_PxShape(physx::PxShape* self){
@@ -756,7 +765,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       setRestOffset                                                          #
+    //#       setRestOffset(float restOffset)                                        #
     //================================================================================
     #if NATIVE //function start
     ES void W_setRestOffset_R_void_P_float_C_PxShape(physx::PxShape* self, physx::PxReal restOffset){
@@ -775,7 +784,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getRestOffset                                                          #
+    //#       getRestOffset()                                                        #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getRestOffset_R_float_C_PxShape(physx::PxShape* self){
@@ -794,7 +803,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       setTorsionalPatchRadius                                                #
+    //#       setTorsionalPatchRadius(float radius)                                  #
     //================================================================================
     #if NATIVE //function start
     ES void W_setTorsionalPatchRadius_R_void_P_float_C_PxShape(physx::PxShape* self, physx::PxReal radius){
@@ -813,7 +822,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getTorsionalPatchRadius                                                #
+    //#       getTorsionalPatchRadius()                                              #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getTorsionalPatchRadius_R_float_C_PxShape(physx::PxShape* self){
@@ -832,7 +841,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       setMinTorsionalPatchRadius                                             #
+    //#       setMinTorsionalPatchRadius(float radius)                               #
     //================================================================================
     #if NATIVE //function start
     ES void W_setMinTorsionalPatchRadius_R_void_P_float_C_PxShape(physx::PxShape* self, physx::PxReal radius){
@@ -851,7 +860,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getMinTorsionalPatchRadius                                             #
+    //#       getMinTorsionalPatchRadius()                                           #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getMinTorsionalPatchRadius_R_float_C_PxShape(physx::PxShape* self){
@@ -870,7 +879,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       setFlag                                                                #
+    //#       setFlag(PxShapeFlag flag, bool value)                                  #
     //================================================================================
     #if NATIVE //function start
     ES void W_setFlag_R_void_P_PxShapeFlag_P_bool_C_PxShape(physx::PxShape* self, physx::PxShapeFlag::Enum flag, bool value){
@@ -891,7 +900,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       setFlags                                                               #
+    //#       setFlags(Enum, byte> inFlags)                                          #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxShapeFlags
     // NATIVE SIG: void					setFlags(PxShapeFlags inFlags) = 0
@@ -912,9 +921,9 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getFlags                                                               #
+    //#       getFlags()                                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxShapeFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxShapeFlags -> Enum, byte>
     // NATIVE SIG: PxShapeFlags			getFlags() const = 0
     #if NATIVE //function start
     ES const UNPARSED_TYPE W_getFlags_R_Enum, byte>_C_PxShape(physx::PxShape* self){
@@ -933,7 +942,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       isExclusive                                                            #
+    //#       isExclusive()                                                          #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isExclusive_R_bool_C_PxShape(physx::PxShape* self){
@@ -952,7 +961,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       setName                                                                #
+    //#       setName(string name)                                                   #
     //================================================================================
     #if NATIVE //function start
     ES void W_setName_R_void_P_string_C_PxShape(physx::PxShape* self, const char* name){
@@ -971,7 +980,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getName                                                                #
+    //#       getName()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES const char* W_getName_R_string_C_PxShape(physx::PxShape* self){
@@ -990,7 +999,7 @@ public unsafe partial struct PxShapePtr : IPxBasePtr, IPxShapePtr { // pointer
     
     
     //================================================================================
-    //#       getConcreteTypeName                                                    #
+    //#       getConcreteTypeName()                                                  #
     //================================================================================
     #if NATIVE //function start
     ES const char* W_getConcreteTypeName_R_string_C_PxShape(physx::PxShape* self){

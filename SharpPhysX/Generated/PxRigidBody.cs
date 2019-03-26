@@ -16,14 +16,15 @@ public enum PxRigidBodyFlag : int {
 }
 #endif //enum
 
-#if !NATIVE
-public partial struct PxRigidBody {
+#if !NATIVE //functions holder
+public partial struct PxRigidBodyPtr {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxRigidBodyFlag a, PxRigidBodyFlag b)                        #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidBodyFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxRigidBodyFlag::Enum, unsigned char> -> PxFlags_PxRigidBodyFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxRigidBodyFlag_byte_P_PxRigidBodyFlag_P_PxRigidBodyFlag(physx::PxRigidBodyFlag::Enum a, physx::PxRigidBodyFlag::Enum b){
@@ -46,9 +47,10 @@ public static UNPARSED_TYPE operator|(PxRigidBodyFlag a, PxRigidBodyFlag b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxRigidBodyFlag a, PxRigidBodyFlag b)                        #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidBodyFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxRigidBodyFlag::Enum, unsigned char> -> PxFlags_PxRigidBodyFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxRigidBodyFlag_byte_P_PxRigidBodyFlag_P_PxRigidBodyFlag(physx::PxRigidBodyFlag::Enum a, physx::PxRigidBodyFlag::Enum b){
@@ -71,9 +73,10 @@ public static UNPARSED_TYPE operator&(PxRigidBodyFlag a, PxRigidBodyFlag b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxRigidBodyFlag a)                                           #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidBodyFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxRigidBodyFlag::Enum, unsigned char> -> PxFlags_PxRigidBodyFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxRigidBodyFlag_byte_P_PxRigidBodyFlag(physx::PxRigidBodyFlag::Enum a){
@@ -92,8 +95,8 @@ public static UNPARSED_TYPE operator~(PxRigidBodyFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxRigidBody
+#if !NATIVE //end functions holder
+} //end PxRigidBodyPtr
 #endif
 
 
@@ -143,19 +146,23 @@ public unsafe interface IPxRigidBodyPtr {
      void setMaxContactImpulse(float maxImpulse);
      float getMaxContactImpulse();
      uint getInternalIslandNodeIndex();
-    // PxRigidBody(/*NULLPARS*/);
-    // PxRigidBody(/*NULLPARS*/);
+    // static PxRigidBodyPtr New(/*NULLPARS*/);
+    // static PxRigidBodyPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxRigidBody(/*NULLPARS*/);
     // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
-    // PxRigidBody(/*NULLPARS*/);
+    // static PxRigidBodyPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxRigidBodyPtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPxRigidBodyPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxRigidBodyPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -183,10 +190,10 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     public  uint getNbConstraints(){return ((PxRigidActorPtr)this).getNbConstraints();}
     //public  uint getConstraints( userBuffer, uint bufferSize){return ((PxRigidActorPtr)this).getConstraints(userBuffer, bufferSize);}
     //public  uint getConstraints( userBuffer, uint bufferSize, uint startIndex){return ((PxRigidActorPtr)this).getConstraints(userBuffer, bufferSize, startIndex);}
-    //public  PxRigidActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
-    //public  PxRigidActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public  static PxRigidActorPtr New(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public  static PxRigidActorPtr New(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxRigidActor(/*NULLPARS*/){((PxRigidActorPtr)this).~PxRigidActor(/*NULLARGS*/);}
-    //public  PxRigidActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public  static PxRigidActorPtr New(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxRigidActorPtr lhs, /*NULLPARS*/){return ((PxRigidActorPtr)this).operator=(/*NULLARGS*/);}
     
     // --- PxActorPtr
@@ -204,16 +211,16 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     public  void setOwnerClient(byte inClient){((PxRigidActorPtr)this).setOwnerClient(inClient);}
     public  byte getOwnerClient(){return ((PxRigidActorPtr)this).getOwnerClient();}
     //public  PxAggregatePtr getAggregate(){return ((PxRigidActorPtr)this).getAggregate();}
-    //public  PxActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
-    //public  PxActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
+    //public  static PxActorPtr New(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
+    //public  static PxActorPtr New(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxActor(/*NULLPARS*/){((PxRigidActorPtr)this).~PxActor(/*NULLARGS*/);}
-    //public  PxActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
+    //public  static PxActorPtr New(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxActorPtr lhs, /*NULLPARS*/){return ((PxRigidActorPtr)this).operator=(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       setCMassLocalPose                                                      #
+    //#       setCMassLocalPose(PxTransformPtr pose)                                 #
     //================================================================================
     #if NATIVE //function start
     ES void W_setCMassLocalPose_R_void_P_PxTransform_C_PxRigidBody(physx::PxRigidBody* self, physx::PxTransform pose){
@@ -232,12 +239,12 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getCMassLocalPose                                                      #
+    //#       getCMassLocalPose()                                                    #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxTransform W_getCMassLocalPose_R_PxTransform_C_PxRigidBody(physx::PxRigidBody* self){
-        auto retVal = self->getCMassLocalPose();
-        return retVal;
+    ES PxTransformPOD W_getCMassLocalPose_R_PxTransform_C_PxRigidBody(physx::PxRigidBody* self){
+        auto retVal = self->getCMassLocalPose;
+        return *(PxTransformPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -251,7 +258,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setMass                                                                #
+    //#       setMass(float mass)                                                    #
     //================================================================================
     #if NATIVE //function start
     ES void W_setMass_R_void_P_float_C_PxRigidBody(physx::PxRigidBody* self, physx::PxReal mass){
@@ -270,7 +277,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getMass                                                                #
+    //#       getMass()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getMass_R_float_C_PxRigidBody(physx::PxRigidBody* self){
@@ -289,7 +296,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getInvMass                                                             #
+    //#       getInvMass()                                                           #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getInvMass_R_float_C_PxRigidBody(physx::PxRigidBody* self){
@@ -308,7 +315,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setMassSpaceInertiaTensor                                              #
+    //#       setMassSpaceInertiaTensor(PxVec3Ptr m)                                 #
     //================================================================================
     #if NATIVE //function start
     ES void W_setMassSpaceInertiaTensor_R_void_P_PxVec3_C_PxRigidBody(physx::PxRigidBody* self, physx::PxVec3 m){
@@ -327,12 +334,12 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getMassSpaceInertiaTensor                                              #
+    //#       getMassSpaceInertiaTensor()                                            #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_getMassSpaceInertiaTensor_R_PxVec3_C_PxRigidBody(physx::PxRigidBody* self){
-        auto retVal = self->getMassSpaceInertiaTensor();
-        return retVal;
+    ES PxVec3POD W_getMassSpaceInertiaTensor_R_PxVec3_C_PxRigidBody(physx::PxRigidBody* self){
+        auto retVal = self->getMassSpaceInertiaTensor;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -346,12 +353,12 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getMassSpaceInvInertiaTensor                                           #
+    //#       getMassSpaceInvInertiaTensor()                                         #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_getMassSpaceInvInertiaTensor_R_PxVec3_C_PxRigidBody(physx::PxRigidBody* self){
-        auto retVal = self->getMassSpaceInvInertiaTensor();
-        return retVal;
+    ES PxVec3POD W_getMassSpaceInvInertiaTensor_R_PxVec3_C_PxRigidBody(physx::PxRigidBody* self){
+        auto retVal = self->getMassSpaceInvInertiaTensor;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -365,7 +372,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setLinearDamping                                                       #
+    //#       setLinearDamping(float linDamp)                                        #
     //================================================================================
     #if NATIVE //function start
     ES void W_setLinearDamping_R_void_P_float_C_PxRigidBody(physx::PxRigidBody* self, physx::PxReal linDamp){
@@ -384,7 +391,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getLinearDamping                                                       #
+    //#       getLinearDamping()                                                     #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getLinearDamping_R_float_C_PxRigidBody(physx::PxRigidBody* self){
@@ -403,7 +410,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setAngularDamping                                                      #
+    //#       setAngularDamping(float angDamp)                                       #
     //================================================================================
     #if NATIVE //function start
     ES void W_setAngularDamping_R_void_P_float_C_PxRigidBody(physx::PxRigidBody* self, physx::PxReal angDamp){
@@ -422,7 +429,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getAngularDamping                                                      #
+    //#       getAngularDamping()                                                    #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getAngularDamping_R_float_C_PxRigidBody(physx::PxRigidBody* self){
@@ -441,12 +448,12 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getLinearVelocity                                                      #
+    //#       getLinearVelocity()                                                    #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_getLinearVelocity_R_PxVec3_C_PxRigidBody(physx::PxRigidBody* self){
-        auto retVal = self->getLinearVelocity();
-        return retVal;
+    ES PxVec3POD W_getLinearVelocity_R_PxVec3_C_PxRigidBody(physx::PxRigidBody* self){
+        auto retVal = self->getLinearVelocity;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -460,7 +467,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setLinearVelocity                                                      #
+    //#       setLinearVelocity(PxVec3Ptr linVel, bool autowake)                     #
     //================================================================================
     #if NATIVE //function start
     ES void W_setLinearVelocity_R_void_P_PxVec3_P_bool_C_PxRigidBody(physx::PxRigidBody* self, physx::PxVec3 linVel, bool autowake){
@@ -499,12 +506,12 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getAngularVelocity                                                     #
+    //#       getAngularVelocity()                                                   #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_getAngularVelocity_R_PxVec3_C_PxRigidBody(physx::PxRigidBody* self){
-        auto retVal = self->getAngularVelocity();
-        return retVal;
+    ES PxVec3POD W_getAngularVelocity_R_PxVec3_C_PxRigidBody(physx::PxRigidBody* self){
+        auto retVal = self->getAngularVelocity;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -518,7 +525,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setAngularVelocity                                                     #
+    //#       setAngularVelocity(PxVec3Ptr angVel, bool autowake)                    #
     //================================================================================
     #if NATIVE //function start
     ES void W_setAngularVelocity_R_void_P_PxVec3_P_bool_C_PxRigidBody(physx::PxRigidBody* self, physx::PxVec3 angVel, bool autowake){
@@ -557,7 +564,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setMaxAngularVelocity                                                  #
+    //#       setMaxAngularVelocity(float maxAngVel)                                 #
     //================================================================================
     #if NATIVE //function start
     ES void W_setMaxAngularVelocity_R_void_P_float_C_PxRigidBody(physx::PxRigidBody* self, physx::PxReal maxAngVel){
@@ -576,7 +583,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getMaxAngularVelocity                                                  #
+    //#       getMaxAngularVelocity()                                                #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getMaxAngularVelocity_R_float_C_PxRigidBody(physx::PxRigidBody* self){
@@ -595,7 +602,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setMaxLinearVelocity                                                   #
+    //#       setMaxLinearVelocity(float maxLinVel)                                  #
     //================================================================================
     #if NATIVE //function start
     ES void W_setMaxLinearVelocity_R_void_P_float_C_PxRigidBody(physx::PxRigidBody* self, physx::PxReal maxLinVel){
@@ -614,7 +621,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getMaxLinearVelocity                                                   #
+    //#       getMaxLinearVelocity()                                                 #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getMaxLinearVelocity_R_float_C_PxRigidBody(physx::PxRigidBody* self){
@@ -633,7 +640,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       addForce                                                               #
+    //#       addForce(PxVec3Ptr force, PxForceMode mode, bool autowake)             #
     //================================================================================
     #if NATIVE //function start
     ES void W_addForce_R_void_P_PxVec3_P_PxForceMode_P_bool_C_PxRigidBody(physx::PxRigidBody* self, physx::PxVec3 force, physx::PxForceMode::Enum mode, bool autowake){
@@ -694,7 +701,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       addTorque                                                              #
+    //#       addTorque(PxVec3Ptr torque, PxForceMode mode, bool autowake)           #
     //================================================================================
     #if NATIVE //function start
     ES void W_addTorque_R_void_P_PxVec3_P_PxForceMode_P_bool_C_PxRigidBody(physx::PxRigidBody* self, physx::PxVec3 torque, physx::PxForceMode::Enum mode, bool autowake){
@@ -755,7 +762,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       clearForce                                                             #
+    //#       clearForce(PxForceMode mode)                                           #
     //================================================================================
     #if NATIVE //function start
     ES void W_clearForce_R_void_P_PxForceMode_C_PxRigidBody(physx::PxRigidBody* self, physx::PxForceMode::Enum mode){
@@ -790,7 +797,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       clearTorque                                                            #
+    //#       clearTorque(PxForceMode mode)                                          #
     //================================================================================
     #if NATIVE //function start
     ES void W_clearTorque_R_void_P_PxForceMode_C_PxRigidBody(physx::PxRigidBody* self, physx::PxForceMode::Enum mode){
@@ -825,7 +832,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setForceAndTorque                                                      #
+    //#       setForceAndTorque(PxVec3Ptr force, PxVec3Ptr torque, PxForceMode mode) #
     //================================================================================
     #if NATIVE //function start
     ES void W_setForceAndTorque_R_void_P_PxVec3_P_PxVec3_P_PxForceMode_C_PxRigidBody(physx::PxRigidBody* self, physx::PxVec3 force, physx::PxVec3 torque, physx::PxForceMode::Enum mode){
@@ -868,7 +875,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setRigidBodyFlag                                                       #
+    //#       setRigidBodyFlag(PxRigidBodyFlag flag, bool value)                     #
     //================================================================================
     #if NATIVE //function start
     ES void W_setRigidBodyFlag_R_void_P_PxRigidBodyFlag_P_bool_C_PxRigidBody(physx::PxRigidBody* self, physx::PxRigidBodyFlag::Enum flag, bool value){
@@ -889,7 +896,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setRigidBodyFlags                                                      #
+    //#       setRigidBodyFlags(Enum, byte> inFlags)                                 #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxRigidBodyFlags
     // NATIVE SIG: void				setRigidBodyFlags(PxRigidBodyFlags inFlags) = 0
@@ -910,9 +917,9 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getRigidBodyFlags                                                      #
+    //#       getRigidBodyFlags()                                                    #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxRigidBodyFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxRigidBodyFlags -> Enum, byte>
     // NATIVE SIG: PxRigidBodyFlags	getRigidBodyFlags()	const = 0
     #if NATIVE //function start
     ES const UNPARSED_TYPE W_getRigidBodyFlags_R_Enum, byte>_C_PxRigidBody(physx::PxRigidBody* self){
@@ -931,7 +938,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setMinCCDAdvanceCoefficient                                            #
+    //#       setMinCCDAdvanceCoefficient(float advanceCoefficient)                  #
     //================================================================================
     #if NATIVE //function start
     ES void W_setMinCCDAdvanceCoefficient_R_void_P_float_C_PxRigidBody(physx::PxRigidBody* self, physx::PxReal advanceCoefficient){
@@ -950,7 +957,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getMinCCDAdvanceCoefficient                                            #
+    //#       getMinCCDAdvanceCoefficient()                                          #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getMinCCDAdvanceCoefficient_R_float_C_PxRigidBody(physx::PxRigidBody* self){
@@ -969,7 +976,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setMaxDepenetrationVelocity                                            #
+    //#       setMaxDepenetrationVelocity(float biasClamp)                           #
     //================================================================================
     #if NATIVE //function start
     ES void W_setMaxDepenetrationVelocity_R_void_P_float_C_PxRigidBody(physx::PxRigidBody* self, physx::PxReal biasClamp){
@@ -988,7 +995,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getMaxDepenetrationVelocity                                            #
+    //#       getMaxDepenetrationVelocity()                                          #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getMaxDepenetrationVelocity_R_float_C_PxRigidBody(physx::PxRigidBody* self){
@@ -1007,7 +1014,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       setMaxContactImpulse                                                   #
+    //#       setMaxContactImpulse(float maxImpulse)                                 #
     //================================================================================
     #if NATIVE //function start
     ES void W_setMaxContactImpulse_R_void_P_float_C_PxRigidBody(physx::PxRigidBody* self, physx::PxReal maxImpulse){
@@ -1026,7 +1033,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getMaxContactImpulse                                                   #
+    //#       getMaxContactImpulse()                                                 #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getMaxContactImpulse_R_float_C_PxRigidBody(physx::PxRigidBody* self){
@@ -1045,7 +1052,7 @@ public unsafe partial struct PxRigidBodyPtr : IPxActorPtr, IPxRigidActorPtr, IPx
     
     
     //================================================================================
-    //#       getInternalIslandNodeIndex                                             #
+    //#       getInternalIslandNodeIndex()                                           #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getInternalIslandNodeIndex_R_uint_C_PxRigidBody(physx::PxRigidBody* self){

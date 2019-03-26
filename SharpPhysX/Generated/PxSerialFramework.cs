@@ -13,24 +13,28 @@ public unsafe interface IPxSerializationContextPtr {
      void alignData();
      void alignData(uint alignment);
      void writeName(string name);
-    // PxSerializationContext(/*NULLPARS*/);
+    // static PxSerializationContextPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxSerializationContext(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxSerializationContextPtr lhs, /*NULLPARS*/);
-    // PxSerializationContext(/*NULLPARS*/);
+    // static PxSerializationContextPtr New(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxSerializationContextPtr : IPxSerializationContextPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxSerializationContextPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxSerializationContextPtr
     #endif //hierarchy
     //================================================================================
-    //#       registerReference                                                      #
+    //#       registerReference(PxBasePtr base, uint kind, ulong reference)          #
     //================================================================================
     #if NATIVE //function start
     ES void W_registerReference_R_void_P_PxBasePtr_P_uint_P_ulong_C_PxSerializationContext(physx::PxSerializationContext* self, physx::PxBase* base, physx::PxU32 kind, ::size_t reference){
@@ -53,13 +57,14 @@ public unsafe partial struct PxSerializationContextPtr : IPxSerializationContext
     
     
     //================================================================================
-    //#       getCollection                                                          #
+    //#       getCollection()                                                        #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxCollection&	getCollection()	const												= 0
     #if NATIVE //function start
     ES const physx::PxCollection* W_getCollection_R_PxCollectionPtr_C_PxSerializationContext(physx::PxSerializationContext* self){
         auto retVal = &self->getCollection();
+    //TODO check if it's returning addr of local
         return retVal;
     }
     #else //end C wrapper, start C#
@@ -74,7 +79,7 @@ public unsafe partial struct PxSerializationContextPtr : IPxSerializationContext
     
     
     //================================================================================
-    //#       writeData                                                              #
+    //#       writeData(IntPtr data, uint size)                                      #
     //================================================================================
     #if NATIVE //function start
     ES void W_writeData_R_void_P_IntPtr_P_uint_C_PxSerializationContext(physx::PxSerializationContext* self, const void* data, physx::PxU32 size){
@@ -95,7 +100,7 @@ public unsafe partial struct PxSerializationContextPtr : IPxSerializationContext
     
     
     //================================================================================
-    //#       alignData                                                              #
+    //#       alignData(uint alignment)                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_alignData_R_void_P_uint_C_PxSerializationContext(physx::PxSerializationContext* self, physx::PxU32 alignment){
@@ -130,7 +135,7 @@ public unsafe partial struct PxSerializationContextPtr : IPxSerializationContext
     
     
     //================================================================================
-    //#       writeName                                                              #
+    //#       writeName(string name)                                                 #
     //================================================================================
     #if NATIVE //function start
     ES void W_writeName_R_void_P_string_C_PxSerializationContext(physx::PxSerializationContext* self, const char* name){
@@ -167,9 +172,13 @@ public unsafe interface IPxRepXSerializerPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxRepXSerializerPtr : IPxRepXSerializerPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxRepXSerializerPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -186,9 +195,13 @@ public unsafe interface IPxSerializerPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxSerializerPtr : IPxSerializerPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxSerializerPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -204,22 +217,26 @@ public unsafe interface IPxProcessPxBaseCallbackPtr {
     // void ~PxProcessPxBaseCallback();
     // void process(PxBasePtr );
     //static UNPARSED_TYPE operator=(PxProcessPxBaseCallbackPtr lhs, /*NULLPARS*/);
-    // PxProcessPxBaseCallback(/*NULLPARS*/);
-    // PxProcessPxBaseCallback(/*NULLPARS*/);
+    // static PxProcessPxBaseCallbackPtr New(/*NULLPARS*/);
+    // static PxProcessPxBaseCallbackPtr New(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxProcessPxBaseCallbackPtr : IPxProcessPxBaseCallbackPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxProcessPxBaseCallbackPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxProcessPxBaseCallbackPtr
     #endif //hierarchy
     //================================================================================
-    //#       ~PxProcessPxBaseCallback                                               #
+    //#       ~PxProcessPxBaseCallback()                                             #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual ~PxProcessPxBaseCallback()  {}
@@ -238,7 +255,7 @@ public unsafe partial struct PxProcessPxBaseCallbackPtr : IPxProcessPxBaseCallba
     
     
     //================================================================================
-    //#       process                                                                #
+    //#       process(PxBasePtr )                                                    #
     //================================================================================
     /* ERRORS OCCURED: Invalid parameter name (empty)
     // NATIVE SIG: void process(PxBase&) = 0
@@ -281,28 +298,33 @@ public unsafe interface IPxDeserializationContextPtr {
      void alignExtraData();
      void alignExtraData(uint alignment);
      uint getPhysXVersion();
-    // PxDeserializationContext(/*NULLPARS*/);
+    // static PxDeserializationContextPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxDeserializationContext(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxDeserializationContextPtr lhs, /*NULLPARS*/);
-    // PxDeserializationContext(/*NULLPARS*/);
+    // static PxDeserializationContextPtr New(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationContextPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxDeserializationContextPtrPOD{
+    physx::PxU8* mExtraDataAddress;
+};
 #endif //struct start
 
 
     // ### Auto generated getters for fields
-    //Skipped protected field: mExtraDataAddress
+    //Skipped non-public field: mExtraDataAddress
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxDeserializationContextPtr
     #endif //hierarchy
     //================================================================================
-    //#       resolveReference                                                       #
+    //#       resolveReference(uint kind, ulong reference)                           #
     //================================================================================
     #if NATIVE //function start
     ES const physx::PxBase* W_resolveReference_R_PxBasePtr_P_uint_P_ulong_C_PxDeserializationContext(physx::PxDeserializationContext* self, physx::PxU32 kind, ::size_t reference){
@@ -325,7 +347,7 @@ public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationCon
     
     
     //================================================================================
-    //#       translatePxBase                                                        #
+    //#       translatePxBase(T base)                                                #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee T*
     // NATIVE SIG: void			translatePxBase(T*& base)
@@ -346,7 +368,7 @@ public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationCon
     
     
     //================================================================================
-    //#       readName                                                               #
+    //#       readName(string name)                                                  #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee const char*
     // NATIVE SIG: void			readName(const char*& name)
@@ -373,7 +395,7 @@ public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationCon
     
     
     //================================================================================
-    //#       readExtraData                                                          #
+    //#       readExtraData(uint count)                                              #
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*				readExtraData(PxU32 count=1)
@@ -416,7 +438,7 @@ public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationCon
     
     
     //================================================================================
-    //#       readExtraData                                                          #
+    //#       readExtraData(uint count)                                              #
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*				readExtraData(PxU32 count=1)
@@ -459,7 +481,7 @@ public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationCon
     
     
     //================================================================================
-    //#       alignExtraData                                                         #
+    //#       alignExtraData(uint alignment)                                         #
     //================================================================================
     #if NATIVE //function start
     ES void W_alignExtraData_R_void_P_uint_C_PxDeserializationContext(physx::PxDeserializationContext* self, physx::PxU32 alignment){
@@ -494,7 +516,7 @@ public unsafe partial struct PxDeserializationContextPtr : IPxDeserializationCon
     
     
     //================================================================================
-    //#       getPhysXVersion                                                        #
+    //#       getPhysXVersion()                                                      #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getPhysXVersion_R_uint_C_PxDeserializationContext(physx::PxDeserializationContext* self){
@@ -537,22 +559,26 @@ public unsafe interface IPxSerializationRegistryPtr {
      void release();
     // UNPARSED_TYPE ~PxSerializationRegistry(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxSerializationRegistryPtr lhs, /*NULLPARS*/);
-    // PxSerializationRegistry(/*NULLPARS*/);
-    // PxSerializationRegistry(/*NULLPARS*/);
+    // static PxSerializationRegistryPtr New(/*NULLPARS*/);
+    // static PxSerializationRegistryPtr New(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxSerializationRegistryPtr : IPxSerializationRegistryPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxSerializationRegistryPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxSerializationRegistryPtr
     #endif //hierarchy
     //================================================================================
-    //#       registerSerializer                                                     #
+    //#       registerSerializer(ushort type, PxSerializerPtr serializer)            #
     //================================================================================
     #if NATIVE //function start
     ES void W_registerSerializer_R_void_P_ushort_P_PxSerializerPtr_C_PxSerializationRegistry(physx::PxSerializationRegistry* self, physx::PxType type, physx::PxSerializer* serializer){
@@ -573,7 +599,7 @@ public unsafe partial struct PxSerializationRegistryPtr : IPxSerializationRegist
     
     
     //================================================================================
-    //#       unregisterSerializer                                                   #
+    //#       unregisterSerializer(ushort type)                                      #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxSerializer* W_unregisterSerializer_R_PxSerializerPtr_P_ushort_C_PxSerializationRegistry(physx::PxSerializationRegistry* self, physx::PxType type){
@@ -594,7 +620,7 @@ public unsafe partial struct PxSerializationRegistryPtr : IPxSerializationRegist
     
     
     //================================================================================
-    //#       registerBinaryMetaDataCallback                                         #
+    //#       registerBinaryMetaDataCallback(PxBinaryMetaDataCallback callback)      #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxBinaryMetaDataCallback
     // NATIVE SIG: void						registerBinaryMetaDataCallback(PxBinaryMetaDataCallback callback) = 0
@@ -615,7 +641,7 @@ public unsafe partial struct PxSerializationRegistryPtr : IPxSerializationRegist
     
     
     //================================================================================
-    //#       getSerializer                                                          #
+    //#       getSerializer(ushort type)                                             #
     //================================================================================
     #if NATIVE //function start
     ES const physx::PxSerializer* W_getSerializer_R_PxSerializerPtr_P_ushort_C_PxSerializationRegistry(physx::PxSerializationRegistry* self, physx::PxType type){
@@ -636,7 +662,7 @@ public unsafe partial struct PxSerializationRegistryPtr : IPxSerializationRegist
     
     
     //================================================================================
-    //#       registerRepXSerializer                                                 #
+    //#       registerRepXSerializer(ushort type, PxRepXSerializerPtr serializer)    #
     //================================================================================
     #if NATIVE //function start
     ES void W_registerRepXSerializer_R_void_P_ushort_P_PxRepXSerializerPtr_C_PxSerializationRegistry(physx::PxSerializationRegistry* self, physx::PxType type, physx::PxRepXSerializer* serializer){
@@ -657,7 +683,7 @@ public unsafe partial struct PxSerializationRegistryPtr : IPxSerializationRegist
     
     
     //================================================================================
-    //#       unregisterRepXSerializer                                               #
+    //#       unregisterRepXSerializer(ushort type)                                  #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxRepXSerializer* W_unregisterRepXSerializer_R_PxRepXSerializerPtr_P_ushort_C_PxSerializationRegistry(physx::PxSerializationRegistry* self, physx::PxType type){
@@ -678,7 +704,7 @@ public unsafe partial struct PxSerializationRegistryPtr : IPxSerializationRegist
     
     
     //================================================================================
-    //#       getRepXSerializer                                                      #
+    //#       getRepXSerializer(string typeName)                                     #
     //================================================================================
     #if NATIVE //function start
     ES const physx::PxRepXSerializer* W_getRepXSerializer_R_PxRepXSerializerPtr_P_string_C_PxSerializationRegistry(physx::PxSerializationRegistry* self, const char* typeName){
@@ -699,7 +725,7 @@ public unsafe partial struct PxSerializationRegistryPtr : IPxSerializationRegist
     
     
     //================================================================================
-    //#       release                                                                #
+    //#       release()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_release_R_void_C_PxSerializationRegistry(physx::PxSerializationRegistry* self){

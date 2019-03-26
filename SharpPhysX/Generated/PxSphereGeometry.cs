@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 #if !NATIVE //interface
 public unsafe interface IPxSphereGeometry {
-    // PxSphereGeometry();
+    ///*No paramless ctor in C#*/ static PxSphereGeometry Default();
     // PxSphereGeometry(float ir);
      bool isValid();
     //static UNPARSED_TYPE operator=(PxSphereGeometry lhs, /*NULLPARS*/);
@@ -19,12 +19,17 @@ public unsafe interface IPxSphereGeometry {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxSphereGeometry : IPxGeometryPtr, IPxSphereGeometry { // blittable
     // TODO extract blittable fields from base classes reliably (if possible at all)
     // FIELDS COULDN'T BE RESOLVED AUTOMATICALLY. YOU MAY HANDLE THAT MANUALLY AS GETTERS BELOW:
     private object CHECK_radius => radius; // physx::PxReal
 
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxSphereGeometryPOD{
+    physx::PxReal radius;
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -38,9 +43,9 @@ public unsafe partial struct PxSphereGeometry : IPxGeometryPtr, IPxSphereGeometr
     
     // --- PxGeometryPtr
     public  PxGeometryType getType(){return ((PxGeometryPtr)this).getType();}
-    //public  PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
-    //public  PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
-    //public  PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
+    //public  static PxGeometryPtr New(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
+    //public  static PxGeometryPtr New(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
+    //public  static PxGeometryPtr New(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).~PxGeometry(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxGeometryPtr lhs, /*NULLPARS*/){return ((PxGeometryPtr)this).operator=(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxGeometryPtr lhs, /*NULLPARS*/){return ((PxGeometryPtr)this).operator=(/*NULLARGS*/);}
@@ -48,20 +53,31 @@ public unsafe partial struct PxSphereGeometry : IPxGeometryPtr, IPxSphereGeometr
     #endif //piping
     
     //================================================================================
-    //#       PxSphereGeometry                                                       #
-    //================================================================================
-    //Skipped invalid managed declaration:
-    /*Parameterless constructor not allowed
-    */
-    
-    
-    //================================================================================
-    //#       PxSphereGeometry                                                       #
+    //#       PxSphereGeometry()                                                     #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxSphereGeometry W_PxSphereGeometry_R_PxSphereGeometry_P_float_C_PxSphereGeometry_ctor(physx::PxReal ir){
+    ES PxSphereGeometryPOD W_PxSphereGeometry_R_PxSphereGeometry_C_PxSphereGeometry_ctor(){
+        auto val = PxSphereGeometry();
+        return *(PxSphereGeometryPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxSphereGeometry W_PxSphereGeometry_R_PxSphereGeometry_C_PxSphereGeometry_ctor();
+    
+    public /*No paramless ctor in C#*/ static PxSphereGeometry Default(){
+        return (W_PxSphereGeometry_R_PxSphereGeometry_C_PxSphereGeometry_ctor());
+    }
+    #endif //function end
+    
+    
+    //================================================================================
+    //#       PxSphereGeometry(float ir)                                             #
+    //================================================================================
+    #if NATIVE //function start
+    ES PxSphereGeometryPOD W_PxSphereGeometry_R_PxSphereGeometry_P_float_C_PxSphereGeometry_ctor(physx::PxReal ir){
         auto nat_in_ir = (ir);
-        return PxSphereGeometry(nat_in_ir);
+        auto val = PxSphereGeometry();
+        return *(PxSphereGeometryPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -69,7 +85,7 @@ public unsafe partial struct PxSphereGeometry : IPxGeometryPtr, IPxSphereGeometr
     
     public  PxSphereGeometry(float ir){
         float pvk_in_ir = (ir);
-        var _new = W_PxSphereGeometry_R_PxSphereGeometry_P_float_C_PxSphereGeometry_ctor(pvk_in_ir);
+        var _new = (W_PxSphereGeometry_R_PxSphereGeometry_P_float_C_PxSphereGeometry_ctor(pvk_in_ir));
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -77,7 +93,7 @@ public unsafe partial struct PxSphereGeometry : IPxGeometryPtr, IPxSphereGeometr
     
     
     //================================================================================
-    //#       isValid                                                                #
+    //#       isValid()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isValid_R_bool_C_PxSphereGeometry(physx::PxSphereGeometry self){

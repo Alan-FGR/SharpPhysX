@@ -12,9 +12,13 @@ public unsafe interface IPxCudaContextManagerPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxCudaContextManagerPtr : IPxCudaContextManagerPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxCudaContextManagerPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -31,9 +35,13 @@ public unsafe interface IPxGpuCopyDescPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxGpuCopyDescPtr : IPxGpuCopyDescPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxGpuCopyDescPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -50,9 +58,13 @@ public unsafe interface ICUstream_stPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct CUstream_stPtr : ICUstream_stPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct CUstream_stPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy

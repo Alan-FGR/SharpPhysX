@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 #if !NATIVE //interface
 public unsafe interface IPxBounds3 {
-    // PxBounds3();
+    ///*No paramless ctor in C#*/ static PxBounds3 Default();
     // PxBounds3(PxVec3 minimum, PxVec3 maximum);
      PxBounds3 empty();
      PxBounds3 boundsOfPoints(PxVec3 v0, PxVec3 v1);
@@ -47,10 +47,13 @@ public unsafe interface IPxBounds3 {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     public PxVec3 minimum;
     public PxVec3 maximum;
+
+#else
+//Class is not POD so we're creating one to safely return the data from native
 
 #endif //struct start
 
@@ -58,21 +61,32 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     // Hierarchy: PxBounds3
     #endif //hierarchy
     //================================================================================
-    //#       PxBounds3                                                              #
-    //================================================================================
-    //Skipped invalid managed declaration:
-    /*Parameterless constructor not allowed
-    */
-    
-    
-    //================================================================================
-    //#       PxBounds3                                                              #
+    //#       PxBounds3()                                                            #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_PxBounds3_R_PxBounds3_P_PxVec3_P_PxVec3_C_PxBounds3_ctor(physx::PxVec3 minimum, physx::PxVec3 maximum){
+    ES PxBounds3POD W_PxBounds3_R_PxBounds3_C_PxBounds3_ctor(){
+        auto val = PxBounds3;
+        return *(PxBounds3POD*)&val();
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxBounds3 W_PxBounds3_R_PxBounds3_C_PxBounds3_ctor();
+    
+    public /*No paramless ctor in C#*/ static PxBounds3 Default(){
+        return (W_PxBounds3_R_PxBounds3_C_PxBounds3_ctor());
+    }
+    #endif //function end
+    
+    
+    //================================================================================
+    //#       PxBounds3(PxVec3Ptr minimum, PxVec3Ptr maximum)                        #
+    //================================================================================
+    #if NATIVE //function start
+    ES PxBounds3POD W_PxBounds3_R_PxBounds3_P_PxVec3_P_PxVec3_C_PxBounds3_ctor(physx::PxVec3 minimum, physx::PxVec3 maximum){
         auto nat_in_minimum = (minimum);
         auto nat_in_maximum = (maximum);
-        return PxBounds3(nat_in_minimum, nat_in_maximum);
+        auto val = PxBounds3;
+        return *(PxBounds3POD*)&val(nat_in_minimum, nat_in_maximum);
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -81,7 +95,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     public  PxBounds3(PxVec3 minimum, PxVec3 maximum){
         PxVec3 pvk_in_minimum = (minimum);
         PxVec3 pvk_in_maximum = (maximum);
-        var _new = W_PxBounds3_R_PxBounds3_P_PxVec3_P_PxVec3_C_PxBounds3_ctor(pvk_in_minimum, pvk_in_maximum);
+        var _new = (W_PxBounds3_R_PxBounds3_P_PxVec3_P_PxVec3_C_PxBounds3_ctor(pvk_in_minimum, pvk_in_maximum));
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -89,12 +103,12 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       empty                                                                  #
+    //#       empty()                                                                #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_empty_R_PxBounds3_C_PxBounds3(physx::PxBounds3 self){
+    ES PxBounds3POD W_empty_R_PxBounds3_C_PxBounds3(physx::PxBounds3 self){
         auto retVal = self.empty();
-        return retVal;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -108,14 +122,14 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       boundsOfPoints                                                         #
+    //#       boundsOfPoints(PxVec3Ptr v0, PxVec3Ptr v1)                             #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_boundsOfPoints_R_PxBounds3_P_PxVec3_P_PxVec3_C_PxBounds3(physx::PxBounds3 self, physx::PxVec3 v0, physx::PxVec3 v1){
+    ES PxBounds3POD W_boundsOfPoints_R_PxBounds3_P_PxVec3_P_PxVec3_C_PxBounds3(physx::PxBounds3 self, physx::PxVec3 v0, physx::PxVec3 v1){
         auto nat_in_v0 = (v0);
         auto nat_in_v1 = (v1);
         auto retVal = self.boundsOfPoints(nat_in_v0, nat_in_v1);
-        return retVal;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -131,14 +145,14 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       centerExtents                                                          #
+    //#       centerExtents(PxVec3Ptr center, PxVec3Ptr extent)                      #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_centerExtents_R_PxBounds3_P_PxVec3_P_PxVec3_C_PxBounds3(physx::PxBounds3 self, physx::PxVec3 center, physx::PxVec3 extent){
+    ES PxBounds3POD W_centerExtents_R_PxBounds3_P_PxVec3_P_PxVec3_C_PxBounds3(physx::PxBounds3 self, physx::PxVec3 center, physx::PxVec3 extent){
         auto nat_in_center = (center);
         auto nat_in_extent = (extent);
         auto retVal = self.centerExtents(nat_in_center, nat_in_extent);
-        return retVal;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -154,15 +168,15 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       basisExtent                                                            #
+    //#       basisExtent(PxVec3Ptr center, PxMat33Ptr basis, PxVec3Ptr extent)      #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_basisExtent_R_PxBounds3_P_PxVec3_P_PxMat33_P_PxVec3_C_PxBounds3(physx::PxBounds3 self, physx::PxVec3 center, physx::PxMat33 basis, physx::PxVec3 extent){
+    ES PxBounds3POD W_basisExtent_R_PxBounds3_P_PxVec3_P_PxMat33_P_PxVec3_C_PxBounds3(physx::PxBounds3 self, physx::PxVec3 center, physx::PxMat33 basis, physx::PxVec3 extent){
         auto nat_in_center = (center);
         auto nat_in_basis = (basis);
         auto nat_in_extent = (extent);
         auto retVal = self.basisExtent(nat_in_center, nat_in_basis, nat_in_extent);
-        return retVal;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -179,14 +193,14 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       poseExtent                                                             #
+    //#       poseExtent(PxTransformPtr pose, PxVec3Ptr extent)                      #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_poseExtent_R_PxBounds3_P_PxTransform_P_PxVec3_C_PxBounds3(physx::PxBounds3 self, physx::PxTransform pose, physx::PxVec3 extent){
+    ES PxBounds3POD W_poseExtent_R_PxBounds3_P_PxTransform_P_PxVec3_C_PxBounds3(physx::PxBounds3 self, physx::PxTransform pose, physx::PxVec3 extent){
         auto nat_in_pose = (pose);
         auto nat_in_extent = (extent);
         auto retVal = self.poseExtent(nat_in_pose, nat_in_extent);
-        return retVal;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -202,14 +216,14 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       transformSafe                                                          #
+    //#       transformSafe(PxMat33Ptr matrix, PxBounds3Ptr bounds)                  #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_transformSafe_R_PxBounds3_P_PxMat33_P_PxBounds3_C_PxBounds3(physx::PxBounds3 self, physx::PxMat33 matrix, physx::PxBounds3 bounds){
+    ES PxBounds3POD W_transformSafe_R_PxBounds3_P_PxMat33_P_PxBounds3_C_PxBounds3(physx::PxBounds3 self, physx::PxMat33 matrix, physx::PxBounds3 bounds){
         auto nat_in_matrix = (matrix);
         auto nat_in_bounds = (bounds);
         auto retVal = self.transformSafe(nat_in_matrix, nat_in_bounds);
-        return retVal;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -225,14 +239,14 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       transformFast                                                          #
+    //#       transformFast(PxMat33Ptr matrix, PxBounds3Ptr bounds)                  #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_transformFast_R_PxBounds3_P_PxMat33_P_PxBounds3_C_PxBounds3(physx::PxBounds3 self, physx::PxMat33 matrix, physx::PxBounds3 bounds){
+    ES PxBounds3POD W_transformFast_R_PxBounds3_P_PxMat33_P_PxBounds3_C_PxBounds3(physx::PxBounds3 self, physx::PxMat33 matrix, physx::PxBounds3 bounds){
         auto nat_in_matrix = (matrix);
         auto nat_in_bounds = (bounds);
         auto retVal = self.transformFast(nat_in_matrix, nat_in_bounds);
-        return retVal;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -248,14 +262,14 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       transformSafe                                                          #
+    //#       transformSafe(PxTransformPtr transform, PxBounds3Ptr bounds)           #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_transformSafe_R_PxBounds3_P_PxTransform_P_PxBounds3_C_PxBounds3(physx::PxBounds3 self, physx::PxTransform transform, physx::PxBounds3 bounds){
+    ES PxBounds3POD W_transformSafe_R_PxBounds3_P_PxTransform_P_PxBounds3_C_PxBounds3(physx::PxBounds3 self, physx::PxTransform transform, physx::PxBounds3 bounds){
         auto nat_in_transform = (transform);
         auto nat_in_bounds = (bounds);
         auto retVal = self.transformSafe(nat_in_transform, nat_in_bounds);
-        return retVal;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -271,14 +285,14 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       transformFast                                                          #
+    //#       transformFast(PxTransformPtr transform, PxBounds3Ptr bounds)           #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_transformFast_R_PxBounds3_P_PxTransform_P_PxBounds3_C_PxBounds3(physx::PxBounds3 self, physx::PxTransform transform, physx::PxBounds3 bounds){
+    ES PxBounds3POD W_transformFast_R_PxBounds3_P_PxTransform_P_PxBounds3_C_PxBounds3(physx::PxBounds3 self, physx::PxTransform transform, physx::PxBounds3 bounds){
         auto nat_in_transform = (transform);
         auto nat_in_bounds = (bounds);
         auto retVal = self.transformFast(nat_in_transform, nat_in_bounds);
-        return retVal;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -294,7 +308,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       setEmpty                                                               #
+    //#       setEmpty()                                                             #
     //================================================================================
     #if NATIVE //function start
     ES void W_setEmpty_R_void_C_PxBounds3(physx::PxBounds3 self){
@@ -311,7 +325,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       setMaximal                                                             #
+    //#       setMaximal()                                                           #
     //================================================================================
     #if NATIVE //function start
     ES void W_setMaximal_R_void_C_PxBounds3(physx::PxBounds3 self){
@@ -328,7 +342,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       include                                                                #
+    //#       include(PxVec3Ptr v)                                                   #
     //================================================================================
     #if NATIVE //function start
     ES void W_include_R_void_P_PxVec3_C_PxBounds3(physx::PxBounds3 self, physx::PxVec3 v){
@@ -347,7 +361,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       include                                                                #
+    //#       include(PxBounds3Ptr b)                                                #
     //================================================================================
     #if NATIVE //function start
     ES void W_include_R_void_P_PxBounds3_C_PxBounds3(physx::PxBounds3 self, physx::PxBounds3 b){
@@ -366,7 +380,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       isEmpty                                                                #
+    //#       isEmpty()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isEmpty_R_bool_C_PxBounds3(physx::PxBounds3 self){
@@ -385,7 +399,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       intersects                                                             #
+    //#       intersects(PxBounds3Ptr b)                                             #
     //================================================================================
     #if NATIVE //function start
     ES bool W_intersects_R_bool_P_PxBounds3_C_PxBounds3(physx::PxBounds3 self, physx::PxBounds3 b){
@@ -406,7 +420,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       intersects1D                                                           #
+    //#       intersects1D(PxBounds3Ptr a, uint axis)                                #
     //================================================================================
     #if NATIVE //function start
     ES bool W_intersects1D_R_bool_P_PxBounds3_P_uint_C_PxBounds3(physx::PxBounds3 self, physx::PxBounds3 a, ::uint32_t axis){
@@ -429,7 +443,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       contains                                                               #
+    //#       contains(PxVec3Ptr v)                                                  #
     //================================================================================
     #if NATIVE //function start
     ES bool W_contains_R_bool_P_PxVec3_C_PxBounds3(physx::PxBounds3 self, physx::PxVec3 v){
@@ -450,7 +464,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       isInside                                                               #
+    //#       isInside(PxBounds3Ptr box)                                             #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isInside_R_bool_P_PxBounds3_C_PxBounds3(physx::PxBounds3 self, physx::PxBounds3 box){
@@ -471,12 +485,12 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       getCenter                                                              #
+    //#       getCenter()                                                            #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_getCenter_R_PxVec3_C_PxBounds3(physx::PxBounds3 self){
+    ES PxVec3POD W_getCenter_R_PxVec3_C_PxBounds3(physx::PxBounds3 self){
         auto retVal = self.getCenter();
-        return retVal;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -490,7 +504,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       getCenter                                                              #
+    //#       getCenter(uint axis)                                                   #
     //================================================================================
     #if NATIVE //function start
     ES float W_getCenter_R_float_P_uint_C_PxBounds3(physx::PxBounds3 self, ::uint32_t axis){
@@ -511,7 +525,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       getExtents                                                             #
+    //#       getExtents(uint axis)                                                  #
     //================================================================================
     #if NATIVE //function start
     ES float W_getExtents_R_float_P_uint_C_PxBounds3(physx::PxBounds3 self, ::uint32_t axis){
@@ -532,12 +546,12 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       getDimensions                                                          #
+    //#       getDimensions()                                                        #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_getDimensions_R_PxVec3_C_PxBounds3(physx::PxBounds3 self){
+    ES PxVec3POD W_getDimensions_R_PxVec3_C_PxBounds3(physx::PxBounds3 self){
         auto retVal = self.getDimensions();
-        return retVal;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -551,12 +565,12 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       getExtents                                                             #
+    //#       getExtents()                                                           #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_getExtents_R_PxVec3_C_PxBounds3(physx::PxBounds3 self){
+    ES PxVec3POD W_getExtents_R_PxVec3_C_PxBounds3(physx::PxBounds3 self){
         auto retVal = self.getExtents();
-        return retVal;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -570,7 +584,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       scaleSafe                                                              #
+    //#       scaleSafe(float scale)                                                 #
     //================================================================================
     #if NATIVE //function start
     ES void W_scaleSafe_R_void_P_float_C_PxBounds3(physx::PxBounds3 self, float scale){
@@ -589,7 +603,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       scaleFast                                                              #
+    //#       scaleFast(float scale)                                                 #
     //================================================================================
     #if NATIVE //function start
     ES void W_scaleFast_R_void_P_float_C_PxBounds3(physx::PxBounds3 self, float scale){
@@ -608,7 +622,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       fattenSafe                                                             #
+    //#       fattenSafe(float distance)                                             #
     //================================================================================
     #if NATIVE //function start
     ES void W_fattenSafe_R_void_P_float_C_PxBounds3(physx::PxBounds3 self, float distance){
@@ -627,7 +641,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       fattenFast                                                             #
+    //#       fattenFast(float distance)                                             #
     //================================================================================
     #if NATIVE //function start
     ES void W_fattenFast_R_void_P_float_C_PxBounds3(physx::PxBounds3 self, float distance){
@@ -646,7 +660,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       isFinite                                                               #
+    //#       isFinite()                                                             #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isFinite_R_bool_C_PxBounds3(physx::PxBounds3 self){
@@ -665,7 +679,7 @@ public unsafe partial struct PxBounds3 : IPxBounds3 { // blittable
     
     
     //================================================================================
-    //#       isValid                                                                #
+    //#       isValid()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isValid_R_bool_C_PxBounds3(physx::PxBounds3 self){

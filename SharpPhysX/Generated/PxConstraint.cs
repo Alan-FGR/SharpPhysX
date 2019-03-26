@@ -25,14 +25,15 @@ public enum PxConstraintShaderTable_enum : int {
 }
 #endif //enum
 
-#if !NATIVE
-public partial struct PxConstraint {
+#if !NATIVE //functions holder
+public partial struct PxConstraintPtr {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxConstraintFlag a, PxConstraintFlag b)                      #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConstraintFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxConstraintFlag::Enum, unsigned short> -> PxFlags_PxConstraintFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxConstraintFlag_ushort_P_PxConstraintFlag_P_PxConstraintFlag(physx::PxConstraintFlag::Enum a, physx::PxConstraintFlag::Enum b){
@@ -55,9 +56,10 @@ public static UNPARSED_TYPE operator|(PxConstraintFlag a, PxConstraintFlag b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxConstraintFlag a, PxConstraintFlag b)                      #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConstraintFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxConstraintFlag::Enum, unsigned short> -> PxFlags_PxConstraintFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxConstraintFlag_ushort_P_PxConstraintFlag_P_PxConstraintFlag(physx::PxConstraintFlag::Enum a, physx::PxConstraintFlag::Enum b){
@@ -80,9 +82,10 @@ public static UNPARSED_TYPE operator&(PxConstraintFlag a, PxConstraintFlag b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxConstraintFlag a)                                          #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConstraintFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxConstraintFlag::Enum, unsigned short> -> PxFlags_PxConstraintFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxConstraintFlag_ushort_P_PxConstraintFlag(physx::PxConstraintFlag::Enum a){
@@ -101,8 +104,8 @@ public static UNPARSED_TYPE operator~(PxConstraintFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxConstraint
+#if !NATIVE //end functions holder
+} //end PxConstraintPtr
 #endif
 
 
@@ -125,19 +128,23 @@ public unsafe interface IPxConstraintPtr {
      IntPtr getExternalReference(uint* typeID);
     // void setConstraintFunctions(PxConstraintConnectorPtr connector, PxConstraintShaderTable shaders);
      string getConcreteTypeName();
-    // PxConstraint(/*NULLPARS*/);
-    // PxConstraint(/*NULLPARS*/);
+    // static PxConstraintPtr New(/*NULLPARS*/);
+    // static PxConstraintPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxConstraint(/*NULLPARS*/);
     // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
-    // PxConstraint(/*NULLPARS*/);
+    // static PxConstraintPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxConstraintPtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxConstraintPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -157,17 +164,17 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     //public  void setBaseFlags( inFlags){((PxBasePtr)this).setBaseFlags(inFlags);}
     //public  UNPARSED_TYPE getBaseFlags(){return ((PxBasePtr)this).getBaseFlags();}
     public  bool isReleasable(){return ((PxBasePtr)this).isReleasable();}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxBase(/*NULLPARS*/){((PxBasePtr)this).~PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE typeMatch(/*NULLPARS*/){return ((PxBasePtr)this).typeMatch(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxBasePtr)this).operator=(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       release                                                                #
+    //#       release()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_release_R_void_C_PxConstraint(physx::PxConstraint* self){
@@ -184,7 +191,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       getScene                                                               #
+    //#       getScene()                                                             #
     //================================================================================
     #if NATIVE //function start
     ES const physx::PxScene* W_getScene_R_PxScenePtr_C_PxConstraint(physx::PxConstraint* self){
@@ -203,7 +210,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       getActors                                                              #
+    //#       getActors(PxRigidActor actor0, PxRigidActor actor1)                    #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxRigidActor*
     Unresolved parameter pointee physx::PxRigidActor*
@@ -227,7 +234,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       setActors                                                              #
+    //#       setActors(PxRigidActorPtr actor0, PxRigidActorPtr actor1)              #
     //================================================================================
     #if NATIVE //function start
     ES void W_setActors_R_void_P_PxRigidActorPtr_P_PxRigidActorPtr_C_PxConstraint(physx::PxConstraint* self, physx::PxRigidActor* actor0, physx::PxRigidActor* actor1){
@@ -248,7 +255,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       markDirty                                                              #
+    //#       markDirty()                                                            #
     //================================================================================
     #if NATIVE //function start
     ES void W_markDirty_R_void_C_PxConstraint(physx::PxConstraint* self){
@@ -265,7 +272,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       setFlags                                                               #
+    //#       setFlags(Enum, ushort> flags)                                          #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxConstraintFlags
     // NATIVE SIG: void				setFlags(PxConstraintFlags flags)								= 0
@@ -286,9 +293,9 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       getFlags                                                               #
+    //#       getFlags()                                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxConstraintFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxConstraintFlags -> Enum, ushort>
     // NATIVE SIG: PxConstraintFlags	getFlags()												const	= 0
     #if NATIVE //function start
     ES const UNPARSED_TYPE W_getFlags_R_Enum, ushort>_C_PxConstraint(physx::PxConstraint* self){
@@ -307,7 +314,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       setFlag                                                                #
+    //#       setFlag(PxConstraintFlag flag, bool value)                             #
     //================================================================================
     #if NATIVE //function start
     ES void W_setFlag_R_void_P_PxConstraintFlag_P_bool_C_PxConstraint(physx::PxConstraint* self, physx::PxConstraintFlag::Enum flag, bool value){
@@ -328,7 +335,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       getForce                                                               #
+    //#       getForce(PxVec3Ptr linear, PxVec3Ptr angular)                          #
     //================================================================================
     /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxVec3
     Non const pointer/reference global::PhysX.physx.PxVec3
@@ -352,7 +359,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       isValid                                                                #
+    //#       isValid()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isValid_R_bool_C_PxConstraint(physx::PxConstraint* self){
@@ -371,7 +378,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       setBreakForce                                                          #
+    //#       setBreakForce(float linear, float angular)                             #
     //================================================================================
     #if NATIVE //function start
     ES void W_setBreakForce_R_void_P_float_P_float_C_PxConstraint(physx::PxConstraint* self, physx::PxReal linear, physx::PxReal angular){
@@ -392,7 +399,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       getBreakForce                                                          #
+    //#       getBreakForce(float* linear, float* angular)                           #
     //================================================================================
     #if NATIVE //function start
     ES void W_getBreakForce_R_void_P_floatPtr_P_floatPtr_C_PxConstraint(physx::PxConstraint* self, physx::PxReal& linear, physx::PxReal& angular){
@@ -413,7 +420,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       setMinResponseThreshold                                                #
+    //#       setMinResponseThreshold(float threshold)                               #
     //================================================================================
     #if NATIVE //function start
     ES void W_setMinResponseThreshold_R_void_P_float_C_PxConstraint(physx::PxConstraint* self, physx::PxReal threshold){
@@ -432,7 +439,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       getMinResponseThreshold                                                #
+    //#       getMinResponseThreshold()                                              #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getMinResponseThreshold_R_float_C_PxConstraint(physx::PxConstraint* self){
@@ -451,7 +458,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       getExternalReference                                                   #
+    //#       getExternalReference(uint* typeID)                                     #
     //================================================================================
     #if NATIVE //function start
     ES void* W_getExternalReference_R_IntPtr_P_uintPtr_C_PxConstraint(physx::PxConstraint* self, physx::PxU32& typeID){
@@ -472,7 +479,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       setConstraintFunctions                                                 #
+    //#       setConstraintFunctions(PxConstraintConnectorPtr connector, PxConstraintShaderTablePtr shaders) #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxConstraintShaderTablePtr
     // NATIVE SIG: void				setConstraintFunctions(PxConstraintConnector& connector,
@@ -496,7 +503,7 @@ public unsafe partial struct PxConstraintPtr : IPxBasePtr, IPxConstraintPtr { //
     
     
     //================================================================================
-    //#       getConcreteTypeName                                                    #
+    //#       getConcreteTypeName()                                                  #
     //================================================================================
     #if NATIVE //function start
     ES const char* W_getConcreteTypeName_R_string_C_PxConstraint(physx::PxConstraint* self){

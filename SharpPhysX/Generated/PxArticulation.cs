@@ -11,9 +11,13 @@ public unsafe interface IPxArticulationLinkPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxArticulationLinkPtr : IPxArticulationLinkPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxArticulationLinkPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -27,19 +31,23 @@ public unsafe partial struct PxArticulationLinkPtr : IPxArticulationLinkPtr { //
 // Class physx::PxArticulation Manually Ignored
 #if !NATIVE //interface
 public unsafe interface IPxArticulationDriveCachePtr {
-    // PxArticulationDriveCache(/*NULLPARS*/);
-    // PxArticulationDriveCache(/*NULLPARS*/);
+    // static PxArticulationDriveCachePtr New(/*NULLPARS*/);
+    // static PxArticulationDriveCachePtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxArticulationDriveCachePtr lhs, /*NULLPARS*/);
-    // PxArticulationDriveCache(/*NULLPARS*/);
+    // static PxArticulationDriveCachePtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxArticulationDriveCachePtr lhs, /*NULLPARS*/);
     // UNPARSED_TYPE ~PxArticulationDriveCache(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxArticulationDriveCachePtr : IPxArticulationDriveCachePtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxArticulationDriveCachePtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy

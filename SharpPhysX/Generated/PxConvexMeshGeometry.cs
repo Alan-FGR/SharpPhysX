@@ -9,14 +9,15 @@ public enum PxConvexMeshGeometryFlag : int {
 }
 #endif //enum
 
-#if !NATIVE
-public partial struct PxConvexMeshGeometry {
+#if !NATIVE //functions holder
+public partial struct PxConvexMeshGeometryPtr {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxConvexMeshGeometryFlag a, PxConvexMeshGeometryFlag b)      #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConvexMeshGeometryFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxConvexMeshGeometryFlag::Enum, unsigned char> -> PxFlags_PxConvexMeshGeometryFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxConvexMeshGeometryFlag_byte_P_PxConvexMeshGeometryFlag_P_PxConvexMeshGeometryFlag(physx::PxConvexMeshGeometryFlag::Enum a, physx::PxConvexMeshGeometryFlag::Enum b){
@@ -39,9 +40,10 @@ public static UNPARSED_TYPE operator|(PxConvexMeshGeometryFlag a, PxConvexMeshGe
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxConvexMeshGeometryFlag a, PxConvexMeshGeometryFlag b)      #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConvexMeshGeometryFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxConvexMeshGeometryFlag::Enum, unsigned char> -> PxFlags_PxConvexMeshGeometryFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxConvexMeshGeometryFlag_byte_P_PxConvexMeshGeometryFlag_P_PxConvexMeshGeometryFlag(physx::PxConvexMeshGeometryFlag::Enum a, physx::PxConvexMeshGeometryFlag::Enum b){
@@ -64,9 +66,10 @@ public static UNPARSED_TYPE operator&(PxConvexMeshGeometryFlag a, PxConvexMeshGe
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxConvexMeshGeometryFlag a)                                  #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConvexMeshGeometryFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxConvexMeshGeometryFlag::Enum, unsigned char> -> PxFlags_PxConvexMeshGeometryFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxConvexMeshGeometryFlag_byte_P_PxConvexMeshGeometryFlag(physx::PxConvexMeshGeometryFlag::Enum a){
@@ -85,8 +88,8 @@ public static UNPARSED_TYPE operator~(PxConvexMeshGeometryFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxConvexMeshGeometry
+#if !NATIVE //end functions holder
+} //end PxConvexMeshGeometryPtr
 #endif
 
 

@@ -37,9 +37,13 @@ public unsafe interface IPxArticulationLinkPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxArticulationLinkPtr : IPxArticulationLinkPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxArticulationLinkPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -57,9 +61,13 @@ public unsafe interface IPxArticulationJointPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxArticulationJointPtr : IPxArticulationJointPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxArticulationJointPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -77,7 +85,7 @@ public unsafe interface IPxTypeInfo {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:True
 public unsafe partial struct PxTypeInfo : IPxTypeInfo { // blittable
 
 #endif //struct start

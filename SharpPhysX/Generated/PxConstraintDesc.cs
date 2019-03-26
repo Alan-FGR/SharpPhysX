@@ -46,14 +46,15 @@ public enum PxConstraintVisualizationFlag : int {
 }
 #endif //enum
 
-#if !NATIVE
+#if !NATIVE //functions holder
 public partial struct PxConstraintDesc {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(Px1DConstraintFlag a, Px1DConstraintFlag b)                  #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::Px1DConstraintFlag::Type, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::Px1DConstraintFlag::Type, unsigned short> -> PxFlags_Px1DConstraintFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_Px1DConstraintFlag_ushort_P_Type_P_Type(physx::Px1DConstraintFlag::Type a, physx::Px1DConstraintFlag::Type b){
@@ -76,9 +77,10 @@ public static UNPARSED_TYPE operator|(Type a, Type b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Px1DConstraintFlag a, Px1DConstraintFlag b)                  #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::Px1DConstraintFlag::Type, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::Px1DConstraintFlag::Type, unsigned short> -> PxFlags_Px1DConstraintFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_Px1DConstraintFlag_ushort_P_Type_P_Type(physx::Px1DConstraintFlag::Type a, physx::Px1DConstraintFlag::Type b){
@@ -101,9 +103,10 @@ public static UNPARSED_TYPE operator&(Type a, Type b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(Px1DConstraintFlag a)                                        #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::Px1DConstraintFlag::Type, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::Px1DConstraintFlag::Type, unsigned short> -> PxFlags_Px1DConstraintFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_Px1DConstraintFlag_ushort_P_Type(physx::Px1DConstraintFlag::Type a){
@@ -122,8 +125,8 @@ public static UNPARSED_TYPE operator~(Type a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxConstraintDesc
+#if !NATIVE //end functions holder
+} //end PxConstraintDesc
 #endif
 
 
@@ -141,22 +144,26 @@ public unsafe interface IPxConstraintConnectorPtr {
      IntPtr getConstantBlock();
     // void ~PxConstraintConnector();
     //static UNPARSED_TYPE operator=(PxConstraintConnectorPtr lhs, /*NULLPARS*/);
-    // PxConstraintConnector(/*NULLPARS*/);
-    // PxConstraintConnector(/*NULLPARS*/);
+    // static PxConstraintConnectorPtr New(/*NULLPARS*/);
+    // static PxConstraintConnectorPtr New(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxConstraintConnectorPtr : IPxConstraintConnectorPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxConstraintConnectorPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxConstraintConnectorPtr
     #endif //hierarchy
     //================================================================================
-    //#       prepareData                                                            #
+    //#       prepareData()                                                          #
     //================================================================================
     #if NATIVE //function start
     ES void* W_prepareData_R_IntPtr_C_PxConstraintConnector(physx::PxConstraintConnector* self){
@@ -175,7 +182,7 @@ public unsafe partial struct PxConstraintConnectorPtr : IPxConstraintConnectorPt
     
     
     //================================================================================
-    //#       updatePvdProperties                                                    #
+    //#       updatePvdProperties(PvdDataStreamPtr pvdConnection, PxConstraintPtr c, PxPvdUpdateType updateType) #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PvdDataStreamPtr
     // NATIVE SIG: bool					updatePvdProperties(physx::pvdsdk::PvdDataStream& pvdConnection,
@@ -204,7 +211,7 @@ public unsafe partial struct PxConstraintConnectorPtr : IPxConstraintConnectorPt
     
     
     //================================================================================
-    //#       onConstraintRelease                                                    #
+    //#       onConstraintRelease()                                                  #
     //================================================================================
     #if NATIVE //function start
     ES void W_onConstraintRelease_R_void_C_PxConstraintConnector(physx::PxConstraintConnector* self){
@@ -221,7 +228,7 @@ public unsafe partial struct PxConstraintConnectorPtr : IPxConstraintConnectorPt
     
     
     //================================================================================
-    //#       onComShift                                                             #
+    //#       onComShift(uint actor)                                                 #
     //================================================================================
     #if NATIVE //function start
     ES void W_onComShift_R_void_P_uint_C_PxConstraintConnector(physx::PxConstraintConnector* self, physx::PxU32 actor){
@@ -240,7 +247,7 @@ public unsafe partial struct PxConstraintConnectorPtr : IPxConstraintConnectorPt
     
     
     //================================================================================
-    //#       onOriginShift                                                          #
+    //#       onOriginShift(PxVec3Ptr shift)                                         #
     //================================================================================
     #if NATIVE //function start
     ES void W_onOriginShift_R_void_P_PxVec3_C_PxConstraintConnector(physx::PxConstraintConnector* self, physx::PxVec3 shift){
@@ -259,7 +266,7 @@ public unsafe partial struct PxConstraintConnectorPtr : IPxConstraintConnectorPt
     
     
     //================================================================================
-    //#       getExternalReference                                                   #
+    //#       getExternalReference(uint* typeID)                                     #
     //================================================================================
     #if NATIVE //function start
     ES void* W_getExternalReference_R_IntPtr_P_uintPtr_C_PxConstraintConnector(physx::PxConstraintConnector* self, physx::PxU32& typeID){
@@ -280,7 +287,7 @@ public unsafe partial struct PxConstraintConnectorPtr : IPxConstraintConnectorPt
     
     
     //================================================================================
-    //#       getSerializable                                                        #
+    //#       getSerializable()                                                      #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxBase* W_getSerializable_R_PxBasePtr_C_PxConstraintConnector(physx::PxConstraintConnector* self){
@@ -299,9 +306,9 @@ public unsafe partial struct PxConstraintConnectorPtr : IPxConstraintConnectorPt
     
     
     //================================================================================
-    //#       getPrep                                                                #
+    //#       getPrep()                                                              #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxConstraintSolverPrep
+    /* ERRORS OCCURED: unhandled return type: physx::PxConstraintSolverPrep -> PxConstraintSolverPrep
     // NATIVE SIG: PxConstraintSolverPrep getPrep()	const										= 0
     #if NATIVE //function start
     ES const UNPARSED_TYPE W_getPrep_R_PxConstraintSolverPrep_C_PxConstraintConnector(physx::PxConstraintConnector* self){
@@ -320,7 +327,7 @@ public unsafe partial struct PxConstraintConnectorPtr : IPxConstraintConnectorPt
     
     
     //================================================================================
-    //#       getConstantBlock                                                       #
+    //#       getConstantBlock()                                                     #
     //================================================================================
     #if NATIVE //function start
     ES const void* W_getConstantBlock_R_IntPtr_C_PxConstraintConnector(physx::PxConstraintConnector* self){
@@ -339,7 +346,7 @@ public unsafe partial struct PxConstraintConnectorPtr : IPxConstraintConnectorPt
     
     
     //================================================================================
-    //#       ~PxConstraintConnector                                                 #
+    //#       ~PxConstraintConnector()                                               #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual							~PxConstraintConnector() {}
@@ -383,7 +390,7 @@ public unsafe interface ISpringModifiers {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:True
 public unsafe partial struct SpringModifiers : ISpringModifiers { // blittable
     public float stiffness;
     public float damping;
@@ -422,7 +429,7 @@ public unsafe interface IRestitutionModifiers {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:True
 public unsafe partial struct RestitutionModifiers : IRestitutionModifiers { // blittable
     public float restitution;
     public float velocityThreshold;
@@ -451,20 +458,28 @@ public unsafe partial struct RestitutionModifiers : IRestitutionModifiers { // b
 
 #if !NATIVE //interface
 public unsafe interface IPxConstraintInvMassScalePtr {
-    // PxConstraintInvMassScale();
-    // PxConstraintInvMassScale(float lin0, float ang0, float lin1, float ang1);
-    // PxConstraintInvMassScale(/*NULLPARS*/);
+    // static PxConstraintInvMassScalePtr New();
+    // static PxConstraintInvMassScalePtr New(float lin0, float ang0, float lin1, float ang1);
+    // static PxConstraintInvMassScalePtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxConstraintInvMassScalePtr lhs, /*NULLPARS*/);
-    // PxConstraintInvMassScale(/*NULLPARS*/);
+    // static PxConstraintInvMassScalePtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxConstraintInvMassScalePtr lhs, /*NULLPARS*/);
     // UNPARSED_TYPE ~PxConstraintInvMassScale(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxConstraintInvMassScalePtr : IPxConstraintInvMassScalePtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxConstraintInvMassScalePtrPOD{
+    physx::PxReal linear0;
+    physx::PxReal angular0;
+    physx::PxReal linear1;
+    physx::PxReal angular1;
+};
 #endif //struct start
 
 
@@ -538,41 +553,53 @@ public unsafe partial struct PxConstraintInvMassScalePtr : IPxConstraintInvMassS
     // Hierarchy: PxConstraintInvMassScalePtr
     #endif //hierarchy
     //================================================================================
-    //#       PxConstraintInvMassScale                                               #
+    //#       PxConstraintInvMassScale()                                             #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxConstraintInvMassScale
-    Parameterless constructor not allowed
-    */
-    
-    
-    //================================================================================
-    //#       PxConstraintInvMassScale                                               #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxConstraintInvMassScale
-    // NATIVE SIG: PX_FORCE_INLINE PxConstraintInvMassScale(PxReal lin0, PxReal ang0, PxReal lin1, PxReal ang1) : linear0(lin0), angular0(ang0), linear1(lin1), angular1(ang1){}
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxConstraintInvMassScale_R_PxConstraintInvMassScalePtr_P_float_P_float_P_float_P_float_C_PxConstraintInvMassScale_ctor(physx::PxReal lin0, physx::PxReal ang0, physx::PxReal lin1, physx::PxReal ang1){
+    ES PxConstraintInvMassScalePtrPOD W_PxConstraintInvMassScale_R_PxConstraintInvMassScalePtr_C_PxConstraintInvMassScale_ctor(){
+        auto val = new PxConstraintInvMassScale();
+        return *(PxConstraintInvMassScalePtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxConstraintInvMassScalePtr W_PxConstraintInvMassScale_R_PxConstraintInvMassScalePtr_C_PxConstraintInvMassScale_ctor();
+    
+    public  static PxConstraintInvMassScalePtr New(){
+        var _new = W_PxConstraintInvMassScale_R_PxConstraintInvMassScalePtr_C_PxConstraintInvMassScale_ctor();
+        PxConstraintInvMassScalePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
+    
+    
+    //================================================================================
+    //#       PxConstraintInvMassScale(float lin0, float ang0, float lin1, float ang1) #
+    //================================================================================
+    #if NATIVE //function start
+    ES PxConstraintInvMassScalePtrPOD W_PxConstraintInvMassScale_R_PxConstraintInvMassScalePtr_P_float_P_float_P_float_P_float_C_PxConstraintInvMassScale_ctor(physx::PxReal lin0, physx::PxReal ang0, physx::PxReal lin1, physx::PxReal ang1){
         auto nat_in_lin0 = (lin0);
         auto nat_in_ang0 = (ang0);
         auto nat_in_lin1 = (lin1);
         auto nat_in_ang1 = (ang1);
-        return PxConstraintInvMassScale(nat_in_lin0, nat_in_ang0, nat_in_lin1, nat_in_ang1);
+        auto val = new PxConstraintInvMassScale();
+        return *(PxConstraintInvMassScalePtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxConstraintInvMassScale_R_PxConstraintInvMassScalePtr_P_float_P_float_P_float_P_float_C_PxConstraintInvMassScale_ctor(float lin0, float ang0, float lin1, float ang1);
+    static extern PxConstraintInvMassScalePtr W_PxConstraintInvMassScale_R_PxConstraintInvMassScalePtr_P_float_P_float_P_float_P_float_C_PxConstraintInvMassScale_ctor(float lin0, float ang0, float lin1, float ang1);
     
-    public  PxConstraintInvMassScale(float lin0, float ang0, float lin1, float ang1){
+    public  static PxConstraintInvMassScalePtr New(float lin0, float ang0, float lin1, float ang1){
         float pvk_in_lin0 = (lin0);
         float pvk_in_ang0 = (ang0);
         float pvk_in_lin1 = (lin1);
         float pvk_in_ang1 = (ang1);
         var _new = W_PxConstraintInvMassScale_R_PxConstraintInvMassScalePtr_P_float_P_float_P_float_P_float_C_PxConstraintInvMassScale_ctor(pvk_in_lin0, pvk_in_ang0, pvk_in_lin1, pvk_in_ang1);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxConstraintInvMassScalePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
-    #endif //function end*/
+    #endif //function end
     
     
     //Skipped generated implicit entry: PxConstraintInvMassScale
@@ -600,15 +627,19 @@ public unsafe interface IPxConstraintVisualizerPtr {
      void visualizeDoubleCone(PxTransform t, float angle, bool active);
      void visualizeLine(PxVec3 p0, PxVec3 p1, uint color);
     //static UNPARSED_TYPE operator=(PxConstraintVisualizerPtr lhs, /*NULLPARS*/);
-    // PxConstraintVisualizer(/*NULLPARS*/);
-    // PxConstraintVisualizer(/*NULLPARS*/);
+    // static PxConstraintVisualizerPtr New(/*NULLPARS*/);
+    // static PxConstraintVisualizerPtr New(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxConstraintVisualizerPtr : IPxConstraintVisualizerPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxConstraintVisualizerPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -617,7 +648,7 @@ public unsafe partial struct PxConstraintVisualizerPtr : IPxConstraintVisualizer
     //Skipped protected: ~PxConstraintVisualizer
     
     //================================================================================
-    //#       visualizeJointFrames                                                   #
+    //#       visualizeJointFrames(PxTransformPtr parent, PxTransformPtr child)      #
     //================================================================================
     #if NATIVE //function start
     ES void W_visualizeJointFrames_R_void_P_PxTransform_P_PxTransform_C_PxConstraintVisualizer(physx::PxConstraintVisualizer* self, physx::PxTransform parent, physx::PxTransform child){
@@ -638,7 +669,7 @@ public unsafe partial struct PxConstraintVisualizerPtr : IPxConstraintVisualizer
     
     
     //================================================================================
-    //#       visualizeLinearLimit                                                   #
+    //#       visualizeLinearLimit(PxTransformPtr t0, PxTransformPtr t1, float value, bool active) #
     //================================================================================
     #if NATIVE //function start
     ES void W_visualizeLinearLimit_R_void_P_PxTransform_P_PxTransform_P_float_P_bool_C_PxConstraintVisualizer(physx::PxConstraintVisualizer* self, physx::PxTransform t0, physx::PxTransform t1, physx::PxReal value, bool active){
@@ -663,7 +694,7 @@ public unsafe partial struct PxConstraintVisualizerPtr : IPxConstraintVisualizer
     
     
     //================================================================================
-    //#       visualizeAngularLimit                                                  #
+    //#       visualizeAngularLimit(PxTransformPtr t0, float lower, float upper, bool active) #
     //================================================================================
     #if NATIVE //function start
     ES void W_visualizeAngularLimit_R_void_P_PxTransform_P_float_P_float_P_bool_C_PxConstraintVisualizer(physx::PxConstraintVisualizer* self, physx::PxTransform t0, physx::PxReal lower, physx::PxReal upper, bool active){
@@ -688,7 +719,7 @@ public unsafe partial struct PxConstraintVisualizerPtr : IPxConstraintVisualizer
     
     
     //================================================================================
-    //#       visualizeLimitCone                                                     #
+    //#       visualizeLimitCone(PxTransformPtr t, float tanQSwingY, float tanQSwingZ, bool active) #
     //================================================================================
     #if NATIVE //function start
     ES void W_visualizeLimitCone_R_void_P_PxTransform_P_float_P_float_P_bool_C_PxConstraintVisualizer(physx::PxConstraintVisualizer* self, physx::PxTransform t, physx::PxReal tanQSwingY, physx::PxReal tanQSwingZ, bool active){
@@ -713,7 +744,7 @@ public unsafe partial struct PxConstraintVisualizerPtr : IPxConstraintVisualizer
     
     
     //================================================================================
-    //#       visualizeDoubleCone                                                    #
+    //#       visualizeDoubleCone(PxTransformPtr t, float angle, bool active)        #
     //================================================================================
     #if NATIVE //function start
     ES void W_visualizeDoubleCone_R_void_P_PxTransform_P_float_P_bool_C_PxConstraintVisualizer(physx::PxConstraintVisualizer* self, physx::PxTransform t, physx::PxReal angle, bool active){
@@ -736,7 +767,7 @@ public unsafe partial struct PxConstraintVisualizerPtr : IPxConstraintVisualizer
     
     
     //================================================================================
-    //#       visualizeLine                                                          #
+    //#       visualizeLine(PxVec3Ptr p0, PxVec3Ptr p1, uint color)                  #
     //================================================================================
     #if NATIVE //function start
     ES void W_visualizeLine_R_void_P_PxVec3_P_PxVec3_P_uint_C_PxConstraintVisualizer(physx::PxConstraintVisualizer* self, physx::PxVec3 p0, physx::PxVec3 p1, physx::PxU32 color){
@@ -772,31 +803,47 @@ public unsafe partial struct PxConstraintVisualizerPtr : IPxConstraintVisualizer
 // Class physx::PxRenderBuffer Manually Ignored
 #if !NATIVE //interface
 public unsafe interface IPx1DConstraintFlagPtr {
-    // Px1DConstraintFlag();
-    // Px1DConstraintFlag(/*NULLPARS*/);
+    // static Px1DConstraintFlagPtr New();
+    // static Px1DConstraintFlagPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(Px1DConstraintFlagPtr lhs, /*NULLPARS*/);
-    // Px1DConstraintFlag(/*NULLPARS*/);
+    // static Px1DConstraintFlagPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(Px1DConstraintFlagPtr lhs, /*NULLPARS*/);
     // UNPARSED_TYPE ~Px1DConstraintFlag(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct Px1DConstraintFlagPtr : IPx1DConstraintFlagPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct Px1DConstraintFlagPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
     // Hierarchy: Px1DConstraintFlagPtr
     #endif //hierarchy
     //================================================================================
-    //#       Px1DConstraintFlag                                                     #
+    //#       Px1DConstraintFlag()                                                   #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::Px1DConstraintFlag
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES Px1DConstraintFlagPtrPOD W_Px1DConstraintFlag_R_Px1DConstraintFlagPtr_C_Px1DConstraintFlag_ctor(){
+        auto val = new Px1DConstraintFlag();
+        return *(Px1DConstraintFlagPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern Px1DConstraintFlagPtr W_Px1DConstraintFlag_R_Px1DConstraintFlagPtr_C_Px1DConstraintFlag_ctor();
+    
+    public  static Px1DConstraintFlagPtr New(){
+        var _new = W_Px1DConstraintFlag_R_Px1DConstraintFlagPtr_C_Px1DConstraintFlag_ctor();
+        Px1DConstraintFlagPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     //Skipped generated implicit entry: Px1DConstraintFlag

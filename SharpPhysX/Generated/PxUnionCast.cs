@@ -4,14 +4,14 @@ using System.Runtime.InteropServices;
 #endif //C# includes
 
 
-#if !NATIVE
+#if !NATIVE //functions holder
 public partial struct PxUnionCast {
 #endif
 
 //================================================================================
-//#       PxUnionCast                                                            #
+//#       PxUnionCast(B b)                                                       #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: A
+/* ERRORS OCCURED: unhandled return type: A -> A
 Unresolved parameter type B
 // NATIVE SIG: A PxUnionCast(B b)
 {
@@ -47,8 +47,8 @@ public static UNPARSED_TYPE PxUnionCast( b){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxUnionCast
+#if !NATIVE //end functions holder
+} //end PxUnionCast
 #endif
 
 

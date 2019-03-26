@@ -10,12 +10,12 @@ public enum PxBaseFlag : int {
 }
 #endif //enum
 
-#if !NATIVE
-public partial struct PxBase {
+#if !NATIVE //functions holder
+public partial struct PxBasePtr {
 #endif
 
 //================================================================================
-//#       getBinaryMetaData_PxBase                                               #
+//#       getBinaryMetaData_PxBase(PxOutputStreamPtr stream)                     #
 //================================================================================
 /* ERRORS OCCURED: Forbidden parameter type: PxOutputStreamPtr
 // NATIVE SIG: void				getBinaryMetaData_PxBase(PxOutputStream& stream)
@@ -36,9 +36,10 @@ public static void getBinaryMetaData_PxBase(PxOutputStreamPtr stream){
 
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxBaseFlag a, PxBaseFlag b)                                  #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short> -> PxFlags_PxBaseFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxBaseFlag_ushort_P_PxBaseFlag_P_PxBaseFlag(physx::PxBaseFlag::Enum a, physx::PxBaseFlag::Enum b){
@@ -61,9 +62,10 @@ public static UNPARSED_TYPE operator|(PxBaseFlag a, PxBaseFlag b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxBaseFlag a, PxBaseFlag b)                                  #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short> -> PxFlags_PxBaseFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxBaseFlag_ushort_P_PxBaseFlag_P_PxBaseFlag(physx::PxBaseFlag::Enum a, physx::PxBaseFlag::Enum b){
@@ -86,9 +88,10 @@ public static UNPARSED_TYPE operator&(PxBaseFlag a, PxBaseFlag b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxBaseFlag a)                                                #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short> -> PxFlags_PxBaseFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxBaseFlag_ushort_P_PxBaseFlag(physx::PxBaseFlag::Enum a){
@@ -107,8 +110,8 @@ public static UNPARSED_TYPE operator~(PxBaseFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxBase
+#if !NATIVE //end functions holder
+} //end PxBasePtr
 #endif
 
 
@@ -123,32 +126,38 @@ public unsafe interface IPxBasePtr {
     // void setBaseFlags( inFlags);
     // UNPARSED_TYPE getBaseFlags();
      bool isReleasable();
-    // PxBase(/*NULLPARS*/);
-    // PxBase(/*NULLPARS*/);
+    // static PxBasePtr New(/*NULLPARS*/);
+    // static PxBasePtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxBase(/*NULLPARS*/);
     // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
     // UNPARSED_TYPE typeMatch(/*NULLPARS*/);
-    // PxBase(/*NULLPARS*/);
+    // static PxBasePtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxBasePtr : IPxBasePtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxBasePtrPOD{
+    physx::PxType mConcreteType;
+    physx::PxBaseFlags mBaseFlags;
+};
 #endif //struct start
 
 
     // ### Auto generated getters for fields
-    //Skipped protected field: mConcreteType
-    //Skipped protected field: mBaseFlags
+    //Skipped non-public field: mConcreteType
+    //Skipped non-public field: mBaseFlags
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxBasePtr
     #endif //hierarchy
     //================================================================================
-    //#       release                                                                #
+    //#       release()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_release_R_void_C_PxBase(physx::PxBase* self){
@@ -165,7 +174,7 @@ public unsafe partial struct PxBasePtr : IPxBasePtr { // pointer
     
     
     //================================================================================
-    //#       getConcreteTypeName                                                    #
+    //#       getConcreteTypeName()                                                  #
     //================================================================================
     #if NATIVE //function start
     ES const char* W_getConcreteTypeName_R_string_C_PxBase(physx::PxBase* self){
@@ -184,7 +193,7 @@ public unsafe partial struct PxBasePtr : IPxBasePtr { // pointer
     
     
     //================================================================================
-    //#       is                                                                     #
+    //#       is()                                                                   #
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*					is()
@@ -205,7 +214,7 @@ public unsafe partial struct PxBasePtr : IPxBasePtr { // pointer
     
     
     //================================================================================
-    //#       is                                                                     #
+    //#       is()                                                                   #
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: T
     // NATIVE SIG: T*				is() const
@@ -226,7 +235,7 @@ public unsafe partial struct PxBasePtr : IPxBasePtr { // pointer
     
     
     //================================================================================
-    //#       getConcreteType                                                        #
+    //#       getConcreteType()                                                      #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxType W_getConcreteType_R_ushort_C_PxBase(physx::PxBase* self){
@@ -245,7 +254,7 @@ public unsafe partial struct PxBasePtr : IPxBasePtr { // pointer
     
     
     //================================================================================
-    //#       setBaseFlag                                                            #
+    //#       setBaseFlag(PxBaseFlag flag, bool value)                               #
     //================================================================================
     #if NATIVE //function start
     ES void W_setBaseFlag_R_void_P_PxBaseFlag_P_bool_C_PxBase(physx::PxBase* self, physx::PxBaseFlag::Enum flag, bool value){
@@ -266,7 +275,7 @@ public unsafe partial struct PxBasePtr : IPxBasePtr { // pointer
     
     
     //================================================================================
-    //#       setBaseFlags                                                           #
+    //#       setBaseFlags(Enum, ushort> inFlags)                                    #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxBaseFlags
     // NATIVE SIG: void					setBaseFlags(PxBaseFlags inFlags)				{ mBaseFlags = inFlags; }
@@ -287,9 +296,9 @@ public unsafe partial struct PxBasePtr : IPxBasePtr { // pointer
     
     
     //================================================================================
-    //#       getBaseFlags                                                           #
+    //#       getBaseFlags()                                                         #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxBaseFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxBaseFlags -> Enum, ushort>
     // NATIVE SIG: PxBaseFlags				getBaseFlags() const							{ return mBaseFlags; }
     #if NATIVE //function start
     ES const UNPARSED_TYPE W_getBaseFlags_R_Enum, ushort>_C_PxBase(physx::PxBase* self){
@@ -308,7 +317,7 @@ public unsafe partial struct PxBasePtr : IPxBasePtr { // pointer
     
     
     //================================================================================
-    //#       isReleasable                                                           #
+    //#       isReleasable()                                                         #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isReleasable_R_bool_C_PxBase(physx::PxBase* self){

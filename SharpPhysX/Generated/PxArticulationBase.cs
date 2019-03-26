@@ -18,9 +18,13 @@ public unsafe interface IPxArticulationImplPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxArticulationImplPtr : IPxArticulationImplPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxArticulationImplPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy

@@ -27,6 +27,13 @@ public partial class PhysX
         return MAN_PxCreatePhysics(foundation);
     }
 
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxSceneDescPtr MAN_PxCreateSceneDesc();
+    public static PxSceneDescPtr PxCreateSceneDesc()
+    {
+        return MAN_PxCreateSceneDesc();
+    }
+
 }
 
 public partial struct PxFoundation

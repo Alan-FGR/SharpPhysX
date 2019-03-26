@@ -8,19 +8,23 @@ using System.Runtime.InteropServices;
 #if !NATIVE //interface
 public unsafe interface IPxRigidStaticPtr {
      string getConcreteTypeName();
-    // PxRigidStatic(/*NULLPARS*/);
-    // PxRigidStatic(/*NULLPARS*/);
+    // static PxRigidStaticPtr New(/*NULLPARS*/);
+    // static PxRigidStaticPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxRigidStatic(/*NULLPARS*/);
     // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
-    // PxRigidStatic(/*NULLPARS*/);
+    // static PxRigidStaticPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxRigidStaticPtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxRigidStaticPtr : IPxActorPtr, IPxRigidActorPtr, IPxRigidStaticPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxRigidStaticPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -48,10 +52,10 @@ public unsafe partial struct PxRigidStaticPtr : IPxActorPtr, IPxRigidActorPtr, I
     public  uint getNbConstraints(){return ((PxRigidActorPtr)this).getNbConstraints();}
     //public  uint getConstraints( userBuffer, uint bufferSize){return ((PxRigidActorPtr)this).getConstraints(userBuffer, bufferSize);}
     //public  uint getConstraints( userBuffer, uint bufferSize, uint startIndex){return ((PxRigidActorPtr)this).getConstraints(userBuffer, bufferSize, startIndex);}
-    //public  PxRigidActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
-    //public  PxRigidActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public  static PxRigidActorPtr New(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public  static PxRigidActorPtr New(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxRigidActor(/*NULLPARS*/){((PxRigidActorPtr)this).~PxRigidActor(/*NULLARGS*/);}
-    //public  PxRigidActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public  static PxRigidActorPtr New(/*NULLPARS*/){((PxRigidActorPtr)this).PxRigidActor(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxRigidActorPtr lhs, /*NULLPARS*/){return ((PxRigidActorPtr)this).operator=(/*NULLARGS*/);}
     
     // --- PxActorPtr
@@ -69,16 +73,16 @@ public unsafe partial struct PxRigidStaticPtr : IPxActorPtr, IPxRigidActorPtr, I
     public  void setOwnerClient(byte inClient){((PxRigidActorPtr)this).setOwnerClient(inClient);}
     public  byte getOwnerClient(){return ((PxRigidActorPtr)this).getOwnerClient();}
     //public  PxAggregatePtr getAggregate(){return ((PxRigidActorPtr)this).getAggregate();}
-    //public  PxActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
-    //public  PxActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
+    //public  static PxActorPtr New(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
+    //public  static PxActorPtr New(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxActor(/*NULLPARS*/){((PxRigidActorPtr)this).~PxActor(/*NULLARGS*/);}
-    //public  PxActor(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
+    //public  static PxActorPtr New(/*NULLPARS*/){((PxRigidActorPtr)this).PxActor(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxActorPtr lhs, /*NULLPARS*/){return ((PxRigidActorPtr)this).operator=(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       getConcreteTypeName                                                    #
+    //#       getConcreteTypeName()                                                  #
     //================================================================================
     #if NATIVE //function start
     ES const char* W_getConcreteTypeName_R_string_C_PxRigidStatic(physx::PxRigidStatic* self){

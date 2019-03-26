@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 #endif //C# includes
 
 
-#if !NATIVE
+#if !NATIVE //functions holder
 public partial struct PxPreprocessor {
 #endif
 
 //================================================================================
-//#       PX_UNUSED                                                              #
+//#       PX_UNUSED(T )                                                          #
 //================================================================================
 /* ERRORS OCCURED: Invalid parameter name (empty)
 Unresolved parameter pointee T
@@ -31,8 +31,8 @@ public static void PX_UNUSED( ){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxPreprocessor
+#if !NATIVE //end functions holder
+} //end PxPreprocessor
 #endif
 
 
@@ -48,7 +48,7 @@ public unsafe interface IPxPackValidation {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:True
 public unsafe partial struct PxPackValidation : IPxPackValidation { // blittable
     public sbyte _;
     public long a;

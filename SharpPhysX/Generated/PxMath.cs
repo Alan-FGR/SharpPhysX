@@ -4,14 +4,14 @@ using System.Runtime.InteropServices;
 #endif //C# includes
 
 
-#if !NATIVE
+#if !NATIVE //functions holder
 public partial struct PxMath {
 #endif
 
 //================================================================================
-//#       PxMax                                                                  #
+//#       PxMax(T a, T b)                                                        #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: T
+/* ERRORS OCCURED: unhandled return type: T -> T
 Unresolved parameter type T
 Unresolved parameter type T
 // NATIVE SIG: T PxMax(T a, T b)
@@ -39,7 +39,7 @@ public static UNPARSED_TYPE PxMax( a,  b){
 
 
 //================================================================================
-//#       PxMax                                                                  #
+//#       PxMax(float a, float b)                                                #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxMax_R_float_P_float_P_float(float a, float b){
@@ -62,9 +62,9 @@ public static float PxMax(float a, float b){
 
 
 //================================================================================
-//#       PxMin                                                                  #
+//#       PxMin(T a, T b)                                                        #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: T
+/* ERRORS OCCURED: unhandled return type: T -> T
 Unresolved parameter type T
 Unresolved parameter type T
 // NATIVE SIG: T PxMin(T a, T b)
@@ -92,7 +92,7 @@ public static UNPARSED_TYPE PxMin( a,  b){
 
 
 //================================================================================
-//#       PxMin                                                                  #
+//#       PxMin(float a, float b)                                                #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxMin_R_float_P_float_P_float(float a, float b){
@@ -115,7 +115,7 @@ public static float PxMin(float a, float b){
 
 
 //================================================================================
-//#       PxAbs                                                                  #
+//#       PxAbs(float a)                                                         #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxAbs_R_float_P_float(float a){
@@ -136,7 +136,7 @@ public static float PxAbs(float a){
 
 
 //================================================================================
-//#       PxEquals                                                               #
+//#       PxEquals(float a, float b, float eps)                                  #
 //================================================================================
 #if NATIVE //function start
 ES bool W_PxEquals_R_bool_P_float_P_float_P_float(float a, float b, float eps){
@@ -161,7 +161,7 @@ public static bool PxEquals(float a, float b, float eps){
 
 
 //================================================================================
-//#       PxAbs                                                                  #
+//#       PxAbs(double a)                                                        #
 //================================================================================
 #if NATIVE //function start
 ES double W_PxAbs_R_double_P_double(double a){
@@ -182,7 +182,7 @@ public static double PxAbs(double a){
 
 
 //================================================================================
-//#       PxAbs                                                                  #
+//#       PxAbs(int a)                                                           #
 //================================================================================
 #if NATIVE //function start
 ES ::int32_t W_PxAbs_R_int_P_int(::int32_t a){
@@ -203,9 +203,9 @@ public static int PxAbs(int a){
 
 
 //================================================================================
-//#       PxClamp                                                                #
+//#       PxClamp(T v, T lo, T hi)                                               #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: T
+/* ERRORS OCCURED: unhandled return type: T -> T
 Unresolved parameter type T
 Unresolved parameter type T
 Unresolved parameter type T
@@ -237,7 +237,7 @@ public static UNPARSED_TYPE PxClamp( v,  lo,  hi){
 
 
 //================================================================================
-//#       PxSqrt                                                                 #
+//#       PxSqrt(float a)                                                        #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxSqrt_R_float_P_float(float a){
@@ -258,7 +258,7 @@ public static float PxSqrt(float a){
 
 
 //================================================================================
-//#       PxSqrt                                                                 #
+//#       PxSqrt(double a)                                                       #
 //================================================================================
 #if NATIVE //function start
 ES double W_PxSqrt_R_double_P_double(double a){
@@ -279,7 +279,7 @@ public static double PxSqrt(double a){
 
 
 //================================================================================
-//#       PxRecipSqrt                                                            #
+//#       PxRecipSqrt(float a)                                                   #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxRecipSqrt_R_float_P_float(float a){
@@ -300,7 +300,7 @@ public static float PxRecipSqrt(float a){
 
 
 //================================================================================
-//#       PxRecipSqrt                                                            #
+//#       PxRecipSqrt(double a)                                                  #
 //================================================================================
 #if NATIVE //function start
 ES double W_PxRecipSqrt_R_double_P_double(double a){
@@ -321,7 +321,7 @@ public static double PxRecipSqrt(double a){
 
 
 //================================================================================
-//#       PxSin                                                                  #
+//#       PxSin(float a)                                                         #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxSin_R_float_P_float(float a){
@@ -342,7 +342,7 @@ public static float PxSin(float a){
 
 
 //================================================================================
-//#       PxSin                                                                  #
+//#       PxSin(double a)                                                        #
 //================================================================================
 #if NATIVE //function start
 ES double W_PxSin_R_double_P_double(double a){
@@ -363,7 +363,7 @@ public static double PxSin(double a){
 
 
 //================================================================================
-//#       PxCos                                                                  #
+//#       PxCos(float a)                                                         #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxCos_R_float_P_float(float a){
@@ -384,7 +384,7 @@ public static float PxCos(float a){
 
 
 //================================================================================
-//#       PxCos                                                                  #
+//#       PxCos(double a)                                                        #
 //================================================================================
 #if NATIVE //function start
 ES double W_PxCos_R_double_P_double(double a){
@@ -405,7 +405,7 @@ public static double PxCos(double a){
 
 
 //================================================================================
-//#       PxTan                                                                  #
+//#       PxTan(float a)                                                         #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxTan_R_float_P_float(float a){
@@ -426,7 +426,7 @@ public static float PxTan(float a){
 
 
 //================================================================================
-//#       PxTan                                                                  #
+//#       PxTan(double a)                                                        #
 //================================================================================
 #if NATIVE //function start
 ES double W_PxTan_R_double_P_double(double a){
@@ -447,7 +447,7 @@ public static double PxTan(double a){
 
 
 //================================================================================
-//#       PxAsin                                                                 #
+//#       PxAsin(float f)                                                        #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxAsin_R_float_P_float(float f){
@@ -468,7 +468,7 @@ public static float PxAsin(float f){
 
 
 //================================================================================
-//#       PxAsin                                                                 #
+//#       PxAsin(double f)                                                       #
 //================================================================================
 #if NATIVE //function start
 ES double W_PxAsin_R_double_P_double(double f){
@@ -489,7 +489,7 @@ public static double PxAsin(double f){
 
 
 //================================================================================
-//#       PxAcos                                                                 #
+//#       PxAcos(float f)                                                        #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxAcos_R_float_P_float(float f){
@@ -510,7 +510,7 @@ public static float PxAcos(float f){
 
 
 //================================================================================
-//#       PxAcos                                                                 #
+//#       PxAcos(double f)                                                       #
 //================================================================================
 #if NATIVE //function start
 ES double W_PxAcos_R_double_P_double(double f){
@@ -531,7 +531,7 @@ public static double PxAcos(double f){
 
 
 //================================================================================
-//#       PxAtan                                                                 #
+//#       PxAtan(float a)                                                        #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxAtan_R_float_P_float(float a){
@@ -552,7 +552,7 @@ public static float PxAtan(float a){
 
 
 //================================================================================
-//#       PxAtan                                                                 #
+//#       PxAtan(double a)                                                       #
 //================================================================================
 #if NATIVE //function start
 ES double W_PxAtan_R_double_P_double(double a){
@@ -573,7 +573,7 @@ public static double PxAtan(double a){
 
 
 //================================================================================
-//#       PxAtan2                                                                #
+//#       PxAtan2(float x, float y)                                              #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxAtan2_R_float_P_float_P_float(float x, float y){
@@ -596,7 +596,7 @@ public static float PxAtan2(float x, float y){
 
 
 //================================================================================
-//#       PxAtan2                                                                #
+//#       PxAtan2(double x, double y)                                            #
 //================================================================================
 #if NATIVE //function start
 ES double W_PxAtan2_R_double_P_double_P_double(double x, double y){
@@ -619,7 +619,7 @@ public static double PxAtan2(double x, double y){
 
 
 //================================================================================
-//#       PxIsFinite                                                             #
+//#       PxIsFinite(float f)                                                    #
 //================================================================================
 #if NATIVE //function start
 ES bool W_PxIsFinite_R_bool_P_float(float f){
@@ -640,7 +640,7 @@ public static bool PxIsFinite(float f){
 
 
 //================================================================================
-//#       PxIsFinite                                                             #
+//#       PxIsFinite(double f)                                                   #
 //================================================================================
 #if NATIVE //function start
 ES bool W_PxIsFinite_R_bool_P_double(double f){
@@ -661,7 +661,7 @@ public static bool PxIsFinite(double f){
 
 
 //================================================================================
-//#       PxFloor                                                                #
+//#       PxFloor(float a)                                                       #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxFloor_R_float_P_float(float a){
@@ -682,7 +682,7 @@ public static float PxFloor(float a){
 
 
 //================================================================================
-//#       PxExp                                                                  #
+//#       PxExp(float a)                                                         #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxExp_R_float_P_float(float a){
@@ -703,7 +703,7 @@ public static float PxExp(float a){
 
 
 //================================================================================
-//#       PxCeil                                                                 #
+//#       PxCeil(float a)                                                        #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxCeil_R_float_P_float(float a){
@@ -724,7 +724,7 @@ public static float PxCeil(float a){
 
 
 //================================================================================
-//#       PxSign                                                                 #
+//#       PxSign(float a)                                                        #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxSign_R_float_P_float(float a){
@@ -745,7 +745,7 @@ public static float PxSign(float a){
 
 
 //================================================================================
-//#       PxPow                                                                  #
+//#       PxPow(float x, float y)                                                #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxPow_R_float_P_float_P_float(float x, float y){
@@ -768,7 +768,7 @@ public static float PxPow(float x, float y){
 
 
 //================================================================================
-//#       PxLog                                                                  #
+//#       PxLog(float x)                                                         #
 //================================================================================
 #if NATIVE //function start
 ES float W_PxLog_R_float_P_float(float x){
@@ -787,8 +787,8 @@ public static float PxLog(float x){
 }
 #endif //function end
 
-#if !NATIVE
-} // End PxMath
+#if !NATIVE //end functions holder
+} //end PxMath
 #endif
 
 

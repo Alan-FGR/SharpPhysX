@@ -58,14 +58,15 @@ public enum PxSolverType : int {
 }
 #endif //enum
 
-#if !NATIVE
-public partial struct PxSceneDesc {
+#if !NATIVE //functions holder
+public partial struct PxSceneDescPtr {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxSceneFlag a, PxSceneFlag b)                                #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxSceneFlag::Enum, unsigned int>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxSceneFlag::Enum, unsigned int> -> PxFlags_PxSceneFlag_uint
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxSceneFlag_uint_P_PxSceneFlag_P_PxSceneFlag(physx::PxSceneFlag::Enum a, physx::PxSceneFlag::Enum b){
@@ -88,9 +89,10 @@ public static UNPARSED_TYPE operator|(PxSceneFlag a, PxSceneFlag b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxSceneFlag a, PxSceneFlag b)                                #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxSceneFlag::Enum, unsigned int>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxSceneFlag::Enum, unsigned int> -> PxFlags_PxSceneFlag_uint
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxSceneFlag_uint_P_PxSceneFlag_P_PxSceneFlag(physx::PxSceneFlag::Enum a, physx::PxSceneFlag::Enum b){
@@ -113,9 +115,10 @@ public static UNPARSED_TYPE operator&(PxSceneFlag a, PxSceneFlag b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxSceneFlag a)                                               #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxSceneFlag::Enum, unsigned int>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxSceneFlag::Enum, unsigned int> -> PxFlags_PxSceneFlag_uint
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxSceneFlag_uint_P_PxSceneFlag(physx::PxSceneFlag::Enum a){
@@ -134,19 +137,19 @@ public static UNPARSED_TYPE operator~(PxSceneFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxSceneDesc
+#if !NATIVE //end functions holder
+} //end PxSceneDescPtr
 #endif
 
 
 // Class physx::PxSceneFlag is enum namespace
 #if !NATIVE //interface
 public unsafe interface IPxSceneLimitsPtr {
-    // PxSceneLimits();
+    // static PxSceneLimitsPtr New();
      void setToDefault();
      bool isValid();
-    // PxSceneLimits(/*NULLPARS*/);
-    // PxSceneLimits(/*NULLPARS*/);
+    // static PxSceneLimitsPtr New(/*NULLPARS*/);
+    // static PxSceneLimitsPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxSceneLimits(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxSceneLimitsPtr lhs, /*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxSceneLimitsPtr lhs, /*NULLPARS*/);
@@ -154,9 +157,21 @@ public unsafe interface IPxSceneLimitsPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxSceneLimitsPtr : IPxSceneLimitsPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxSceneLimitsPtrPOD{
+    physx::PxU32 maxNbActors;
+    physx::PxU32 maxNbBodies;
+    physx::PxU32 maxNbStaticShapes;
+    physx::PxU32 maxNbDynamicShapes;
+    physx::PxU32 maxNbAggregates;
+    physx::PxU32 maxNbConstraints;
+    physx::PxU32 maxNbRegions;
+    physx::PxU32 maxNbBroadPhaseOverlaps;
+};
 #endif //struct start
 
 
@@ -294,16 +309,28 @@ public unsafe partial struct PxSceneLimitsPtr : IPxSceneLimitsPtr { // pointer
     // Hierarchy: PxSceneLimitsPtr
     #endif //hierarchy
     //================================================================================
-    //#       PxSceneLimits                                                          #
+    //#       PxSceneLimits()                                                        #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxSceneLimits
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxSceneLimitsPtrPOD W_PxSceneLimits_R_PxSceneLimitsPtr_C_PxSceneLimits_ctor(){
+        auto val = new PxSceneLimits();
+        return *(PxSceneLimitsPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxSceneLimitsPtr W_PxSceneLimits_R_PxSceneLimitsPtr_C_PxSceneLimits_ctor();
+    
+    public  static PxSceneLimitsPtr New(){
+        var _new = W_PxSceneLimits_R_PxSceneLimitsPtr_C_PxSceneLimits_ctor();
+        PxSceneLimitsPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     //================================================================================
-    //#       setToDefault                                                           #
+    //#       setToDefault()                                                         #
     //================================================================================
     #if NATIVE //function start
     ES void W_setToDefault_R_void_C_PxSceneLimits(physx::PxSceneLimits* self){
@@ -320,7 +347,7 @@ public unsafe partial struct PxSceneLimitsPtr : IPxSceneLimitsPtr { // pointer
     
     
     //================================================================================
-    //#       isValid                                                                #
+    //#       isValid()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isValid_R_bool_C_PxSceneLimits(physx::PxSceneLimits* self){
@@ -361,12 +388,12 @@ public unsafe partial struct PxSceneLimitsPtr : IPxSceneLimitsPtr { // pointer
 // Class physx::PxSceneQueryUpdateMode is enum namespace
 #if !NATIVE //interface
 public unsafe interface IPxSceneDescPtr {
-    // PxSceneDesc(PxTolerancesScalePtr scale);
-    // void setToDefault(PxTolerancesScalePtr scale);
+    // static PxSceneDescPtr New(PxTolerancesScale scale);
+     void setToDefault(PxTolerancesScale scale);
      bool isValid();
-    // PxTolerancesScalePtr getTolerancesScale();
-    // PxSceneDesc(/*NULLPARS*/);
-    // PxSceneDesc(/*NULLPARS*/);
+     PxTolerancesScale getTolerancesScale();
+    // static PxSceneDescPtr New(/*NULLPARS*/);
+    // static PxSceneDescPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxSceneDescPtr lhs, /*NULLPARS*/);
     // UNPARSED_TYPE ~PxSceneDesc(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxSceneDescPtr lhs, /*NULLPARS*/);
@@ -374,9 +401,52 @@ public unsafe interface IPxSceneDescPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxSceneDescPtr : IPxSceneDescPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxSceneDescPtrPOD{
+    physx::PxVec3 gravity;
+    physx::PxSimulationEventCallback* simulationEventCallback;
+    physx::PxContactModifyCallback* contactModifyCallback;
+    physx::PxCCDContactModifyCallback* ccdContactModifyCallback;
+    const void* filterShaderData;
+    physx::PxU32 filterShaderDataSize;
+    physx::PxSimulationFilterShader filterShader;
+    physx::PxSimulationFilterCallback* filterCallback;
+    physx::PxPairFilteringMode::Enum kineKineFilteringMode;
+    physx::PxPairFilteringMode::Enum staticKineFilteringMode;
+    physx::PxBroadPhaseType::Enum broadPhaseType;
+    physx::PxBroadPhaseCallback* broadPhaseCallback;
+    physx::PxSceneLimits limits;
+    physx::PxFrictionType::Enum frictionType;
+    physx::PxSolverType::Enum solverType;
+    physx::PxReal bounceThresholdVelocity;
+    physx::PxReal frictionOffsetThreshold;
+    physx::PxReal ccdMaxSeparation;
+    physx::PxReal solverOffsetSlop;
+    physx::PxSceneFlags flags;
+    physx::PxCpuDispatcher* cpuDispatcher;
+    physx::PxGpuDispatcher* gpuDispatcher;
+    physx::PxPruningStructureType::Enum staticStructure;
+    physx::PxPruningStructureType::Enum dynamicStructure;
+    physx::PxU32 dynamicTreeRebuildRateHint;
+    physx::PxSceneQueryUpdateMode::Enum sceneQueryUpdateMode;
+    void* userData;
+    physx::PxU32 solverBatchSize;
+    physx::PxU32 nbContactDataBlocks;
+    physx::PxU32 maxNbContactDataBlocks;
+    physx::PxReal maxBiasCoefficient;
+    physx::PxU32 contactReportStreamBufferSize;
+    physx::PxU32 ccdMaxPasses;
+    physx::PxReal wakeCounterResetValue;
+    physx::PxBounds3 sanityBounds;
+    physx::PxgDynamicsMemoryConfig gpuDynamicsConfig;
+    physx::PxU32 gpuMaxNumPartitions;
+    physx::PxU32 gpuComputeVersion;
+    physx::PxTolerancesScale tolerancesScale;
+};
 #endif //struct start
 
 
@@ -846,61 +916,55 @@ public unsafe partial struct PxSceneDescPtr : IPxSceneDescPtr { // pointer
         set => PxSceneDesc_SET_gpuComputeVersion(this, value);
     }
     #endif //getter
-    
-    /*Error generating getter/setter: Forbidden parameter type: PxTolerancesScalePtr
-    Unresolved parameter type physx::PxTolerancesScale
-    */
+    //Skipped non-public field: tolerancesScale
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxSceneDescPtr
     #endif //hierarchy
     //================================================================================
-    //#       PxSceneDesc                                                            #
+    //#       PxSceneDesc(PxTolerancesScalePtr scale)                                #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxSceneDesc
-    Forbidden parameter type: PxTolerancesScalePtr
-    // NATIVE SIG: PX_INLINE PxSceneDesc(const PxTolerancesScale& scale)
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxSceneDesc_R_PxSceneDescPtr_P_PxTolerancesScalePtr_C_PxSceneDesc_ctor(physx::PxTolerancesScale* scale){
+    ES PxSceneDescPtrPOD W_PxSceneDesc_R_PxSceneDescPtr_P_PxTolerancesScale_C_PxSceneDesc_ctor(physx::PxTolerancesScale scale){
         auto nat_in_scale = (scale);
-        return PxSceneDesc(*nat_in_scale);
+        auto val = new PxSceneDesc();
+        return *(PxSceneDescPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxSceneDesc_R_PxSceneDescPtr_P_PxTolerancesScalePtr_C_PxSceneDesc_ctor(PxTolerancesScalePtr scale);
+    static extern PxSceneDescPtr W_PxSceneDesc_R_PxSceneDescPtr_P_PxTolerancesScale_C_PxSceneDesc_ctor(PxTolerancesScale scale);
     
-    public  PxSceneDesc(PxTolerancesScalePtr scale){
-        PxTolerancesScalePtr pvk_in_scale = (scale);
-        var _new = W_PxSceneDesc_R_PxSceneDescPtr_P_PxTolerancesScalePtr_C_PxSceneDesc_ctor(pvk_in_scale);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+    public  static PxSceneDescPtr New(PxTolerancesScale scale){
+        PxTolerancesScale pvk_in_scale = (scale);
+        var _new = W_PxSceneDesc_R_PxSceneDescPtr_P_PxTolerancesScale_C_PxSceneDesc_ctor(pvk_in_scale);
+        PxSceneDescPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
-    #endif //function end*/
+    #endif //function end
     
     
     //================================================================================
-    //#       setToDefault                                                           #
+    //#       setToDefault(PxTolerancesScalePtr scale)                               #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden parameter type: PxTolerancesScalePtr
-    // NATIVE SIG: void setToDefault(const PxTolerancesScale& scale)
     #if NATIVE //function start
-    ES void W_setToDefault_R_void_P_PxTolerancesScalePtr_C_PxSceneDesc(physx::PxSceneDesc* self, physx::PxTolerancesScale* scale){
+    ES void W_setToDefault_R_void_P_PxTolerancesScale_C_PxSceneDesc(physx::PxSceneDesc* self, physx::PxTolerancesScale scale){
         auto nat_in_scale = (scale);
-        self->setToDefault(*nat_in_scale);
+        self->setToDefault(nat_in_scale);
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern void W_setToDefault_R_void_P_PxTolerancesScalePtr_C_PxSceneDesc(PxSceneDescPtr selfPtr, PxTolerancesScalePtr scale);
+    static extern void W_setToDefault_R_void_P_PxTolerancesScale_C_PxSceneDesc(PxSceneDescPtr selfPtr, PxTolerancesScale scale);
     
-    public  void setToDefault(PxTolerancesScalePtr scale){
-        PxTolerancesScalePtr pvk_in_scale = (scale);
-        W_setToDefault_R_void_P_PxTolerancesScalePtr_C_PxSceneDesc(this, pvk_in_scale);
+    public  void setToDefault(PxTolerancesScale scale){
+        PxTolerancesScale pvk_in_scale = (scale);
+        W_setToDefault_R_void_P_PxTolerancesScale_C_PxSceneDesc(this, pvk_in_scale);
     }
-    #endif //function end*/
+    #endif //function end
     
     
     //================================================================================
-    //#       isValid                                                                #
+    //#       isValid()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isValid_R_bool_C_PxSceneDesc(physx::PxSceneDesc* self){
@@ -919,24 +983,23 @@ public unsafe partial struct PxSceneDescPtr : IPxSceneDescPtr { // pointer
     
     
     //================================================================================
-    //#       getTolerancesScale                                                     #
+    //#       getTolerancesScale()                                                   #
     //================================================================================
-    /* ERRORS OCCURED: Forbidden return type
-    // NATIVE SIG: PxTolerancesScale& getTolerancesScale() const { return tolerancesScale; }
     #if NATIVE //function start
     ES const physx::PxTolerancesScale* W_getTolerancesScale_R_PxTolerancesScalePtr_C_PxSceneDesc(physx::PxSceneDesc* self){
         auto retVal = &self->getTolerancesScale();
+    //TODO check if it's returning addr of local
         return retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxTolerancesScalePtr W_getTolerancesScale_R_PxTolerancesScalePtr_C_PxSceneDesc(PxSceneDescPtr selfPtr);
+    static extern PxTolerancesScale W_getTolerancesScale_R_PxTolerancesScalePtr_C_PxSceneDesc(PxSceneDescPtr selfPtr);
     
-    public  PxTolerancesScalePtr getTolerancesScale(){
-        PxTolerancesScalePtr retVal = W_getTolerancesScale_R_PxTolerancesScalePtr_C_PxSceneDesc(this);
+    public  PxTolerancesScale getTolerancesScale(){
+        PxTolerancesScale retVal = W_getTolerancesScale_R_PxTolerancesScalePtr_C_PxSceneDesc(this);
         return retVal;
     }
-    #endif //function end*/
+    #endif //function end
     
     
     //Skipped generated implicit entry: PxSceneDesc
@@ -957,9 +1020,9 @@ public unsafe partial struct PxSceneDescPtr : IPxSceneDescPtr { // pointer
 // Class physx::PxSolverType is enum namespace
 #if !NATIVE //interface
 public unsafe interface IPxgDynamicsMemoryConfigPtr {
-    // PxgDynamicsMemoryConfig();
-    // PxgDynamicsMemoryConfig(/*NULLPARS*/);
-    // PxgDynamicsMemoryConfig(/*NULLPARS*/);
+    // static PxgDynamicsMemoryConfigPtr New();
+    // static PxgDynamicsMemoryConfigPtr New(/*NULLPARS*/);
+    // static PxgDynamicsMemoryConfigPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxgDynamicsMemoryConfig(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxgDynamicsMemoryConfigPtr lhs, /*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxgDynamicsMemoryConfigPtr lhs, /*NULLPARS*/);
@@ -967,9 +1030,21 @@ public unsafe interface IPxgDynamicsMemoryConfigPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxgDynamicsMemoryConfigPtr : IPxgDynamicsMemoryConfigPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxgDynamicsMemoryConfigPtrPOD{
+    physx::PxU32 constraintBufferCapacity;
+    physx::PxU32 contactBufferCapacity;
+    physx::PxU32 tempBufferCapacity;
+    physx::PxU32 contactStreamSize;
+    physx::PxU32 patchStreamSize;
+    physx::PxU32 forceStreamCapacity;
+    physx::PxU32 heapCapacity;
+    physx::PxU32 foundLostPairsCapacity;
+};
 #endif //struct start
 
 
@@ -1107,12 +1182,24 @@ public unsafe partial struct PxgDynamicsMemoryConfigPtr : IPxgDynamicsMemoryConf
     // Hierarchy: PxgDynamicsMemoryConfigPtr
     #endif //hierarchy
     //================================================================================
-    //#       PxgDynamicsMemoryConfig                                                #
+    //#       PxgDynamicsMemoryConfig()                                              #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxgDynamicsMemoryConfig
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxgDynamicsMemoryConfigPtrPOD W_PxgDynamicsMemoryConfig_R_PxgDynamicsMemoryConfigPtr_C_PxgDynamicsMemoryConfig_ctor(){
+        auto val = new PxgDynamicsMemoryConfig();
+        return *(PxgDynamicsMemoryConfigPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxgDynamicsMemoryConfigPtr W_PxgDynamicsMemoryConfig_R_PxgDynamicsMemoryConfigPtr_C_PxgDynamicsMemoryConfig_ctor();
+    
+    public  static PxgDynamicsMemoryConfigPtr New(){
+        var _new = W_PxgDynamicsMemoryConfig_R_PxgDynamicsMemoryConfigPtr_C_PxgDynamicsMemoryConfig_ctor();
+        PxgDynamicsMemoryConfigPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     //Skipped generated implicit entry: PxgDynamicsMemoryConfig

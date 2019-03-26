@@ -7,19 +7,19 @@ using System.Runtime.InteropServices;
 
 #if !NATIVE //interface
 public unsafe interface IPxMeshScalePtr {
-    // PxMeshScale();
-    // PxMeshScale(float r);
-    // PxMeshScale(PxVec3 s);
-    // PxMeshScale(PxVec3 s, PxQuat r);
+    // static PxMeshScalePtr New();
+    // static PxMeshScalePtr New(float r);
+    // static PxMeshScalePtr New(PxVec3 s);
+    // static PxMeshScalePtr New(PxVec3 s, PxQuat r);
      bool isIdentity();
-    // UNPARSED_TYPE getInverse();
+    // PxMeshScalePtr getInverse();
      PxMat33 toMat33();
      bool hasNegativeDeterminant();
      PxVec3 transform(PxVec3 v);
      bool isValidForTriangleMesh();
      bool isValidForConvexMesh();
-    // PxMeshScale(/*NULLPARS*/);
-    // PxMeshScale(/*NULLPARS*/);
+    // static PxMeshScalePtr New(/*NULLPARS*/);
+    // static PxMeshScalePtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxMeshScalePtr lhs, /*NULLPARS*/);
     // UNPARSED_TYPE ~PxMeshScale(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxMeshScalePtr lhs, /*NULLPARS*/);
@@ -27,9 +27,15 @@ public unsafe interface IPxMeshScalePtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxMeshScalePtr : IPxMeshScalePtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxMeshScalePtrPOD{
+    physx::PxVec3 scale;
+    physx::PxQuat rotation;
+};
 #endif //struct start
 
 
@@ -71,98 +77,99 @@ public unsafe partial struct PxMeshScalePtr : IPxMeshScalePtr { // pointer
     // Hierarchy: PxMeshScalePtr
     #endif //hierarchy
     //================================================================================
-    //#       PxMeshScale                                                            #
+    //#       PxMeshScale()                                                          #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxMeshScale
-    Parameterless constructor not allowed
-    */
-    
-    
-    //================================================================================
-    //#       PxMeshScale                                                            #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxMeshScale
-    // NATIVE SIG: explicit PX_CUDA_CALLABLE PX_FORCE_INLINE PxMeshScale(PxReal r): scale(r), rotation(PxIdentity) 
-    	{
-    	}
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxMeshScale_R_PxMeshScalePtr_P_float_C_PxMeshScale_ctor(physx::PxReal r){
-        auto nat_in_r = (r);
-        return PxMeshScale(nat_in_r);
+    ES PxMeshScalePtrPOD W_PxMeshScale_R_PxMeshScalePtr_C_PxMeshScale_ctor(){
+        auto val = new PxMeshScale();
+        return *(PxMeshScalePtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxMeshScale_R_PxMeshScalePtr_P_float_C_PxMeshScale_ctor(float r);
+    static extern PxMeshScalePtr W_PxMeshScale_R_PxMeshScalePtr_C_PxMeshScale_ctor();
     
-    public  PxMeshScale(float r){
+    public  static PxMeshScalePtr New(){
+        var _new = W_PxMeshScale_R_PxMeshScalePtr_C_PxMeshScale_ctor();
+        PxMeshScalePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
+    
+    
+    //================================================================================
+    //#       PxMeshScale(float r)                                                   #
+    //================================================================================
+    #if NATIVE //function start
+    ES PxMeshScalePtrPOD W_PxMeshScale_R_PxMeshScalePtr_P_float_C_PxMeshScale_ctor(physx::PxReal r){
+        auto nat_in_r = (r);
+        auto val = new PxMeshScale();
+        return *(PxMeshScalePtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxMeshScalePtr W_PxMeshScale_R_PxMeshScalePtr_P_float_C_PxMeshScale_ctor(float r);
+    
+    public  static PxMeshScalePtr New(float r){
         float pvk_in_r = (r);
         var _new = W_PxMeshScale_R_PxMeshScalePtr_P_float_C_PxMeshScale_ctor(pvk_in_r);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxMeshScalePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
-    #endif //function end*/
+    #endif //function end
     
     
     //================================================================================
-    //#       PxMeshScale                                                            #
+    //#       PxMeshScale(PxVec3Ptr s)                                               #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxMeshScale
-    // NATIVE SIG: PX_FORCE_INLINE PxMeshScale(const PxVec3& s)
-    	{
-    		scale = s;
-    		rotation = PxQuat(PxIdentity);
-    	}
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxMeshScale_R_PxMeshScalePtr_P_PxVec3_C_PxMeshScale_ctor(physx::PxVec3 s){
+    ES PxMeshScalePtrPOD W_PxMeshScale_R_PxMeshScalePtr_P_PxVec3_C_PxMeshScale_ctor(physx::PxVec3 s){
         auto nat_in_s = (s);
-        return PxMeshScale(nat_in_s);
+        auto val = new PxMeshScale();
+        return *(PxMeshScalePtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxMeshScale_R_PxMeshScalePtr_P_PxVec3_C_PxMeshScale_ctor(PxVec3 s);
+    static extern PxMeshScalePtr W_PxMeshScale_R_PxMeshScalePtr_P_PxVec3_C_PxMeshScale_ctor(PxVec3 s);
     
-    public  PxMeshScale(PxVec3 s){
+    public  static PxMeshScalePtr New(PxVec3 s){
         PxVec3 pvk_in_s = (s);
         var _new = W_PxMeshScale_R_PxMeshScalePtr_P_PxVec3_C_PxMeshScale_ctor(pvk_in_s);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxMeshScalePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
-    #endif //function end*/
+    #endif //function end
     
     
     //================================================================================
-    //#       PxMeshScale                                                            #
+    //#       PxMeshScale(PxVec3Ptr s, PxQuatPtr r)                                  #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxMeshScale
-    // NATIVE SIG: PX_FORCE_INLINE PxMeshScale(const PxVec3& s, const PxQuat& r)
-    	{
-    		PX_ASSERT(r.isUnit());
-    		scale = s;
-    		rotation = r;
-    	}
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxMeshScale_R_PxMeshScalePtr_P_PxVec3_P_PxQuat_C_PxMeshScale_ctor(physx::PxVec3 s, physx::PxQuat r){
+    ES PxMeshScalePtrPOD W_PxMeshScale_R_PxMeshScalePtr_P_PxVec3_P_PxQuat_C_PxMeshScale_ctor(physx::PxVec3 s, physx::PxQuat r){
         auto nat_in_s = (s);
         auto nat_in_r = (r);
-        return PxMeshScale(nat_in_s, nat_in_r);
+        auto val = new PxMeshScale();
+        return *(PxMeshScalePtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxMeshScale_R_PxMeshScalePtr_P_PxVec3_P_PxQuat_C_PxMeshScale_ctor(PxVec3 s, PxQuat r);
+    static extern PxMeshScalePtr W_PxMeshScale_R_PxMeshScalePtr_P_PxVec3_P_PxQuat_C_PxMeshScale_ctor(PxVec3 s, PxQuat r);
     
-    public  PxMeshScale(PxVec3 s, PxQuat r){
+    public  static PxMeshScalePtr New(PxVec3 s, PxQuat r){
         PxVec3 pvk_in_s = (s);
         PxQuat pvk_in_r = (r);
         var _new = W_PxMeshScale_R_PxMeshScalePtr_P_PxVec3_P_PxQuat_C_PxMeshScale_ctor(pvk_in_s, pvk_in_r);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxMeshScalePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
-    #endif //function end*/
+    #endif //function end
     
     
     //================================================================================
-    //#       isIdentity                                                             #
+    //#       isIdentity()                                                           #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isIdentity_R_bool_C_PxMeshScale(physx::PxMeshScale* self){
@@ -181,36 +188,36 @@ public unsafe partial struct PxMeshScalePtr : IPxMeshScalePtr { // pointer
     
     
     //================================================================================
-    //#       getInverse                                                             #
+    //#       getInverse()                                                           #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxMeshScale
+    /* ERRORS OCCURED: returned native value can't be converted into ptr
     // NATIVE SIG: PxMeshScale getInverse() const 
     	{
     		return PxMeshScale(PxVec3(1.0f/scale.x, 1.0f/scale.y, 1.0f/scale.z), rotation);
     	}
     #if NATIVE //function start
-    ES const UNPARSED_TYPE W_getInverse_R_PxMeshScalePtr_C_PxMeshScale(physx::PxMeshScale* self){
-        auto retVal = self->getInverse();
-        return retVal;
+    ES PxMeshScalePtrPOD W_getInverse_R_PxMeshScalePtr_C_PxMeshScale(physx::PxMeshScale* self){
+        auto retVal = self->getInverse;
+        return *(PxMeshScalePtrPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getInverse_R_PxMeshScalePtr_C_PxMeshScale(PxMeshScalePtr selfPtr);
+    static extern PxMeshScalePtr W_getInverse_R_PxMeshScalePtr_C_PxMeshScale(PxMeshScalePtr selfPtr);
     
-    public  UNPARSED_TYPE getInverse(){
-        UNPARSED_TYPE retVal = W_getInverse_R_PxMeshScalePtr_C_PxMeshScale(this);
+    public  PxMeshScalePtr getInverse(){
+        PxMeshScalePtr retVal = W_getInverse_R_PxMeshScalePtr_C_PxMeshScale(this);
         return retVal;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       toMat33                                                                #
+    //#       toMat33()                                                              #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxMat33 W_toMat33_R_PxMat33_C_PxMeshScale(physx::PxMeshScale* self){
-        auto retVal = self->toMat33();
-        return retVal;
+    ES PxMat33POD W_toMat33_R_PxMat33_C_PxMeshScale(physx::PxMeshScale* self){
+        auto retVal = self->toMat33;
+        return *(PxMat33POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -224,7 +231,7 @@ public unsafe partial struct PxMeshScalePtr : IPxMeshScalePtr { // pointer
     
     
     //================================================================================
-    //#       hasNegativeDeterminant                                                 #
+    //#       hasNegativeDeterminant()                                               #
     //================================================================================
     #if NATIVE //function start
     ES bool W_hasNegativeDeterminant_R_bool_C_PxMeshScale(physx::PxMeshScale* self){
@@ -243,13 +250,13 @@ public unsafe partial struct PxMeshScalePtr : IPxMeshScalePtr { // pointer
     
     
     //================================================================================
-    //#       transform                                                              #
+    //#       transform(PxVec3Ptr v)                                                 #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_transform_R_PxVec3_P_PxVec3_C_PxMeshScale(physx::PxMeshScale* self, physx::PxVec3 v){
+    ES PxVec3POD W_transform_R_PxVec3_P_PxVec3_C_PxMeshScale(physx::PxMeshScale* self, physx::PxVec3 v){
         auto nat_in_v = (v);
-        auto retVal = self->transform(nat_in_v);
-        return retVal;
+        auto retVal = self->transform;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -264,7 +271,7 @@ public unsafe partial struct PxMeshScalePtr : IPxMeshScalePtr { // pointer
     
     
     //================================================================================
-    //#       isValidForTriangleMesh                                                 #
+    //#       isValidForTriangleMesh()                                               #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isValidForTriangleMesh_R_bool_C_PxMeshScale(physx::PxMeshScale* self){
@@ -283,7 +290,7 @@ public unsafe partial struct PxMeshScalePtr : IPxMeshScalePtr { // pointer
     
     
     //================================================================================
-    //#       isValidForConvexMesh                                                   #
+    //#       isValidForConvexMesh()                                                 #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isValidForConvexMesh_R_bool_C_PxMeshScale(physx::PxMeshScale* self){

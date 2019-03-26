@@ -4,14 +4,15 @@ using System.Runtime.InteropServices;
 #endif //C# includes
 
 
-#if !NATIVE
-public partial struct PxFlags {
+#if !NATIVE //functions holder
+public partial struct PxFlagsPtr {
 #endif
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(enumtype a, PxFlags_enumtype_storagetypePtr b)               #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: 
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type:  -> PxFlags_enumtype_storagetype
 Unresolved parameter type enumtype
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
@@ -36,9 +37,10 @@ public static UNPARSED_TYPE operator&( a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_ushortPtr b)                            #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxBaseFlag::Enum, unsigned short> -> PxFlags_Enum_ushort
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -62,9 +64,10 @@ public static UNPARSED_TYPE operator&(PxBaseFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_bytePtr b)                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxTriangleMeshFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxTriangleMeshFlag::Enum, unsigned char> -> PxFlags_Enum_byte
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -88,9 +91,10 @@ public static UNPARSED_TYPE operator&(PxTriangleMeshFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_uintPtr b)                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxSceneFlag::Enum, unsigned int>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxSceneFlag::Enum, unsigned int> -> PxFlags_Enum_uint
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -114,9 +118,10 @@ public static UNPARSED_TYPE operator&(PxSceneFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_bytePtr b)                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxActorFlag::Enum, unsigned char> -> PxFlags_Enum_byte
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -140,9 +145,10 @@ public static UNPARSED_TYPE operator&(PxActorFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_ushortPtr b)                            #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorTypeFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxActorTypeFlag::Enum, unsigned short> -> PxFlags_Enum_ushort
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -166,9 +172,10 @@ public static UNPARSED_TYPE operator&(PxActorTypeFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_bytePtr b)                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConvexMeshGeometryFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxConvexMeshGeometryFlag::Enum, unsigned char> -> PxFlags_Enum_byte
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -192,9 +199,10 @@ public static UNPARSED_TYPE operator&(PxConvexMeshGeometryFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_bytePtr b)                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMeshGeometryFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxMeshGeometryFlag::Enum, unsigned char> -> PxFlags_Enum_byte
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -218,9 +226,10 @@ public static UNPARSED_TYPE operator&(PxMeshGeometryFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_ushortPtr b)                            #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxMaterialFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxMaterialFlag::Enum, unsigned short> -> PxFlags_Enum_ushort
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -244,9 +253,10 @@ public static UNPARSED_TYPE operator&(PxMaterialFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_bytePtr b)                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxShapeFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxShapeFlag::Enum, unsigned char> -> PxFlags_Enum_byte
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -270,9 +280,10 @@ public static UNPARSED_TYPE operator&(PxShapeFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_ushortPtr b)                            #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxConstraintFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxConstraintFlag::Enum, unsigned short> -> PxFlags_Enum_ushort
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -296,9 +307,10 @@ public static UNPARSED_TYPE operator&(PxConstraintFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_ushortPtr b)                            #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxFilterFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxFilterFlag::Enum, unsigned short> -> PxFlags_Enum_ushort
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -322,9 +334,10 @@ public static UNPARSED_TYPE operator&(PxFilterFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_ushortPtr b)                            #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPairFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxPairFlag::Enum, unsigned short> -> PxFlags_Enum_ushort
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -348,9 +361,10 @@ public static UNPARSED_TYPE operator&(PxPairFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_ushortPtr b)                            #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxHitFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxHitFlag::Enum, unsigned short> -> PxFlags_Enum_ushort
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -374,9 +388,10 @@ public static UNPARSED_TYPE operator&(PxHitFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_ushortPtr b)                            #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxQueryFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxQueryFlag::Enum, unsigned short> -> PxFlags_Enum_ushort
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -400,9 +415,10 @@ public static UNPARSED_TYPE operator&(PxQueryFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_bytePtr b)                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPvdSceneFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxPvdSceneFlag::Enum, unsigned char> -> PxFlags_Enum_byte
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -426,9 +442,10 @@ public static UNPARSED_TYPE operator&(PxPvdSceneFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_bytePtr b)                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidBodyFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxRigidBodyFlag::Enum, unsigned char> -> PxFlags_Enum_byte
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -452,9 +469,10 @@ public static UNPARSED_TYPE operator&(PxRigidBodyFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_ushortPtr b)                            #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short> -> PxFlags_Enum_ushort
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -478,9 +496,10 @@ public static UNPARSED_TYPE operator&(PxRigidDynamicLockFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Enum a, PxFlags_Enum_bytePtr b)                              #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxDeletionEventFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxDeletionEventFlag::Enum, unsigned char> -> PxFlags_Enum_byte
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -504,9 +523,10 @@ public static UNPARSED_TYPE operator&(PxDeletionEventFlag a,  b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(Type a, PxFlags_Type_ushortPtr b)                            #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::Px1DConstraintFlag::Type, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::Px1DConstraintFlag::Type, unsigned short> -> PxFlags_Type_ushort
 fsdfasdf
 // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype a, PxFlags<enumtype, storagetype>& b)
 #if NATIVE //function start
@@ -528,18 +548,18 @@ public static UNPARSED_TYPE operator&(Type a,  b){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxFlags
+#if !NATIVE //end functions holder
+} //end PxFlagsPtr
 #endif
 
 
 #if !NATIVE //interface
 public unsafe interface IPxFlagsPtr {
-    // PxFlags<enumtype, storagetype>(PxEMPTY );
-    // PxFlags<enumtype, storagetype>();
-    // PxFlags<enumtype, storagetype>( e);
-    // PxFlags<enumtype, storagetype>( f);
-    // PxFlags<enumtype, storagetype>( b);
+    // static PxFlagsPtr New(PxEMPTY );
+    // static PxFlagsPtr New();
+    // static PxFlagsPtr New( e);
+    // static PxFlagsPtr New( f);
+    // static PxFlagsPtr New( b);
     // bool isSet( e);
     // UNPARSED_TYPE set( e);
     //static bool operator==(PxFlagsPtr lhs,  e);
@@ -571,127 +591,146 @@ public unsafe interface IPxFlagsPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxFlagsPtrPOD{
+    storagetype mBits;
+};
 #endif //struct start
 
 
     // ### Auto generated getters for fields
-    
-    /*Error generating getter/setter: Unresolved parameter type storagetype
-    */
+    //Skipped non-public field: mBits
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxFlagsPtr
     #endif //hierarchy
     //================================================================================
-    //#       PxFlags<enumtype, storagetype>                                         #
+    //#       PxFlags<enumtype, storagetype>(physx )                                 #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxFlags
-    Invalid parameter name (empty)
+    /* ERRORS OCCURED: Invalid parameter name (empty)
     // NATIVE SIG: PX_INLINE explicit PxFlags(const PxEMPTY)
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P_PxEMPTY_C_PxFlags_ctor(physx::PxEMPTY ){
+    ES PxFlagsPtrPOD W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P_PxEMPTY_C_PxFlags_ctor(physx::PxEMPTY ){
         auto nat_in_ = ();
-        return PxFlags<enumtype, storagetype>(nat_in_);
+        auto val = new PxFlags<enumtype, storagetype>();
+        return *(PxFlagsPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P_PxEMPTY_C_PxFlags_ctor(PxEMPTY );
+    static extern PxFlagsPtr W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P_PxEMPTY_C_PxFlags_ctor(PxEMPTY );
     
-    public  PxFlags<enumtype, storagetype>(PxEMPTY ){
+    public  static PxFlagsPtr New(PxEMPTY ){
         PxEMPTY pvk_in_ = ();
         var _new = W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P_PxEMPTY_C_PxFlags_ctor(pvk_in_);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxFlagsPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       PxFlags<enumtype, storagetype>                                         #
+    //#       PxFlags<enumtype, storagetype>()                                       #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxFlags
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxFlagsPtrPOD W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_C_PxFlags_ctor(){
+        auto val = new PxFlags<enumtype, storagetype>();
+        return *(PxFlagsPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxFlagsPtr W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_C_PxFlags_ctor();
+    
+    public  static PxFlagsPtr New(){
+        var _new = W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_C_PxFlags_ctor();
+        PxFlagsPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     //================================================================================
-    //#       PxFlags<enumtype, storagetype>                                         #
+    //#       PxFlags<enumtype, storagetype>(enumtype e)                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxFlags
-    Unresolved parameter type enumtype
+    /* ERRORS OCCURED: Unresolved parameter type enumtype
     // NATIVE SIG: PX_INLINE PxFlags(enumtype e)
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( e){
+    ES PxFlagsPtrPOD W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( e){
         auto nat_in_e = (e);
-        return PxFlags<enumtype, storagetype>(nat_in_e);
+        auto val = new PxFlags<enumtype, storagetype>();
+        return *(PxFlagsPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( e);
+    static extern PxFlagsPtr W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( e);
     
-    public  PxFlags<enumtype, storagetype>( e){
+    public  static PxFlagsPtr New( e){
          pvk_in_e = (e);
         var _new = W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor(pvk_in_e);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxFlagsPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       PxFlags<enumtype, storagetype>                                         #
+    //#       PxFlags<enumtype, storagetype>(PxFlags_enumtype_storagetypePtr f)      #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxFlags
-    fsdfasdf
+    /* ERRORS OCCURED: fsdfasdf
     // NATIVE SIG: PX_INLINE PxFlags(const PxFlags<enumtype, storagetype>& f)
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( f){
+    ES PxFlagsPtrPOD W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( f){
         auto nat_in_f = (f);
-        return PxFlags<enumtype, storagetype>(nat_in_f);
+        auto val = new PxFlags<enumtype, storagetype>();
+        return *(PxFlagsPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( f);
+    static extern PxFlagsPtr W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( f);
     
-    public  PxFlags<enumtype, storagetype>( f){
+    public  static PxFlagsPtr New( f){
          pvk_in_f = (f);
         var _new = W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor(pvk_in_f);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxFlagsPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       PxFlags<enumtype, storagetype>                                         #
+    //#       PxFlags<enumtype, storagetype>(storagetype b)                          #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxFlags
-    Unresolved parameter type storagetype
+    /* ERRORS OCCURED: Unresolved parameter type storagetype
     // NATIVE SIG: PX_INLINE explicit PxFlags(storagetype b)
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( b){
+    ES PxFlagsPtrPOD W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( b){
         auto nat_in_b = (b);
-        return PxFlags<enumtype, storagetype>(nat_in_b);
+        auto val = new PxFlags<enumtype, storagetype>();
+        return *(PxFlagsPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( b);
+    static extern PxFlagsPtr W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor( b);
     
-    public  PxFlags<enumtype, storagetype>( b){
+    public  static PxFlagsPtr New( b){
          pvk_in_b = (b);
         var _new = W_PxFlags<enumtype, storagetype>_R_PxFlagsPtr_P__C_PxFlags_ctor(pvk_in_b);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxFlagsPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       isSet                                                                  #
+    //#       isSet(enumtype e)                                                      #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type enumtype
     // NATIVE SIG: bool isSet(enumtype e) const
@@ -714,7 +753,7 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       set                                                                    #
+    //#       set(enumtype e)                                                        #
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: 
     Unresolved parameter type enumtype
@@ -738,7 +777,7 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       operator==                                                             #
+    //#       operator==(enumtype e)                                                 #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type enumtype
     // NATIVE SIG: bool operator==(enumtype e) const
@@ -761,7 +800,7 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       operator==                                                             #
+    //#       operator==(PxFlags_enumtype_storagetypePtr f)                          #
     //================================================================================
     /* ERRORS OCCURED: fsdfasdf
     // NATIVE SIG: bool operator==(const PxFlags<enumtype, storagetype>& f) const
@@ -784,7 +823,7 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       operator==                                                             #
+    //#       operator==(bool b)                                                     #
     //================================================================================
     #if NATIVE //function start
     ES bool W_OP_EqualEqual_R_bool_P_bool_C_PxFlags(physx::PxFlags* self, bool b){
@@ -805,7 +844,7 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       operator!=                                                             #
+    //#       operator!=(enumtype e)                                                 #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type enumtype
     // NATIVE SIG: bool operator!=(enumtype e) const
@@ -828,7 +867,7 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       operator!=                                                             #
+    //#       operator!=(PxFlags_enumtype_storagetypePtr f)                          #
     //================================================================================
     /* ERRORS OCCURED: fsdfasdf
     // NATIVE SIG: bool operator!=(const PxFlags<enumtype, storagetype>& f) const
@@ -851,37 +890,38 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       operator=                                                              #
+    //#       operator=(PxFlags_enumtype_storagetypePtr f)                           #
     //================================================================================
     //Skipped unsupported operator Equal.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator=                                                              #
+    //#       operator=(enumtype e)                                                  #
     //================================================================================
     //Skipped unsupported operator Equal.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator|=                                                             #
+    //#       operator|=(enumtype e)                                                 #
     //================================================================================
     //Skipped unsupported operator PipeEqual.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator|=                                                             #
+    //#       operator|=(PxFlags_enumtype_storagetypePtr f)                          #
     //================================================================================
     //Skipped unsupported operator PipeEqual.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator|                                                              #
+    //#       operator|(enumtype e)                                                  #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: 
+    /* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+    unhandled return type:  -> PxFlags_enumtype_storagetype
     Unresolved parameter type enumtype
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator|(enumtype e) const
     #if NATIVE //function start
@@ -903,9 +943,10 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       operator|                                                              #
+    //#       operator|(PxFlags_enumtype_storagetypePtr f)                           #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: 
+    /* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+    unhandled return type:  -> PxFlags_enumtype_storagetype
     fsdfasdf
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator|(const PxFlags<enumtype, storagetype>& f) const
     #if NATIVE //function start
@@ -927,23 +968,24 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       operator&=                                                             #
+    //#       operator&=(enumtype e)                                                 #
     //================================================================================
     //Skipped unsupported operator AmpEqual.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator&=                                                             #
+    //#       operator&=(PxFlags_enumtype_storagetypePtr f)                          #
     //================================================================================
     //Skipped unsupported operator AmpEqual.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator&                                                              #
+    //#       operator&(enumtype e)                                                  #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: 
+    /* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+    unhandled return type:  -> PxFlags_enumtype_storagetype
     Unresolved parameter type enumtype
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(enumtype e) const
     #if NATIVE //function start
@@ -965,9 +1007,10 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       operator&                                                              #
+    //#       operator&(PxFlags_enumtype_storagetypePtr f)                           #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: 
+    /* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+    unhandled return type:  -> PxFlags_enumtype_storagetype
     fsdfasdf
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator&(const PxFlags<enumtype, storagetype>& f) const
     #if NATIVE //function start
@@ -989,23 +1032,24 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       operator^=                                                             #
+    //#       operator^=(enumtype e)                                                 #
     //================================================================================
     //Skipped unsupported operator CaretEqual.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator^=                                                             #
+    //#       operator^=(PxFlags_enumtype_storagetypePtr f)                          #
     //================================================================================
     //Skipped unsupported operator CaretEqual.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator^                                                              #
+    //#       operator^(enumtype e)                                                  #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: 
+    /* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+    unhandled return type:  -> PxFlags_enumtype_storagetype
     Unresolved parameter type enumtype
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator^(enumtype e) const
     #if NATIVE //function start
@@ -1027,9 +1071,10 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       operator^                                                              #
+    //#       operator^(PxFlags_enumtype_storagetypePtr f)                           #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: 
+    /* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+    unhandled return type:  -> PxFlags_enumtype_storagetype
     fsdfasdf
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator^(const PxFlags<enumtype, storagetype>& f) const
     #if NATIVE //function start
@@ -1051,9 +1096,10 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       operator~                                                              #
+    //#       operator~()                                                            #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: 
+    /* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+    unhandled return type:  -> PxFlags_enumtype_storagetype
     // NATIVE SIG: PxFlags<enumtype, storagetype> operator~(void) const
     #if NATIVE //function start
     ES const UNPARSED_TYPE W_OP_Tilde_R_PxFlags_enumtype_storagetype_C_PxFlags(physx::PxFlags* self){
@@ -1072,35 +1118,35 @@ public unsafe partial struct PxFlagsPtr : IPxFlagsPtr { // pointer
     
     
     //================================================================================
-    //#       operator bool                                                          #
+    //#       operator bool()                                                        #
     //================================================================================
     //Skipped unsupported operator Conversion.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator unsigned char                                                 #
+    //#       operator unsigned char()                                               #
     //================================================================================
     //Skipped unsupported operator Conversion.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator unsigned short                                                #
+    //#       operator unsigned short()                                              #
     //================================================================================
     //Skipped unsupported operator Conversion.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator unsigned int                                                  #
+    //#       operator unsigned int()                                                #
     //================================================================================
     //Skipped unsupported operator Conversion.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       clear                                                                  #
+    //#       clear(enumtype e)                                                      #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type enumtype
     // NATIVE SIG: void clear(enumtype e)

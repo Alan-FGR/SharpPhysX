@@ -18,7 +18,7 @@ public unsafe interface IPxHullPolygon {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:True
 public unsafe partial struct PxHullPolygon : IPxHullPolygon { // blittable
     public float[] mPlane;
     public ushort mNbVerts;

@@ -42,6 +42,7 @@
     <Compile Include="Generated\PxForceMode.cs" />
     <Compile Include="Generated\PxFoundation.cs" />
     <Compile Include="Generated\PxGeometry.cs" />
+    <Compile Include="Generated\PxGeometryHelpers.cs" />
     <Compile Include="Generated\PxMat33.cs" />
     <Compile Include="Generated\PxMat44.cs" />
     <Compile Include="Generated\PxMaterial.cs" />
@@ -56,8 +57,10 @@
     <Compile Include="Generated\PxScene.cs" />
     <Compile Include="Generated\PxSceneDesc.cs" />
     <Compile Include="Generated\PxShape.cs" />
+    <Compile Include="Generated\PxTolerancesScale.cs" />
     <Compile Include="Generated\PxTransform.cs" />
     <Compile Include="Generated\PxTriangleMesh.cs" />
+    <Compile Include="Generated\PxVec2.cs" />
     <Compile Include="Generated\PxVec3.cs" />
     <Compile Include="Generated\PxVec4.cs" />
     <Compile Include="Generated\PxWindowsIntrinsics.cs" />

@@ -14,14 +14,15 @@ public enum PxRigidDynamicLockFlag : int {
 }
 #endif //enum
 
-#if !NATIVE
-public partial struct PxRigidDynamic {
+#if !NATIVE //functions holder
+public partial struct PxRigidDynamicPtr {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxRigidDynamicLockFlag a, PxRigidDynamicLockFlag b)          #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short> -> PxFlags_PxRigidDynamicLockFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxRigidDynamicLockFlag_ushort_P_PxRigidDynamicLockFlag_P_PxRigidDynamicLockFlag(physx::PxRigidDynamicLockFlag::Enum a, physx::PxRigidDynamicLockFlag::Enum b){
@@ -44,9 +45,10 @@ public static UNPARSED_TYPE operator|(PxRigidDynamicLockFlag a, PxRigidDynamicLo
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxRigidDynamicLockFlag a, PxRigidDynamicLockFlag b)          #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short> -> PxFlags_PxRigidDynamicLockFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxRigidDynamicLockFlag_ushort_P_PxRigidDynamicLockFlag_P_PxRigidDynamicLockFlag(physx::PxRigidDynamicLockFlag::Enum a, physx::PxRigidDynamicLockFlag::Enum b){
@@ -69,9 +71,10 @@ public static UNPARSED_TYPE operator&(PxRigidDynamicLockFlag a, PxRigidDynamicLo
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxRigidDynamicLockFlag a)                                    #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxRigidDynamicLockFlag::Enum, unsigned short> -> PxFlags_PxRigidDynamicLockFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxRigidDynamicLockFlag_ushort_P_PxRigidDynamicLockFlag(physx::PxRigidDynamicLockFlag::Enum a){
@@ -90,8 +93,8 @@ public static UNPARSED_TYPE operator~(PxRigidDynamicLockFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxRigidDynamic
+#if !NATIVE //end functions holder
+} //end PxRigidDynamicPtr
 #endif
 
 
@@ -117,19 +120,23 @@ public unsafe interface IPxRigidDynamicPtr {
      float getContactReportThreshold();
      void setContactReportThreshold(float threshold);
      string getConcreteTypeName();
-    // PxRigidDynamic(/*NULLPARS*/);
-    // PxRigidDynamic(/*NULLPARS*/);
+    // static PxRigidDynamicPtr New(/*NULLPARS*/);
+    // static PxRigidDynamicPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxRigidDynamic(/*NULLPARS*/);
     // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
-    // PxRigidDynamic(/*NULLPARS*/);
+    // static PxRigidDynamicPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxRigidDynamicPtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyPtr, IPxRigidDynamicPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxRigidDynamicPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -188,10 +195,10 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     public  void setMaxContactImpulse(float maxImpulse){((PxRigidBodyPtr)this).setMaxContactImpulse(maxImpulse);}
     public  float getMaxContactImpulse(){return ((PxRigidBodyPtr)this).getMaxContactImpulse();}
     public  uint getInternalIslandNodeIndex(){return ((PxRigidBodyPtr)this).getInternalIslandNodeIndex();}
-    //public  PxRigidBody(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidBody(/*NULLARGS*/);}
-    //public  PxRigidBody(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidBody(/*NULLARGS*/);}
+    //public  static PxRigidBodyPtr New(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidBody(/*NULLARGS*/);}
+    //public  static PxRigidBodyPtr New(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidBody(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxRigidBody(/*NULLPARS*/){((PxRigidBodyPtr)this).~PxRigidBody(/*NULLARGS*/);}
-    //public  PxRigidBody(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidBody(/*NULLARGS*/);}
+    //public  static PxRigidBodyPtr New(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidBody(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxRigidBodyPtr lhs, /*NULLPARS*/){return ((PxRigidBodyPtr)this).operator=(/*NULLARGS*/);}
     
     // --- PxRigidActorPtr
@@ -208,16 +215,16 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     public  uint getNbConstraints(){return ((PxRigidBodyPtr)this).getNbConstraints();}
     //public  uint getConstraints( userBuffer, uint bufferSize){return ((PxRigidBodyPtr)this).getConstraints(userBuffer, bufferSize);}
     //public  uint getConstraints( userBuffer, uint bufferSize, uint startIndex){return ((PxRigidBodyPtr)this).getConstraints(userBuffer, bufferSize, startIndex);}
-    //public  PxRigidActor(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidActor(/*NULLARGS*/);}
-    //public  PxRigidActor(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public  static PxRigidActorPtr New(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public  static PxRigidActorPtr New(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidActor(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxRigidActor(/*NULLPARS*/){((PxRigidBodyPtr)this).~PxRigidActor(/*NULLARGS*/);}
-    //public  PxRigidActor(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidActor(/*NULLARGS*/);}
+    //public  static PxRigidActorPtr New(/*NULLPARS*/){((PxRigidBodyPtr)this).PxRigidActor(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxRigidActorPtr lhs, /*NULLPARS*/){return ((PxRigidBodyPtr)this).operator=(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       setKinematicTarget                                                     #
+    //#       setKinematicTarget(PxTransformPtr destination)                         #
     //================================================================================
     #if NATIVE //function start
     ES void W_setKinematicTarget_R_void_P_PxTransform_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxTransform destination){
@@ -236,7 +243,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       getKinematicTarget                                                     #
+    //#       getKinematicTarget(PxTransformPtr target)                              #
     //================================================================================
     /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxTransform
     // NATIVE SIG: bool				getKinematicTarget(PxTransform& target)	const	= 0
@@ -259,7 +266,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       isSleeping                                                             #
+    //#       isSleeping()                                                           #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isSleeping_R_bool_C_PxRigidDynamic(physx::PxRigidDynamic* self){
@@ -278,7 +285,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       setSleepThreshold                                                      #
+    //#       setSleepThreshold(float threshold)                                     #
     //================================================================================
     #if NATIVE //function start
     ES void W_setSleepThreshold_R_void_P_float_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxReal threshold){
@@ -297,7 +304,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       getSleepThreshold                                                      #
+    //#       getSleepThreshold()                                                    #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getSleepThreshold_R_float_C_PxRigidDynamic(physx::PxRigidDynamic* self){
@@ -316,7 +323,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       setStabilizationThreshold                                              #
+    //#       setStabilizationThreshold(float threshold)                             #
     //================================================================================
     #if NATIVE //function start
     ES void W_setStabilizationThreshold_R_void_P_float_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxReal threshold){
@@ -335,7 +342,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       getStabilizationThreshold                                              #
+    //#       getStabilizationThreshold()                                            #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getStabilizationThreshold_R_float_C_PxRigidDynamic(physx::PxRigidDynamic* self){
@@ -354,9 +361,9 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       getRigidDynamicLockFlags                                               #
+    //#       getRigidDynamicLockFlags()                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxRigidDynamicLockFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxRigidDynamicLockFlags -> Enum, ushort>
     // NATIVE SIG: PxRigidDynamicLockFlags getRigidDynamicLockFlags() const = 0
     #if NATIVE //function start
     ES const UNPARSED_TYPE W_getRigidDynamicLockFlags_R_Enum, ushort>_C_PxRigidDynamic(physx::PxRigidDynamic* self){
@@ -375,7 +382,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       setRigidDynamicLockFlag                                                #
+    //#       setRigidDynamicLockFlag(PxRigidDynamicLockFlag flag, bool value)       #
     //================================================================================
     #if NATIVE //function start
     ES void W_setRigidDynamicLockFlag_R_void_P_PxRigidDynamicLockFlag_P_bool_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxRigidDynamicLockFlag::Enum flag, bool value){
@@ -396,7 +403,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       setRigidDynamicLockFlags                                               #
+    //#       setRigidDynamicLockFlags(Enum, ushort> flags)                          #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxRigidDynamicLockFlags
     // NATIVE SIG: void				setRigidDynamicLockFlags(PxRigidDynamicLockFlags flags) = 0
@@ -417,7 +424,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       setWakeCounter                                                         #
+    //#       setWakeCounter(float wakeCounterValue)                                 #
     //================================================================================
     #if NATIVE //function start
     ES void W_setWakeCounter_R_void_P_float_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxReal wakeCounterValue){
@@ -436,7 +443,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       getWakeCounter                                                         #
+    //#       getWakeCounter()                                                       #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getWakeCounter_R_float_C_PxRigidDynamic(physx::PxRigidDynamic* self){
@@ -455,7 +462,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       wakeUp                                                                 #
+    //#       wakeUp()                                                               #
     //================================================================================
     #if NATIVE //function start
     ES void W_wakeUp_R_void_C_PxRigidDynamic(physx::PxRigidDynamic* self){
@@ -472,7 +479,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       putToSleep                                                             #
+    //#       putToSleep()                                                           #
     //================================================================================
     #if NATIVE //function start
     ES void W_putToSleep_R_void_C_PxRigidDynamic(physx::PxRigidDynamic* self){
@@ -489,7 +496,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       setSolverIterationCounts                                               #
+    //#       setSolverIterationCounts(uint minPositionIters, uint minVelocityIters) #
     //================================================================================
     #if NATIVE //function start
     ES void W_setSolverIterationCounts_R_void_P_uint_P_uint_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxU32 minPositionIters, physx::PxU32 minVelocityIters){
@@ -528,7 +535,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       getSolverIterationCounts                                               #
+    //#       getSolverIterationCounts(uint* minPositionIters, uint* minVelocityIters) #
     //================================================================================
     #if NATIVE //function start
     ES void W_getSolverIterationCounts_R_void_P_uintPtr_P_uintPtr_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxU32& minPositionIters, physx::PxU32& minVelocityIters){
@@ -549,7 +556,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       getContactReportThreshold                                              #
+    //#       getContactReportThreshold()                                            #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getContactReportThreshold_R_float_C_PxRigidDynamic(physx::PxRigidDynamic* self){
@@ -568,7 +575,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       setContactReportThreshold                                              #
+    //#       setContactReportThreshold(float threshold)                             #
     //================================================================================
     #if NATIVE //function start
     ES void W_setContactReportThreshold_R_void_P_float_C_PxRigidDynamic(physx::PxRigidDynamic* self, physx::PxReal threshold){
@@ -587,7 +594,7 @@ public unsafe partial struct PxRigidDynamicPtr : IPxRigidActorPtr, IPxRigidBodyP
     
     
     //================================================================================
-    //#       getConcreteTypeName                                                    #
+    //#       getConcreteTypeName()                                                  #
     //================================================================================
     #if NATIVE //function start
     ES const char* W_getConcreteTypeName_R_string_C_PxRigidDynamic(physx::PxRigidDynamic* self){

@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 // Class physx::PxBaseTask Manually Ignored
 #if !NATIVE //interface
 public unsafe interface IPxTaskPtr {
-    // PxTask();
+    // static PxTaskPtr New();
     // void ~PxTask();
      void release();
      void finishBefore(uint taskID);
@@ -19,22 +19,29 @@ public unsafe interface IPxTaskPtr {
      uint getTaskID();
      void submitted();
      void requestSyncPoint();
-    // PxTask(/*NULLPARS*/);
+    // static PxTaskPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxTaskPtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxTaskPtrPOD{
+    physx::PxTaskID mTaskID;
+    ::uint32_t mStreamIndex;
+    bool mPreSyncRequired;
+};
 #endif //struct start
 
 
     // ### Auto generated getters for fields
-    //Skipped protected field: mTaskID
-    //Skipped protected field: mStreamIndex
-    //Skipped protected field: mPreSyncRequired
+    //Skipped non-public field: mTaskID
+    //Skipped non-public field: mStreamIndex
+    //Skipped non-public field: mPreSyncRequired
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxBaseTaskPtr, PxTaskPtr
@@ -49,26 +56,38 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     //public  void ~PxBaseTask(){((PxBaseTaskPtr)this).~PxBaseTask();}
     public  void run(){((PxBaseTaskPtr)this).run();}
     public  string getName(){return ((PxBaseTaskPtr)this).getName();}
-    //public  PxBaseTask(){((PxBaseTaskPtr)this).PxBaseTask();}
+    //public  static PxBaseTaskPtr New(){((PxBaseTaskPtr)this).PxBaseTask();}
     //public  PxTaskManagerPtr getTaskManager(){return ((PxBaseTaskPtr)this).getTaskManager();}
     public  void setContextId(ulong id){((PxBaseTaskPtr)this).setContextId(id);}
     public  ulong getContextId(){return ((PxBaseTaskPtr)this).getContextId();}
     //public static UNPARSED_TYPE operator=(PxBaseTaskPtr lhs, /*NULLPARS*/){return ((PxBaseTaskPtr)this).operator=(/*NULLARGS*/);}
-    //public  PxBaseTask(/*NULLPARS*/){((PxBaseTaskPtr)this).PxBaseTask(/*NULLARGS*/);}
+    //public  static PxBaseTaskPtr New(/*NULLPARS*/){((PxBaseTaskPtr)this).PxBaseTask(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       PxTask                                                                 #
+    //#       PxTask()                                                               #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxTask
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxTaskPtrPOD W_PxTask_R_PxTaskPtr_C_PxTask_ctor(){
+        auto val = new PxTask();
+        return *(PxTaskPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxTaskPtr W_PxTask_R_PxTaskPtr_C_PxTask_ctor();
+    
+    public  static PxTaskPtr New(){
+        var _new = W_PxTask_R_PxTaskPtr_C_PxTask_ctor();
+        PxTaskPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     //================================================================================
-    //#       ~PxTask                                                                #
+    //#       ~PxTask()                                                              #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual ~PxTask() {}
@@ -87,7 +106,7 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     
     
     //================================================================================
-    //#       release                                                                #
+    //#       release()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_release_R_void_C_PxTask(physx::PxTask* self){
@@ -104,7 +123,7 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     
     
     //================================================================================
-    //#       finishBefore                                                           #
+    //#       finishBefore(uint taskID)                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_finishBefore_R_void_P_uint_C_PxTask(physx::PxTask* self, physx::PxTaskID taskID){
@@ -123,7 +142,7 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     
     
     //================================================================================
-    //#       startAfter                                                             #
+    //#       startAfter(uint taskID)                                                #
     //================================================================================
     #if NATIVE //function start
     ES void W_startAfter_R_void_P_uint_C_PxTask(physx::PxTask* self, physx::PxTaskID taskID){
@@ -142,7 +161,7 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     
     
     //================================================================================
-    //#       addReference                                                           #
+    //#       addReference()                                                         #
     //================================================================================
     #if NATIVE //function start
     ES void W_addReference_R_void_C_PxTask(physx::PxTask* self){
@@ -159,7 +178,7 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     
     
     //================================================================================
-    //#       removeReference                                                        #
+    //#       removeReference()                                                      #
     //================================================================================
     #if NATIVE //function start
     ES void W_removeReference_R_void_C_PxTask(physx::PxTask* self){
@@ -176,7 +195,7 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     
     
     //================================================================================
-    //#       getReference                                                           #
+    //#       getReference()                                                         #
     //================================================================================
     #if NATIVE //function start
     ES ::int32_t W_getReference_R_int_C_PxTask(physx::PxTask* self){
@@ -195,7 +214,7 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     
     
     //================================================================================
-    //#       getTaskID                                                              #
+    //#       getTaskID()                                                            #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxTaskID W_getTaskID_R_uint_C_PxTask(physx::PxTask* self){
@@ -214,7 +233,7 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     
     
     //================================================================================
-    //#       submitted                                                              #
+    //#       submitted()                                                            #
     //================================================================================
     #if NATIVE //function start
     ES void W_submitted_R_void_C_PxTask(physx::PxTask* self){
@@ -231,7 +250,7 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
     
     
     //================================================================================
-    //#       requestSyncPoint                                                       #
+    //#       requestSyncPoint()                                                     #
     //================================================================================
     #if NATIVE //function start
     ES void W_requestSyncPoint_R_void_C_PxTask(physx::PxTask* self){
@@ -258,7 +277,7 @@ public unsafe partial struct PxTaskPtr : IPxBaseTaskPtr, IPxTaskPtr { // pointer
 
 #if !NATIVE //interface
 public unsafe interface IPxLightCpuTaskPtr {
-    // PxLightCpuTask();
+    // static PxLightCpuTaskPtr New();
     // void ~PxLightCpuTask();
     // void setContinuation(PxTaskManagerPtr tm, PxBaseTaskPtr c);
     // void setContinuation(PxBaseTaskPtr c);
@@ -267,21 +286,27 @@ public unsafe interface IPxLightCpuTaskPtr {
      int getReference();
      void addReference();
      void release();
-    // PxLightCpuTask(/*NULLPARS*/);
+    // static PxLightCpuTaskPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxLightCpuTaskPtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTaskPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxLightCpuTaskPtrPOD{
+    physx::PxBaseTask* mCont;
+    ::int32_t mRefCount;
+};
 #endif //struct start
 
 
     // ### Auto generated getters for fields
-    //Skipped protected field: mCont
-    //Skipped protected field: mRefCount
+    //Skipped non-public field: mCont
+    //Skipped non-public field: mRefCount
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxBaseTaskPtr, PxLightCpuTaskPtr
@@ -296,26 +321,38 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     //public  void ~PxBaseTask(){((PxBaseTaskPtr)this).~PxBaseTask();}
     public  void run(){((PxBaseTaskPtr)this).run();}
     public  string getName(){return ((PxBaseTaskPtr)this).getName();}
-    //public  PxBaseTask(){((PxBaseTaskPtr)this).PxBaseTask();}
+    //public  static PxBaseTaskPtr New(){((PxBaseTaskPtr)this).PxBaseTask();}
     //public  PxTaskManagerPtr getTaskManager(){return ((PxBaseTaskPtr)this).getTaskManager();}
     public  void setContextId(ulong id){((PxBaseTaskPtr)this).setContextId(id);}
     public  ulong getContextId(){return ((PxBaseTaskPtr)this).getContextId();}
     //public static UNPARSED_TYPE operator=(PxBaseTaskPtr lhs, /*NULLPARS*/){return ((PxBaseTaskPtr)this).operator=(/*NULLARGS*/);}
-    //public  PxBaseTask(/*NULLPARS*/){((PxBaseTaskPtr)this).PxBaseTask(/*NULLARGS*/);}
+    //public  static PxBaseTaskPtr New(/*NULLPARS*/){((PxBaseTaskPtr)this).PxBaseTask(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       PxLightCpuTask                                                         #
+    //#       PxLightCpuTask()                                                       #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxLightCpuTask
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxLightCpuTaskPtrPOD W_PxLightCpuTask_R_PxLightCpuTaskPtr_C_PxLightCpuTask_ctor(){
+        auto val = new PxLightCpuTask();
+        return *(PxLightCpuTaskPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxLightCpuTaskPtr W_PxLightCpuTask_R_PxLightCpuTaskPtr_C_PxLightCpuTask_ctor();
+    
+    public  static PxLightCpuTaskPtr New(){
+        var _new = W_PxLightCpuTask_R_PxLightCpuTaskPtr_C_PxLightCpuTask_ctor();
+        PxLightCpuTaskPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     //================================================================================
-    //#       ~PxLightCpuTask                                                        #
+    //#       ~PxLightCpuTask()                                                      #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual ~PxLightCpuTask()
@@ -337,7 +374,7 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     
     
     //================================================================================
-    //#       setContinuation                                                        #
+    //#       setContinuation(PxTaskManagerPtr tm, PxBaseTaskPtr c)                  #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxTaskManagerPtr
     Forbidden parameter type: PxBaseTaskPtr
@@ -371,7 +408,7 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     
     
     //================================================================================
-    //#       setContinuation                                                        #
+    //#       setContinuation(PxBaseTaskPtr c)                                       #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
     // NATIVE SIG: void setContinuation( PxBaseTask* c )
@@ -404,7 +441,7 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     
     
     //================================================================================
-    //#       getContinuation                                                        #
+    //#       getContinuation()                                                      #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxBaseTask*	getContinuation()	const
@@ -428,7 +465,7 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     
     
     //================================================================================
-    //#       removeReference                                                        #
+    //#       removeReference()                                                      #
     //================================================================================
     #if NATIVE //function start
     ES void W_removeReference_R_void_C_PxLightCpuTask(physx::PxLightCpuTask* self){
@@ -445,7 +482,7 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     
     
     //================================================================================
-    //#       getReference                                                           #
+    //#       getReference()                                                         #
     //================================================================================
     #if NATIVE //function start
     ES ::int32_t W_getReference_R_int_C_PxLightCpuTask(physx::PxLightCpuTask* self){
@@ -464,7 +501,7 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     
     
     //================================================================================
-    //#       addReference                                                           #
+    //#       addReference()                                                         #
     //================================================================================
     #if NATIVE //function start
     ES void W_addReference_R_void_C_PxLightCpuTask(physx::PxLightCpuTask* self){
@@ -481,7 +518,7 @@ public unsafe partial struct PxLightCpuTaskPtr : IPxBaseTaskPtr, IPxLightCpuTask
     
     
     //================================================================================
-    //#       release                                                                #
+    //#       release()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_release_R_void_C_PxLightCpuTask(physx::PxLightCpuTask* self){

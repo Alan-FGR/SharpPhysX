@@ -22,9 +22,9 @@ public enum PxGeometryType : int {
 #if !NATIVE //interface
 public unsafe interface IPxGeometryPtr {
      PxGeometryType getType();
-    // PxGeometry(/*NULLPARS*/);
-    // PxGeometry(/*NULLPARS*/);
-    // PxGeometry(/*NULLPARS*/);
+    // static PxGeometryPtr New(/*NULLPARS*/);
+    // static PxGeometryPtr New(/*NULLPARS*/);
+    // static PxGeometryPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxGeometry(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxGeometryPtr lhs, /*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxGeometryPtr lhs, /*NULLPARS*/);
@@ -32,20 +32,25 @@ public unsafe interface IPxGeometryPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxGeometryPtr : IPxGeometryPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxGeometryPtrPOD{
+    physx::PxGeometryType::Enum mType;
+};
 #endif //struct start
 
 
     // ### Auto generated getters for fields
-    //Skipped protected field: mType
+    //Skipped non-public field: mType
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxGeometryPtr
     #endif //hierarchy
     //================================================================================
-    //#       getType                                                                #
+    //#       getType()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxGeometryType::Enum W_getType_R_PxGeometryType_C_PxGeometry(physx::PxGeometry* self){

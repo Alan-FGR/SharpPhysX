@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 #if !NATIVE //interface
 public unsafe interface IPxPlane {
-    // PxPlane();
+    ///*No paramless ctor in C#*/ static PxPlane Default();
     // PxPlane(float nx, float ny, float nz, float distance);
     // PxPlane(PxVec3 normal, float distance);
     // PxPlane(PxVec3 point, PxVec3 normal);
@@ -27,34 +27,51 @@ public unsafe interface IPxPlane {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxPlane : IPxPlane { // blittable
     public PxVec3 n;
     public float d;
 
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxPlanePOD{
+    physx::PxVec3 n;
+    float d;
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxPlane
     #endif //hierarchy
     //================================================================================
-    //#       PxPlane                                                                #
-    //================================================================================
-    //Skipped invalid managed declaration:
-    /*Parameterless constructor not allowed
-    */
-    
-    
-    //================================================================================
-    //#       PxPlane                                                                #
+    //#       PxPlane()                                                              #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxPlane W_PxPlane_R_PxPlane_P_float_P_float_P_float_P_float_C_PxPlane_ctor(float nx, float ny, float nz, float distance){
+    ES PxPlanePOD W_PxPlane_R_PxPlane_C_PxPlane_ctor(){
+        auto val = PxPlane();
+        return *(PxPlanePOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxPlane W_PxPlane_R_PxPlane_C_PxPlane_ctor();
+    
+    public /*No paramless ctor in C#*/ static PxPlane Default(){
+        return (W_PxPlane_R_PxPlane_C_PxPlane_ctor());
+    }
+    #endif //function end
+    
+    
+    //================================================================================
+    //#       PxPlane(float nx, float ny, float nz, float distance)                  #
+    //================================================================================
+    #if NATIVE //function start
+    ES PxPlanePOD W_PxPlane_R_PxPlane_P_float_P_float_P_float_P_float_C_PxPlane_ctor(float nx, float ny, float nz, float distance){
         auto nat_in_nx = (nx);
         auto nat_in_ny = (ny);
         auto nat_in_nz = (nz);
         auto nat_in_distance = (distance);
-        return PxPlane(nat_in_nx, nat_in_ny, nat_in_nz, nat_in_distance);
+        auto val = PxPlane();
+        return *(PxPlanePOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -65,7 +82,7 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
         float pvk_in_ny = (ny);
         float pvk_in_nz = (nz);
         float pvk_in_distance = (distance);
-        var _new = W_PxPlane_R_PxPlane_P_float_P_float_P_float_P_float_C_PxPlane_ctor(pvk_in_nx, pvk_in_ny, pvk_in_nz, pvk_in_distance);
+        var _new = (W_PxPlane_R_PxPlane_P_float_P_float_P_float_P_float_C_PxPlane_ctor(pvk_in_nx, pvk_in_ny, pvk_in_nz, pvk_in_distance));
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -73,13 +90,14 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
     
     
     //================================================================================
-    //#       PxPlane                                                                #
+    //#       PxPlane(PxVec3Ptr normal, float distance)                              #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxPlane W_PxPlane_R_PxPlane_P_PxVec3_P_float_C_PxPlane_ctor(physx::PxVec3 normal, float distance){
+    ES PxPlanePOD W_PxPlane_R_PxPlane_P_PxVec3_P_float_C_PxPlane_ctor(physx::PxVec3 normal, float distance){
         auto nat_in_normal = (normal);
         auto nat_in_distance = (distance);
-        return PxPlane(nat_in_normal, nat_in_distance);
+        auto val = PxPlane();
+        return *(PxPlanePOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -88,7 +106,7 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
     public  PxPlane(PxVec3 normal, float distance){
         PxVec3 pvk_in_normal = (normal);
         float pvk_in_distance = (distance);
-        var _new = W_PxPlane_R_PxPlane_P_PxVec3_P_float_C_PxPlane_ctor(pvk_in_normal, pvk_in_distance);
+        var _new = (W_PxPlane_R_PxPlane_P_PxVec3_P_float_C_PxPlane_ctor(pvk_in_normal, pvk_in_distance));
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -96,13 +114,14 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
     
     
     //================================================================================
-    //#       PxPlane                                                                #
+    //#       PxPlane(PxVec3Ptr point, PxVec3Ptr normal)                             #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxPlane W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_C_PxPlane_ctor(physx::PxVec3 point, physx::PxVec3 normal){
+    ES PxPlanePOD W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_C_PxPlane_ctor(physx::PxVec3 point, physx::PxVec3 normal){
         auto nat_in_point = (point);
         auto nat_in_normal = (normal);
-        return PxPlane(nat_in_point, nat_in_normal);
+        auto val = PxPlane();
+        return *(PxPlanePOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -111,7 +130,7 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
     public  PxPlane(PxVec3 point, PxVec3 normal){
         PxVec3 pvk_in_point = (point);
         PxVec3 pvk_in_normal = (normal);
-        var _new = W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_C_PxPlane_ctor(pvk_in_point, pvk_in_normal);
+        var _new = (W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_C_PxPlane_ctor(pvk_in_point, pvk_in_normal));
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -119,14 +138,15 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
     
     
     //================================================================================
-    //#       PxPlane                                                                #
+    //#       PxPlane(PxVec3Ptr p0, PxVec3Ptr p1, PxVec3Ptr p2)                      #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxPlane W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_P_PxVec3_C_PxPlane_ctor(physx::PxVec3 p0, physx::PxVec3 p1, physx::PxVec3 p2){
+    ES PxPlanePOD W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_P_PxVec3_C_PxPlane_ctor(physx::PxVec3 p0, physx::PxVec3 p1, physx::PxVec3 p2){
         auto nat_in_p0 = (p0);
         auto nat_in_p1 = (p1);
         auto nat_in_p2 = (p2);
-        return PxPlane(nat_in_p0, nat_in_p1, nat_in_p2);
+        auto val = PxPlane();
+        return *(PxPlanePOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -136,7 +156,7 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
         PxVec3 pvk_in_p0 = (p0);
         PxVec3 pvk_in_p1 = (p1);
         PxVec3 pvk_in_p2 = (p2);
-        var _new = W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_P_PxVec3_C_PxPlane_ctor(pvk_in_p0, pvk_in_p1, pvk_in_p2);
+        var _new = (W_PxPlane_R_PxPlane_P_PxVec3_P_PxVec3_P_PxVec3_C_PxPlane_ctor(pvk_in_p0, pvk_in_p1, pvk_in_p2));
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -144,7 +164,7 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
     
     
     //================================================================================
-    //#       operator==                                                             #
+    //#       operator==(PxPlanePtr p)                                               #
     //================================================================================
     #if NATIVE //function start
     ES bool W_OP_EqualEqual_R_bool_P_PxPlane_C_PxPlane(physx::PxPlane self, physx::PxPlane p){
@@ -165,7 +185,7 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
     
     
     //================================================================================
-    //#       distance                                                               #
+    //#       distance(PxVec3Ptr p)                                                  #
     //================================================================================
     #if NATIVE //function start
     ES float W_distance_R_float_P_PxVec3_C_PxPlane(physx::PxPlane self, physx::PxVec3 p){
@@ -186,7 +206,7 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
     
     
     //================================================================================
-    //#       contains                                                               #
+    //#       contains(PxVec3Ptr p)                                                  #
     //================================================================================
     #if NATIVE //function start
     ES bool W_contains_R_bool_P_PxVec3_C_PxPlane(physx::PxPlane self, physx::PxVec3 p){
@@ -207,13 +227,13 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
     
     
     //================================================================================
-    //#       project                                                                #
+    //#       project(PxVec3Ptr p)                                                   #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_project_R_PxVec3_P_PxVec3_C_PxPlane(physx::PxPlane self, physx::PxVec3 p){
+    ES PxVec3POD W_project_R_PxVec3_P_PxVec3_C_PxPlane(physx::PxPlane self, physx::PxVec3 p){
         auto nat_in_p = (p);
-        auto retVal = self.project(nat_in_p);
-        return retVal;
+        auto retVal = self.project;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -228,12 +248,12 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
     
     
     //================================================================================
-    //#       pointInPlane                                                           #
+    //#       pointInPlane()                                                         #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_pointInPlane_R_PxVec3_C_PxPlane(physx::PxPlane self){
-        auto retVal = self.pointInPlane();
-        return retVal;
+    ES PxVec3POD W_pointInPlane_R_PxVec3_C_PxPlane(physx::PxPlane self){
+        auto retVal = self.pointInPlane;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -247,7 +267,7 @@ public unsafe partial struct PxPlane : IPxPlane { // blittable
     
     
     //================================================================================
-    //#       normalize                                                              #
+    //#       normalize()                                                            #
     //================================================================================
     #if NATIVE //function start
     ES void W_normalize_R_void_C_PxPlane(physx::PxPlane self){

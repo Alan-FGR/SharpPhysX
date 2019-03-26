@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 #endif //C# includes
 
 
-#if !NATIVE
+#if !NATIVE //functions holder
 public partial struct PxMemory {
 #endif
 
 //================================================================================
-//#       PxMemZero                                                              #
+//#       PxMemZero(IntPtr dest, uint count)                                     #
 //================================================================================
 #if NATIVE //function start
 ES void* W_PxMemZero_R_IntPtr_P_IntPtr_P_uint(void* dest, physx::PxU32 count){
@@ -32,7 +32,7 @@ public static IntPtr PxMemZero(IntPtr dest, uint count){
 
 
 //================================================================================
-//#       PxMemSet                                                               #
+//#       PxMemSet(IntPtr dest, int c, uint count)                               #
 //================================================================================
 #if NATIVE //function start
 ES void* W_PxMemSet_R_IntPtr_P_IntPtr_P_int_P_uint(void* dest, physx::PxI32 c, physx::PxU32 count){
@@ -57,7 +57,7 @@ public static IntPtr PxMemSet(IntPtr dest, int c, uint count){
 
 
 //================================================================================
-//#       PxMemCopy                                                              #
+//#       PxMemCopy(IntPtr dest, IntPtr src, uint count)                         #
 //================================================================================
 #if NATIVE //function start
 ES void* W_PxMemCopy_R_IntPtr_P_IntPtr_P_IntPtr_P_uint(void* dest, const void* src, physx::PxU32 count){
@@ -82,7 +82,7 @@ public static IntPtr PxMemCopy(IntPtr dest, IntPtr src, uint count){
 
 
 //================================================================================
-//#       PxMemMove                                                              #
+//#       PxMemMove(IntPtr dest, IntPtr src, uint count)                         #
 //================================================================================
 #if NATIVE //function start
 ES void* W_PxMemMove_R_IntPtr_P_IntPtr_P_IntPtr_P_uint(void* dest, const void* src, physx::PxU32 count){
@@ -105,8 +105,8 @@ public static IntPtr PxMemMove(IntPtr dest, IntPtr src, uint count){
 }
 #endif //function end
 
-#if !NATIVE
-} // End PxMemory
+#if !NATIVE //end functions holder
+} //end PxMemory
 #endif
 
 

@@ -10,14 +10,15 @@ public enum PxActorTypeFlag : int {
 }
 #endif //enum
 
-#if !NATIVE
-public partial struct PxScene {
+#if !NATIVE //functions holder
+public partial struct PxScenePtr {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxActorTypeFlag a, PxActorTypeFlag b)                        #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorTypeFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxActorTypeFlag::Enum, unsigned short> -> PxFlags_PxActorTypeFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxActorTypeFlag_ushort_P_PxActorTypeFlag_P_PxActorTypeFlag(physx::PxActorTypeFlag::Enum a, physx::PxActorTypeFlag::Enum b){
@@ -40,9 +41,10 @@ public static UNPARSED_TYPE operator|(PxActorTypeFlag a, PxActorTypeFlag b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxActorTypeFlag a, PxActorTypeFlag b)                        #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorTypeFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxActorTypeFlag::Enum, unsigned short> -> PxFlags_PxActorTypeFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxActorTypeFlag_ushort_P_PxActorTypeFlag_P_PxActorTypeFlag(physx::PxActorTypeFlag::Enum a, physx::PxActorTypeFlag::Enum b){
@@ -65,9 +67,10 @@ public static UNPARSED_TYPE operator&(PxActorTypeFlag a, PxActorTypeFlag b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxActorTypeFlag a)                                           #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorTypeFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxActorTypeFlag::Enum, unsigned short> -> PxFlags_PxActorTypeFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxActorTypeFlag_ushort_P_PxActorTypeFlag(physx::PxActorTypeFlag::Enum a){
@@ -86,8 +89,8 @@ public static UNPARSED_TYPE operator~(PxActorTypeFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxScene
+#if !NATIVE //end functions holder
+} //end PxScenePtr
 #endif
 
 
@@ -95,13 +98,13 @@ public static UNPARSED_TYPE operator~(PxActorTypeFlag a){
 // Class physx::PxBVHStructure Manually Ignored
 #if !NATIVE //interface
 public unsafe interface IPxScenePtr {
-    // PxScene(/*NULLPARS*/);
+    // static PxScenePtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxScene(/*NULLPARS*/);
      void release();
      void setFlag(PxSceneFlag flag, bool value);
     // UNPARSED_TYPE getFlags();
      void setLimits(PxSceneLimitsPtr limits);
-    // UNPARSED_TYPE getLimits();
+    // PxSceneLimitsPtr getLimits();
      PxPhysicsPtr getPhysics();
      uint getTimestamp();
     // void addArticulation(PxArticulationBasePtr articulation);
@@ -133,7 +136,7 @@ public unsafe interface IPxScenePtr {
     // uint getAggregates( userBuffer, uint bufferSize);
     // uint getAggregates( userBuffer, uint bufferSize, uint startIndex);
      void setDominanceGroupPair(byte group1, byte group2, PxDominanceGroupPairPtr dominance);
-    // UNPARSED_TYPE getDominanceGroupPair(byte group1, byte group2);
+    // PxDominanceGroupPairPtr getDominanceGroupPair(byte group1, byte group2);
     // PxCpuDispatcherPtr getCpuDispatcher();
     // PxGpuDispatcherPtr getGpuDispatcher();
      byte createClient();
@@ -251,14 +254,19 @@ public unsafe interface IPxScenePtr {
      void shiftOrigin(PxVec3 shift);
     // PxPvdSceneClientPtr getScenePvdClient();
     //static UNPARSED_TYPE operator=(PxScenePtr lhs, /*NULLPARS*/);
-    // PxScene(/*NULLPARS*/);
+    // static PxScenePtr New(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxScenePtrPOD{
+    void* userData;
+};
 #endif //struct start
 
 
@@ -288,7 +296,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     //Skipped protected: ~PxScene
     
     //================================================================================
-    //#       release                                                                #
+    //#       release()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_release_R_void_C_PxScene(physx::PxScene* self){
@@ -305,7 +313,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setFlag                                                                #
+    //#       setFlag(PxSceneFlag flag, bool value)                                  #
     //================================================================================
     #if NATIVE //function start
     ES void W_setFlag_R_void_P_PxSceneFlag_P_bool_C_PxScene(physx::PxScene* self, physx::PxSceneFlag::Enum flag, bool value){
@@ -326,9 +334,9 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getFlags                                                               #
+    //#       getFlags()                                                             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxSceneFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxSceneFlags -> Enum, uint>
     // NATIVE SIG: PxSceneFlags	getFlags() const = 0
     #if NATIVE //function start
     ES const UNPARSED_TYPE W_getFlags_R_Enum, uint>_C_PxScene(physx::PxScene* self){
@@ -347,7 +355,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setLimits                                                              #
+    //#       setLimits(PxSceneLimitsPtr limits)                                     #
     //================================================================================
     #if NATIVE //function start
     ES void W_setLimits_R_void_P_PxSceneLimitsPtr_C_PxScene(physx::PxScene* self, physx::PxSceneLimits* limits){
@@ -366,32 +374,33 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getLimits                                                              #
+    //#       getLimits()                                                            #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxSceneLimits
+    /* ERRORS OCCURED: returned native value can't be converted into ptr
     // NATIVE SIG: PxSceneLimits		getLimits() const = 0
     #if NATIVE //function start
-    ES const UNPARSED_TYPE W_getLimits_R_PxSceneLimitsPtr_C_PxScene(physx::PxScene* self){
-        auto retVal = self->getLimits();
-        return retVal;
+    ES PxSceneLimitsPtrPOD W_getLimits_R_PxSceneLimitsPtr_C_PxScene(physx::PxScene* self){
+        auto retVal = self->getLimits;
+        return *(PxSceneLimitsPtrPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getLimits_R_PxSceneLimitsPtr_C_PxScene(PxScenePtr selfPtr);
+    static extern PxSceneLimitsPtr W_getLimits_R_PxSceneLimitsPtr_C_PxScene(PxScenePtr selfPtr);
     
-    public  UNPARSED_TYPE getLimits(){
-        UNPARSED_TYPE retVal = W_getLimits_R_PxSceneLimitsPtr_C_PxScene(this);
+    public  PxSceneLimitsPtr getLimits(){
+        PxSceneLimitsPtr retVal = W_getLimits_R_PxSceneLimitsPtr_C_PxScene(this);
         return retVal;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       getPhysics                                                             #
+    //#       getPhysics()                                                           #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxPhysics* W_getPhysics_R_PxPhysicsPtr_C_PxScene(physx::PxScene* self){
         auto retVal = &self->getPhysics();
+    //TODO check if it's returning addr of local
         return retVal;
     }
     #else //end C wrapper, start C#
@@ -406,7 +415,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getTimestamp                                                           #
+    //#       getTimestamp()                                                         #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getTimestamp_R_uint_C_PxScene(physx::PxScene* self){
@@ -425,7 +434,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       addArticulation                                                        #
+    //#       addArticulation(PxArticulationBasePtr articulation)                    #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxArticulationBasePtr
     // NATIVE SIG: void				addArticulation(PxArticulationBase& articulation) = 0
@@ -446,7 +455,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       removeArticulation                                                     #
+    //#       removeArticulation(PxArticulationBasePtr articulation, bool wakeOnLostTouch) #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxArticulationBasePtr
     // NATIVE SIG: void				removeArticulation(PxArticulationBase& articulation, bool wakeOnLostTouch = true) = 0
@@ -489,7 +498,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       addActor                                                               #
+    //#       addActor(PxActorPtr actor, PxBVHStructurePtr bvhStructure)             #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxBVHStructurePtr
     // NATIVE SIG: void				addActor(PxActor& actor, const PxBVHStructure* bvhStructure = NULL) = 0
@@ -530,7 +539,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       addActors                                                              #
+    //#       addActors(PxActor actors, uint nbActors)                               #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxActor*
     // NATIVE SIG: void				addActors(PxActor*const* actors, PxU32 nbActors) = 0
@@ -553,7 +562,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       addActors                                                              #
+    //#       addActors(PxPruningStructurePtr pruningStructure)                      #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxPruningStructurePtr
     // NATIVE SIG: void				addActors(const PxPruningStructure& pruningStructure) = 0
@@ -574,7 +583,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       removeActor                                                            #
+    //#       removeActor(PxActorPtr actor, bool wakeOnLostTouch)                    #
     //================================================================================
     #if NATIVE //function start
     ES void W_removeActor_R_void_P_PxActorPtr_P_bool_C_PxScene(physx::PxScene* self, physx::PxActor* actor, bool wakeOnLostTouch){
@@ -613,7 +622,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       removeActors                                                           #
+    //#       removeActors(PxActor actors, uint nbActors, bool wakeOnLostTouch)      #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxActor*
     // NATIVE SIG: void				removeActors(PxActor*const* actors, PxU32 nbActors, bool wakeOnLostTouch = true) = 0
@@ -660,7 +669,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       addAggregate                                                           #
+    //#       addAggregate(PxAggregatePtr aggregate)                                 #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxAggregatePtr
     // NATIVE SIG: void				addAggregate(PxAggregate& aggregate)	= 0
@@ -681,7 +690,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       removeAggregate                                                        #
+    //#       removeAggregate(PxAggregatePtr aggregate, bool wakeOnLostTouch)        #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxAggregatePtr
     // NATIVE SIG: void				removeAggregate(PxAggregate& aggregate, bool wakeOnLostTouch = true)	= 0
@@ -724,7 +733,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       addCollection                                                          #
+    //#       addCollection(PxCollectionPtr collection)                              #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxCollectionPtr
     // NATIVE SIG: void				addCollection(const PxCollection& collection) = 0
@@ -745,7 +754,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getNbActors                                                            #
+    //#       getNbActors(Enum, ushort> types)                                       #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxActorTypeFlags
     // NATIVE SIG: PxU32				getNbActors(PxActorTypeFlags types) const = 0
@@ -768,7 +777,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getActors                                                              #
+    //#       getActors(Enum, ushort> types, PxActor userBuffer, uint bufferSize, uint startIndex) #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxActorTypeFlags
     Unresolved parameter pointee physx::PxActor*
@@ -825,7 +834,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getActiveActors                                                        #
+    //#       getActiveActors(uint* nbActorsOut)                                     #
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: ERR_PTR_TO_BLITTABLE TAGTYPE
     // NATIVE SIG: PxActor**		getActiveActors(PxU32& nbActorsOut) = 0
@@ -848,7 +857,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getNbArticulations                                                     #
+    //#       getNbArticulations()                                                   #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getNbArticulations_R_uint_C_PxScene(physx::PxScene* self){
@@ -867,7 +876,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getArticulations                                                       #
+    //#       getArticulations(PxArticulationBase userBuffer, uint bufferSize, uint startIndex) #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxArticulationBase
     Unresolved parameter pointee physx::PxArticulationBase*
@@ -920,7 +929,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getNbConstraints                                                       #
+    //#       getNbConstraints()                                                     #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getNbConstraints_R_uint_C_PxScene(physx::PxScene* self){
@@ -939,7 +948,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getConstraints                                                         #
+    //#       getConstraints(PxConstraint userBuffer, uint bufferSize, uint startIndex) #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxConstraint*
     // NATIVE SIG: PxU32				getConstraints(PxConstraint** userBuffer, PxU32 bufferSize, PxU32 startIndex=0) const = 0
@@ -990,7 +999,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getNbAggregates                                                        #
+    //#       getNbAggregates()                                                      #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getNbAggregates_R_uint_C_PxScene(physx::PxScene* self){
@@ -1009,7 +1018,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getAggregates                                                          #
+    //#       getAggregates(PxAggregate userBuffer, uint bufferSize, uint startIndex) #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxAggregate
     Unresolved parameter pointee physx::PxAggregate*
@@ -1062,7 +1071,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setDominanceGroupPair                                                  #
+    //#       setDominanceGroupPair(byte group1, byte group2, PxDominanceGroupPairPtr dominance) #
     //================================================================================
     #if NATIVE //function start
     ES void W_setDominanceGroupPair_R_void_P_byte_P_byte_P_PxDominanceGroupPairPtr_C_PxScene(physx::PxScene* self, physx::PxDominanceGroup group1, physx::PxDominanceGroup group2, physx::PxDominanceGroupPair* dominance){
@@ -1085,32 +1094,32 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getDominanceGroupPair                                                  #
+    //#       getDominanceGroupPair(byte group1, byte group2)                        #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxDominanceGroupPair
+    /* ERRORS OCCURED: returned native value can't be converted into ptr
     // NATIVE SIG: PxDominanceGroupPair getDominanceGroupPair(PxDominanceGroup group1, PxDominanceGroup group2) const = 0
     #if NATIVE //function start
-    ES const UNPARSED_TYPE W_getDominanceGroupPair_R_PxDominanceGroupPairPtr_P_byte_P_byte_C_PxScene(physx::PxScene* self, physx::PxDominanceGroup group1, physx::PxDominanceGroup group2){
+    ES PxDominanceGroupPairPtrPOD W_getDominanceGroupPair_R_PxDominanceGroupPairPtr_P_byte_P_byte_C_PxScene(physx::PxScene* self, physx::PxDominanceGroup group1, physx::PxDominanceGroup group2){
         auto nat_in_group1 = (group1);
         auto nat_in_group2 = (group2);
-        auto retVal = self->getDominanceGroupPair(nat_in_group1, nat_in_group2);
-        return retVal;
+        auto retVal = self->getDominanceGroupPair;
+        return *(PxDominanceGroupPairPtrPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_getDominanceGroupPair_R_PxDominanceGroupPairPtr_P_byte_P_byte_C_PxScene(PxScenePtr selfPtr, byte group1, byte group2);
+    static extern PxDominanceGroupPairPtr W_getDominanceGroupPair_R_PxDominanceGroupPairPtr_P_byte_P_byte_C_PxScene(PxScenePtr selfPtr, byte group1, byte group2);
     
-    public  UNPARSED_TYPE getDominanceGroupPair(byte group1, byte group2){
+    public  PxDominanceGroupPairPtr getDominanceGroupPair(byte group1, byte group2){
         byte pvk_in_group1 = (group1);
         byte pvk_in_group2 = (group2);
-        UNPARSED_TYPE retVal = W_getDominanceGroupPair_R_PxDominanceGroupPairPtr_P_byte_P_byte_C_PxScene(this, pvk_in_group1, pvk_in_group2);
+        PxDominanceGroupPairPtr retVal = W_getDominanceGroupPair_R_PxDominanceGroupPairPtr_P_byte_P_byte_C_PxScene(this, pvk_in_group1, pvk_in_group2);
         return retVal;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       getCpuDispatcher                                                       #
+    //#       getCpuDispatcher()                                                     #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxCpuDispatcher* getCpuDispatcher() const = 0
@@ -1131,7 +1140,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getGpuDispatcher                                                       #
+    //#       getGpuDispatcher()                                                     #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxGpuDispatcher* getGpuDispatcher() const = 0
@@ -1152,7 +1161,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       createClient                                                           #
+    //#       createClient()                                                         #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxClientID W_createClient_R_byte_C_PxScene(physx::PxScene* self){
@@ -1171,7 +1180,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setSimulationEventCallback                                             #
+    //#       setSimulationEventCallback(PxSimulationEventCallbackPtr callback)      #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxSimulationEventCallbackPtr
     // NATIVE SIG: void				setSimulationEventCallback(PxSimulationEventCallback* callback) = 0
@@ -1192,7 +1201,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getSimulationEventCallback                                             #
+    //#       getSimulationEventCallback()                                           #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxSimulationEventCallback*	getSimulationEventCallback() const = 0
@@ -1213,7 +1222,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setContactModifyCallback                                               #
+    //#       setContactModifyCallback(PxContactModifyCallbackPtr callback)          #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxContactModifyCallbackPtr
     // NATIVE SIG: void				setContactModifyCallback(PxContactModifyCallback* callback) = 0
@@ -1234,7 +1243,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setCCDContactModifyCallback                                            #
+    //#       setCCDContactModifyCallback(PxCCDContactModifyCallbackPtr callback)    #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxCCDContactModifyCallbackPtr
     // NATIVE SIG: void				setCCDContactModifyCallback(PxCCDContactModifyCallback* callback) = 0
@@ -1255,7 +1264,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getContactModifyCallback                                               #
+    //#       getContactModifyCallback()                                             #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxContactModifyCallback*	getContactModifyCallback() const = 0
@@ -1276,7 +1285,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getCCDContactModifyCallback                                            #
+    //#       getCCDContactModifyCallback()                                          #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxCCDContactModifyCallback*	getCCDContactModifyCallback() const = 0
@@ -1297,7 +1306,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setBroadPhaseCallback                                                  #
+    //#       setBroadPhaseCallback(PxBroadPhaseCallbackPtr callback)                #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxBroadPhaseCallbackPtr
     // NATIVE SIG: void				setBroadPhaseCallback(PxBroadPhaseCallback* callback) = 0
@@ -1318,7 +1327,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getBroadPhaseCallback                                                  #
+    //#       getBroadPhaseCallback()                                                #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxBroadPhaseCallback* getBroadPhaseCallback()	const = 0
@@ -1339,7 +1348,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setFilterShaderData                                                    #
+    //#       setFilterShaderData(IntPtr data, uint dataSize)                        #
     //================================================================================
     #if NATIVE //function start
     ES void W_setFilterShaderData_R_void_P_IntPtr_P_uint_C_PxScene(physx::PxScene* self, const void* data, physx::PxU32 dataSize){
@@ -1360,7 +1369,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getFilterShaderData                                                    #
+    //#       getFilterShaderData()                                                  #
     //================================================================================
     #if NATIVE //function start
     ES const void* W_getFilterShaderData_R_IntPtr_C_PxScene(physx::PxScene* self){
@@ -1379,7 +1388,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getFilterShaderDataSize                                                #
+    //#       getFilterShaderDataSize()                                              #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getFilterShaderDataSize_R_uint_C_PxScene(physx::PxScene* self){
@@ -1398,9 +1407,9 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getFilterShader                                                        #
+    //#       getFilterShader()                                                      #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxSimulationFilterShader
+    /* ERRORS OCCURED: unhandled return type: physx::PxSimulationFilterShader -> PxSimulationFilterShader
     // NATIVE SIG: PxSimulationFilterShader
     								getFilterShader() const = 0
     #if NATIVE //function start
@@ -1420,7 +1429,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getFilterCallback                                                      #
+    //#       getFilterCallback()                                                    #
     //================================================================================
     #if NATIVE //function start
     ES const physx::PxSimulationFilterCallback* W_getFilterCallback_R_PxSimulationFilterCallbackPtr_C_PxScene(physx::PxScene* self){
@@ -1439,7 +1448,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       resetFiltering                                                         #
+    //#       resetFiltering(PxActorPtr actor)                                       #
     //================================================================================
     #if NATIVE //function start
     ES void W_resetFiltering_R_void_P_PxActorPtr_C_PxScene(physx::PxScene* self, physx::PxActor* actor){
@@ -1458,7 +1467,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       resetFiltering                                                         #
+    //#       resetFiltering(PxRigidActorPtr actor, PxShape shapes, uint shapeCount) #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxShape*
     // NATIVE SIG: void				resetFiltering(PxRigidActor& actor, PxShape*const* shapes, PxU32 shapeCount) = 0
@@ -1483,7 +1492,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       simulate                                                               #
+    //#       simulate(float elapsedTime, PxBaseTaskPtr completionTask, IntPtr scratchMemBlock, uint scratchMemBlockSize, bool controlSimulation) #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
     // NATIVE SIG: void				simulate(PxReal elapsedTime, physx::PxBaseTask* completionTask = NULL,
@@ -1606,7 +1615,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       advance                                                                #
+    //#       advance(PxBaseTaskPtr completionTask)                                  #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
     // NATIVE SIG: void				advance(physx::PxBaseTask* completionTask = 0) = 0
@@ -1643,7 +1652,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       collide                                                                #
+    //#       collide(float elapsedTime, PxBaseTaskPtr completionTask, IntPtr scratchMemBlock, uint scratchMemBlockSize, bool controlSimulation) #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
     // NATIVE SIG: void				collide(PxReal elapsedTime, physx::PxBaseTask* completionTask = 0, void* scratchMemBlock = 0,
@@ -1766,7 +1775,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       checkResults                                                           #
+    //#       checkResults(bool block)                                               #
     //================================================================================
     #if NATIVE //function start
     ES bool W_checkResults_R_bool_P_bool_C_PxScene(physx::PxScene* self, bool block){
@@ -1805,7 +1814,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       fetchCollision                                                         #
+    //#       fetchCollision(bool block)                                             #
     //================================================================================
     #if NATIVE //function start
     ES bool W_fetchCollision_R_bool_P_bool_C_PxScene(physx::PxScene* self, bool block){
@@ -1844,7 +1853,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       fetchResults                                                           #
+    //#       fetchResults(bool block, uint* errorState)                             #
     //================================================================================
     #if NATIVE //function start
     ES bool W_fetchResults_R_bool_P_bool_P_uintPtr_C_PxScene(physx::PxScene* self, bool block, physx::PxU32* errorState){
@@ -1905,7 +1914,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       fetchResultsStart                                                      #
+    //#       fetchResultsStart(PxContactPairHeader contactPairs, uint* nbContactPairs, bool block) #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee const physx::PxContactPairHeader*
     // NATIVE SIG: bool				fetchResultsStart(const PxContactPairHeader*& contactPairs, PxU32& nbContactPairs, bool block = false) = 0
@@ -1956,7 +1965,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       processCallbacks                                                       #
+    //#       processCallbacks(PxBaseTaskPtr continuation)                           #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
     // NATIVE SIG: void				processCallbacks(physx::PxBaseTask* continuation) = 0
@@ -1977,7 +1986,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       fetchResultsFinish                                                     #
+    //#       fetchResultsFinish(uint* errorState)                                   #
     //================================================================================
     #if NATIVE //function start
     ES void W_fetchResultsFinish_R_void_P_uintPtr_C_PxScene(physx::PxScene* self, physx::PxU32* errorState){
@@ -2012,7 +2021,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       flushSimulation                                                        #
+    //#       flushSimulation(bool sendPendingReports)                               #
     //================================================================================
     #if NATIVE //function start
     ES void W_flushSimulation_R_void_P_bool_C_PxScene(physx::PxScene* self, bool sendPendingReports){
@@ -2047,7 +2056,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setGravity                                                             #
+    //#       setGravity(PxVec3Ptr vec)                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_setGravity_R_void_P_PxVec3_C_PxScene(physx::PxScene* self, physx::PxVec3 vec){
@@ -2066,12 +2075,12 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getGravity                                                             #
+    //#       getGravity()                                                           #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_getGravity_R_PxVec3_C_PxScene(physx::PxScene* self){
-        auto retVal = self->getGravity();
-        return retVal;
+    ES PxVec3POD W_getGravity_R_PxVec3_C_PxScene(physx::PxScene* self){
+        auto retVal = self->getGravity;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -2085,7 +2094,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setBounceThresholdVelocity                                             #
+    //#       setBounceThresholdVelocity(float t)                                    #
     //================================================================================
     #if NATIVE //function start
     ES void W_setBounceThresholdVelocity_R_void_P_float_C_PxScene(physx::PxScene* self, physx::PxReal t){
@@ -2104,7 +2113,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getBounceThresholdVelocity                                             #
+    //#       getBounceThresholdVelocity()                                           #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getBounceThresholdVelocity_R_float_C_PxScene(physx::PxScene* self){
@@ -2123,7 +2132,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setCCDMaxPasses                                                        #
+    //#       setCCDMaxPasses(uint ccdMaxPasses)                                     #
     //================================================================================
     #if NATIVE //function start
     ES void W_setCCDMaxPasses_R_void_P_uint_C_PxScene(physx::PxScene* self, physx::PxU32 ccdMaxPasses){
@@ -2142,7 +2151,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getCCDMaxPasses                                                        #
+    //#       getCCDMaxPasses()                                                      #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getCCDMaxPasses_R_uint_C_PxScene(physx::PxScene* self){
@@ -2161,7 +2170,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getFrictionOffsetThreshold                                             #
+    //#       getFrictionOffsetThreshold()                                           #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getFrictionOffsetThreshold_R_float_C_PxScene(physx::PxScene* self){
@@ -2180,7 +2189,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setFrictionType                                                        #
+    //#       setFrictionType(PxFrictionType frictionType)                           #
     //================================================================================
     #if NATIVE //function start
     ES void W_setFrictionType_R_void_P_PxFrictionType_C_PxScene(physx::PxScene* self, physx::PxFrictionType::Enum frictionType){
@@ -2199,7 +2208,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getFrictionType                                                        #
+    //#       getFrictionType()                                                      #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxFrictionType::Enum W_getFrictionType_R_PxFrictionType_C_PxScene(physx::PxScene* self){
@@ -2218,7 +2227,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setVisualizationParameter                                              #
+    //#       setVisualizationParameter(PxVisualizationParameter param, float value) #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxVisualizationParameter
     // NATIVE SIG: bool				setVisualizationParameter(PxVisualizationParameter::Enum param, PxReal value) = 0
@@ -2243,7 +2252,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getVisualizationParameter                                              #
+    //#       getVisualizationParameter(PxVisualizationParameter paramEnum)          #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxVisualizationParameter
     // NATIVE SIG: PxReal				getVisualizationParameter(PxVisualizationParameter::Enum paramEnum) const = 0
@@ -2266,7 +2275,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setVisualizationCullingBox                                             #
+    //#       setVisualizationCullingBox(PxBounds3Ptr box)                           #
     //================================================================================
     #if NATIVE //function start
     ES void W_setVisualizationCullingBox_R_void_P_PxBounds3_C_PxScene(physx::PxScene* self, physx::PxBounds3 box){
@@ -2285,12 +2294,12 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getVisualizationCullingBox                                             #
+    //#       getVisualizationCullingBox()                                           #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_getVisualizationCullingBox_R_PxBounds3_C_PxScene(physx::PxScene* self){
-        auto retVal = self->getVisualizationCullingBox();
-        return retVal;
+    ES PxBounds3POD W_getVisualizationCullingBox_R_PxBounds3_C_PxScene(physx::PxScene* self){
+        auto retVal = self->getVisualizationCullingBox;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -2304,13 +2313,14 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getRenderBuffer                                                        #
+    //#       getRenderBuffer()                                                      #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxRenderBuffer& getRenderBuffer() = 0
     #if NATIVE //function start
     ES physx::PxRenderBuffer* W_getRenderBuffer_R_PxRenderBufferPtr_C_PxScene(physx::PxScene* self){
         auto retVal = &self->getRenderBuffer();
+    //TODO check if it's returning addr of local
         return retVal;
     }
     #else //end C wrapper, start C#
@@ -2325,7 +2335,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getSimulationStatistics                                                #
+    //#       getSimulationStatistics(PxSimulationStatisticsPtr stats)               #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxSimulationStatisticsPtr
     // NATIVE SIG: void				getSimulationStatistics(PxSimulationStatistics& stats) const = 0
@@ -2346,7 +2356,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getStaticStructure                                                     #
+    //#       getStaticStructure()                                                   #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxPruningStructureType::Enum W_getStaticStructure_R_PxPruningStructureType_C_PxScene(physx::PxScene* self){
@@ -2365,7 +2375,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getDynamicStructure                                                    #
+    //#       getDynamicStructure()                                                  #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxPruningStructureType::Enum W_getDynamicStructure_R_PxPruningStructureType_C_PxScene(physx::PxScene* self){
@@ -2384,7 +2394,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       flushQueryUpdates                                                      #
+    //#       flushQueryUpdates()                                                    #
     //================================================================================
     #if NATIVE //function start
     ES void W_flushQueryUpdates_R_void_C_PxScene(physx::PxScene* self){
@@ -2401,7 +2411,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       createBatchQuery                                                       #
+    //#       createBatchQuery(PxBatchQueryDescPtr desc)                             #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxBatchQuery*		createBatchQuery(const PxBatchQueryDesc& desc) = 0
@@ -2424,7 +2434,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setDynamicTreeRebuildRateHint                                          #
+    //#       setDynamicTreeRebuildRateHint(uint dynamicTreeRebuildRateHint)         #
     //================================================================================
     #if NATIVE //function start
     ES void W_setDynamicTreeRebuildRateHint_R_void_P_uint_C_PxScene(physx::PxScene* self, physx::PxU32 dynamicTreeRebuildRateHint){
@@ -2443,7 +2453,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getDynamicTreeRebuildRateHint                                          #
+    //#       getDynamicTreeRebuildRateHint()                                        #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getDynamicTreeRebuildRateHint_R_uint_C_PxScene(physx::PxScene* self){
@@ -2462,7 +2472,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       forceDynamicTreeRebuild                                                #
+    //#       forceDynamicTreeRebuild(bool rebuildStaticStructure, bool rebuildDynamicStructure) #
     //================================================================================
     #if NATIVE //function start
     ES void W_forceDynamicTreeRebuild_R_void_P_bool_P_bool_C_PxScene(physx::PxScene* self, bool rebuildStaticStructure, bool rebuildDynamicStructure){
@@ -2483,7 +2493,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setSceneQueryUpdateMode                                                #
+    //#       setSceneQueryUpdateMode(PxSceneQueryUpdateMode updateMode)             #
     //================================================================================
     #if NATIVE //function start
     ES void W_setSceneQueryUpdateMode_R_void_P_PxSceneQueryUpdateMode_C_PxScene(physx::PxScene* self, physx::PxSceneQueryUpdateMode::Enum updateMode){
@@ -2502,7 +2512,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getSceneQueryUpdateMode                                                #
+    //#       getSceneQueryUpdateMode()                                              #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxSceneQueryUpdateMode::Enum W_getSceneQueryUpdateMode_R_PxSceneQueryUpdateMode_C_PxScene(physx::PxScene* self){
@@ -2521,7 +2531,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       sceneQueriesUpdate                                                     #
+    //#       sceneQueriesUpdate(PxBaseTaskPtr completionTask, bool controlSimulation) #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxBaseTaskPtr
     // NATIVE SIG: void				sceneQueriesUpdate(physx::PxBaseTask* completionTask = NULL, bool controlSimulation = true)	= 0
@@ -2580,7 +2590,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       checkQueries                                                           #
+    //#       checkQueries(bool block)                                               #
     //================================================================================
     #if NATIVE //function start
     ES bool W_checkQueries_R_bool_P_bool_C_PxScene(physx::PxScene* self, bool block){
@@ -2619,7 +2629,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       fetchQueries                                                           #
+    //#       fetchQueries(bool block)                                               #
     //================================================================================
     #if NATIVE //function start
     ES bool W_fetchQueries_R_bool_P_bool_C_PxScene(physx::PxScene* self, bool block){
@@ -2658,7 +2668,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       raycast                                                                #
+    //#       raycast(PxVec3Ptr origin, PxVec3Ptr unitDir, float distance, PxRaycastHit> hitCall, Enum, ushort> hitFlags, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall, PxQueryCachePtr cache) #
     //================================================================================
     /* ERRORS OCCURED: fsdfasdf
     Unresolved parameter type physx::PxHitFlags
@@ -2843,7 +2853,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       sweep                                                                  #
+    //#       sweep(PxGeometryPtr geometry, PxTransformPtr pose, PxVec3Ptr unitDir, float distance, PxSweepHit> hitCall, Enum, ushort> hitFlags, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall, PxQueryCachePtr cache, float inflation) #
     //================================================================================
     /* ERRORS OCCURED: fsdfasdf
     Unresolved parameter type physx::PxHitFlags
@@ -3077,7 +3087,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       overlap                                                                #
+    //#       overlap(PxGeometryPtr geometry, PxTransformPtr pose, PxOverlapHit> hitCall, PxQueryFilterDataPtr filterData, PxQueryFilterCallbackPtr filterCall) #
     //================================================================================
     /* ERRORS OCCURED: fsdfasdf
     // NATIVE SIG: bool				overlap(const PxGeometry& geometry, const PxTransform& pose, PxOverlapCallback& hitCall,
@@ -3168,7 +3178,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getSceneQueryStaticTimestamp                                           #
+    //#       getSceneQueryStaticTimestamp()                                         #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getSceneQueryStaticTimestamp_R_uint_C_PxScene(physx::PxScene* self){
@@ -3187,7 +3197,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getBroadPhaseType                                                      #
+    //#       getBroadPhaseType()                                                    #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxBroadPhaseType::Enum	getBroadPhaseType()								const = 0
@@ -3208,7 +3218,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getBroadPhaseCaps                                                      #
+    //#       getBroadPhaseCaps(PxBroadPhaseCapsPtr caps)                            #
     //================================================================================
     /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxBroadPhaseCaps
     // NATIVE SIG: bool					getBroadPhaseCaps(PxBroadPhaseCaps& caps)			const = 0
@@ -3231,7 +3241,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getNbBroadPhaseRegions                                                 #
+    //#       getNbBroadPhaseRegions()                                               #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getNbBroadPhaseRegions_R_uint_C_PxScene(physx::PxScene* self){
@@ -3250,7 +3260,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getBroadPhaseRegions                                                   #
+    //#       getBroadPhaseRegions(PxBroadPhaseRegionInfoPtr userBuffer, uint bufferSize, uint startIndex) #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxBroadPhaseRegionInfoPtr
     // NATIVE SIG: PxU32					getBroadPhaseRegions(PxBroadPhaseRegionInfo* userBuffer, PxU32 bufferSize, PxU32 startIndex=0) const	= 0
@@ -3301,7 +3311,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       addBroadPhaseRegion                                                    #
+    //#       addBroadPhaseRegion(PxBroadPhaseRegionPtr region, bool populateRegion) #
     //================================================================================
     /* ERRORS OCCURED: Forbidden parameter type: PxBroadPhaseRegionPtr
     // NATIVE SIG: PxU32					addBroadPhaseRegion(const PxBroadPhaseRegion& region, bool populateRegion=false)		= 0
@@ -3348,7 +3358,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       removeBroadPhaseRegion                                                 #
+    //#       removeBroadPhaseRegion(uint handle)                                    #
     //================================================================================
     #if NATIVE //function start
     ES bool W_removeBroadPhaseRegion_R_bool_P_uint_C_PxScene(physx::PxScene* self, physx::PxU32 handle){
@@ -3369,7 +3379,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getTaskManager                                                         #
+    //#       getTaskManager()                                                       #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxTaskManager*			getTaskManager() const = 0
@@ -3390,7 +3400,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       lockRead                                                               #
+    //#       lockRead(string file, uint line)                                       #
     //================================================================================
     #if NATIVE //function start
     ES void W_lockRead_R_void_P_string_P_uint_C_PxScene(physx::PxScene* self, const char* file, physx::PxU32 line){
@@ -3445,7 +3455,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       unlockRead                                                             #
+    //#       unlockRead()                                                           #
     //================================================================================
     #if NATIVE //function start
     ES void W_unlockRead_R_void_C_PxScene(physx::PxScene* self){
@@ -3462,7 +3472,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       lockWrite                                                              #
+    //#       lockWrite(string file, uint line)                                      #
     //================================================================================
     #if NATIVE //function start
     ES void W_lockWrite_R_void_P_string_P_uint_C_PxScene(physx::PxScene* self, const char* file, physx::PxU32 line){
@@ -3517,7 +3527,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       unlockWrite                                                            #
+    //#       unlockWrite()                                                          #
     //================================================================================
     #if NATIVE //function start
     ES void W_unlockWrite_R_void_C_PxScene(physx::PxScene* self){
@@ -3534,7 +3544,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setNbContactDataBlocks                                                 #
+    //#       setNbContactDataBlocks(uint numBlocks)                                 #
     //================================================================================
     #if NATIVE //function start
     ES void W_setNbContactDataBlocks_R_void_P_uint_C_PxScene(physx::PxScene* self, physx::PxU32 numBlocks){
@@ -3553,7 +3563,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getNbContactDataBlocksUsed                                             #
+    //#       getNbContactDataBlocksUsed()                                           #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getNbContactDataBlocksUsed_R_uint_C_PxScene(physx::PxScene* self){
@@ -3572,7 +3582,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getMaxNbContactDataBlocksUsed                                          #
+    //#       getMaxNbContactDataBlocksUsed()                                        #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getMaxNbContactDataBlocksUsed_R_uint_C_PxScene(physx::PxScene* self){
@@ -3591,7 +3601,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getContactReportStreamBufferSize                                       #
+    //#       getContactReportStreamBufferSize()                                     #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getContactReportStreamBufferSize_R_uint_C_PxScene(physx::PxScene* self){
@@ -3610,7 +3620,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       setSolverBatchSize                                                     #
+    //#       setSolverBatchSize(uint solverBatchSize)                               #
     //================================================================================
     #if NATIVE //function start
     ES void W_setSolverBatchSize_R_void_P_uint_C_PxScene(physx::PxScene* self, physx::PxU32 solverBatchSize){
@@ -3629,7 +3639,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getSolverBatchSize                                                     #
+    //#       getSolverBatchSize()                                                   #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getSolverBatchSize_R_uint_C_PxScene(physx::PxScene* self){
@@ -3648,7 +3658,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getWakeCounterResetValue                                               #
+    //#       getWakeCounterResetValue()                                             #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxReal W_getWakeCounterResetValue_R_float_C_PxScene(physx::PxScene* self){
@@ -3667,7 +3677,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       shiftOrigin                                                            #
+    //#       shiftOrigin(PxVec3Ptr shift)                                           #
     //================================================================================
     #if NATIVE //function start
     ES void W_shiftOrigin_R_void_P_PxVec3_C_PxScene(physx::PxScene* self, physx::PxVec3 shift){
@@ -3686,7 +3696,7 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
     
     
     //================================================================================
-    //#       getScenePvdClient                                                      #
+    //#       getScenePvdClient()                                                    #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxPvdSceneClient*		getScenePvdClient() = 0
@@ -3719,19 +3729,25 @@ public unsafe partial struct PxScenePtr : IPxScenePtr { // pointer
 // Class physx::PxActorTypeFlag is enum namespace
 #if !NATIVE //interface
 public unsafe interface IPxDominanceGroupPairPtr {
-    // PxDominanceGroupPair(byte a, byte b);
-    // PxDominanceGroupPair(/*NULLPARS*/);
+    // static PxDominanceGroupPairPtr New(byte a, byte b);
+    // static PxDominanceGroupPairPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxDominanceGroupPairPtr lhs, /*NULLPARS*/);
-    // PxDominanceGroupPair(/*NULLPARS*/);
+    // static PxDominanceGroupPairPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxDominanceGroupPairPtr lhs, /*NULLPARS*/);
     // UNPARSED_TYPE ~PxDominanceGroupPair(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxDominanceGroupPairPtr : IPxDominanceGroupPairPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxDominanceGroupPairPtrPOD{
+    physx::PxU8 dominance0;
+    physx::PxU8 dominance1;
+};
 #endif //struct start
 
 
@@ -3773,29 +3789,28 @@ public unsafe partial struct PxDominanceGroupPairPtr : IPxDominanceGroupPairPtr 
     // Hierarchy: PxDominanceGroupPairPtr
     #endif //hierarchy
     //================================================================================
-    //#       PxDominanceGroupPair                                                   #
+    //#       PxDominanceGroupPair(byte a, byte b)                                   #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxDominanceGroupPair
-    // NATIVE SIG: PxDominanceGroupPair(PxU8 a, PxU8 b) 
-    		: dominance0(a), dominance1(b) {}
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxDominanceGroupPair_R_PxDominanceGroupPairPtr_P_byte_P_byte_C_PxDominanceGroupPair_ctor(physx::PxU8 a, physx::PxU8 b){
+    ES PxDominanceGroupPairPtrPOD W_PxDominanceGroupPair_R_PxDominanceGroupPairPtr_P_byte_P_byte_C_PxDominanceGroupPair_ctor(physx::PxU8 a, physx::PxU8 b){
         auto nat_in_a = (a);
         auto nat_in_b = (b);
-        return PxDominanceGroupPair(nat_in_a, nat_in_b);
+        auto val = new PxDominanceGroupPair();
+        return *(PxDominanceGroupPairPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxDominanceGroupPair_R_PxDominanceGroupPairPtr_P_byte_P_byte_C_PxDominanceGroupPair_ctor(byte a, byte b);
+    static extern PxDominanceGroupPairPtr W_PxDominanceGroupPair_R_PxDominanceGroupPairPtr_P_byte_P_byte_C_PxDominanceGroupPair_ctor(byte a, byte b);
     
-    public  PxDominanceGroupPair(byte a, byte b){
+    public  static PxDominanceGroupPairPtr New(byte a, byte b){
         byte pvk_in_a = (a);
         byte pvk_in_b = (b);
         var _new = W_PxDominanceGroupPair_R_PxDominanceGroupPairPtr_P_byte_P_byte_C_PxDominanceGroupPair_ctor(pvk_in_a, pvk_in_b);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxDominanceGroupPairPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
-    #endif //function end*/
+    #endif //function end
     
     
     //Skipped generated implicit entry: PxDominanceGroupPair
@@ -3820,9 +3835,13 @@ public unsafe interface IPxContactPairHeaderPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxContactPairHeaderPtr : IPxContactPairHeaderPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxContactPairHeaderPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -3841,9 +3860,13 @@ public unsafe interface IPxBatchQueryDescPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxBatchQueryDescPtr : IPxBatchQueryDescPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxBatchQueryDescPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -3856,20 +3879,27 @@ public unsafe partial struct PxBatchQueryDescPtr : IPxBatchQueryDescPtr { // poi
 
 #if !NATIVE //interface
 public unsafe interface IPxQueryCachePtr {
-    // PxQueryCache();
-    // PxQueryCache(PxShapePtr s, uint findex);
-    // PxQueryCache(/*NULLPARS*/);
+    // static PxQueryCachePtr New();
+    // static PxQueryCachePtr New(PxShapePtr s, uint findex);
+    // static PxQueryCachePtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxQueryCachePtr lhs, /*NULLPARS*/);
-    // PxQueryCache(/*NULLPARS*/);
+    // static PxQueryCachePtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxQueryCachePtr lhs, /*NULLPARS*/);
     // UNPARSED_TYPE ~PxQueryCache(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxQueryCachePtr : IPxQueryCachePtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxQueryCachePtrPOD{
+    physx::PxShape* shape;
+    physx::PxRigidActor* actor;
+    physx::PxU32 faceIndex;
+};
 #endif //struct start
 
 
@@ -3927,37 +3957,49 @@ public unsafe partial struct PxQueryCachePtr : IPxQueryCachePtr { // pointer
     // Hierarchy: PxQueryCachePtr
     #endif //hierarchy
     //================================================================================
-    //#       PxQueryCache                                                           #
+    //#       PxQueryCache()                                                         #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxQueryCache
-    Parameterless constructor not allowed
-    */
-    
-    
-    //================================================================================
-    //#       PxQueryCache                                                           #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxQueryCache
-    // NATIVE SIG: PX_INLINE PxQueryCache(PxShape* s, PxU32 findex) : shape(s), actor(NULL), faceIndex(findex) {}
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxQueryCache_R_PxQueryCachePtr_P_PxShapePtr_P_uint_C_PxQueryCache_ctor(physx::PxShape* s, physx::PxU32 findex){
-        auto nat_in_s = (s);
-        auto nat_in_findex = (findex);
-        return PxQueryCache(nat_in_s, nat_in_findex);
+    ES PxQueryCachePtrPOD W_PxQueryCache_R_PxQueryCachePtr_C_PxQueryCache_ctor(){
+        auto val = new PxQueryCache();
+        return *(PxQueryCachePtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxQueryCache_R_PxQueryCachePtr_P_PxShapePtr_P_uint_C_PxQueryCache_ctor(PxShapePtr s, uint findex);
+    static extern PxQueryCachePtr W_PxQueryCache_R_PxQueryCachePtr_C_PxQueryCache_ctor();
     
-    public  PxQueryCache(PxShapePtr s, uint findex){
+    public  static PxQueryCachePtr New(){
+        var _new = W_PxQueryCache_R_PxQueryCachePtr_C_PxQueryCache_ctor();
+        PxQueryCachePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
+    
+    
+    //================================================================================
+    //#       PxQueryCache(PxShapePtr s, uint findex)                                #
+    //================================================================================
+    #if NATIVE //function start
+    ES PxQueryCachePtrPOD W_PxQueryCache_R_PxQueryCachePtr_P_PxShapePtr_P_uint_C_PxQueryCache_ctor(physx::PxShape* s, physx::PxU32 findex){
+        auto nat_in_s = (s);
+        auto nat_in_findex = (findex);
+        auto val = new PxQueryCache();
+        return *(PxQueryCachePtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxQueryCachePtr W_PxQueryCache_R_PxQueryCachePtr_P_PxShapePtr_P_uint_C_PxQueryCache_ctor(PxShapePtr s, uint findex);
+    
+    public  static PxQueryCachePtr New(PxShapePtr s, uint findex){
         PxShapePtr pvk_in_s = (s);
         uint pvk_in_findex = (findex);
         var _new = W_PxQueryCache_R_PxQueryCachePtr_P_PxShapePtr_P_uint_C_PxQueryCache_ctor(pvk_in_s, pvk_in_findex);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxQueryCachePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
-    #endif //function end*/
+    #endif //function end
     
     
     //Skipped generated implicit entry: PxQueryCache

@@ -18,14 +18,15 @@ public enum PxMeshMidPhase : int {
 }
 #endif //enum
 
-#if !NATIVE
-public partial struct PxTriangleMesh {
+#if !NATIVE //functions holder
+public partial struct PxTriangleMeshPtr {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxTriangleMeshFlag a, PxTriangleMeshFlag b)                  #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxTriangleMeshFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxTriangleMeshFlag::Enum, unsigned char> -> PxFlags_PxTriangleMeshFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxTriangleMeshFlag_byte_P_PxTriangleMeshFlag_P_PxTriangleMeshFlag(physx::PxTriangleMeshFlag::Enum a, physx::PxTriangleMeshFlag::Enum b){
@@ -48,9 +49,10 @@ public static UNPARSED_TYPE operator|(PxTriangleMeshFlag a, PxTriangleMeshFlag b
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxTriangleMeshFlag a, PxTriangleMeshFlag b)                  #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxTriangleMeshFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxTriangleMeshFlag::Enum, unsigned char> -> PxFlags_PxTriangleMeshFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxTriangleMeshFlag_byte_P_PxTriangleMeshFlag_P_PxTriangleMeshFlag(physx::PxTriangleMeshFlag::Enum a, physx::PxTriangleMeshFlag::Enum b){
@@ -73,9 +75,10 @@ public static UNPARSED_TYPE operator&(PxTriangleMeshFlag a, PxTriangleMeshFlag b
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxTriangleMeshFlag a)                                        #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxTriangleMeshFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxTriangleMeshFlag::Enum, unsigned char> -> PxFlags_PxTriangleMeshFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxTriangleMeshFlag_byte_P_PxTriangleMeshFlag(physx::PxTriangleMeshFlag::Enum a){
@@ -94,8 +97,8 @@ public static UNPARSED_TYPE operator~(PxTriangleMeshFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxTriangleMesh
+#if !NATIVE //end functions holder
+} //end PxTriangleMeshPtr
 #endif
 
 
@@ -114,19 +117,23 @@ public unsafe interface IPxTriangleMeshPtr {
      PxBounds3 getLocalBounds();
      uint getReferenceCount();
      void acquireReference();
-    // PxTriangleMesh(/*NULLPARS*/);
-    // PxTriangleMesh(/*NULLPARS*/);
+    // static PxTriangleMeshPtr New(/*NULLPARS*/);
+    // static PxTriangleMeshPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxTriangleMesh(/*NULLPARS*/);
     // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
-    // PxTriangleMesh(/*NULLPARS*/);
+    // static PxTriangleMeshPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxTriangleMeshPtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxTriangleMeshPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -147,17 +154,17 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
     //public  void setBaseFlags( inFlags){((PxBasePtr)this).setBaseFlags(inFlags);}
     //public  UNPARSED_TYPE getBaseFlags(){return ((PxBasePtr)this).getBaseFlags();}
     public  bool isReleasable(){return ((PxBasePtr)this).isReleasable();}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxBase(/*NULLPARS*/){((PxBasePtr)this).~PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE typeMatch(/*NULLPARS*/){return ((PxBasePtr)this).typeMatch(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxBasePtr)this).operator=(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       getNbVertices                                                          #
+    //#       getNbVertices()                                                        #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getNbVertices_R_uint_C_PxTriangleMesh(physx::PxTriangleMesh* self){
@@ -176,7 +183,7 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
     
     
     //================================================================================
-    //#       getVertices                                                            #
+    //#       getVertices()                                                          #
     //================================================================================
     #if NATIVE //function start
     ES const physx::PxVec3* W_getVertices_R_PxVec3Ptr_C_PxTriangleMesh(physx::PxTriangleMesh* self){
@@ -195,7 +202,7 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
     
     
     //================================================================================
-    //#       getVerticesForModification                                             #
+    //#       getVerticesForModification()                                           #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxVec3* W_getVerticesForModification_R_PxVec3Ptr_C_PxTriangleMesh(physx::PxTriangleMesh* self){
@@ -214,12 +221,12 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
     
     
     //================================================================================
-    //#       refitBVH                                                               #
+    //#       refitBVH()                                                             #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_refitBVH_R_PxBounds3_C_PxTriangleMesh(physx::PxTriangleMesh* self){
-        auto retVal = self->refitBVH();
-        return retVal;
+    ES PxBounds3POD W_refitBVH_R_PxBounds3_C_PxTriangleMesh(physx::PxTriangleMesh* self){
+        auto retVal = self->refitBVH;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -233,7 +240,7 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
     
     
     //================================================================================
-    //#       getNbTriangles                                                         #
+    //#       getNbTriangles()                                                       #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getNbTriangles_R_uint_C_PxTriangleMesh(physx::PxTriangleMesh* self){
@@ -252,7 +259,7 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
     
     
     //================================================================================
-    //#       getTriangles                                                           #
+    //#       getTriangles()                                                         #
     //================================================================================
     #if NATIVE //function start
     ES const void* W_getTriangles_R_IntPtr_C_PxTriangleMesh(physx::PxTriangleMesh* self){
@@ -271,9 +278,9 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
     
     
     //================================================================================
-    //#       getTriangleMeshFlags                                                   #
+    //#       getTriangleMeshFlags()                                                 #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxTriangleMeshFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxTriangleMeshFlags -> Enum, byte>
     // NATIVE SIG: PxTriangleMeshFlags		getTriangleMeshFlags()							const = 0
     #if NATIVE //function start
     ES const UNPARSED_TYPE W_getTriangleMeshFlags_R_Enum, byte>_C_PxTriangleMesh(physx::PxTriangleMesh* self){
@@ -292,7 +299,7 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
     
     
     //================================================================================
-    //#       getTrianglesRemap                                                      #
+    //#       getTrianglesRemap()                                                    #
     //================================================================================
     #if NATIVE //function start
     ES const physx::PxU32* W_getTrianglesRemap_R_uintPtr_C_PxTriangleMesh(physx::PxTriangleMesh* self){
@@ -311,7 +318,7 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
     
     
     //================================================================================
-    //#       release                                                                #
+    //#       release()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_release_R_void_C_PxTriangleMesh(physx::PxTriangleMesh* self){
@@ -328,7 +335,7 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
     
     
     //================================================================================
-    //#       getTriangleMaterialIndex                                               #
+    //#       getTriangleMaterialIndex(uint triangleIndex)                           #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxMaterialTableIndex W_getTriangleMaterialIndex_R_ushort_P_uint_C_PxTriangleMesh(physx::PxTriangleMesh* self, physx::PxTriangleID triangleIndex){
@@ -349,12 +356,12 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
     
     
     //================================================================================
-    //#       getLocalBounds                                                         #
+    //#       getLocalBounds()                                                       #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_getLocalBounds_R_PxBounds3_C_PxTriangleMesh(physx::PxTriangleMesh* self){
-        auto retVal = self->getLocalBounds();
-        return retVal;
+    ES PxBounds3POD W_getLocalBounds_R_PxBounds3_C_PxTriangleMesh(physx::PxTriangleMesh* self){
+        auto retVal = self->getLocalBounds;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -368,7 +375,7 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
     
     
     //================================================================================
-    //#       getReferenceCount                                                      #
+    //#       getReferenceCount()                                                    #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getReferenceCount_R_uint_C_PxTriangleMesh(physx::PxTriangleMesh* self){
@@ -387,7 +394,7 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
     
     
     //================================================================================
-    //#       acquireReference                                                       #
+    //#       acquireReference()                                                     #
     //================================================================================
     #if NATIVE //function start
     ES void W_acquireReference_R_void_C_PxTriangleMesh(physx::PxTriangleMesh* self){
@@ -423,19 +430,23 @@ public unsafe partial struct PxTriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr 
 // Class physx::PxTriangleMeshFlag is enum namespace
 #if !NATIVE //interface
 public unsafe interface IPxBVH33TriangleMeshPtr {
-    // PxBVH33TriangleMesh(/*NULLPARS*/);
-    // PxBVH33TriangleMesh(/*NULLPARS*/);
+    // static PxBVH33TriangleMeshPtr New(/*NULLPARS*/);
+    // static PxBVH33TriangleMeshPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxBVH33TriangleMesh(/*NULLPARS*/);
     // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
-    // PxBVH33TriangleMesh(/*NULLPARS*/);
+    // static PxBVH33TriangleMeshPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxBVH33TriangleMeshPtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxBVH33TriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr, IPxBVH33TriangleMeshPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxBVH33TriangleMeshPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -463,10 +474,10 @@ public unsafe partial struct PxBVH33TriangleMeshPtr : IPxBasePtr, IPxTriangleMes
     public  PxBounds3 getLocalBounds(){return ((PxTriangleMeshPtr)this).getLocalBounds();}
     public  uint getReferenceCount(){return ((PxTriangleMeshPtr)this).getReferenceCount();}
     public  void acquireReference(){((PxTriangleMeshPtr)this).acquireReference();}
-    //public  PxTriangleMesh(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
-    //public  PxTriangleMesh(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
+    //public  static PxTriangleMeshPtr New(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
+    //public  static PxTriangleMeshPtr New(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxTriangleMesh(/*NULLPARS*/){((PxTriangleMeshPtr)this).~PxTriangleMesh(/*NULLARGS*/);}
-    //public  PxTriangleMesh(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
+    //public  static PxTriangleMeshPtr New(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxTriangleMeshPtr lhs, /*NULLPARS*/){return ((PxTriangleMeshPtr)this).operator=(/*NULLARGS*/);}
     
     // --- PxBasePtr
@@ -478,11 +489,11 @@ public unsafe partial struct PxBVH33TriangleMeshPtr : IPxBasePtr, IPxTriangleMes
     //public  void setBaseFlags( inFlags){((PxTriangleMeshPtr)this).setBaseFlags(inFlags);}
     //public  UNPARSED_TYPE getBaseFlags(){return ((PxTriangleMeshPtr)this).getBaseFlags();}
     public  bool isReleasable(){return ((PxTriangleMeshPtr)this).isReleasable();}
-    //public  PxBase(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxBase(/*NULLPARS*/){((PxTriangleMeshPtr)this).~PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE typeMatch(/*NULLPARS*/){return ((PxTriangleMeshPtr)this).typeMatch(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxTriangleMeshPtr)this).operator=(/*NULLARGS*/);}
     
     #endif //piping
@@ -506,19 +517,23 @@ public unsafe partial struct PxBVH33TriangleMeshPtr : IPxBasePtr, IPxTriangleMes
 
 #if !NATIVE //interface
 public unsafe interface IPxBVH34TriangleMeshPtr {
-    // PxBVH34TriangleMesh(/*NULLPARS*/);
-    // PxBVH34TriangleMesh(/*NULLPARS*/);
+    // static PxBVH34TriangleMeshPtr New(/*NULLPARS*/);
+    // static PxBVH34TriangleMeshPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxBVH34TriangleMesh(/*NULLPARS*/);
     // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
-    // PxBVH34TriangleMesh(/*NULLPARS*/);
+    // static PxBVH34TriangleMeshPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxBVH34TriangleMeshPtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxBVH34TriangleMeshPtr : IPxBasePtr, IPxTriangleMeshPtr, IPxBVH34TriangleMeshPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxBVH34TriangleMeshPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -546,10 +561,10 @@ public unsafe partial struct PxBVH34TriangleMeshPtr : IPxBasePtr, IPxTriangleMes
     public  PxBounds3 getLocalBounds(){return ((PxTriangleMeshPtr)this).getLocalBounds();}
     public  uint getReferenceCount(){return ((PxTriangleMeshPtr)this).getReferenceCount();}
     public  void acquireReference(){((PxTriangleMeshPtr)this).acquireReference();}
-    //public  PxTriangleMesh(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
-    //public  PxTriangleMesh(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
+    //public  static PxTriangleMeshPtr New(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
+    //public  static PxTriangleMeshPtr New(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxTriangleMesh(/*NULLPARS*/){((PxTriangleMeshPtr)this).~PxTriangleMesh(/*NULLARGS*/);}
-    //public  PxTriangleMesh(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
+    //public  static PxTriangleMeshPtr New(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxTriangleMesh(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxTriangleMeshPtr lhs, /*NULLPARS*/){return ((PxTriangleMeshPtr)this).operator=(/*NULLARGS*/);}
     
     // --- PxBasePtr
@@ -561,11 +576,11 @@ public unsafe partial struct PxBVH34TriangleMeshPtr : IPxBasePtr, IPxTriangleMes
     //public  void setBaseFlags( inFlags){((PxTriangleMeshPtr)this).setBaseFlags(inFlags);}
     //public  UNPARSED_TYPE getBaseFlags(){return ((PxTriangleMeshPtr)this).getBaseFlags();}
     public  bool isReleasable(){return ((PxTriangleMeshPtr)this).isReleasable();}
-    //public  PxBase(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxBase(/*NULLPARS*/){((PxTriangleMeshPtr)this).~PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE typeMatch(/*NULLPARS*/){return ((PxTriangleMeshPtr)this).typeMatch(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxTriangleMeshPtr)this).PxBase(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxTriangleMeshPtr)this).operator=(/*NULLARGS*/);}
     
     #endif //piping

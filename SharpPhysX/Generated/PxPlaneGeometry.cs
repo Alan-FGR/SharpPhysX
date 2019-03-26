@@ -4,18 +4,18 @@ using System.Runtime.InteropServices;
 #endif //C# includes
 
 
-#if !NATIVE
-public partial struct PxPlaneGeometry {
+#if !NATIVE //functions holder
+public partial struct PxPlaneGeometryPtr {
 #endif
 
 //================================================================================
-//#       PxTransformFromPlaneEquation                                           #
+//#       PxTransformFromPlaneEquation(PxPlanePtr plane)                         #
 //================================================================================
 #if NATIVE //function start
-ES physx::PxTransform W_PxTransformFromPlaneEquation_R_PxTransform_P_PxPlane(physx::PxPlane plane){
+ES PxTransformPOD W_PxTransformFromPlaneEquation_R_PxTransform_P_PxPlane(physx::PxPlane plane){
     auto nat_in_plane = (plane);
-    auto retVal = physx::PxTransformFromPlaneEquation(nat_in_plane);
-    return retVal;
+    auto retVal = physx::PxTransformFromPlaneEquation;
+    return *(PxTransformPOD*)&retVal;
 }
 #else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -30,13 +30,13 @@ public static PxTransform PxTransformFromPlaneEquation(PxPlane plane){
 
 
 //================================================================================
-//#       PxPlaneEquationFromTransform                                           #
+//#       PxPlaneEquationFromTransform(PxTransformPtr transform)                 #
 //================================================================================
 #if NATIVE //function start
-ES physx::PxPlane W_PxPlaneEquationFromTransform_R_PxPlane_P_PxTransform(physx::PxTransform transform){
+ES PxPlanePOD W_PxPlaneEquationFromTransform_R_PxPlane_P_PxTransform(physx::PxTransform transform){
     auto nat_in_transform = (transform);
-    auto retVal = physx::PxPlaneEquationFromTransform(nat_in_transform);
-    return retVal;
+    auto retVal = physx::PxPlaneEquationFromTransform;
+    return *(PxPlanePOD*)&retVal;
 }
 #else //end C wrapper, start C#
 [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -49,27 +49,31 @@ public static PxPlane PxPlaneEquationFromTransform(PxTransform transform){
 }
 #endif //function end
 
-#if !NATIVE
-} // End PxPlaneGeometry
+#if !NATIVE //end functions holder
+} //end PxPlaneGeometryPtr
 #endif
 
 
 #if !NATIVE //interface
 public unsafe interface IPxPlaneGeometryPtr {
-    // PxPlaneGeometry();
+    // static PxPlaneGeometryPtr New();
      bool isValid();
     //static UNPARSED_TYPE operator=(PxPlaneGeometryPtr lhs, /*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxPlaneGeometryPtr lhs, /*NULLPARS*/);
-    // PxPlaneGeometry(/*NULLPARS*/);
-    // PxPlaneGeometry(/*NULLPARS*/);
+    // static PxPlaneGeometryPtr New(/*NULLPARS*/);
+    // static PxPlaneGeometryPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxPlaneGeometry(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxPlaneGeometryPtr : IPxGeometryPtr, IPxPlaneGeometryPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxPlaneGeometryPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -83,9 +87,9 @@ public unsafe partial struct PxPlaneGeometryPtr : IPxGeometryPtr, IPxPlaneGeomet
     
     // --- PxGeometryPtr
     public  PxGeometryType getType(){return ((PxGeometryPtr)this).getType();}
-    //public  PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
-    //public  PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
-    //public  PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
+    //public  static PxGeometryPtr New(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
+    //public  static PxGeometryPtr New(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
+    //public  static PxGeometryPtr New(/*NULLPARS*/){((PxGeometryPtr)this).PxGeometry(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxGeometry(/*NULLPARS*/){((PxGeometryPtr)this).~PxGeometry(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxGeometryPtr lhs, /*NULLPARS*/){return ((PxGeometryPtr)this).operator=(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxGeometryPtr lhs, /*NULLPARS*/){return ((PxGeometryPtr)this).operator=(/*NULLARGS*/);}
@@ -93,16 +97,28 @@ public unsafe partial struct PxPlaneGeometryPtr : IPxGeometryPtr, IPxPlaneGeomet
     #endif //piping
     
     //================================================================================
-    //#       PxPlaneGeometry                                                        #
+    //#       PxPlaneGeometry()                                                      #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxPlaneGeometry
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxPlaneGeometryPtrPOD W_PxPlaneGeometry_R_PxPlaneGeometryPtr_C_PxPlaneGeometry_ctor(){
+        auto val = new PxPlaneGeometry();
+        return *(PxPlaneGeometryPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxPlaneGeometryPtr W_PxPlaneGeometry_R_PxPlaneGeometryPtr_C_PxPlaneGeometry_ctor();
+    
+    public  static PxPlaneGeometryPtr New(){
+        var _new = W_PxPlaneGeometry_R_PxPlaneGeometryPtr_C_PxPlaneGeometry_ctor();
+        PxPlaneGeometryPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     //================================================================================
-    //#       isValid                                                                #
+    //#       isValid()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isValid_R_bool_C_PxPlaneGeometry(physx::PxPlaneGeometry* self){

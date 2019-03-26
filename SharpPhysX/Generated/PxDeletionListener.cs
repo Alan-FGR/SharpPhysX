@@ -10,14 +10,15 @@ public enum PxDeletionEventFlag : int {
 }
 #endif //enum
 
-#if !NATIVE
-public partial struct PxDeletionListener {
+#if !NATIVE //functions holder
+public partial struct PxDeletionListenerPtr {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxDeletionEventFlag a, PxDeletionEventFlag b)                #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxDeletionEventFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxDeletionEventFlag::Enum, unsigned char> -> PxFlags_PxDeletionEventFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxDeletionEventFlag_byte_P_PxDeletionEventFlag_P_PxDeletionEventFlag(physx::PxDeletionEventFlag::Enum a, physx::PxDeletionEventFlag::Enum b){
@@ -40,9 +41,10 @@ public static UNPARSED_TYPE operator|(PxDeletionEventFlag a, PxDeletionEventFlag
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxDeletionEventFlag a, PxDeletionEventFlag b)                #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxDeletionEventFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxDeletionEventFlag::Enum, unsigned char> -> PxFlags_PxDeletionEventFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxDeletionEventFlag_byte_P_PxDeletionEventFlag_P_PxDeletionEventFlag(physx::PxDeletionEventFlag::Enum a, physx::PxDeletionEventFlag::Enum b){
@@ -65,9 +67,10 @@ public static UNPARSED_TYPE operator&(PxDeletionEventFlag a, PxDeletionEventFlag
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxDeletionEventFlag a)                                       #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxDeletionEventFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxDeletionEventFlag::Enum, unsigned char> -> PxFlags_PxDeletionEventFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxDeletionEventFlag_byte_P_PxDeletionEventFlag(physx::PxDeletionEventFlag::Enum a){
@@ -86,8 +89,8 @@ public static UNPARSED_TYPE operator~(PxDeletionEventFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxDeletionListener
+#if !NATIVE //end functions holder
+} //end PxDeletionListenerPtr
 #endif
 
 

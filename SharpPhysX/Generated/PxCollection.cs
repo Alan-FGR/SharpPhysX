@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 #endif //C# includes
 
 
-#if !NATIVE
-public partial struct PxCollection {
+#if !NATIVE //functions holder
+public partial struct PxCollectionPtr {
 #endif
 
 //================================================================================
-//#       PxCreateCollection                                                     #
+//#       PxCreateCollection()                                                   #
 //================================================================================
 /* ERRORS OCCURED: Forbidden return type
 // NATIVE SIG: physx::PxCollection* PX_CALL_CONV PxCreateCollection()
@@ -28,8 +28,8 @@ public static PxCollectionPtr PxCreateCollection(){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxCollection
+#if !NATIVE //end functions holder
+} //end PxCollectionPtr
 #endif
 
 

@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 #endif //C# includes
 
 
-#if !NATIVE
+#if !NATIVE //functions holder
 public partial struct PxWindowsIntrinsics {
 #endif
 
 //================================================================================
-//#       abs                                                                    #
+//#       abs(float a)                                                           #
 //================================================================================
 #if NATIVE //function start
 ES float W_abs_R_float_P_float(float a){
@@ -30,7 +30,7 @@ public static float abs(float a){
 
 
 //================================================================================
-//#       fsel                                                                   #
+//#       fsel(float a, float b, float c)                                        #
 //================================================================================
 #if NATIVE //function start
 ES float W_fsel_R_float_P_float_P_float_P_float(float a, float b, float c){
@@ -55,7 +55,7 @@ public static float fsel(float a, float b, float c){
 
 
 //================================================================================
-//#       sign                                                                   #
+//#       sign(float a)                                                          #
 //================================================================================
 #if NATIVE //function start
 ES float W_sign_R_float_P_float(float a){
@@ -76,7 +76,7 @@ public static float sign(float a){
 
 
 //================================================================================
-//#       recip                                                                  #
+//#       recip(float a)                                                         #
 //================================================================================
 #if NATIVE //function start
 ES float W_recip_R_float_P_float(float a){
@@ -97,7 +97,7 @@ public static float recip(float a){
 
 
 //================================================================================
-//#       recipFast                                                              #
+//#       recipFast(float a)                                                     #
 //================================================================================
 #if NATIVE //function start
 ES float W_recipFast_R_float_P_float(float a){
@@ -118,7 +118,7 @@ public static float recipFast(float a){
 
 
 //================================================================================
-//#       sqrt                                                                   #
+//#       sqrt(float a)                                                          #
 //================================================================================
 #if NATIVE //function start
 ES float W_sqrt_R_float_P_float(float a){
@@ -139,7 +139,7 @@ public static float sqrt(float a){
 
 
 //================================================================================
-//#       recipSqrt                                                              #
+//#       recipSqrt(float a)                                                     #
 //================================================================================
 #if NATIVE //function start
 ES float W_recipSqrt_R_float_P_float(float a){
@@ -160,7 +160,7 @@ public static float recipSqrt(float a){
 
 
 //================================================================================
-//#       recipSqrtFast                                                          #
+//#       recipSqrtFast(float a)                                                 #
 //================================================================================
 #if NATIVE //function start
 ES float W_recipSqrtFast_R_float_P_float(float a){
@@ -181,7 +181,7 @@ public static float recipSqrtFast(float a){
 
 
 //================================================================================
-//#       sin                                                                    #
+//#       sin(float a)                                                           #
 //================================================================================
 #if NATIVE //function start
 ES float W_sin_R_float_P_float(float a){
@@ -202,7 +202,7 @@ public static float sin(float a){
 
 
 //================================================================================
-//#       cos                                                                    #
+//#       cos(float a)                                                           #
 //================================================================================
 #if NATIVE //function start
 ES float W_cos_R_float_P_float(float a){
@@ -223,7 +223,7 @@ public static float cos(float a){
 
 
 //================================================================================
-//#       selectMin                                                              #
+//#       selectMin(float a, float b)                                            #
 //================================================================================
 #if NATIVE //function start
 ES float W_selectMin_R_float_P_float_P_float(float a, float b){
@@ -246,7 +246,7 @@ public static float selectMin(float a, float b){
 
 
 //================================================================================
-//#       selectMax                                                              #
+//#       selectMax(float a, float b)                                            #
 //================================================================================
 #if NATIVE //function start
 ES float W_selectMax_R_float_P_float_P_float(float a, float b){
@@ -269,7 +269,7 @@ public static float selectMax(float a, float b){
 
 
 //================================================================================
-//#       isFinite                                                               #
+//#       isFinite(float a)                                                      #
 //================================================================================
 #if NATIVE //function start
 ES bool W_isFinite_R_bool_P_float(float a){
@@ -290,7 +290,7 @@ public static bool isFinite(float a){
 
 
 //================================================================================
-//#       isFinite                                                               #
+//#       isFinite(double a)                                                     #
 //================================================================================
 #if NATIVE //function start
 ES bool W_isFinite_R_bool_P_double(double a){
@@ -311,7 +311,7 @@ public static bool isFinite(double a){
 
 
 //================================================================================
-//#       memZero                                                                #
+//#       memZero(IntPtr dest, uint count)                                       #
 //================================================================================
 #if NATIVE //function start
 ES void* W_memZero_R_IntPtr_P_IntPtr_P_uint(void* dest, ::uint32_t count){
@@ -334,7 +334,7 @@ public static IntPtr memZero(IntPtr dest, uint count){
 
 
 //================================================================================
-//#       memSet                                                                 #
+//#       memSet(IntPtr dest, int c, uint count)                                 #
 //================================================================================
 #if NATIVE //function start
 ES void* W_memSet_R_IntPtr_P_IntPtr_P_int_P_uint(void* dest, ::int32_t c, ::uint32_t count){
@@ -359,7 +359,7 @@ public static IntPtr memSet(IntPtr dest, int c, uint count){
 
 
 //================================================================================
-//#       memCopy                                                                #
+//#       memCopy(IntPtr dest, IntPtr src, uint count)                           #
 //================================================================================
 #if NATIVE //function start
 ES void* W_memCopy_R_IntPtr_P_IntPtr_P_IntPtr_P_uint(void* dest, const void* src, ::uint32_t count){
@@ -384,7 +384,7 @@ public static IntPtr memCopy(IntPtr dest, IntPtr src, uint count){
 
 
 //================================================================================
-//#       memMove                                                                #
+//#       memMove(IntPtr dest, IntPtr src, uint count)                           #
 //================================================================================
 #if NATIVE //function start
 ES void* W_memMove_R_IntPtr_P_IntPtr_P_IntPtr_P_uint(void* dest, const void* src, ::uint32_t count){
@@ -409,7 +409,7 @@ public static IntPtr memMove(IntPtr dest, IntPtr src, uint count){
 
 
 //================================================================================
-//#       memZero128                                                             #
+//#       memZero128(IntPtr dest, uint offset)                                   #
 //================================================================================
 #if NATIVE //function start
 ES void W_memZero128_R_void_P_IntPtr_P_uint(void* dest, ::uint32_t offset){
@@ -446,8 +446,8 @@ public static void memZero128(IntPtr dest){
 #endif //function end
 
 
-#if !NATIVE
-} // End PxWindowsIntrinsics
+#if !NATIVE //end functions holder
+} //end PxWindowsIntrinsics
 #endif
 
 

@@ -7,10 +7,10 @@ using System.Runtime.InteropServices;
 
 #if !NATIVE //interface
 public unsafe interface IShPxErrorCallbackWrapperPtr {
-    // ShPxErrorCallbackWrapper( managedErrorCallback);
+    // static ShPxErrorCallbackWrapperPtr New( managedErrorCallback);
      void reportError(PxErrorCode code, string message, string file, int line);
-    // ShPxErrorCallbackWrapper(/*NULLPARS*/);
-    // ShPxErrorCallbackWrapper(/*NULLPARS*/);
+    // static ShPxErrorCallbackWrapperPtr New(/*NULLPARS*/);
+    // static ShPxErrorCallbackWrapperPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(ShPxErrorCallbackWrapperPtr lhs, /*NULLPARS*/);
     //static UNPARSED_TYPE operator=(ShPxErrorCallbackWrapperPtr lhs, /*NULLPARS*/);
     // UNPARSED_TYPE ~ShPxErrorCallbackWrapper(/*NULLPARS*/);
@@ -18,16 +18,19 @@ public unsafe interface IShPxErrorCallbackWrapperPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct ShPxErrorCallbackWrapperPtr : IPxErrorCallbackPtr, IShPxErrorCallbackWrapperPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct ShPxErrorCallbackWrapperPtrPOD{
+    ::SharpPhysXError managedErrorCallback_;
+};
 #endif //struct start
 
 
     // ### Auto generated getters for fields
-    
-    /*Error generating getter/setter: Unresolved parameter type ::SharpPhysXError
-    */
+    //Skipped non-public field: managedErrorCallback_
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxErrorCallbackPtr, ShPxErrorCallbackWrapperPtr
@@ -41,39 +44,40 @@ public unsafe partial struct ShPxErrorCallbackWrapperPtr : IPxErrorCallbackPtr, 
     // --- PxErrorCallbackPtr
     //public  void ~PxErrorCallback(){((PxErrorCallbackPtr)this).~PxErrorCallback();}
     //public static UNPARSED_TYPE operator=(PxErrorCallbackPtr lhs, /*NULLPARS*/){return ((PxErrorCallbackPtr)this).operator=(/*NULLARGS*/);}
-    //public  PxErrorCallback(/*NULLPARS*/){((PxErrorCallbackPtr)this).PxErrorCallback(/*NULLARGS*/);}
-    //public  PxErrorCallback(/*NULLPARS*/){((PxErrorCallbackPtr)this).PxErrorCallback(/*NULLARGS*/);}
+    //public  static PxErrorCallbackPtr New(/*NULLPARS*/){((PxErrorCallbackPtr)this).PxErrorCallback(/*NULLARGS*/);}
+    //public  static PxErrorCallbackPtr New(/*NULLPARS*/){((PxErrorCallbackPtr)this).PxErrorCallback(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       ShPxErrorCallbackWrapper                                               #
+    //#       ShPxErrorCallbackWrapper(SharpPhysXError managedErrorCallback)         #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: ShPxErrorCallbackWrapper
-    Unresolved parameter type ::SharpPhysXError
+    /* ERRORS OCCURED: Unresolved parameter type ::SharpPhysXError
     // NATIVE SIG: explicit ShPxErrorCallbackWrapper(SharpPhysXError managedErrorCallback)
             : managedErrorCallback_(managedErrorCallback)
         {}
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_ShPxErrorCallbackWrapper_R_ShPxErrorCallbackWrapperPtr_P__C_ShPxErrorCallbackWrapper_ctor( managedErrorCallback){
+    ES ShPxErrorCallbackWrapperPtrPOD W_ShPxErrorCallbackWrapper_R_ShPxErrorCallbackWrapperPtr_P__C_ShPxErrorCallbackWrapper_ctor( managedErrorCallback){
         auto nat_in_managedErrorCallback = (managedErrorCallback);
-        return ShPxErrorCallbackWrapper(nat_in_managedErrorCallback);
+        auto val = new ShPxErrorCallbackWrapper();
+        return *(ShPxErrorCallbackWrapperPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_ShPxErrorCallbackWrapper_R_ShPxErrorCallbackWrapperPtr_P__C_ShPxErrorCallbackWrapper_ctor( managedErrorCallback);
+    static extern ShPxErrorCallbackWrapperPtr W_ShPxErrorCallbackWrapper_R_ShPxErrorCallbackWrapperPtr_P__C_ShPxErrorCallbackWrapper_ctor( managedErrorCallback);
     
-    public  ShPxErrorCallbackWrapper( managedErrorCallback){
+    public  static ShPxErrorCallbackWrapperPtr New( managedErrorCallback){
          pvk_in_managedErrorCallback = (managedErrorCallback);
         var _new = W_ShPxErrorCallbackWrapper_R_ShPxErrorCallbackWrapperPtr_P__C_ShPxErrorCallbackWrapper_ctor(pvk_in_managedErrorCallback);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        ShPxErrorCallbackWrapperPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       reportError                                                            #
+    //#       reportError(PxErrorCode code, string message, string file, int line)   #
     //================================================================================
     #if NATIVE //function start
     ES void W_reportError_R_void_P_PxErrorCode_P_string_P_string_P_int_C_ShPxErrorCallbackWrapper(ShPxErrorCallbackWrapper* self, physx::PxErrorCode::Enum code, const char* message, const char* file, int line){

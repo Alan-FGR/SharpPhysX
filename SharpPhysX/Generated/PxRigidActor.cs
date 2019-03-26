@@ -21,19 +21,23 @@ public unsafe interface IPxRigidActorPtr {
      uint getNbConstraints();
     // uint getConstraints( userBuffer, uint bufferSize);
     // uint getConstraints( userBuffer, uint bufferSize, uint startIndex);
-    // PxRigidActor(/*NULLPARS*/);
-    // PxRigidActor(/*NULLPARS*/);
+    // static PxRigidActorPtr New(/*NULLPARS*/);
+    // static PxRigidActorPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxRigidActor(/*NULLPARS*/);
     // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
-    // PxRigidActor(/*NULLPARS*/);
+    // static PxRigidActorPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxRigidActorPtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxRigidActorPtr : IPxBasePtr, IPxActorPtr, IPxRigidActorPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxRigidActorPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -62,10 +66,10 @@ public unsafe partial struct PxRigidActorPtr : IPxBasePtr, IPxActorPtr, IPxRigid
     public  void setOwnerClient(byte inClient){((PxActorPtr)this).setOwnerClient(inClient);}
     public  byte getOwnerClient(){return ((PxActorPtr)this).getOwnerClient();}
     //public  PxAggregatePtr getAggregate(){return ((PxActorPtr)this).getAggregate();}
-    //public  PxActor(/*NULLPARS*/){((PxActorPtr)this).PxActor(/*NULLARGS*/);}
-    //public  PxActor(/*NULLPARS*/){((PxActorPtr)this).PxActor(/*NULLARGS*/);}
+    //public  static PxActorPtr New(/*NULLPARS*/){((PxActorPtr)this).PxActor(/*NULLARGS*/);}
+    //public  static PxActorPtr New(/*NULLPARS*/){((PxActorPtr)this).PxActor(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxActor(/*NULLPARS*/){((PxActorPtr)this).~PxActor(/*NULLARGS*/);}
-    //public  PxActor(/*NULLPARS*/){((PxActorPtr)this).PxActor(/*NULLARGS*/);}
+    //public  static PxActorPtr New(/*NULLPARS*/){((PxActorPtr)this).PxActor(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxActorPtr lhs, /*NULLPARS*/){return ((PxActorPtr)this).operator=(/*NULLARGS*/);}
     
     // --- PxBasePtr
@@ -77,17 +81,17 @@ public unsafe partial struct PxRigidActorPtr : IPxBasePtr, IPxActorPtr, IPxRigid
     //public  void setBaseFlags( inFlags){((PxActorPtr)this).setBaseFlags(inFlags);}
     //public  UNPARSED_TYPE getBaseFlags(){return ((PxActorPtr)this).getBaseFlags();}
     public  bool isReleasable(){return ((PxActorPtr)this).isReleasable();}
-    //public  PxBase(/*NULLPARS*/){((PxActorPtr)this).PxBase(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxActorPtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxActorPtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxActorPtr)this).PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxBase(/*NULLPARS*/){((PxActorPtr)this).~PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE typeMatch(/*NULLPARS*/){return ((PxActorPtr)this).typeMatch(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxActorPtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxActorPtr)this).PxBase(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxActorPtr)this).operator=(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       release                                                                #
+    //#       release()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_release_R_void_C_PxRigidActor(physx::PxRigidActor* self){
@@ -104,12 +108,12 @@ public unsafe partial struct PxRigidActorPtr : IPxBasePtr, IPxActorPtr, IPxRigid
     
     
     //================================================================================
-    //#       getGlobalPose                                                          #
+    //#       getGlobalPose()                                                        #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxTransform W_getGlobalPose_R_PxTransform_C_PxRigidActor(physx::PxRigidActor* self){
-        auto retVal = self->getGlobalPose();
-        return retVal;
+    ES PxTransformPOD W_getGlobalPose_R_PxTransform_C_PxRigidActor(physx::PxRigidActor* self){
+        auto retVal = self->getGlobalPose;
+        return *(PxTransformPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -123,7 +127,7 @@ public unsafe partial struct PxRigidActorPtr : IPxBasePtr, IPxActorPtr, IPxRigid
     
     
     //================================================================================
-    //#       setGlobalPose                                                          #
+    //#       setGlobalPose(PxTransformPtr pose, bool autowake)                      #
     //================================================================================
     #if NATIVE //function start
     ES void W_setGlobalPose_R_void_P_PxTransform_P_bool_C_PxRigidActor(physx::PxRigidActor* self, physx::PxTransform pose, bool autowake){
@@ -162,7 +166,7 @@ public unsafe partial struct PxRigidActorPtr : IPxBasePtr, IPxActorPtr, IPxRigid
     
     
     //================================================================================
-    //#       attachShape                                                            #
+    //#       attachShape(PxShapePtr shape)                                          #
     //================================================================================
     #if NATIVE //function start
     ES bool W_attachShape_R_bool_P_PxShapePtr_C_PxRigidActor(physx::PxRigidActor* self, physx::PxShape* shape){
@@ -183,7 +187,7 @@ public unsafe partial struct PxRigidActorPtr : IPxBasePtr, IPxActorPtr, IPxRigid
     
     
     //================================================================================
-    //#       detachShape                                                            #
+    //#       detachShape(PxShapePtr shape, bool wakeOnLostTouch)                    #
     //================================================================================
     #if NATIVE //function start
     ES void W_detachShape_R_void_P_PxShapePtr_P_bool_C_PxRigidActor(physx::PxRigidActor* self, physx::PxShape* shape, bool wakeOnLostTouch){
@@ -222,7 +226,7 @@ public unsafe partial struct PxRigidActorPtr : IPxBasePtr, IPxActorPtr, IPxRigid
     
     
     //================================================================================
-    //#       getNbShapes                                                            #
+    //#       getNbShapes()                                                          #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getNbShapes_R_uint_C_PxRigidActor(physx::PxRigidActor* self){
@@ -241,7 +245,7 @@ public unsafe partial struct PxRigidActorPtr : IPxBasePtr, IPxActorPtr, IPxRigid
     
     
     //================================================================================
-    //#       getShapes                                                              #
+    //#       getShapes(PxShape userBuffer, uint bufferSize, uint startIndex)        #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxShape*
     // NATIVE SIG: PxU32			getShapes(PxShape** userBuffer, PxU32 bufferSize, PxU32 startIndex=0)			const	= 0
@@ -292,7 +296,7 @@ public unsafe partial struct PxRigidActorPtr : IPxBasePtr, IPxActorPtr, IPxRigid
     
     
     //================================================================================
-    //#       getNbConstraints                                                       #
+    //#       getNbConstraints()                                                     #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getNbConstraints_R_uint_C_PxRigidActor(physx::PxRigidActor* self){
@@ -311,7 +315,7 @@ public unsafe partial struct PxRigidActorPtr : IPxBasePtr, IPxActorPtr, IPxRigid
     
     
     //================================================================================
-    //#       getConstraints                                                         #
+    //#       getConstraints(PxConstraint userBuffer, uint bufferSize, uint startIndex) #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee physx::PxConstraint*
     // NATIVE SIG: PxU32			getConstraints(PxConstraint** userBuffer, PxU32 bufferSize, PxU32 startIndex=0)		const	= 0

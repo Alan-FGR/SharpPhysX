@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 #if !NATIVE //interface
 public unsafe interface IPxQuat {
-    // PxQuat();
+    ///*No paramless ctor in C#*/ static PxQuat Default();
     // PxQuat(PxIDENTITY r);
     // PxQuat(float r);
     // PxQuat(float nx, float ny, float nz, float nw);
@@ -49,33 +49,52 @@ public unsafe interface IPxQuat {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxQuat : IPxQuat { // blittable
     public float x;
     public float y;
     public float z;
     public float w;
 
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxQuatPOD{
+    float x;
+    float y;
+    float z;
+    float w;
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxQuat
     #endif //hierarchy
     //================================================================================
-    //#       PxQuat                                                                 #
-    //================================================================================
-    //Skipped invalid managed declaration:
-    /*Parameterless constructor not allowed
-    */
-    
-    
-    //================================================================================
-    //#       PxQuat                                                                 #
+    //#       PxQuat()                                                               #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxQuat W_PxQuat_R_PxQuat_P_PxIDENTITY_C_PxQuat_ctor(physx::PxIDENTITY r){
+    ES PxQuatPOD W_PxQuat_R_PxQuat_C_PxQuat_ctor(){
+        auto val = PxQuat();
+        return *(PxQuatPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxQuat W_PxQuat_R_PxQuat_C_PxQuat_ctor();
+    
+    public /*No paramless ctor in C#*/ static PxQuat Default(){
+        return (W_PxQuat_R_PxQuat_C_PxQuat_ctor());
+    }
+    #endif //function end
+    
+    
+    //================================================================================
+    //#       PxQuat(physx r)                                                        #
+    //================================================================================
+    #if NATIVE //function start
+    ES PxQuatPOD W_PxQuat_R_PxQuat_P_PxIDENTITY_C_PxQuat_ctor(physx::PxIDENTITY r){
         auto nat_in_r = (r);
-        return PxQuat(nat_in_r);
+        auto val = PxQuat();
+        return *(PxQuatPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -83,7 +102,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     public  PxQuat(PxIDENTITY r){
         PxIDENTITY pvk_in_r = (r);
-        var _new = W_PxQuat_R_PxQuat_P_PxIDENTITY_C_PxQuat_ctor(pvk_in_r);
+        var _new = (W_PxQuat_R_PxQuat_P_PxIDENTITY_C_PxQuat_ctor(pvk_in_r));
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -91,12 +110,13 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       PxQuat                                                                 #
+    //#       PxQuat(float r)                                                        #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxQuat W_PxQuat_R_PxQuat_P_float_C_PxQuat_ctor(float r){
+    ES PxQuatPOD W_PxQuat_R_PxQuat_P_float_C_PxQuat_ctor(float r){
         auto nat_in_r = (r);
-        return PxQuat(nat_in_r);
+        auto val = PxQuat();
+        return *(PxQuatPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -104,7 +124,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     public  PxQuat(float r){
         float pvk_in_r = (r);
-        var _new = W_PxQuat_R_PxQuat_P_float_C_PxQuat_ctor(pvk_in_r);
+        var _new = (W_PxQuat_R_PxQuat_P_float_C_PxQuat_ctor(pvk_in_r));
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -112,15 +132,16 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       PxQuat                                                                 #
+    //#       PxQuat(float nx, float ny, float nz, float nw)                         #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxQuat W_PxQuat_R_PxQuat_P_float_P_float_P_float_P_float_C_PxQuat_ctor(float nx, float ny, float nz, float nw){
+    ES PxQuatPOD W_PxQuat_R_PxQuat_P_float_P_float_P_float_P_float_C_PxQuat_ctor(float nx, float ny, float nz, float nw){
         auto nat_in_nx = (nx);
         auto nat_in_ny = (ny);
         auto nat_in_nz = (nz);
         auto nat_in_nw = (nw);
-        return PxQuat(nat_in_nx, nat_in_ny, nat_in_nz, nat_in_nw);
+        auto val = PxQuat();
+        return *(PxQuatPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -131,7 +152,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
         float pvk_in_ny = (ny);
         float pvk_in_nz = (nz);
         float pvk_in_nw = (nw);
-        var _new = W_PxQuat_R_PxQuat_P_float_P_float_P_float_P_float_C_PxQuat_ctor(pvk_in_nx, pvk_in_ny, pvk_in_nz, pvk_in_nw);
+        var _new = (W_PxQuat_R_PxQuat_P_float_P_float_P_float_P_float_C_PxQuat_ctor(pvk_in_nx, pvk_in_ny, pvk_in_nz, pvk_in_nw));
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -139,13 +160,14 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       PxQuat                                                                 #
+    //#       PxQuat(float angleRadians, PxVec3Ptr unitAxis)                         #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxQuat W_PxQuat_R_PxQuat_P_float_P_PxVec3_C_PxQuat_ctor(float angleRadians, physx::PxVec3 unitAxis){
+    ES PxQuatPOD W_PxQuat_R_PxQuat_P_float_P_PxVec3_C_PxQuat_ctor(float angleRadians, physx::PxVec3 unitAxis){
         auto nat_in_angleRadians = (angleRadians);
         auto nat_in_unitAxis = (unitAxis);
-        return PxQuat(nat_in_angleRadians, nat_in_unitAxis);
+        auto val = PxQuat();
+        return *(PxQuatPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -154,7 +176,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     public  PxQuat(float angleRadians, PxVec3 unitAxis){
         float pvk_in_angleRadians = (angleRadians);
         PxVec3 pvk_in_unitAxis = (unitAxis);
-        var _new = W_PxQuat_R_PxQuat_P_float_P_PxVec3_C_PxQuat_ctor(pvk_in_angleRadians, pvk_in_unitAxis);
+        var _new = (W_PxQuat_R_PxQuat_P_float_P_PxVec3_C_PxQuat_ctor(pvk_in_angleRadians, pvk_in_unitAxis));
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -162,12 +184,13 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       PxQuat                                                                 #
+    //#       PxQuat(PxQuatPtr v)                                                    #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxQuat W_PxQuat_R_PxQuat_P_PxQuat_C_PxQuat_ctor(physx::PxQuat v){
+    ES PxQuatPOD W_PxQuat_R_PxQuat_P_PxQuat_C_PxQuat_ctor(physx::PxQuat v){
         auto nat_in_v = (v);
-        return PxQuat(nat_in_v);
+        auto val = PxQuat();
+        return *(PxQuatPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -175,7 +198,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     public  PxQuat(PxQuat v){
         PxQuat pvk_in_v = (v);
-        var _new = W_PxQuat_R_PxQuat_P_PxQuat_C_PxQuat_ctor(pvk_in_v);
+        var _new = (W_PxQuat_R_PxQuat_P_PxQuat_C_PxQuat_ctor(pvk_in_v));
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -183,12 +206,13 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       PxQuat                                                                 #
+    //#       PxQuat(PxMat33Ptr m)                                                   #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxQuat W_PxQuat_R_PxQuat_P_PxMat33_C_PxQuat_ctor(physx::PxMat33 m){
+    ES PxQuatPOD W_PxQuat_R_PxQuat_P_PxMat33_C_PxQuat_ctor(physx::PxMat33 m){
         auto nat_in_m = (m);
-        return PxQuat(nat_in_m);
+        auto val = PxQuat();
+        return *(PxQuatPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -196,7 +220,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     public  PxQuat(PxMat33 m){
         PxMat33 pvk_in_m = (m);
-        var _new = W_PxQuat_R_PxQuat_P_PxMat33_C_PxQuat_ctor(pvk_in_m);
+        var _new = (W_PxQuat_R_PxQuat_P_PxMat33_C_PxQuat_ctor(pvk_in_m));
         fixed (void* ptr = &this)
             System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
     }
@@ -204,7 +228,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       isIdentity                                                             #
+    //#       isIdentity()                                                           #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isIdentity_R_bool_C_PxQuat(physx::PxQuat self){
@@ -223,7 +247,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       isFinite                                                               #
+    //#       isFinite()                                                             #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isFinite_R_bool_C_PxQuat(physx::PxQuat self){
@@ -242,7 +266,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       isUnit                                                                 #
+    //#       isUnit()                                                               #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isUnit_R_bool_C_PxQuat(physx::PxQuat self){
@@ -261,7 +285,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       isSane                                                                 #
+    //#       isSane()                                                               #
     //================================================================================
     #if NATIVE //function start
     ES bool W_isSane_R_bool_C_PxQuat(physx::PxQuat self){
@@ -280,7 +304,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       operator==                                                             #
+    //#       operator==(PxQuatPtr q)                                                #
     //================================================================================
     #if NATIVE //function start
     ES bool W_OP_EqualEqual_R_bool_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat q){
@@ -301,7 +325,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       toRadiansAndUnitAxis                                                   #
+    //#       toRadiansAndUnitAxis(float* angle, PxVec3Ptr axis)                     #
     //================================================================================
     /* ERRORS OCCURED: Non const pointer/reference global::PhysX.physx.PxVec3
     // NATIVE SIG: void toRadiansAndUnitAxis(float& angle, PxVec3& axis) const
@@ -339,7 +363,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       getAngle                                                               #
+    //#       getAngle()                                                             #
     //================================================================================
     #if NATIVE //function start
     ES float W_getAngle_R_float_C_PxQuat(physx::PxQuat self){
@@ -358,7 +382,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       getAngle                                                               #
+    //#       getAngle(PxQuatPtr q)                                                  #
     //================================================================================
     #if NATIVE //function start
     ES float W_getAngle_R_float_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat q){
@@ -379,7 +403,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       magnitudeSquared                                                       #
+    //#       magnitudeSquared()                                                     #
     //================================================================================
     #if NATIVE //function start
     ES float W_magnitudeSquared_R_float_C_PxQuat(physx::PxQuat self){
@@ -398,7 +422,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       dot                                                                    #
+    //#       dot(PxQuatPtr v)                                                       #
     //================================================================================
     #if NATIVE //function start
     ES float W_dot_R_float_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat v){
@@ -419,12 +443,12 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       getNormalized                                                          #
+    //#       getNormalized()                                                        #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxQuat W_getNormalized_R_PxQuat_C_PxQuat(physx::PxQuat self){
-        auto retVal = self.getNormalized();
-        return retVal;
+    ES PxQuatPOD W_getNormalized_R_PxQuat_C_PxQuat(physx::PxQuat self){
+        auto retVal = self.getNormalized;
+        return *(PxQuatPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -438,7 +462,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       magnitude                                                              #
+    //#       magnitude()                                                            #
     //================================================================================
     #if NATIVE //function start
     ES float W_magnitude_R_float_C_PxQuat(physx::PxQuat self){
@@ -457,7 +481,7 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       normalize                                                              #
+    //#       normalize()                                                            #
     //================================================================================
     #if NATIVE //function start
     ES float W_normalize_R_float_C_PxQuat(physx::PxQuat self){
@@ -476,12 +500,12 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       getConjugate                                                           #
+    //#       getConjugate()                                                         #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxQuat W_getConjugate_R_PxQuat_C_PxQuat(physx::PxQuat self){
-        auto retVal = self.getConjugate();
-        return retVal;
+    ES PxQuatPOD W_getConjugate_R_PxQuat_C_PxQuat(physx::PxQuat self){
+        auto retVal = self.getConjugate;
+        return *(PxQuatPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -495,12 +519,12 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       getImaginaryPart                                                       #
+    //#       getImaginaryPart()                                                     #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_getImaginaryPart_R_PxVec3_C_PxQuat(physx::PxQuat self){
-        auto retVal = self.getImaginaryPart();
-        return retVal;
+    ES PxVec3POD W_getImaginaryPart_R_PxVec3_C_PxQuat(physx::PxQuat self){
+        auto retVal = self.getImaginaryPart;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -514,12 +538,12 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       getBasisVector0                                                        #
+    //#       getBasisVector0()                                                      #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_getBasisVector0_R_PxVec3_C_PxQuat(physx::PxQuat self){
-        auto retVal = self.getBasisVector0();
-        return retVal;
+    ES PxVec3POD W_getBasisVector0_R_PxVec3_C_PxQuat(physx::PxQuat self){
+        auto retVal = self.getBasisVector0;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -533,12 +557,12 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       getBasisVector1                                                        #
+    //#       getBasisVector1()                                                      #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_getBasisVector1_R_PxVec3_C_PxQuat(physx::PxQuat self){
-        auto retVal = self.getBasisVector1();
-        return retVal;
+    ES PxVec3POD W_getBasisVector1_R_PxVec3_C_PxQuat(physx::PxQuat self){
+        auto retVal = self.getBasisVector1;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -552,12 +576,12 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       getBasisVector2                                                        #
+    //#       getBasisVector2()                                                      #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_getBasisVector2_R_PxVec3_C_PxQuat(physx::PxQuat self){
-        auto retVal = self.getBasisVector2();
-        return retVal;
+    ES PxVec3POD W_getBasisVector2_R_PxVec3_C_PxQuat(physx::PxQuat self){
+        auto retVal = self.getBasisVector2;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -571,13 +595,13 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       rotate                                                                 #
+    //#       rotate(PxVec3Ptr v)                                                    #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_rotate_R_PxVec3_P_PxVec3_C_PxQuat(physx::PxQuat self, physx::PxVec3 v){
+    ES PxVec3POD W_rotate_R_PxVec3_P_PxVec3_C_PxQuat(physx::PxQuat self, physx::PxVec3 v){
         auto nat_in_v = (v);
-        auto retVal = self.rotate(nat_in_v);
-        return retVal;
+        auto retVal = self.rotate;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -592,13 +616,13 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       rotateInv                                                              #
+    //#       rotateInv(PxVec3Ptr v)                                                 #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxVec3 W_rotateInv_R_PxVec3_P_PxVec3_C_PxQuat(physx::PxQuat self, physx::PxVec3 v){
+    ES PxVec3POD W_rotateInv_R_PxVec3_P_PxVec3_C_PxQuat(physx::PxQuat self, physx::PxVec3 v){
         auto nat_in_v = (v);
-        auto retVal = self.rotateInv(nat_in_v);
-        return retVal;
+        auto retVal = self.rotateInv;
+        return *(PxVec3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -613,48 +637,48 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       operator=                                                              #
+    //#       operator=(PxQuatPtr p)                                                 #
     //================================================================================
     //Skipped unsupported operator Equal.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator*=                                                             #
+    //#       operator*=(PxQuatPtr q)                                                #
     //================================================================================
     //Skipped unsupported operator StarEqual.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator+=                                                             #
+    //#       operator+=(PxQuatPtr q)                                                #
     //================================================================================
     //Skipped unsupported operator PlusEqual.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator-=                                                             #
+    //#       operator-=(PxQuatPtr q)                                                #
     //================================================================================
     //Skipped unsupported operator MinusEqual.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator*=                                                             #
+    //#       operator*=(float s)                                                    #
     //================================================================================
     //Skipped unsupported operator StarEqual.
     //Note that operators like +=, *=, /=, etc are available in C# on traditional overloads.
     
     
     //================================================================================
-    //#       operator*                                                              #
+    //#       operator*(PxQuatPtr q)                                                 #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxQuat W_OP_Star_R_PxQuat_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat q){
+    ES PxQuatPOD W_OP_Star_R_PxQuat_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat q){
         auto nat_in_q = (q);
-        auto retVal = self.operator*(nat_in_q);
-        return retVal;
+        auto retVal = self.operator*;
+        return *(PxQuatPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -669,13 +693,13 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       operator+                                                              #
+    //#       operator+(PxQuatPtr q)                                                 #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxQuat W_OP_Plus_R_PxQuat_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat q){
+    ES PxQuatPOD W_OP_Plus_R_PxQuat_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat q){
         auto nat_in_q = (q);
-        auto retVal = self.operator+(nat_in_q);
-        return retVal;
+        auto retVal = self.operator+;
+        return *(PxQuatPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -690,12 +714,12 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       operator-                                                              #
+    //#       operator-()                                                            #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxQuat W_OP_Minus_R_PxQuat_C_PxQuat(physx::PxQuat self){
-        auto retVal = self.operator-();
-        return retVal;
+    ES PxQuatPOD W_OP_Minus_R_PxQuat_C_PxQuat(physx::PxQuat self){
+        auto retVal = self.operator-;
+        return *(PxQuatPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -709,13 +733,13 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       operator-                                                              #
+    //#       operator-(PxQuatPtr q)                                                 #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxQuat W_OP_Minus_R_PxQuat_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat q){
+    ES PxQuatPOD W_OP_Minus_R_PxQuat_P_PxQuat_C_PxQuat(physx::PxQuat self, physx::PxQuat q){
         auto nat_in_q = (q);
-        auto retVal = self.operator-(nat_in_q);
-        return retVal;
+        auto retVal = self.operator-;
+        return *(PxQuatPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -730,13 +754,13 @@ public unsafe partial struct PxQuat : IPxQuat { // blittable
     
     
     //================================================================================
-    //#       operator*                                                              #
+    //#       operator*(float r)                                                     #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxQuat W_OP_Star_R_PxQuat_P_float_C_PxQuat(physx::PxQuat self, float r){
+    ES PxQuatPOD W_OP_Star_R_PxQuat_P_float_C_PxQuat(physx::PxQuat self, float r){
         auto nat_in_r = (r);
-        auto retVal = self.operator*(nat_in_r);
-        return retVal;
+        auto retVal = self.operator*;
+        return *(PxQuatPOD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]

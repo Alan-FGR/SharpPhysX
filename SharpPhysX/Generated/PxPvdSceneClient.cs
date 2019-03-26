@@ -11,14 +11,15 @@ public enum PxPvdSceneFlag : int {
 }
 #endif //enum
 
-#if !NATIVE
-public partial struct PxPvdSceneClient {
+#if !NATIVE //functions holder
+public partial struct PxPvdSceneClientPtr {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxPvdSceneFlag a, PxPvdSceneFlag b)                          #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPvdSceneFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxPvdSceneFlag::Enum, unsigned char> -> PxFlags_PxPvdSceneFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxPvdSceneFlag_byte_P_PxPvdSceneFlag_P_PxPvdSceneFlag(physx::PxPvdSceneFlag::Enum a, physx::PxPvdSceneFlag::Enum b){
@@ -41,9 +42,10 @@ public static UNPARSED_TYPE operator|(PxPvdSceneFlag a, PxPvdSceneFlag b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxPvdSceneFlag a, PxPvdSceneFlag b)                          #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPvdSceneFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxPvdSceneFlag::Enum, unsigned char> -> PxFlags_PxPvdSceneFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxPvdSceneFlag_byte_P_PxPvdSceneFlag_P_PxPvdSceneFlag(physx::PxPvdSceneFlag::Enum a, physx::PxPvdSceneFlag::Enum b){
@@ -66,9 +68,10 @@ public static UNPARSED_TYPE operator&(PxPvdSceneFlag a, PxPvdSceneFlag b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxPvdSceneFlag a)                                            #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxPvdSceneFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxPvdSceneFlag::Enum, unsigned char> -> PxFlags_PxPvdSceneFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxPvdSceneFlag_byte_P_PxPvdSceneFlag(physx::PxPvdSceneFlag::Enum a){
@@ -87,8 +90,8 @@ public static UNPARSED_TYPE operator~(PxPvdSceneFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxPvdSceneClient
+#if !NATIVE //end functions holder
+} //end PxPvdSceneClientPtr
 #endif
 
 
@@ -98,9 +101,13 @@ public unsafe interface IPvdDebugPointPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PvdDebugPointPtr : IPvdDebugPointPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PvdDebugPointPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -117,9 +124,13 @@ public unsafe interface IPvdDebugLinePtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PvdDebugLinePtr : IPvdDebugLinePtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PvdDebugLinePtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -136,9 +147,13 @@ public unsafe interface IPvdDebugTrianglePtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PvdDebugTrianglePtr : IPvdDebugTrianglePtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PvdDebugTrianglePtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -155,9 +170,13 @@ public unsafe interface IPvdDebugTextPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PvdDebugTextPtr : IPvdDebugTextPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PvdDebugTextPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -174,9 +193,13 @@ public unsafe interface IPvdClientPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PvdClientPtr : IPvdClientPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PvdClientPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy

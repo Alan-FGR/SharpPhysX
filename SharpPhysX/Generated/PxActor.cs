@@ -22,14 +22,15 @@ public enum PxActorFlag : int {
 }
 #endif //enum
 
-#if !NATIVE
-public partial struct PxActor {
+#if !NATIVE //functions holder
+public partial struct PxActorPtr {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxActorFlag a, PxActorFlag b)                                #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxActorFlag::Enum, unsigned char> -> PxFlags_PxActorFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxActorFlag_byte_P_PxActorFlag_P_PxActorFlag(physx::PxActorFlag::Enum a, physx::PxActorFlag::Enum b){
@@ -52,9 +53,10 @@ public static UNPARSED_TYPE operator|(PxActorFlag a, PxActorFlag b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxActorFlag a, PxActorFlag b)                                #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxActorFlag::Enum, unsigned char> -> PxFlags_PxActorFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxActorFlag_byte_P_PxActorFlag_P_PxActorFlag(physx::PxActorFlag::Enum a, physx::PxActorFlag::Enum b){
@@ -77,9 +79,10 @@ public static UNPARSED_TYPE operator&(PxActorFlag a, PxActorFlag b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxActorFlag a)                                               #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxActorFlag::Enum, unsigned char>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxActorFlag::Enum, unsigned char> -> PxFlags_PxActorFlag_byte
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxActorFlag_byte_P_PxActorFlag(physx::PxActorFlag::Enum a){
@@ -98,8 +101,8 @@ public static UNPARSED_TYPE operator~(PxActorFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxActor
+#if !NATIVE //end functions holder
+} //end PxActorPtr
 #endif
 
 
@@ -109,9 +112,13 @@ public unsafe interface IPxArticulationLinkPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxArticulationLinkPtr : IPxArticulationLinkPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxArticulationLinkPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -139,19 +146,24 @@ public unsafe interface IPxActorPtr {
      void setOwnerClient(byte inClient);
      byte getOwnerClient();
     // PxAggregatePtr getAggregate();
-    // PxActor(/*NULLPARS*/);
-    // PxActor(/*NULLPARS*/);
+    // static PxActorPtr New(/*NULLPARS*/);
+    // static PxActorPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxActor(/*NULLPARS*/);
     // UNPARSED_TYPE isKindOf(/*NULLPARS*/);
-    // PxActor(/*NULLPARS*/);
+    // static PxActorPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxActorPtr lhs, /*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxActorPtrPOD{
+    void* userData;
+};
 #endif //struct start
 
 
@@ -191,17 +203,17 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     //public  void setBaseFlags( inFlags){((PxBasePtr)this).setBaseFlags(inFlags);}
     //public  UNPARSED_TYPE getBaseFlags(){return ((PxBasePtr)this).getBaseFlags();}
     public  bool isReleasable(){return ((PxBasePtr)this).isReleasable();}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxBase(/*NULLPARS*/){((PxBasePtr)this).~PxBase(/*NULLARGS*/);}
     //public  UNPARSED_TYPE typeMatch(/*NULLPARS*/){return ((PxBasePtr)this).typeMatch(/*NULLARGS*/);}
-    //public  PxBase(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
+    //public  static PxBasePtr New(/*NULLPARS*/){((PxBasePtr)this).PxBase(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxBasePtr lhs, /*NULLPARS*/){return ((PxBasePtr)this).operator=(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       release                                                                #
+    //#       release()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_release_R_void_C_PxActor(physx::PxActor* self){
@@ -218,7 +230,7 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     
     //================================================================================
-    //#       getType                                                                #
+    //#       getType()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxActorType::Enum W_getType_R_PxActorType_C_PxActor(physx::PxActor* self){
@@ -237,7 +249,7 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     
     //================================================================================
-    //#       getScene                                                               #
+    //#       getScene()                                                             #
     //================================================================================
     #if NATIVE //function start
     ES const physx::PxScene* W_getScene_R_PxScenePtr_C_PxActor(physx::PxActor* self){
@@ -256,7 +268,7 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     
     //================================================================================
-    //#       setName                                                                #
+    //#       setName(string name)                                                   #
     //================================================================================
     #if NATIVE //function start
     ES void W_setName_R_void_P_string_C_PxActor(physx::PxActor* self, const char* name){
@@ -275,7 +287,7 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     
     //================================================================================
-    //#       getName                                                                #
+    //#       getName()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES const char* W_getName_R_string_C_PxActor(physx::PxActor* self){
@@ -294,13 +306,13 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     
     //================================================================================
-    //#       getWorldBounds                                                         #
+    //#       getWorldBounds(float inflation)                                        #
     //================================================================================
     #if NATIVE //function start
-    ES physx::PxBounds3 W_getWorldBounds_R_PxBounds3_P_float_C_PxActor(physx::PxActor* self, float inflation){
+    ES PxBounds3POD W_getWorldBounds_R_PxBounds3_P_float_C_PxActor(physx::PxActor* self, float inflation){
         auto nat_in_inflation = (inflation);
-        auto retVal = self->getWorldBounds(nat_in_inflation);
-        return retVal;
+        auto retVal = self->getWorldBounds;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -316,9 +328,9 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
     #if NATIVE //function start
-    ES physx::PxBounds3 W_getWorldBounds_R_PxBounds3_OL1_C_PxActor(physx::PxActor* self){
-        auto retVal = self->getWorldBounds();
-        return retVal;
+    ES PxBounds3POD W_getWorldBounds_R_PxBounds3_OL1_C_PxActor(physx::PxActor* self){
+        auto retVal = self->getWorldBounds;
+        return *(PxBounds3POD*)&retVal;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
@@ -333,7 +345,7 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     
     //================================================================================
-    //#       setActorFlag                                                           #
+    //#       setActorFlag(PxActorFlag flag, bool value)                             #
     //================================================================================
     #if NATIVE //function start
     ES void W_setActorFlag_R_void_P_PxActorFlag_P_bool_C_PxActor(physx::PxActor* self, physx::PxActorFlag::Enum flag, bool value){
@@ -354,7 +366,7 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     
     //================================================================================
-    //#       setActorFlags                                                          #
+    //#       setActorFlags(Enum, byte> inFlags)                                     #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter type physx::PxActorFlags
     // NATIVE SIG: void			setActorFlags( PxActorFlags inFlags ) = 0
@@ -375,9 +387,9 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     
     //================================================================================
-    //#       getActorFlags                                                          #
+    //#       getActorFlags()                                                        #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxActorFlags
+    /* ERRORS OCCURED: unhandled return type: physx::PxActorFlags -> Enum, byte>
     // NATIVE SIG: PxActorFlags	getActorFlags()	const = 0
     #if NATIVE //function start
     ES const UNPARSED_TYPE W_getActorFlags_R_Enum, byte>_C_PxActor(physx::PxActor* self){
@@ -396,7 +408,7 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     
     //================================================================================
-    //#       setDominanceGroup                                                      #
+    //#       setDominanceGroup(byte dominanceGroup)                                 #
     //================================================================================
     #if NATIVE //function start
     ES void W_setDominanceGroup_R_void_P_byte_C_PxActor(physx::PxActor* self, physx::PxDominanceGroup dominanceGroup){
@@ -415,7 +427,7 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     
     //================================================================================
-    //#       getDominanceGroup                                                      #
+    //#       getDominanceGroup()                                                    #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxDominanceGroup W_getDominanceGroup_R_byte_C_PxActor(physx::PxActor* self){
@@ -434,7 +446,7 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     
     //================================================================================
-    //#       setOwnerClient                                                         #
+    //#       setOwnerClient(byte inClient)                                          #
     //================================================================================
     #if NATIVE //function start
     ES void W_setOwnerClient_R_void_P_byte_C_PxActor(physx::PxActor* self, physx::PxClientID inClient){
@@ -453,7 +465,7 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     
     //================================================================================
-    //#       getOwnerClient                                                         #
+    //#       getOwnerClient()                                                       #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxClientID W_getOwnerClient_R_byte_C_PxActor(physx::PxActor* self){
@@ -472,7 +484,7 @@ public unsafe partial struct PxActorPtr : IPxBasePtr, IPxActorPtr { // pointer
     
     
     //================================================================================
-    //#       getAggregate                                                           #
+    //#       getAggregate()                                                         #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxAggregate*	getAggregate()	const = 0

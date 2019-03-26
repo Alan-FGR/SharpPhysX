@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 #endif //C# includes
 
 
-#if !NATIVE
-public partial struct PxFoundation {
+#if !NATIVE //functions holder
+public partial struct PxFoundationPtr {
 #endif
 
 //================================================================================
-//#       PxCreateFoundation                                                     #
+//#       PxCreateFoundation(uint version, PxAllocatorCallbackPtr allocator, PxErrorCallbackPtr errorCallback) #
 //================================================================================
 /* ERRORS OCCURED: Forbidden parameter type: PxAllocatorCallbackPtr
 Forbidden parameter type: PxErrorCallbackPtr
@@ -38,11 +38,12 @@ public static PxFoundationPtr PxCreateFoundation(uint version, PxAllocatorCallba
 
 
 //================================================================================
-//#       PxGetFoundation                                                        #
+//#       PxGetFoundation()                                                      #
 //================================================================================
 #if NATIVE //function start
 ES physx::PxFoundation* W_PxGetFoundation_R_PxFoundationPtr(){
     auto retVal = &PxGetFoundation();
+//TODO check if it's returning addr of local
     return retVal;
 }
 #else //end C wrapper, start C#
@@ -57,7 +58,7 @@ public static PxFoundationPtr PxGetFoundation(){
 
 
 //================================================================================
-//#       PxGetProfilerCallback                                                  #
+//#       PxGetProfilerCallback()                                                #
 //================================================================================
 /* ERRORS OCCURED: Forbidden return type
 // NATIVE SIG: physx::PxProfilerCallback* PX_CALL_CONV PxGetProfilerCallback()
@@ -78,7 +79,7 @@ public static PxProfilerCallbackPtr PxGetProfilerCallback(){
 
 
 //================================================================================
-//#       PxSetProfilerCallback                                                  #
+//#       PxSetProfilerCallback(PxProfilerCallbackPtr profiler)                  #
 //================================================================================
 /* ERRORS OCCURED: Forbidden parameter type: PxProfilerCallbackPtr
 // NATIVE SIG: void PX_CALL_CONV PxSetProfilerCallback(physx::PxProfilerCallback* profiler)
@@ -97,8 +98,8 @@ public static void PxSetProfilerCallback(PxProfilerCallbackPtr profiler){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxFoundation
+#if !NATIVE //end functions holder
+} //end PxFoundationPtr
 #endif
 
 
@@ -114,22 +115,26 @@ public unsafe interface IPxFoundationPtr {
      void setReportAllocationNames(bool value);
     // UNPARSED_TYPE ~PxFoundation(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxFoundationPtr lhs, /*NULLPARS*/);
-    // PxFoundation(/*NULLPARS*/);
-    // PxFoundation(/*NULLPARS*/);
+    // static PxFoundationPtr New(/*NULLPARS*/);
+    // static PxFoundationPtr New(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxFoundationPtr : IPxFoundationPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxFoundationPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
     // Hierarchy: PxFoundationPtr
     #endif //hierarchy
     //================================================================================
-    //#       release                                                                #
+    //#       release()                                                              #
     //================================================================================
     #if NATIVE //function start
     ES void W_release_R_void_C_PxFoundation(physx::PxFoundation* self){
@@ -146,13 +151,14 @@ public unsafe partial struct PxFoundationPtr : IPxFoundationPtr { // pointer
     
     
     //================================================================================
-    //#       getErrorCallback                                                       #
+    //#       getErrorCallback()                                                     #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxErrorCallback& getErrorCallback() = 0
     #if NATIVE //function start
     ES physx::PxErrorCallback* W_getErrorCallback_R_PxErrorCallbackPtr_C_PxFoundation(physx::PxFoundation* self){
         auto retVal = &self->getErrorCallback();
+    //TODO check if it's returning addr of local
         return retVal;
     }
     #else //end C wrapper, start C#
@@ -167,7 +173,7 @@ public unsafe partial struct PxFoundationPtr : IPxFoundationPtr { // pointer
     
     
     //================================================================================
-    //#       setErrorLevel                                                          #
+    //#       setErrorLevel(PxErrorCode mask)                                        #
     //================================================================================
     #if NATIVE //function start
     ES void W_setErrorLevel_R_void_P_PxErrorCode_C_PxFoundation(physx::PxFoundation* self, physx::PxErrorCode::Enum mask){
@@ -202,7 +208,7 @@ public unsafe partial struct PxFoundationPtr : IPxFoundationPtr { // pointer
     
     
     //================================================================================
-    //#       getErrorLevel                                                          #
+    //#       getErrorLevel()                                                        #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxErrorCode::Enum W_getErrorLevel_R_PxErrorCode_C_PxFoundation(physx::PxFoundation* self){
@@ -221,13 +227,14 @@ public unsafe partial struct PxFoundationPtr : IPxFoundationPtr { // pointer
     
     
     //================================================================================
-    //#       getAllocatorCallback                                                   #
+    //#       getAllocatorCallback()                                                 #
     //================================================================================
     /* ERRORS OCCURED: Forbidden return type
     // NATIVE SIG: PxAllocatorCallback& getAllocatorCallback() = 0
     #if NATIVE //function start
     ES physx::PxAllocatorCallback* W_getAllocatorCallback_R_PxAllocatorCallbackPtr_C_PxFoundation(physx::PxFoundation* self){
         auto retVal = &self->getAllocatorCallback();
+    //TODO check if it's returning addr of local
         return retVal;
     }
     #else //end C wrapper, start C#
@@ -242,7 +249,7 @@ public unsafe partial struct PxFoundationPtr : IPxFoundationPtr { // pointer
     
     
     //================================================================================
-    //#       getReportAllocationNames                                               #
+    //#       getReportAllocationNames()                                             #
     //================================================================================
     #if NATIVE //function start
     ES bool W_getReportAllocationNames_R_bool_C_PxFoundation(physx::PxFoundation* self){
@@ -261,7 +268,7 @@ public unsafe partial struct PxFoundationPtr : IPxFoundationPtr { // pointer
     
     
     //================================================================================
-    //#       setReportAllocationNames                                               #
+    //#       setReportAllocationNames(bool value)                                   #
     //================================================================================
     #if NATIVE //function start
     ES void W_setReportAllocationNames_R_void_P_bool_C_PxFoundation(physx::PxFoundation* self, bool value){

@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 #endif //C# includes
 
 
-#if !NATIVE
-public partial struct PxDefaultAllocator {
+#if !NATIVE //functions holder
+public partial struct PxDefaultAllocatorPtr {
 #endif
 
 //================================================================================
-//#       platformAlignedAlloc                                                   #
+//#       platformAlignedAlloc(ulong size)                                       #
 //================================================================================
 #if NATIVE //function start
 ES void* W_platformAlignedAlloc_R_IntPtr_P_ulong(::size_t size){
@@ -30,7 +30,7 @@ public static IntPtr platformAlignedAlloc(ulong size){
 
 
 //================================================================================
-//#       platformAlignedFree                                                    #
+//#       platformAlignedFree(IntPtr ptr)                                        #
 //================================================================================
 #if NATIVE //function start
 ES void W_platformAlignedFree_R_void_P_IntPtr(void* ptr){
@@ -47,8 +47,8 @@ public static void platformAlignedFree(IntPtr ptr){
 }
 #endif //function end
 
-#if !NATIVE
-} // End PxDefaultAllocator
+#if !NATIVE //end functions holder
+} //end PxDefaultAllocatorPtr
 #endif
 
 
@@ -56,19 +56,23 @@ public static void platformAlignedFree(IntPtr ptr){
 public unsafe interface IPxDefaultAllocatorPtr {
     // IntPtr allocate(ulong size, string , string , int );
      void deallocate(IntPtr ptr);
-    // PxDefaultAllocator(/*NULLPARS*/);
-    // PxDefaultAllocator(/*NULLPARS*/);
+    // static PxDefaultAllocatorPtr New(/*NULLPARS*/);
+    // static PxDefaultAllocatorPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxDefaultAllocatorPtr lhs, /*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxDefaultAllocatorPtr lhs, /*NULLPARS*/);
     // UNPARSED_TYPE ~PxDefaultAllocator(/*NULLPARS*/);
-    // PxDefaultAllocator(/*NULLPARS*/);
+    // static PxDefaultAllocatorPtr New(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxDefaultAllocatorPtr : IPxAllocatorCallbackPtr, IPxDefaultAllocatorPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxDefaultAllocatorPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -83,13 +87,13 @@ public unsafe partial struct PxDefaultAllocatorPtr : IPxAllocatorCallbackPtr, IP
     // --- PxAllocatorCallbackPtr
     //public  void ~PxAllocatorCallback(){((PxAllocatorCallbackPtr)this).~PxAllocatorCallback();}
     //public static UNPARSED_TYPE operator=(PxAllocatorCallbackPtr lhs, /*NULLPARS*/){return ((PxAllocatorCallbackPtr)this).operator=(/*NULLARGS*/);}
-    //public  PxAllocatorCallback(/*NULLPARS*/){((PxAllocatorCallbackPtr)this).PxAllocatorCallback(/*NULLARGS*/);}
-    //public  PxAllocatorCallback(/*NULLPARS*/){((PxAllocatorCallbackPtr)this).PxAllocatorCallback(/*NULLARGS*/);}
+    //public  static PxAllocatorCallbackPtr New(/*NULLPARS*/){((PxAllocatorCallbackPtr)this).PxAllocatorCallback(/*NULLARGS*/);}
+    //public  static PxAllocatorCallbackPtr New(/*NULLPARS*/){((PxAllocatorCallbackPtr)this).PxAllocatorCallback(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       allocate                                                               #
+    //#       allocate(ulong size, string , string , int )                           #
     //================================================================================
     /* ERRORS OCCURED: Invalid parameter name (empty)
     Invalid parameter name (empty)
@@ -125,7 +129,7 @@ public unsafe partial struct PxDefaultAllocatorPtr : IPxAllocatorCallbackPtr, IP
     
     
     //================================================================================
-    //#       deallocate                                                             #
+    //#       deallocate(IntPtr ptr)                                                 #
     //================================================================================
     #if NATIVE //function start
     ES void W_deallocate_R_void_P_IntPtr_C_PxDefaultAllocator(physx::PxDefaultAllocator* self, void* ptr){

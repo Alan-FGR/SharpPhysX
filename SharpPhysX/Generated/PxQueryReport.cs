@@ -20,14 +20,15 @@ public enum PxHitFlag : int {
 }
 #endif //enum
 
-#if !NATIVE
+#if !NATIVE //functions holder
 public partial struct PxQueryReport {
 #endif
 
 //================================================================================
-//#       operator|                                                              #
+//#       operator|(PxHitFlag a, PxHitFlag b)                                    #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxHitFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxHitFlag::Enum, unsigned short> -> PxFlags_PxHitFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Pipe_R_PxFlags_PxHitFlag_ushort_P_PxHitFlag_P_PxHitFlag(physx::PxHitFlag::Enum a, physx::PxHitFlag::Enum b){
@@ -50,9 +51,10 @@ public static UNPARSED_TYPE operator|(PxHitFlag a, PxHitFlag b){
 
 
 //================================================================================
-//#       operator&                                                              #
+//#       operator&(PxHitFlag a, PxHitFlag b)                                    #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxHitFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxHitFlag::Enum, unsigned short> -> PxFlags_PxHitFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Amp_R_PxFlags_PxHitFlag_ushort_P_PxHitFlag_P_PxHitFlag(physx::PxHitFlag::Enum a, physx::PxHitFlag::Enum b){
@@ -75,9 +77,10 @@ public static UNPARSED_TYPE operator&(PxHitFlag a, PxHitFlag b){
 
 
 //================================================================================
-//#       operator~                                                              #
+//#       operator~(PxHitFlag a)                                                 #
 //================================================================================
-/* ERRORS OCCURED: unhandled return type: physx::PxFlags<physx::PxHitFlag::Enum, unsigned short>
+/* ERRORS OCCURED: Operator shouldn't allocate (op return ptr), TODO provide alternative func
+unhandled return type: physx::PxFlags<physx::PxHitFlag::Enum, unsigned short> -> PxFlags_PxHitFlag_ushort
 // NATIVE SIG: 
 #if NATIVE //function start
 ES UNPARSED_TYPE W_OP_Tilde_R_PxFlags_PxHitFlag_ushort_P_PxHitFlag(physx::PxHitFlag::Enum a){
@@ -96,14 +99,14 @@ public static UNPARSED_TYPE operator~(PxHitFlag a){
 }
 #endif //function end*/
 
-#if !NATIVE
-} // End PxQueryReport
+#if !NATIVE //end functions holder
+} //end PxQueryReport
 #endif
 
 
 #if !NATIVE //interface
 public unsafe interface IPxHitCallbackPtr {
-    // PxHitCallback<HitType>( aTouches, uint aMaxNbTouches);
+    // static PxHitCallbackPtr New( aTouches, uint aMaxNbTouches);
     // bool processTouches( buffer, uint nbHits);
      void finalizeQuery();
     // void ~PxHitCallback<HitType>();
@@ -112,9 +115,18 @@ public unsafe interface IPxHitCallbackPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxHitCallbackPtr : IPxHitCallbackPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxHitCallbackPtrPOD{
+    HitType block;
+    bool hasBlock;
+    HitType* touches;
+    physx::PxU32 maxNbTouches;
+    physx::PxU32 nbTouches;
+};
 #endif //struct start
 
 
@@ -178,33 +190,34 @@ public unsafe partial struct PxHitCallbackPtr : IPxHitCallbackPtr { // pointer
     // Hierarchy: PxHitCallbackPtr
     #endif //hierarchy
     //================================================================================
-    //#       PxHitCallback<HitType>                                                 #
+    //#       PxHitCallback<HitType>(HitType aTouches, uint aMaxNbTouches)           #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxHitCallback
-    Unresolved parameter pointee HitType
+    /* ERRORS OCCURED: Unresolved parameter pointee HitType
     // NATIVE SIG: PxHitCallback(HitType* aTouches, PxU32 aMaxNbTouches)
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxHitCallback<HitType>_R_PxHitCallbackPtr_P__P_uint_C_PxHitCallback_ctor( aTouches, physx::PxU32 aMaxNbTouches){
+    ES PxHitCallbackPtrPOD W_PxHitCallback<HitType>_R_PxHitCallbackPtr_P__P_uint_C_PxHitCallback_ctor( aTouches, physx::PxU32 aMaxNbTouches){
         auto nat_in_aTouches = (aTouches);
         auto nat_in_aMaxNbTouches = (aMaxNbTouches);
-        return PxHitCallback<HitType>(nat_in_aTouches, nat_in_aMaxNbTouches);
+        auto val = new PxHitCallback<HitType>();
+        return *(PxHitCallbackPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxHitCallback<HitType>_R_PxHitCallbackPtr_P__P_uint_C_PxHitCallback_ctor( aTouches, uint aMaxNbTouches);
+    static extern PxHitCallbackPtr W_PxHitCallback<HitType>_R_PxHitCallbackPtr_P__P_uint_C_PxHitCallback_ctor( aTouches, uint aMaxNbTouches);
     
-    public  PxHitCallback<HitType>( aTouches, uint aMaxNbTouches){
+    public  static PxHitCallbackPtr New( aTouches, uint aMaxNbTouches){
          pvk_in_aTouches = (aTouches);
         uint pvk_in_aMaxNbTouches = (aMaxNbTouches);
         var _new = W_PxHitCallback<HitType>_R_PxHitCallbackPtr_P__P_uint_C_PxHitCallback_ctor(pvk_in_aTouches, pvk_in_aMaxNbTouches);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxHitCallbackPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
     #endif //function end*/
     
     
     //================================================================================
-    //#       processTouches                                                         #
+    //#       processTouches(HitType buffer, uint nbHits)                            #
     //================================================================================
     /* ERRORS OCCURED: Unresolved parameter pointee HitType
     // NATIVE SIG: PxAgain processTouches(const HitType* buffer, PxU32 nbHits) = 0
@@ -229,7 +242,7 @@ public unsafe partial struct PxHitCallbackPtr : IPxHitCallbackPtr { // pointer
     
     
     //================================================================================
-    //#       finalizeQuery                                                          #
+    //#       finalizeQuery()                                                        #
     //================================================================================
     #if NATIVE //function start
     ES void W_finalizeQuery_R_void_C_PxHitCallback(physx::PxHitCallback* self){
@@ -246,7 +259,7 @@ public unsafe partial struct PxHitCallbackPtr : IPxHitCallbackPtr { // pointer
     
     
     //================================================================================
-    //#       ~PxHitCallback<HitType>                                                #
+    //#       ~PxHitCallback<HitType>()                                              #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual ~PxHitCallback()
@@ -265,7 +278,7 @@ public unsafe partial struct PxHitCallbackPtr : IPxHitCallbackPtr { // pointer
     
     
     //================================================================================
-    //#       hasAnyHits                                                             #
+    //#       hasAnyHits()                                                           #
     //================================================================================
     #if NATIVE //function start
     ES bool W_hasAnyHits_R_bool_C_PxHitCallback(physx::PxHitCallback* self){
@@ -290,19 +303,25 @@ public unsafe partial struct PxHitCallbackPtr : IPxHitCallbackPtr { // pointer
 
 #if !NATIVE //interface
 public unsafe interface IPxRaycastHitPtr {
-    // PxRaycastHit();
+    // static PxRaycastHitPtr New();
     //static UNPARSED_TYPE operator=(PxRaycastHitPtr lhs, /*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxRaycastHitPtr lhs, /*NULLPARS*/);
-    // PxRaycastHit(/*NULLPARS*/);
-    // PxRaycastHit(/*NULLPARS*/);
+    // static PxRaycastHitPtr New(/*NULLPARS*/);
+    // static PxRaycastHitPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxRaycastHit(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxRaycastHitPtr : IPxQueryHitPtr, IPxLocationHitPtr, IPxRaycastHitPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxRaycastHitPtrPOD{
+    physx::PxReal u;
+    physx::PxReal v;
+};
 #endif //struct start
 
 
@@ -352,18 +371,18 @@ public unsafe partial struct PxRaycastHitPtr : IPxQueryHitPtr, IPxLocationHitPtr
     // ### Piping
     
     // --- PxLocationHitPtr
-    //public  PxLocationHit(){((PxLocationHitPtr)this).PxLocationHit();}
+    public  static PxLocationHitPtr New(){((PxLocationHitPtr)this).PxLocationHit();}
     public  bool hadInitialOverlap(){return ((PxLocationHitPtr)this).hadInitialOverlap();}
-    //public  PxLocationHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxLocationHit(/*NULLARGS*/);}
-    //public  PxLocationHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxLocationHit(/*NULLARGS*/);}
+    //public  static PxLocationHitPtr New(/*NULLPARS*/){((PxLocationHitPtr)this).PxLocationHit(/*NULLARGS*/);}
+    //public  static PxLocationHitPtr New(/*NULLPARS*/){((PxLocationHitPtr)this).PxLocationHit(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxLocationHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxLocationHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxLocationHit(/*NULLPARS*/){((PxLocationHitPtr)this).~PxLocationHit(/*NULLARGS*/);}
     
     // --- PxQueryHitPtr
-    //public  PxQueryHit(){((PxLocationHitPtr)this).PxQueryHit();}
-    //public  PxQueryHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxQueryHit(/*NULLARGS*/);}
-    //public  PxQueryHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    public  static PxQueryHitPtr New(){((PxLocationHitPtr)this).PxQueryHit();}
+    //public  static PxQueryHitPtr New(/*NULLPARS*/){((PxLocationHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    //public  static PxQueryHitPtr New(/*NULLPARS*/){((PxLocationHitPtr)this).PxQueryHit(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxQueryHit(/*NULLPARS*/){((PxLocationHitPtr)this).~PxQueryHit(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
@@ -371,12 +390,24 @@ public unsafe partial struct PxRaycastHitPtr : IPxQueryHitPtr, IPxLocationHitPtr
     #endif //piping
     
     //================================================================================
-    //#       PxRaycastHit                                                           #
+    //#       PxRaycastHit()                                                         #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxRaycastHit
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxRaycastHitPtrPOD W_PxRaycastHit_R_PxRaycastHitPtr_C_PxRaycastHit_ctor(){
+        auto val = new PxRaycastHit();
+        return *(PxRaycastHitPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxRaycastHitPtr W_PxRaycastHit_R_PxRaycastHitPtr_C_PxRaycastHit_ctor();
+    
+    public  static PxRaycastHitPtr New(){
+        var _new = W_PxRaycastHit_R_PxRaycastHitPtr_C_PxRaycastHit_ctor();
+        PxRaycastHitPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     //Skipped generated implicit entry: operator=
@@ -396,10 +427,10 @@ public unsafe partial struct PxRaycastHitPtr : IPxQueryHitPtr, IPxLocationHitPtr
 
 #if !NATIVE //interface
 public unsafe interface IPxLocationHitPtr {
-    // PxLocationHit();
+    // static PxLocationHitPtr New();
      bool hadInitialOverlap();
-    // PxLocationHit(/*NULLPARS*/);
-    // PxLocationHit(/*NULLPARS*/);
+    // static PxLocationHitPtr New(/*NULLPARS*/);
+    // static PxLocationHitPtr New(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxLocationHitPtr lhs, /*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxLocationHitPtr lhs, /*NULLPARS*/);
     // UNPARSED_TYPE ~PxLocationHit(/*NULLPARS*/);
@@ -407,9 +438,17 @@ public unsafe interface IPxLocationHitPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxLocationHitPtr : IPxActorShapePtr, IPxQueryHitPtr, IPxLocationHitPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxLocationHitPtrPOD{
+    physx::PxHitFlags flags;
+    physx::PxVec3 position;
+    physx::PxVec3 normal;
+    physx::PxF32 distance;
+};
 #endif //struct start
 
 
@@ -478,18 +517,18 @@ public unsafe partial struct PxLocationHitPtr : IPxActorShapePtr, IPxQueryHitPtr
     // ### Piping
     
     // --- PxQueryHitPtr
-    //public  PxQueryHit(){((PxQueryHitPtr)this).PxQueryHit();}
-    //public  PxQueryHit(/*NULLPARS*/){((PxQueryHitPtr)this).PxQueryHit(/*NULLARGS*/);}
-    //public  PxQueryHit(/*NULLPARS*/){((PxQueryHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    public  static PxQueryHitPtr New(){((PxQueryHitPtr)this).PxQueryHit();}
+    //public  static PxQueryHitPtr New(/*NULLPARS*/){((PxQueryHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    //public  static PxQueryHitPtr New(/*NULLPARS*/){((PxQueryHitPtr)this).PxQueryHit(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxQueryHit(/*NULLPARS*/){((PxQueryHitPtr)this).~PxQueryHit(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
     
     // --- PxActorShapePtr
-    //public  PxActorShape(){((PxQueryHitPtr)this).PxActorShape();}
-    //public  PxActorShape(PxRigidActorPtr a, PxShapePtr s){((PxQueryHitPtr)this).PxActorShape(a, s);}
-    //public  PxActorShape(/*NULLPARS*/){((PxQueryHitPtr)this).PxActorShape(/*NULLARGS*/);}
-    //public  PxActorShape(/*NULLPARS*/){((PxQueryHitPtr)this).PxActorShape(/*NULLARGS*/);}
+    public  static PxActorShapePtr New(){((PxQueryHitPtr)this).PxActorShape();}
+    public  static PxActorShapePtr New(PxRigidActorPtr a, PxShapePtr s){((PxQueryHitPtr)this).PxActorShape(a, s);}
+    //public  static PxActorShapePtr New(/*NULLPARS*/){((PxQueryHitPtr)this).PxActorShape(/*NULLARGS*/);}
+    //public  static PxActorShapePtr New(/*NULLPARS*/){((PxQueryHitPtr)this).PxActorShape(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxActorShape(/*NULLPARS*/){((PxQueryHitPtr)this).~PxActorShape(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
@@ -497,16 +536,28 @@ public unsafe partial struct PxLocationHitPtr : IPxActorShapePtr, IPxQueryHitPtr
     #endif //piping
     
     //================================================================================
-    //#       PxLocationHit                                                          #
+    //#       PxLocationHit()                                                        #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxLocationHit
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxLocationHitPtrPOD W_PxLocationHit_R_PxLocationHitPtr_C_PxLocationHit_ctor(){
+        auto val = new PxLocationHit();
+        return *(PxLocationHitPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxLocationHitPtr W_PxLocationHit_R_PxLocationHitPtr_C_PxLocationHit_ctor();
+    
+    public  static PxLocationHitPtr New(){
+        var _new = W_PxLocationHit_R_PxLocationHitPtr_C_PxLocationHit_ctor();
+        PxLocationHitPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     //================================================================================
-    //#       hadInitialOverlap                                                      #
+    //#       hadInitialOverlap()                                                    #
     //================================================================================
     #if NATIVE //function start
     ES bool W_hadInitialOverlap_R_bool_C_PxLocationHit(physx::PxLocationHit* self){
@@ -541,9 +592,9 @@ public unsafe partial struct PxLocationHitPtr : IPxActorShapePtr, IPxQueryHitPtr
 
 #if !NATIVE //interface
 public unsafe interface IPxQueryHitPtr {
-    // PxQueryHit();
-    // PxQueryHit(/*NULLPARS*/);
-    // PxQueryHit(/*NULLPARS*/);
+    // static PxQueryHitPtr New();
+    // static PxQueryHitPtr New(/*NULLPARS*/);
+    // static PxQueryHitPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxQueryHit(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/);
@@ -551,9 +602,14 @@ public unsafe interface IPxQueryHitPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxQueryHitPtr : IPxActorShapePtr, IPxQueryHitPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxQueryHitPtrPOD{
+    physx::PxU32 faceIndex;
+};
 #endif //struct start
 
 
@@ -585,10 +641,10 @@ public unsafe partial struct PxQueryHitPtr : IPxActorShapePtr, IPxQueryHitPtr { 
     // ### Piping
     
     // --- PxActorShapePtr
-    //public  PxActorShape(){((PxActorShapePtr)this).PxActorShape();}
-    //public  PxActorShape(PxRigidActorPtr a, PxShapePtr s){((PxActorShapePtr)this).PxActorShape(a, s);}
-    //public  PxActorShape(/*NULLPARS*/){((PxActorShapePtr)this).PxActorShape(/*NULLARGS*/);}
-    //public  PxActorShape(/*NULLPARS*/){((PxActorShapePtr)this).PxActorShape(/*NULLARGS*/);}
+    public  static PxActorShapePtr New(){((PxActorShapePtr)this).PxActorShape();}
+    public  static PxActorShapePtr New(PxRigidActorPtr a, PxShapePtr s){((PxActorShapePtr)this).PxActorShape(a, s);}
+    //public  static PxActorShapePtr New(/*NULLPARS*/){((PxActorShapePtr)this).PxActorShape(/*NULLARGS*/);}
+    //public  static PxActorShapePtr New(/*NULLPARS*/){((PxActorShapePtr)this).PxActorShape(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxActorShape(/*NULLPARS*/){((PxActorShapePtr)this).~PxActorShape(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/){return ((PxActorShapePtr)this).operator=(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/){return ((PxActorShapePtr)this).operator=(/*NULLARGS*/);}
@@ -596,12 +652,24 @@ public unsafe partial struct PxQueryHitPtr : IPxActorShapePtr, IPxQueryHitPtr { 
     #endif //piping
     
     //================================================================================
-    //#       PxQueryHit                                                             #
+    //#       PxQueryHit()                                                           #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxQueryHit
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxQueryHitPtrPOD W_PxQueryHit_R_PxQueryHitPtr_C_PxQueryHit_ctor(){
+        auto val = new PxQueryHit();
+        return *(PxQueryHitPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxQueryHitPtr W_PxQueryHit_R_PxQueryHitPtr_C_PxQueryHit_ctor();
+    
+    public  static PxQueryHitPtr New(){
+        var _new = W_PxQueryHit_R_PxQueryHitPtr_C_PxQueryHit_ctor();
+        PxQueryHitPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     //Skipped generated implicit entry: PxQueryHit
@@ -621,10 +689,10 @@ public unsafe partial struct PxQueryHitPtr : IPxActorShapePtr, IPxQueryHitPtr { 
 
 #if !NATIVE //interface
 public unsafe interface IPxActorShapePtr {
-    // PxActorShape();
-    // PxActorShape(PxRigidActorPtr a, PxShapePtr s);
-    // PxActorShape(/*NULLPARS*/);
-    // PxActorShape(/*NULLPARS*/);
+    // static PxActorShapePtr New();
+    // static PxActorShapePtr New(PxRigidActorPtr a, PxShapePtr s);
+    // static PxActorShapePtr New(/*NULLPARS*/);
+    // static PxActorShapePtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxActorShape(/*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/);
@@ -632,9 +700,15 @@ public unsafe interface IPxActorShapePtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxActorShapePtr : IPxActorShapePtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxActorShapePtrPOD{
+    physx::PxRigidActor* actor;
+    physx::PxShape* shape;
+};
 #endif //struct start
 
 
@@ -676,37 +750,49 @@ public unsafe partial struct PxActorShapePtr : IPxActorShapePtr { // pointer
     // Hierarchy: PxActorShapePtr
     #endif //hierarchy
     //================================================================================
-    //#       PxActorShape                                                           #
+    //#       PxActorShape()                                                         #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxActorShape
-    Parameterless constructor not allowed
-    */
-    
-    
-    //================================================================================
-    //#       PxActorShape                                                           #
-    //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxActorShape
-    // NATIVE SIG: PX_INLINE PxActorShape(PxRigidActor* a, PxShape* s) : actor(a), shape(s) {}
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxActorShape_R_PxActorShapePtr_P_PxRigidActorPtr_P_PxShapePtr_C_PxActorShape_ctor(physx::PxRigidActor* a, physx::PxShape* s){
-        auto nat_in_a = (a);
-        auto nat_in_s = (s);
-        return PxActorShape(nat_in_a, nat_in_s);
+    ES PxActorShapePtrPOD W_PxActorShape_R_PxActorShapePtr_C_PxActorShape_ctor(){
+        auto val = new PxActorShape();
+        return *(PxActorShapePtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxActorShape_R_PxActorShapePtr_P_PxRigidActorPtr_P_PxShapePtr_C_PxActorShape_ctor(PxRigidActorPtr a, PxShapePtr s);
+    static extern PxActorShapePtr W_PxActorShape_R_PxActorShapePtr_C_PxActorShape_ctor();
     
-    public  PxActorShape(PxRigidActorPtr a, PxShapePtr s){
+    public  static PxActorShapePtr New(){
+        var _new = W_PxActorShape_R_PxActorShapePtr_C_PxActorShape_ctor();
+        PxActorShapePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
+    
+    
+    //================================================================================
+    //#       PxActorShape(PxRigidActorPtr a, PxShapePtr s)                          #
+    //================================================================================
+    #if NATIVE //function start
+    ES PxActorShapePtrPOD W_PxActorShape_R_PxActorShapePtr_P_PxRigidActorPtr_P_PxShapePtr_C_PxActorShape_ctor(physx::PxRigidActor* a, physx::PxShape* s){
+        auto nat_in_a = (a);
+        auto nat_in_s = (s);
+        auto val = new PxActorShape();
+        return *(PxActorShapePtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxActorShapePtr W_PxActorShape_R_PxActorShapePtr_P_PxRigidActorPtr_P_PxShapePtr_C_PxActorShape_ctor(PxRigidActorPtr a, PxShapePtr s);
+    
+    public  static PxActorShapePtr New(PxRigidActorPtr a, PxShapePtr s){
         PxRigidActorPtr pvk_in_a = (a);
         PxShapePtr pvk_in_s = (s);
         var _new = W_PxActorShape_R_PxActorShapePtr_P_PxRigidActorPtr_P_PxShapePtr_C_PxActorShape_ctor(pvk_in_a, pvk_in_s);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxActorShapePtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
-    #endif //function end*/
+    #endif //function end
     
     
     //Skipped generated implicit entry: PxActorShape
@@ -727,19 +813,24 @@ public unsafe partial struct PxActorShapePtr : IPxActorShapePtr { // pointer
 // Class physx::PxHitFlag is enum namespace
 #if !NATIVE //interface
 public unsafe interface IPxSweepHitPtr {
-    // PxSweepHit();
+    // static PxSweepHitPtr New();
     //static UNPARSED_TYPE operator=(PxSweepHitPtr lhs, /*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxSweepHitPtr lhs, /*NULLPARS*/);
-    // PxSweepHit(/*NULLPARS*/);
-    // PxSweepHit(/*NULLPARS*/);
+    // static PxSweepHitPtr New(/*NULLPARS*/);
+    // static PxSweepHitPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxSweepHit(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxSweepHitPtr : IPxQueryHitPtr, IPxLocationHitPtr, IPxSweepHitPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxSweepHitPtrPOD{
+    physx::PxU32 padTo16Bytes;
+};
 #endif //struct start
 
 
@@ -773,18 +864,18 @@ public unsafe partial struct PxSweepHitPtr : IPxQueryHitPtr, IPxLocationHitPtr, 
     // ### Piping
     
     // --- PxLocationHitPtr
-    //public  PxLocationHit(){((PxLocationHitPtr)this).PxLocationHit();}
+    public  static PxLocationHitPtr New(){((PxLocationHitPtr)this).PxLocationHit();}
     public  bool hadInitialOverlap(){return ((PxLocationHitPtr)this).hadInitialOverlap();}
-    //public  PxLocationHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxLocationHit(/*NULLARGS*/);}
-    //public  PxLocationHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxLocationHit(/*NULLARGS*/);}
+    //public  static PxLocationHitPtr New(/*NULLPARS*/){((PxLocationHitPtr)this).PxLocationHit(/*NULLARGS*/);}
+    //public  static PxLocationHitPtr New(/*NULLPARS*/){((PxLocationHitPtr)this).PxLocationHit(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxLocationHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxLocationHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxLocationHit(/*NULLPARS*/){((PxLocationHitPtr)this).~PxLocationHit(/*NULLARGS*/);}
     
     // --- PxQueryHitPtr
-    //public  PxQueryHit(){((PxLocationHitPtr)this).PxQueryHit();}
-    //public  PxQueryHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxQueryHit(/*NULLARGS*/);}
-    //public  PxQueryHit(/*NULLPARS*/){((PxLocationHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    public  static PxQueryHitPtr New(){((PxLocationHitPtr)this).PxQueryHit();}
+    //public  static PxQueryHitPtr New(/*NULLPARS*/){((PxLocationHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    //public  static PxQueryHitPtr New(/*NULLPARS*/){((PxLocationHitPtr)this).PxQueryHit(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxQueryHit(/*NULLPARS*/){((PxLocationHitPtr)this).~PxQueryHit(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxLocationHitPtr)this).operator=(/*NULLARGS*/);}
@@ -792,12 +883,24 @@ public unsafe partial struct PxSweepHitPtr : IPxQueryHitPtr, IPxLocationHitPtr, 
     #endif //piping
     
     //================================================================================
-    //#       PxSweepHit                                                             #
+    //#       PxSweepHit()                                                           #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxSweepHit
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxSweepHitPtrPOD W_PxSweepHit_R_PxSweepHitPtr_C_PxSweepHit_ctor(){
+        auto val = new PxSweepHit();
+        return *(PxSweepHitPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxSweepHitPtr W_PxSweepHit_R_PxSweepHitPtr_C_PxSweepHit_ctor();
+    
+    public  static PxSweepHitPtr New(){
+        var _new = W_PxSweepHit_R_PxSweepHitPtr_C_PxSweepHit_ctor();
+        PxSweepHitPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     //Skipped generated implicit entry: operator=
@@ -819,17 +922,22 @@ public unsafe partial struct PxSweepHitPtr : IPxQueryHitPtr, IPxLocationHitPtr, 
 public unsafe interface IPxOverlapHitPtr {
     //static UNPARSED_TYPE operator=(PxOverlapHitPtr lhs, /*NULLPARS*/);
     //static UNPARSED_TYPE operator=(PxOverlapHitPtr lhs, /*NULLPARS*/);
-    // PxOverlapHit(/*NULLPARS*/);
-    // PxOverlapHit(/*NULLPARS*/);
+    // static PxOverlapHitPtr New(/*NULLPARS*/);
+    // static PxOverlapHitPtr New(/*NULLPARS*/);
     // UNPARSED_TYPE ~PxOverlapHit(/*NULLPARS*/);
-    // PxOverlapHit(/*NULLPARS*/);
+    // static PxOverlapHitPtr New(/*NULLPARS*/);
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxOverlapHitPtr : IPxActorShapePtr, IPxQueryHitPtr, IPxOverlapHitPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxOverlapHitPtrPOD{
+    physx::PxU32 padTo16Bytes;
+};
 #endif //struct start
 
 
@@ -863,18 +971,18 @@ public unsafe partial struct PxOverlapHitPtr : IPxActorShapePtr, IPxQueryHitPtr,
     // ### Piping
     
     // --- PxQueryHitPtr
-    //public  PxQueryHit(){((PxQueryHitPtr)this).PxQueryHit();}
-    //public  PxQueryHit(/*NULLPARS*/){((PxQueryHitPtr)this).PxQueryHit(/*NULLARGS*/);}
-    //public  PxQueryHit(/*NULLPARS*/){((PxQueryHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    public  static PxQueryHitPtr New(){((PxQueryHitPtr)this).PxQueryHit();}
+    //public  static PxQueryHitPtr New(/*NULLPARS*/){((PxQueryHitPtr)this).PxQueryHit(/*NULLARGS*/);}
+    //public  static PxQueryHitPtr New(/*NULLPARS*/){((PxQueryHitPtr)this).PxQueryHit(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxQueryHit(/*NULLPARS*/){((PxQueryHitPtr)this).~PxQueryHit(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxQueryHitPtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
     
     // --- PxActorShapePtr
-    //public  PxActorShape(){((PxQueryHitPtr)this).PxActorShape();}
-    //public  PxActorShape(PxRigidActorPtr a, PxShapePtr s){((PxQueryHitPtr)this).PxActorShape(a, s);}
-    //public  PxActorShape(/*NULLPARS*/){((PxQueryHitPtr)this).PxActorShape(/*NULLARGS*/);}
-    //public  PxActorShape(/*NULLPARS*/){((PxQueryHitPtr)this).PxActorShape(/*NULLARGS*/);}
+    public  static PxActorShapePtr New(){((PxQueryHitPtr)this).PxActorShape();}
+    public  static PxActorShapePtr New(PxRigidActorPtr a, PxShapePtr s){((PxQueryHitPtr)this).PxActorShape(a, s);}
+    //public  static PxActorShapePtr New(/*NULLPARS*/){((PxQueryHitPtr)this).PxActorShape(/*NULLARGS*/);}
+    //public  static PxActorShapePtr New(/*NULLPARS*/){((PxQueryHitPtr)this).PxActorShape(/*NULLARGS*/);}
     //public  UNPARSED_TYPE ~PxActorShape(/*NULLPARS*/){((PxQueryHitPtr)this).~PxActorShape(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxActorShapePtr lhs, /*NULLPARS*/){return ((PxQueryHitPtr)this).operator=(/*NULLARGS*/);}
@@ -900,9 +1008,9 @@ public unsafe partial struct PxOverlapHitPtr : IPxActorShapePtr, IPxQueryHitPtr,
 
 #if !NATIVE //interface
 public unsafe interface IPxHitBufferPtr {
-    // PxHitBuffer<HitType>( aTouches);
-    // PxHitBuffer<HitType>();
-    // PxHitBuffer<HitType>( aTouches, uint aMaxNbTouches);
+    // static PxHitBufferPtr New( aTouches);
+    // static PxHitBufferPtr New();
+    // static PxHitBufferPtr New( aTouches, uint aMaxNbTouches);
      uint getNbAnyHits();
     // UNPARSED_TYPE getAnyHit(uint index);
      uint getNbTouches();
@@ -915,9 +1023,13 @@ public unsafe interface IPxHitBufferPtr {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxHitBufferPtr : IPxHitCallbackPtr, IPxHitBufferPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxHitBufferPtrPOD{
+};
 #endif //struct start
 
     #if !NATIVE //hierarchy
@@ -930,7 +1042,7 @@ public unsafe partial struct PxHitBufferPtr : IPxHitCallbackPtr, IPxHitBufferPtr
     // ### Piping
     
     // --- PxHitCallbackPtr
-    //public  PxHitCallback<HitType>( aTouches, uint aMaxNbTouches){((PxHitCallbackPtr)this).PxHitCallback<HitType>(aTouches, aMaxNbTouches);}
+    //public  static PxHitCallbackPtr New( aTouches, uint aMaxNbTouches){((PxHitCallbackPtr)this).PxHitCallback<HitType>(aTouches, aMaxNbTouches);}
     //public  bool processTouches( buffer, uint nbHits){return ((PxHitCallbackPtr)this).processTouches(buffer, nbHits);}
     public  void finalizeQuery(){((PxHitCallbackPtr)this).finalizeQuery();}
     //public  void ~PxHitCallback<HitType>(){((PxHitCallbackPtr)this).~PxHitCallback<HitType>();}
@@ -939,64 +1051,78 @@ public unsafe partial struct PxHitBufferPtr : IPxHitCallbackPtr, IPxHitBufferPtr
     #endif //piping
     
     //================================================================================
-    //#       PxHitBuffer<HitType>                                                   #
+    //#       PxHitBuffer<HitType>(HitType aTouches, uint aMaxNbTouches)             #
     //================================================================================
-    /* ERRORS OCCURED: unhandled return type: physx::PxHitBuffer
-    Unresolved parameter pointee HitType
+    /* ERRORS OCCURED: Unresolved parameter pointee HitType
     // NATIVE SIG: PxHitBuffer(HitType* aTouches = NULL, PxU32 aMaxNbTouches = 0)
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxHitBuffer<HitType>_R_PxHitBufferPtr_P__P_uint_C_PxHitBuffer_ctor( aTouches, physx::PxU32 aMaxNbTouches){
+    ES PxHitBufferPtrPOD W_PxHitBuffer<HitType>_R_PxHitBufferPtr_P__P_uint_C_PxHitBuffer_ctor( aTouches, physx::PxU32 aMaxNbTouches){
         auto nat_in_aTouches = (aTouches);
         auto nat_in_aMaxNbTouches = (aMaxNbTouches);
-        return PxHitBuffer<HitType>(nat_in_aTouches, nat_in_aMaxNbTouches);
+        auto val = new PxHitBuffer<HitType>();
+        return *(PxHitBufferPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxHitBuffer<HitType>_R_PxHitBufferPtr_P__P_uint_C_PxHitBuffer_ctor( aTouches, uint aMaxNbTouches);
+    static extern PxHitBufferPtr W_PxHitBuffer<HitType>_R_PxHitBufferPtr_P__P_uint_C_PxHitBuffer_ctor( aTouches, uint aMaxNbTouches);
     
-    public  PxHitBuffer<HitType>( aTouches, uint aMaxNbTouches){
+    public  static PxHitBufferPtr New( aTouches, uint aMaxNbTouches){
          pvk_in_aTouches = (aTouches);
         uint pvk_in_aMaxNbTouches = (aMaxNbTouches);
         var _new = W_PxHitBuffer<HitType>_R_PxHitBufferPtr_P__P_uint_C_PxHitBuffer_ctor(pvk_in_aTouches, pvk_in_aMaxNbTouches);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxHitBufferPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
     #endif //function end*/
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
-    /* ERRORS OCCURED: unhandled return type: physx::PxHitBuffer
-    Unresolved parameter pointee HitType
+    /* ERRORS OCCURED: Unresolved parameter pointee HitType
     // NATIVE SIG: PxHitBuffer(HitType* aTouches = NULL, PxU32 aMaxNbTouches = 0)
     #if NATIVE //function start
-    ES UNPARSED_TYPE W_PxHitBuffer<HitType>_R_PxHitBufferPtr_P__OL1_C_PxHitBuffer_ctor( aTouches){
+    ES PxHitBufferPtrPOD W_PxHitBuffer<HitType>_R_PxHitBufferPtr_P__OL1_C_PxHitBuffer_ctor( aTouches){
         auto nat_in_aTouches = (aTouches);
-        return PxHitBuffer<HitType>(nat_in_aTouches);
+        auto val = new PxHitBuffer<HitType>();
+        return *(PxHitBufferPtrPOD*)&val;
     }
     #else //end C wrapper, start C#
     [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern UNPARSED_TYPE W_PxHitBuffer<HitType>_R_PxHitBufferPtr_P__OL1_C_PxHitBuffer_ctor( aTouches);
+    static extern PxHitBufferPtr W_PxHitBuffer<HitType>_R_PxHitBufferPtr_P__OL1_C_PxHitBuffer_ctor( aTouches);
     
-    public  PxHitBuffer<HitType>( aTouches){
+    public  static PxHitBufferPtr New( aTouches){
          pvk_in_aTouches = (aTouches);
         var _new = W_PxHitBuffer<HitType>_R_PxHitBufferPtr_P__OL1_C_PxHitBuffer_ctor(pvk_in_aTouches);
-        fixed (void* ptr = &this)
-            System.Buffer.MemoryCopy(&_new, ptr, Marshal.SizeOf(this), Marshal.SizeOf(this));
+        PxHitBufferPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
     }
     #endif //function end*/
     
     
     
     // ### GENERATED OVERLOAD WITHOUT DEFAULTS --- 
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxHitBuffer
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxHitBufferPtrPOD W_PxHitBuffer<HitType>_R_PxHitBufferPtr_OL2_C_PxHitBuffer_ctor(){
+        auto val = new PxHitBuffer<HitType>();
+        return *(PxHitBufferPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxHitBufferPtr W_PxHitBuffer<HitType>_R_PxHitBufferPtr_OL2_C_PxHitBuffer_ctor();
+    
+    public  static PxHitBufferPtr New(){
+        var _new = W_PxHitBuffer<HitType>_R_PxHitBufferPtr_OL2_C_PxHitBuffer_ctor();
+        PxHitBufferPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
     
     
     //================================================================================
-    //#       getNbAnyHits                                                           #
+    //#       getNbAnyHits()                                                         #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getNbAnyHits_R_uint_C_PxHitBuffer(physx::PxHitBuffer* self){
@@ -1015,7 +1141,7 @@ public unsafe partial struct PxHitBufferPtr : IPxHitCallbackPtr, IPxHitBufferPtr
     
     
     //================================================================================
-    //#       getAnyHit                                                              #
+    //#       getAnyHit(uint index)                                                  #
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: HitType
     // NATIVE SIG: HitType&	getAnyHit(const PxU32 index) const
@@ -1038,7 +1164,7 @@ public unsafe partial struct PxHitBufferPtr : IPxHitCallbackPtr, IPxHitBufferPtr
     
     
     //================================================================================
-    //#       getNbTouches                                                           #
+    //#       getNbTouches()                                                         #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getNbTouches_R_uint_C_PxHitBuffer(physx::PxHitBuffer* self){
@@ -1057,7 +1183,7 @@ public unsafe partial struct PxHitBufferPtr : IPxHitCallbackPtr, IPxHitBufferPtr
     
     
     //================================================================================
-    //#       getTouches                                                             #
+    //#       getTouches()                                                           #
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: HitType
     // NATIVE SIG: HitType*	getTouches() const
@@ -1078,7 +1204,7 @@ public unsafe partial struct PxHitBufferPtr : IPxHitCallbackPtr, IPxHitBufferPtr
     
     
     //================================================================================
-    //#       getTouch                                                               #
+    //#       getTouch(uint index)                                                   #
     //================================================================================
     /* ERRORS OCCURED: unhandled return reference type: HitType
     // NATIVE SIG: HitType&	getTouch(const PxU32 index) const
@@ -1101,7 +1227,7 @@ public unsafe partial struct PxHitBufferPtr : IPxHitCallbackPtr, IPxHitBufferPtr
     
     
     //================================================================================
-    //#       getMaxNbTouches                                                        #
+    //#       getMaxNbTouches()                                                      #
     //================================================================================
     #if NATIVE //function start
     ES physx::PxU32 W_getMaxNbTouches_R_uint_C_PxHitBuffer(physx::PxHitBuffer* self){
@@ -1120,7 +1246,7 @@ public unsafe partial struct PxHitBufferPtr : IPxHitCallbackPtr, IPxHitBufferPtr
     
     
     //================================================================================
-    //#       ~PxHitBuffer<HitType>                                                  #
+    //#       ~PxHitBuffer<HitType>()                                                #
     //================================================================================
     /* ERRORS OCCURED: Destructor TODO
     // NATIVE SIG: virtual ~PxHitBuffer()
@@ -1147,14 +1273,19 @@ public unsafe partial struct PxHitBufferPtr : IPxHitCallbackPtr, IPxHitBufferPtr
 
 #if !NATIVE //interface
 public unsafe interface IPxRaycastBufferNPtr {
-    // PxRaycastBufferN<N>();
+    // static PxRaycastBufferNPtr New();
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxRaycastBufferNPtr : IPxHitCallbackPtr, IPxHitBufferPtr, IPxRaycastBufferNPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxRaycastBufferNPtrPOD{
+    physx::PxRaycastHit[] hits;
+};
 #endif //struct start
 
 
@@ -1175,9 +1306,9 @@ public unsafe partial struct PxRaycastBufferNPtr : IPxHitCallbackPtr, IPxHitBuff
     // ### Piping
     
     // --- PxHitBufferPtr
-    //public  PxHitBuffer( aTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches);}
-    //public  PxHitBuffer(){((PxHitBufferPtr)this).PxHitBuffer();}
-    //public  PxHitBuffer( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches, aMaxNbTouches);}
+    //public  static PxHitBufferPtr New( aTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches);}
+    //public  static PxHitBufferPtr New(){((PxHitBufferPtr)this).PxHitBuffer();}
+    //public  static PxHitBufferPtr New( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches, aMaxNbTouches);}
     public  uint getNbAnyHits(){return ((PxHitBufferPtr)this).getNbAnyHits();}
     //public  UNPARSED_TYPE getAnyHit(uint index){return ((PxHitBufferPtr)this).getAnyHit(index);}
     public  uint getNbTouches(){return ((PxHitBufferPtr)this).getNbTouches();}
@@ -1186,27 +1317,39 @@ public unsafe partial struct PxRaycastBufferNPtr : IPxHitCallbackPtr, IPxHitBuff
     public  uint getMaxNbTouches(){return ((PxHitBufferPtr)this).getMaxNbTouches();}
     //public  void ~PxHitBuffer(){((PxHitBufferPtr)this).~PxHitBuffer();}
     //public  UNPARSED_TYPE processTouches(/*NULLPARS*/){return ((PxHitBufferPtr)this).processTouches(/*NULLARGS*/);}
-    //public  PxHitBuffer(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitBuffer(/*NULLARGS*/);}
+    //public  static PxHitBufferPtr New(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitBuffer(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxHitBufferPtr lhs, /*NULLPARS*/){return ((PxHitBufferPtr)this).operator=(/*NULLARGS*/);}
     
     // --- PxHitCallbackPtr
-    //public  PxHitCallback( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitCallback(aTouches, aMaxNbTouches);}
+    //public  static PxHitCallbackPtr New( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitCallback(aTouches, aMaxNbTouches);}
     //public  bool processTouches( buffer, uint nbHits){return ((PxHitBufferPtr)this).processTouches(buffer, nbHits);}
     public  void finalizeQuery(){((PxHitBufferPtr)this).finalizeQuery();}
     //public  void ~PxHitCallback(){((PxHitBufferPtr)this).~PxHitCallback();}
     public  bool hasAnyHits(){return ((PxHitBufferPtr)this).hasAnyHits();}
     //public static UNPARSED_TYPE operator=(PxHitCallbackPtr lhs, /*NULLPARS*/){return ((PxHitBufferPtr)this).operator=(/*NULLARGS*/);}
-    //public  PxHitCallback(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitCallback(/*NULLARGS*/);}
+    //public  static PxHitCallbackPtr New(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitCallback(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       PxRaycastBufferN<N>                                                    #
+    //#       PxRaycastBufferN<N>()                                                  #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxRaycastBufferN
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxRaycastBufferNPtrPOD W_PxRaycastBufferN<N>_R_PxRaycastBufferNPtr_C_PxRaycastBufferN_ctor(){
+        auto val = new PxRaycastBufferN<N>();
+        return *(PxRaycastBufferNPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxRaycastBufferNPtr W_PxRaycastBufferN<N>_R_PxRaycastBufferNPtr_C_PxRaycastBufferN_ctor();
+    
+    public  static PxRaycastBufferNPtr New(){
+        var _new = W_PxRaycastBufferN<N>_R_PxRaycastBufferNPtr_C_PxRaycastBufferN_ctor();
+        PxRaycastBufferNPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
 
@@ -1216,14 +1359,19 @@ public unsafe partial struct PxRaycastBufferNPtr : IPxHitCallbackPtr, IPxHitBuff
 
 #if !NATIVE //interface
 public unsafe interface IPxOverlapBufferNPtr {
-    // PxOverlapBufferN<N>();
+    // static PxOverlapBufferNPtr New();
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxOverlapBufferNPtr : IPxHitCallbackPtr, IPxHitBufferPtr, IPxOverlapBufferNPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxOverlapBufferNPtrPOD{
+    physx::PxOverlapHit[] hits;
+};
 #endif //struct start
 
 
@@ -1244,9 +1392,9 @@ public unsafe partial struct PxOverlapBufferNPtr : IPxHitCallbackPtr, IPxHitBuff
     // ### Piping
     
     // --- PxHitBufferPtr
-    //public  PxHitBuffer( aTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches);}
-    //public  PxHitBuffer(){((PxHitBufferPtr)this).PxHitBuffer();}
-    //public  PxHitBuffer( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches, aMaxNbTouches);}
+    //public  static PxHitBufferPtr New( aTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches);}
+    //public  static PxHitBufferPtr New(){((PxHitBufferPtr)this).PxHitBuffer();}
+    //public  static PxHitBufferPtr New( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches, aMaxNbTouches);}
     public  uint getNbAnyHits(){return ((PxHitBufferPtr)this).getNbAnyHits();}
     //public  UNPARSED_TYPE getAnyHit(uint index){return ((PxHitBufferPtr)this).getAnyHit(index);}
     public  uint getNbTouches(){return ((PxHitBufferPtr)this).getNbTouches();}
@@ -1255,27 +1403,39 @@ public unsafe partial struct PxOverlapBufferNPtr : IPxHitCallbackPtr, IPxHitBuff
     public  uint getMaxNbTouches(){return ((PxHitBufferPtr)this).getMaxNbTouches();}
     //public  void ~PxHitBuffer(){((PxHitBufferPtr)this).~PxHitBuffer();}
     //public  UNPARSED_TYPE processTouches(/*NULLPARS*/){return ((PxHitBufferPtr)this).processTouches(/*NULLARGS*/);}
-    //public  PxHitBuffer(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitBuffer(/*NULLARGS*/);}
+    //public  static PxHitBufferPtr New(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitBuffer(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxHitBufferPtr lhs, /*NULLPARS*/){return ((PxHitBufferPtr)this).operator=(/*NULLARGS*/);}
     
     // --- PxHitCallbackPtr
-    //public  PxHitCallback( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitCallback(aTouches, aMaxNbTouches);}
+    //public  static PxHitCallbackPtr New( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitCallback(aTouches, aMaxNbTouches);}
     //public  bool processTouches( buffer, uint nbHits){return ((PxHitBufferPtr)this).processTouches(buffer, nbHits);}
     public  void finalizeQuery(){((PxHitBufferPtr)this).finalizeQuery();}
     //public  void ~PxHitCallback(){((PxHitBufferPtr)this).~PxHitCallback();}
     public  bool hasAnyHits(){return ((PxHitBufferPtr)this).hasAnyHits();}
     //public static UNPARSED_TYPE operator=(PxHitCallbackPtr lhs, /*NULLPARS*/){return ((PxHitBufferPtr)this).operator=(/*NULLARGS*/);}
-    //public  PxHitCallback(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitCallback(/*NULLARGS*/);}
+    //public  static PxHitCallbackPtr New(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitCallback(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       PxOverlapBufferN<N>                                                    #
+    //#       PxOverlapBufferN<N>()                                                  #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxOverlapBufferN
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxOverlapBufferNPtrPOD W_PxOverlapBufferN<N>_R_PxOverlapBufferNPtr_C_PxOverlapBufferN_ctor(){
+        auto val = new PxOverlapBufferN<N>();
+        return *(PxOverlapBufferNPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxOverlapBufferNPtr W_PxOverlapBufferN<N>_R_PxOverlapBufferNPtr_C_PxOverlapBufferN_ctor();
+    
+    public  static PxOverlapBufferNPtr New(){
+        var _new = W_PxOverlapBufferN<N>_R_PxOverlapBufferNPtr_C_PxOverlapBufferN_ctor();
+        PxOverlapBufferNPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
 
@@ -1285,14 +1445,19 @@ public unsafe partial struct PxOverlapBufferNPtr : IPxHitCallbackPtr, IPxHitBuff
 
 #if !NATIVE //interface
 public unsafe interface IPxSweepBufferNPtr {
-    // PxSweepBufferN<N>();
+    // static PxSweepBufferNPtr New();
     
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:False
 public unsafe partial struct PxSweepBufferNPtr : IPxHitCallbackPtr, IPxHitBufferPtr, IPxSweepBufferNPtr { // pointer
     private IntPtr nativePtr_;
+#else
+//Class is not POD so we're creating one to safely return the data from native
+struct PxSweepBufferNPtrPOD{
+    physx::PxSweepHit[] hits;
+};
 #endif //struct start
 
 
@@ -1313,9 +1478,9 @@ public unsafe partial struct PxSweepBufferNPtr : IPxHitCallbackPtr, IPxHitBuffer
     // ### Piping
     
     // --- PxHitBufferPtr
-    //public  PxHitBuffer( aTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches);}
-    //public  PxHitBuffer(){((PxHitBufferPtr)this).PxHitBuffer();}
-    //public  PxHitBuffer( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches, aMaxNbTouches);}
+    //public  static PxHitBufferPtr New( aTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches);}
+    //public  static PxHitBufferPtr New(){((PxHitBufferPtr)this).PxHitBuffer();}
+    //public  static PxHitBufferPtr New( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitBuffer(aTouches, aMaxNbTouches);}
     public  uint getNbAnyHits(){return ((PxHitBufferPtr)this).getNbAnyHits();}
     //public  UNPARSED_TYPE getAnyHit(uint index){return ((PxHitBufferPtr)this).getAnyHit(index);}
     public  uint getNbTouches(){return ((PxHitBufferPtr)this).getNbTouches();}
@@ -1324,27 +1489,39 @@ public unsafe partial struct PxSweepBufferNPtr : IPxHitCallbackPtr, IPxHitBuffer
     public  uint getMaxNbTouches(){return ((PxHitBufferPtr)this).getMaxNbTouches();}
     //public  void ~PxHitBuffer(){((PxHitBufferPtr)this).~PxHitBuffer();}
     //public  UNPARSED_TYPE processTouches(/*NULLPARS*/){return ((PxHitBufferPtr)this).processTouches(/*NULLARGS*/);}
-    //public  PxHitBuffer(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitBuffer(/*NULLARGS*/);}
+    //public  static PxHitBufferPtr New(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitBuffer(/*NULLARGS*/);}
     //public static UNPARSED_TYPE operator=(PxHitBufferPtr lhs, /*NULLPARS*/){return ((PxHitBufferPtr)this).operator=(/*NULLARGS*/);}
     
     // --- PxHitCallbackPtr
-    //public  PxHitCallback( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitCallback(aTouches, aMaxNbTouches);}
+    //public  static PxHitCallbackPtr New( aTouches, uint aMaxNbTouches){((PxHitBufferPtr)this).PxHitCallback(aTouches, aMaxNbTouches);}
     //public  bool processTouches( buffer, uint nbHits){return ((PxHitBufferPtr)this).processTouches(buffer, nbHits);}
     public  void finalizeQuery(){((PxHitBufferPtr)this).finalizeQuery();}
     //public  void ~PxHitCallback(){((PxHitBufferPtr)this).~PxHitCallback();}
     public  bool hasAnyHits(){return ((PxHitBufferPtr)this).hasAnyHits();}
     //public static UNPARSED_TYPE operator=(PxHitCallbackPtr lhs, /*NULLPARS*/){return ((PxHitBufferPtr)this).operator=(/*NULLARGS*/);}
-    //public  PxHitCallback(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitCallback(/*NULLARGS*/);}
+    //public  static PxHitCallbackPtr New(/*NULLPARS*/){((PxHitBufferPtr)this).PxHitCallback(/*NULLARGS*/);}
     
     #endif //piping
     
     //================================================================================
-    //#       PxSweepBufferN<N>                                                      #
+    //#       PxSweepBufferN<N>()                                                    #
     //================================================================================
-    //Skipped invalid managed declaration:
-    /*unhandled return type: physx::PxSweepBufferN
-    Parameterless constructor not allowed
-    */
+    #if NATIVE //function start
+    ES PxSweepBufferNPtrPOD W_PxSweepBufferN<N>_R_PxSweepBufferNPtr_C_PxSweepBufferN_ctor(){
+        auto val = new PxSweepBufferN<N>();
+        return *(PxSweepBufferNPtrPOD*)&val;
+    }
+    #else //end C wrapper, start C#
+    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+    static extern PxSweepBufferNPtr W_PxSweepBufferN<N>_R_PxSweepBufferNPtr_C_PxSweepBufferN_ctor();
+    
+    public  static PxSweepBufferNPtr New(){
+        var _new = W_PxSweepBufferN<N>_R_PxSweepBufferNPtr_C_PxSweepBufferN_ctor();
+        PxSweepBufferNPtr _ret;
+        _ret.nativePtr_ = *(IntPtr*)(&_new);
+        return _ret;
+    }
+    #endif //function end
     
     
 

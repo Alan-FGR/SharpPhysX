@@ -28,7 +28,7 @@ public unsafe interface IPxBroadPhaseCaps {
 }
 #endif //interface
 
-#if !NATIVE //struct start
+#if !NATIVE //struct start POD:True
 public unsafe partial struct PxBroadPhaseCaps : IPxBroadPhaseCaps { // blittable
     public uint maxNbRegions;
     public uint maxNbObjects;
