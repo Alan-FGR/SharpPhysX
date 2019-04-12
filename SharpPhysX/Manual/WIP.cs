@@ -2,79 +2,83 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
+using static physx;
 
-public delegate void SharpPhysXError(
-    PxErrorCode code,
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+public delegate void SharpPhysXErrorFptr(
+    PxErrorCodeEnum code,
     [MarshalAs(UnmanagedType.LPStr)] string message,
     [MarshalAs(UnmanagedType.LPStr)] string file,
     int line
 );
 
-public partial class PhysX
+public partial class SharpPhysX
 {
-    public const string Lib = "LibSharpPhysX";
 
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxFoundationPtr MAN_PxCreateFoundation(SharpPhysXError managedErrorCallback);
-    public static PxFoundationPtr PxCreateFoundation(SharpPhysXError errorCallback){
-        return MAN_PxCreateFoundation(errorCallback);
-    }
+}
 
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxPhysicsPtr MAN_PxCreatePhysics(PxFoundationPtr foundation);
-    public static PxPhysicsPtr PxCreatePhysics(PxFoundationPtr foundation)
+public partial class physx
+{
+    public static uint PX_PHYSICS_VERSION => SharpPhysX_internal.GetPhysicsVersion();
+
+    public static PxSimulationFilterShader PxDefaultSimulationFilterShader =>
+        SharpPhysX_internal.GetDefaultSimulationFilterShader();
+
+    public struct PxGpuCopyDescPtr
     {
-        return MAN_PxCreatePhysics(foundation);
-    }
-
-    [DllImport(PhysX.Lib, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-    static extern PxSceneDescPtr MAN_PxCreateSceneDesc();
-    public static PxSceneDescPtr PxCreateSceneDesc()
-    {
-        return MAN_PxCreateSceneDesc();
+        private IntPtr intPtr_;
     }
 
 }
 
-public partial struct PxFoundation
+//typedef struct CUstream_st* CUstream;
+public unsafe struct CUstream
+{
+    private IntPtr CUstream_stPtr;
+}
+
+
+//typedef PxFilterFlags (*PxSimulationFilterShader)
+//             (PxFilterObjectAttributes attributes0, PxFilterData filterData0, 
+//             PxFilterObjectAttributes attributes1, PxFilterData filterData1,
+//             PxPairFlags& pairFlags, const void* constantBlock, PxU32 constantBlockSize);
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+public delegate uint PxSimulationFilterShader();//TODO
+
+
+//typedef PxU32 (*PxConstraintSolverPrep)(Px1DConstraint* constraints,
+//                                        PxVec3& bodyAWorldOffset,
+//                                        PxU32 maxConstraints,
+//                                        PxConstraintInvMassScale& invMassScale,
+//                                        const void* constantBlock,
+//                                        const PxTransform& bodyAToWorld,
+//                                        const PxTransform& bodyBToWorld,
+//                                        bool useExtendedLimits,
+//                                        PxVec3& cAtW,
+//                                        PxVec3& cBtW);
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+public delegate uint PxConstraintSolverPrep();//TODO
+
+//typedef void (*PxConstraintProject)(const void* constantBlock,
+//                                    PxTransform& bodyAToWorld,
+//                                    PxTransform& bodyBToWorld,
+//                                    bool projectToA);
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+public delegate uint PxConstraintProject();//TODO
+
+//typedef void (*PxConstraintVisualize)(PxConstraintVisualizer& visualizer,
+//                                      const void* constantBlock,
+//                                      const PxTransform& body0Transform,
+//                                      const PxTransform& body1Transform,
+//                                      PxU32 flags);
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+public delegate uint PxConstraintVisualize();//TODO
+
+//typedef void (*PxBinaryMetaDataCallback)(PxOutputStream& stream);
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+public delegate uint PxBinaryMetaDataCallback();//TODO
+
+public partial class PxFoundation
 {
     
-}
-
-public partial struct PxTransform
-{
-    public static bool operator!=(PxTransform lhs, PxTransform rhs){
-        return !(lhs==rhs);
-    }
-}
-
-public partial struct PxPlane
-{
-    public static bool operator!=(PxPlane lhs, PxPlane rhs){
-        return !(lhs==rhs);
-    }
-}
-
-public partial struct PxMat44
-{
-    public static bool operator !=(PxMat44 lhs, PxMat44 rhs)
-    {
-        return !(lhs==rhs);
-    }
-}
-
-public partial struct PxMat33
-{
-    public static bool operator !=(PxMat33 lhs, PxMat33 rhs)
-    {
-        return !(lhs==rhs);
-    }
-}
-
-public partial struct PxQuat
-{
-    public static bool operator !=(PxQuat lhs, PxQuat rhs)
-    {
-        return !(lhs==rhs);
-    }
 }

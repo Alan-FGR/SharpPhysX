@@ -3,27 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpPhysX", "SharpPhysX\SharpPhysX.csproj", "{B248C43C-D96C-4080-9BDB-1779B2C0ED3E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibSharpPhysX", "LibSharpPhysX\LibSharpPhysX.vcxproj", "{23FAC00D-57C8-435C-820D-ACC909AB9AAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpPhysX", "SharpPhysX\SharpPhysX.csproj", "{164E7DE4-4803-4E80-94B2-6FF8605E28B7}"
 	ProjectSection(ProjectDependencies) = postProject
 		{23FAC00D-57C8-435C-820D-ACC909AB9AAC} = {23FAC00D-57C8-435C-820D-ACC909AB9AAC}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibSharpPhysX", "LibSharpPhysX\LibSharpPhysX.vcxproj", "{23FAC00D-57C8-435C-820D-ACC909AB9AAC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B248C43C-D96C-4080-9BDB-1779B2C0ED3E}.Debug|x64.ActiveCfg = Debug|x64
-		{B248C43C-D96C-4080-9BDB-1779B2C0ED3E}.Debug|x64.Build.0 = Debug|x64
-		{B248C43C-D96C-4080-9BDB-1779B2C0ED3E}.Release|x64.ActiveCfg = Release|x64
-		{B248C43C-D96C-4080-9BDB-1779B2C0ED3E}.Release|x64.Build.0 = Release|x64
+		{23FAC00D-57C8-435C-820D-ACC909AB9AAC}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{23FAC00D-57C8-435C-820D-ACC909AB9AAC}.Debug|x64.ActiveCfg = Debug|x64
 		{23FAC00D-57C8-435C-820D-ACC909AB9AAC}.Debug|x64.Build.0 = Debug|x64
+		{23FAC00D-57C8-435C-820D-ACC909AB9AAC}.Release|Any CPU.ActiveCfg = Release|x64
 		{23FAC00D-57C8-435C-820D-ACC909AB9AAC}.Release|x64.ActiveCfg = Release|x64
 		{23FAC00D-57C8-435C-820D-ACC909AB9AAC}.Release|x64.Build.0 = Release|x64
+		{164E7DE4-4803-4E80-94B2-6FF8605E28B7}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{164E7DE4-4803-4E80-94B2-6FF8605E28B7}.Debug|x64.ActiveCfg = Debug|x64
+		{164E7DE4-4803-4E80-94B2-6FF8605E28B7}.Debug|x64.Build.0 = Debug|x64
+		{164E7DE4-4803-4E80-94B2-6FF8605E28B7}.Release|Any CPU.ActiveCfg = Release|x64
+		{164E7DE4-4803-4E80-94B2-6FF8605E28B7}.Release|x64.ActiveCfg = Release|x64
+		{164E7DE4-4803-4E80-94B2-6FF8605E28B7}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

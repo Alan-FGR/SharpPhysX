@@ -1,69 +1,148 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{164E7DE4-4803-4E80-94B2-6FF8605E28B7}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <Platforms>x64</Platforms>
-    <LangVersion>latest</LangVersion>
-    <Version>0.0.1</Version>
+    <RootNamespace>SharpPhysX</RootNamespace>
+    <AssemblyName>SharpPhysX</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>bin/Debug</OutputPath>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>bin/Release</OutputPath>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-
   <ItemGroup>
-    <Compile Remove="Generated\**" />
-    <EmbeddedResource Remove="Generated\**" />
-    <None Remove="Generated\**" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
-
   <ItemGroup>
-    <Compile Remove="Manual\PxQuat.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Compile Include="Generated\Common.cs" />
+    <Compile Include="Generated\Error.cs" />
+    <Compile Include="Generated\minBND_entry.cs" />
     <Compile Include="Generated\Px.cs" />
     <Compile Include="Generated\PxActor.cs" />
+    <Compile Include="Generated\PxAggregate.cs" />
+    <Compile Include="Generated\PxAllocatorCallback.cs" />
+    <Compile Include="Generated\PxArticulation.cs" />
+    <Compile Include="Generated\PxArticulationBase.cs" />
+    <Compile Include="Generated\PxArticulationJoint.cs" />
+    <Compile Include="Generated\PxArticulationLink.cs" />
+    <Compile Include="Generated\PxArticulationReducedCoordinate.cs" />
+    <Compile Include="Generated\PxAssert.cs" />
     <Compile Include="Generated\PxBase.cs" />
+    <Compile Include="Generated\PxBitAndData.cs" />
     <Compile Include="Generated\PxBounds3.cs" />
+    <Compile Include="Generated\PxBoxGeometry.cs" />
+    <Compile Include="Generated\PxBroadPhase.cs" />
+    <Compile Include="Generated\PxCapsuleGeometry.cs" />
+    <Compile Include="Generated\PxClient.cs" />
+    <Compile Include="Generated\PxCollection.cs" />
     <Compile Include="Generated\PxConstraint.cs" />
     <Compile Include="Generated\PxConstraintDesc.cs" />
+    <Compile Include="Generated\PxContact.cs" />
+    <Compile Include="Generated\PxConvexMesh.cs" />
+    <Compile Include="Generated\PxConvexMeshGeometry.cs" />
+    <Compile Include="Generated\PxCoreUtilityTypes.cs" />
+    <Compile Include="Generated\PxCpuDispatcher.cs" />
+    <Compile Include="Generated\PxDefaultAllocator.cs" />
+    <Compile Include="Generated\PxDefaultCpuDispatcher.cs" />
+    <Compile Include="Generated\PxDefaultSimulationFilterShader.cs" />
+    <Compile Include="Generated\PxDeletionListener.cs" />
+    <Compile Include="Generated\PxErrorCallback.cs" />
     <Compile Include="Generated\PxErrors.cs" />
     <Compile Include="Generated\PxFiltering.cs" />
+    <Compile Include="Generated\PxFlags.cs" />
     <Compile Include="Generated\PxForceMode.cs" />
     <Compile Include="Generated\PxFoundation.cs" />
     <Compile Include="Generated\PxGeometry.cs" />
     <Compile Include="Generated\PxGeometryHelpers.cs" />
+    <Compile Include="Generated\PxGpuDispatcher.cs" />
+    <Compile Include="Generated\PxHeightField.cs" />
+    <Compile Include="Generated\PxHeightFieldDesc.cs" />
+    <Compile Include="Generated\PxHeightFieldFlag.cs" />
+    <Compile Include="Generated\PxHeightFieldGeometry.cs" />
+    <Compile Include="Generated\PxHeightFieldSample.cs" />
+    <Compile Include="Generated\PxMassProperties.cs" />
     <Compile Include="Generated\PxMat33.cs" />
     <Compile Include="Generated\PxMat44.cs" />
     <Compile Include="Generated\PxMaterial.cs" />
+    <Compile Include="Generated\PxMath.cs" />
+    <Compile Include="Generated\PxMathUtils.cs" />
+    <Compile Include="Generated\PxMemory.cs" />
+    <Compile Include="Generated\PxMeshScale.cs" />
     <Compile Include="Generated\PxPhysics.cs" />
+    <Compile Include="Generated\PxPhysXCommonConfig.cs" />
+    <Compile Include="Generated\PxPhysXConfig.cs" />
     <Compile Include="Generated\PxPlane.cs" />
     <Compile Include="Generated\PxPlaneGeometry.cs" />
+    <Compile Include="Generated\PxPreprocessor.cs" />
+    <Compile Include="Generated\PxPvdSceneClient.cs" />
     <Compile Include="Generated\PxQuat.cs" />
+    <Compile Include="Generated\PxQueryFiltering.cs" />
+    <Compile Include="Generated\PxQueryReport.cs" />
     <Compile Include="Generated\PxRigidActor.cs" />
     <Compile Include="Generated\PxRigidBody.cs" />
+    <Compile Include="Generated\PxRigidBodyExt.cs" />
     <Compile Include="Generated\PxRigidDynamic.cs" />
     <Compile Include="Generated\PxRigidStatic.cs" />
     <Compile Include="Generated\PxScene.cs" />
     <Compile Include="Generated\PxSceneDesc.cs" />
+    <Compile Include="Generated\PxSerialFramework.cs" />
     <Compile Include="Generated\PxShape.cs" />
+    <Compile Include="Generated\PxSimpleFactory.cs" />
+    <Compile Include="Generated\PxSimpleTypes.cs" />
+    <Compile Include="Generated\PxSimulationStatistics.cs" />
+    <Compile Include="Generated\PxSphereGeometry.cs" />
+    <Compile Include="Generated\PxTask.cs" />
+    <Compile Include="Generated\PxTaskManager.cs" />
     <Compile Include="Generated\PxTolerancesScale.cs" />
     <Compile Include="Generated\PxTransform.cs" />
     <Compile Include="Generated\PxTriangleMesh.cs" />
-    <Compile Include="Generated\PxVec2.cs" />
+    <Compile Include="Generated\PxTriangleMeshGeometry.cs" />
+    <Compile Include="Generated\PxTypeInfo.cs" />
+    <Compile Include="Generated\PxUnionCast.cs" />
     <Compile Include="Generated\PxVec3.cs" />
     <Compile Include="Generated\PxVec4.cs" />
+    <Compile Include="Generated\PxVisualizationParameter.cs" />
     <Compile Include="Generated\PxWindowsIntrinsics.cs" />
+    <Compile Include="Manual\Enums.cs" />
+    <Compile Include="Manual\Templates.cs" />
+    <Compile Include="Manual\WIP.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleHelloWorld.cs" />
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

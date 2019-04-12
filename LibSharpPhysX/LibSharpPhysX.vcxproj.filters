@@ -23,5 +23,11 @@
     <ClInclude Include="Error.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="minBND_confs.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="minBND_entry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

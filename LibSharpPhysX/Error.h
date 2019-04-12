@@ -1,14 +1,13 @@
 #pragma once
 
-typedef void(__stdcall *SharpPhysXError)
+typedef void(__stdcall *SharpPhysXErrorFptr)
 (physx::PxErrorCode::Enum code, const char* message, const char* file, int line);
-
 
 class ShPxErrorCallbackWrapper : public physx::PxErrorCallback
 {
-    SharpPhysXError managedErrorCallback_{ nullptr };
+    SharpPhysXErrorFptr managedErrorCallback_{ nullptr };
 public:
-    explicit ShPxErrorCallbackWrapper(SharpPhysXError managedErrorCallback)
+    explicit ShPxErrorCallbackWrapper(SharpPhysXErrorFptr managedErrorCallback)
         : managedErrorCallback_(managedErrorCallback)
     {}
 
@@ -17,3 +16,7 @@ public:
         managedErrorCallback_(code, message, file, line);
     }
 };
+
+inline int test(float x){ return 0; }
+
+inline int (*tfptr)(float) = test;
