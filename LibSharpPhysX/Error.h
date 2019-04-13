@@ -16,7 +16,3 @@ public:
         managedErrorCallback_(code, message, file, line);
     }
 };
-
-inline int test(float x){ return 0; }
-
-inline int (*tfptr)(float) = test;

@@ -20,6 +20,7 @@
 #include "PxArticulationBase.h"
 #include "PxArticulationReducedCoordinate.h"
 #include "foundation/PxMat44.h"
+#include "foundation/PxVec2.h"
 #include "geometry/PxHeightFieldDesc.h"
 
 #include "extensions/PxDefaultAllocator.h"
@@ -162,20 +163,13 @@ ForbiddenTypes(
 ForbidSignature(operator*, PxMat33, float, const PxMat33&)
 ForbidSignature(operator*, PxMat44, float, const PxMat44&)
 
-
-
-// //PxVec2,
-// PxVec3,
-// PxVec4,
-// PxQuat,
-// PxMat33,
-// PxMat44,
-// PxTransform,
-// PxPlane,
-// PxBounds3,
-// Px1DConstraint,
-// PxBoxGeometry,
-// //PxPlaneGeometry, NO FIELDS
-// PxCapsuleGeometry,
-// PxSphereGeometry,
-// PxTolerancesScale
+BlittableTypes(
+	PxTolerancesScale,
+	// Math
+	PxVec2, PxVec3, PxVec4,
+	PxQuat, PxMat33, PxMat44,
+	PxTransform,
+	// Geom
+	PxBounds3,
+	PxPlane
+)

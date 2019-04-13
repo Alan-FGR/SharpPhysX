@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Generated\Common.cs" />
-    <Compile Include="Generated\Error.cs" />
     <Compile Include="Generated\minBND_entry.cs" />
     <Compile Include="Generated\Px.cs" />
     <Compile Include="Generated\PxActor.cs" />
@@ -130,6 +129,7 @@
     <Compile Include="Generated\PxTriangleMeshGeometry.cs" />
     <Compile Include="Generated\PxTypeInfo.cs" />
     <Compile Include="Generated\PxUnionCast.cs" />
+    <Compile Include="Generated\PxVec2.cs" />
     <Compile Include="Generated\PxVec3.cs" />
     <Compile Include="Generated\PxVec4.cs" />
     <Compile Include="Generated\PxVisualizationParameter.cs" />

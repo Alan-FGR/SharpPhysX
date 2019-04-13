@@ -7,10 +7,9 @@
 //using namespace physx;
 using static physx;
 
-class SampleHelloWorld
+unsafe class SampleHelloWorld
 {
 
-    //PxDefaultAllocator		gAllocator;
     //PxDefaultErrorCallback	gErrorCallback;
     SharpPhysXErrorFptr gErrorCallback =
         (code, message, file, line) =>
@@ -31,28 +30,26 @@ class SampleHelloWorld
     //PxMaterial*				gMaterial	= NULL;
     private PxMaterialPtr gMaterial;
 
-    //PxPvd*                  gPvd        = NULL;
-
     //PxReal stackZ = 10.0f;
     private float stackZ = 10;
 
     //PxRigidDynamic* createDynamic(const PxTransform& t, const PxGeometry& geometry, const PxVec3& velocity=PxVec3(0)){
-    PxRigidDynamicPtr createDynamic(PxTransformPtr t, PxGeometryPtr geometry, PxVec3Ptr velocity){
+    PxRigidDynamicPtr createDynamic(PxTransform t, PxGeometryPtr geometry, PxVec3 velocity){
 
         //PxRigidDynamic* dynamic = PxCreateDynamic(*gPhysics, t, geometry, *gMaterial, 10.0f);
         //dynamic->setAngularDamping(0.5f);
         //dynamic->setLinearVelocity(velocity);
         //gScene->addActor(*dynamic);
         //return dynamic;
-        PxRigidDynamicPtr dynamic = PxCreateDynamic(gPhysics, t, geometry, gMaterial, 10);
+        PxRigidDynamicPtr dynamic = PxCreateDynamic(gPhysics, &t, geometry, gMaterial, 10);
         dynamic.setAngularDamping(.5f);
-        dynamic.setLinearVelocity(velocity);
+        dynamic.setLinearVelocity(&velocity);
         gScene.addActor(dynamic);
         return dynamic;
     }
 
     //void createStack(const PxTransform& t, PxU32 size, PxReal halfExtent){
-    void createStack(PxTransformPtr t, uint size, float halfExtent) {
+    void createStack(PxTransform t, uint size, float halfExtent) {
         //PxShape* shape = gPhysics->createShape(PxBoxGeometry(halfExtent, halfExtent, halfExtent), *gMaterial);
         PxShapePtr shape = gPhysics.createShape(PxBoxGeometryPtr.New(halfExtent, halfExtent, halfExtent), gMaterial);
         //for(PxU32 i=0; i<size;i++){
@@ -66,8 +63,9 @@ class SampleHelloWorld
                 //body->attachShape(*shape);
                 //PxRigidBodyExt::updateMassAndInertia(*body, 10.0f);
                 //gScene->addActor(*body);
-                PxTransformPtr localTm = PxTransformPtr.New(PxVec3Ptr.New(((j*2) - (size-i))*halfExtent, (i*2+1)*halfExtent, 0));
-                PxRigidDynamicPtr body = gPhysics.createRigidDynamic(t.transform_New(localTm));
+                var FIXMEV3 = new PxVec3(((j*2) - (size-i))*halfExtent, (i*2+1)*halfExtent, 0);
+                PxTransform localTm = new PxTransform(&FIXMEV3);
+                PxRigidDynamicPtr body = gPhysics.createRigidDynamic(&localTm);
                 body.attachShape(shape);
                 PxRigidBodyExt.updateMassAndInertia(body, 10);
                 gScene.addActor(body);
@@ -84,7 +82,8 @@ class SampleHelloWorld
         gFoundation = SharpPhysX.CreateFoundation(gErrorCallback, PX_PHYSICS_VERSION);
 
         //gPhysics = PxCreatePhysics(PX_PHYSICS_VERSION, *gFoundation, PxTolerancesScale(),true,gPvd);
-        gPhysics = PxPhysics.PxCreatePhysics(PX_PHYSICS_VERSION, gFoundation, PxTolerancesScalePtr.New());
+        var FIXMEPTS = PxTolerancesScale.Default();
+        gPhysics = PxPhysics.PxCreatePhysics(PX_PHYSICS_VERSION, gFoundation, &FIXMEPTS);
 
         //PxSceneDesc sceneDesc(gPhysics->getTolerancesScale());
         //sceneDesc.gravity = PxVec3(0.0f, -9.81f, 0.0f);
@@ -92,8 +91,8 @@ class SampleHelloWorld
         //sceneDesc.cpuDispatcher	= gDispatcher;
         //sceneDesc.filterShader	= PxDefaultSimulationFilterShader;
         //gScene = gPhysics->createScene(sceneDesc);
-        var sceneDesc = PxSceneDescPtr.New(PxTolerancesScalePtr.New());
-        sceneDesc.gravity = PxVec3Ptr.New(0,-9.81f,0);
+        var sceneDesc = PxSceneDescPtr.New(&FIXMEPTS);
+        sceneDesc.gravity = new PxVec3(0,-9.81f,0);
         gDispatcher = PxDefaultCpuDispatcherCreate(2);
         sceneDesc.cpuDispatcher = gDispatcher;
         sceneDesc.filterShader = PxDefaultSimulationFilterShader;
@@ -104,18 +103,25 @@ class SampleHelloWorld
 
         //PxRigidStatic* groundPlane = PxCreatePlane(*gPhysics, PxPlane(0,1,0,0), *gMaterial);
         //gScene->addActor(*groundPlane);
-        var groundPlane = PxCreatePlane(gPhysics, PxPlanePtr.New(0, 1, 0, 0), gMaterial);
+        var FIXMEPLANE = new PxPlane(0, 1, 0, 0);
+        var groundPlane = PxCreatePlane(gPhysics, &FIXMEPLANE, gMaterial);
         gScene.addActor(groundPlane);
 
         //for(PxU32 i=0;i<5;i++)
         //	createStack(PxTransform(PxVec3(0,0,stackZ-=10.0f)), 10, 2.0f);
         for (int i = 0; i < 5; i++)
-            createStack(PxTransformPtr.New(PxVec3Ptr.New(0,0,stackZ-=10)), 10, 2);
+        {
+            var FIXMEV3 = new PxVec3(0,0,stackZ-=10);
+            createStack(new PxTransform(&FIXMEV3), 10, 2);
+        }
 
         //if(!interactive)
         //	createDynamic(PxTransform(PxVec3(0,40,100)), PxSphereGeometry(10), PxVec3(0,-50,-100));
         if (!interactive)
-            DEBUG = createDynamic(PxTransformPtr.New(PxVec3Ptr.New(0, 40, 100)), PxSphereGeometryPtr.New(10), PxVec3Ptr.New(0, -50, -100));
+        {
+            var FIXMEV3 = new PxVec3(0, 40, 100);
+            DEBUG = createDynamic(new PxTransform(&FIXMEV3), PxSphereGeometryPtr.New(10), new PxVec3(0, -50, -100));
+        }
     }
 
     private PxRigidDynamicPtr DEBUG;
@@ -127,7 +133,7 @@ class SampleHelloWorld
         gScene.simulate(1/60f);
         gScene.fetchResults(true);
 
-        var p = DEBUG.getGlobalPose_New().p;
+        var p = DEBUG.getGlobalPose().p;
         System.Console.WriteLine($"{p.x}, {p.y}, {p.z}");
     }
 
