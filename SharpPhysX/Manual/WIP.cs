@@ -14,7 +14,11 @@ public delegate void SharpPhysXErrorFptr(
 
 public partial class SharpPhysX
 {
-
+    public static SharpPhysXErrorFptr DefaultErrorCallback =
+    (code, message, file, line) =>
+    {
+        Console.WriteLine($"SharpPhysX Error Code: {code}, Message: {message}, File: {file}, Line: {line}");
+    };
 }
 
 public partial class physx

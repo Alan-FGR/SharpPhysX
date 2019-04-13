@@ -1,6 +1,6 @@
 # SharpPhysX
 
-#### [YOU CAN ALSO READ THIS DOCUMENTATION HERE](https://alan-fgr.github.io/SharpPhysX/?minbnd-docs)
+### [YOU CAN ALSO READ THIS DOCUMENTATION HERE](https://alan-fgr.github.io/SharpPhysX)
 
 ## Status
 
