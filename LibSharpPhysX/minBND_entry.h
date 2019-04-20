@@ -1,5 +1,5 @@
 #pragma once
-#include "minBND_confs.h";
+#include "minBND_confs.h"
 
 //includes
 #include "PxFoundation.h";
@@ -34,8 +34,8 @@
 using namespace physx;
 using namespace pvdsdk;
 
-namespace SharpPhysX_internal
-{
+namespace SharpPhysX_internal {
+
 	inline PxU32 GetPhysicsVersion()
 	{
 		return PX_PHYSICS_VERSION;
@@ -134,6 +134,7 @@ ForbiddenTypes(
 	// PxTaskManager,
 	// //LOW-LEVEL (VERY LOW PRIORITY)
 	PxAllocatorCallback,
+	PxAssertHandler,
 	// PxAggregate,
 	PxBVHStructure,
 	PxPruningStructure,
@@ -169,7 +170,9 @@ BlittableTypes(
 	PxVec2, PxVec3, PxVec4,
 	PxQuat, PxMat33, PxMat44,
 	PxTransform,
-	// Geom
 	PxBounds3,
-	PxPlane
+	PxPlane,
+	// Geom
+	PxGeometry, PxBoxGeometry, PxCapsuleGeometry, PxConvexMeshGeometry,
+	PxHeightFieldGeometry, PxPlaneGeometry, PxSphereGeometry, PxTriangleMeshGeometry
 )

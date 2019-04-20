@@ -6,9 +6,20 @@ using static physx;
 
 class Program
 {
-    static void Main()
+    static unsafe void Main()
     {
         var s = new SampleHelloWorld();
+
+//        PxTransform t = new PxTransform(new PxVec3(1,2,3));
+//
+//        var tAddr = &t;
+//
+//        PxTransform.Ref tr = t;
+//        var v1 = new PxVec2(1, 2);
+//        var v2 = new PxVec2(3, 4);
+//
+//        var v3 = v2 + v1;
+
     }
 }
 

@@ -29,9 +29,8 @@ class SampleHelloWorld
     float stackZ = 10;
 
     //PxRigidDynamic* createDynamic(const PxTransform& t, const PxGeometry& geometry, const PxVec3& velocity=PxVec3(0)){
-    PxRigidDynamicPtr createDynamic(PxTransform t, PxGeometryPtr geometry, PxVec3 velocity)
+    PxRigidDynamicPtr createDynamic(PxTransform t, PxGeometry.Ref geometry, PxVec3 velocity)
     {
-
         //PxRigidDynamic* dynamic = PxCreateDynamic(*gPhysics, t, geometry, *gMaterial, 10.0f);
         //dynamic->setAngularDamping(0.5f);
         //dynamic->setLinearVelocity(velocity);
@@ -48,7 +47,7 @@ class SampleHelloWorld
     void createStack(PxTransform t, uint size, float halfExtent)
     {
         //PxShape* shape = gPhysics->createShape(PxBoxGeometry(halfExtent, halfExtent, halfExtent), *gMaterial);
-        PxShapePtr shape = gPhysics.createShape(PxBoxGeometryPtr.New(halfExtent, halfExtent, halfExtent), gMaterial);
+        PxShapePtr shape = gPhysics.createShape(new PxBoxGeometry(halfExtent, halfExtent, halfExtent), gMaterial);
         //for(PxU32 i=0; i<size;i++){
         // for(PxU32 j=0;j<size-i;j++){
         for (int i = 0; i < size; i++)
@@ -109,7 +108,7 @@ class SampleHelloWorld
         //if(!interactive)
         // createDynamic(PxTransform(PxVec3(0,40,100)), PxSphereGeometry(10), PxVec3(0,-50,-100));
         if (!interactive)
-            DEBUG = createDynamic(new PxTransform(new PxVec3(0, 40, 100)), PxSphereGeometryPtr.New(10), new PxVec3(0, -50, -100));
+            DEBUG = createDynamic(new PxTransform(new PxVec3(0, 40, 100)), new PxSphereGeometry(10), new PxVec3(0, -50, -100));
     }
 
     PxRigidDynamicPtr DEBUG;
