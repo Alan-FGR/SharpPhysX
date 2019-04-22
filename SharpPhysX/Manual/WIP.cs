@@ -33,7 +33,18 @@ public partial class physx
         private IntPtr intPtr_;
     }
 
+    public partial struct PxVec3
+    {
+        public override string ToString()
+        {
+            return $"X: {x:f3}, Y: {y:f3}, Z: {z:f3}";
+        }
+    }
+
 }
+
+
+
 
 //typedef struct CUstream_st* CUstream;
 public unsafe struct CUstream

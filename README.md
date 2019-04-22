@@ -4,10 +4,12 @@
 
 ## Status
 
-### Current state: **PhysX "Hello World" sample works. API not stable yet.**
+### Current state: **Works. API not stable yet.**
 
 Track progress **[here](https://github.com/Alan-FGR/SharpPhysX/projects/1)**.
 Items in the Review column are implemented and generally safe to use.
+
+![Screenshot](screenshot.png)
 
 ## Description
 Nvidia PhysX 4 bindings partially generated using my general-purpose C++ binder [*minBND*](https://github.com/Alan-FGR/minBND).

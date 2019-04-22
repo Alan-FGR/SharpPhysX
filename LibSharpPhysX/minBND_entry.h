@@ -29,6 +29,8 @@
 #include "extensions/PxSimpleFactory.h"
 #include "extensions/PxRigidBodyExt.h"
 
+#include "common/PxRenderBuffer.h"
+
 #include "Error.h"
 
 using namespace physx;
@@ -144,7 +146,6 @@ ForbiddenTypes(
 	// PxBroadPhaseRegion,
 	// PxBroadPhaseRegionInfo,
 	// //UNSUPPORTED
-	PxRenderBuffer,
 	PxProfilerCallback,
 	PxPvdSceneClient,
 	PvdDataStream,
@@ -174,5 +175,7 @@ BlittableTypes(
 	PxPlane,
 	// Geom
 	PxGeometry, PxBoxGeometry, PxCapsuleGeometry, PxConvexMeshGeometry,
-	PxHeightFieldGeometry, PxPlaneGeometry, PxSphereGeometry, PxTriangleMeshGeometry
+	PxHeightFieldGeometry, PxPlaneGeometry, PxSphereGeometry, PxTriangleMeshGeometry,
+	// Debug
+	PxDebugLine, PxDebugPoint, PxDebugTriangle//, PxDebugText
 )

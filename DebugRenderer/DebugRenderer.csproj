@@ -22,6 +22,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -53,10 +54,17 @@
     <Compile Include="ResourceLoader.cs" />
     <Compile Include="SDL2.cs" />
     <Compile Include="SharpBgfx.cs" />
+    <Compile Include="UnmanagedCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharpPhysX\SharpPhysX.csproj">
+      <Project>{164e7de4-4803-4e80-94b2-6ff8605e28b7}</Project>
+      <Name>SharpPhysX</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

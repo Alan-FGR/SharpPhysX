@@ -173,6 +173,8 @@
     <Compile Include="Generated\PxQueryFiltering.Pinvokes.cs" />
     <Compile Include="Generated\PxQueryReport.cs" />
     <Compile Include="Generated\PxQueryReport.Pinvokes.cs" />
+    <Compile Include="Generated\PxRenderBuffer.cs" />
+    <Compile Include="Generated\PxRenderBuffer.Pinvokes.cs" />
     <Compile Include="Generated\PxRigidActor.cs" />
     <Compile Include="Generated\PxRigidActor.Pinvokes.cs" />
     <Compile Include="Generated\PxRigidBody.cs" />

@@ -52,6 +52,7 @@
 #include "PxQuat.cpp"
 #include "PxQueryFiltering.cpp"
 #include "PxQueryReport.cpp"
+#include "PxRenderBuffer.cpp"
 #include "PxRigidActor.cpp"
 #include "PxRigidBody.cpp"
 #include "PxRigidBodyExt.cpp"
