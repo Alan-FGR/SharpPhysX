@@ -29,7 +29,7 @@ public struct PosColorVertex
         .End();
 }
 
-abstract class DebugRenderer
+public abstract class DebugRenderer
 {
     private readonly IntPtr sdlWindowPtr_;
 
@@ -64,6 +64,12 @@ abstract class DebugRenderer
 
     public static void Update()
     {
+        if (instance_ == null)
+        {
+            Console.WriteLine("Static instance not initialized. " +
+                              "Call DebugRenderer.InitFor() and pass your scene.");
+            return;
+        }
         instance_.UpdateWindowSize();
         instance_.SetupView();
         instance_.SubmitLines();

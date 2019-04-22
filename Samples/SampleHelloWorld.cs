@@ -1,10 +1,13 @@
 ﻿//###################################################################
 //
 // This is a direct port of the official HelloWorldSnippet.cpp
+// Commented lines are the original C++ code for reference
 //
 //###################################################################
 
 //using namespace physx;
+
+using System.Numerics;
 using static physx;
 
 class SampleHelloWorld
@@ -52,7 +55,7 @@ class SampleHelloWorld
         // for(PxU32 j=0;j<size-i;j++){
         for (int i = 0; i < size; i++)
         {
-            for (int j = 0; j < size; j++)
+            for (int j = 0; j < size-i; j++)
             {
                 //PxTransform localTm(PxVec3(PxReal(j*2) - PxReal(size-i), PxReal(i*2+1), 0) * halfExtent);
                 //PxRigidDynamic* body = gPhysics->createRigidDynamic(t.transform(localTm));
@@ -60,7 +63,7 @@ class SampleHelloWorld
                 //PxRigidBodyExt::updateMassAndInertia(*body, 10.0f);
                 //gScene->addActor(*body);
                 PxTransform localTm = new PxTransform(new PxVec3(((j * 2) - (size - i)) * halfExtent, (i * 2 + 1) * halfExtent, 0));
-                PxRigidDynamicPtr body = gPhysics.createRigidDynamic(localTm);
+                PxRigidDynamicPtr body = gPhysics.createRigidDynamic(t.transform(localTm));
                 body.attachShape(shape);
                 PxRigidBodyExt.updateMassAndInertia(body, 10);
                 gScene.addActor(body);
@@ -141,34 +144,27 @@ class SampleHelloWorld
         System.Console.WriteLine("SnippetHelloWorld done.");
     }
 
-    //TODO
-    //void keyPress(unsigned char key, const PxTransform& camera)
-    //{
-    // switch(toupper(key))
-    // {
-    // case 'B': createStack(PxTransform(PxVec3(0,0,stackZ-=10.0f)), 10, 2.0f); break;
-    // case ' ': createDynamic(camera, PxSphereGeometry(3.0f), camera.rotate(PxVec3(0,0,-1))*200); break;
-    // }
-    //}
-
-    public SampleHelloWorld()
+    //int snippetMain(int, const char*const*)
+    public SampleHelloWorld(bool render = false)
     {
-        #if RENDER_SNIPPET //TODO
-         extern void renderLoop();
-         renderLoop();
-        #else
         //static const PxU32 frameCount = 100;
         //initPhysics(false);
         const uint frameCount = 100;
         initPhysics(false);
 
+        //SharpPhysX Debug Renderer - no equivalent C++ line
+        if (render) DebugRenderer.InitFor(gScene, Vector3.One*75);
+
         //for(PxU32 i=0; i<frameCount; i++)
         // stepPhysics(false);
         //cleanupPhysics(false);
         for (int i = 0; i < frameCount; i++)
+        {
             stepPhysics(false);
+            if (render) DebugRenderer.Update(); //SharpPhysX Debug Renderer
+        }
+
         cleanupPhysics(false);
-        #endif
     }
 }
 
