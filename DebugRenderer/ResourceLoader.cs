@@ -13,10 +13,10 @@ namespace Common
             {
                 case RendererBackend.Direct3D11:
                 case RendererBackend.Direct3D12:
-                    return Path.Combine("./bin", "dx11");
+                    return Path.Combine("./shaders", "dx11");
 
                 case RendererBackend.OpenGL:
-                    return Path.Combine("./bin", "glsl");
+                    return Path.Combine("./shaders", "glsl");
 
                 default:
                     throw new InvalidOperationException("Unsupported renderer backend.");

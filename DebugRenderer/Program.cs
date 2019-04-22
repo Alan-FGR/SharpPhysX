@@ -43,6 +43,7 @@ public abstract class DebugRenderer
     protected PxScenePtr pxScene;
 
     private (float yaw, float pitch, float dist) cameraPosition = (45, 30, 30);
+    private float targetHeight = 5;
 
     #region Static Stuff
 
@@ -101,7 +102,7 @@ public abstract class DebugRenderer
         Bgfx.SetDebugFeatures(DebugFeatures.DisplayText);
         Bgfx.SetViewClear(0, ClearTargets.Color | ClearTargets.Depth, 0x303030ff);
 
-        shaders_ = ResourceLoader.LoadProgram("vs_cubes", "fs_cubes");
+        shaders_ = ResourceLoader.LoadProgram("vs_lines", "fs_lines");
 
         UpdateWindowSize();
 
@@ -142,7 +143,7 @@ public abstract class DebugRenderer
         pxScene.setVisualizationParameter(PxVisualizationParameterEnum.eCOLLISION_STATIC, 1);
     }
 
-    private void Run()
+    private unsafe void Run()
     {
         Stopwatch clock = new Stopwatch();
         bool quit = false;
@@ -171,6 +172,13 @@ public abstract class DebugRenderer
                     {
                         cameraPosition.dist *= 1 + sdlEvent.wheel.y * -0.1f;
                     }
+
+                    byte* state = (byte*)SDL_GetKeyboardState(out var numkeys);
+
+                    if (state[(int)SDL_GetScancodeFromKey(SDL_Keycode.SDLK_w)] != 0)
+                        targetHeight += 1;
+                    if (state[(int)SDL_GetScancodeFromKey(SDL_Keycode.SDLK_s)] != 0)
+                        targetHeight -= 1;
 
                 }
             }
@@ -203,7 +211,7 @@ public abstract class DebugRenderer
             Vector3.Transform(cameraPosition.dist * -Vector3.UnitZ,
                 Matrix4x4.CreateRotationX((float)(Math.PI / 180 * cameraPosition.pitch)) *
                 Matrix4x4.CreateRotationY((float)(Math.PI / 180 * cameraPosition.yaw))),
-            Vector3.Zero, Vector3.UnitY);
+            Vector3.UnitY*targetHeight, Vector3.UnitY);
         var projMatrix = Matrix4x4.CreatePerspectiveFieldOfView((float)Math.PI / 3,
             (float)FrameBufferSize.w / FrameBufferSize.h, 0.1f, 1000.0f);
         Bgfx.SetViewTransform(0, &viewMatrix.M11, &projMatrix.M11);

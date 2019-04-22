@@ -33,6 +33,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -68,4 +69,11 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Debug (
+xcopy /y "$(SolutionDir)_PrebuiltDependencies\x64\Debug\*.dll" $(TargetDir)
+) ELSE (
+xcopy /y "$(SolutionDir)_PrebuiltDependencies\x64\Release\*.dll" $(TargetDir)
+)</PostBuildEvent>
+  </PropertyGroup>
 </Project>
