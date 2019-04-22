@@ -42,7 +42,7 @@ public abstract class DebugRenderer
     protected PxPhysicsPtr pxPhysics;
     protected PxScenePtr pxScene;
 
-    private Vector3 cameraPosition = new Vector3(5.0f, 15.0f, -20.0f);
+    private (float yaw, float pitch, float dist) cameraPosition = (45, 30, 30);
 
     #region Static Stuff
 
@@ -54,7 +54,7 @@ public abstract class DebugRenderer
         protected override void OnUpdate(double frameTime) {}
     }
 
-    public static void InitFor(PxScenePtr scene, Vector3? camPos = null)
+    public static void InitFor(PxScenePtr scene, (int yaw, int pitch, int dist)? camPos = null)
     {
         instance_ = new ExternalDebugRenderer();
         instance_.pxScene = scene;
@@ -74,11 +74,6 @@ public abstract class DebugRenderer
         instance_.SetupView();
         instance_.SubmitLines();
         Bgfx.Frame();
-    }
-
-    public static void Shutdown()
-    {
-        instance_.Shutdown_();
     }
 
     #endregion
@@ -110,7 +105,11 @@ public abstract class DebugRenderer
 
         UpdateWindowSize();
 
-        InitPhysX();
+        if (!(this is ExternalDebugRenderer))
+        {
+            InitPhysX();
+            Run();
+        }
     }
 
     protected abstract void OnInit();
@@ -143,8 +142,7 @@ public abstract class DebugRenderer
         pxScene.setVisualizationParameter(PxVisualizationParameterEnum.eCOLLISION_STATIC, 1);
     }
 
-
-    public unsafe void Run()
+    private void Run()
     {
         Stopwatch clock = new Stopwatch();
         bool quit = false;
@@ -161,29 +159,19 @@ public abstract class DebugRenderer
                     UpdateWindowSize();
                 if (HasMouseFocus)
                 {
-                    (float camDeltaX, float camDeltaY, float camZoomDelta) camDeltas = default;
-
                     if (sdlEvent.type == SDL_EventType.SDL_MOUSEMOTION &&
                         (SDL_GetMouseState(IntPtr.Zero, IntPtr.Zero) & SDL_BUTTON(SDL_BUTTON_RIGHT)) != 0)
                     {
-                        const float mSens = 0.01f;
-                        camDeltas.camDeltaX = sdlEvent.motion.xrel * -mSens;
-                        camDeltas.camDeltaY = sdlEvent.motion.yrel * mSens;
+                        const float mSens = 0.5f;
+                        cameraPosition.yaw   += sdlEvent.motion.xrel * -mSens;
+                        cameraPosition.pitch += sdlEvent.motion.yrel * mSens;
                     }
 
                     if (sdlEvent.type == SDL_EventType.SDL_MOUSEWHEEL)
                     {
-                        camDeltas.camZoomDelta = sdlEvent.wheel.y * 0.1f;
+                        cameraPosition.dist *= 1 + sdlEvent.wheel.y * -0.1f;
                     }
 
-                    cameraPosition = Vector3.TransformNormal(
-                        cameraPosition,
-                        Matrix4x4.CreateFromYawPitchRoll(
-                            camDeltas.camDeltaX,
-                            camDeltas.camDeltaY,
-                            0) *
-                        Matrix4x4.CreateScale(1 + camDeltas.camZoomDelta)
-                    );
                 }
             }
 
@@ -202,7 +190,8 @@ public abstract class DebugRenderer
             Bgfx.Frame();
         }
 
-        Shutdown_();
+        ShutdownPhysX();
+        ShutdownRenderer();
     }
 
     private unsafe void SetupView()
@@ -210,7 +199,11 @@ public abstract class DebugRenderer
         Bgfx.SetViewRect(0, 0, 0, FrameBufferSize.w, FrameBufferSize.h);
         Bgfx.Touch(0);
 
-        var viewMatrix = Matrix4x4.CreateLookAt(cameraPosition, Vector3.Zero, Vector3.UnitY);
+        var viewMatrix = Matrix4x4.CreateLookAt(
+            Vector3.Transform(cameraPosition.dist * -Vector3.UnitZ,
+                Matrix4x4.CreateRotationX((float)(Math.PI / 180 * cameraPosition.pitch)) *
+                Matrix4x4.CreateRotationY((float)(Math.PI / 180 * cameraPosition.yaw))),
+            Vector3.Zero, Vector3.UnitY);
         var projMatrix = Matrix4x4.CreatePerspectiveFieldOfView((float)Math.PI / 3,
             (float)FrameBufferSize.w / FrameBufferSize.h, 0.1f, 1000.0f);
         Bgfx.SetViewTransform(0, &viewMatrix.M11, &projMatrix.M11);
@@ -247,12 +240,23 @@ public abstract class DebugRenderer
 //            userLines_.Clear();
     }
 
-    private void Shutdown_()
+    private bool wasShutdown_ = false;
+    private void ShutdownRenderer()
     {
+        wasShutdown_ = true;
         shaders_.Dispose();
+        Bgfx.Frame();
         Bgfx.Shutdown();
         SDL_DestroyWindow(sdlWindowPtr_);
         SDL_Quit();
+    }
+
+    private void ShutdownPhysX()
+    {
+        pxScene.release();
+        var foundation = pxPhysics.getFoundation();
+        pxPhysics.release();
+        foundation.release();
     }
 
     private void UpdateWindowSize()
@@ -265,34 +269,13 @@ public abstract class DebugRenderer
             Bgfx.Reset(x, y, ResetFlags.Vsync);
         }
     }
-}
 
-class TestDebugRenderer : DebugRenderer
-{
-    protected override void OnInit()
+    ~DebugRenderer()
     {
-        var geometry = new PxBoxGeometry(0.5f,0.5f,0.5f);
-        var material = pxPhysics.createMaterial(.5f, .5f, .5f);
-
-        var wallSize = 32;
-        for (int i = 0; i < wallSize; i++)
+        if (!wasShutdown_)
         {
-            for (int j = 0; j < wallSize; j++)
-            {
-                var transform = new PxTransform(new PxVec3(i-wallSize/2, j, 0));
-                PxRigidDynamicPtr dynamic = PxCreateDynamic(pxPhysics, transform, geometry, material, 10);
-                dynamic.setAngularDamping(.5f);
-                pxScene.addActor(dynamic);
-            }
+            Console.WriteLine("Shutting DebugRenderer down in the finalizer.");
+            ShutdownRenderer();
         }
     }
-
-    protected override void OnUpdate(double frameTime)
-    {
-    }
-}
-
-class MainEntry
-{
-    static void Main() => new TestDebugRenderer().Run();
 }

@@ -6,8 +6,6 @@
 //###################################################################
 
 //using namespace physx;
-
-using System.Numerics;
 using static physx;
 
 class SampleHelloWorld
@@ -149,11 +147,11 @@ class SampleHelloWorld
     {
         //static const PxU32 frameCount = 100;
         //initPhysics(false);
-        const uint frameCount = 100;
+        const uint frameCount = 1;//100;
         initPhysics(false);
 
         //SharpPhysX Debug Renderer - no equivalent C++ line
-        if (render) DebugRenderer.InitFor(gScene, Vector3.One*75);
+        if (render) DebugRenderer.InitFor(gScene);
 
         //for(PxU32 i=0; i<frameCount; i++)
         // stepPhysics(false);
