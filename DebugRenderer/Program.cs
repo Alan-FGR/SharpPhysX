@@ -132,7 +132,12 @@ public abstract class DebugRenderer
         var groundPlane = PxCreatePlane(pxPhysics, new PxPlane(0, 1, 0, 0), material);
         pxScene.addActor(groundPlane);
 
-        OnInit();
+        var geometry = new PxBoxGeometry(0.5f, 0.5f, 0.5f);
+
+        var transform = new PxTransform(new PxVec3(0, 15, 0));
+        PxRigidDynamicPtr dynamic = PxCreateDynamic(pxPhysics, transform, geometry, material, 10);
+        dynamic.setAngularDamping(.5f);
+        pxScene.addActor(dynamic);
     }
 
     void SetSceneDebugFlags()
