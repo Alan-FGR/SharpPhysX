@@ -1,6 +1,6 @@
 ﻿//###################################################################
 //
-// This is a direct port of the official HelloWorldSnippet.cpp
+// This is a direct port of the official SnippetHelloWorld.cpp
 // Commented lines are the original C++ code for reference
 //
 //###################################################################

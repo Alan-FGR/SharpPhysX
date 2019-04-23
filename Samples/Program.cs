@@ -34,7 +34,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        new SampleTestbed();
+        //new SampleTestbed();
         //new SampleHelloWorld(true);
+        new SampleMultiThreading();
     }
 }
