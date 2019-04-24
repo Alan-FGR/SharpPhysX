@@ -195,7 +195,7 @@ class SampleMultiThreading
 
             ////Create and start a thread.
             //gThreads[i].mThreadHandle =  SnippetUtils::threadCreate(threadExecute, &gThreads[i]);
-            gThreads[i].mThreadHandle = new Thread();
+            //gThreads[i].mThreadHandle = new Thread();
         }
 
         //// Create another sync so that the raycast threads can signal to the main 

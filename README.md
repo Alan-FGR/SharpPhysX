@@ -11,6 +11,19 @@ Items in the Review column are implemented and generally safe to use.
 
 ![Screenshot](screenshot.png)
 
+## Building
+
+The projects `SharpPhysX` and `DebugRenderer` are .NET Standard 2.0, so you can include them in any standard compliant project. The project `LibSharpPhysX` is a C++ project to build the native C wrapper library, but prebuilt binaries are provided so you don't have to do that.
+
+There are sample projects preconfigured to build and copy the dependencies to the output folder.
+
+#### .NET Framework
+- Check the project `Samples` to see how to build.
+
+#### .NET Core
+- CoreCLR : Check the project `Samples.Core`. You can build from Visual Studio.
+- CoreRT (AOT): Run the command `dotnet publish -r win-x64 -c debug` from the Samples.Core directory (cd into it). Change `debug` for `release` to produce a release build.
+
 ## Description
 Nvidia PhysX 4 bindings partially generated using my general-purpose C++ binder [*minBND*](https://github.com/Alan-FGR/minBND).
 

@@ -1,0 +1,82 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Platforms>x64</Platforms>
+    <Configurations>Debug;Release</Configurations>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Samples\Program.cs" Link="Program.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)'=='Release'">
+    <None Include="..\_PrebuiltDependencies\x64\Release\bgfx.dll" Link="bgfx.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Release\LibSharpPhysX.dll" Link="LibSharpPhysX.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Release\PhysXCommon_64.dll" Link="PhysXCommon_64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Release\PhysXCooking_64.dll" Link="PhysXCooking_64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Release\PhysXDevice64.dll" Link="PhysXDevice64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Release\PhysXFoundation_64.dll" Link="PhysXFoundation_64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Release\PhysX_64.dll" Link="PhysX_64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Release\SDL2.dll" Link="SDL2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(Configuration)'=='Debug'">
+    <None Include="..\_PrebuiltDependencies\x64\Debug\bgfx_debug.dll" Link="bgfx_debug.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Debug\LibSharpPhysX.dll" Link="LibSharpPhysX.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Debug\PhysXCommon_64.dll" Link="PhysXCommon_64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Debug\PhysXCooking_64.dll" Link="PhysXCooking_64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Debug\PhysXDevice64.dll" Link="PhysXDevice64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Debug\PhysXFoundation_64.dll" Link="PhysXFoundation_64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Debug\PhysX_64.dll" Link="PhysX_64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\_PrebuiltDependencies\x64\Debug\SDL2.dll" Link="SDL2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="1.0.0-alpha-27620-02" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DebugRenderer\DebugRenderer.csproj" />
+    <ProjectReference Include="..\SharpPhysX\SharpPhysX.csproj" />
+  </ItemGroup>
+
+</Project>

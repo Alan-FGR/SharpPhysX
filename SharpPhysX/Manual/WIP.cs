@@ -57,9 +57,10 @@ public unsafe struct CUstream
 //             (PxFilterObjectAttributes attributes0, PxFilterData filterData0, 
 //             PxFilterObjectAttributes attributes1, PxFilterData filterData1,
 //             PxPairFlags& pairFlags, const void* constantBlock, PxU32 constantBlockSize);
-[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-public delegate uint PxSimulationFilterShader();//TODO
-
+//[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+//public delegate uint PxSimulationFilterShader();
+//UPDATE: this is too fine grained for interop costs, filter shaders should be implemented in native
+public struct PxSimulationFilterShader { IntPtr ptr; }
 
 //typedef PxU32 (*PxConstraintSolverPrep)(Px1DConstraint* constraints,
 //                                        PxVec3& bodyAWorldOffset,
@@ -71,27 +72,23 @@ public delegate uint PxSimulationFilterShader();//TODO
 //                                        bool useExtendedLimits,
 //                                        PxVec3& cAtW,
 //                                        PxVec3& cBtW);
-[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-public delegate uint PxConstraintSolverPrep();//TODO
+public struct PxConstraintSolverPrep { IntPtr ptr; }
 
 //typedef void (*PxConstraintProject)(const void* constantBlock,
 //                                    PxTransform& bodyAToWorld,
 //                                    PxTransform& bodyBToWorld,
 //                                    bool projectToA);
-[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-public delegate uint PxConstraintProject();//TODO
+public struct PxConstraintProject { IntPtr ptr; }
 
 //typedef void (*PxConstraintVisualize)(PxConstraintVisualizer& visualizer,
 //                                      const void* constantBlock,
 //                                      const PxTransform& body0Transform,
 //                                      const PxTransform& body1Transform,
 //                                      PxU32 flags);
-[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-public delegate uint PxConstraintVisualize();//TODO
+public struct PxConstraintVisualize { IntPtr ptr; }
 
 //typedef void (*PxBinaryMetaDataCallback)(PxOutputStream& stream);
-[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-public delegate uint PxBinaryMetaDataCallback();//TODO
+public struct PxBinaryMetaDataCallback { IntPtr ptr; }
 
 public partial class PxFoundation
 {

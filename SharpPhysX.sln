@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpPhysX", "SharpPhysX\Sh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DebugRenderer", "DebugRenderer\DebugRenderer.csproj", "{17588517-8E6B-468A-AA66-808ADD7EFD48}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnetCore", "dotnetCore\dotnetCore.csproj", "{A12969DE-B120-443B-A18E-849205FE21A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.Core", "Samples.Core\Samples.Core.csproj", "{A12969DE-B120-443B-A18E-849205FE21A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples", "Samples\Samples.csproj", "{90652AA6-DA48-4D6F-89A8-FFDF826D3688}"
 	ProjectSection(ProjectDependencies) = postProject

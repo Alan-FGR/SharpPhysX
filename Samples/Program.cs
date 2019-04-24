@@ -12,7 +12,7 @@ class SampleTestbed : DebugRenderer
         var geometry = new PxBoxGeometry(0.5f,0.5f,0.5f);
         var material = pxPhysics.createMaterial(.5f, .5f, .5f);
 
-        var wallSize = 64;
+        var wallSize = 48;
         for (int i = 0; i < wallSize; i++)
         {
             for (int j = 0; j < wallSize; j++)
@@ -34,8 +34,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        //new SampleTestbed();
+        new SampleTestbed();
         //new SampleHelloWorld(true);
-        new SampleMultiThreading();
+        //new SampleMultiThreading();
     }
 }
