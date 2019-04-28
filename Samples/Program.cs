@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using static physx;
+using Console = System.Console;
 
 class SampleTestbed : DebugRenderer
 {
@@ -12,7 +14,7 @@ class SampleTestbed : DebugRenderer
         var geometry = new PxBoxGeometry(0.5f,0.5f,0.5f);
         var material = pxPhysics.createMaterial(.5f, .5f, .5f);
 
-        var wallSize = 48;
+        var wallSize = 4;
         for (int i = 0; i < wallSize; i++)
         {
             for (int j = 0; j < wallSize; j++)
@@ -34,8 +36,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        new SampleTestbed();
+        //new SampleTestbed();
         //new SampleHelloWorld(true);
-        //new SampleMultiThreading();
+        new SampleMultiThreading();
     }
 }

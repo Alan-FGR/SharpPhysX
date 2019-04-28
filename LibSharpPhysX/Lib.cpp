@@ -22,13 +22,6 @@ using namespace physx;
 
 
 
-
-
-
-
-
-
-
 // //callback tests
 //
 // typedef void (__stdcall *ErrorCallback)(const char* message, const char* file, int line);

@@ -164,6 +164,7 @@ ForbiddenTypes(
 
 ForbidSignature(operator*, PxMat33, float, const PxMat33&)
 ForbidSignature(operator*, PxMat44, float, const PxMat44&)
+ForbidSignature(operator&, PxHitFlags, PxHitFlag::Enum, PxHitFlags)
 
 BlittableTypes(
 	PxTolerancesScale,
@@ -176,6 +177,8 @@ BlittableTypes(
 	// Geom
 	PxGeometry, PxBoxGeometry, PxCapsuleGeometry, PxConvexMeshGeometry,
 	PxHeightFieldGeometry, PxPlaneGeometry, PxSphereGeometry, PxTriangleMeshGeometry,
+
+	PxHitFlags,
 	// Debug
 	PxDebugLine, PxDebugPoint, PxDebugTriangle//, PxDebugText
 )

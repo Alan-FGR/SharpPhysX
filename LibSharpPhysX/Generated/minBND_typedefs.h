@@ -11,7 +11,6 @@ using PxConvexMeshGeometryFlagsPtr = ::physx::PxFlags<::physx::PxConvexMeshGeome
 using PxDeletionEventFlagsPtr = ::physx::PxFlags<::physx::PxDeletionEventFlag::Enum, unsigned char>*;
 using PxFilterFlagsPtr = ::physx::PxFlags<::physx::PxFilterFlag::Enum, unsigned short>*;
 using PxHeightFieldFlagsPtr = ::physx::PxFlags<::physx::PxHeightFieldFlag::Enum, unsigned short>*;
-using PxHitFlagsPtr = ::physx::PxFlags<::physx::PxHitFlag::Enum, unsigned short>*;
 using PxMaterialFlagsPtr = ::physx::PxFlags<::physx::PxMaterialFlag::Enum, unsigned short>*;
 using PxMeshGeometryFlagsPtr = ::physx::PxFlags<::physx::PxMeshGeometryFlag::Enum, unsigned char>*;
 using PxPairFlagsPtr = ::physx::PxFlags<::physx::PxPairFlag::Enum, unsigned short>*;

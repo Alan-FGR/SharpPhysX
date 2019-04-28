@@ -1,12 +1,12 @@
-﻿using System;
-using System.Threading;
-
-//###################################################################
+﻿//###################################################################
 //
 // This is a direct port of the official SnippetMultiThreading.cpp
 // Commented lines are the original C++ code for reference
 //
 //###################################################################
+
+//#include "../snippetutils/SnippetUtils.h"
+using System.Threading; // we use C#'s stdlib threading stuff instead
 
 //using namespace physx;
 using static physx;
@@ -24,8 +24,7 @@ class SampleMultiThreading
     //PxDefaultCpuDispatcher* gDispatcher = NULL;
     //PxScene* gScene = NULL;
     PxDefaultCpuDispatcherPtr gDispatcher;
-    PxScenePtr gScene;
-
+    static PxScenePtr gScene;
     //PxMaterial* gMaterial = NULL;
     PxMaterialPtr gMaterial;
 
@@ -34,10 +33,11 @@ class SampleMultiThreading
     //    SnippetUtils::Sync*		mWorkReadySyncHandle;
     //    SnippetUtils::Thread*	mThreadHandle;
     //};
-    struct RaycastThread
+    class RaycastThread
     {
-        public SpinLock mWorkReadySyncHandle;
-        public Thread 	mThreadHandle;
+        public EventWaitHandle mWorkReadySyncHandle;
+        public Thread mThreadHandle;
+        public volatile bool quit; // in C++, this is provided by utils
     }
     
     //const PxU32				 gNumThreads = 1;
@@ -46,14 +46,14 @@ class SampleMultiThreading
     RaycastThread[] gThreads = new RaycastThread[gNumThreads];
     
     //SnippetUtils::Sync*		 gWorkDoneSyncHandle;
-    SpinLock gWorkDoneSyncHandle;
+    static EventWaitHandle gWorkDoneSyncHandle;
 
     //const PxI32				 gRayCount = 1024;
     //volatile PxI32			 gRaysAvailable;
     //volatile PxI32			 gRaysCompleted;
     const int gRayCount = 1024;
-    volatile int gRaysAvailable;
-    volatile int gRaysCompleted;
+    static volatile int gRaysAvailable;
+    static volatile int gRaysCompleted;
     
     //static PxVec3 randVec3() 
     //{
@@ -61,7 +61,7 @@ class SampleMultiThreading
     //        float(rand())/RAND_MAX, 
     //        float(rand())/RAND_MAX)*2.0f - PxVec3(1.0f)).getNormalized(); 
     //}
-    static Random rng = new Random();
+    static System.Random rng = new System.Random();
     static PxVec3 randVec3()
     {
         return (new PxVec3((float)rng.Next()/int.MaxValue,
@@ -70,10 +70,10 @@ class SampleMultiThreading
     }
 
     //static void threadExecute(void* data)
-    static void threadExecute(RaycastThread data)
+    static unsafe void threadExecute(object data)
     {
         //RaycastThread* raycastThread = static_cast<RaycastThread*>(data);
-        RaycastThread raycastThread = data;
+        RaycastThread raycastThread = (RaycastThread)data;
 
         //// Perform random raycasts against the scene until stop.
         //for(;;)
@@ -84,26 +84,34 @@ class SampleMultiThreading
             //// sync has been set again.
             //SnippetUtils::syncWait(raycastThread->mWorkReadySyncHandle);
             //SnippetUtils::syncReset(raycastThread->mWorkReadySyncHandle);
-
+            raycastThread.mWorkReadySyncHandle.WaitOne();
+            raycastThread.mWorkReadySyncHandle.Reset();
 
             //// If the thread has been signaled to quit then exit this function.
             //if (SnippetUtils::threadQuitIsSignalled(raycastThread->mThreadHandle))
-            //break;
+            //    break;
+            if (raycastThread.quit)
+                break;
 
             //// Perform a fixed number of random raycasts against the scene
             //// and share the work between multiple threads.
             //while (SnippetUtils::atomicDecrement(&gRaysAvailable) >= 0)
+            while (Interlocked.Decrement(ref gRaysAvailable) >= 0)
             {
                 //PxVec3 dir = randVec3();
+                PxVec3 dir = randVec3();
 
                 //PxRaycastBuffer buf;
                 //gScene->raycast(PxVec3(0.0f), dir.getNormalized(), 1000.0f, buf, PxHitFlag::eDEFAULT);
+                PxRaycastBufferPtr buf = PxRaycastBufferPtr.New();
+                gScene.raycast(new PxVec3(0.0f), dir.getNormalized(), 1000f, buf, new PxHitFlags(PxHitFlagEnum.eDEFAULT));
 
                 //// If this is the last raycast then signal this to the main thread.
                 //if (SnippetUtils::atomicIncrement(&gRaysCompleted) == gRayCount)
-
+                if (Interlocked.Increment(ref gRaysCompleted) == gRayCount)
                 {
                 //	SnippetUtils::syncSet(gWorkDoneSyncHandle);
+                    gWorkDoneSyncHandle.Set();
                 }
             }
         }
@@ -189,18 +197,22 @@ class SampleMultiThreading
         //for (PxU32 i=0; i < gNumThreads; ++i)
         for (uint i = 0; i < gNumThreads; ++i)
         {
+            gThreads[i] = new RaycastThread();
+
             ////Create a sync.
             //gThreads[i].mWorkReadySyncHandle = SnippetUtils::syncCreate();
-            gThreads[i].mWorkReadySyncHandle = new SpinLock();
+            gThreads[i].mWorkReadySyncHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
 
             ////Create and start a thread.
             //gThreads[i].mThreadHandle =  SnippetUtils::threadCreate(threadExecute, &gThreads[i]);
-            //gThreads[i].mThreadHandle = new Thread();
+            gThreads[i].mThreadHandle = new Thread(threadExecute);
+            gThreads[i].mThreadHandle.Start(gThreads[i]);
         }
 
         //// Create another sync so that the raycast threads can signal to the main 
         //// thread that they have finished performing their raycasts.
         //gWorkDoneSyncHandle = SnippetUtils::syncCreate();
+        gWorkDoneSyncHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
     }
 
     //void initPhysics()
@@ -209,7 +221,7 @@ class SampleMultiThreading
         //createPhysicsAndScene();
         //createRaycastThreads();
         createPhysicsAndScene();
-
+        createRaycastThreads();
     }
 
     //void stepPhysics()
@@ -230,62 +242,73 @@ class SampleMultiThreading
         for (uint i=0; i < gNumThreads; ++i)
         {
             //SnippetUtils::syncSet(gThreads[i].mWorkReadySyncHandle);
+            gThreads[i].mWorkReadySyncHandle.Set();
         }
-
+        
         //// Wait for raycast threads to finish.
         //SnippetUtils::syncWait(gWorkDoneSyncHandle);
         //SnippetUtils::syncReset(gWorkDoneSyncHandle);
+        gWorkDoneSyncHandle.WaitOne();
+        gWorkDoneSyncHandle.Reset();
 
         //// Fetch simulation results
         //gScene->fetchResults(true);
+        gScene.fetchResults(true);
     }
 
     //void cleanupPhysics()
-    //{
-    //// Signal threads to quit.
-    //for (PxU32 i=0; i < gNumThreads; ++i)
-    //{
-    //SnippetUtils::threadSignalQuit(gThreads[i].mThreadHandle);
-    //SnippetUtils::syncSet(gThreads[i].mWorkReadySyncHandle);
-    //}
+    void cleanupPhysics()
+    {
+        //// Signal threads to quit.
+        //for (PxU32 i=0; i < gNumThreads; ++i)
+        for (uint i=0; i < gNumThreads; ++i)
+        {
+            //SnippetUtils::threadSignalQuit(gThreads[i].mThreadHandle);
+            //SnippetUtils::syncSet(gThreads[i].mWorkReadySyncHandle);
+            gThreads[i].quit = true;
+            gThreads[i].mWorkReadySyncHandle.Set();
+        }
 
-    //// Clean up raycast threads and syncs.
-    //for (PxU32 i=0; i < gNumThreads; ++i)
-    //{
-    //SnippetUtils::threadWaitForQuit(gThreads[i].mThreadHandle);
-    //SnippetUtils::threadRelease(gThreads[i].mThreadHandle);
-    //SnippetUtils::syncRelease(gThreads[i].mWorkReadySyncHandle);
-    //}
+        //// Clean up raycast threads and syncs.
+        //for (PxU32 i=0; i < gNumThreads; ++i)
+        for (uint i=0; i < gNumThreads; ++i)
+        {
+            //SnippetUtils::threadWaitForQuit(gThreads[i].mThreadHandle);
+            //SnippetUtils::threadRelease(gThreads[i].mThreadHandle);
+            //SnippetUtils::syncRelease(gThreads[i].mWorkReadySyncHandle);
+            gThreads[i].mThreadHandle.Join();
+            gThreads[i].mWorkReadySyncHandle.Close();
+        }
 
-    //// Clean up the sync for the main thread.
-    //SnippetUtils::syncRelease(gWorkDoneSyncHandle);
+        //// Clean up the sync for the main thread.
+        //SnippetUtils::syncRelease(gWorkDoneSyncHandle);
+        gWorkDoneSyncHandle.Close();
 
-    //PX_RELEASE(gScene);
+        //PX_RELEASE(gScene);
+        //PX_RELEASE(gDispatcher);
+        //PX_RELEASE(gPhysics);
+        //PX_RELEASE(gFoundation);
+        gScene.release();
+        gDispatcher.release();
+        gPhysics.release();
+        gFoundation.release();
 
-    //PX_RELEASE(gDispatcher);
-
-    //PX_RELEASE(gPhysics);
-    //if(gPvd)
-    //{
-    //PxPvdTransport* transport = gPvd->getTransport();
-    //gPvd->release();	gPvd = NULL;
-    //PX_RELEASE(transport);
-    //}
-
-    //PX_RELEASE(gFoundation);
-
-    //printf("SnippetMultiThreading done.\n");
-    //}
-
+        //printf("SnippetMultiThreading done.\n");
+        System.Console.WriteLine("SnippetMultiThreading done.");
+    }
 
     //int snippetMain(int, const char*const*)
     public SampleMultiThreading()
     {
         //initPhysics();
+        initPhysics();
 
         //for(PxU32 i=0; i<100; ++i)
-        //stepPhysics();
+            //stepPhysics();
+        for(uint i=0; i<100; ++i)
+            stepPhysics();
 
         //cleanupPhysics();
+        cleanupPhysics();
     }
 }
