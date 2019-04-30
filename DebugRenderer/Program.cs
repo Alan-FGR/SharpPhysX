@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.InteropServices;
@@ -6,6 +7,7 @@ using Common;
 using SharpBgfx;
 using static SDL2.SDL;
 using static physx;
+using System.Threading;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct PosColorVertex
@@ -29,6 +31,18 @@ public struct PosColorVertex
         .End();
 }
 
+struct DebugLine
+{
+    public PosColorVertex start;
+    public PosColorVertex end;
+
+    public DebugLine(PosColorVertex start, PosColorVertex end)
+    {
+        this.start = start;
+        this.end = end;
+    }
+}
+
 public abstract class DebugRenderer
 {
     private readonly IntPtr sdlWindowPtr_;
@@ -37,17 +51,17 @@ public abstract class DebugRenderer
     public (int w, int h) FrameBufferSize { get; private set; }
 
     private readonly Program shaders_;
-    private UnmanagedCollection<PosColorVertex> userLines_ = new UnmanagedCollection<PosColorVertex>();
 
     protected PxPhysicsPtr pxPhysics;
     protected PxScenePtr pxScene;
 
-    private (float yaw, float pitch, float dist) cameraPosition = (45, 30, 30);
+    private (float yaw, float pitch, float dist) cameraPosition = (45, 30, 50);
     private float targetHeight = 5;
 
     #region Static Stuff
 
     private static DebugRenderer instance_;
+    public static DebugRenderer Current => instance_;
 
     class ExternalDebugRenderer : DebugRenderer
     {
@@ -55,6 +69,7 @@ public abstract class DebugRenderer
         protected override void OnUpdate(double frameTime) {}
     }
 
+    public static void InitFor(PxScenePtr scene, int camDist) { InitFor(scene, (45,30,camDist)); }
     public static void InitFor(PxScenePtr scene, (int yaw, int pitch, int dist)? camPos = null)
     {
         instance_ = new ExternalDebugRenderer();
@@ -75,6 +90,21 @@ public abstract class DebugRenderer
         instance_.SetupView();
         instance_.SubmitLines();
         Bgfx.Frame();
+    }
+
+    #endregion
+
+    #region User Drawing
+
+    //private UnmanagedCollection<PosColorVertex> userLines_ = new UnmanagedCollection<PosColorVertex>();
+    ConcurrentBag<DebugLine> userLines_ = new ConcurrentBag<DebugLine>();
+
+    public void AddLine(Vector3 start, Vector3 end, uint color)
+    {
+        userLines_.Add(new DebugLine(
+            new PosColorVertex(start.X, start.Y, start.Z, color), 
+            new PosColorVertex(end.X, end.Y, end.Z, color)
+            ));
     }
 
     #endregion
@@ -137,10 +167,10 @@ public abstract class DebugRenderer
 
     void SetSceneDebugFlags()
     {
-        pxScene.setVisualizationParameter(PxVisualizationParameterEnum.eSCALE, 1);
-        pxScene.setVisualizationParameter(PxVisualizationParameterEnum.eACTOR_AXES, 1);
-        pxScene.setVisualizationParameter(PxVisualizationParameterEnum.eCOLLISION_SHAPES, 1);
-        pxScene.setVisualizationParameter(PxVisualizationParameterEnum.eCOLLISION_STATIC, 1);
+        pxScene.setVisualizationParameter(PxVisualizationParameter.eSCALE, 1);
+        pxScene.setVisualizationParameter(PxVisualizationParameter.eACTOR_AXES, 1);
+        pxScene.setVisualizationParameter(PxVisualizationParameter.eCOLLISION_SHAPES, 1);
+        pxScene.setVisualizationParameter(PxVisualizationParameter.eCOLLISION_STATIC, 1);
     }
 
     private unsafe void Run()
@@ -233,19 +263,19 @@ public abstract class DebugRenderer
         Bgfx.SetVertexBuffer(0, pxLinesTvb, 0, (int)pxLineCount * 2);
         Bgfx.Submit(0, shaders_);
 
+        // render user debug lines
+        var linesSnapShot = userLines_.ToArray();
+        var cleanBag = new ConcurrentBag<DebugLine>();
+        Interlocked.Exchange(ref userLines_, cleanBag);
 
-        // render user debug lines TODO addline and such
-//            userLines_.Add(new PosColorVertex(0,0,0,0xffffffff));
-//            userLines_.Add(new PosColorVertex(1,1,1,0xffffffff));
-//
-//            var tvb = new TransientVertexBuffer(userLines_.Count, PosColorVertex.Layout);
-//            userLines_.CopyTo(tvb.Data);
-//
-//            Bgfx.SetRenderState(RenderState.WriteRGB|RenderState.PrimitiveLines);
-//            Bgfx.SetVertexBuffer(0, tvb, 0, userLines_.Count);
-//            Bgfx.Submit(0, shaders_);
-//
-//            userLines_.Clear();
+        var tvb = new TransientVertexBuffer(linesSnapShot.Length*2, PosColorVertex.Layout);
+        var tvbData = (DebugLine*)tvb.Data;
+        for (int i = 0; i < linesSnapShot.Length; i++)
+            tvbData[i] = linesSnapShot[i];
+
+        Bgfx.SetRenderState(RenderState.WriteRGB | RenderState.PrimitiveLines);
+        Bgfx.SetVertexBuffer(0, tvb, 0, linesSnapShot.Length*2);
+        Bgfx.Submit(0, shaders_);
     }
 
     private bool wasShutdown_ = false;
@@ -253,7 +283,8 @@ public abstract class DebugRenderer
     {
         wasShutdown_ = true;
         shaders_.Dispose();
-        Bgfx.Frame();
+        Bgfx.Discard();
+        if (instance_ != this) //we do this because calling from finalizer crashes because of reasons
         Bgfx.Shutdown();
         SDL_DestroyWindow(sdlWindowPtr_);
         SDL_Quit();

@@ -1,7 +1,7 @@
 using Px1DConstraintFlagsPtr = ::physx::PxFlags<::physx::Px1DConstraintFlag::Type, unsigned short>*;
 using PxActorFlagsPtr = ::physx::PxFlags<::physx::PxActorFlag::Enum, unsigned char>*;
 using PxActorTypeFlagsPtr = ::physx::PxFlags<::physx::PxActorTypeFlag::Enum, unsigned short>*;
-using PxFlags_PxArticulationAxisEnum_bytePtr = ::physx::PxFlags<::physx::PxArticulationAxis::Enum, unsigned char>*;
+using PxFlags_PxArticulationAxis_bytePtr = ::physx::PxFlags<::physx::PxArticulationAxis::Enum, unsigned char>*;
 using PxArticulationCacheFlagsPtr = ::physx::PxFlags<::physx::PxArticulationCache::Enum, unsigned char>*;
 using PxArticulationFlagsPtr = ::physx::PxFlags<::physx::PxArticulationFlag::Enum, unsigned char>*;
 using PxArticulationMotionsPtr = ::physx::PxFlags<::physx::PxArticulationMotion::Enum, unsigned char>*;

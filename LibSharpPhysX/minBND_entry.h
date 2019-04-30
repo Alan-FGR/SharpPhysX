@@ -85,7 +85,7 @@ using PxGpuCopyDescPtr = PxGpuCopyDesc*;
 
 //configs
 
-ManualDecls(PxSimulationFilterShader)
+ManualDecls(PxSimulationFilterShader, PxHitFlags)
 
 ForcedStaticClasses(PxRigidBodyExt)
 
@@ -177,8 +177,10 @@ BlittableTypes(
 	// Geom
 	PxGeometry, PxBoxGeometry, PxCapsuleGeometry, PxConvexMeshGeometry,
 	PxHeightFieldGeometry, PxPlaneGeometry, PxSphereGeometry, PxTriangleMeshGeometry,
-
+	// Flags
 	PxHitFlags,
 	// Debug
 	PxDebugLine, PxDebugPoint, PxDebugTriangle//, PxDebugText
 )
+
+//ManagedFlags(PxHitFlag::Enum, PxHitFlags::InternalType)

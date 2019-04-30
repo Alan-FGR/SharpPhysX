@@ -4,6 +4,7 @@
 // Commented lines are the original C++ code for reference
 //
 //###################################################################
+using System.Numerics; // used only for rendering
 
 //#include "../snippetutils/SnippetUtils.h"
 using System.Threading; // we use C#'s stdlib threading stuff instead
@@ -104,7 +105,15 @@ class SampleMultiThreading
                 //PxRaycastBuffer buf;
                 //gScene->raycast(PxVec3(0.0f), dir.getNormalized(), 1000.0f, buf, PxHitFlag::eDEFAULT);
                 PxRaycastBufferPtr buf = PxRaycastBufferPtr.New();
-                gScene.raycast(new PxVec3(0.0f), dir.getNormalized(), 1000f, buf, new PxHitFlags(PxHitFlagEnum.eDEFAULT));
+                gScene.raycast(new PxVec3(0.0f), dir.getNormalized(), 1000f, buf, PxHitFlags.eDEFAULT);
+
+                if (render_)
+                {
+                    var rayNor = dir.getNormalized() * 1000;
+                    DebugRenderer.Current.AddLine(new Vector3(0), new Vector3(rayNor.x, rayNor.y, rayNor.z), 0xff00ffff);
+                }
+
+                buf.Free();
 
                 //// If this is the last raycast then signal this to the main thread.
                 //if (SnippetUtils::atomicIncrement(&gRaysCompleted) == gRayCount)
@@ -298,17 +307,27 @@ class SampleMultiThreading
     }
 
     //int snippetMain(int, const char*const*)
-    public SampleMultiThreading()
+    public SampleMultiThreading(bool render = false)
     {
+        render_ = render;
+
         //initPhysics();
         initPhysics();
+
+        //SharpPhysX Debug Renderer
+        if (render_) DebugRenderer.InitFor(gScene);
 
         //for(PxU32 i=0; i<100; ++i)
             //stepPhysics();
         for(uint i=0; i<100; ++i)
+        {
             stepPhysics();
+            if (render_) DebugRenderer.Update(); //SharpPhysX Debug Renderer
+        }
 
         //cleanupPhysics();
         cleanupPhysics();
     }
+
+    private static bool render_;
 }

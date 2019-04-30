@@ -103,8 +103,8 @@ class SampleHelloWorld
 
         //for(PxU32 i=0;i<5;i++)
         // createStack(PxTransform(PxVec3(0,0,stackZ-=10.0f)), 10, 2.0f);
-        for (int i = 0; i < 5; i++)
-            createStack(new PxTransform(new PxVec3(0, 0, stackZ -= 10)), 10, 2);
+//        for (int i = 0; i < 5; i++)
+//            createStack(new PxTransform(new PxVec3(0, 0, stackZ -= 10)), 10, 2);
 
         //if(!interactive)
         // createDynamic(PxTransform(PxVec3(0,40,100)), PxSphereGeometry(10), PxVec3(0,-50,-100));
@@ -147,11 +147,11 @@ class SampleHelloWorld
     {
         //static const PxU32 frameCount = 100;
         //initPhysics(false);
-        const uint frameCount = 1;//100;
+        const uint frameCount = 100;
         initPhysics(false);
 
         //SharpPhysX Debug Renderer - no equivalent C++ line
-        if (render) DebugRenderer.InitFor(gScene);
+        if (render) DebugRenderer.InitFor(gScene, 100);
 
         //for(PxU32 i=0; i<frameCount; i++)
         // stepPhysics(false);

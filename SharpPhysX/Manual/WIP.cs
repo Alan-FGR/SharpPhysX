@@ -6,7 +6,7 @@ using static physx;
 
 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 public delegate void SharpPhysXErrorFptr(
-    PxErrorCodeEnum code,
+    PxErrorCode code,
     [MarshalAs(UnmanagedType.LPStr)] string message,
     [MarshalAs(UnmanagedType.LPStr)] string file,
     int line
@@ -44,6 +44,24 @@ public partial class physx
 }
 
 
+public partial class physx
+{
+    public enum PxHitFlags : ushort
+    {
+        ePOSITION                  = 1,    // ePOSITION = (1<<0)
+        eNORMAL                    = 2,    // eNORMAL = (1<<1)
+        eUV                        = 8,    // eUV = (1<<3)
+        eASSUME_NO_INITIAL_OVERLAP = 16,   // eASSUME_NO_INITIAL_OVERLAP = (1<<4)
+        eMESH_MULTIPLE             = 32,   // eMESH_MULTIPLE = (1<<5)
+        eMESH_ANY                  = 64,   // eMESH_ANY = (1<<6)
+        eMESH_BOTH_SIDES           = 128,  // eMESH_BOTH_SIDES = (1<<7)
+        ePRECISE_SWEEP             = 256,  // ePRECISE_SWEEP = (1<<8)
+        eMTD                       = 512,  // eMTD = (1<<9)
+        eFACE_INDEX                = 1024, // eFACE_INDEX = (1<<10)
+        eDEFAULT                   = 1027, // eDEFAULT = ePOSITION|eNORMAL|eFACE_INDEX
+        eMODIFIABLE_FLAGS          = 432,  // eMODIFIABLE_FLAGS = eMESH_MULTIPLE|eMESH_BOTH_SIDES|eASSUME_NO_INITIAL_OVERLAP|ePRECISE_SWEEP
+    }
+}
 
 
 //typedef struct CUstream_st* CUstream;
@@ -94,3 +112,29 @@ public partial class PxFoundation
 {
     
 }
+
+
+//public class PxRaycastBufferAuto : SafeHandle
+//{
+//    public readonly PxRaycastBufferPtr NativePtr;
+//
+//    public override bool IsInvalid => handle == IntPtr.Zero;
+//
+//    public PxRaycastBufferAuto() : base(PxRaycastBufferPtr.New().nativePtr_, true)
+//    {
+//        var addr = handle;
+//        NativePtr = *(PxRaycastBufferPtr*)&addr;
+//        #if DEBUG
+//        Console.WriteLine($"Instantiating managed pointer of type {NativePtr.GetType()} at {handle}");
+//        #endif
+//    }
+//
+//    protected override bool ReleaseHandle()
+//    {
+//        Freer_physx_PxRaycastBufferPtr(NativePtr);
+//        #if DEBUG
+//        Console.WriteLine($"Freeing managed pointer of type {NativePtr.GetType()} at {handle}");
+//        #endif
+//        return true;
+//    }
+//}

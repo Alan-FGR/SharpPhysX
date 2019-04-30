@@ -38,6 +38,9 @@ class Program
     {
         //new SampleTestbed();
         //new SampleHelloWorld(true);
-        new SampleMultiThreading();
+        new SampleMultiThreading(true);
+
+//        Console.WriteLine("press any key to exit...");
+//        Console.ReadKey();
     }
 }
